@@ -79,33 +79,37 @@ This quick practice is designed to help you build a strong foundation in prompti
 
 ## Practice 1: Generate a Competitive IT Brief
 
-Use Copilot in Word or Teams Chat to quickly research and summarize approaches for deploying Copilot Agents in enterprise environments, focusing on governance and architecture.
+Prepare for a real or simulated IT security initiative by researching how to avoid data oversharing and secure a Microsoft 365 Tenant.
 
-**Steps:**
-- Open Copilot in Word, Teams, or Loop.
-- Use the following prompt to generate your competitive brief:
+You'll perform three tasks:  
 
-**Sample Prompt Sequence:**
+- Gather customer insights using **Copilot Chat**.  
+- Draft a positioning strategy using **Copilot in Word**.  
+- Create a campaign overview deck using **Copilot in PowerPoint**.  
+
+> **NOTE:** Sample prompts are provided to help you get started. Feel free to personalize them to suit your needs—be creative and explore! If Copilot doesn’t deliver the result you want, refine your prompt and try again. Enjoy the process and have fun experimenting!  
+
+### Task 1: Gather customer insights  
+
+Using **Microsoft 365 Copilot Chat**, research best practices to prevent oversharing of data and improve tenant security posture. Focus on identifying common risks, policy recommendations, and tools available in Microsoft 365 to strengthen data governance.
+
+**Steps**:
+
+- Open a new browser tab and navigate to [M365copilot.com](https://m365copilot.com/).  
+- Ensure the **Web mode** tab is selected in Copilot Chat:
+
+    ![screenshot showing Work mode tab.](../Prompts/Media/web-mode.png)
+
+**Sample Prompt**:  
+
 ```text
-Build a competitive brief comparing approaches to deploying Copilot Agents in enterprise environments.  
-Include sections on governance models, data boundary controls, authentication, and extensibility using  
-Microsoft Graph and Azure OpenAI. Summarize lessons learned from early enterprise AI deployments and  
-highlight best practices for compliance and lifecycle management.
+I’m preparing an internal IT security brief on how to avoid oversharing and secure our Microsoft 365 tenant.  
+Please summarize key recommendations related to data governance, access control, and sensitivity labels.  
+Include best practices using Microsoft Purview, Conditional Access, and SharePoint/OneDrive external sharing controls.  
+Highlight recent security trends or common misconfigurations that could expose sensitive information.
 ```
-- Review the generated summary and ask follow-up questions such as:
-```text
-What are the key differences between each governance approach?  
-Which model offers the strongest data protection?  
-Can you organize the information into a comparison table?  
-```
-- Refine the structure and tone with a follow-up like:
-```text
-Reformat this brief into a professional whitepaper outline for IT leadership.  
-Include sections: Executive Summary, Architecture Overview, Governance Framework, Security Controls, and Recommendations.
-```  
-- Save and share your final draft with your IT leadership team or use it as a foundation for your next governance workshop.
 
-> **TIP:** Copilot can synthesize complex technical research into structured, presentation-ready briefs — saving your team hours of manual effort.
+> **TIP:** If Copilot’s answer is too broad, refine your prompt by mentioning your organization’s focus area, such as Teams collaboration, SharePoint data sharing, or guest access management.
 
 ---
 
