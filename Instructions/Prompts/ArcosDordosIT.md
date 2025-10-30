@@ -37,7 +37,7 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Core Exercises: Perform Online Research & Analysis
+## Exercise: Perform Online Research
 
 ### Researcher: Build a Copilot Agent Governance Whitepapern
 
@@ -71,89 +71,29 @@ Researcher will:
 
 > **Note:** Researcher shows its reasoning path (“chain of thought”), and can call other agents when needed.  
 
-### Analyst: Customer Segmentation & Financial Modeling
 
-1. Open **Analyst** from the left navigation in the Copilot app.  
+# **Copilot Practice**
 
-    ![Screenshot showing Analyst selected in M365 Copilot menu.](../Prompts/Media/Analyst.png)  
+This quick practice is designed to help you build a strong foundation in prompting. You’ll get hands-on experience with essential techniques and Copilot features, so you can confidently apply what you learn in real business scenarios later. Use this opportunity to experiment, ask questions, and get comfortable with the basics before moving on.
 
-1. Enter the following prompt:
+## Practice 1: Turn a Meeting into Decisions and Owners
 
-    ```text
-    Find the right customer segment and demographic to sell our new EV charger, 
-    include a graph to show how this will maximize our market opportunity.
-    ```
-
-1. Attach the file using **+**:  
-
-   - **BoulderEV ebike Internal Market Forecast.xlsx**  
-
-    ![Screenshot showing attach files in Analyst.](../Prompts/Media/Analyst-attach-files.png)
-
-
-1. Click **Submit**.  
-
-Analyst will:  
-
-- Analyze the dataset.  
-- Identify high-value customer segments.  
-- Provide visualizations to back up recommendations.  
-
-### Additional Analyst Scenarios
-
-You can run these additional prompts for variety. Each follows the same pattern: **Prompt → Attach file → Submit → Review results.**
-
-- **Financial Projection**  
-
-    ```text
-    Build a 5-year financial projection from this data along with a graph to view revenue growth over time.
-    ```  
-
-    File: **BoulderEV ebike Internal Market Forecast.xlsx**  
-
-- **Sales Performance**  
-
-    ```text
-    Analyze sales volume across locations to identify our highest and lowest performing stores, 
-    along with a visualization of the best-selling products.
-    ```  
-
-    File: **BoulderEV ebike Internal Market Forecast.xlsx**  
-
-- **Campaign Performance**  
-
-    ```text
-    Analyze and visualize how the marketing campaign performed across each target segment 
-    and help me decide where to re-target our next campaign.
-    ```  
-
-    File: **BoulderEV ebike Internal Market Forecast.xlsx**  
-
-## Key Takeaway
-
-- **Researcher**: accelerates strategy and planning with high-quality research.  
-- **Analyst**: delivers data-driven insights with advanced analysis and visualizations.  
-
-Together, Researcher and Analyst shorten the path from **question to insight**—turning weeks of effort into minutes.  
-
----
-
-# **Choose‑One Practice**
-
-Before diving into more advanced challenges, this quick practice is designed to help you build a strong foundation in prompting. You’ll get hands-on experience with essential techniques and Copilot features, so you can confidently apply what you learn in real business scenarios later. Use this opportunity to experiment, ask questions, and get comfortable with the basics before moving on.
-
-## Practice 1: Summarize & Structure Meeting Notes
-
-Transform raw meeting notes into a structured summary with Copilot Chat.
+Use Copilot in Teams Meeting Recap to transform meeting discussions into clear outcomes, decisions, and ownership assignments.
 
 **Steps:**
-- Upload your meeting notes transcript
-- Use a prompt like:
+- Open the Meeting Recap tab from your Teams meeting.
+- Review the AI-generated summary, notes, and tasks created by Copilot.
+- Ask follow-up questions in Copilot Chat, such as:
    ```text
-    Using my meeting notes, create a formal summary with sections: Title, Attendees, Goal, Topics, Product Details, Tasks, Timelines, Resources, Q&A,         Next Steps.
-   ```  
+    What were the key decisions made in this meeting?  
+    Who owns each follow-up action?  
+    Are there any unresolved topics that need escalation or clarification?  
+    Summarize all next steps by department or project lead.  
+   ```
+  - Confirm and edit owners or action items directly in the meeting recap before sharing with attendees.
+  - Use Copilot to generate a concise Follow-up Summary ready to send via Teams or email.
 
-> **TIP:** Turn unstructured notes into professional, shareable summaries.
+> **TIP:** Let Copilot do the heavy lifting — focus on validating decisions, clarifying ownership, and ensuring accountability..
 
 ---
 
