@@ -89,7 +89,7 @@ You'll perform three tasks:
 
 > **NOTE:** Sample prompts are provided to help you get started. Feel free to personalize them to suit your needs—be creative and explore! If Copilot doesn’t deliver the result you want, refine your prompt and try again. Enjoy the process and have fun experimenting!  
 
-### Task 1: Gather customer insights  
+### Task 1: Conduct security research  
 
 Using **Microsoft 365 Copilot Chat**, research best practices to prevent oversharing of data and improve tenant security posture. Focus on identifying common risks, policy recommendations, and tools available in Microsoft 365 to strengthen data governance.
 
