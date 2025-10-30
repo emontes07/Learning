@@ -76,7 +76,41 @@ Researcher will:
 
 This quick practice is designed to help you build a strong foundation in prompting. You’ll get hands-on experience with essential techniques and Copilot features, so you can confidently apply what you learn in real business scenarios later. Use this opportunity to experiment, ask questions, and get comfortable with the basics before moving on.
 
-## Practice 1: Turn a Meeting into Decisions and Owners
+
+## Practice 1: Generate a Competitive IT Brief
+
+Use Copilot in Word or Teams Chat to quickly research and summarize approaches for deploying Copilot Agents in enterprise environments, focusing on governance and architecture.
+
+**Steps:**
+- Open Copilot in Word, Teams, or Loop.
+- Use the following prompt to generate your competitive brief:
+
+**Sample Prompt Sequence:**
+```text
+Build a competitive brief comparing approaches to deploying Copilot Agents in enterprise environments.  
+Include sections on governance models, data boundary controls, authentication, and extensibility using  
+Microsoft Graph and Azure OpenAI. Summarize lessons learned from early enterprise AI deployments and  
+highlight best practices for compliance and lifecycle management.
+```
+- Review the generated summary and ask follow-up questions such as:
+```text
+ What are the key differences between each governance approach?  
+ Which model offers the strongest data protection?  
+ Can you organize the information into a comparison table?  
+```
+- Refine the structure and tone with a follow-up like:
+```text
+Reformat this brief into a professional whitepaper outline for IT leadership.  
+Include sections: Executive Summary, Architecture Overview, Governance Framework, Security Controls, and Recommendations.
+```  
+- Save and share your final draft with your IT leadership team or use it as a foundation for your next governance workshop.
+
+> **TIP:** Copilot can synthesize complex technical research into structured, presentation-ready briefs — saving your team hours of manual effort.
+
+---
+
+
+## Practice 2: Turn a Meeting into Decisions and Owners
 
 Use Copilot in Teams Meeting Recap to transform meeting discussions into clear outcomes, decisions, and ownership assignments.
 
@@ -94,27 +128,6 @@ Use Copilot in Teams Meeting Recap to transform meeting discussions into clear o
   - Use Copilot to generate a concise Follow-up Summary ready to send via Teams or email.
 
 > **TIP:** Let Copilot do the heavy lifting — focus on validating decisions, clarifying ownership, and ensuring accountability..
-
----
-
-## Practice 2: Refine Results with Follow-Up Questions
-
-Enhance your results by asking follow-up questions to Copilot Chat.
-
-**Sample Prompt Sequence:**
-```text
-Identify trends in consumer preferences for grocery markets and develop new product ideas.
-```   
-```text
- Structure ideas in a table with target groups and advertising campaigns.
-```  
-```text
-How can I prioritize these ideas effectively?
-```  
-
-> **TIP:** Use clarifying prompts to expand, prioritize, or structure results.
-
-> **TIP:** Use iterative prompts for richer insights and recommendations.
 
 ---
 
