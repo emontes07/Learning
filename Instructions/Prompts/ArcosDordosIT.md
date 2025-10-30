@@ -94,9 +94,9 @@ highlight best practices for compliance and lifecycle management.
 ```
 - Review the generated summary and ask follow-up questions such as:
 ```text
- What are the key differences between each governance approach?  
- Which model offers the strongest data protection?  
- Can you organize the information into a comparison table?  
+What are the key differences between each governance approach?  
+Which model offers the strongest data protection?  
+Can you organize the information into a comparison table?  
 ```
 - Refine the structure and tone with a follow-up like:
 ```text
