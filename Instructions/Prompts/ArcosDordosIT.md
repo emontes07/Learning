@@ -50,10 +50,10 @@ To get the best results from Copilot, use the GCSE framework:
 1. Enter the following prompt:
 
     ```text
-      Create a whitepaper outlining best practices for Copilot Agent Governance in enterprise environments.  
-      Include sections on data access control, compliance with internal policies, lifecycle management,  
-      and risk mitigation for custom copilots. Provide examples of governance frameworks used in  
-      Microsoft 365 and Azure OpenAI integrations, and highlight lessons learned from early deployments.
+Create a whitepaper outlining best practices for adopting Copilot and generative AI tools across an enterprise.  
+Include sections on change management, employee readiness, data privacy awareness, and responsible use of AI.  
+Provide examples of how leading organizations are balancing innovation with governance, and highlight lessons learned  
+from early Copilot deployments to ensure productivity, trust, and compliance.
     ```
 
 1. Attach reference files using `/` (point to SharePoint/OneDrive):  
