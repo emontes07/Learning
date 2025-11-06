@@ -267,7 +267,7 @@ fechas).
 
     ![Screenshot showing Researcher selected in M365 Copilot menu.](../Prompts/Media/researcher.png)  
 
-1. Enter the following prompt:
+1. Escribe el siguiente prompt::
 
     ```text
     Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.
@@ -282,7 +282,7 @@ Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la
 
 1. Haz clic **Submit**.  
 
-Researcher will:  
+**Researcher hará lo siguiente:**
 
 - Combinará información de archivos internos y de la web.
 - Estructurará un plan de marketing con recomendaciones sobre canales y estrategia de contenido.
