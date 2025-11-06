@@ -213,8 +213,7 @@ fechas).
 
 ------------------------------------------------------------------------
 
-- **3) Abre Copilot y lanza prompts para “Summarizing → Decisions &
-Owners”**
+- **3) Abre Copilot y lanza prompts para “Resumir → Decisiones y Responsables”**
 
 1.  En la misma vista de *Recap*, abre el panel de Copilot (ícono de
     Copilot, normalmente arriba a la derecha).
