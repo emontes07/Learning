@@ -286,6 +286,42 @@ fechas).
 
 
 
+# Ejercicio: Realizar investigación en línea usando Agentes
+
+### Researcher: Crea un Copilot Agent Governance Whitepaper
+
+> **IMPORTANT:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
+
+1. Abre **Researcher** desde la navegación izquierda en la aplicación de Copilot.  
+
+    ![Screenshot showing Researcher selected in M365 Copilot menu.](../Prompts/Media/researcher.png)  
+
+1. Enter the following prompt:
+
+    ```text
+    Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.
+Incluye secciones sobre gestión del cambio, preparación de los empleados, concientización sobre privacidad de datos y uso responsable de la IA.
+Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la innovación con la gobernanza, y destaca las lecciones aprendidas de las primeras implementaciones de Copilot para garantizar productividad, confianza y cumplimiento.
+    ```
+
+1. Adjunta los archivos de referencia usando `/` (apunta a SharePoint/OneDrive):  
+
+   - **/SprintCycle Charger Product Launch.docx**  
+   - *(Optional)* **/Contoso - PedalPerks GTM Plan.docx**  
+
+1. Haz clic **Submit**.  
+
+Researcher will:  
+
+- Combinará información de archivos internos y de la web.
+- Estructurará un plan de marketing con recomendaciones sobre canales y estrategia de contenido.
+- Citará las fuentes para que puedas validar su trabajo.
+
+> **Nota:** Researcher muestra su ruta de razonamiento (“chain of thought”) y puede invocar a otros agentes cuando sea necesario. 
+
+
+
+
 
 
 
