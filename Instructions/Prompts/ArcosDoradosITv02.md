@@ -54,7 +54,7 @@ puedes agregar a Copilot: Copilot instructions:
 
 - [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
 
-Práctica 2: Guardar Prompts en Copilot
+## Práctica 2: Guardar Prompts en Copilot
 
 Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
 consultas sin tener que escribirlas cada vez. A continuación, se explica
@@ -110,7 +110,7 @@ coherencia.
 • Revisa y actualiza periódicamente los prompts guardados para
 mantenerlos relevantes.
 
-Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
+## Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
 
 1.  **Ejecuta el prompt en Copilot**  
     Copia y pega este prompt en Copilot:
@@ -143,7 +143,7 @@ Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de 
 > <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-Práctica 4: Trabajar con documentos de Word
+## Práctica 4: Trabajar con documentos de Word
 
 **1.Abre el documento en Word**  
 Desde Loop, selecciona la opción **Abrir en Word** (esquina superior
@@ -175,7 +175,7 @@ sesión”
 Copilot transformará el contenido en preguntas que podrás usar para
 guiar la conversación con el equipo.
 
-Práctica 5: Meeting Recap – Decision & Owners
+## Práctica 5: Meeting Recap – Decision & Owners
 
 **Pre-requisitos (rápido)**  
 • La reunión debe existir en tu calendario de Teams (ideal si tuvo
