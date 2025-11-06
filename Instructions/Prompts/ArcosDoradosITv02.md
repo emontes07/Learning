@@ -221,38 +221,33 @@ fechas).
 2.  Ejecuta este *prompt* base para orientar el objetivo:
 
     ```text
-    *Resume la reunión en 5–7 puntos y convierte cada punto en una
+    Resume la reunión en 5–7 puntos y convierte cada punto en una
     decisión con un responsable y una fecha objetivo. Si faltan datos,
     sugiere responsables y fechas tentativas basándote en el contexto de
-    la conversación.*
+    la conversación.
     ```  
 
 **Prompts específicos para “Decisions & Owners” (elige o combina según
 necesites):**  
 
     ```text
-• *Extrae todas las decisiones explícitas e implícitas. Para cada una,
-sugiere responsable, fecha objetivo y primer siguiente paso.*  
+        Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.*  
     ``` 
 
     ```text
-• *Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \|
-Primer siguiente paso \| Riesgo/Bloqueador asociado.*  
+    Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado.*  
     ``` 
     
     ```text
-• *¿Quién se comprometió a qué durante la reunión? Normaliza los
-compromisos como tareas accionables.*  
+    ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. 
     ``` 
     
     ```text
-• *Identifica riesgos y dependencias mencionadas y asigna un owner de
-mitigación.* 
+    Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.
     ``` 
 
     ```text
-• *Genera un plan 30–60–90 días a partir de las decisiones tomadas, con
-hitos y responsables.*
+    Genera un plan 30–60–90 días a partir de las decisiones tomadas, con hitos y responsables.
     ``` 
 
 - **4) Da forma final a “Decisiones y Responsables”**
@@ -260,9 +255,7 @@ hitos y responsables.*
 • Pide el resultado como tabla para facilitar su uso:  
 
     ```text
-*Reestructura el resultado en una tabla. Campos: Decisión \| Owner \|
-Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia
-(timestamp de la transcripción).*
+    Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
     ``` 
 
 
