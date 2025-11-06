@@ -251,7 +251,7 @@ fechas).
 
 - **4) Da forma final a “Decisiones y Responsables”**
 
-• Pide el resultado como tabla para facilitar su uso:  
+- Pide el resultado como tabla para facilitar su uso:  
 
     ```text
     Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
