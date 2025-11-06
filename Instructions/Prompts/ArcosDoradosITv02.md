@@ -257,38 +257,9 @@ fechas).
     Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
     ``` 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Ejercicio: Realizar investigación en línea usando Agentes
 
-### Researcher: Crea un Copilot Agent Governance Whitepaper
+### Researcher: Crea un documento técnico (whitepaper)
 
 > **IMPORTANT:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
 
