@@ -227,7 +227,7 @@ fechas).
     la conversación.
     ```  
 
-**Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**  
+- **Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**  
 
     ```text
     Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.
