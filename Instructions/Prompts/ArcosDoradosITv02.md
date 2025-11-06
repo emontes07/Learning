@@ -236,11 +236,11 @@ fechas).
     ```text
     Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado. 
     ``` 
-    
+
     ```text
     ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. 
     ``` 
-    
+
     ```text
     Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.
     ``` 
