@@ -87,11 +87,11 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 **Paso 2: Guardar un Prompt**
 
 1.  Comienza ejecutando un prompt, por ejemplo:
-   ```text 
+```text 
 Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
 
 Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
-    ```
+```
 
 3.  Pasa el cursor sobre el prompt.
 
