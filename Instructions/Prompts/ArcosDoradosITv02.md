@@ -91,7 +91,6 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
     ```text
     Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
 
-    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
     ```
 
 3.  Pasa el cursor sobre el prompt.
@@ -103,13 +102,10 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 <img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-**Consejos**  
-• Usa nombres claros para los prompts (por ejemplo, “Weekly Report
-Summary”).  
-• Comparte los prompts más usados con tu equipo para mantener la
-coherencia.  
-• Revisa y actualiza periódicamente los prompts guardados para
-mantenerlos relevantes.
+> **Consejos**  
+> • Usa nombres claros para los prompts (por ejemplo, “Weekly Report Summary”).  
+> • Comparte los prompts más usados con tu equipo para mantener la coherencia.  
+> • Revisa y actualiza periódicamente los prompts guardados para mantenerlos relevantes.
 
 ## Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
 
