@@ -40,12 +40,12 @@ Copilot).
 
 • Abre *Settings* y selecciona *Personalization*.
 
-<img src="./media/ADimage1.png" style="width:5.31319in;height:2.83086in"
+<img src="../Prompts/Media/ADimage1.png" style="width:5.31319in;height:2.83086in"
 alt="A screenshot of a chat AI-generated content may be incorrect." />
 
 - Luego selecciona *Custom Instructions.*
 
-<img src="./media/ADimage2.png" style="width:5.63438in;height:4.47265in"
+<img src="../Prompts/Media/ADimage2.png" style="width:5.63438in;height:4.47265in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 Puedes agregar tus instrucciones personalizadas en esta sección. Como
@@ -75,13 +75,13 @@ cómo administrarlos y guardarlos:
     - Desde aquí, puedes eliminar prompts, compartirlos mediante enlace
       o compartirlos con un equipo.
 
-<img src="./media/ADimage3.png" style="width:5.935in;height:2.95355in"
+<img src="../Prompts/Media/ADimage3.png" style="width:5.935in;height:2.95355in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-<img src="./media/ADimage4.png" style="width:5.4334in;height:3.4638in"
+<img src="../Prompts/Media/ADimage4.png" style="width:5.4334in;height:3.4638in"
 alt="A screenshot of a chat AI-generated content may be incorrect." />
 
-<img src="./media/ADimage5.png" style="width:5.424in;height:3.25382in"
+<img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 **Paso 2: Guardar un Prompt**
@@ -99,7 +99,7 @@ Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de 
 
 5.  Asigna un nombre para fácil referencia.
 
-<img src="./media/ADimage6.png" style="width:6.5in;height:2.33125in"
+<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 **Consejos**  
@@ -126,7 +126,7 @@ Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de 
 > Esto te permitirá trabajar el contenido en formato de página dentro de
 > Loop, con más opciones de edición.
 >
-> <img src="./media/ADimage7.png" style="width:6.5in;height:3.40208in"
+> <img src="../Prompts/Media/ADimage7.png" style="width:6.5in;height:3.40208in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 3.  **Abre en Microsoft Word**  
@@ -135,12 +135,12 @@ Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de 
     Word, donde podrás aplicar formato avanzado, revisar ortografía y
     compartirlo fácilmente.
 
-> <img src="./media/ADimage8.png" style="width:6.5in;height:4.175in"
+> <img src="../Prompts/Media/ADimage8.png" style="width:6.5in;height:4.175in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 4.  Selecciona “Abrir en Word”
 
-> <img src="./media/ADimage9.png" style="width:5.52806in;height:4.10438in"
+> <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 Práctica 4: Trabajar con documentos de Word
@@ -164,7 +164,7 @@ Copilot.
 
   - **Activity** (historial de cambios)
 
-<img src="./media/ADimage10.png" style="width:6.5in;height:2.975in"
+<img src="../Prompts/Media/ADimage10.png" style="width:6.5in;height:2.975in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 **3. Abre la ventana de Copilot y ejecuta el siguiente prompt**:
