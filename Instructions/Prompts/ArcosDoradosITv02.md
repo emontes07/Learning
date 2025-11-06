@@ -209,7 +209,7 @@ fechas).
 • *Cronología/Chapters:* saltos rápidos a momentos importantes.  
 • *Transcripción:* para validar quién dijo qué.
 
-> **Tip de demo (útil con clientes como Arcos Dorados):** resalta cómo Copilot ayuda a “aterrizar” la conversación en decisiones concretas con responsables y fechas.
+> **Tip:** Copilot ayuda a resumir la conversación en decisiones concretas con responsables y fechas. Esta información estará disponible incluso desde otras experiencias de Copilot, (Teams, Outlook, etc.)
 
 ------------------------------------------------------------------------
 
