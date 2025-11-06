@@ -141,12 +141,12 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 ## Práctica 4: Trabajar con documentos de Word
 
-**1.Abre el documento en Word**  
+- **1.Abre el documento en Word**  
 Desde Loop, selecciona la opción **Abrir en Word** (esquina superior
 derecha). El documento se abrirá en Word Online o en la aplicación de
 escritorio.
 
-**2. Selecciona “View more”**  
+- **2. Selecciona “View more”**  
 Haz clic en **View more** para ver información adicional generada por
 Copilot.
 
@@ -160,20 +160,21 @@ Copilot.
 
   - **Activity** (historial de cambios)
 
-<img src="../Prompts/Media/ADimage10.png" style="width:6.5in;height:2.975in"
+> <img src="../Prompts/Media/ADimage10.png" style="width:6.5in;height:2.975in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-**3. Abre la ventana de Copilot y ejecuta el siguiente prompt**:
+- **3. Abre la ventana de Copilot y ejecuta el siguiente prompt**:
 
-“Convierte este briefing en una lista de preguntas estratégicas para la
-sesión”
+    ```text
+    Convierte este briefing en una lista de preguntas estratégicas para la sesión
+    ```
 
 Copilot transformará el contenido en preguntas que podrás usar para
 guiar la conversación con el equipo.
 
 ## Práctica 5: Meeting Recap – Decision & Owners
 
-**Pre-requisitos (rápido)**  
+- **Pre-requisitos (rápido)**  
 • La reunión debe existir en tu calendario de Teams (ideal si tuvo
 transcripción y/o grabación activadas; Copilot tendrá más contexto).  
 • Tienes licencia de Microsoft 365 Copilot y la aplicación de Teams
@@ -181,7 +182,7 @@ actualizada.
 
 ------------------------------------------------------------------------
 
-**1) Abre Meeting Recap en Teams**
+- **1) Abre Meeting Recap en Teams**
 
 1.  Abre Microsoft Teams.
 
@@ -199,7 +200,7 @@ generado por IA*, *Notas (AI/Manual)*, *Acciones/Tareas*, *Decisiones*,
 
 ------------------------------------------------------------------------
 
-**2) Revisa rápidamente el contenido clave del Recap**
+- **2) Revisa rápidamente el contenido clave del Recap**
 
 • *Resumen:* puntos principales y temas tratados.  
 • *Acciones/Tareas:* elementos extraídos por IA (verifica responsables y
@@ -208,43 +209,62 @@ fechas).
 • *Cronología/Chapters:* saltos rápidos a momentos importantes.  
 • *Transcripción:* para validar quién dijo qué.
 
-**Tip de demo (útil con clientes como Arcos Dorados):** resalta cómo
-Copilot ayuda a “aterrizar” la conversación en decisiones concretas con
-responsables y fechas.
+> **Tip de demo (útil con clientes como Arcos Dorados):** resalta cómo Copilot ayuda a “aterrizar” la conversación en decisiones concretas con responsables y fechas.
 
 ------------------------------------------------------------------------
 
-**3) Abre Copilot y lanza prompts para “Summarizing → Decisions &
+- **3) Abre Copilot y lanza prompts para “Summarizing → Decisions &
 Owners”**
 
 1.  En la misma vista de *Recap*, abre el panel de Copilot (ícono de
     Copilot, normalmente arriba a la derecha).
 
-2.  Ejecuta este *prompt* base para orientar el objetivo:  
+2.  Ejecuta este *prompt* base para orientar el objetivo:
+
+    ```text
     *Resume la reunión en 5–7 puntos y convierte cada punto en una
     decisión con un responsable y una fecha objetivo. Si faltan datos,
     sugiere responsables y fechas tentativas basándote en el contexto de
     la conversación.*
+    ```  
 
 **Prompts específicos para “Decisions & Owners” (elige o combina según
 necesites):**  
+
+    ```text
 • *Extrae todas las decisiones explícitas e implícitas. Para cada una,
 sugiere responsable, fecha objetivo y primer siguiente paso.*  
+    ``` 
+
+    ```text
 • *Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \|
 Primer siguiente paso \| Riesgo/Bloqueador asociado.*  
+    ``` 
+    
+    ```text
 • *¿Quién se comprometió a qué durante la reunión? Normaliza los
 compromisos como tareas accionables.*  
+    ``` 
+    
+    ```text
 • *Identifica riesgos y dependencias mencionadas y asigna un owner de
-mitigación.*  
+mitigación.* 
+    ``` 
+
+    ```text
 • *Genera un plan 30–60–90 días a partir de las decisiones tomadas, con
 hitos y responsables.*
+    ``` 
 
-**4) Da forma final a “Decisiones y Responsables”**
+- **4) Da forma final a “Decisiones y Responsables”**
 
 • Pide el resultado como tabla para facilitar su uso:  
+
+    ```text
 *Reestructura el resultado en una tabla. Campos: Decisión \| Owner \|
 Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia
 (timestamp de la transcripción).*
+    ``` 
 
 
 
