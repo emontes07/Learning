@@ -52,6 +52,8 @@ Hyperlinks to each of the demos are listed below.
 
 #### [Caseys - Prompt-a-Thon](https://emontes07.github.io/Learning/Instructions/Prompts/CaseysPromptathon.html)
 
+#### [Arcos Dorados - Copilot](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDoradosITv02.html)
+
 
 
 
