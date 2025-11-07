@@ -1,10 +1,7 @@
-
 ---
-Task:
-    title: 'Arcos Dorados Copilot '
+task:
+    title: 'Copilot Chats'
 ---
-
-[Back to Index](https://emontes07.github.io/Learning/)
 
 # **Arcos Dorados: IT Edition**
 
