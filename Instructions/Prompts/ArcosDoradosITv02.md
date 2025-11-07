@@ -273,7 +273,7 @@ Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de l
 > **TIP:** También puedes agregar instrucciones personalizadas para que Copilot priorice ciertos temas o formatos al generar los resúmenes.
 > Accede a opciones avanzadas
 > 
-> <img src="../Prompts/Media/ADimage11.png" style="width:6.5in;height:2.33125in"
+> <img src="../Prompts/Media/ADimage11.png" style="width:6.5in;height:2.95in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 ---
