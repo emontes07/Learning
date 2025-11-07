@@ -354,8 +354,15 @@ Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu pri
 
     ![Screenshot showing knowledge sources section in agent builder.](../Prompts/Media/knowledge-sources.png)
 
-4. Prueba tu agente usando el panel Test y ajústalo según sea necesario.  
-5. Selecciona **Create** para publicar tu agente y comenzar a usarlo. 
+   Navega al siguiente URL: (https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-control-system/overview)
+
+   Y luego descarga la documentación en PDF y agrega el archivo al agente:
+
+   <img src="../Prompts/Media/ADimage13.png" style="width:6.5in;height:2.33125in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+5. Prueba tu agente usando el panel Test y ajústalo según sea necesario.  
+6. Selecciona **Create** para publicar tu agente y comenzar a usarlo. 
 
 > **TIP:** Empieza con un agente sencillo que responda preguntas frecuentes del equipo, como “¿Dónde encuentro la guía de Copilot?” o “¿Cómo puedo solicitar acceso a Copilot Studio?”. Luego, amplía sus capacidades gradualmente.
 
