@@ -259,6 +259,7 @@ fechas).
 
 # Ejercicio: Realizar investigación en línea usando Agentes
 
+## Práctica 6: Agente Researcher - Crea un documento técnico (whitepaper)
 ### Researcher: Crea un documento técnico (whitepaper)
 
 > **IMPORTANT:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
