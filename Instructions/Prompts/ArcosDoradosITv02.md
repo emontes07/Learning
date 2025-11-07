@@ -336,7 +336,7 @@ Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la
 
 Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu primer agente en **Copilot Studio Lite.**
 
-**Steps:**  
+**Pasos:**  
 
 1. En el menñu de **Copilot**, selecciona **Create agent**.
 
