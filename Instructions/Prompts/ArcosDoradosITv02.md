@@ -358,8 +358,7 @@ Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu pri
 
    Y luego descarga la documentación en PDF y agrega el archivo al agente:
 
-   <img src="../Prompts/Media/ADimage13.png" style="width:6.5in;height:2.33125in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
+        ![Screenshot showing Microsoft Documentation.](../Prompts/Media/ADimage13.png)  
 
 5. Prueba tu agente usando el panel Test y ajústalo según sea necesario.  
 6. Selecciona **Create** para publicar tu agente y comenzar a usarlo. 
