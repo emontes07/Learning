@@ -198,6 +198,9 @@ generado por IA*, *Notas (AI/Manual)*, *Acciones/Tareas*, *Decisiones*,
 *Cronología/Chapters*, *Contenido compartido*, *Transcripción* y
 *Grabación* (si existen).
 
+> <img src="../Prompts/Media/ADimage14.png" style="width:6.5in;height:2.975in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
 ------------------------------------------------------------------------
 
 - **2) Revisa rápidamente el contenido clave del Recap**
@@ -256,6 +259,10 @@ fechas).
     ```text
     Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
     ``` 
+
+> **Tip:** Durante la reunión, utiliza Facilitator para mantener el enfoque en los temas clave y registrar acuerdos en tiempo real. Además, puedes hacerle preguntas o solicitarle resúmenes directamente mencionándolo con “@Facilitator” en el chat de la reunión.
+
+> **Tip:** Usa el agente Translator para comunicarte con participantes que hablen otros idiomas durante la reunión.
 
 ## Práctica 6: Resumir y Recapitular Correos en Outlook
 
