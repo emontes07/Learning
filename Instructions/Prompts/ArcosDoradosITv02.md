@@ -257,12 +257,32 @@ fechas).
     Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
     ``` 
 
+## Práctica 6: Resumir y Recapitular Correos en Outlook
+
+Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de los hilos de correo.
+
+**Sample Prompt:**
+```text
+    Recapitula mi correo y muéstrame:
+    1. Qué se está pidiendo
+    2. Qué se le está pidiendo al equipo
+    3. Qué se me está pidiendo directamente a mí
+    Enumera fechas y temas en una tabla
+```
+
+> **TIP:** También puedes agregar instrucciones personalizadas para que Copilot priorice ciertos temas o formatos al generar los resúmenes.
+> Accede a opciones avanzadas
+> <img src="../Prompts/Media/ADimage11.png" style="width:6.5in;height:2.33125in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+---
+
+
 # Ejercicio: Realizar investigación en línea usando Agentes
 
-## Práctica 6: Agente Researcher - Crea un documento técnico (whitepaper)
-### Researcher: Crea un documento técnico (whitepaper)
+## Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)
 
-> **IMPORTANT:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
+> **IMPORTANTE:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
 
 1. Abre **Researcher** desde la navegación izquierda en la aplicación de Copilot.  
 
