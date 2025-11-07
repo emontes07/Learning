@@ -357,8 +357,6 @@ Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu pri
    Navega al siguiente URL: (https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-control-system/overview)
 
    Y luego descarga la documentación en PDF y agrega el archivo al agente:
-
-      ![Screenshot showing create an agent link.](../Prompts/Media/ADimage13.png)
    
    <img src="../Prompts/Media/ADimage13.png" style="width:6.5in;height:5.5in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
@@ -372,21 +370,22 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 
 
+---
 
+## Prompting Framework: GCSE
 
+To get the best results from Copilot, use the GCSE framework: 
 
+![Effective Prompt.](../Prompts/Media/Prompt%2001.png)  
 
+- **Goal**: What do you want Copilot to do?
+- **Context**: Why do you need it? Who is involved?
+- **Source**: What information or samples should Copilot use?
+- **Expectations**: How should Copilot respond? (Format, tone, detail)
 
+**TIP:** If your prompt is too short, you’ll get generic results. If it’s too long, Copilot might miss instructions. Aim for clarity and specificity.
 
-
-
-
-
-
-
-
-
-
+---
 
 ## Prompting Best Practices
 
