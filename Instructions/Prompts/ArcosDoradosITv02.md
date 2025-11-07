@@ -276,6 +276,22 @@ Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de l
 > <img src="../Prompts/Media/ADimage11.png" style="width:6.5in;height:2.95in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
+
+> **TIP:** puedes usar la función de **Coaching** para que Copilot proporcione sugerencias a tus correos electróicos. Por ejemploÑ
+> ```text
+> Dear team,
+>
+> I wanted to provide a quick update on our project timeline. We’ve encountered a brief delay in one of the development phases due to additional testing and validation needs. The team is actively addressing the issue, and our overall progress remains strong.
+>
+> I want to reassure you that we are still on track to meet our planned go-live dates, and this adjustment will help ensure a smoother launch and higher quality results. I’ll continue to keep you updated as we move forward.
+>
+> Best regards,
+> ```
+>
+> <img src="../Prompts/Media/ADimage12.png" style="width:6.5in;height:2.95in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+
 ---
 
 
