@@ -615,4 +615,4 @@ Partner with us to build a business case, explore pre-built agents, and keep up 
 
 👉 [Excecutives Copilot guide](https://adoption.microsoft.com/en-us/scenario-library/executives/)
 
-[Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).  
+👉 [Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).  
