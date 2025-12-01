@@ -114,6 +114,60 @@ Reescribe este extracto de la earnings call en un lenguaje más simple para inve
 
 # **Arcos Dorados: Práctica**
 
+## Práctica 2: Guardar Prompts en Copilot
+
+Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
+consultas sin tener que escribirlas cada vez. A continuación, se explica
+cómo administrarlos y guardarlos:
+
+**Guía paso a paso**
+
+**Paso 1: Guardar un Prompt**
+
+1.  Comienza ejecutando un prompt, por ejemplo:
+   
+    ```text
+    Por favor, prepara un resumen de mis correos electrónicos, mensajes de Teams y reuniones del día de ayer, destacando cualquier mención directa a mi nombre.
+    Muestra también mis reuniones programadas para hoy en una tabla que incluya: asunto, participantes y puntos clave de preparación.
+    Utiliza un tono inspirador y añade un toque ligero que mantenga la energía positiva para el día.
+    ```
+
+3.  Pasa el cursor sobre el prompt.
+
+4.  Haz clic en *Save Prompt*.
+
+5.  Asigna un nombre para fácil referencia.
+
+<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+> **Consejos**  
+> • Usa nombres claros para los prompts (por ejemplo, “Weekly Report Summary”).  
+> • Comparte los prompts más usados con tu equipo para mantener la coherencia.  
+> • Revisa y actualiza periódicamente los prompts guardados para mantenerlos relevantes.
+
+**Paso 2: Acceder a tus Prompts guardados**
+
+1.  Abre Copilot.
+
+2.  Haz clic en *See More*.
+
+3.  Selecciona *Prompt Gallery*.
+
+4.  Ve a *Your Prompts*.
+
+    - Desde aquí, puedes eliminar prompts, compartirlos mediante enlace
+      o compartirlos con un equipo.
+
+<img src="../Prompts/Media/ADimage3.png" style="width:5.935in;height:2.95355in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage4.png" style="width:5.4334in;height:3.4638in"
+alt="A screenshot of a chat AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
 ## Práctica 1: Memoria y Personalización de Copilot
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
@@ -154,59 +208,6 @@ referencia, aquí tienes una guía con ejemplos de instrucciones que
 puedes agregar a Copilot: Copilot instructions: 
 
 - [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
-
-## Práctica 2: Guardar Prompts en Copilot
-
-Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
-consultas sin tener que escribirlas cada vez. A continuación, se explica
-cómo administrarlos y guardarlos:
-
-**Guía paso a paso**
-
-**Paso 1: Acceder a tus Prompts guardados**
-
-1.  Abre Copilot.
-
-2.  Haz clic en *See More*.
-
-3.  Selecciona *Prompt Gallery*.
-
-4.  Ve a *Your Prompts*.
-
-    - Desde aquí, puedes eliminar prompts, compartirlos mediante enlace
-      o compartirlos con un equipo.
-
-<img src="../Prompts/Media/ADimage3.png" style="width:5.935in;height:2.95355in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
-
-<img src="../Prompts/Media/ADimage4.png" style="width:5.4334in;height:3.4638in"
-alt="A screenshot of a chat AI-generated content may be incorrect." />
-
-<img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
-
-**Paso 2: Guardar un Prompt**
-
-1.  Comienza ejecutando un prompt, por ejemplo:
-   
-    ```text
-    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
-
-    ```
-
-3.  Pasa el cursor sobre el prompt.
-
-4.  Haz clic en *Save Prompt*.
-
-5.  Asigna un nombre para fácil referencia.
-
-<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
-
-> **Consejos**  
-> • Usa nombres claros para los prompts (por ejemplo, “Weekly Report Summary”).  
-> • Comparte los prompts más usados con tu equipo para mantener la coherencia.  
-> • Revisa y actualiza periódicamente los prompts guardados para mantenerlos relevantes.
 
 ## Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
 
