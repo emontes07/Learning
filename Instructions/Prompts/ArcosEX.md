@@ -108,7 +108,7 @@ Reescribe este extracto de la earnings call en un lenguaje más simple para inve
 
 - [Preparación de Earnings Calls con Copilot](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S___gZBvO6C4DFYj9S8S2NPLUSSIGNSv7cUNdZ8vjg___dg32LvyzynI3___M0livxq4bmWzU4JZpFXgNwOTYXR0gySdlKHY3PLUSSIGNE6)
 
-[English version](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2SPLUSSIGNLLO4RZjRG3MRASUnIko7xquzPWY9wuBHJehVmaYX3qIBqoMPgaj9wnQ5T23yjzocfW1rYq1pviVweKrkk___jB___
+- [English version](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2SPLUSSIGNLLO4RZjRG3MRASUnIko7xquzPWY9wuBHJehVmaYX3qIBqoMPgaj9wnQ5T23yjzocfW1rYq1pviVweKrkk___jB___
 )
 
 
