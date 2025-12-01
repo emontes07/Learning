@@ -215,36 +215,30 @@ puedes agregar a Copilot: Copilot instructions:
     Copia y pega este prompt en Copilot:
 
     ```text
-Crea un informe ejecutivo en español, de 1 página (700–900 palabras), dirigido al equipo C-level de Arcos Dorados (CEO, CFO, COO, CMO, CHRO, CIO). Incluye:
-
-1. Resumen ejecutivo de las tendencias recientes del sector QSR en Latinoamérica (crecimiento, tráfico, delivery, digital, precios, inflación y consumo).
-2. Análisis competitivo comparando a Arcos Dorados con McDonald’s Corp, Restaurant Brands International (Burger King), Yum! Brands (KFC), Subway y cadenas locales relevantes. Incluye:
-   - Comparación de ingresos (“top-line revenue”) en una tabla.
-   - Número de restaurantes por marca.
-   - Empleados totales y “ingreso por empleado”.
-   - Métricas de eficiencia operativa si están disponibles (AUV, crecimiento de ventas comparables, digitalización, delivery mix).
-
-3. Riesgos y oportunidades estratégicas para los próximos 12 meses:
-   - Inflación y poder adquisitivo del consumidor.
-   - Competencia en precio vs. valor.
-   - Expansión de delivery y canales digitales.
-   - Transformación operativa y experiencia del cliente.
-
-4. Implicaciones para cada área del C-level:
-   - CEO: crecimiento, visión, prioridades estratégicas.
-   - CFO: márgenes, costos operativos, CAPEX, proyecciones.
-   - COO: eficiencia, operaciones, estandarización, supply chain.
-   - CMO: marca, percepción del consumidor, promociones, lealtad.
-   - CHRO: talento, rotación, capacitación, productividad por empleado.
-   - CIO/CTO: digital, analítica, automatización, IA generativa.
-
-5. Recomendaciones ejecutivas trimestrales:
-   - 5 prioridades estratégicas para el próximo trimestre.
-   - Indicadores clave que deben revisarse mensualmente.
-   - Acciones sugeridas basadas en benchmarks del sector.
-
-Usa encabezados claros, párrafos breves, tablas cuando aplique, resalta 5–7 ideas clave en **negrita** e incluye fuentes recientes para datos del sector QSR.
-
+    Crea un informe ejecutivo en español, de 1 página (700–900 palabras), dirigido al equipo C-level de Arcos Dorados (CEO, CFO, COO, CMO, CHRO, CIO). Incluye:
+    1. Resumen ejecutivo de las tendencias recientes del sector QSR en Latinoamérica (crecimiento, tráfico, delivery, digital, precios, inflación y consumo).
+    2. Análisis competitivo comparando a Arcos Dorados con McDonald’s Corp, Restaurant Brands International (Burger King), Yum! Brands (KFC), Subway y cadenas locales relevantes. Incluye:
+      - Comparación de ingresos (“top-line revenue”) en una tabla.
+     - Número de restaurantes por marca.
+     - Empleados totales y “ingreso por empleado”.
+    - Métricas de eficiencia operativa si están disponibles (AUV, crecimiento de ventas comparables, digitalización, delivery mix).
+    3. Riesgos y oportunidades estratégicas para los próximos 12 meses:
+     - Inflación y poder adquisitivo del consumidor.
+     - Competencia en precio vs. valor.
+     - Expansión de delivery y canales digitales.
+     - Transformación operativa y experiencia del cliente.
+    4. Implicaciones para cada área del C-level:
+      - CEO: crecimiento, visión, prioridades estratégicas.
+     - CFO: márgenes, costos operativos, CAPEX, proyecciones.
+      - COO: eficiencia, operaciones, estandarización, supply chain.
+     - CMO: marca, percepción del consumidor, promociones, lealtad.
+     - CHRO: talento, rotación, capacitación, productividad por empleado.
+     - CIO/CTO: digital, analítica, automatización, IA generativa.
+    5. Recomendaciones ejecutivas trimestrales:
+      - 5 prioridades estratégicas para el próximo trimestre.
+     - Indicadores clave que deben revisarse mensualmente.
+     - Acciones sugeridas basadas en benchmarks del sector.
+    Usa encabezados claros, párrafos breves, tablas cuando aplique, resalta 5–7 ideas clave en **negrita** e incluye fuentes recientes para datos del sector QSR.
     ```
 
 2.  **Selecciona el ícono “Editar en Pages”**
