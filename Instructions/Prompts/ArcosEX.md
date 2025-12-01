@@ -3,7 +3,7 @@ task:
     title: 'Copilot Chats'
 ---
 
-# **Arcos Dorados: IT Edition**
+# **Arcos Dorados: Executives Edition**
 
 Bienvenido a esta sesión interactiva diseñada para ayudarte a desbloquear todo el potencial de Microsoft Copilot dominando el arte y la ciencia de la creación efectiva de prompts.
 Aprenderás técnicas prácticas para crear prompts claros e impactantes que generen valor real para el negocio, ahorren tiempo y aumenten la productividad.
@@ -11,6 +11,35 @@ Aprenderás técnicas prácticas para crear prompts claros e impactantes que gen
 Prepárate para una experiencia práctica y colaborativa, donde experimentarás, iterarás y descubrirás cómo Copilot puede optimizar tus flujos de trabajo y empoderar a tu equipo para lograr más.
 
 ---
+
+## Sección 1: Ejemplo de búsqueda vs razonamiento
+Objetivo: Mostrar cómo Copilot responde preguntas simples y luego razona con datos estratégicos.
+
+**Pasos**:
+
+- Abre una nueva pestaña del navegador y navega a [M365copilot.com](https://m365copilot.com/).  
+- Asegúrate de que la pestaña Modo Web esté seleccionada en Copilot Chat:
+
+    ![screenshot showing Work mode tab.](../Prompts/Media/web-mode.png)
+
+Prompt 1 (búsqueda simple)
+```text
+¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
+```
+¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
+> **Nota:**Copilot obtiene el dato desde fuentes públicas o reportes trimestrales.
+
+Prompt 2 (razonamiento)
+```text
+Si Arcos Dorados quisiera aumentar un 10% el número de restaurantes en Brasil, ¿cuántos nuevos locales tendría que abrir?
+```
+> **Nota:**(Copilot calcula con base en la cifra inicial y proyecta el incremento.)
+
+Prompt 3 (comparación rápida)
+```text
+¿Cómo se compara el número de restaurantes de Arcos Dorados con el de Burger King en la región?
+```
+> **Nota:**(Copilot genera una tabla comparativa usando datos públicos.)
 
 ## Práctica 1: Memoria y Personalización de Copilot
 
