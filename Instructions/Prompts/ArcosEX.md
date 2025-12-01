@@ -27,19 +27,19 @@ Prompt 1 (búsqueda simple)
 ¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
 ```
 ¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
-> **Nota:**Copilot obtiene el dato desde fuentes públicas o reportes trimestrales.
+> **Nota:** Copilot obtiene el dato desde fuentes públicas o reportes trimestrales.
 
 Prompt 2 (razonamiento)
 ```text
 Si Arcos Dorados quisiera aumentar un 10% el número de restaurantes en Brasil, ¿cuántos nuevos locales tendría que abrir?
 ```
-> **Nota:**(Copilot calcula con base en la cifra inicial y proyecta el incremento.)
+> **Nota:** Copilot calcula con base en la cifra inicial y proyecta el incremento.
 
 Prompt 3 (comparación rápida)
 ```text
 ¿Cómo se compara el número de restaurantes de Arcos Dorados con el de Burger King en la región?
 ```
-> **Nota:**(Copilot genera una tabla comparativa usando datos públicos.)
+> **Nota:** Copilot genera una tabla comparativa usando datos públicos.
 
 ## Práctica 1: Memoria y Personalización de Copilot
 
