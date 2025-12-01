@@ -112,6 +112,8 @@ Reescribe este extracto de la earnings call en un lenguaje más simple para inve
 )
 
 
+# **Arcos Dorados: Práctica**
+
 ## Práctica 1: Memoria y Personalización de Copilot
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
