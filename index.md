@@ -54,7 +54,7 @@ Hyperlinks to each of the demos are listed below.
 
 #### [Arcos Dorados - Copilot](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDoradosITv02.html)
 
-#### [Arcos Dorados - Copilot](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosEX.html)
+#### [Arcos Dorados - Executives](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosEX.html)
 
 
 
