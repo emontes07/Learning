@@ -79,36 +79,38 @@ Reescribe este discurso para un grupo de estudiantes de quinto grado que están 
 
 Objetivo: Mostrar cómo Copilot puede ayudar a ejecutivos (CEO, CFO, IR) a prepararse para una próxima earnings call, anticipar preguntas de inversionistas y mejorar la claridad del mensaje.
 
-#Predicción de preguntas de inversionistas:
+**Predicción de preguntas de inversionistas:**
 ```text
 Con base en el desempeño financiero reciente de Arcos Dorados y las tendencias de la industria QSR, genera 8 preguntas difíciles que podrían surgir durante la próxima earnings call y propone respuestas claras y concisas.
 ```
 
-#Simulación de sentimiento de inversionistas:
+**Simulación de sentimiento de inversionistas:**
 ```text
 Analiza los resultados recientes de Arcos Dorados y simula el sentimiento probable de inversionistas institucionales y minoristas. Resume las principales preocupaciones y oportunidades que podrían mencionar.
 ```
 
-#Consistencia del mensaje frente a trimestres anteriores:
+**Consistencia del mensaje frente a trimestres anteriores:**
 ```text
 Compara el mensaje actual del guion con el del trimestre anterior y resalta discrepancias en tono, narrativa o posicionamiento estratégico.
 ```
 
-#Mejorar claridad y precisión del mensaje:
+**Mejorar claridad y precisión del mensaje:**
 ```text
 Analiza los últimos 2 minutos del guion y sugiere mejoras para hacerlo más claro, directo y alineado con lo que los inversionistas más valoran: ejecución operativa, márgenes, digitalización y experiencia del cliente.
 ```
 
-#Crear versión simplificada para audiencias no financieras:
+**Crear versión simplificada para audiencias no financieras:**
 ```text
 Reescribe este extracto de la earnings call en un lenguaje más simple para inversionistas minoristas que no están familiarizados con métricas financieras avanzadas.
 ```
  
-> **Nota:** Esta guía demuestra cómo los ejecutivos de Arcos Dorados pueden usar Microsoft Copilot para prepararse de manera más efectiva para una earnings call, anticipar preguntas difíciles y optimizar el mensaje antes de hablar con analistas e inversionistas.
-> Este es un excelente ejemplo práctico (solo cambia logos y nombres) para mostrar a ejecutivos cómo Copilot puede apoyarles en situaciones de alta importancia y alto riesgo comunicativo.
->
-> - [Copilot] - Preparación de Earnings Calls con Copilot(https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S___gZBvO6C4DFYj9S8S2NPLUSSIGNSv7cUNdZ8vjg___dg32LvyzynI3___M0livxq4bmWzU4JZpFXgNwOTYXR0gySdlKHY3PLUSSIGNE6)
-> 
+> **Nota:** La siguiente guía demuestra cómo los ejecutivos de Arcos Dorados pueden usar Microsoft Copilot para prepararse de manera más efectiva para una earnings call, anticipar preguntas difíciles y optimizar el mensaje antes de hablar con analistas e inversionistas.
+
+- [Preparación de Earnings Calls con Copilot](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S___gZBvO6C4DFYj9S8S2NPLUSSIGNSv7cUNdZ8vjg___dg32LvyzynI3___M0livxq4bmWzU4JZpFXgNwOTYXR0gySdlKHY3PLUSSIGNE6)
+
+[English version](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2SPLUSSIGNLLO4RZjRG3MRASUnIko7xquzPWY9wuBHJehVmaYX3qIBqoMPgaj9wnQ5T23yjzocfW1rYq1pviVweKrkk___jB___
+)
+
 
 ## Práctica 1: Memoria y Personalización de Copilot
 
