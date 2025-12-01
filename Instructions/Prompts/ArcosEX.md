@@ -483,7 +483,7 @@ Un Notebook es un espacio dividido en bloques donde puedes:
 
 ### 1. Abrir un Notebook
 
-1. Ve a **https://m365copilot.com**
+1. Ve a **(https://m365copilot.com)**
 2. En la barra lateral izquierda selecciona **Notebooks**
 3. Haz clic en **New Notebook** o **Nuevo Notebook**
 
@@ -609,4 +609,10 @@ To get the best results from Copilot, use the GCSE framework:
 
 ## Get Started
 
-Partner with us to build a business case, explore pre-built agents, and keep up with Copilot news on WorkLab: https://www.microsoft.com/en-us/worklab/ai-at-work/
+Partner with us to build a business case, explore pre-built agents, and keep up with Copilot news on WorkLab: 
+
+(https://www.microsoft.com/en-us/worklab/ai-at-work/)
+
+(https://adoption.microsoft.com/en-us/scenario-library/executives/)
+
+[Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).  
