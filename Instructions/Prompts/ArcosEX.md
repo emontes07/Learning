@@ -408,7 +408,7 @@ Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de l
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 
-> **TIP:** puedes usar la función de **Coaching** para que Copilot proporcione sugerencias a tus correos electróicos. Por ejemploÑ
+> **TIP:** puedes usar la función de **Coaching** para que Copilot proporcione sugerencias a tus correos electróicos. Por ejemplo:
 > ```text
 > Dear team,
 >
