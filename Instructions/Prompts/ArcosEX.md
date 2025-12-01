@@ -114,7 +114,7 @@ Reescribe este extracto de la earnings call en un lenguaje más simple para inve
 
 # **Arcos Dorados: Práctica**
 
-## Práctica 2: Guardar Prompts en Copilot
+## Práctica 1: Guardar Prompts en Copilot
 
 Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
 consultas sin tener que escribirlas cada vez. A continuación, se explica
@@ -127,9 +127,9 @@ cómo administrarlos y guardarlos:
 1.  Comienza ejecutando un prompt, por ejemplo:
    
     ```text
-    Por favor, prepara un resumen de mis correos electrónicos, mensajes de Teams y reuniones del día de ayer, destacando cualquier mención directa a mi nombre.
-    Muestra también mis reuniones programadas para hoy en una tabla que incluya: asunto, participantes y puntos clave de preparación.
-    Utiliza un tono inspirador y añade un toque ligero que mantenga la energía positiva para el día.
+Por favor, elabora un resumen de mis correos electrónicos, mensajes de Teams y reuniones del día laboral anterior, destacando cualquier mención directa a mi nombre.
+Presenta también mis reuniones programadas para hoy en una tabla que incluya: asunto, participantes y los puntos clave de preparación.
+Utiliza un tono inspirador y un toque ligero que ayude a comenzar la jornada con energía positiva.
     ```
 
 3.  Pasa el cursor sobre el prompt.
@@ -168,7 +168,7 @@ alt="A screenshot of a chat AI-generated content may be incorrect." />
 <img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Práctica 1: Memoria y Personalización de Copilot
+## Práctica 2: Memoria y Personalización de Copilot
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
 Copilot con base en tus chats previos, perfil de trabajo, instrucciones
@@ -215,7 +215,35 @@ puedes agregar a Copilot: Copilot instructions:
     Copia y pega este prompt en Copilot:
 
     ```text
-    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
+Crea un informe ejecutivo en español, de 1 página (700–900 palabras), dirigido al equipo C-level de Arcos Dorados (CEO, CFO, COO, CMO, CHRO, CIO). Incluye:
+
+1. Resumen ejecutivo de las tendencias recientes del sector QSR en Latinoamérica (crecimiento, tráfico, delivery, digital, precios, inflación y consumo).
+2. Análisis competitivo comparando a Arcos Dorados con McDonald’s Corp, Restaurant Brands International (Burger King), Yum! Brands (KFC), Subway y cadenas locales relevantes. Incluye:
+   - Comparación de ingresos (“top-line revenue”) en una tabla.
+   - Número de restaurantes por marca.
+   - Empleados totales y “ingreso por empleado”.
+   - Métricas de eficiencia operativa si están disponibles (AUV, crecimiento de ventas comparables, digitalización, delivery mix).
+
+3. Riesgos y oportunidades estratégicas para los próximos 12 meses:
+   - Inflación y poder adquisitivo del consumidor.
+   - Competencia en precio vs. valor.
+   - Expansión de delivery y canales digitales.
+   - Transformación operativa y experiencia del cliente.
+
+4. Implicaciones para cada área del C-level:
+   - CEO: crecimiento, visión, prioridades estratégicas.
+   - CFO: márgenes, costos operativos, CAPEX, proyecciones.
+   - COO: eficiencia, operaciones, estandarización, supply chain.
+   - CMO: marca, percepción del consumidor, promociones, lealtad.
+   - CHRO: talento, rotación, capacitación, productividad por empleado.
+   - CIO/CTO: digital, analítica, automatización, IA generativa.
+
+5. Recomendaciones ejecutivas trimestrales:
+   - 5 prioridades estratégicas para el próximo trimestre.
+   - Indicadores clave que deben revisarse mensualmente.
+   - Acciones sugeridas basadas en benchmarks del sector.
+
+Usa encabezados claros, párrafos breves, tablas cuando aplique, resalta 5–7 ideas clave en **negrita** e incluye fuentes recientes para datos del sector QSR.
 
     ```
 
