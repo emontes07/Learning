@@ -460,43 +460,121 @@ Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la
 > **Nota:** Researcher muestra su ruta de razonamiento (“chain of thought”) y puede invocar a otros agentes cuando sea necesario. 
 
 
+# Práctica 8: Cómo usar Notebooks en Microsoft 365 Copilot
+Guía rápida y sencilla
+
+Los Notebooks de Copilot permiten trabajar con ideas, análisis y contenido complejo en un espacio estructurado. Son útiles para proyectos largos, resúmenes, reportes, documentación o cualquier tarea que requiera varios pasos.
+
+---
+
+## ¿Qué es un Notebook?
+
+Un Notebook es un espacio dividido en bloques donde puedes:
+
+- Escribir texto
+- Pedir tareas a Copilot
+- Generar contenido paso a paso
+- Guardar tu trabajo
+- Reorganizar ideas fácilmente
+
+---
+
+## Pasos para usar Notebooks
+
+### 1. Abrir un Notebook
+
+1. Ve a **https://m365copilot.com**
+2. En la barra lateral izquierda selecciona **Notebooks**
+3. Haz clic en **New Notebook** o **Nuevo Notebook**
+
+---
+
+### 2. Crear tu primer bloque
+
+- Haz clic en el primer bloque vacío  
+- Escribe una instrucción o texto  
+- Presiona Enter para que Copilot genere contenido
+
+Ejemplo:
+Resume los principales desafíos del sector QSR en Latinoamérica.
+
+---
+
+### 3. Agregar más bloques
+
+Para continuar construyendo tu documento:
+
+- Haz clic en **+ Add block** o **+ Agregar bloque**
+- Escribe tu propio texto o agrega una instrucción para Copilot
+
+Ejemplo:
+Agrega una tabla comparativa entre Arcos Dorados y Burger King en la región.
+
+---
+
+### 4. Reorganizar el contenido
+
+Puedes arrastrar los bloques hacia arriba o abajo para reorganizar el documento.  
+Esto te permite:
+
+- Crear una introducción
+- Agregar análisis
+- Mover conclusiones
+- Ordenar ideas fácilmente
+
+---
+
+### 5. Guardar y continuar después
+
+Los Notebooks se guardan automáticamente.  
+Al volver, Copilot recordará:
+
+- El contexto
+- Las instrucciones
+- Todo el contenido del documento
+
+---
+
+### 6. Exportar tu trabajo
+
+Cuando finalices tu Notebook puedes:
+
+- Copiar todo el contenido
+- Exportarlo a Word
+- Convertirlo a PDF desde Word
+- Usarlo como base en una presentación de PowerPoint
+
+---
+
+## Ejercicio sugerido para practicar
+
+Puedes copiar estos pasos dentro de un Notebook:
+
+1. "Explica en 5 puntos la estrategia de crecimiento de Arcos Dorados."
+2. "Agrega una tabla con ingresos vs competidores."
+3. "Escribe un resumen ejecutivo de 1 párrafo."
+4. "Redacta una versión simplificada para un director no financiero."
+
+---
+
+## Resultado final
+
+Con esta práctica, cualquier ejecutivo podrá:
+
+- Crear documentos largos con estructura
+- Refinar contenido en varias etapas
+- Organizar ideas en bloques
+- Preparar reportes ejecutivos con Copilot
+
+---
 
 
+> **TIP:** Si estás comenzando con Notebooks y quieres aprovecharlos al máximo, un excelente punto de partida es revisar las guías y ejemplos oficiales de Microsoft. Estas recomendaciones te ayudan a estructurar mejor los bloques, combinar análisis con redacción y formular instrucciones más claras para Copilot.
 
-### Task 3: Crear y Probar tu Agente  
+Revisa el recurso oficial aquí:  
+👉 [Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).  
 
-Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu primer agente en **Copilot Studio Lite.**
-
-**Pasos:**  
-
-1. En el menñu de **Copilot**, selecciona **Create agent**.
-
-   ![Screenshot showing create an agent link.](../Prompts/Media/create-agent.png)  
-
-2. En la pestaña **Describe**, redacta las instrucciones de tu agente. Por ejemplo:  
-
-   ```text
-   Tú eres un agente que me ayudará a resolver dudas sobre Copilot: cómo utilizar la herramienta, cómo crear agentes en Copilot Studio y cómo aplicar sus funciones en los escenarios de Arcos Dorados.
-   ```  
-
-   ![Screenshot showing describe agent with sample prompt filled in.](../Prompts/Media/create-agent-through-describe.png)  
-
-3. Selecciona la pestaña **Configure** y agrega una fuente de conocimiento (por ejemplo, archivos, sitios de SharePoint o páginas web).
-
-    ![Screenshot showing knowledge sources section in agent builder.](../Prompts/Media/knowledge-sources.png)
-
-   Navega al siguiente URL: (https://learn.microsoft.com/en-us/copilot/microsoft-365/copilot-control-system/overview)
-
-   Y luego descarga la documentación en PDF y agrega el archivo al agente:
-   
-   <img src="../Prompts/Media/ADimage13.png" style="width:6.5in;height:5.5in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
-
-5. Prueba tu agente usando el panel Test y ajústalo según sea necesario.  
-6. Selecciona **Create** para publicar tu agente y comenzar a usarlo. 
-
-> **TIP:** Empieza con un agente sencillo que responda preguntas frecuentes del equipo, como “¿Dónde encuentro la guía de Copilot?” o “¿Cómo puedo solicitar acceso a Copilot Studio?”. Luego, amplía sus capacidades gradualmente.
-
+Este recurso es especialmente útil para ejecutivos que desean convertir ideas estratégicas en documentos bien organizados, con un flujo claro y profesional.
 
 
 
