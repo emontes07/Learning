@@ -41,6 +41,41 @@ Prompt 3 (comparación rápida)
 ```
 > **Nota:** Copilot genera una tabla comparativa usando datos públicos.
 
+## Sección 2: Información estratégica para ejecutivos (Arcos Dorados)
+Objetivo: Mostrar cómo Copilot puede generar insights valiosos para la toma de decisiones usando fuentes públicas.
+
+
+Metas técnicas y operativas:
+```text
+¿Cuáles son las metas técnicas y operativas de Arcos Dorados según sus últimas llamadas de resultados y reportes trimestrales?
+```
+
+Antecedentes de la marca:
+```text
+Dame un panorama completo sobre Arcos Dorados y qué los hace únicos como marca en la industria de comida rápida en Latinoamérica.
+```
+
+Comparación con competidores:
+```text
+Compara el desempeño de ingresos de Arcos Dorados con competidores (por ejemplo, McDonald’s Corp, Burger King, Subway) y muestra los datos en una tabla.
+```
+
+Métricas de empleados:
+```text
+Usando estos competidores, agrega el número de empleados y el ingreso por empleado en una tabla comparativa.
+```
+
+Discurso para inversionistas:
+```text
+Escribe un breve discurso para inversionistas sobre cómo Arcos Dorados ha crecido en relación con su competencia.
+```
+
+Versión simplificada para niños:
+```text
+Reescribe este discurso para un grupo de estudiantes de quinto grado que están aprendiendo sobre negocios.
+```
+
+
 ## Práctica 1: Memoria y Personalización de Copilot
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
