@@ -16,7 +16,7 @@ title: 'Copilot for Developers & IT – Expanded Edition'
 
 ---
 
-\## Copilot for Developers & IT Teams (Updated)
+## Copilot for Developers & IT Teams (Updated)
 
 Microsoft 365 Copilot is more than a writing aid—it’s a multifaceted
 assistant that can help your engineering and IT teams code faster,
@@ -28,7 +28,7 @@ includes \*\*sample prompts\*\*, \*\*tips\*\*, and a clear \*\*learning
 outcome\*\* so you can immediately apply Copilot in your daily
 workflows.
 
-\> \*\*NOTE:\*\* Feel free to adapt the sample prompts to fit your own
+> \*\*NOTE:\*\* Feel free to adapt the sample prompts to fit your own
 environment, repositories, or documents. If Copilot’s first answer isn’t
 what you expected, refine your prompt and try again—iteration is part of
 the process! Always review and verify Copilot’s output; AI may suggest
@@ -37,7 +37,7 @@ work.
 
 ---
 
-\### Task 1: Write & Review Code with Copilot
+### Task 1: Write & Review Code with Copilot
 
 Use \*\*Copilot\*\* (via the Copilot web app or the Copilot pane inside
 Microsoft 365 apps) to generate and refine code snippets and scripts.
