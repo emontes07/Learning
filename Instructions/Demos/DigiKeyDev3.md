@@ -1,4 +1,11 @@
+---
+demo:
+    title: 'Developer & IT Copilot Training'
+---
+
 [Back to Index](https://emontes07.github.io/Learning/)
+
+# Developer & IT Copilot Training
 
 ## Copilot for Developers & IT Teams (Updated)
 
