@@ -1,22 +1,11 @@
 ---
-
 demo:
-
-title: 'Developer & IT Copilot Training – Updated'
-
+    title: 'Developer & IT Copilot Training'
 ---
 
-\[Back to Index\](https://emontes07.github.io/Learning/)
+[Back to Index](https://microsoftlearning.github.io/MS-4021-Copilot-Immersion-Experience/)
 
----
-
-task:
-
-title: 'Copilot for Developers & IT – Expanded Edition'
-
----
-
-\## Copilot for Developers & IT Teams (Updated)
+## Copilot for Developers & IT Teams (Updated)
 
 Microsoft 365 Copilot is more than a writing aid—it’s a multifaceted
 assistant that can help your engineering and IT teams code faster,
