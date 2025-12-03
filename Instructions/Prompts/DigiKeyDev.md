@@ -31,8 +31,6 @@ so you can immediately apply Copilot in your daily workflows.
 
 Saving prompts helps you quickly reuse instructions or queries without having to type them out each time. Below is how to manage and save them.
 
-**Guía paso a paso**
-
 **Paso 1: Guardar un Prompt**
 
 1.  Run a prompt — start by running the prompt you want to save. For example:
