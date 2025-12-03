@@ -148,8 +148,12 @@ frameworks.
 
 **Sample Prompts:**
 
-    Explain Microsoft Cloud PC and outline typical use cases and pricing models.
-    Research the latest features in .NET 8 and their impact on API development.
+    Explain Windows 365 Cloud PC and how it enables secure, scalable virtual environments for AI agents.
+    Cover:
+    Architecture & Security: Integration with Microsoft Entra ID, Zero Trust, Defender, and Purview for compliance.
+    Enterprise Use Cases: Back‑office automation, customer support bots, and development/test sandboxes.
+    Scalability & Management: Provisioning and governance through Agent365.
+    Integration: How Windows 365 works with Microsoft 365 apps, Power Platform, and third‑party systems.
 
 > **Learning Outcome:**  
 > You’ll learn how to use Copilot as a research assistant to gather
