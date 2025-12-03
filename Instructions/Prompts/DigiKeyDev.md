@@ -51,9 +51,9 @@ Use an inspirational tone and a light touch that helps start the day with positi
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 > **Tips**
-> • Use clear names for prompts (for example, “Weekly Report Summary”). 
-> • Share frequently used prompts with your team to maintain consistency.
-> • Review and update saved prompts periodically to keep them relevant.
+>  • Use clear names for prompts (for example, “Weekly Report Summary”).
+>  • Share frequently used prompts with your team to maintain consistency.
+>  • Review and update saved prompts periodically to keep them relevant.
 
 **Step 2: Access Your Saved Prompts**
 
