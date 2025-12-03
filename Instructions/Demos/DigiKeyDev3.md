@@ -27,7 +27,7 @@ so you can immediately apply Copilot in your daily workflows.
 
 ------------------------------------------------------------------------
 
-### Task 1: Write & Review Code with Copilot
+## Task 1: Write & Review Code with Copilot
 
 Use **Copilot** (via the Copilot web app or the Copilot pane inside
 Microsoft 365 apps) to generate and refine code snippets and scripts.
@@ -78,7 +78,7 @@ help refine or troubleshoot them.
 
 ------------------------------------------------------------------------
 
-### Task 2: Summarize & Understand Large Documentation Sets
+## Task 2: Summarize & Understand Large Documentation Sets
 
 Developers and IT admins often work with lengthy runbooks, architecture
 specs, or wiki pages. Copilot can summarize these documents and extract
@@ -158,7 +158,7 @@ frameworks.
 
 ------------------------------------------------------------------------
 
-### Task 4: Accelerate Standups & Sprint Reviews with Loop + Copilot
+## Task 4: Accelerate Standups & Sprint Reviews with Loop + Copilot
 
 Copilot inside **Microsoft Loop** helps teams co‑create content, stay
 informed, and pick up where others left off. Use it to prepare standup
@@ -195,7 +195,7 @@ meetings and work items.
 
 ------------------------------------------------------------------------
 
-### Task 5: Convert Meetings into Actionable Engineering Work
+## Task 5: Convert Meetings into Actionable Engineering Work
 
 Copilot in **Microsoft Teams** can summarize meetings, capture who said
 what, and suggest action items. Turn design reviews, incident calls, or
@@ -231,7 +231,7 @@ planning sessions into structured work items.
 
 ------------------------------------------------------------------------
 
-### Task 6: Generate Technical Documentation Automatically
+## Task 6: Generate Technical Documentation Automatically
 
 AI tools like Copilot can generate explanations of code blocks and
 project documentation using prompts. Use Copilot to create API docs,
@@ -273,7 +273,7 @@ materials without leaving the Microsoft 365 ecosystem.
 
 ------------------------------------------------------------------------
 
-### Task 7: Create Automation Scripts for IT Operations
+## Task 7: Create Automation Scripts for IT Operations
 
 IT administrators often need to automate tasks like account creation,
 device configuration, or policy enforcement. Copilot can generate
@@ -309,7 +309,7 @@ and refine or troubleshoot them.
 
 ------------------------------------------------------------------------
 
-### Task 8: Troubleshoot Systems & Environments with Logs and Errors
+## Task 8: Troubleshoot Systems & Environments with Logs and Errors
 
 When debugging, developers often paste log files or error messages into
 Copilot to get precise answers. Guidance from Microsoft and the GitHub
@@ -346,7 +346,7 @@ when chatting with Copilot.
 
 ------------------------------------------------------------------------
 
-### Task 9: Create Diagrams & Architecture from Text
+## Task 9: Create Diagrams & Architecture from Text
 
 Copilot can generate diagrams using code—for example, by producing
 Mermaid syntax. Copilot can create diagrams, such as Gantt charts, to
@@ -381,7 +381,7 @@ is useful for architecture diagrams, sequence diagrams, or data flows.
 
 ------------------------------------------------------------------------
 
-### Task 10: Prepare and Deliver Technical Presentations
+## Task 10: Prepare and Deliver Technical Presentations
 
 Copilot in **PowerPoint** can read through a long presentation and
 provide a bulleted summary of key points, and it can also help you build
@@ -426,7 +426,7 @@ changes.
 
 ------------------------------------------------------------------------
 
-### Task 11: Write or Improve Policies, SOPs, and Governance Docs
+## Task 11: Write or Improve Policies, SOPs, and Governance Docs
 
 Copilot can help you update and improve policies or standard operating
 procedures (SOPs). The Microsoft Scenario Library shows an HR use case
@@ -466,7 +466,7 @@ controls, or change‑management procedures.
 
 ------------------------------------------------------------------------
 
-### Task 12: Analyse Large DevOps or Monitoring Data
+## Task 12: Analyse Large DevOps or Monitoring Data
 
 Copilot can analyse large datasets from CSV or Excel files, producing
 charts and summaries. Microsoft notes that Copilot can perform complex
@@ -505,7 +505,7 @@ metrics from build pipelines, deployment logs, or system monitoring.
 
 ------------------------------------------------------------------------
 
-### Task 13: Recap Teams Meetings & Generate Notes
+## Task 13: Recap Teams Meetings & Generate Notes
 
 Copilot in **Teams** can now generate an AI‑powered recap for meetings
 you attended or missed. This feature provides a summary of key
@@ -546,7 +546,7 @@ what happened.
 
 ------------------------------------------------------------------------
 
-### Task 14: Draft and Refine Emails in Outlook
+## Task 14: Draft and Refine Emails in Outlook
 
 Copilot in **Outlook** can help you draft, refine, and adjust the tone
 of your emails. It can summarise long threads, suggest content based on
@@ -589,7 +589,7 @@ audiences or communicating sensitive updates.
 
 ------------------------------------------------------------------------
 
-### Task 15: Summarise Work & Create Daily or Weekly Digests
+## Task 15: Summarise Work & Create Daily or Weekly Digests
 
 Use Copilot to generate a digest of your recent work—summarising emails,
 meetings, chats, and tasks. This helps you plan your day or review what
@@ -624,7 +624,7 @@ happened over the past week.
 
 ------------------------------------------------------------------------
 
-### Task 16: Find & Retrieve Information Across M365
+## Task 16: Find & Retrieve Information Across M365
 
 Copilot can search your organisation’s data—including emails, documents,
 and chats—when you can’t remember where something is stored. Use it as a
@@ -663,7 +663,7 @@ knowledge retrieval assistant to save time.
 
 ------------------------------------------------------------------------
 
-### Final Thoughts
+## Final Thoughts
 
 These sixteen scenarios showcase how Microsoft 365 Copilot can amplify
 the productivity of developers and IT professionals. By integrating
