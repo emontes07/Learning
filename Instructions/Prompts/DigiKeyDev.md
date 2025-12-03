@@ -36,9 +36,9 @@ Saving prompts helps you quickly reuse instructions or queries without having to
 1.  Run a prompt — start by running the prompt you want to save. For example:
    
     ```text
-Please prepare a summary of my emails, Teams messages, and meetings from the previous workday, highlighting any direct mentions of my name.
-Also present my meetings scheduled for today in a table that includes: subject, participants and key preparation points.
-Use an inspirational tone and a light touch that helps start the day with positive energy.
+    Please prepare a summary of my emails, Teams messages, and meetings from the previous workday, highlighting any direct mentions of my name.
+    Also present my meetings scheduled for today in a table that includes: subject, participants and key preparation points.
+    Use an inspirational tone and a light touch that helps start the day with positive energy.
     ```
 
 3.  Hover your cursor over the prompt until a bookmark icon appears.
