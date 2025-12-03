@@ -119,7 +119,7 @@ search for information, summarize documents, and draft meeting notes.
 
 ------------------------------------------------------------------------
 
-### Task 3: Research New Technologies with Copilot’s Research Agent
+## Task 3: Research New Technologies with Copilot’s Research Agent
 
 Copilot can search the web and return concise, sourced answers.
 Microsoft notes that Copilot provides direct answers and can conduct
