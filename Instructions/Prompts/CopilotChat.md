@@ -19,13 +19,13 @@ You'll perform three tasks:
 
 ---
 
-## Practice 1: Save Prompts in Copilot
+## Practice 1: How to Save Prompts in Copilot
 
 Saving prompts helps you quickly reuse instructions or queries without having to rewrite them each time. Below is an explanation of how to manage and save them:
 
 **Step-by-step guide**
 
-**Step 1: Save a Promptt**
+**Step 1: Save a Prompt**
 
 1.  Start by running a prompt, for example::
    
@@ -51,11 +51,11 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 1.  Open Copilot.
 
-2.  Click *See More*.
+2.  Click *See more*.
 
 3.  Select *Prompt Gallery*.
 
-4.  Go to *Your Prompts*.
+4.  Go to *Your prompts*.
 
     - From here, you can delete prompts, share them via link or share them with a team.
 
@@ -70,7 +70,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 ## Practice 2: Memory and Customization of Copilot
 
-Copilot Memory offers a more personalized experience when training Copilot based on your previous chats, work profile, instructions Personalized metadata, and more. This allows Copilot to understand you best and suits your needs.
+Copilot Memory offers a more personalized experience when training Copilot based on your previous chats, work profile, custom instructions, and other metadata. This allows Copilot to understand you best and suits your needs.
 
 Copilot Customization uses the information from the Memory of Copilot to create tailored interactions. For example, you can tell Copilot your writing style (tone, preferred length of the usual responses, greetings, or closings), which helps the AI-generated drafts sound more like you.
 
