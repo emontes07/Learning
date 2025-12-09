@@ -44,17 +44,19 @@ Hyperlinks to each of the demos are listed below.
 
 #### [Copilot Chat](https://emontes07.github.io/Learning/Instructions/Prompts/CopilotChat.html)
 
+### [Developers & IT](https://github.com/emontes07/Learning/blob/main/Instructions/Prompts/DigiKeyDev.md)
+
 #### [Arcos Dorados - Agente Research](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDorados-ResearcherAgent.html)
 
 #### [Arcos Dorados - Agente Analyst](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDoradosAnalyst.html)
 
 #### [Arcos Dorados - Copilot](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDorados-Inmersion.html)
 
-#### [Caseys - Prompt-a-Thon](https://emontes07.github.io/Learning/Instructions/Prompts/CaseysPromptathon.html)
-
 #### [Arcos Dorados - Copilot](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosDoradosITv02.html)
 
 #### [Arcos Dorados - Executives](https://emontes07.github.io/Learning/Instructions/Prompts/ArcosEX.html)
+
+#### [Caseys - Prompt-a-Thon](https://emontes07.github.io/Learning/Instructions/Prompts/CaseysPromptathon.html)
 
 
 
