@@ -27,7 +27,8 @@ Saving prompts helps you quickly reuse instructions or queries without having to
 
 **Step 1: Save a Prompt**
 
-1.  Start by running a prompt, for example::
+1.  Open a new browser tab and navigate to [M365copilot.com](https://m365copilot.com/). 
+2.  Start by running a prompt, for example::
    
     ```text
 I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. 
