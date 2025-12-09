@@ -21,7 +21,7 @@ You'll perform three tasks:
 
 ## Practice 1: Save Prompts in Copilot
 
-Saving prompts helps you quickly reuse instructions or queries without having to type them every time. The following is explained How to manage and save them:
+Saving prompts helps you quickly reuse instructions or queries without having to rewrite them each time. Below is an explanation of how to manage and save them:
 
 **Step-by-step guide**
 
