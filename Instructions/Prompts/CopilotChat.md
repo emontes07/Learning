@@ -19,52 +19,147 @@ You'll perform three tasks:
 
 ---
 
-### Task 1: Perform Online Research & Analysis  
+## Practice 1: Save Prompts in Copilot
 
-Using **Copilot Chat**, gather insights on relevant topics by analyzing internal sources such as emails, chat history, and SharePoint documentation. Then, broaden your research with industry articles, external reports, or relevant websites.  
+Saving prompts helps you quickly reuse instructions or queries without having to type them every time. The following is explained How to manage and save them:
 
-If you don't have a specific topic to research, focus on gathering insights from publicly available sources on a topic of your choice, such as **technology trends, market insights, customer experience, or compliance requirements.**  
+**Step-by-step guide**
 
-**Steps**:
+**Step 1: Save a Promptt**
 
-- Open a new browser tab and navigate to [M365copilot.com](https://m365copilot.com/)
-- Select the Copilot agent:
-  
-    ![screenshot showing work mode tab.](../Prompts/Media/Task1.png)  
+1.  Start by running a prompt, for example::
+   
+    ```text
+I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. 
+    ```
 
-**Sample Prompt** *(if no internal topic is available)*:
+3. Hover over the prompt.
 
-```text
-Provide a comprehensive regional update for [Michigan] to assist in planning store operations. 
-The update should include the latest news and insights on the following aspects:
+4.  Click *Save Prompt*.
 
-Demographic Trends:
-- Population growth or decline
-- Age distribution
-- Income levels
-- Consumer behavior patterns
+5.  Give a name for easy reference.
 
-Financial Events:
-- Economic indicators (e.g., employment rates, inflation, GDP growth)
-- Major business developments (e.g., new businesses opening, closures, expansions)
-- Changes in consumer spending habits
+<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-Weather Events:
-- Current weather conditions and forecasts
-- Recent and upcoming severe weather events (e.g., storms, hurricanes, heatwaves)
-- Impact of weather on local infrastructure and transportation
+> **Tips**  
+> • Use clear names for prompts (e.g., "Weekly Report Summary").
+> • Share the most frequently used prompts with your team to maintain consistency.
+> • Regularly review and update saved prompts to keep them relevant.
 
-Please provide detailed information and relevant data sources for each aspect to support strategic decision-making for store operations.
+**Step 2: Access your saved Prompts**
+
+1.  Open Copilot.
+
+2.  Click *See More*.
+
+3.  Select *Prompt Gallery*.
+
+4.  Go to *Your Prompts*.
+
+    - From here, you can delete prompts, share them via link or share them with a team.
+
+<img src="../Prompts/Media/ADimage3.png" style="width:5.935in;height:2.95355in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage4.png" style="width:5.4334in;height:3.4638in"
+alt="A screenshot of a chat AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+## Practice 2: Memory and Customization of Copilot
+
+Copilot Memory offers a more personalized experience when training Copilot based on your previous chats, work profile, instructions Personalized metadata, and more. This allows Copilot to understand you best and suits your needs.
+
+Copilot Customization uses the information from the Memory of Copilot to create tailored interactions. For example, you can tell Copilot your writing style (tone, preferred length of the usual responses, greetings, or closings), which helps the AI-generated drafts sound more like you.
+
+**Step-by-step guide to adding custom instructions**
+
+**Step 1: Access Copilot**
+
+Open a new browser tab and navigate to [Copilot](m365.cloud.microsoft/chat) (or use your usual method to access Copilot).
+
+**Step 2: Add instructions**
+
+• Click on the settings by selecting “…”
+
+• Open *Settings* and selec *Personalization*.
+
+<img src="../Prompts/Media/ADimage1.png" style="width:5.31319in;height:2.83086in"
+alt="A screenshot of a chat AI-generated content may be incorrect." />
+
+- Then select *Custom Instructions.*
+
+<img src="../Prompts/Media/ADimage2.png" style="width:5.63438in;height:4.47265in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+You can add your custom instructions in this section. How reference, here's a guide with sample instructions that you can add to Copilot: Copilot instructions:
+
+- [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
+
+## Practice 3: Create and edit a brief in Copilot, Loop, and Word
+
+1.  **Run the prompt in Copilot**  
+    Copy and paste this prompt into Copilot:
+
+    ```text
+    Provide a comprehensive regional update for [Michigan] to assist in planning store operations.
+    The update should include the latest news and insights on the following aspects:
+
+    Demographic Trends:
+    - Population growth or decline
+    - Age distribution
+    - Income levels
+    - Consumer behavior patterns
+
+    Financial Events:
+    - Economic indicators (e.g., employment rates, inflation, GDP growth)
+    - Major business developments (e.g., new businesses opening, closures, expansions)
+    - Changes in consumer spending habits
+
+    Weather Events:
+    - Current weather conditions and forecasts
+    - Recent and upcoming severe weather events (e.g., storms, hurricanes, heatwaves)
+    - Impact of weather on local infrastructure and transportation
+
+    Please provide detailed information and relevant data sources for each aspect to support strategic decision-making for store operations.
 ```
 
-> **TIP:**  If the first response is too broad or too shallow, refine your prompt by adding more context (e.g., specific region, industry, or time frame).
+2.  **Select the *"Edit in Pages"* icon **
 
-> **Learning Outcome:**
-After completing this task, you'll be able to use Copilot Chat to perform structured online research and gather actionable insights.
+> This will allow you to work the content in page format within Loop, with more editing options..
+>
+> <img src="../Prompts/Media/ADimage7.png" style="width:6.5in;height:3.40208in"
+> alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+3.  **Open in Microsoft Word**  
+    In the upper-right corner, click Open in Word. This will convert the content into an editable document in Word, where you can apply advanced formatting, spell check, and Share it easily.
+
+> <img src="../Prompts/Media/ADimage8.png" style="width:6.5in;height:4.175in"
+> alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+4.  Select *"Open in Word"*
+
+> <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
+> alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+## Practice 4: Working with Word Documents
+
+- **1.Open the document in Word**  
+From Loop, select the **Open in Word** option (top corner right). The document will open in Word Online or in the desk.
+
+- **2. Open the Copilot window and run the following prompt:**
+
+    ```text
+    Explain this document using questions (FAQ)
+    ```
+
+Copilot will transform content into questions that you can use to guide the conversation with the team.
 
 ---
 
-### Task 2: Summarize & Structure Meeting Notes  
+### Practice 4: Summarize & Structure Meeting Notes  
 
 Using **Copilot Chat**, transform raw meeting notes into a structured, professional summary. This will help you clearly communicate key decisions, action items, and responsibilities, ensuring alignment across teams.  
 
@@ -102,7 +197,7 @@ After completing this task, you'll know how to turn unstructured notes into a pr
 
 ---
 
-### Task 3: Refine Results with Follow-Up Questions  
+## Practice 5: Refine Results with Follow-Up Questions  
 
 Using **Copilot Chat**, practice enhancing your results by asking follow-up questions. This task shows how you can go beyond the first answer, structure the data, and get actionable insights for decision-making.  
 
@@ -134,7 +229,7 @@ How can I prioritize these ideas effectively?
 After completing this task, you’ll understand how to use follow-up prompts to get richer insights and actionable recommendations from Copilot Chat.
 
 
-### Task 4: Summarize and Recap Emails in Outlook  
+## Practice 6: Summarize and Recap Emails in Outlook  
 
 Use **Copilot Chat** in Outlook to quickly understand the content of an email and extract key actions. This task will help you summarize a long email thread and clearly identify what is being requested — both from you and from your team.  
 
@@ -168,7 +263,7 @@ If your email thread is very long, try adding “summarize in 3 bullet points”
 You will learn how to use Copilot Chat in Outlook to extract key requests, action items, and deadlines from a single email or an entire thread, helping you and your team stay organized and responsive.
 
 
-### Task 5: Analyze Reviews & Visualize Sentiments  
+## Practice 7: Analyze Reviews & Visualize Sentiments  
 
 Use **Copilot Chat** to transform raw survey or review data into actionable insights with charts and dashboards. You'll use a `.csv` file exported from Excel and ask Copilot to identify sentiment, uncover key themes, and generate visuals like a pie chart and word cloud.  
 
@@ -202,7 +297,7 @@ Create a pie graph with Easter-themed colors based on the sentiment count and th
 After completing this task, you’ll be able to analyze qualitative data from reviews or survey feedback, extract themes and sentiment, and create visual summaries with Copilot Chat.
 
 
-### Task 6: Visualize Financial Data with Charts & Heat Maps  
+## Practice 8: Visualize Financial Data with Charts & Heat Maps  
 
 Use **Copilot Chat** to create a variety of data visualizations from Excel data, such as **monthly trends**, **product sales**, and **revenue distribution**. In this task, you'll explore the charting capabilities of Copilot with structured sales data to uncover key insights.  
 
@@ -244,7 +339,7 @@ Once the visuals are generated, try these follow-up prompts to enhance your anal
 After completing this task, you’ll be able to transform numerical sales data into various visual formats using Copilot Chat—including line charts, pie charts, bar charts, and heat maps—empowering you to extract and present insights for better decision-making.
 
 
-### Task 7: Perform Calculations from Excel Data  
+## Practice 9: Perform Calculations from Excel Data  
 
 Use **Copilot Chat** to perform calculations directly from Excel data—without needing formulas or pivot tables. In this task, you’ll calculate the **total revenue** and the **average sales revenue** from a provided spreadsheet and explore how to break down those results further.
 
@@ -276,7 +371,7 @@ Once the results are shown, try these follow-up prompts to dig deeper:
 After completing this task, you’ll be able to use Copilot Chat to quickly calculate financial metrics like total and average revenue, and follow up with deeper questions to uncover trends or performance breakdowns in your Excel data.
 
 
-### Task 8: Convert Files to Another Format  
+## Practice 10: Convert Files to Another Format  
 
 Use **Copilot Chat** to convert files between formats quickly and easily. This task helps you explore supported conversion types—perfect when you need to standardize formats or extract data for analysis.  
 
@@ -305,7 +400,7 @@ Ask follow-up questions like:
 After completing this task, you’ll know how to use Copilot Chat to convert files into various formats, making it easier to prepare data, create editable documents, and streamline workflows.
 
 
-### Task 9 (FYI): Create or Replace an Excel Macro with Copilot
+## Practice 11 (FYI): Create or Replace an Excel Macro with Copilot
 
 This advanced, **FYI-only** task shows two ways to handle VBA-style calculations using **Copilot Chat**—either by asking Copilot to do the equivalent calculation from an uploaded spreadsheet, or by having Copilot help author/adjust the VBA macro.  
 > **Heads-up:** VBA macros don’t run in **Excel for the web**; Copilot Chat can still perform the same calculations from your uploaded workbook.
