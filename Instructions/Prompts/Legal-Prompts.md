@@ -36,7 +36,7 @@ Research the American Privacy Rights Act (APRA), introduced in April 2024, and p
 
 2.Key obligations around transparency, data minimization, security, and impact assessments.
 
-3. Required changes to Nordstom’s current data-collection, consent-management, and privacy-governance processes.
+3. Required changes to Contoso’s current data-collection, consent-management, and privacy-governance processes.
 
 4. Recommended Copilot-enabled tools and workflows to automate compliance, including data mapping, policy generation, and ongoing monitoring.
 
