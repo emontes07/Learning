@@ -7,7 +7,7 @@ demo:
 
 **Scenario:**  
 
-You’re a legal advisor at Nordstrom, responsible for assessing whether the company’s AI Resume Screening Software complies with the EU AI Act. Your goal is to research legal risks, draft an executive summary, and communicate recommendations to leadership.
+You’re a legal advisor at Contoso, responsible for assessing whether the company’s AI Resume Screening Software complies with the EU AI Act. Your goal is to research legal risks, draft an executive summary, and communicate recommendations to leadership.
 
 ## Demo Setup
 
@@ -17,7 +17,7 @@ There are no sample documents required for this demo.
 
 ### Copilot Chat
 
-Let’s start by researching the AI Act and its potential impact on Nordstrom’s AI hiring tool.
+Let’s start by researching the AI Act and its potential impact on Contoso’s AI hiring tool.
 
 1. Open a browser and navigate to [M365copilot.com](https://m365copilot.com/).
 
@@ -28,7 +28,7 @@ Let’s start by researching the AI Act and its potential impact on Nordstrom’
 1. In the prompt window, type the following:
 
     ```text
-      Crocs is launching an AI Resume Screening Software to evaluate job applicants. As a legal advisor, I need to assess whether it complies with the EU Artificial Intelligence Act. Summarize key provisions related to AI in hiring, compliance requirements for high-risk systems, and potential legal risks.
+      Contoso is launching an AI Resume Screening Software to evaluate job applicants. As a legal advisor, I need to assess whether it complies with the EU Artificial Intelligence Act. Summarize key provisions related to AI in hiring, compliance requirements for high-risk systems, and potential legal risks.
     ```
 
 1. Review Copilot’s response and take notes on relevant legal risks and compliance requirements.
@@ -44,7 +44,7 @@ Let’s start by researching the AI Act and its potential impact on Nordstrom’
     ```
 
     ```text
-    Are there any exemptions in the AI Act that could apply to Nordstrom’s system?
+    Are there any exemptions in the AI Act that could apply to Contoso’s system?
     ```
 
 1. Now ask copilot to summarize all the information so far:
@@ -63,14 +63,14 @@ Let’s start by researching the AI Act and its potential impact on Nordstrom’
 
 ### Copilot in Word
 
-Now, we’ll draft an executive summary outlining legal risks and recommendations for Nordstrom’s leadership.
+Now, we’ll draft an executive summary outlining legal risks and recommendations for Contoso’s leadership.
 
 1. Open a new instance of Word, either in your browser or desktop application.
 
 1. In the **"Describe what you'd like to write"** prompt box, type the following:
 
     ```text
-    Reference the following document [Link to exported Copilot Chat summary from the first task] and draft an executive summary outlining key legal risks, compliance requirements, and recommendations for Nordstrom’s AI Resume Screening Software.
+    Reference the following document [Link to exported Copilot Chat summary from the first task] and draft an executive summary outlining key legal risks, compliance requirements, and recommendations for Contoso’s AI Resume Screening Software.
     ```
 
     > **NOTE:** Attach the document or paste the shared link directly into the prompt to ensure Copilot can access the relevant content.
@@ -91,7 +91,7 @@ Now, we’ll draft an executive summary outlining legal risks and recommendation
 
 ### Copilot in Outlook
 
-Lastly, we’ll draft an email to Nordstrom’s leadership summarizing our findings and next steps.
+Lastly, we’ll draft an email to Contoso’s leadership summarizing our findings and next steps.
 
 1. Open Outlook (either in your browser or desktop application).
 
@@ -102,7 +102,7 @@ Lastly, we’ll draft an email to Nordstrom’s leadership summarizing our findi
 1. In the **"What do you want this email to say?"** prompt window, type:
 
    ```text
-    Draft an email to Nordstrom’s executive leadership summarizing our legal assessment of the AI Resume Screening Software under the EU AI Act. Use the following executive summary as a reference.
+    Draft an email to Contoso’s executive leadership summarizing our legal assessment of the AI Resume Screening Software under the EU AI Act. Use the following executive summary as a reference.
 
     [paste Executive Summary from the previous task]
 
