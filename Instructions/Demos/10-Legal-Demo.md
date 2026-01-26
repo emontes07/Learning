@@ -28,7 +28,7 @@ Let’s start by researching the AI Act and its potential impact on Nordstrom’
 1. In the prompt window, type the following:
 
     ```text
-      Nordstrom is launching an AI Resume Screening Software to evaluate job applicants. As a legal advisor, I need to assess whether it complies with the EU Artificial Intelligence Act. Summarize key provisions related to AI in hiring, compliance requirements for high-risk systems, and potential legal risks.
+      Crocs is launching an AI Resume Screening Software to evaluate job applicants. As a legal advisor, I need to assess whether it complies with the EU Artificial Intelligence Act. Summarize key provisions related to AI in hiring, compliance requirements for high-risk systems, and potential legal risks.
     ```
 
 1. Review Copilot’s response and take notes on relevant legal risks and compliance requirements.
