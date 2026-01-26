@@ -31,7 +31,7 @@ If you don't have an internal legal matter to research, focus on gathering insig
 
 ```text
 
-Research the American Privacy Rights Act (APRA), introduced in April 2024, and prepare a summary for Nordstrom’s Legal department that covers:
+Research the American Privacy Rights Act (APRA), introduced in April 2024, and prepare a summary for Contoso’s Legal department that covers:
 1.The scope and applicability of APRA to large consumer-goods companies.
 
 2.Key obligations around transparency, data minimization, security, and impact assessments.
