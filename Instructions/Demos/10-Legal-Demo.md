@@ -15,7 +15,7 @@ There are no sample documents required for this demo.
 
 ## Demos
 
-### Copilot Chat
+## Copilot Chat
 
 Let’s start by researching the AI Act and its potential impact on Contoso’s AI hiring tool.
 
@@ -61,7 +61,7 @@ Let’s start by researching the AI Act and its potential impact on Contoso’s 
 
     ![Share link.](../Demos/Media/share-menu-with-copy-link-9fd1c60a.png)
 
-### Copilot in Word
+## Copilot in Word
 
 Now, we’ll draft an executive summary outlining legal risks and recommendations for Contoso’s leadership.
 
@@ -89,7 +89,7 @@ Now, we’ll draft an executive summary outlining legal risks and recommendation
 
 1. After reviewing and finalizing the document, **Copy the generated Executive Summary** to your clipboard for use in the next demo.
 
-### Copilot in Outlook
+## Copilot in Outlook
 
 Lastly, we’ll draft an email to Contoso’s leadership summarizing our findings and next steps.
 
