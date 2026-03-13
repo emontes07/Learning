@@ -16,7 +16,7 @@ You'll perform three tasks:
 
 > **NOTE:** Sample prompts are provided to help you get started. Feel free to personalize them to suit your needs—be creative and explore! If Copilot doesn’t deliver the result you want, refine your prompt and try again. Enjoy the process and have fun experimenting!  
 
-### Task 1: Research Legal Information  
+## Task 1: Research Legal Information  
 
 Using **Copilot Chat**, gather insights on relevant legal topics by analyzing internal sources such as emails, chat history, and SharePoint documentation. Then, broaden your research with industry articles, legal databases, external reports, or relevant case law.  
 
@@ -43,7 +43,7 @@ Research the American Privacy Rights Act (APRA), introduced in April 2024, and p
 ```
 
 
-### Task 2: Research Legal Information  
+## Task 2: Research Legal Information  
 
 Using **Copilot Chat**, gather insights on relevant legal topics by analyzing internal sources such as emails, chat history, and SharePoint documentation. Then, broaden your research with industry articles, legal databases, external reports, or relevant case law.  
 
@@ -82,7 +82,7 @@ Analyze [specific legal topic] by summarizing its key provisions, potential risk
 > - To copy the link, open the saved Word document and select **Share** > **Copy Link**, as shown below:  
 > ![Share link.](../Demos/Media/share-menu-with-copy-link-9fd1c60a.png)  
 
-### Task 3: Draft a Legal Communication  
+## Task 3: Draft a Legal Communication  
 
 Using **Copilot in Word**, draft a legal communication based on your research and analysis. This could be a legal memo, risk assessment, compliance guidance, client advisory, or an FAQ document.  
 
