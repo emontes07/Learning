@@ -31,7 +31,7 @@ Saving prompts helps you quickly reuse instructions or queries without having to
 2.  Start by running a prompt, for example::
    
     ```text
-I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. 
+Copilot, summarize my emails, Teams messages, and channel messages from the last 1 workday. Categorize them as internal activities, external activities, or messages from my team or manager, and prioritize them for my attention. List action items in a dedicated column and suggest follow-ups if possible, in a dedicated column. The table should look like this: Type (Mail/Teams/Channel) | Topic | Summarization | Category | Priority | Action Item | Follow-up. If I have been directly mentioned, make the font of the topic bold. 
     ```
 
 3. Hover over the prompt.
