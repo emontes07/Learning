@@ -3,6 +3,102 @@ demo:
     title: 'Legal Demo'
 ---
 
+# Copilot Basics  
+
+Enhance decision-making by gathering insights, conducting online analysis, and drafting professional communications.  
+
+You'll perform three tasks:  
+
+- Research information using **Copilot Chat** (and optionally try GPT-5 for comparison).  
+- Conduct an analysis using **Copilot Chat**.  
+- Draft a professional communication using **Copilot in Word**.  
+
+> **NOTE:** Sample prompts are provided to help you get started. Feel free to personalize them to suit your needs—be creative and explore! If Copilot Chat doesn’t deliver the result you want, refine your prompt and try again. Enjoy the process and have fun experimenting!  
+
+> **Note:** Learn more about new features here [Copilot Chat](https://www.microsoft.com/en-us/microsoft-365/roadmap/copilotchat?msockid=05bfca65f23f66d91dd1df54f3f86721)
+
+---
+
+## Practice 1: How to Save Prompts in Copilot
+
+Saving prompts helps you quickly reuse instructions or queries without having to rewrite them each time. Below is an explanation of how to manage and save them:
+
+**Step-by-step guide**
+
+**Step 1: Save a Prompt**
+
+1.  Open a new browser tab and navigate to [M365copilot.com](https://m365copilot.com/). 
+2.  Start by running a prompt, for example::
+   
+    ```text
+I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. 
+    ```
+
+3. Hover over the prompt.
+
+4.  Click *Save Prompt*.
+
+5.  Give a name for easy reference.
+
+<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+> **Tips**  
+> • Use clear names for prompts (e.g., "Weekly Report Summary").
+> • Share the most frequently used prompts with your team to maintain consistency.
+> • Regularly review and update saved prompts to keep them relevant.
+
+**Step 2: Access your saved Prompts**
+
+1.  Open Copilot.
+
+2.  Click *See more*.
+
+3.  Select *Prompt Gallery*.
+
+4.  Go to *Your prompts*.
+
+    - From here, you can delete prompts, share them via link or share them with a team.
+
+<img src="../Prompts/Media/ADimage3.png" style="width:5.935in;height:2.95355in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage4.png" style="width:5.4334in;height:3.4638in"
+alt="A screenshot of a chat AI-generated content may be incorrect." />
+
+<img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+## Practice 2: Memory and Customization of Copilot
+
+Copilot Memory offers a more personalized experience when training Copilot based on your previous chats, work profile, custom instructions, and other metadata. This allows Copilot to understand you best and suits your needs.
+
+Copilot Customization uses the information from the Memory of Copilot to create tailored interactions. For example, you can tell Copilot your writing style (tone, preferred length of the usual responses, greetings, or closings), which helps the AI-generated drafts sound more like you.
+
+**Step-by-step guide to adding custom instructions**
+
+**Step 1: Access Copilot**
+
+Open a new browser tab and navigate to [Copilot](m365.cloud.microsoft/chat) (or use your usual method to access Copilot).
+
+**Step 2: Add instructions**
+
+• Click on the settings by selecting “…”
+
+• Open *Settings* and selec *Personalization*.
+
+<img src="../Prompts/Media/ADimage1.png" style="width:5.31319in;height:2.83086in"
+alt="A screenshot of a chat AI-generated content may be incorrect." />
+
+- Then select *Custom Instructions.*
+
+<img src="../Prompts/Media/ADimage2.png" style="width:5.63438in;height:4.47265in"
+alt="A screenshot of a computer AI-generated content may be incorrect." />
+
+You can add your custom instructions in this section. How reference, here's a guide with sample instructions that you can add to Copilot: Copilot instructions:
+
+- [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
+
 # Legal Demo
 
 **Scenario:**  
