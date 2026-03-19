@@ -40,13 +40,13 @@ Copilot, summarize my emails, Teams messages, and channel messages from the last
 
 5.  Give a name for easy reference.
 
-<img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
-alt="A screenshot of a computer AI-generated content may be incorrect." />
-
-> **Tips**  
-> • Use clear names for prompts (e.g., "Weekly Report Summary").
-> • Share the most frequently used prompts with your team to maintain consistency.
-> • Regularly review and update saved prompts to keep them relevant.
+    <img src="../Prompts/Media/ADimage6.png" style="width:6.5in;height:2.33125in"
+    alt="A screenshot of a computer AI-generated content may be incorrect." />
+    
+    > **Tips**  
+    > • Use clear names for prompts (e.g., "Weekly Report Summary").
+    > • Share the most frequently used prompts with your team to maintain consistency.
+    > • Regularly review and update saved prompts to keep them relevant.
 
 **Step 2: Access your saved Prompts**
 
