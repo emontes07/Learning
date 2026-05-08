@@ -117,7 +117,7 @@ demo:
 
 Before we touch any app, let's get comfortable with the Copilot home base — the chat experience at [m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat). Everything you'll see in Outlook, Word, or Excel later is the same brain wearing different hats.
 
-![Screenshot placeholder — Copilot Chat home with Work/Web toggle highlighted](./media/copilot-home.png)
+    ![screenshot showing web mode tab.](../Prompts/Media/web-mode.png)
 
 ### The interface at a glance
 
