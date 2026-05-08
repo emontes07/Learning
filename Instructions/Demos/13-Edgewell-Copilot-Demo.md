@@ -7,10 +7,7 @@ demo:
 
 ---
 
-<style>
-body {
-  background-color: white !important;
-}  
+<style> 
 :root {
   --ew-blue: #4A90C2;
   --ew-blue-soft: #E8F1F9;
