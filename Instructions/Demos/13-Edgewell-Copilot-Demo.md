@@ -1,4 +1,7 @@
-
+---
+demo:
+    title: 'Copilot for Edgewell Finance — 60-Minute Immersion'
+---
 
 [Back to Index](https://emontes07.github.io/Learning/)
 
