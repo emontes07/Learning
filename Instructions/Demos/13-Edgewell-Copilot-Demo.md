@@ -181,7 +181,8 @@ Summarize the most recent emails, Teams messages, and shared files I've received
 Keep each section to 3 bullets max. End with the top 3 follow-ups I should action this week.
 </div>
 
-![Screenshot placeholder — saving a prompt with the bookmark icon](./media/save-prompt.png)
+<img width="1564" height="561" alt="image" src="https://github.com/user-attachments/assets/ed8d89e9-adae-437b-8b22-9bf20599666e" />
+
 
 ---
 
@@ -281,7 +282,8 @@ Use this structure:
 Tone: confident, data-driven, no jargon. Length: under 400 words.
 </div>
 
-![Screenshot placeholder — Draft with Copilot pane in Word](./media/word-draft.png)
+<img width="929" height="466" alt="image" src="https://github.com/user-attachments/assets/cae47bc3-adc3-448d-b34d-d5487d016b20" />
+
 
 ### Reference your own files
 
