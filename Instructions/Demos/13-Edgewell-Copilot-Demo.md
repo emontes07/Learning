@@ -1,13 +1,18 @@
 ---
 demo:
     title: 'Copilot for Edgewell Finance — 60-Minute Immersion'
+layout: none
 ---
 
-[Back to Index](https://emontes07.github.io/Learning/)
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot for Edgewell Finance | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
 
----
-
-<style> 
+<style>
+:root { --hero-from: #2C5F8A; --hero-via: #4A90C2; --hero-to: #F08080; }
 :root {
   --ew-blue: #4A90C2;
   --ew-blue-soft: #E8F1F9;
@@ -21,32 +26,6 @@ demo:
   --ew-muted: #718096;
   --ew-line: #E8ECEF;
 }
-
-.ew-hero {
-  background: linear-gradient(120deg, #F6FAFD 0%, #FDF5F2 100%);
-  border: 1px solid var(--ew-line);
-  border-radius: 12px;
-  padding: 1.75rem 2rem;
-  margin: 1rem 0 1.5rem 0;
-}
-.ew-hero h1 {
-  margin: 0 0 .4rem 0 !important;
-  border: none !important;
-  color: #2C5F8A !important;
-  font-size: 1.85rem !important;
-}
-.ew-hero p { margin: .25rem 0 .9rem 0; color: var(--ew-muted); font-size: 1.02rem; }
-.ew-meta { display: flex; flex-wrap: wrap; gap: .4rem; }
-.ew-chip {
-  display: inline-block;
-  padding: .25rem .7rem;
-  background: #fff;
-  border: 1px solid var(--ew-line);
-  border-radius: 999px;
-  font-size: .82rem;
-  color: var(--ew-ink);
-}
-
 .ew-prompt {
   background: #F8FAFC;
   border-left: 3px solid var(--ew-sun);
@@ -58,6 +37,7 @@ demo:
   line-height: 1.6;
   white-space: pre-wrap;
   color: #2D3748;
+  position: relative;
 }
 .ew-prompt-label {
   display: block;
@@ -69,7 +49,6 @@ demo:
   color: #C28A2D;
   margin-bottom: .45rem;
 }
-
 .ew-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin: 1rem 0; }
 .ew-card {
   background: #fff;
@@ -83,7 +62,6 @@ demo:
 .ew-card.coral { border-top-color: var(--ew-coral); }
 .ew-card.sun { border-top-color: var(--ew-sun); }
 .ew-card.mint { border-top-color: var(--ew-mint); }
-
 .ew-pillrow { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0; }
 .ew-pill {
   background: var(--ew-blue-soft);
@@ -96,24 +74,58 @@ demo:
 .ew-pill.mint { background: var(--ew-mint-soft); color: #3F7A66; }
 </style>
 
-<div class="ew-hero">
-  <h1>🪒 Copilot for Edgewell Finance</h1>
-  <p>A 60-minute immersion — from interface basics to your first AI agent.</p>
-  <div class="ew-meta">
-    <span class="ew-chip">⏱️ 60 minutes</span>
-    <span class="ew-chip">👥 Finance team</span>
-    <span class="ew-chip">🎯 Intro level</span>
-    <span class="ew-chip">🛠️ Hands-on optional</span>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>🪒 Copilot for Edgewell Finance</h1>
+    <p class="subtitle">A 60-minute immersion — from interface basics to your first AI agent</p>
+    <div class="scenario">
+      <strong>How to use this guide:</strong> We'll move quickly during the live session. This page is your take-home companion — every prompt, click path, and tip is here so you can replay at your own pace. Look for the prompt boxes for text you can copy directly into Copilot.<br><br>
+      <strong>Before you start:</strong> Open <a href="https://m365.cloud.microsoft/chat" target="_blank" style="color:#fff;text-decoration:underline;">m365.cloud.microsoft/chat</a> and sign in with your Edgewell account. Make sure the green <strong>Work</strong> toggle is on — that's how Copilot grounds answers on Edgewell content.
+    </div>
+    <div class="hero-meta">
+      <span>⏱️ 60 minutes</span>
+      <span>👥 Finance team</span>
+      <span>🎯 Intro level</span>
+      <span>🛠️ Hands-on optional</span>
+    </div>
   </div>
 </div>
 
-> **How to use this guide.** We'll move quickly together during the live session. This page is your **take-home companion** — every prompt, click path, and tip is here so you can replay anything at your own pace. Look for the prompt boxes for text you can copy directly into Copilot.
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-> **Before you start.** Open [m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat) in a new tab and sign in with your Edgewell account. Make sure you see the green **Work** toggle in the top right — that means Copilot can ground its answers on your Edgewell content.
+<div class="layout">
 
----
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Edgewell Finance — 60-Min Immersion</div>
 
-## 1. Copilot Foundations
+  <a href="#part1" class="part-link">1. Copilot Foundations</a>
+  <a href="#part2" class="part-link">2. Outlook — Faster Inbox, Better Replies</a>
+  <a href="#part3" class="part-link">3. Teams — Never Miss a Meeting Again</a>
+  <a href="#part4" class="part-link">4. Word — Draft a Memo in 30 Seconds</a>
+  <a href="#part5" class="part-link">5. Excel — Talk to Your Data</a>
+  <a href="#part6" class="part-link">6. PowerPoint — From Memo to Deck in 60 Seconds</a>
+  <a href="#part7" class="part-link">7. Loop & Pages — Collaborate, Don't Email</a>
+  <a href="#part8" class="part-link">8. Agent Builder — Your First AI Agent</a>
+  <a href="#part9" class="part-link">9. Wrap-up & Next Steps</a>
+</nav>
+
+<div class="main-content">
+
+<div class="part-card" id="part1">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>1. Copilot Foundations</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1" markdown="1">
 
 Before we touch any app, let's get comfortable with the Copilot home base — the chat experience at [m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat). Everything you'll see in Outlook, Word, or Excel later is the same brain wearing different hats.
 
@@ -184,9 +196,17 @@ Keep each section to 3 bullets max. End with the top 3 follow-ups I should actio
 <img width="1564" height="561" alt="image" src="https://github.com/user-attachments/assets/ed8d89e9-adae-437b-8b22-9bf20599666e" />
 
 
----
 
-## 2. Outlook — Faster Inbox, Better Replies
+  </div>
+</div>
+
+<div class="part-card" id="part2">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>2. Outlook — Faster Inbox, Better Replies</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body2" markdown="1">
 
 Finance inboxes are noisy: retailer chargebacks, accruals questions, AR follow-ups, leadership requests. Copilot in Outlook does two things really well — **summarize long threads** and **draft replies in your voice**.
 
@@ -220,9 +240,17 @@ I was out Thursday and Friday last week. Summarize the most important emails I r
 Flag anything that mentions Schick, Banana Boat, Walmart, Target, or Amazon as high priority.
 </div>
 
----
 
-## 3. Teams — Never Miss a Meeting Again
+  </div>
+</div>
+
+<div class="part-card" id="part3">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>3. Teams — Never Miss a Meeting Again</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body3" markdown="1">
 
 If a meeting was recorded or transcribed, Copilot can recap it in seconds — even ones you didn't attend.
 
@@ -255,9 +283,17 @@ Summarize what's been discussed in this channel over the past 7 days. Highlight 
 
 > **IMPORTANT:** Recap requires transcription. If a meeting wasn't recorded or transcribed, Copilot can't recap it. Encourage organizers to enable transcription for finance reviews.
 
----
 
-## 4. Word — Draft a Memo in 30 Seconds
+  </div>
+</div>
+
+<div class="part-card" id="part4">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>4. Word — Draft a Memo in 30 Seconds</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body4" markdown="1">
 
 Finance writing is often structured: situation → analysis → recommendation. Copilot in Word is great at giving you a strong first draft you can polish.
 
@@ -296,9 +332,17 @@ Type **/** in the Copilot box and reference an existing file — Copilot will gr
 Draft a finance commentary memo summarizing the FY26 plan for Banana Boat. Pull the brand's revenue, gross margin, and trade spend targets directly from the deck. Add a section on the top three financial risks and how we'll monitor them.
 </div>
 
----
 
-## 5. Excel — Talk to Your Data
+  </div>
+</div>
+
+<div class="part-card" id="part5">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>5. Excel — Talk to Your Data</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body5" markdown="1">
 
 This is the section your team will reach for daily. Copilot in Excel can analyze, summarize, suggest formulas, and build charts — all in plain English.
 
@@ -361,9 +405,17 @@ If I want to lift Banana Boat's overall gross margin by 200 basis points next ye
 
 > **IMPORTANT:** Always verify formulas. Copilot is a brilliant assistant, not an auditor. For anything that touches the actuals, double-check formulas before pasting into a real model.
 
----
 
-## 6. PowerPoint — From Memo to Deck in 60 Seconds
+  </div>
+</div>
+
+<div class="part-card" id="part6">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>6. PowerPoint — From Memo to Deck in 60 Seconds</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body6" markdown="1">
 
 Take that Word memo from Section 4 and turn it into a leadership-ready deck.
 
@@ -396,9 +448,17 @@ For slide 3, replace the placeholder with a column chart showing margin drivers 
 
 > **TIP:** Apply your team's PowerPoint template *before* generating slides — Copilot will respect your fonts, colors, and slide masters.
 
----
 
-## 7. Loop & Pages — Collaborate, Don't Email
+  </div>
+</div>
+
+<div class="part-card" id="part7">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>7. Loop & Pages — Collaborate, Don't Email</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body7" markdown="1">
 
 Copilot **Pages** (in Copilot Chat) and **Loop** (in Teams) let multiple people co-author with Copilot in real time. Perfect for finance reviews where you're working through numbers together.
 
@@ -426,9 +486,17 @@ In Teams, paste a Loop component (table, task list, or paragraph) into a chat. E
 
 > **TIP:** During a brand finance review, share a Loop table with the action items. As the meeting progresses, owners and due dates get filled in by the team in real time — no follow-up email needed.
 
----
 
-## 8. Agent Builder — Your First AI Agent
+  </div>
+</div>
+
+<div class="part-card" id="part8">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2>8. Agent Builder — Your First AI Agent</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body8" markdown="1">
 
 This is the finale. We're going to build a **Finance Policy Q&A agent** — a private assistant trained on your finance policies (T&E, approvals, close calendar, capital request thresholds) that anyone on the team can ask questions of.
 
@@ -564,9 +632,17 @@ In the preview pane on the right, try the starter prompts plus a few edge cases:
   </div>
 </div>
 
----
 
-## 9. Wrap-up & Next Steps
+  </div>
+</div>
+
+<div class="part-card" id="part9">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>9. Wrap-up & Next Steps</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body9" markdown="1">
 
 ### Three things to do this week
 
@@ -594,6 +670,22 @@ In the preview pane on the right, try the starter prompts plus a few edge cases:
     - [12 — Researcher & Analyst Agents](https://emontes07.github.io/Learning/Instructions/Demos/12-Researcher-Analyst-Demo.html)
     - [Executive Agents — Agent Builder](https://emontes07.github.io/Learning/Instructions/Prompts/Exec-Agents.html)
 
----
 
 [Back to Index](https://emontes07.github.io/Learning/)
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer>
+  <p><strong>Copilot for Edgewell Finance — 60-Minute Immersion</strong></p>
+  <p>For questions or feedback, reach out to your training facilitator.</p>
+</footer>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

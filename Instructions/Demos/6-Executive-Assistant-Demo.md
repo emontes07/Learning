@@ -1,134 +1,181 @@
 ---
 demo:
     title: 'Executive Assistant Demo'
+layout: none
 ---
 
-[Back to Index](https://emontes07.github.io/Learning/)
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Assistant Demo | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #4A148C; --hero-via: #6A1B9A; --hero-to: #0078D4; }</style>
+</head>
+<body>
 
-# Executive Assistant Demo
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
 
-**Scenario:**
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Microsoft 365 Copilot for Executive Assistants</h1>
+    <p class="subtitle">Summarize, brief, and schedule — keep your executive ahead</p>
+    <div class="scenario">
+      <strong>Scenario:</strong> You've been tasked with summarizing the latest earnings conference call transcript for your executive. This task includes extracting key insights, creating an executive summary, and preparing for a follow-up meeting.
+    </div>
+    <div class="hero-meta">
+      <span>🗓️ Executive Assistant</span>
+      <span>📝 Word</span>
+      <span>💬 Copilot Chat</span>
+      <span>📧 Outlook</span>
+    </div>
+  </div>
+</div>
 
-You’ve been tasked with summarizing the latest earnings conference call transcript for your executive. This task includes extracting key insights, creating an executive summary, and preparing for a follow-up meeting.
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-## Demo setup
+<div class="layout">
 
-The sample documents can be found in the MS-4021 GitHub repository [here](https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/tree/master/ResourceFiles):
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Executive Assistant Demo</div>
 
-The specific files needed for this demo are:
+  <a href="#sec-objectives" class="section-link">Learning Objectives</a>
+  <a href="#sec-prereqs" class="section-link">Demo Setup</a>
 
-- [Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx](https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/raw/master/ResourceFiles/Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx)
+    <a href="#part1" class="part-link">Part 1: Copilot in Word</a>
+  <a href="#part2" class="part-link">Part 2: Copilot Chat</a>
+  <a href="#part3" class="part-link">Part 3: Copilot in Outlook</a>
 
-> **NOTE:** Allow up to 10 minutes for these files to sync to your OneDrive after downloading. To avoid delays during the demo, ensure these files are downloaded and available in your OneDrive well in advance. If the files are not available, open the documents and copy the shared file links to use in the demo.
+  <a href="#sec-takeaways" class="section-link" style="margin-top:0.5rem;">Key Takeaways</a>
+</nav>
 
-## Demo Steps
+<div class="main-content">
 
-### Copilot in Word
+<div class="section" id="sec-objectives">
+  <h2>🎯 Learning Objectives</h2>
+  <ul class="objectives-list">
+    <li>Summarize a long transcript with grounded references</li>
+    <li>Produce an executive summary and leadership talking points</li>
+    <li>Schedule and prepare a follow-up meeting with Outlook + Copilot</li>
+  </ul>
+</div>
 
-We'll start by reviewing the transcript from the most recent earnings call and summarizing the key points for your executive.
+<div class="section" id="sec-prereqs">
+  <h2>📋 Demo Setup</h2>
+  <p>Required file from the MS-4021 GitHub <a href='https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/tree/master/ResourceFiles' target='_blank'>repository</a>:</p>    <ul class="tips-list">
+      <li><a href='https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/raw/master/ResourceFiles/Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx'>Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx</a></li>
+    </ul><div class="callout warn"><strong>📝 NOTE:</strong> Allow up to 10 minutes for OneDrive sync.</div>
+</div>
 
-1. Select and open the **Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx** file in Word (either in your browser or desktop application).
+<div class="part-card" id="part1">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Part 1: Copilot in Word — Summarize a Long Transcript</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div class="callout"><strong>💡 Why This Matters:</strong> Earnings calls are long. Copilot pulls the signal out — with clickable references back to the source.</div>
+    <ol class="steps" start="1">
+      <li>Open <strong>Microsoft_FY24_Second_Quarter_Earnings_Conference_Call_Transcript.docx</strong> in Word.</li>
+      <li>Click the <strong>Copilot</strong> icon in the ribbon.</li>
+    </ol>
+<div class="prompt-box">Summarize the key points from the Microsoft FY24 Second Quarter Earnings Conference Call.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Provide a brief summary of Satya Nadella's remarks during the earnings call.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <p>Click any reference Copilot provides to jump straight to that section of the document.</p>
+<div class="prompt-box">Analyze the Microsoft FY24 Second Quarter Earnings Conference Call document to provide a comprehensive report that includes:
+- A summary of the key points from each speaker
+- Identification of the top three growth areas and their contributing factors.
+- A detailed breakdown of the financial performance, including revenue, operating income, and earnings per share.
+- Trends in AI adoption and its influence on Microsoft's business strategy.
+- A comparison of this quarter's performance with the same quarter last year, highlighting significant changes.
+- Key strategic initiatives and future outlook as discussed in the call.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="callout green"><strong>💡 Tip:</strong> This is a complex prompt — Copilot may take a few seconds to produce the full analysis.</div>
+    <p>Click the <strong>Copy</strong> icon next to Copilot's response to save the output for the next part.</p>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 1</h4>
+      <label><input type="checkbox"> I summarized the transcript</label>
+      <label><input type="checkbox"> I produced a comprehensive analysis</label>
+      <label><input type="checkbox"> I copied the output</label>
+    </div>
+  </div>
+</div>
 
-    > **NOTE:** You may want to quickly scroll through the document to show how large it is and that it’s not a simple task to summarize it.
+<div class="part-card" id="part2">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Part 2: Copilot Chat — Executive Summary & Talking Points</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body2">
+<div class="callout"><strong>💡 Why This Matters:</strong> Your executive needs the headlines and the soundbites — not the full report.</div>
+    <ol class="steps" start="1">
+      <li>Open <a href='https://m365copilot.com' target='_blank'>M365copilot.com</a> in Web mode.</li>
+      <li>Paste the Word output into the prompt below.</li>
+    </ol>
+<div class="prompt-box">Based on the following information, provide an executive summary on the following information:
 
-1. Select the Copilot icon from the Ribbon:
+[paste the Word output here]<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="callout"><strong>📝 Note:</strong> Clean up any extraneous text from the copied content for best results.</div>
+<div class="prompt-box">Summarize this executive summary into a more concise format by focusing on the most critical insights and metrics for each speaker. Use a structured format with headings and bullet points to improve readability. Export to a Word document.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Based on the summarized executive summary, generate 5-7 concise and impactful talking points my manager can use in their next leadership call. Focus on key achievements, growth areas, and strategic priorities.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 2</h4>
+      <label><input type="checkbox"> I produced an executive summary</label>
+      <label><input type="checkbox"> I generated talking points for leadership</label>
+    </div>
+  </div>
+</div>
 
-    ![Copilot icon in Word.](../Demos/Media/Copilot-in-word-ribbon.png)
+<div class="part-card" id="part3">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Part 3: Copilot in Outlook — Schedule the Follow-Up</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body3">
+<div class="callout"><strong>💡 Why This Matters:</strong> Don't just summarize — set up the conversation. Copilot finds time and drafts an agenda.</div>
+    <ol class="steps" start="1">
+      <li>Open <a href='https://outlook.office.com' target='_blank'>outlook.office.com</a>.</li>
+      <li>Click the <strong>Copilot</strong> icon in the ribbon.</li>
+    </ol>
+<div class="prompt-box">I need to schedule a 30-minute meeting with [/Pick a colleague] tomorrow afternoon to discuss the Second Quarter Earnings Conference Call. Can you suggest a time that works? If they are unavailable, provide an alternative.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <ol class="steps" start="3">
+      <li>Copilot proposes a calendar item — click <strong>Edit</strong>.</li>
+      <li>Use Scheduling Assistant to confirm everyone is free.</li>
+      <li>Back on the event tab, click <strong>Draft with Copilot</strong> in the event body.</li>
+    </ol>
+<div class="prompt-box">I'm meeting with my boss to discuss key updates and strategic initiatives they missed from the Second Quarter Earnings Conference Call. Create an agenda to discuss financial performance, AI and technology integration, strategic acquisitions, productivity updates, and future outlook.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 3</h4>
+      <label><input type="checkbox"> I scheduled a follow-up</label>
+      <label><input type="checkbox"> I drafted an agenda using Copilot</label>
+    </div>
+  </div>
+</div>
 
-1. The Copilot pane should open. Enter the following prompt where it says **Ask me anything about this document**:
+<div class="section" id="sec-takeaways">
+  <h2>🔑 Key Takeaways</h2>
+  <div class="takeaways-grid">
+    <div class="takeaway-card"><div class="icon">📚</div><h4>Read Less, Know More</h4><p>Summarize long documents in seconds with references.</p></div>
+    <div class="takeaway-card"><div class="icon">✨</div><h4>Polish for Leadership</h4><p>Turn raw analysis into clear, executive-ready briefs.</p></div>
+    <div class="takeaway-card"><div class="icon">🗓️</div><h4>Schedule + Prepare</h4><p>Move from insight to scheduled follow-up in one flow.</p></div>
+    <div class="takeaway-card"><div class="icon">🧠</div><h4>Always Verify</h4><p>Spot-check key numbers and quotes before sharing.</p></div>
+  </div>
+</div>
 
-    ```text
-    Summarize the key points from the Microsoft FY24 Second Quarter Earnings Conference Call.
-    ```
+</div>
+</div>
 
-1. Imagine your executive wants to know what Satya Nadella specifically discussed during the call. Use the following prompt:
+<footer>
+  <p><strong>Microsoft 365 Copilot — Executive Assistant Demo</strong></p>
+  <p>For questions or feedback, reach out to your training facilitator.</p>
+</footer>
 
-    ```text
-    Provide a brief summary of Satya Nadella's remarks during the earnings call.
-    ```
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
 
-   - Show how Copilot includes references for each bullet point, enabling quick navigation to specific sections.  
-   - Click one reference to demonstrate how Copilot instantly brings you to the relevant content in the document.
-
-1. To create a detailed report, ask Copilot:
-
-    ```text
-    Analyze the Microsoft FY24 Second Quarter Earnings Conference Call document to provide a comprehensive report that includes:
-    - A summary of the key points from each speaker
-    - Identification of the top three growth areas and their contributing factors.
-    - A detailed breakdown of the financial performance, including revenue, operating income, and earnings per share.
-    - Trends in AI adoption and its influence on Microsoft's business strategy.
-    - A comparison of this quarter's performance with the same quarter last year, highlighting significant changes.
-    - Key strategic initiatives and future outlook as discussed in the call.
-    ```
-
-    > **Tip:** Mention that this is a complex prompt and Copilot may take some time to generate the response.
-
-1. Once Copilot completes the analysis, select the **Copy** icon to save the results for the next step.
-
-    ![Copy results.](../Demos/Media/Copilot-in-word-copy-results.png)
-
-
-### Copilot Chat
-
-The report provided by Word is a great starting point, but now we want to use Copilot Chat to help us create an executive summary.
-
-1. Open a browser and navigate to [M365copilot.com](https://m365copilot.com/).
-
-1. Ensure **Web mode** is selected.
-
-    ![screenshot showing web mode tab.](../Prompts/Media/web-mode.png)
-
-1. Paste the response from Copilot in Word into Copilot Chat with the following prompt:
-
-    ```text
-    Based on the following information, provide an executive summary on the following information:
-
-    [paste the Word output here]
-    ```
-
-    > **Note:** Clean up any extraneous text from the copied content to ensure clarity.
-
-1. Refine the summary into a concise format:
-
-    ```text
-    Summarize this executive summary into a more concise format by focusing on the most critical insights and metrics for each speaker. Use a structured format with headings and bullet points to improve readability. Export to a Word document.
-    ```
-
-   - If Copilot doesn’t export the document, rephrase the request: “Save this summary as a Word document.”
-
-1. With the executive summary complete, ask Copilot:
-
-    ```text
-    Based on the summarized executive summary, generate 5-7 concise and impactful talking points my manager can use in their next leadership call. Focus on key achievements, growth areas, and strategic priorities.
-    ```
-
-### Copilot in Outlook
-
-In this demo, we'll use Copilot in Outlook to set up a meeting with the executive to get them up to speed on everything that happened during the Second Quarter Earnings Conference Call.
-
-1. Open a browser and navigate to [outlook.office.com](https://outlook.office.com.com/).
-
-1. In the Outlook ribbon, select the Copilot Icon to open up the Copilot pane.
-
-1. Use the following prompt to schedule a sync-up:
-
-    ```text
-    I need to schedule a 30-minute meeting with [/Pick a colleague] tomorrow afternoon to discuss the Second Quarter Earnings Conference Call. Can you suggest a time that works? If they are unavailable, provide an alternative.
-    ```
-
-1. Copilot should suggest a time and date for the meeting. The prompt displays a calendar item that can be sent or edited. Select **Edit**.
-
-1. Switch to scheduling assistant to show that the time suggested by Copilot works for the project manager. You should both be free.
-
-1. Switch back to the event tab and then select **Draft with Copilot** in the event body.
-
-1. In the prompt window, type the following:
-
-    ```text
-    I’m meeting with my boss to discuss key updates and strategic initiatives they missed from the Second Quarter Earnings Conference Call. Create an agenda to discuss financial performance, AI and technology integration, strategic acquisitions, productivity updates, and future outlook.
-    ```
-
-1. Optionally, before selecting **Keep it**, you can ask Copilot to make it longer, shorter, or change the tone of the drafted agenda.
-
-[Back to Index](https://emontes07.github.io/Learning/)
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

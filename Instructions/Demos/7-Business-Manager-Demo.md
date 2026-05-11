@@ -1,146 +1,172 @@
 ---
 demo:
     title: 'Business Manager Demo'
+layout: none
 ---
 
-[Back to Index](https://emontes07.github.io/Learning/)
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Manager Demo | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #1A237E; --hero-via: #283593; --hero-to: #0078D4; }</style>
+</head>
+<body>
 
-# Business Manager Demo
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
 
-**Scenario:**
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Microsoft 365 Copilot for Business Managers</h1>
+    <p class="subtitle">Spot issues, research solutions, and align your team</p>
+    <div class="scenario">
+      <strong>Scenario:</strong> Analyze sales performance and customer feedback to address a product issue, then collaborate with your team to plan improvements.
+    </div>
+    <div class="hero-meta">
+      <span>📊 Business Management</span>
+      <span>📈 Excel</span>
+      <span>💬 Copilot Chat</span>
+      <span>📧 Outlook</span>
+    </div>
+  </div>
+</div>
 
-Analyze sales performance and customer feedback to address a product issue, then collaborate with your team to plan improvements.
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-## Demo setup
+<div class="layout">
 
-The sample documents can be found in the MS-4021 GitHub repository [here](https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/tree/master/ResourceFiles):
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Business Manager Demo</div>
 
-The specific files needed for this demo are:
+  <a href="#sec-objectives" class="section-link">Learning Objectives</a>
+  <a href="#sec-prereqs" class="section-link">Demo Setup</a>
 
-- [EV_Charger_Sales_Analysis_v1.xlsx](https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/raw/master/ResourceFiles/EV_Charger_Sales_Analysis_v1.xlsx)
+    <a href="#part1" class="part-link">Part 1: Copilot in Excel</a>
+  <a href="#part2" class="part-link">Part 2: Copilot Chat</a>
+  <a href="#part3" class="part-link">Part 3: Copilot in Outlook</a>
 
-> **NOTE:** Allow up to 10 minutes for these files to sync to your OneDrive after downloading. To avoid delays during the demo, ensure these files are downloaded and available in your OneDrive well in advance. If the files are not available, open the documents and copy the shared file links to use in the demo.
+  <a href="#sec-takeaways" class="section-link" style="margin-top:0.5rem;">Key Takeaways</a>
+</nav>
 
-## Demo Steps
+<div class="main-content">
 
-### Copilot in Excel
+<div class="section" id="sec-objectives">
+  <h2>🎯 Learning Objectives</h2>
+  <ul class="objectives-list">
+    <li>Analyze sales data and customer reviews in Excel</li>
+    <li>Research industry context with Copilot Chat</li>
+    <li>Schedule a working session with the product team</li>
+  </ul>
+</div>
 
-1. Launch Excel (either in your browser or desktop application) and open the **EV_Charger_Sales_Analysis_v1.xlsx** file.
+<div class="section" id="sec-prereqs">
+  <h2>📋 Demo Setup</h2>
+  <p>Required file from the MS-4021 GitHub <a href='https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/tree/master/ResourceFiles' target='_blank'>repository</a>:</p>    <ul class="tips-list">
+      <li><a href='https://github.com/MicrosoftLearning/MS-4021-Copilot-Immersion-Experience/raw/master/ResourceFiles/EV_Charger_Sales_Analysis_v1.xlsx'>EV_Charger_Sales_Analysis_v1.xlsx</a></li>
+    </ul><div class="callout warn"><strong>📝 NOTE:</strong> Allow up to 10 minutes for OneDrive sync.</div>
+</div>
 
-1. **Navigate to the "Sales by Product"** tab in the Excel file.
+<div class="part-card" id="part1">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Part 1: Copilot in Excel — Spot the Issue in Your Data</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div class="callout"><strong>💡 Why This Matters:</strong> Copilot turns Excel into a conversational analyst — calculate, highlight, and surface insights in plain English.</div>
+    <ol class="steps" start="1">
+      <li>Open <strong>EV_Charger_Sales_Analysis_v1.xlsx</strong> in Excel.</li>
+      <li>Navigate to the <strong>Sales by Product</strong> tab.</li>
+    </ol>
+<div class="prompt-box">Calculate monthly revenue by product and add a column with total revenue - refer to the Prices worksheet.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">What is the total revenue for each category so far in 2024?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Highlight rows where the value in column H is less than $100K.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <ol class="steps" start="3">
+      <li>Navigate to the <strong>Reviews</strong> tab to analyze customer feedback.</li>
+    </ol>
+<div class="prompt-box">Summarize the top 3 customer concerns we should focus on.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Highlight reviews that mention issues related to charging speeds.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 1</h4>
+      <label><input type="checkbox"> I calculated and highlighted in Excel</label>
+      <label><input type="checkbox"> I identified a customer pain point in reviews</label>
+    </div>
+  </div>
+</div>
 
-1. Use Copilot to Calculate Monthly Revenue:  
+<div class="part-card" id="part2">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Part 2: Copilot Chat — Research the Charging Speed Issue</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body2">
+<div class="callout"><strong>💡 Why This Matters:</strong> Once you've identified a problem, Copilot helps you research industry-wide causes and competitive responses.</div>
+    <ol class="steps" start="1">
+      <li>Open <a href='https://m365copilot.com' target='_blank'>M365copilot.com</a> in Web mode.</li>
+    </ol>
+<div class="prompt-box">Research common issues with EV charger speeds and identify potential causes or solutions. Summarize findings in a format suitable for a business presentation. Highlight any relevant industry benchmarks or competitor data.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">What are the latest innovations or technologies addressing slow EV charger speeds in 2024?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Assuming competitors in the EV charging market are improving speed by 20% annually, suggest how we could position our CC-2001 and CC-2000 models to stay competitive.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box">Based on this information, suggest 5 strategic questions to ask the product team during our meeting tomorrow. Focus on identifying root causes, assessing risks, and brainstorming potential improvements.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 2</h4>
+      <label><input type="checkbox"> I researched industry context</label>
+      <label><input type="checkbox"> I prepared strategic questions for the product team</label>
+    </div>
+  </div>
+</div>
 
-   Let's start by figuring out which category of your business is driving the most revenue. This sheet contains three years of sales data, with thousands of rows showing sales by product by month. Although it's a routine task, this volume of data can be unwieldy. You can ask Copilot to quickly calculate the monthly revenue by product.
+<div class="part-card" id="part3">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Part 3: Copilot in Outlook — Convene the Team</h2>
+    <span class="toggle-icon">▾</span>
+  </div>
+  <div class="part-body collapsed" id="body3">
+<div class="callout"><strong>💡 Why This Matters:</strong> Lock in the meeting with the right people and a productive agenda.</div>
+    <ol class="steps" start="1">
+      <li>Open <a href='https://outlook.office.com' target='_blank'>outlook.office.com</a>.</li>
+      <li>Click the <strong>Copilot</strong> icon.</li>
+    </ol>
+<div class="prompt-box">I need to schedule a meeting with [/Pick a colleague] tomorrow afternoon to discuss the EV charger issue reports. Can you suggest a time that works? If they are unavailable, please suggest an alternative time.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <ol class="steps" start="3">
+      <li>Edit the proposed event, confirm availability via Scheduling Assistant.</li>
+      <li>Click <strong>Draft with Copilot</strong> in the event body.</li>
+    </ol>
+<div class="prompt-box">Create an agenda for a meeting to discuss slow charging speeds with our CC-2001 and CC-2000 models. Include time for an introduction to the issue, a review of any available data or customer feedback, and a brainstorming session for potential solutions.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="self-check">
+      <h4>✅ Self-Check: Part 3</h4>
+      <label><input type="checkbox"> I scheduled the working session</label>
+      <label><input type="checkbox"> I drafted a focused agenda</label>
+    </div>
+  </div>
+</div>
 
-   Use the following prompt:
+<div class="section" id="sec-takeaways">
+  <h2>🔑 Key Takeaways</h2>
+  <div class="takeaways-grid">
+    <div class="takeaway-card"><div class="icon">🔎</div><h4>Find the Signal</h4><p>Let Copilot find patterns in volume — sales and feedback alike.</p></div>
+    <div class="takeaway-card"><div class="icon">🌐</div><h4>Context from the Web</h4><p>Pair internal data with industry context.</p></div>
+    <div class="takeaway-card"><div class="icon">🤝</div><h4>Drive Alignment</h4><p>Get the right team in the room with a clear agenda.</p></div>
+    <div class="takeaway-card"><div class="icon">✅</div><h4>Ask Better Questions</h4><p>Use AI-prepared questions to lead better conversations.</p></div>
+  </div>
+</div>
 
-   ```text
-   Calculate monthly revenue by product and add a column with total revenue - refer to the Prices worksheet.
-   ```
+</div>
+</div>
 
-    - Copilot knows how to do that and which data to reference across tabs.
-    - Copilot creates a plan for how it runs those numbers, executes that plan showing its work as it goes, and prompts you to ask questions or iterate on the solution it reached.
-    - Select **+Insert column**, then navigate back to the **Sales by Product** tab.
+<footer>
+  <p><strong>Microsoft 365 Copilot — Business Manager Demo</strong></p>
+  <p>For questions or feedback, reach out to your training facilitator.</p>
+</footer>
 
-1. Use Copilot to analyze revenue by entering the following prompt in the Copilot pane:
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
 
-    ```text
-    What is the total revenue for each category so far in 2024?
-    ```
-
-    - Copilot runs the numbers and creates a bar chart that you can add to your workbook.
-    - Select **+Add to a new sheet**, then navigate back to the **Sales by Product** tab.
-
-1. Now, use Copilot to highlight products with low sales by entering this prompt:
-
-    ```text
-    Highlight rows where the value in column H is less than $100K.
-    ```
-
-    - Copilot applies conditional formatting, helping you identify products that aren’t performing to your standards.
-
-1. **Navigate to the "Reviews" tab** to analyze customer feedback.
-
-1. Ask Copilot to summarize the top concerns by entering the following prompt:
-
-    ```text
-    Summarize the top 3 customer concerns we should focus on.
-    ```
-
-    - Copilot analyzes the feedback and surface the top three customer concerns. It looks like charging speed is an emerging issue.
-
-1. Next, highlight reviews mentioning charging speed by entering this prompt:
-
-    ```text
-    Highlight reviews that mention issues related to charging speeds.
-    ```
-
-    - Copilot highlights all relevant reviews in the dataset.
-
-### Copilot Chat
-
-Now that we’ve identified slow charging speed as a key issue, use **Copilot Chat** to explore the problem further and identify potential solutions.
-
-1. Open a browser and navigate to [M365copilot.com](https://m365copilot.com/).  
-
-1. Ensure **Web Mode** is selected.  
-
-    ![screenshot showing web mode tab.](../Prompts/Media/web-mode.png)
-
-1. To research the issue, enter the following prompt:
-  
-    ```text
-    Research common issues with EV charger speeds and identify potential causes or solutions. Summarize findings in a format suitable for a business presentation. Highlight any relevant industry benchmarks or competitor data.
-    ```
-
-   - Review Copilot’s summary and ask for additional context or recent trends, if needed.  
-
-1. Optionally, refine the output:
-   - Ask Copilot for recent trends or technologies addressing EV charger efficiency:
-
-    ```text
-    What are the latest innovations or technologies addressing slow EV charger speeds in 2024?
-    ```
-
-   - Request competitor insights:
-
-    ```text
-    Assuming competitors in the EV charging market are improving speed by 20% annually, suggest how we could position our CC-2001 and CC-2000 models to stay competitive.
-    ```
-
-1. Ask copilot to come up with five strategic questions to ask the project lead for EV chargers:
-
-    ```text
-    Based on this information, suggest 5 strategic questions to ask the product team during our meeting tomorrow. Focus on identifying root causes, assessing risks, and brainstorming potential improvements.
-    ```
-
-### Copilot in Outlook
-
-In this demo, we'll use Copilot in Outlook to set up a meeting with the Project lead in charge of the EV charger product line to discuss potential solutions.
-
-1. Open a browser and navigate to [outlook.office.com](https://outlook.office.com.com/).
-
-1. In the Outlook ribbon, select the Copilot Icon to open up the Copilot pane.
-
-1. In the prompt window, type the following:
-
-    ```text
-    I need to schedule a meeting with [/Pick a colleague] tomorrow afternoon to discuss the EV charger issue reports. Can you suggest a time that works? If they are unavailable, please suggest an alternative time.
-    ```
-
-1. Copilot should suggest a time and date for the meeting. the prompt displays a calendar item that can be sent or edited, select **Edit**.
-
-1. Switch to scheduling assistant to show that the time suggested by Copilot works for the project manager. You should both be free.
-
-1. Switch back to the event tab and then select **Draft with Copilot** in the event body.
-
-1. In the prompt window, type the following:
-
-    ```text
-    Create an agenda for a meeting to discuss slow charging speeds with our CC-2001 and CC-2000 models. Include time for an introduction to the issue, a review of any available data or customer feedback, and a brainstorming session for potential solutions.  
-    ```
-
-1. Optionally, before selecting **Keep it** you can ask copilot to make it longer, shorter, or change the tone of the drafted agenda.
-
-[Back to Index](https://emontes07.github.io/Learning/)
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>
