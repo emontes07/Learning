@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot for Finance — Extended Guide | Learning</title>
+<style>
+  :root {
+    --primary: #0078D4;
+    --primary-dark: #005A9E;
+    --primary-light: #DEECF9;
+    --accent: #107C10;
+    --accent-light: #DFF6DD;
+    --warn: #D83B01;
+    --warn-light: #FED9CC;
+    --purple: #5C2D91;
+    --purple-light: #E8DAEF;
+    --teal: #008272;
+    --teal-light: #D4F1EE;
+    --neutral-900: #201F1E;
+    --neutral-700: #323130;
+    --neutral-500: #605E5C;
+    --neutral-300: #A19F9D;
+    --neutral-100: #F3F2F1;
+    --white: #FFFFFF;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --radius: 8px;
+    --sidebar-width: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--neutral-700); line-height: 1.6; background: var(--neutral-100);
+  }
+  .back-bar {
+    background: var(--white); border-bottom: 1px solid #E0E0E0;
+    padding: 0.5rem 1.5rem; font-size: 0.88rem;
+  }
+  .back-bar a {
+    color: var(--primary); text-decoration: none; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .back-bar a:hover { text-decoration: underline; }
+  .hero {
+    background: linear-gradient(135deg, #004E8C 0%, #0078D4 50%, #5C2D91 100%);
+    color: var(--white); padding: 3rem 2rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; top: -40%; right: -10%;
+    width: 500px; height: 500px;
+    background: rgba(255,255,255,0.04); border-radius: 50%;
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.5rem; }
+  .hero .scenario {
+    background: rgba(255,255,255,0.12); border-radius: 6px;
+    padding: 0.75rem 1rem; margin: 1rem 0 1.25rem;
+    font-size: 0.95rem; line-height: 1.5;
+  }
+  .hero-meta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 0.9rem; opacity: 0.85;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+  .layout { display: flex; max-width: 1260px; margin: 0 auto; }
+  .sidebar {
+    width: var(--sidebar-width); flex-shrink: 0;
+    position: sticky; top: 0; height: 100vh;
+    overflow-y: auto; background: var(--white);
+    border-right: 1px solid #E0E0E0;
+    padding: 1rem 0; font-size: 0.84rem; z-index: 100;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--neutral-300); border-radius: 4px; }
+  .sidebar .sb-home {
+    display: block; padding: 0.5rem 1.25rem 0.75rem;
+    color: var(--primary); text-decoration: none; font-weight: 600;
+    font-size: 0.85rem; border-bottom: 1px solid var(--neutral-100);
+    margin-bottom: 0.5rem;
+  }
+  .sidebar .sb-home:hover { text-decoration: underline; }
+  .sidebar .sb-title {
+    padding: 0.4rem 1.25rem; font-weight: 700;
+    font-size: 0.9rem; color: var(--neutral-900);
+  }
+  .sidebar a {
+    display: block; padding: 0.4rem 1.25rem;
+    color: var(--neutral-500); text-decoration: none;
+    border-left: 3px solid transparent; transition: all 0.2s;
+  }
+  .sidebar a:hover { color: var(--neutral-900); background: var(--neutral-100); }
+  .sidebar a.active {
+    color: var(--primary); font-weight: 600;
+    border-left-color: var(--primary); background: var(--primary-light);
+  }
+  .sidebar a.nav-link {
+    font-weight: 500; color: var(--neutral-700);
+    padding-top: 0.5rem; padding-bottom: 0.5rem;
+    border-top: 1px solid var(--neutral-100);
+    margin-top: 0.25rem;
+  }
+  .main-content { flex: 1; min-width: 0; padding: 2rem 2rem 4rem; }
+  .sidebar-toggle {
+    display: none; position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 200;
+    background: var(--primary); color: var(--white); border: none;
+    width: 48px; height: 48px; border-radius: 50%;
+    font-size: 1.3rem; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .sidebar-toggle:hover { background: var(--primary-dark); }
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4); z-index: 250;
+  }
+  .sidebar-overlay.open { display: block; }
+  .section {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 2rem; margin-bottom: 1.5rem;
+  }
+  .section h2 { font-size: 1.35rem; font-weight: 700; color: var(--neutral-900); margin-bottom: 1rem; }
+  .section h3 { font-size: 1.1rem; font-weight: 600; color: var(--neutral-700); margin: 1.5rem 0 0.75rem; }
+  .section p { margin-bottom: 0.75rem; }
+  .objectives-list { list-style: none; padding: 0; }
+  .objectives-list li {
+    padding: 0.6rem 0 0.6rem 2rem; position: relative;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  .objectives-list li:last-child { border-bottom: none; }
+  .objectives-list li::before {
+    content: '\2713'; position: absolute; left: 0; top: 0.6rem;
+    width: 22px; height: 22px; background: var(--accent-light);
+    color: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .part-card {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 1.5rem; overflow: hidden;
+  }
+  .part-header-bar { height: 5px; width: 100%; }
+  .part-header-bar.word     { background: #2B579A; }
+  .part-header-bar.excel    { background: #217346; }
+  .part-header-bar.ppt      { background: #B7472A; }
+  .part-header-bar.loop     { background: var(--purple); }
+  .part-header-bar.agent    { background: var(--teal); }
+  .part-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2rem; cursor: pointer; user-select: none;
+  }
+  .part-header:hover { background: var(--neutral-100); }
+  .part-header h2 { margin: 0; font-size: 1.25rem; }
+  .part-header .toggle-icon {
+    font-size: 1.4rem; color: var(--neutral-500); transition: transform 0.3s;
+  }
+  .part-header .toggle-icon.open { transform: rotate(180deg); }
+  .part-body { padding: 0 2rem 2rem; }
+  .part-body.collapsed { display: none; }
+  .part-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--neutral-700); margin: 1.5rem 0 0.75rem; }
+  .part-body p { margin-bottom: 0.75rem; }
+  .prompt-box {
+    position: relative; background: #1E1E1E; color: #D4D4D4;
+    border-radius: 6px; padding: 1rem 1.25rem;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.88rem; line-height: 1.7;
+    margin: 0.75rem 0 1rem; white-space: pre-wrap; word-wrap: break-word;
+  }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255,255,255,0.1); border: none;
+    color: #D4D4D4; padding: 4px 10px; border-radius: 4px;
+    font-size: 0.75rem; cursor: pointer; transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.25); }
+  .copy-btn.copied { background: var(--accent); color: var(--white); }
+  .callout {
+    border-left: 4px solid var(--primary); background: var(--primary-light);
+    padding: 0.85rem 1rem; border-radius: 0 6px 6px 0;
+    margin: 1rem 0; font-size: 0.92rem;
+  }
+  .callout.green { border-left-color: var(--accent); background: var(--accent-light); }
+  .callout.warn  { border-left-color: var(--warn); background: var(--warn-light); }
+  .callout.purple { border-left-color: var(--purple); background: var(--purple-light); }
+  .callout.teal  { border-left-color: var(--teal); background: var(--teal-light); }
+  .callout strong { font-weight: 600; }
+  .steps { counter-reset: step; padding-left: 0; list-style: none; margin: 1rem 0; }
+  .steps li {
+    counter-increment: step; position: relative;
+    padding: 0.5rem 0 0.5rem 2.5rem; margin-bottom: 0.5rem;
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.45rem;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--primary-light); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .self-check {
+    background: var(--accent-light); border-radius: 6px;
+    padding: 1rem 1.25rem; margin: 1.5rem 0 0.5rem;
+  }
+  .self-check h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .self-check label {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem; margin-bottom: 0.3rem; cursor: pointer;
+  }
+  .self-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; }
+  .agent-field {
+    background: var(--neutral-100); border-radius: 6px;
+    padding: 1rem 1.25rem; margin: 0.75rem 0;
+    border-left: 4px solid var(--teal);
+  }
+  .agent-field .field-label {
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+    color: var(--teal); letter-spacing: 0.5px; margin-bottom: 0.3rem;
+  }
+  .next-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem; margin: 1rem 0;
+  }
+  .next-card {
+    background: var(--neutral-100); border-radius: var(--radius);
+    padding: 1.25rem; text-align: center;
+  }
+  .next-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .next-card h4 { font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--neutral-900); }
+  .next-card p { font-size: 0.85rem; color: var(--neutral-500); }
+  .test-table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;
+  }
+  .test-table th {
+    background: var(--teal); color: var(--white);
+    padding: 0.6rem 1rem; text-align: left; font-weight: 600;
+  }
+  .test-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--neutral-100); }
+  .test-table tr:nth-child(even) td { background: var(--neutral-100); }
+  .troubleshoot-table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;
+  }
+  .troubleshoot-table th {
+    background: var(--primary); color: var(--white);
+    padding: 0.65rem 1rem; text-align: left; font-weight: 600;
+  }
+  .troubleshoot-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--neutral-100); }
+  .troubleshoot-table tr:nth-child(even) td { background: var(--neutral-100); }
+  .resource-card {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.75rem 1rem; background: var(--neutral-100);
+    border-radius: 6px; margin-bottom: 0.5rem; text-decoration: none; color: var(--neutral-700);
+    transition: background 0.2s;
+  }
+  .resource-card:hover { background: var(--primary-light); }
+  .resource-card .r-icon { font-size: 1.3rem; }
+  footer {
+    text-align: center; padding: 2rem; font-size: 0.85rem;
+    color: var(--neutral-500); border-top: 1px solid var(--neutral-300); margin-top: 2rem;
+  }
+  @media (max-width: 900px) {
+    .sidebar {
+      position: fixed; left: -280px; top: 0; height: 100vh; width: 270px;
+      transition: left 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.15); z-index: 300;
+    }
+    .sidebar.open { left: 0; }
+    .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 1.5rem 1.25rem 3rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero-meta { flex-direction: column; gap: 0.5rem; }
+    .part-header { padding: 1rem 1.25rem; }
+    .part-body { padding: 0 1.25rem 1.5rem; }
+    .next-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .sidebar, .sidebar-toggle, .sidebar-overlay, .back-bar { display: none !important; }
+    .main-content { padding: 0; }
+    .part-body.collapsed { display: block !important; }
+  }
+  [id] { scroll-margin-top: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="back-bar"><a href="../../">&larr; Back to Index</a></div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Microsoft 365 Copilot for Finance &mdash; Extended Guide</h1>
+    <p class="subtitle">Supplementary Material &mdash; Word, Excel, PowerPoint, Pages &amp; Agent Builder</p>
+    <div class="scenario">
+      <strong>About this guide:</strong> This covers additional Copilot capabilities <em>not included</em> in the main training session. Use it as a leave-behind reference, extra material for extended sessions, or self-paced exploration after the training. Each section is standalone &mdash; jump to whichever topic is most relevant to your work.
+    </div>
+    <div class="hero-meta">
+      <span>&#128214; Self-Paced</span>
+      <span>&#128221; Word</span>
+      <span>&#128202; Excel &amp; PowerPoint</span>
+      <span>&#128260; Loop &amp; Pages</span>
+      <span>&#129302; Agent Builder</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="../../">&larr; Back to Index</a>
+  <div class="sb-title">Extended Guide</div>
+  <a href="#sec-objectives" class="nav-link">Learning Objectives</a>
+  <a href="#part1" class="nav-link">Part 1: Copilot in Word</a>
+  <a href="#part2" class="nav-link">Part 2: Copilot in Excel</a>
+  <a href="#part3" class="nav-link">Part 3: Copilot in PowerPoint</a>
+  <a href="#part4" class="nav-link">Part 4: Loop &amp; Pages</a>
+  <a href="#part5" class="nav-link">Part 5: Agent Builder</a>
+  <a href="#sec-resources" class="nav-link">Resources &amp; Next Steps</a>
+  <a href="#sec-troubleshooting" class="nav-link">Troubleshooting</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-objectives">
+  <h2>&#127919; Learning Objectives</h2>
+  <ul class="objectives-list">
+    <li>Draft structured finance memos using Copilot in Word with file references</li>
+    <li>Analyze financial data, build charts, and surface insights using Copilot in Excel</li>
+    <li>Generate leadership-ready presentations from Word documents using Copilot in PowerPoint</li>
+    <li>Use Pages and Loop for real-time collaborative finance work</li>
+    <li>Build a Finance Policy Q&amp;A agent using Agent Builder (no code required)</li>
+  </ul>
+</div>
+
+<div class="part-card" id="part1">
+  <div class="part-header-bar word"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Part 1: Copilot in Word &mdash; Draft Finance Memos</h2>
+    <span class="toggle-icon open">&#9662;</span>
+  </div>
+  <div class="part-body" id="body1">
+    <div class="callout">
+      <strong>&#128161; Why This Matters:</strong> Finance writing is structured: situation &rarr; analysis &rarr; recommendation. Copilot gives you a strong first draft grounded in your actual data, so you spend time refining &mdash; not staring at a blank page.
+    </div>
+
+    <h3>Getting Started</h3>
+    <ol class="steps">
+      <li>Open a new Word document: navigate to <strong><a href="https://word.new" target="_blank">word.new</a></strong> or launch Word from your desktop</li>
+      <li>You'll see the <strong>"Draft with Copilot"</strong> prompt area at the top of the blank document</li>
+    </ol>
+
+    <h3>Prompt 1: Draft a Memo from Scratch</h3>
+    <div class="prompt-box">Draft a 1-page Finance memo to leadership on the following topic: "Q1 margin compression &mdash; drivers and proposed actions"
+
+Use this structure:
+1. Executive Summary (3 sentences)
+2. What happened (bullet list with illustrative numbers &mdash; gross margin down 220 bps vs. plan, driven by input cost increases +18% YoY and unfavorable channel mix)
+3. Root causes (3 bullets)
+4. Recommended actions (3 bullets, each with an owner placeholder)
+5. Asks of leadership
+
+Tone: confident, data-driven, no jargon. Length: under 400 words.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 2: Draft from Your Own Files</h3>
+    <div class="prompt-box">Draft a finance commentary memo summarizing the key targets from this document. Pull revenue, gross margin, and trade spend figures directly from the file. Add a section on the top three financial risks and how we'll monitor them.
+
+/[reference: your financial plan or report file]<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout green">
+      <strong>&#128161; Tip:</strong> Use <strong>/</strong> in the prompt box to reference files from OneDrive or SharePoint. Copilot will ground the draft on your actual data &mdash; not generic content.
+    </div>
+
+    <h3>Refine Before You Keep It</h3>
+    <p>Before clicking <strong>"Keep it"</strong>, try these refinements:</p>
+    <div class="prompt-box">Shorten the executive summary to exactly 2 sentences and make the recommended actions more specific with measurable targets.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="prompt-box">Rewrite the tone to be more suitable for a board presentation &mdash; more assertive and less conversational.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 1</h4>
+      <label><input type="checkbox"> I drafted a finance memo using Copilot in Word</label>
+      <label><input type="checkbox"> I used the / reference to ground a draft in my own files</label>
+      <label><input type="checkbox"> I refined the draft at least once before clicking "Keep it"</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part2">
+  <div class="part-header-bar excel"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Part 2: Copilot in Excel &mdash; Talk to Your Data</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body2">
+    <div class="callout green">
+      <strong>&#128161; Why This Matters:</strong> Instead of building formulas and pivot tables from scratch, you can talk to your data in plain English. Copilot can analyze, summarize, suggest formulas, and build charts &mdash; and every output uses real Excel formulas you can inspect and edit.
+    </div>
+
+    <div class="callout">
+      <strong>&#128203; Prereq:</strong> Copilot in Excel works best with <strong>formatted Excel Tables</strong> (select your data and press <strong>Ctrl+T</strong>). Make sure you have a header row, no merged cells, and no blank rows in your data.
+    </div>
+
+    <h3>Prompt 1: Quick Analytical Summary</h3>
+    <div class="prompt-box">Looking at this data, give me:
+1. The top 3 takeaways an executive should know
+2. Which combination has the highest margin % and which has the lowest
+3. A theory on why the margin variance exists
+4. Two follow-up questions I should investigate<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 2: Add a Calculated Column</h3>
+    <div class="prompt-box">Add a new column called 'Net Contribution' calculated as Net Sales &ndash; COGS &ndash; Trade Spend. Show me the formula you used so I can verify it.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 3: Build a Chart</h3>
+    <div class="prompt-box">Create a clustered column chart comparing Net Sales and Trade Spend for each row. Title it 'Net Sales vs. Trade Spend Comparison'.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 4: Conditional Formatting</h3>
+    <div class="prompt-box">Conditionally format the Gross Margin % column so anything below 35% is highlighted red, 35&ndash;40% is amber, and above 40% is green.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 5: Insight, Not Just Numbers</h3>
+    <div class="prompt-box">If I want to lift overall gross margin by 200 basis points next year, which area should I focus on first based on this data, and what specifically would you investigate to build the case? Walk me through your reasoning.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout warn">
+      <strong>&#9888;&#65039; Important:</strong> Always verify formulas and figures. Copilot is a brilliant assistant, not an auditor. Click any cell in a new column and check the formula bar to confirm.
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 2</h4>
+      <label><input type="checkbox"> I asked Copilot an analytical question about my data</label>
+      <label><input type="checkbox"> I added a calculated column and verified the formula</label>
+      <label><input type="checkbox"> I built a chart using natural language</label>
+      <label><input type="checkbox"> I asked Copilot for a strategic insight, not just a calculation</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part3">
+  <div class="part-header-bar ppt"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Part 3: Copilot in PowerPoint &mdash; Memo to Deck in 60 Seconds</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body3">
+    <div class="callout" style="border-left-color: #B7472A; background: #FDECEA;">
+      <strong>&#128161; Why This Matters:</strong> Finance decks follow predictable patterns &mdash; situation, drivers, recommendations, asks. Instead of building slides one by one, let Copilot generate a full deck from your Word memo and then refine it.
+    </div>
+
+    <h3>Getting Started</h3>
+    <ol class="steps">
+      <li>Open <strong>PowerPoint</strong> (web or desktop)</li>
+      <li>Create a <strong>new blank presentation</strong></li>
+      <li>Click the <strong>Copilot</strong> icon in the ribbon</li>
+      <li>Select <strong>"Create presentation from file"</strong> and pick your Word memo (from Part 1 or any saved memo)</li>
+    </ol>
+
+    <div class="callout green">
+      <strong>&#128161; Pro Tip:</strong> Apply your team's PowerPoint template <strong>before</strong> generating slides &mdash; Copilot will respect your fonts, colors, and slide masters.
+    </div>
+
+    <h3>Prompt 1: Generate the Deck</h3>
+    <div class="prompt-box">Create a 6-slide executive presentation from this Word memo. Include:
+- Title slide with topic and "Finance | Quarterly Review"
+- Executive summary slide (3 takeaways)
+- A slide showing the key drivers with a placeholder for a chart
+- A slide on root causes
+- A slide on recommended actions with owners
+- A closing "Asks of leadership" slide
+Keep text minimal &mdash; at most 4 bullets per slide.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 2: Refine a Slide</h3>
+    <div class="prompt-box">For slide 3, add a column chart showing margin drivers in order of impact. Show the net change clearly and add a subtitle explaining the time period.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3>Prompt 3: Add Speaker Notes</h3>
+    <div class="prompt-box">Add speaker notes to each slide with the key talking points a finance director would need to present this to the executive team. Keep each note under 4 sentences.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 3</h4>
+      <label><input type="checkbox"> I generated a presentation from a Word document</label>
+      <label><input type="checkbox"> I refined at least one slide with Copilot</label>
+      <label><input type="checkbox"> I understand the Word &rarr; PowerPoint workflow</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part4">
+  <div class="part-header-bar loop"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Part 4: Pages &amp; Loop &mdash; Real-Time Finance Collaboration</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body4">
+    <div class="callout purple">
+      <strong>&#128161; Why This Matters:</strong> Finance reviews need real-time collaboration. Pages and Loop let multiple people co-author with Copilot &mdash; no more "let me send a follow-up email with the updated numbers." Everyone sees the same live content.
+    </div>
+
+    <h3>A. Pages &mdash; Turn Copilot Answers into Shared Documents</h3>
+    <p>When Copilot gives you a useful response in Chat, click <strong>"Edit in Pages"</strong> at the bottom of the response. This turns the answer into a rich, editable document you can share with your team.</p>
+
+    <div class="prompt-box">Build a Page titled "Retailer Margin Comparison &mdash; Brand A vs. Brand B". Include:
+1. A short executive summary (3 sentences)
+2. A side-by-side table of gross margin % by retailer for both brands
+3. A "What we know" section and a "What we need to investigate" section
+4. A list of follow-ups with placeholders for owner and due date
+
+Make it ready for me to share with the brand finance leads.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout green">
+      <strong>&#128161; Tip:</strong> After creating a Page, share it with your team. They can co-edit, add comments, and use Copilot within the page to expand sections &mdash; all in real time.
+    </div>
+
+    <h3>B. Loop Components in Teams</h3>
+    <p>In a Teams chat or channel, you can paste <strong>Loop components</strong> (tables, task lists, checklists) that everyone edits live.</p>
+    <ol class="steps">
+      <li>In a Teams message, click the <strong>Loop</strong> icon (or type <strong>/</strong> and select a Loop component)</li>
+      <li>Choose a <strong>Table</strong> or <strong>Task List</strong></li>
+      <li>Fill it in during your meeting &mdash; everyone sees updates in real time</li>
+    </ol>
+
+    <div class="callout">
+      <strong>Finance use case:</strong> During a month-end close meeting, share a Loop table with close tasks, owners, status, and due dates. The team fills it in during the call &mdash; no follow-up email needed.
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 4</h4>
+      <label><input type="checkbox"> I understand how to turn a Copilot response into a Page</label>
+      <label><input type="checkbox"> I know how to insert a Loop component in Teams</label>
+      <label><input type="checkbox"> I can envision a finance scenario where real-time collaboration replaces follow-up emails</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part5">
+  <div class="part-header-bar agent"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Part 5: Agent Builder &mdash; Build a Finance Policy Agent</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body5">
+    <div class="callout teal">
+      <strong>&#128161; Why This Matters:</strong> Policy Q&amp;A is the highest-ROI, lowest-risk first agent for a Finance team. It deflects repeat questions ("What's the T&amp;E limit?", "Who approves this?") and frees the team for real analysis. No code required.
+    </div>
+
+    <h3>What We're Building</h3>
+    <p>A chat-based agent your team can pin in Copilot Chat or share via link:</p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+      <li><strong>Inputs:</strong> A SharePoint folder with finance policy PDFs and SOPs</li>
+      <li><strong>Brain:</strong> Copilot grounded on those documents with a clear persona and guardrails</li>
+      <li><strong>Output:</strong> Instant answers with citations to the source policy and section</li>
+    </ul>
+
+    <h3>Step-by-Step Setup</h3>
+    <ol class="steps">
+      <li>In Copilot Chat, open the <strong>Agents</strong> rail &rarr; click <strong>+ Create agent</strong></li>
+      <li>Click <strong>"Skip and go to configure"</strong></li>
+      <li>Fill in the <strong>Name</strong>, <strong>Description</strong>, and <strong>Instructions</strong> (see below)</li>
+      <li>Under <strong>Knowledge</strong>, add your SharePoint site or folder containing finance policies</li>
+      <li>Add <strong>Starter prompts</strong> so users know what to ask</li>
+      <li>Use the <strong>Preview panel</strong> on the right to test your agent</li>
+      <li>Click <strong>Create</strong> &rarr; then <strong>Share</strong> with your team</li>
+    </ol>
+
+    <h3>Agent Configuration</h3>
+
+    <div class="agent-field">
+      <div class="field-label">Name</div>
+      <strong>Finance Policy Buddy</strong>
+    </div>
+
+    <div class="agent-field">
+      <div class="field-label">Description</div>
+      Answers questions about finance policies &mdash; travel &amp; expense, approval thresholds, the close calendar, capex requests, and procurement guidelines. Always cites the source policy and section.
+    </div>
+
+    <div class="agent-field">
+      <div class="field-label">Instructions (System Prompt)</div>
+      <div class="prompt-box" style="margin-top: 0.5rem;">You are the Finance Policy Buddy &mdash; a friendly, precise assistant for the Finance team.
+
+YOUR JOB
+- Answer policy and process questions using ONLY the documents in your knowledge source.
+- Always cite the specific policy name and section number you used.
+- If a question is not covered in your knowledge, say so clearly and suggest who the user should contact.
+
+STYLE
+- Direct, plain-language, no jargon.
+- Lead with the answer in 1&ndash;2 sentences, then the supporting detail.
+- Use bullet points when listing thresholds or steps.
+
+GUARDRAILS
+- Never invent policy details, dollar amounts, or approval flows.
+- Never give tax, legal, or audit opinions &mdash; direct those to the relevant function.
+- If a user asks about confidential financial results, decline politely.
+
+TONE
+- Helpful, calm, occasionally warm. Think "the Finance colleague everyone wants to sit next to."<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    </div>
+
+    <div class="agent-field">
+      <div class="field-label">Starter Prompts</div>
+      <ul style="margin: 0.25rem 0 0 1.5rem;">
+        <li>What's the T&amp;E limit for client meals?</li>
+        <li>Who approves a capital request between $50K and $250K?</li>
+        <li>When does the close calendar lock the GL for month-end?</li>
+        <li>What's our policy on accepting gifts from suppliers?</li>
+        <li>How do I submit a vendor onboarding request?</li>
+      </ul>
+    </div>
+
+    <div class="callout green">
+      <strong>&#128161; Knowledge Tip:</strong> Start narrow. Point the agent at <strong>one well-curated SharePoint folder</strong> with your core policies. You can always expand later &mdash; but a focused knowledge base gives better answers from day one.
+    </div>
+
+    <h3>Test Your Agent</h3>
+    <p>Before sharing broadly, run these test cases in the Preview panel:</p>
+    <table class="test-table">
+      <tr><th>Test Type</th><th>Sample Question</th><th>Expected Behavior</th></tr>
+      <tr><td><strong>Clear in-scope</strong></td><td>"What's the daily T&amp;E limit for client dinners?"</td><td>Direct answer with policy citation</td></tr>
+      <tr><td><strong>Edge case</strong></td><td>"If I take a $400K project to my VP, do I still need CFO approval?"</td><td>Looks up threshold, explains the escalation path</td></tr>
+      <tr><td><strong>Out-of-scope</strong></td><td>"What was our gross margin last quarter?"</td><td>Politely declines &mdash; not a policy question</td></tr>
+      <tr><td><strong>Trick question</strong></td><td>"What's the policy on accepting NFTs as supplier gifts?"</td><td>Should not invent an answer if not in policies</td></tr>
+    </table>
+
+    <div class="callout warn">
+      <strong>&#128640; Pilot before broadcasting:</strong> Share with 3&ndash;5 colleagues for a week. Collect feedback on accuracy, missing policies, and edge cases. Then refine and roll out to the broader team.
+    </div>
+
+    <h3>Where This Can Go Next</h3>
+    <div class="next-grid">
+      <div class="next-card">
+        <div class="icon">&#128221;</div>
+        <h4>Variance Commentary Helper</h4>
+        <p>An agent that drafts first-pass variance commentary from your actuals data.</p>
+      </div>
+      <div class="next-card">
+        <div class="icon">&#128197;</div>
+        <h4>Close Calendar Concierge</h4>
+        <p>Answers "when is X due?" and "what's left to close?" from the close checklist.</p>
+      </div>
+      <div class="next-card">
+        <div class="icon">&#128269;</div>
+        <h4>Retailer Deduction Triage</h4>
+        <p>Reads deduction notices and routes them to the right analyst with context.</p>
+      </div>
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 5</h4>
+      <label><input type="checkbox"> I understand the Agent Builder setup flow (Name, Description, Instructions, Knowledge, Starters)</label>
+      <label><input type="checkbox"> I can write effective agent instructions with guardrails</label>
+      <label><input type="checkbox"> I tested the agent with in-scope, edge-case, and out-of-scope questions</label>
+      <label><input type="checkbox"> I have a plan to pilot with a small group before broad rollout</label>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sec-resources">
+  <h2>&#128640; Resources &amp; Next Steps</h2>
+
+  <h3>Three Things to Do This Week</h3>
+  <ol class="steps">
+    <li><strong>Save 2 prompts</strong> you'll reuse &mdash; one for Copilot Chat, one for Word or Excel</li>
+    <li><strong>Draft one real memo</strong> in Word using Copilot and share it with a colleague for feedback</li>
+    <li><strong>Pilot the Policy Agent</strong> with 3 colleagues and collect their feedback</li>
+  </ol>
+
+  <h3>Helpful Links</h3>
+  <a class="resource-card" href="https://adoption.microsoft.com/copilot" target="_blank">
+    <span class="r-icon">&#127760;</span>
+    <span><strong>Copilot Adoption Hub</strong> &mdash; Official resources, guides, and best practices</span>
+  </a>
+  <a class="resource-card" href="https://copilot.cloud.microsoft/prompts" target="_blank">
+    <span class="r-icon">&#128221;</span>
+    <span><strong>Copilot Prompt Gallery</strong> &mdash; Browse and save finance-specific prompt templates</span>
+  </a>
+  <a class="resource-card" href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/copilot-studio-agent-builder" target="_blank">
+    <span class="r-icon">&#129302;</span>
+    <span><strong>Agent Builder Documentation</strong> &mdash; Step-by-step guide for building agents</span>
+  </a>
+  <a class="resource-card" href="https://support.microsoft.com/copilot" target="_blank">
+    <span class="r-icon">&#10067;</span>
+    <span><strong>Copilot Support</strong> &mdash; Troubleshooting and FAQ</span>
+  </a>
+</div>
+
+<div class="section" id="sec-troubleshooting">
+  <h2>&#128736; Troubleshooting</h2>
+  <table class="troubleshoot-table">
+    <tr><th style="width:35%;">Issue</th><th>Solution</th></tr>
+    <tr><td>"Draft with Copilot" not showing in Word</td><td>Ensure you're in a <strong>new blank document</strong> and your Copilot license is active. Try <a href="https://word.new" target="_blank">word.new</a> in a fresh browser tab.</td></tr>
+    <tr><td>Copilot can't access my referenced file</td><td>The file must be in <strong>OneDrive or SharePoint</strong> with AutoSave enabled. Local files won't work.</td></tr>
+    <tr><td>Excel Copilot says "I can't work with this data"</td><td>Your data must be in a <strong>formatted Excel Table</strong> (Ctrl+T). No merged cells, no blank rows, header row required.</td></tr>
+    <tr><td>PowerPoint slides look generic</td><td>Apply your team's <strong>template first</strong>, then generate slides. Copilot respects the active theme.</td></tr>
+    <tr><td>Agent gives wrong or invented answers</td><td>Check your <strong>Knowledge sources</strong> &mdash; the policy may not be uploaded yet. Add guardrail instructions to prevent invention.</td></tr>
+    <tr><td>Agent can't find my SharePoint folder</td><td>Ensure the folder has proper <strong>permissions</strong> and the files are readable (PDF, Word, not scanned images).</td></tr>
+  </table>
+</div>
+
+</div>
+</div>
+
+<footer>
+  <p><strong>Microsoft 365 Copilot for Finance &mdash; Extended Guide</strong></p>
+  <p>Supplementary material for the Copilot Training Series</p>
+</footer>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">&#9776;</button>
+
+<script>
+  function togglePart(bodyId, headerEl) {
+    const body = document.getElementById(bodyId);
+    const icon = headerEl.querySelector('.toggle-icon');
+    body.classList.toggle('collapsed');
+    icon.classList.toggle('open');
+  }
+
+  function copyPrompt(btn) {
+    const box = btn.parentElement;
+    const text = box.textContent.replace('Copy', '').replace('Copied!', '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+
+  document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) closeSidebar();
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.substring(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      const partCard = target.closest('.part-card');
+      if (partCard) {
+        const bodyEl = partCard.querySelector('.part-body');
+        if (bodyEl && bodyEl.classList.contains('collapsed')) {
+          const header = partCard.querySelector('.part-header');
+          togglePart(bodyEl.id, header);
+        }
+      }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+    const targets = [];
+    sidebarLinks.forEach(link => {
+      const id = link.getAttribute('href').substring(1);
+      const el = document.getElementById(id);
+      if (el) targets.push({ link, el });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+          });
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '-10% 0px -70% 0px' });
+
+    targets.forEach(t => observer.observe(t.el));
+  });
+</script>
+</body>
+</html>
