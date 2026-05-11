@@ -1,0 +1,660 @@
+---
+demo:
+    title: 'Ardent Mills Demo (Training)'
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot Training for Ardent Mills | Learning</title>
+<style>
+  :root {
+    --primary: #0078D4; --primary-dark: #005A9E; --primary-light: #DEECF9;
+    --accent: #107C10; --accent-light: #DFF6DD;
+    --warn: #D83B01; --warn-light: #FED9CC;
+    --purple: #5C2D91; --purple-light: #E8DAEF;
+    --wheat: #C49A2A; --wheat-light: #FFF3D6;
+    --neutral-900: #201F1E; --neutral-700: #323130; --neutral-500: #605E5C;
+    --neutral-300: #A19F9D; --neutral-100: #F3F2F1; --white: #FFFFFF;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08); --radius: 8px; --sidebar-width: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--neutral-700); line-height: 1.6; background: var(--neutral-100); }
+  .back-bar { background: var(--white); border-bottom: 1px solid #E0E0E0; padding: 0.5rem 1.5rem; font-size: 0.88rem; }
+  .back-bar a { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .back-bar a:hover { text-decoration: underline; }
+  .hero { background: linear-gradient(135deg, #8B6914 0%, #C49A2A 40%, #0078D4 100%); color: var(--white); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; background: rgba(255,255,255,0.04); border-radius: 50%; }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.5rem; }
+  .hero .scenario { background: rgba(255,255,255,0.12); border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0 1.25rem; font-size: 0.95rem; line-height: 1.5; }
+  .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.9rem; opacity: 0.85; }
+  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+  .layout { display: flex; max-width: 1260px; margin: 0 auto; }
+  .sidebar { width: var(--sidebar-width); flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--white); border-right: 1px solid #E0E0E0; padding: 1rem 0; font-size: 0.84rem; z-index: 100; }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--neutral-300); border-radius: 4px; }
+  .sidebar .sb-home { display: block; padding: 0.5rem 1.25rem 0.75rem; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.85rem; border-bottom: 1px solid var(--neutral-100); margin-bottom: 0.5rem; }
+  .sidebar .sb-home:hover { text-decoration: underline; }
+  .sidebar .sb-title { padding: 0.4rem 1.25rem; font-weight: 700; font-size: 0.9rem; color: var(--neutral-900); }
+  .sidebar a { display: block; padding: 0.35rem 1.25rem; color: var(--neutral-500); text-decoration: none; border-left: 3px solid transparent; transition: all 0.2s; }
+  .sidebar a:hover { color: var(--neutral-900); background: var(--neutral-100); }
+  .sidebar a.active { color: var(--primary); font-weight: 600; border-left-color: var(--primary); background: var(--primary-light); }
+  .sidebar a.part-link { font-weight: 600; color: var(--neutral-700); margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--neutral-100); }
+  .sidebar a.sub-link { padding-left: 2rem; font-size: 0.82rem; }
+  .sidebar a.section-link { color: var(--neutral-700); font-weight: 500; margin-top: 0.35rem; }
+  .main-content { flex: 1; min-width: 0; padding: 2rem 2rem 4rem; }
+  .sidebar-toggle { display: none; position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 200; background: var(--primary); color: var(--white); border: none; width: 48px; height: 48px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+  .sidebar-toggle:hover { background: var(--primary-dark); }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 250; }
+  .sidebar-overlay.open { display: block; }
+  .section { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; margin-bottom: 1.5rem; }
+  .section h2 { font-size: 1.35rem; font-weight: 700; color: var(--neutral-900); margin-bottom: 1rem; }
+  .section h3 { font-size: 1.1rem; font-weight: 600; color: var(--neutral-700); margin: 1.5rem 0 0.75rem; }
+  .section p { margin-bottom: 0.75rem; }
+  .objectives-list { list-style: none; padding: 0; }
+  .objectives-list li { padding: 0.6rem 0 0.6rem 2rem; position: relative; border-bottom: 1px solid var(--neutral-100); }
+  .objectives-list li:last-child { border-bottom: none; }
+  .objectives-list li::before { content: '\2713'; position: absolute; left: 0; top: 0.6rem; width: 22px; height: 22px; background: var(--accent-light); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  .prereq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+  .prereq-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.75rem; background: var(--neutral-100); border-radius: 6px; font-size: 0.9rem; }
+  .prereq-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+  .prereq-icon.blue { background: var(--primary-light); color: var(--primary); }
+  .prereq-icon.green { background: var(--accent-light); color: var(--accent); }
+  .prereq-icon.purple { background: var(--purple-light); color: var(--purple); }
+  .part-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; overflow: hidden; }
+  .part-header-bar { height: 5px; width: 100%; }
+  .part-header-bar.basics { background: var(--primary); }
+  .part-header-bar.outlook { background: #0078D4; }
+  .part-header-bar.teams { background: var(--purple); }
+  .part-header-bar.analyst { background: #217346; }
+  .part-header-bar.researcher { background: var(--primary-dark); }
+  .part-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; cursor: pointer; user-select: none; }
+  .part-header:hover { background: var(--neutral-100); }
+  .part-header h2 { margin: 0; font-size: 1.25rem; }
+  .part-header .toggle-icon { font-size: 1.4rem; color: var(--neutral-500); transition: transform 0.3s; }
+  .part-header .toggle-icon.open { transform: rotate(180deg); }
+  .part-body { padding: 0 2rem 2rem; }
+  .part-body.collapsed { display: none; }
+  .part-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--neutral-700); margin: 1.5rem 0 0.75rem; scroll-margin-top: 1rem; }
+  .part-body p { margin-bottom: 0.75rem; }
+  .prompt-box { position: relative; background: #1E1E1E; color: #D4D4D4; border-radius: 6px; padding: 1rem 1.25rem; font-family: 'Cascadia Code','Consolas',monospace; font-size: 0.88rem; line-height: 1.7; margin: 0.75rem 0 1rem; white-space: pre-wrap; word-wrap: break-word; }
+  .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.1); border: none; color: #D4D4D4; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; transition: background 0.2s; }
+  .copy-btn:hover { background: rgba(255,255,255,0.25); }
+  .copy-btn.copied { background: var(--accent); color: var(--white); }
+  .callout { border-left: 4px solid var(--primary); background: var(--primary-light); padding: 0.85rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.92rem; }
+  .callout.green { border-left-color: var(--accent); background: var(--accent-light); }
+  .callout.warn { border-left-color: var(--warn); background: var(--warn-light); }
+  .callout.purple { border-left-color: var(--purple); background: var(--purple-light); }
+  .callout.wheat { border-left-color: var(--wheat); background: var(--wheat-light); }
+  .callout strong { font-weight: 600; }
+  .steps { counter-reset: step; padding-left: 0; list-style: none; margin: 1rem 0; }
+  .steps li { counter-increment: step; position: relative; padding: 0.5rem 0 0.5rem 2.5rem; margin-bottom: 0.5rem; }
+  .steps li::before { content: counter(step); position: absolute; left: 0; top: 0.45rem; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  .self-check { background: var(--accent-light); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.5rem 0 0.5rem; }
+  .self-check h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .self-check label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; margin-bottom: 0.3rem; cursor: pointer; }
+  .self-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; }
+  .anatomy-grid { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; margin: 1rem 0; }
+  .anatomy-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; text-align: center; min-width: 80px; }
+  .anatomy-tag.goal { background: #E3F2FD; color: #1565C0; }
+  .anatomy-tag.context { background: #FFF3E0; color: #E65100; }
+  .anatomy-tag.scope { background: #E8F5E9; color: #2E7D32; }
+  .anatomy-tag.format { background: #F3E5F5; color: #6A1B9A; }
+  .anatomy-desc { font-size: 0.92rem; padding: 0.25rem 0; }
+  .tips-list { list-style: none; padding: 0; margin: 0.5rem 0; }
+  .tips-list li { padding: 0.3rem 0 0.3rem 1.5rem; position: relative; font-size: 0.92rem; }
+  .tips-list li::before { content: '\1F4A1'; position: absolute; left: 0; top: 0.3rem; }
+  .takeaways-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .takeaway-card { background: var(--neutral-100); border-radius: var(--radius); padding: 1.25rem; text-align: center; }
+  .takeaway-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .takeaway-card h4 { font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--neutral-900); }
+  .takeaway-card p { font-size: 0.85rem; color: var(--neutral-500); }
+  .discussion-list { list-style: none; padding: 0; }
+  .discussion-list li { padding: 0.6rem 0 0.6rem 2rem; position: relative; border-bottom: 1px solid var(--neutral-100); font-size: 0.92rem; }
+  .discussion-list li::before { content: '\1F4AC'; position: absolute; left: 0; top: 0.6rem; }
+  .troubleshoot-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  .troubleshoot-table th { background: var(--primary); color: var(--white); padding: 0.65rem 1rem; text-align: left; font-weight: 600; }
+  .troubleshoot-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--neutral-100); }
+  .troubleshoot-table tr:nth-child(even) td { background: var(--neutral-100); }
+  .whats-next { background: linear-gradient(135deg, #8B6914 0%, #C49A2A 40%, #0078D4 100%); color: var(--white); border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0; }
+  .whats-next h2 { color: var(--white); margin-bottom: 0.75rem; }
+  .whats-next p { opacity: 0.95; }
+  footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--neutral-500); border-top: 1px solid var(--neutral-300); margin-top: 2rem; }
+  @media (max-width: 900px) {
+    .sidebar { position: fixed; left: -280px; top: 0; height: 100vh; width: 270px; transition: left 0.3s ease; box-shadow: 4px 0 20px rgba(0,0,0,0.15); z-index: 300; }
+    .sidebar.open { left: 0; }
+    .sidebar-overlay.open { display: block; }
+    .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 1.5rem 1.25rem 3rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero-meta { flex-direction: column; gap: 0.5rem; }
+    .part-header { padding: 1rem 1.25rem; }
+    .part-body { padding: 0 1.25rem 1.5rem; }
+    .anatomy-grid { grid-template-columns: 1fr; }
+    .takeaways-grid { grid-template-columns: 1fr; }
+  }
+  @media print { .sidebar,.sidebar-toggle,.sidebar-overlay,.back-bar { display: none !important; } .main-content { padding: 0; } .part-body.collapsed { display: block !important; } }
+  [id] { scroll-margin-top: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="back-bar"><a href="../../">&larr; Back to Index</a></div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Microsoft 365 Copilot Training for Ardent Mills</h1>
+    <p class="subtitle">Copilot Training Series &mdash; Session 1: Building Confidence &amp; Practical Fluency</p>
+    <div class="scenario">
+      <strong>Objective:</strong> Build confidence and practical fluency with Microsoft 365 Copilot across the tools you use every day. Learn how Copilot can support milling operations, supply chain management, grain innovation, and cross-functional collaboration &mdash; and begin thinking differently about work when an AI assistant is part of the team.<br><br>
+      <em>No prior Copilot experience is required &mdash; just bring curiosity and a willingness to explore what&rsquo;s possible.</em>
+    </div>
+    <div class="hero-meta">
+      <span>&#9201; 60&ndash;90 min</span>
+      <span>&#128172; Copilot Chat</span>
+      <span>&#128231; Outlook</span>
+      <span>&#128101; Teams</span>
+      <span>&#128202; Analyst &amp; Researcher</span>
+      <span>&#127891; Instructor-Led</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="../../">&larr; Back to Index</a>
+  <div class="sb-title">Ardent Mills Training</div>
+  <a href="#sec-objectives" class="section-link">Learning Objectives</a>
+  <a href="#sec-prereqs" class="section-link">Prerequisites</a>
+  <a href="#part1" class="part-link">Part 1: Copilot Basics</a>
+  <a href="#sec-anatomy" class="sub-link">Anatomy of a Great Prompt</a>
+  <a href="#sec-practice1" class="sub-link">Practice 1: Your First Prompt</a>
+  <a href="#sec-practice2" class="sub-link">Practice 2: Save a Milling Prompt</a>
+  <a href="#sec-practice3" class="sub-link">Practice 3: Memory &amp; Instructions</a>
+  <a href="#part2" class="part-link">Part 2: Copilot in Outlook</a>
+  <a href="#sec-supply-email" class="sub-link">Supply Chain Update Email</a>
+  <a href="#sec-additional-emails" class="sub-link">Additional Email Prompts</a>
+  <a href="#part3" class="part-link">Part 3: Copilot in Teams</a>
+  <a href="#sec-meeting-recap" class="sub-link">A. Meeting Recap</a>
+  <a href="#sec-teams-chat" class="sub-link">B. Chat &amp; Channels</a>
+  <a href="#part4" class="part-link">Part 4: Analyst Agent</a>
+  <a href="#sec-yield" class="sub-link">Production Yield Analysis</a>
+  <a href="#sec-cost-variance" class="sub-link">Cost Variance Analysis</a>
+  <a href="#sec-scenario" class="sub-link">Scenario Modeling</a>
+  <a href="#sec-analyst-extra" class="sub-link">Additional Prompts</a>
+  <a href="#part5" class="part-link">Part 5: Researcher Agent</a>
+  <a href="#sec-commodity" class="sub-link">Commodity Market Research</a>
+  <a href="#sec-regulatory" class="sub-link">Regulatory &amp; Food Safety</a>
+  <a href="#sec-competitive" class="sub-link">Competitive Intelligence</a>
+  <a href="#sec-takeaways" class="section-link" style="margin-top:0.5rem;">Key Takeaways</a>
+  <a href="#sec-whatsnext" class="section-link">What&rsquo;s Next</a>
+  <a href="#sec-discussion" class="section-link">Discussion Questions</a>
+  <a href="#sec-troubleshooting" class="section-link">Troubleshooting</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-objectives">
+  <h2>&#127919; Learning Objectives</h2>
+  <ul class="objectives-list">
+    <li>Understand what a prompt is and how to craft effective prompts using Goal, Context, Scope, and Format</li>
+    <li>Save and reuse milling and operations-specific prompts for daily productivity</li>
+    <li>Use Copilot in Outlook to draft professional supply chain and operations communications</li>
+    <li>Leverage Copilot in Teams to recap production meetings and surface operational updates</li>
+    <li>Explore the Analyst agent for production data analysis, yield optimization, and cost modeling</li>
+    <li>Use the Researcher agent for commodity market intelligence, food safety regulations, and competitive analysis</li>
+  </ul>
+</div>
+
+<div class="section" id="sec-prereqs">
+  <h2>&#128203; Prerequisites</h2>
+  <div class="prereq-grid">
+    <div class="prereq-item"><div class="prereq-icon blue">M</div>Microsoft 365 Copilot License</div>
+    <div class="prereq-item"><div class="prereq-icon blue">&#127760;</div>Access to <strong>m365copilot.com</strong></div>
+    <div class="prereq-item"><div class="prereq-icon blue">&#128231;</div>Outlook (Web or Desktop)</div>
+    <div class="prereq-item"><div class="prereq-icon purple">&#128101;</div>Microsoft Teams</div>
+    <div class="prereq-item"><div class="prereq-icon green">&#9729;</div>OneDrive / SharePoint access</div>
+    <div class="prereq-item"><div class="prereq-icon green">&#128194;</div>Sample production files (optional)</div>
+  </div>
+</div>
+
+<div class="part-card" id="part1">
+  <div class="part-header-bar basics"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Part 1: Copilot Chat &mdash; The Basics</h2>
+    <span class="toggle-icon open">&#9662;</span>
+  </div>
+  <div class="part-body" id="body1">
+
+    <div class="callout wheat">
+      <strong>&#128161; Why This Matters:</strong> Every AI interaction starts with a prompt &mdash; the instruction you give Copilot. Milling and manufacturing professionals who master prompting can transform how they track production yields, manage supply chains, prepare quality reports, and communicate across 40+ community mills.
+    </div>
+
+    <h3 id="sec-anatomy">&#129516; Anatomy of a Great Prompt</h3>
+    <p>Every effective prompt includes up to four components. You don&rsquo;t always need all four, but the more context you provide, the better Copilot&rsquo;s response:</p>
+    <div class="anatomy-grid">
+      <span class="anatomy-tag goal">Goal</span>
+      <span class="anatomy-desc">What do you want Copilot to do? (e.g., &ldquo;Summarize&hellip;&rdquo;, &ldquo;Draft&hellip;&rdquo;, &ldquo;Analyze&hellip;&rdquo;)</span>
+      <span class="anatomy-tag context">Context</span>
+      <span class="anatomy-desc">Background or role info (e.g., &ldquo;I work in milling operations&hellip;&rdquo;, &ldquo;For our S&amp;OP review&hellip;&rdquo;)</span>
+      <span class="anatomy-tag scope">Scope</span>
+      <span class="anatomy-desc">Boundaries and limits (e.g., &ldquo;From the last 7 days&hellip;&rdquo;, &ldquo;Only from our Great Plains region&hellip;&rdquo;)</span>
+      <span class="anatomy-tag format">Format</span>
+      <span class="anatomy-desc">How should the output look? (e.g., &ldquo;In a table&hellip;&rdquo;, &ldquo;As bullet points&hellip;&rdquo;, &ldquo;In 3 paragraphs&hellip;&rdquo;)</span>
+    </div>
+    <div class="callout green">
+      <strong>Remember:</strong> You can always iterate! If the first result isn&rsquo;t perfect, refine your prompt and try again. Think of it as a conversation, not a single command.
+    </div>
+
+    <h3 id="sec-practice1">Practice 1: Your First Prompt &mdash; Catch Up on Your Day</h3>
+    <ol class="steps">
+      <li>Open a new browser tab and navigate to <strong><a href="https://m365copilot.com" target="_blank">M365copilot.com</a></strong></li>
+      <li>Make sure you see &ldquo;Work&rdquo; mode enabled (this lets Copilot search your Microsoft 365 data)</li>
+      <li>In the prompt window, type the following:</li>
+    </ol>
+    <div class="prompt-box">Copilot, summarize my emails, Teams messages, and channel messages from the last 1 workday. Categorize them as internal operations, supply chain updates, customer requests, or messages from my team or leadership, and prioritize them for my attention. List action items in a dedicated column and suggest follow-ups if possible, in a dedicated column.
+
+The table should look like this:
+Type (Mail/Teams/Channel) | Topic | Summarization | Category | Priority | Action Item | Follow-up.
+
+If I have been directly mentioned, make the font of the topic bold.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout">
+      <strong>&#128269; What just happened?</strong> Copilot searched your Microsoft 365 data &mdash; emails, Teams chats, and channel messages &mdash; and organized everything into a prioritized table. This is Copilot working in <strong>&ldquo;Work&rdquo; mode</strong>, grounded in your organizational data.
+    </div>
+
+    <h3 id="sec-practice2">Practice 2: Save a Milling-Specific Prompt</h3>
+    <p>Saving prompts lets you reuse them daily without rewriting. Let&rsquo;s create one tailored to Ardent Mills operations:</p>
+    <ol class="steps">
+      <li>In Copilot Chat, type and run the following prompt:</li>
+    </ol>
+    <div class="prompt-box">Summarize all emails and Teams messages I received this week related to production schedules, wheat procurement, flour quality, food safety, customer orders, or equipment maintenance. Highlight any action items, deadlines, or pending approvals I need to address.
+
+Present results in a table:
+Source (Email/Teams) | From | Topic | Summary | Priority | Action Required | Deadline.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <ol class="steps" start="2">
+      <li><strong>Save the prompt:</strong> Hover over your prompt &rarr; click <strong>Save Prompt</strong> &rarr; name it something clear like <em>&ldquo;Weekly Milling Operations Catch-Up&rdquo;</em></li>
+      <li><strong>Access saved prompts anytime:</strong> Open Copilot &rarr; click <strong>See more</strong> &rarr; select <strong>Prompt Gallery</strong> &rarr; go to <strong>Your prompts</strong></li>
+    </ol>
+    <ul class="tips-list">
+      <li>Use clear names for prompts (e.g., &ldquo;Weekly Milling Ops Catch-Up&rdquo;, &ldquo;Supply Chain Status Check&rdquo;)</li>
+      <li>Share your most useful prompts with operations teams across facilities for consistency</li>
+      <li>Regularly review and update saved prompts to keep them relevant</li>
+    </ul>
+
+    <h3 id="sec-practice3">Practice 3 (Optional): Memory &amp; Custom Instructions</h3>
+    <p>Copilot Memory creates a personalized experience based on your previous chats, work profile, and custom instructions. This helps Copilot understand your role at Ardent Mills.</p>
+    <ol class="steps">
+      <li>In Copilot, click the <strong>&ldquo;&hellip;&rdquo;</strong> menu</li>
+      <li>Open <strong>Settings</strong> &rarr; select <strong>Personalization</strong> &rarr; then <strong>Custom Instructions</strong></li>
+      <li>Add instructions that reflect your role. Here&rsquo;s an example:</li>
+    </ol>
+    <div class="prompt-box">I work in operations at Ardent Mills, North America's largest flour milling and grain ingredient company. We operate 40+ community mills across the U.S., Canada, and Puerto Rico. When I ask about production or supply chain topics, assume I understand milling terminology (extraction rates, ash content, protein levels, moisture content, etc.). When drafting communications, keep the tone professional and concise. Default to weekly timeframes unless I specify otherwise. Always include data sources when citing operational figures.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 1</h4>
+      <label><input type="checkbox"> I ran my first Copilot prompt and reviewed the results</label>
+      <label><input type="checkbox"> I understand the four components of a great prompt (Goal, Context, Scope, Format)</label>
+      <label><input type="checkbox"> I saved a milling-specific prompt to my Prompt Gallery</label>
+      <label><input type="checkbox"> (Optional) I configured Custom Instructions for my Ardent Mills role</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part2">
+  <div class="part-header-bar outlook"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Part 2: Copilot in Outlook &mdash; Draft Operations Communications</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body2">
+
+    <div class="callout">
+      <strong>&#128161; Why This Matters:</strong> Ardent Mills teams communicate across 40+ facilities daily &mdash; wheat procurement updates, production schedule changes, customer order confirmations, food safety alerts, and quality reports. Copilot can draft these in seconds, letting you focus on the decisions rather than the drafting.
+    </div>
+
+    <h3 id="sec-supply-email">Draft a Supply Chain Update Email</h3>
+    <ol class="steps">
+      <li>Open <strong>Outlook</strong> (web or desktop application)</li>
+      <li>Select <strong>New Email</strong></li>
+      <li>Select <strong>Copilot</strong> in the ribbon</li>
+      <li>From the drop-down menu, choose <strong>Draft with Copilot</strong></li>
+      <li>In the &ldquo;What do you want this email to say?&rdquo; prompt window, type:</li>
+    </ol>
+    <div class="prompt-box">Draft an email to the operations leadership team summarizing this week's wheat procurement and production status.
+
+Hard red winter wheat prices have increased 4% week-over-week due to drought conditions in the Southern Plains. Our Commerce City facility is running at 92% capacity with strong demand for our whole wheat flour lines. The Hastings mill completed its scheduled maintenance shutdown and is back online ahead of schedule. Two customer orders for organic flour blends are at risk of delay due to a railcar shortage affecting our Great Plains logistics corridor.
+
+Request that regional operations managers provide updated production forecasts by end of week. Include a reminder that the monthly S&amp;OP review is next Tuesday.
+
+Keep the tone professional but collaborative.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <ol class="steps" start="6">
+      <li>Review the generated draft</li>
+      <li>Use the <strong>Adjust</strong> feature to modify tone, length, or level of detail</li>
+      <li>Edit specific numbers or facility names to match your actual data before sending</li>
+    </ol>
+
+    <div class="callout green">
+      <strong>&#128161; Tip:</strong> You can refine the email further with follow-up prompts:
+    </div>
+    <div class="prompt-box">Make the tone more urgent and add a sentence about the importance of maintaining on-time delivery commitments during peak baking season.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="prompt-box">Shorten this email to 3 concise paragraphs and add a bullet-point summary of the key risks at the top.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3 id="sec-additional-emails">Optional: Additional Operations Email Prompts</h3>
+    <p>Try these other common Ardent Mills email scenarios:</p>
+    <div class="prompt-box">Draft an email to the quality assurance team providing an update on food safety compliance across our facilities. Three of five scheduled system audits are complete. The remaining two mills are on track for completion by end of month. Highlight any findings that need corrective action and request a 15-minute check-in if needed.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="prompt-box">Draft an email to customer accounts requesting updated Q3 volume forecasts by next Friday. Emphasize the importance of accuracy for production planning and wheat procurement scheduling. Include a brief reminder about our new specialty grain product lines that may support their reformulation needs.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 2</h4>
+      <label><input type="checkbox"> I drafted an operations email using Copilot in Outlook</label>
+      <label><input type="checkbox"> I used the Adjust feature to change tone or length</label>
+      <label><input type="checkbox"> I understand how to refine drafts with follow-up prompts</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part3">
+  <div class="part-header-bar teams"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Part 3: Copilot in Teams &mdash; Meetings &amp; Conversations</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body3">
+
+    <div class="callout purple">
+      <strong>&#128161; Why This Matters:</strong> From S&amp;OP reviews and production stand-ups to quality audits and customer innovation sessions &mdash; Ardent Mills teams spend significant time in meetings across 40+ locations. Copilot can capture decisions, action items, and critical production figures so you can focus on contributing rather than note-taking.
+    </div>
+
+    <h3 id="sec-meeting-recap">A. Meeting Recap</h3>
+    <p>After an operations meeting (or during a live meeting with transcription enabled), use Copilot to get an instant summary:</p>
+    <ol class="steps">
+      <li>Open a recent Teams meeting that had <strong>transcription</strong> or <strong>recording</strong> enabled</li>
+      <li>In the meeting chat, click the <strong>Copilot</strong> icon</li>
+      <li>Enter the following prompt:</li>
+    </ol>
+    <div class="prompt-box">Summarize the key decisions, action items, and operational metrics discussed in this meeting. Organize by topic and highlight any deadlines or owners assigned.
+
+Flag anything specifically mentioned about:
+- Production yield or extraction rates
+- Wheat quality or procurement pricing
+- Customer orders or delivery timelines
+- Food safety or quality system updates
+- Equipment maintenance or capital projects
+
+Then list any action items assigned to my team.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <p>You can follow up with more specific questions:</p>
+    <div class="prompt-box">What were the main concerns raised about wheat supply or commodity pricing? Who committed to follow-up actions?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="prompt-box">List all production figures and operational metrics mentioned in this meeting in a table format.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3 id="sec-teams-chat">B. Copilot in Teams Chat &amp; Channels</h3>
+    <p>Use Copilot to catch up on conversations happening in your operations channels:</p>
+    <ol class="steps">
+      <li>Open a Teams chat or channel where operations discussions happen</li>
+      <li>Click the <strong>Copilot</strong> icon in the chat</li>
+      <li>Enter the following prompt:</li>
+    </ol>
+    <div class="prompt-box">What updates have been shared about production schedules, equipment status, or quality issues in the last 7 days? Summarize any blockers, open items, or decisions made.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout warn">
+      <strong>&#127908; Instructor Note:</strong> Recap requires transcription. If a meeting wasn&rsquo;t recorded or transcribed, Copilot can&rsquo;t recap it. Encourage organizers to enable transcription for S&amp;OP reviews and production stand-ups.
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 3</h4>
+      <label><input type="checkbox"> I understand how to access Copilot in a Teams meeting</label>
+      <label><input type="checkbox"> I can use Copilot to summarize meeting decisions and action items</label>
+      <label><input type="checkbox"> I know how to catch up on channel conversations with Copilot</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part4">
+  <div class="part-header-bar analyst"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Part 4: Analyst Agent &mdash; Production Data &amp; Cost Modeling</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body4">
+
+    <div class="callout green">
+      <strong>&#128161; Why This Matters:</strong> Milling operations generate massive amounts of data &mdash; production yields, extraction rates, energy consumption, wheat quality metrics, and cost variances across 40+ facilities. The Analyst agent can analyze this data, build models, and generate visualizations instantly &mdash; even if you don&rsquo;t write code.
+    </div>
+
+    <h3>What is Analyst?</h3>
+    <p>Analyst is an expert agent built into the Copilot app. It can perform advanced data analysis and Python-powered computations &mdash; turning your milling operations data into actionable insights with charts and models in seconds.</p>
+
+    <h3>How to Access Analyst</h3>
+    <ol class="steps">
+      <li>Open the Copilot app from <strong><a href="https://m365.cloud.microsoft" target="_blank">m365.cloud.microsoft</a></strong></li>
+      <li>Use the left navigation to select <strong>Analyst</strong></li>
+    </ol>
+    <div class="callout">
+      <strong>&#128206; Note:</strong> Attach your Excel files using the <strong>+</strong> button or reference files from OneDrive/SharePoint using <strong>/</strong> in your prompt. Analyst works best with structured data (tables with headers).
+    </div>
+
+    <h3 id="sec-yield">Prompt 1: Production Yield Analysis</h3>
+    <div class="prompt-box">Analyze this production data across our milling facilities. Identify the top 3 and bottom 3 facilities by flour extraction rate. Create a visualization comparing yield efficiency across all mills and highlight any facilities where extraction rates have declined more than 2% quarter-over-quarter. Summarize the key factors that could explain the variance.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <p><em>&#128206; Attach: Your production data Excel file using + or /</em></p>
+
+    <h3 id="sec-cost-variance">Prompt 2: Cost Variance Analysis</h3>
+    <div class="prompt-box">Analyze this cost data comparing budget vs. actuals for our milling operations. Identify the top 3 cost categories that are over budget and the top 3 that are under budget. Create a waterfall chart showing the variance by category. Focus on wheat procurement costs, energy costs, transportation, and labor. Recommend areas for cost optimization.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <p><em>&#128206; Attach: Budget vs. Actuals spreadsheet</em></p>
+
+    <h3 id="sec-scenario">Prompt 3: Scenario Modeling</h3>
+    <div class="prompt-box">Using this production and cost data, model three scenarios for next quarter: conservative (wheat prices +8%, volume flat), base case (wheat prices +3%, volume +2%), and aggressive (wheat prices -2%, volume +5%). Show a comparison chart of the impact on per-unit flour cost and total production margin for each scenario. Summarize the key assumptions.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <p><em>&#128206; Attach: Production and cost planning spreadsheet</em></p>
+
+    <h3 id="sec-analyst-extra">Additional Analyst Prompts</h3>
+    <div class="prompt-box">Analyze our energy consumption trends across milling facilities over the last 6 months. Identify which facilities have the highest energy cost per metric ton of flour produced and flag any that exceed a 10% month-over-month increase. Visualize the trends in a line chart.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <div class="prompt-box">Calculate key operational efficiency metrics from this data &mdash; extraction rate, energy per metric ton, downtime percentage, and on-time delivery rate. Present results in a dashboard-style table and flag any metrics that fall outside our target benchmarks.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <div class="callout green">
+      <strong>Key Takeaway:</strong> Analyst explains its reasoning transparently so you can validate the results. It&rsquo;s like having a data scientist embedded in your operations team &mdash; available on demand.
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 4</h4>
+      <label><input type="checkbox"> I know how to access the Analyst agent in the Copilot app</label>
+      <label><input type="checkbox"> I ran at least one production analysis prompt with Analyst</label>
+      <label><input type="checkbox"> I understand how to attach files for data analysis</label>
+      <label><input type="checkbox"> I reviewed Analyst&rsquo;s reasoning and visualizations</label>
+    </div>
+  </div>
+</div>
+
+<div class="part-card" id="part5">
+  <div class="part-header-bar researcher"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Part 5: Researcher Agent &mdash; Market Intelligence &amp; Regulatory Research</h2>
+    <span class="toggle-icon">&#9662;</span>
+  </div>
+  <div class="part-body collapsed" id="body5">
+
+    <div class="callout">
+      <strong>&#128161; Why This Matters:</strong> Ardent Mills operates at the intersection of agriculture, food manufacturing, and consumer trends. The Researcher agent can blend internal files, web data, and market intelligence into structured, well-cited deliverables &mdash; from commodity market reports to food safety regulatory updates.
+    </div>
+
+    <h3>What is Researcher?</h3>
+    <p>Researcher is an expert agent built into the Copilot app. It handles multi-step research tasks by combining web sources with your company&rsquo;s internal files and knowledge. It cites all sources so you can validate its work.</p>
+
+    <h3>How to Access Researcher</h3>
+    <ol class="steps">
+      <li>Open the Copilot app from <strong><a href="https://m365.cloud.microsoft" target="_blank">m365.cloud.microsoft</a></strong></li>
+      <li>Use the left navigation to select <strong>Researcher</strong></li>
+    </ol>
+    <div class="callout">
+      <strong>&#128206; Note:</strong> Researcher can reference internal files from OneDrive/SharePoint using <strong>/</strong>. For best results, point it to relevant operational summaries, reports, or strategy documents.
+    </div>
+    <div class="callout warn">
+      <strong>&#9203; Important:</strong> Researcher prompts may take a few minutes to process because they involve multi-step reasoning. Consider submitting your first prompt early in the session so results are ready when you return to this section.
+    </div>
+
+    <h3 id="sec-commodity">Prompt 1: Commodity Market Research</h3>
+    <div class="prompt-box">Research current wheat commodity market conditions, including hard red winter, hard red spring, and soft white wheat pricing trends over the last 6 months. Analyze the key drivers &mdash; weather patterns, global supply/demand, export activity, and USDA crop reports. Provide a summary of price outlook for the next quarter and recommend procurement timing strategies.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3 id="sec-regulatory">Prompt 2: Regulatory &amp; Food Safety Research</h3>
+    <div class="prompt-box">Research the latest FDA food safety regulations and FSMA (Food Safety Modernization Act) updates that could impact flour milling operations in 2025&ndash;2026. Summarize key compliance requirements, any new testing or reporting obligations, and recommend preparation steps our food safety team should take. Include any updates related to pathogen control in grain-based ingredients.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+    <h3 id="sec-competitive">Prompt 3: Competitive Intelligence</h3>
+    <div class="prompt-box">Analyze the market positioning and recent activities of [Competitor A] and [Competitor B] in the North American flour milling and grain ingredients market. Compare their product innovation strategies, sustainability initiatives, and customer segments. Present findings in a structured comparison table and highlight areas where Ardent Mills could differentiate or gain competitive advantage.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+    <p><em>&#128161; Replace [Competitor A] and [Competitor B] with actual competitor names.</em></p>
+
+    <div class="callout green">
+      <strong>Key Takeaway:</strong> Researcher shows its reasoning path (&ldquo;chain of thought&rdquo;) and cites sources so you can trace every insight back to its origin. It accelerates strategic work that would normally take days of manual research.
+    </div>
+
+    <div class="self-check">
+      <h4>&#9989; Self-Check: Part 5</h4>
+      <label><input type="checkbox"> I know how to access the Researcher agent in the Copilot app</label>
+      <label><input type="checkbox"> I ran at least one research prompt with Researcher</label>
+      <label><input type="checkbox"> I reviewed the cited sources in Researcher&rsquo;s output</label>
+      <label><input type="checkbox"> I understand the difference between Analyst and Researcher</label>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sec-takeaways">
+  <h2>&#128273; Key Takeaways</h2>
+  <div class="takeaways-grid">
+    <div class="takeaway-card">
+      <div class="icon">&#127793;</div>
+      <h4>Start Simple, Build Up</h4>
+      <p>Begin with basic prompts and add detail as you get comfortable. Every great prompt started as a simple question.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="icon">&#128279;</div>
+      <h4>Chain Your Tools</h4>
+      <p>Use Copilot Chat to research &rarr; Analyst to model &rarr; Outlook to communicate. Chain tools for end-to-end workflows.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="icon">&#128260;</div>
+      <h4>Iterate, Don&rsquo;t Accept First Draft</h4>
+      <p>Refine and follow up. Copilot gets better with each iteration &mdash; treat it as a conversation, not a one-shot answer.</p>
+    </div>
+    <div class="takeaway-card">
+      <div class="icon">&#129504;</div>
+      <h4>AI Assists, You Decide</h4>
+      <p>Copilot accelerates your work, but your milling expertise and operational judgment remain essential. Always review and validate.</p>
+    </div>
+  </div>
+</div>
+
+<div class="whats-next" id="sec-whatsnext">
+  <h2>&#128640; What&rsquo;s Next?</h2>
+  <p>This session was just the beginning. These virtual sessions are designed to get you moving quickly &mdash; building confidence, practical fluency, and real momentum with Copilot across Ardent Mills.</p>
+  <p style="margin-top: 0.75rem;"><strong>Coming up:</strong> A deeper, hands-on workshop where we&rsquo;ll work through real Ardent Mills scenarios &mdash; production analysis, supply chain coordination, customer communications, and even building your first AI agent &mdash; together.</p>
+  <p style="margin-top: 0.75rem;">In the meantime &mdash; practice what you learned today, save prompts that work for you, and share them across your facility teams. The more you use Copilot, the more it becomes a natural part of how you work.</p>
+</div>
+
+<div class="section" id="sec-discussion">
+  <h2>&#128172; Discussion Questions</h2>
+  <ul class="discussion-list">
+    <li>Which part of your daily workflow would benefit most from Copilot? (e.g., production reporting, supply chain coordination, quality management, customer communications)</li>
+    <li>How could saved prompts be standardized across Ardent Mills&rsquo; 40+ facilities for consistency?</li>
+    <li>What production or operations data would you want to bring to the Analyst agent for deeper analysis?</li>
+    <li>How could Researcher help you prepare for the next S&amp;OP review or leadership meeting?</li>
+    <li>What concerns or questions do you have about using AI for operational data and communications?</li>
+  </ul>
+</div>
+
+<div class="section" id="sec-troubleshooting">
+  <h2>&#128736; Troubleshooting</h2>
+  <table class="troubleshoot-table">
+    <tr><th style="width: 35%;">Issue</th><th>Solution</th></tr>
+    <tr><td>Copilot says &ldquo;I can&rsquo;t find that information&rdquo;</td><td>Make sure you&rsquo;re in <strong>Work</strong> mode (not Web mode) when searching organizational data. Check that files are in OneDrive or SharePoint.</td></tr>
+    <tr><td>Draft email doesn&rsquo;t include specific details</td><td>Provide more context in your prompt &mdash; include actual numbers, facility names, and dates you want referenced.</td></tr>
+    <tr><td>Teams Copilot not available for a meeting</td><td>Meeting transcription or recording must be enabled. Check with your IT admin if the feature is turned off.</td></tr>
+    <tr><td>Analyst isn&rsquo;t analyzing my file</td><td>Make sure the file is a structured Excel spreadsheet with clear headers. Upload using <strong>+</strong> or reference from OneDrive using <strong>/</strong>.</td></tr>
+    <tr><td>Researcher is taking a long time</td><td>Researcher performs multi-step reasoning and may take 2&ndash;5 minutes for complex prompts. This is expected.</td></tr>
+    <tr><td>Results seem inaccurate or incomplete</td><td>Refine your prompt with more specific context. Break complex questions into smaller, focused prompts.</td></tr>
+    <tr><td>Copilot icon not visible in Outlook or Teams</td><td>Confirm your Microsoft 365 Copilot license is active. Try the web version of the app if the desktop icon is missing.</td></tr>
+  </table>
+</div>
+
+</div>
+</div>
+
+<footer>
+  <p><strong>Microsoft 365 Copilot Training for Ardent Mills</strong> &mdash; Session 1: Building Confidence &amp; Practical Fluency</p>
+  <p>For questions or feedback, reach out to your training facilitator.</p>
+</footer>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">&#9776;</button>
+
+<script>
+  function togglePart(bodyId, headerEl) {
+    const body = document.getElementById(bodyId);
+    const icon = headerEl.querySelector('.toggle-icon');
+    body.classList.toggle('collapsed');
+    icon.classList.toggle('open');
+  }
+  function copyPrompt(btn) {
+    const box = btn.parentElement;
+    const text = box.textContent.replace('Copy', '').replace('Copied!', '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) closeSidebar();
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.substring(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      const partCard = target.closest('.part-card');
+      if (partCard) {
+        const bodyEl = partCard.querySelector('.part-body');
+        if (bodyEl && bodyEl.classList.contains('collapsed')) {
+          const header = partCard.querySelector('.part-header');
+          togglePart(bodyEl.id, header);
+        }
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+    const targets = [];
+    sidebarLinks.forEach(link => {
+      const id = link.getAttribute('href').substring(1);
+      const el = document.getElementById(id);
+      if (el) targets.push({ link, el });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+          });
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '-10% 0px -70% 0px' });
+    targets.forEach(t => observer.observe(t.el));
+  });
+</script>
+</body>
+</html>
