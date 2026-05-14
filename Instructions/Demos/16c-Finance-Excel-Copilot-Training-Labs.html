@@ -1,0 +1,1428 @@
+---
+demo:
+    title: 'Copilot in Excel for Finance — Hands-On Labs'
+layout: none
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot in Excel — Finance Training Labs</title>
+<style>
+  :root {
+    --primary: #0078D4;
+    --primary-dark: #005A9E;
+    --primary-light: #DEECF9;
+    --accent: #107C10;
+    --accent-light: #DFF6DD;
+    --warn: #D83B01;
+    --warn-light: #FED9CC;
+    --purple: #5C2D91;
+    --purple-light: #E8DAEF;
+    --excel-green: #217346;
+    --excel-green-light: #E2F0D9;
+    --neutral-900: #201F1E;
+    --neutral-700: #323130;
+    --neutral-500: #605E5C;
+    --neutral-300: #A19F9D;
+    --neutral-100: #F3F2F1;
+    --white: #FFFFFF;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --radius: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--neutral-700);
+    line-height: 1.6;
+    background: var(--neutral-100);
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1B5E20 0%, #217346 40%, #0078D4 100%);
+    color: var(--white);
+    padding: 3rem 2rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; top: -40%; right: -10%;
+    width: 500px; height: 500px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.5rem; }
+  .hero .scenario {
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 0.9rem; opacity: 0.85;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+  .hero-meta svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* Container */
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* Progress Bar */
+  .progress-bar {
+    display: flex; gap: 0; margin-bottom: 2rem;
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .progress-step {
+    flex: 1; text-align: center; padding: 0.7rem 0.3rem;
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--neutral-500);
+    border-bottom: 3px solid transparent;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .progress-step.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-light); }
+  .progress-step.completed { color: var(--accent); border-bottom-color: var(--accent); }
+  .progress-step .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--neutral-100); color: var(--neutral-500);
+    font-size: 0.75rem; margin-bottom: 0.2rem;
+  }
+  .progress-step.active .step-num { background: var(--primary); color: var(--white); }
+  .progress-step.completed .step-num { background: var(--accent); color: var(--white); }
+
+  /* Section */
+  .section {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 2rem; margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--neutral-900); margin-bottom: 1rem;
+  }
+  .section h3 {
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--neutral-700); margin: 1.5rem 0 0.75rem;
+  }
+  .section p { margin-bottom: 0.75rem; }
+
+  /* Learning Objectives */
+  .objectives-list { list-style: none; padding: 0; }
+  .objectives-list li {
+    padding: 0.6rem 0 0.6rem 2rem; position: relative;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  .objectives-list li:last-child { border-bottom: none; }
+  .objectives-list li::before {
+    content: '✓'; position: absolute; left: 0; top: 0.6rem;
+    width: 22px; height: 22px; background: var(--accent-light);
+    color: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700;
+  }
+
+  /* Prerequisites */
+  .prereq-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .prereq-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem; background: var(--neutral-100);
+    border-radius: 6px; font-size: 0.9rem;
+  }
+  .prereq-item .icon { font-size: 1.2rem; }
+
+  /* Lab Card */
+  .lab-card {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .lab-header-bar {
+    padding: 0.75rem 2rem;
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--white);
+    background: var(--excel-green);
+  }
+  .lab-header-bar.preview { background: var(--purple); }
+  .lab-header-bar.capstone { background: var(--primary-dark); }
+  .lab-header {
+    padding: 1.25rem 2rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .lab-header:hover { background: var(--neutral-100); }
+  .lab-header h2 { margin-bottom: 0; font-size: 1.2rem; }
+  .lab-meta { display: flex; gap: 1rem; margin-top: 0.3rem; font-size: 0.85rem; color: var(--neutral-500); }
+  .lab-body { padding: 0 2rem 2rem; }
+  .lab-toggle { font-size: 1.5rem; color: var(--neutral-300); transition: transform 0.3s; }
+  .lab-card.collapsed .lab-body { display: none; }
+  .lab-card.collapsed .lab-toggle { transform: rotate(-90deg); }
+
+  /* Why Box */
+  .why-box {
+    background: linear-gradient(135deg, var(--excel-green-light), #F0F6FF);
+    border-radius: 6px; padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem; border-left: 3px solid var(--excel-green);
+  }
+  .why-box h4 {
+    font-size: 0.85rem; text-transform: uppercase;
+    color: var(--excel-green); margin-bottom: 0.5rem; letter-spacing: 0.5px;
+  }
+  .why-box p { font-size: 0.95rem; margin: 0; color: var(--neutral-700); }
+
+  /* Time Saved */
+  .time-saved {
+    background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+    border-radius: 6px; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-left: 3px solid #F9A825;
+    font-size: 0.9rem;
+  }
+  .time-saved h4 {
+    font-size: 0.8rem; text-transform: uppercase;
+    color: #E65100; margin-bottom: 0.4rem; letter-spacing: 0.5px;
+  }
+  .time-saved .compare {
+    display: flex; gap: 2rem; margin-top: 0.4rem;
+  }
+  .time-saved .compare span { display: flex; align-items: center; gap: 0.3rem; }
+  .time-saved .old { color: #C62828; text-decoration: line-through; opacity: 0.7; }
+  .time-saved .new { color: var(--excel-green); font-weight: 600; }
+
+  /* Instructor Note */
+  .instructor-note {
+    background: var(--purple-light);
+    border-radius: 6px; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-left: 3px solid var(--purple);
+    font-size: 0.9rem;
+  }
+  .instructor-note h4 {
+    font-size: 0.8rem; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 0.4rem; letter-spacing: 0.5px;
+  }
+  .instructor-note p { margin: 0; }
+
+  /* Steps */
+  .steps-list { list-style: none; padding: 0; counter-reset: step; }
+  .steps-list li {
+    counter-increment: step;
+    padding: 1rem 0 1rem 3rem; position: relative;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  .steps-list li:last-child { border-bottom: none; }
+  .steps-list li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 1rem;
+    width: 28px; height: 28px; background: var(--excel-green);
+    color: var(--white); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .steps-list li strong { color: var(--neutral-900); }
+
+  /* Exercise Group */
+  .exercise {
+    background: var(--neutral-100); border-radius: 6px;
+    padding: 1.25rem 1.5rem; margin: 1rem 0;
+  }
+  .exercise h4 {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--neutral-900); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .exercise h4 .badge {
+    background: var(--excel-green); color: white;
+    padding: 0.1rem 0.5rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 600;
+  }
+  .exercise > p { font-size: 0.9rem; }
+
+  /* Prompt Box */
+  .prompt-box {
+    background: var(--neutral-900); color: #E8E8E8;
+    border-radius: 6px; padding: 1.25rem 1.5rem; margin: 0.75rem 0;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.88rem; line-height: 1.7;
+    position: relative; white-space: pre-wrap; word-wrap: break-word;
+  }
+  .prompt-box .label {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--neutral-300); margin-bottom: 0.5rem;
+  }
+  .prompt-box .copy-btn {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--neutral-300);
+    padding: 0.3rem 0.6rem; border-radius: 4px;
+    font-size: 0.75rem; cursor: pointer; transition: all 0.2s;
+  }
+  .prompt-box .copy-btn:hover { background: rgba(255,255,255,0.2); color: var(--white); }
+
+  /* Formula Box (for COPILOT() function) */
+  .formula-box {
+    background: #1E3A1E; color: #A8D08D;
+    border-radius: 6px; padding: 1.25rem 1.5rem; margin: 0.75rem 0;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.88rem; line-height: 1.7;
+    position: relative; white-space: pre-wrap; word-wrap: break-word;
+  }
+  .formula-box .label {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: #6BAF4F; margin-bottom: 0.5rem;
+  }
+  .formula-box .copy-btn {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #6BAF4F;
+    padding: 0.3rem 0.6rem; border-radius: 4px;
+    font-size: 0.75rem; cursor: pointer; transition: all 0.2s;
+  }
+  .formula-box .copy-btn:hover { background: rgba(255,255,255,0.2); color: #A8D08D; }
+
+  /* Action Badge */
+  .action-badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: var(--accent-light); color: var(--accent);
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+    margin: 0.25rem 0;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 6px; padding: 1rem 1.25rem;
+    margin: 1rem 0; font-size: 0.9rem;
+    display: flex; gap: 0.75rem; align-items: flex-start;
+  }
+  .callout .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .callout-tip { background: var(--accent-light); border-left: 3px solid var(--accent); }
+  .callout-note { background: var(--primary-light); border-left: 3px solid var(--primary); }
+  .callout-warn { background: var(--warn-light); border-left: 3px solid var(--warn); }
+
+  /* Expected Output */
+  .expected-output {
+    background: #F9F9F9; border: 1px dashed #D0D0D0;
+    border-radius: 6px; padding: 1.25rem; margin: 1rem 0;
+  }
+  .expected-output h4 {
+    font-size: 0.85rem; text-transform: uppercase;
+    color: var(--neutral-500); margin-bottom: 0.5rem; letter-spacing: 0.5px;
+  }
+  .expected-output ul { margin-left: 1.25rem; font-size: 0.9rem; }
+  .expected-output li { padding: 0.2rem 0; }
+
+  /* Self-Check */
+  .self-check {
+    background: var(--accent-light); border-radius: 6px;
+    padding: 1.25rem; margin: 1.5rem 0 0;
+  }
+  .self-check h4 {
+    font-size: 0.85rem; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 0.5px;
+  }
+  .self-check label {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 0; font-size: 0.9rem; cursor: pointer;
+  }
+  .self-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; }
+
+  /* Troubleshooting */
+  .troubleshoot-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.9rem; margin-top: 0.5rem;
+  }
+  .troubleshoot-table th {
+    background: var(--neutral-100); text-align: left;
+    padding: 0.75rem 1rem; font-weight: 600;
+    border-bottom: 2px solid #E0E0E0;
+  }
+  .troubleshoot-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--neutral-100);
+    vertical-align: top;
+  }
+  .troubleshoot-table tr:hover td { background: #FAFAFA; }
+
+  /* Discussion Questions */
+  .discussion-list { list-style: none; padding: 0; counter-reset: q; }
+  .discussion-list li {
+    counter-increment: q;
+    padding: 0.75rem 0 0.75rem 2.5rem; position: relative;
+    border-bottom: 1px solid var(--neutral-100);
+    font-size: 0.95rem;
+  }
+  .discussion-list li:last-child { border-bottom: none; }
+  .discussion-list li::before {
+    content: 'Q' counter(q);
+    position: absolute; left: 0; top: 0.75rem;
+    background: var(--purple-light); color: var(--purple);
+    padding: 0.1rem 0.4rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 700;
+  }
+
+  /* Takeaways */
+  .takeaways-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .takeaway-card {
+    background: var(--neutral-100); border-radius: 6px; padding: 1.25rem;
+  }
+  .takeaway-card .num { font-size: 1.5rem; font-weight: 700; color: var(--excel-green); margin-bottom: 0.3rem; }
+  .takeaway-card h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .takeaway-card p { font-size: 0.85rem; color: var(--neutral-500); margin: 0; }
+
+  /* Download Button */
+  .download-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--excel-green); color: white;
+    padding: 0.6rem 1.25rem; border-radius: 6px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.9rem; transition: background 0.2s;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+  }
+  .download-btn:hover { background: #1B5E20; }
+
+  .footer {
+    text-align: center; padding: 2rem;
+    color: var(--neutral-500); font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero { padding: 2rem 1.25rem; }
+    .hero h1 { font-size: 1.5rem; }
+    .container { padding: 1.25rem 1rem 3rem; }
+    .section, .lab-body { padding: 1.25rem; }
+    .lab-header { padding: 1rem 1.25rem; }
+    .progress-step { font-size: 0.6rem; padding: 0.5rem 0.15rem; }
+    .time-saved .compare { flex-direction: column; gap: 0.3rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .hero { break-after: avoid; }
+    .lab-card { break-inside: avoid; }
+    .lab-card.collapsed .lab-body { display: block !important; }
+    .progress-bar, .copy-btn, .self-check input { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Copilot in Excel for Finance</h1>
+    <p class="subtitle">Hands-On Training Labs — From Data Prep to Month-End Close</p>
+    <div class="scenario">
+      <strong>Scenario:</strong> You're a finance professional at Contoso Corp, a mid-market company with ~$180M annual revenue. It's the first week of April 2026 and your team is closing March / Q3 FY26 books. You'll use Copilot in Excel to clean GL data, analyze budget variances, age receivables, generate financial commentary, and reconcile the bank statement — the same workflows you do every month, but faster.
+    </div>
+    <div class="hero-meta">
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+        75–90 minutes
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+        Copilot in Excel (Edit with Copilot + COPILOT() Function)
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Instructor-Led or Self-Paced
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar">
+    <div class="progress-step" onclick="scrollToLab('lab0')">
+      <div class="step-num">⚙</div><br>Setup
+    </div>
+    <div class="progress-step" onclick="scrollToLab('lab1')">
+      <div class="step-num">1</div><br>GL Cleanup
+    </div>
+    <div class="progress-step" onclick="scrollToLab('lab2')">
+      <div class="step-num">2</div><br>Variance
+    </div>
+    <div class="progress-step" onclick="scrollToLab('lab3')">
+      <div class="step-num">3</div><br>AR Aging
+    </div>
+    <div class="progress-step" onclick="scrollToLab('lab4')">
+      <div class="step-num">4</div><br>COPILOT()
+    </div>
+    <div class="progress-step" onclick="scrollToLab('lab5')">
+      <div class="step-num">5</div><br>Bank Rec
+    </div>
+  </div>
+
+  <!-- HOW TO USE THIS GUIDE -->
+  <div class="section">
+    <h2>How to Use This Guide</h2>
+    <p>Each lab is collapsible — click the title to expand or collapse. Every prompt has a <strong>Copy</strong> button so you can paste it straight into Excel Copilot. Work through Lab 0 first for setup, then complete the labs in order — they build on each other using the same company scenario.</p>
+    <div class="callout callout-tip">
+      <span class="icon">💡</span>
+      <div><strong>Pro tip:</strong> The most productive Copilot users treat it as a conversation. Start broad, refine based on results, and iterate until the output matches what you'd present to leadership. If Copilot doesn't nail it on the first try, rephrase — just like you would with a colleague.</div>
+    </div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="section">
+    <h2>Learning Objectives</h2>
+    <p>By the end of this training, you will be able to:</p>
+    <ul class="objectives-list">
+      <li>Clean and restructure raw ERP data exports using natural language prompts</li>
+      <li>Build budget-vs-actuals variance analyses with calculated columns and summary tables</li>
+      <li>Create accounts receivable aging reports with collection priority rankings</li>
+      <li>Use the COPILOT() function to generate financial commentary directly in cells</li>
+      <li>Perform bank reconciliation tasks: matching, exception flagging, and duplicate detection</li>
+      <li>Apply conditional formatting and charts to surface financial insights visually</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 0: QUICK START & SETUP -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab0">
+    <div class="lab-header-bar">Lab 0 — Quick Start &amp; Setup</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>What is Edit with Copilot?</h2>
+        <div class="lab-meta">
+          <span>⏱️ 5 minutes</span>
+          <span>🎯 Setup &amp; orientation</span>
+          <span>🛠️ No exercise — just read</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <p><strong>Edit with Copilot</strong> is an AI assistant built into Excel. Instead of writing formulas or building charts yourself, you describe what you want in plain English — and Copilot makes the change directly on the sheet. You stay in control: every change can be reviewed, kept, or undone with <strong>Ctrl+Z</strong>.</p>
+
+      <p><strong>Key idea:</strong> Copilot doesn't just <em>tell</em> you what to do — it <em>does</em> it for you. And every formula it writes is a real Excel formula you can inspect and edit.</p>
+
+      <h3>Before you start — check these</h3>
+      <div class="prereq-grid">
+        <div class="prereq-item"><span class="icon">🔑</span><span>Microsoft 365 Copilot license</span></div>
+        <div class="prereq-item"><span class="icon">📊</span><span>Excel for the web, Windows, or Mac</span></div>
+        <div class="prereq-item"><span class="icon">☁️</span><span>Files saved to OneDrive or SharePoint</span></div>
+        <div class="prereq-item"><span class="icon">🌐</span><span>Internet connectivity</span></div>
+        <div class="prereq-item"><span class="icon">📋</span><span>Data formatted as an Excel Table</span></div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="icon">💡</span>
+        <div><strong>Tip:</strong> Press <code>Ctrl+T</code> to convert a data range into a table. Copilot performs significantly better with tables — it understands column names and data boundaries automatically.</div>
+      </div>
+
+      <h3>How to open Copilot in Excel</h3>
+      <ol class="steps-list">
+        <li>Open your workbook in Excel.</li>
+        <li>Click the <strong>Copilot</strong> icon on the <strong>Home</strong> tab of the ribbon.</li>
+        <li>The Copilot pane opens on the right side of the screen.</li>
+        <li>Type a natural-language prompt describing what you want. Copilot processes it and makes changes on the sheet.</li>
+        <li>If you don't like the result, press <strong>Ctrl+Z</strong> to undo instantly.</li>
+      </ol>
+
+      <div class="callout callout-note">
+        <span class="icon">📌</span>
+        <div><strong>Don't see the Copilot icon?</strong> Your tenant or license may not have Copilot enabled — check with your IT admin. Also ensure the file is saved to OneDrive or SharePoint (not stored locally).</div>
+      </div>
+
+      <div class="callout callout-warn">
+        <span class="icon">🔴</span>
+        <div><strong>Important:</strong> Lab 4 uses the new <code>COPILOT()</code> function, which is currently in <strong>Preview</strong>. You'll need to be on the right Microsoft 365 channel (Beta / Current Channel Preview) for that lab to work. Labs 0–3 and 5 work in standard channels.</div>
+      </div>
+
+      <h3>Download the Sample Workbooks</h3>
+      <p>Download the two Excel workbooks used in this training. Save them to your <strong>OneDrive</strong> before opening.</p>
+      <div style="margin: 1rem 0;">
+        <a href="../../ResourceFiles/Finance-Copilot-Labs-1-3.xlsx" class="download-btn" download>
+          📥 Finance-Copilot-Labs-1-3.xlsx
+        </a>
+        <a href="../../ResourceFiles/Finance-Copilot-Labs-4-6.xlsx" class="download-btn" download>
+          📥 Finance-Copilot-Labs-4-6.xlsx
+        </a>
+      </div>
+      <div class="callout callout-note">
+        <span class="icon">📌</span>
+        <div><strong>Important:</strong> After downloading, upload each file to your <strong>OneDrive</strong> and open from there (or open directly in Excel for the web). Copilot requires the file to be stored in OneDrive or SharePoint — it won't work with local-only files.</div>
+      </div>
+
+      <div class="instructor-note">
+        <h4>Instructor Note</h4>
+        <p>Before the session: verify both files open correctly, confirm Copilot is available in the Excel ribbon, and pre-load the first workbook to minimize setup time. Walk through the Copilot pane orientation (prompt box, suggestions, Apply/Insert Column buttons) before Lab 1.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 1: CLEAN & STRUCTURE RAW GL DATA -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab1">
+    <div class="lab-header-bar">Lab 1 — Clean &amp; Structure Raw Financial Data</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>Clean &amp; Structure a Raw GL Export</h2>
+        <div class="lab-meta">
+          <span>⏱️ 15 minutes</span>
+          <span>🎯 Data transformation &amp; enrichment</span>
+          <span>📄 Sheet: GLExport</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <div class="why-box">
+        <h4>Why This Matters</h4>
+        <p>Every finance team's month starts the same way: a raw data pull from the ERP that needs cleanup before anyone can analyze it. Dates are inconsistent, account codes need mapping to reporting categories, and descriptions are cluttered. This is the kind of repetitive prep work where Copilot saves hours — and where most people don't realize AI can help.</p>
+      </div>
+
+      <div class="time-saved">
+        <h4>Time comparison</h4>
+        <div class="compare">
+          <span class="old">⏳ Manual: 30–45 minutes of formula writing and data manipulation</span>
+          <span class="new">⚡ With Copilot: 5–8 minutes of prompting and reviewing</span>
+        </div>
+      </div>
+
+      <div class="instructor-note">
+        <h4>Instructor Talking Point</h4>
+        <p>Emphasize that Copilot writes real Excel formulas. After each exercise, have participants click into the new column and check the formula bar. They'll see functions like <code>YEAR()</code>, <code>IF()</code>, and <code>TEXTAFTER()</code> — formulas they can inspect, edit, and learn from.</p>
+      </div>
+
+      <h3>Open the File</h3>
+      <ol class="steps-list">
+        <li>Open <strong>Finance-Copilot-Labs-1-3.xlsx</strong> from your OneDrive.</li>
+        <li>Navigate to the <strong>"GLExport"</strong> sheet tab.</li>
+        <li>Click the <strong>Copilot</strong> button in the ribbon to open the Copilot pane.</li>
+        <li>Take a moment to scan the data — notice the inconsistent date formats, raw account codes, and verbose descriptions. This is typical of what comes out of an ERP.</li>
+      </ol>
+
+      <!-- Exercise 1.1 -->
+      <div class="exercise">
+        <h4><span class="badge">1.1</span> Add Fiscal Year and Fiscal Quarter</h4>
+        <p>Your company's fiscal year starts July 1. You need fiscal period columns for reporting.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Fiscal Year" based on the Date column. Our fiscal year starts in July — for example, July 2025 through June 2026 is FY2026.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span> to add it.</p>
+        <p>Now add the quarter:</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Fiscal Quarter" using the Date column. Our fiscal year starts in July, so Jul-Sep is Q1, Oct-Dec is Q2, Jan-Mar is Q3, Apr-Jun is Q4.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Two new columns: "Fiscal Year" (e.g., FY2026) and "Fiscal Quarter" (e.g., Q3)</li>
+            <li>Each cell contains a formula — click one to see the logic in the formula bar</li>
+            <li>Jan–Mar 2026 entries should show FY2026 / Q3</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 1.2 -->
+      <div class="exercise">
+        <h4><span class="badge">1.2</span> Map Account Codes to Reporting Categories</h4>
+        <p>Leadership doesn't read 4-digit account codes — they need categories like "Revenue" and "Operating Expenses."</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Reporting Category" that groups the Account Code into these categories:
+- 4000–4999 = "Revenue"
+- 5000–5999 = "Cost of Goods Sold"
+- 6000–6999 = "Operating Expenses"
+- 7000–7999 = "Other Income/Expense"</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Tip:</strong> Check the formula Copilot generates. It will likely use nested <code>IF()</code> or <code>IFS()</code> — formulas that would take most people several minutes to write and test manually. This is a great example of Copilot handling tedious-but-necessary logic.</div>
+        </div>
+      </div>
+
+      <!-- Exercise 1.3 -->
+      <div class="exercise">
+        <h4><span class="badge">1.3</span> Extract Vendor Names from Descriptions</h4>
+        <p>The Description field contains valuable information buried in free text. Let's pull out the vendor or counterparty name.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Vendor/Counterparty" that extracts the company or person name from the Description column. Look for names after patterns like "Invoice" references, "PO-" references, dashes, or at the end of the description.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A new column with extracted names like "Acme Corp", "J.Smith", etc.</li>
+            <li>Some cells may be blank or imperfect — that's normal with unstructured text</li>
+            <li>This demonstrates Copilot's ability to parse free-text fields</li>
+          </ul>
+        </div>
+        <div class="callout callout-note">
+          <span class="icon">📌</span>
+          <div><strong>Real-world note:</strong> Text extraction from messy descriptions is one of those tasks where Copilot won't be 100% accurate — but getting 80% right in seconds beats manually reviewing every row. Always spot-check AI-extracted data.</div>
+        </div>
+      </div>
+
+      <!-- Exercise 1.4 -->
+      <div class="exercise">
+        <h4><span class="badge">1.4</span> Flag Large Transactions for Review</h4>
+        <p>Your team's policy requires review of any journal entry over $10,000. Let's flag them automatically.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Review Flag" that shows "REVIEW" if the Debit or Credit amount is greater than or equal to $10,000, and blank otherwise.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <p>Now make it visual:</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Highlight all rows where the Review Flag column says "REVIEW" in light red.</div>
+      </div>
+
+      <div class="self-check">
+        <h4>Self-Check — Lab 1</h4>
+        <label><input type="checkbox"> Fiscal Year and Fiscal Quarter columns added with correct logic</label>
+        <label><input type="checkbox"> Reporting Category column maps account codes to 4 groups</label>
+        <label><input type="checkbox"> Vendor/Counterparty column extracted from descriptions</label>
+        <label><input type="checkbox"> Large transactions (≥$10K) flagged and highlighted</label>
+        <label><input type="checkbox"> Inspected at least one formula Copilot generated</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 2: BUDGET VS. ACTUALS VARIANCE ANALYSIS -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab2">
+    <div class="lab-header-bar">Lab 2 — Budget vs. Actuals Variance Analysis</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>Analyze Budget Variances Like a Pro</h2>
+        <div class="lab-meta">
+          <span>⏱️ 15 minutes</span>
+          <span>🎯 Variance analysis &amp; summarization</span>
+          <span>📄 Sheet: BudgetVsActuals</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <div class="why-box">
+        <h4>Why This Matters</h4>
+        <p>Budget-vs-actuals variance analysis is the single most common finance reporting workflow. Every department head, every controller, every CFO sees a version of this report every month. The mechanics — calculating variances, flagging outliers, building summaries — are straightforward but time-consuming. Copilot handles the mechanics so you can focus on the story the numbers tell.</p>
+      </div>
+
+      <div class="time-saved">
+        <h4>Time comparison</h4>
+        <div class="compare">
+          <span class="old">⏳ Manual: 45–60 minutes for formulas, formatting, summary, and chart</span>
+          <span class="new">⚡ With Copilot: 10–15 minutes of prompting, reviewing, and refining</span>
+        </div>
+      </div>
+
+      <h3>Open the Sheet</h3>
+      <ol class="steps-list">
+        <li>In the same workbook (<strong>Finance-Copilot-Labs-1-3.xlsx</strong>), switch to the <strong>"BudgetVsActuals"</strong> sheet tab.</li>
+        <li>Review the data: departments, accounts, and monthly budget/actual figures for January through March.</li>
+      </ol>
+
+      <!-- Exercise 2.1 -->
+      <div class="exercise">
+        <h4><span class="badge">2.1</span> Calculate Q1 Variance Dollars and Percentages</h4>
+        <p>First, let's add the core variance calculations.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Q1 Variance $" that calculates Q1 Actual minus Q1 Budget. Then add another column called "Q1 Variance %" that calculates the variance as a percentage of budget.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span> for each.</p>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Two new columns with variance calculations</li>
+            <li>Negative values indicate under-budget (favorable for expenses, unfavorable for revenue)</li>
+            <li>Percentages formatted as decimals (you may want to format as %)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 2.2 -->
+      <div class="exercise">
+        <h4><span class="badge">2.2</span> Create a Department Summary</h4>
+        <p>Roll up the detail into a leadership-ready department summary.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Create a summary table showing total Q1 Budget, total Q1 Actual, total Q1 Variance $, and Q1 Variance % grouped by Department.</div>
+        <p><span class="action-badge">→ Click "Add to a new Data Sheet"</span></p>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Tip:</strong> Navigate to the new summary sheet to verify the data. Then come back to the BudgetVsActuals sheet for the next exercise.</div>
+        </div>
+      </div>
+
+      <!-- Exercise 2.3 -->
+      <div class="exercise">
+        <h4><span class="badge">2.3</span> Identify the Top Unfavorable Variances</h4>
+        <p>The CFO always asks: <em>"What's driving the miss?"</em> Let's answer that proactively.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Which 5 line items have the largest unfavorable Q1 variance in absolute dollar terms? Show the department, account name, Q1 Budget, Q1 Actual, and variance for each.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Copilot identifies the top 5 problem areas with specific dollar figures</li>
+            <li>For expense accounts, unfavorable = over budget (actual > budget)</li>
+            <li>For revenue accounts, unfavorable = under plan (actual < budget)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 2.4 -->
+      <div class="exercise">
+        <h4><span class="badge">2.4</span> Flag Items Exceeding the 10% Threshold</h4>
+        <p>Your finance policy requires explanation for any line item with variance exceeding ±10% of budget.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Highlight all rows where the absolute Q1 Variance % exceeds 10% in red.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>Rows with variances beyond ±10% highlighted in red</li>
+            <li>These are the items that need written explanations in the variance report</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 2.5 -->
+      <div class="exercise">
+        <h4><span class="badge">2.5</span> Visualize the Variance Story</h4>
+        <p>A chart makes the variance story immediately clear in presentations.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Create a bar chart showing Q1 Variance $ by Department. Include both positive and negative variances so I can see which departments are over and under budget.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A bar chart with departments on the axis and variance dollars as bars</li>
+            <li>Over-budget departments show as positive (or red) bars; under-budget as negative (or green)</li>
+            <li>Immediately tells the leadership story: who's on track, who isn't</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="instructor-note">
+        <h4>Instructor Talking Point</h4>
+        <p>This is a good moment to pause and ask participants: <em>"How long would this entire sequence — variance formulas, department summary, top 5 analysis, conditional formatting, and chart — take you manually?"</em> Most finance teams say 45–60 minutes. With Copilot, the class just did it in under 10.</p>
+      </div>
+
+      <div class="self-check">
+        <h4>Self-Check — Lab 2</h4>
+        <label><input type="checkbox"> Q1 Variance $ and Q1 Variance % columns added</label>
+        <label><input type="checkbox"> Department summary created on a new sheet</label>
+        <label><input type="checkbox"> Top 5 unfavorable variances identified</label>
+        <label><input type="checkbox"> Items exceeding ±10% threshold highlighted in red</label>
+        <label><input type="checkbox"> Variance bar chart by department created</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 3: ACCOUNTS RECEIVABLE AGING -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab3">
+    <div class="lab-header-bar">Lab 3 — Accounts Receivable Aging &amp; Collections</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>Build an AR Aging Report with Collection Priorities</h2>
+        <div class="lab-meta">
+          <span>⏱️ 15 minutes</span>
+          <span>🎯 Date math, categorization &amp; analysis</span>
+          <span>📄 Sheet: ARDetail</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <div class="why-box">
+        <h4>Why This Matters</h4>
+        <p>Cash is oxygen. AR aging reports drive collections strategy, reserve calculations, and cash flow forecasting. Building one requires date math, bucket logic, and prioritization — exactly the kind of multi-step work where Copilot shines. This lab takes you from raw invoice data to a collections-ready report with priorities.</p>
+      </div>
+
+      <div class="time-saved">
+        <h4>Time comparison</h4>
+        <div class="compare">
+          <span class="old">⏳ Manual: 30–40 minutes of DATEDIF formulas, nested IFs, and pivot tables</span>
+          <span class="new">⚡ With Copilot: 8–12 minutes of guided prompting</span>
+        </div>
+      </div>
+
+      <h3>Open the Sheet</h3>
+      <ol class="steps-list">
+        <li>Stay in <strong>Finance-Copilot-Labs-1-3.xlsx</strong> and switch to the <strong>"ARDetail"</strong> sheet tab.</li>
+        <li>Review the invoice data — note which invoices are paid, unpaid, and partially paid.</li>
+      </ol>
+
+      <!-- Exercise 3.1 -->
+      <div class="exercise">
+        <h4><span class="badge">3.1</span> Calculate Outstanding Balance and Days Outstanding</h4>
+        <p>First, determine how much is still owed and how overdue each invoice is.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Outstanding Balance" that calculates Invoice Amount minus Amount Paid. If Amount Paid is blank, use the full Invoice Amount.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Days Outstanding" that calculates the number of days between the Due Date and today's date. If the invoice has been fully paid, show 0.</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+      </div>
+
+      <!-- Exercise 3.2 -->
+      <div class="exercise">
+        <h4><span class="badge">3.2</span> Create Aging Buckets</h4>
+        <p>Standard aging buckets are the foundation of any AR report.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Add a column called "Aging Bucket" that categorizes each invoice based on Days Outstanding:
+- 0 or negative = "Current"
+- 1–30 = "1-30 Days"
+- 31–60 = "31-60 Days"
+- 61–90 = "61-90 Days"
+- Over 90 = "90+ Days"
+If the invoice is fully paid, show "Paid".</div>
+        <p><span class="action-badge">→ Click "Insert Column"</span></p>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A new column with standard aging bucket labels</li>
+            <li>Paid invoices show "Paid" regardless of dates</li>
+            <li>The formula likely uses nested <code>IF()</code> or <code>IFS()</code> — check the formula bar</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 3.3 -->
+      <div class="exercise">
+        <h4><span class="badge">3.3</span> Summarize Total Exposure by Aging Bucket</h4>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Create a summary table showing total Outstanding Balance by Aging Bucket. Include the count of invoices in each bucket. Sort from most overdue to current.</div>
+        <p><span class="action-badge">→ Click "Add to a new Data Sheet"</span></p>
+      </div>
+
+      <!-- Exercise 3.4 -->
+      <div class="exercise">
+        <h4><span class="badge">3.4</span> Identify Top Collections Priorities</h4>
+        <p>The collections team needs to know where to focus. Large, old invoices get priority.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Which unpaid invoices have the highest outstanding balance and are more than 60 days past due? Show the customer name, invoice number, outstanding balance, and days outstanding. Sort by outstanding balance descending.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A prioritized list of the riskiest receivables</li>
+            <li>Focus on large balances in the 61-90 and 90+ day buckets</li>
+            <li>This is exactly what a collections manager needs for their Monday morning call list</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 3.5 -->
+      <div class="exercise">
+        <h4><span class="badge">3.5</span> Visualize the Aging Distribution</h4>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Create a chart showing outstanding balance by aging bucket. Use a bar or column chart to show the concentration of receivables by age.</div>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Tip:</strong> This chart is a staple of every monthly finance package. Combined with the summary table from Exercise 3.3, you now have a complete AR aging report — built in minutes, not hours.</div>
+        </div>
+      </div>
+
+      <div class="self-check">
+        <h4>Self-Check — Lab 3</h4>
+        <label><input type="checkbox"> Outstanding Balance column calculated correctly</label>
+        <label><input type="checkbox"> Days Outstanding column accounts for paid invoices</label>
+        <label><input type="checkbox"> Aging Buckets assigned (Current, 1-30, 31-60, 61-90, 90+, Paid)</label>
+        <label><input type="checkbox"> Summary table by aging bucket created on new sheet</label>
+        <label><input type="checkbox"> Top collections priorities identified</label>
+        <label><input type="checkbox"> Aging distribution chart created</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 4: COPILOT() FUNCTION -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab4">
+    <div class="lab-header-bar preview">Lab 4 — COPILOT() Function: AI-Powered Financial Commentary (Preview)</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>Generate Financial Commentary Directly in Cells</h2>
+        <div class="lab-meta">
+          <span>⏱️ 20 minutes</span>
+          <span>🎯 AI-in-cell for analysis &amp; narrative</span>
+          <span>📄 Workbook: Finance-Copilot-Labs-4-6.xlsx</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <div class="why-box">
+        <h4>Why This Matters</h4>
+        <p>Until now you've used Copilot through the side pane. The new <strong>COPILOT() function</strong> puts AI directly inside a cell — chainable with <code>PIVOTBY</code>, <code>TEXTJOIN</code>, <code>FORMULATEXT</code>, and everything else in Excel. For finance, this is transformative: imagine generating variance commentary, categorizing transactions, or rating risk — all as live formulas that update when data changes.</p>
+      </div>
+
+      <div class="callout callout-warn">
+        <span class="icon">🔴</span>
+        <div><strong>Preview Feature:</strong> <code>COPILOT()</code> is currently in Preview. You need a Microsoft 365 Copilot license <em>and</em> the right update channel (Beta / Current Channel Preview). If you get <code>#NAME?</code>, the function isn't available in your Excel build yet.</div>
+      </div>
+
+      <h3>Open the Workbook</h3>
+      <ol class="steps-list">
+        <li>Open <strong>Finance-Copilot-Labs-4-6.xlsx</strong> from your OneDrive.</li>
+        <li>Navigate to the <strong>"VarianceReport"</strong> sheet tab.</li>
+        <li>Review the P&amp;L data — Actual, Budget, Variance $, Variance %, and Prior Year columns.</li>
+      </ol>
+
+      <!-- Exercise 4.1 -->
+      <div class="exercise">
+        <h4><span class="badge">4.1</span> Generate a P&amp;L Variance Summary</h4>
+        <p>Start with a high-level narrative summary of the entire P&amp;L. Click into an empty cell below or to the right of the data.</p>
+        <div class="formula-box">
+          <span class="label">📋 Formula — type in an empty cell</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+=COPILOT("Analyze this profit and loss statement and write a 3-sentence executive summary of the most notable variances. Focus on what a CFO needs to know.",A1:H30)</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A narrative paragraph in a single cell summarizing the key variance story</li>
+            <li>References specific line items with actual dollar and percentage figures</li>
+            <li>Written in a professional finance tone ready for a management package</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 4.2 -->
+      <div class="exercise">
+        <h4><span class="badge">4.2</span> Generate Line-by-Line Variance Commentary</h4>
+        <p>Every month, finance teams write commentary explaining why each major line item is over or under budget. This is the single biggest time-sink in the close process. Let Copilot draft it.</p>
+        <div class="formula-box">
+          <span class="label">📋 Formula — type in an empty cell</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+=COPILOT("For each line item, write a one-sentence variance explanation suitable for a monthly management report. Focus on items where the variance exceeds 5%. Format as: [Line Item]: [explanation]",A1:H30)</div>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Key insight:</strong> The commentary updates automatically when the underlying data changes. Next month, paste in new actuals and the commentary regenerates — no rewriting needed.</div>
+        </div>
+      </div>
+
+      <!-- Exercise 4.3 -->
+      <div class="exercise">
+        <h4><span class="badge">4.3</span> Structured Multi-Section Analysis</h4>
+        <p>For the monthly finance package, you need organized commentary by section. Combine <code>COPILOT()</code> with <code>TEXTJOIN()</code> for clean formatting.</p>
+        <div class="formula-box">
+          <span class="label">📋 Formula — type in an empty cell</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+=TEXTJOIN(CHAR(10)&CHAR(10),TRUE,COPILOT("Analyze this P&L and write a brief commentary organized into these sections: 1) Revenue Performance, 2) Gross Margin Analysis, 3) Operating Expense Highlights, 4) Bottom Line Assessment. Each section should be one short paragraph.",A1:H30))</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A structured, multi-section analysis in a single cell</li>
+            <li>Each section separated by a blank line (thanks to TEXTJOIN + CHAR(10))</li>
+            <li>Ready to paste into a memo, email, or presentation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 4.4 -->
+      <div class="exercise">
+        <h4><span class="badge">4.4</span> Rate Variance Risk Level</h4>
+        <p>Now let's get Copilot to assess which variances pose the most risk — useful for triage in close meetings.</p>
+        <div class="formula-box">
+          <span class="label">📋 Formula — type in an empty cell</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+=COPILOT("Rate each line item's variance risk as Low, Medium, or High based on the magnitude of variance % and dollar impact. Return the line item name and risk rating.",A1:H30)</div>
+      </div>
+
+      <!-- Exercise 4.5 -->
+      <div class="exercise">
+        <h4><span class="badge">4.5</span> Ask Copilot to Explain Its Own Formula</h4>
+        <p>This is a powerful learning technique — ask Copilot to explain what a formula does.</p>
+        <p>Go to the "VarianceReport" sheet. Click on any cell that has a <code>Variance %</code> formula. Note its cell reference (e.g., F4). Then in an empty cell:</p>
+        <div class="formula-box">
+          <span class="label">📋 Formula — type in an empty cell</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+=COPILOT("Explain in plain English what this formula is doing and why it might show a #DIV/0! error",FORMULATEXT(F4))</div>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Teaching moment:</strong> This is incredibly useful for onboarding new team members or auditing inherited workbooks. Instead of deciphering complex formulas manually, ask Copilot to explain them.</div>
+        </div>
+      </div>
+
+      <div class="instructor-note">
+        <h4>Instructor Talking Point</h4>
+        <p>The <code>COPILOT()</code> function represents a fundamental shift: AI is no longer a sidebar tool — it's part of the spreadsheet fabric. For finance teams, this means variance commentary, risk ratings, and even draft audit notes can be generated as formulas that stay live and update with the data. Emphasize: this is the future of the monthly close.</p>
+      </div>
+
+      <div class="callout callout-warn">
+        <span class="icon">⚠️</span>
+        <div><strong>Important:</strong> Never use Copilot output as the sole basis for a financial decision without independent verification. AI-assisted analysis is a productivity tool — not a substitute for professional judgment. Always review and validate before including in official reports.</div>
+      </div>
+
+      <div class="self-check">
+        <h4>Self-Check — Lab 4</h4>
+        <label><input type="checkbox"> Executive summary generated from P&amp;L data</label>
+        <label><input type="checkbox"> Line-by-line variance commentary created</label>
+        <label><input type="checkbox"> Structured multi-section analysis formatted with TEXTJOIN</label>
+        <label><input type="checkbox"> Variance risk ratings generated</label>
+        <label><input type="checkbox"> Used COPILOT() with FORMULATEXT() to explain a formula</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- LAB 5: BANK RECONCILIATION & EXCEPTION DETECTION -->
+  <!-- ============================================================ -->
+  <div class="lab-card" id="lab5">
+    <div class="lab-header-bar capstone">Lab 5 — Month-End Close: Bank Reconciliation &amp; Exceptions</div>
+    <div class="lab-header" onclick="toggleLab(this)">
+      <div>
+        <h2>Reconcile, Match, and Flag Exceptions</h2>
+        <div class="lab-meta">
+          <span>⏱️ 15 minutes</span>
+          <span>🎯 Reconciliation, matching &amp; close tasks</span>
+          <span>📄 Sheets: BankRec, CloseChecklist</span>
+        </div>
+      </div>
+      <span class="lab-toggle">▼</span>
+    </div>
+    <div class="lab-body">
+
+      <div class="why-box">
+        <h4>Why This Matters</h4>
+        <p>Bank reconciliation is the gatekeeper of the monthly close. Until the bank rec is clean, you can't close the books. It's also one of the most manual, error-prone tasks in accounting — matching hundreds of transactions between two sources, hunting for timing differences, and chasing down discrepancies. Copilot can accelerate the matching and surface exceptions that need human investigation.</p>
+      </div>
+
+      <div class="time-saved">
+        <h4>Time comparison</h4>
+        <div class="compare">
+          <span class="old">⏳ Manual: 60–90 minutes per account for matching and investigation</span>
+          <span class="new">⚡ With Copilot: 15–20 minutes for initial matching and exception flagging</span>
+        </div>
+      </div>
+
+      <h3>Open the Sheets</h3>
+      <ol class="steps-list">
+        <li>In <strong>Finance-Copilot-Labs-4-6.xlsx</strong>, switch to the <strong>"BankRec"</strong> sheet tab.</li>
+        <li>You'll see two data sections: <strong>Bank Statement</strong> (left) and <strong>General Ledger</strong> (right). These represent the two sides of the reconciliation.</li>
+      </ol>
+
+      <!-- Exercise 5.1 -->
+      <div class="exercise">
+        <h4><span class="badge">5.1</span> Identify Unmatched Transactions</h4>
+        <p>The first step in any bank rec is finding what doesn't match between the two sides.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Compare the Bank Statement transactions with the General Ledger transactions. Identify items that appear on the bank statement but not in the general ledger, and items in the general ledger that don't appear on the bank statement. Match by amount and approximate date.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A list of unmatched items from each side</li>
+            <li>Bank-side-only items are typically: bank fees, interest, items not yet recorded</li>
+            <li>Book-side-only items are typically: outstanding checks, deposits in transit</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 5.2 -->
+      <div class="exercise">
+        <h4><span class="badge">5.2</span> Flag Amount Discrepancies</h4>
+        <p>Sometimes transactions exist on both sides but with slightly different amounts (data entry errors, transpositions).</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Find transactions where the bank statement and general ledger have similar descriptions or dates but the amounts don't match exactly. Show the bank amount, book amount, and the difference.</div>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Tip:</strong> These discrepancies are often caused by transposition errors (e.g., $1,530 vs. $1,350). In a real close, these are exactly the items your staff accountant would need to investigate and post correcting entries for.</div>
+        </div>
+      </div>
+
+      <!-- Exercise 5.3 -->
+      <div class="exercise">
+        <h4><span class="badge">5.3</span> Check for Duplicate Entries</h4>
+        <p>Duplicates in either the bank statement or the general ledger create reconciliation nightmares.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Check the General Ledger data for any duplicate entries — transactions with the same date, amount, and similar description. Highlight any duplicates found.</div>
+      </div>
+
+      <!-- Exercise 5.4 -->
+      <div class="exercise">
+        <h4><span class="badge">5.4</span> Summarize the Reconciliation Status</h4>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Summarize the bank reconciliation status: total bank statement balance, total general ledger balance, identified reconciling items, and the remaining unreconciled difference.</div>
+        <div class="expected-output">
+          <h4>What to expect</h4>
+          <ul>
+            <li>A reconciliation summary with both balances and reconciling items</li>
+            <li>Clear identification of outstanding checks and deposits in transit</li>
+            <li>Any remaining difference that needs investigation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exercise 5.5 -->
+      <div class="exercise">
+        <h4><span class="badge">5.5</span> Review the Close Checklist</h4>
+        <p>Switch to the <strong>"CloseChecklist"</strong> sheet. Let's use Copilot to analyze close readiness.</p>
+        <div class="prompt-box">
+          <span class="label">📋 Prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+Analyze this month-end close checklist. How many tasks are complete, in progress, not started, and blocked? Which blocked tasks pose the highest risk to the close timeline? Summarize the overall readiness status.</div>
+        <div class="callout callout-tip">
+          <span class="icon">💡</span>
+          <div><strong>Real-world application:</strong> Controllers run this analysis every day during close week. Having Copilot summarize status and flag risks turns a 15-minute review into a 30-second prompt.</div>
+        </div>
+      </div>
+
+      <div class="instructor-note">
+        <h4>Instructor Talking Point</h4>
+        <p>This lab demonstrates Copilot's ability to compare datasets — a fundamental accounting skill. While Copilot won't replace your reconciliation tool (Blackline, Trintech, etc.), it can serve as a quick first-pass analysis or work on ad hoc reconciliations where those tools aren't configured. The key message: Copilot handles the comparison mechanics; you bring the accounting judgment.</p>
+      </div>
+
+      <div class="self-check">
+        <h4>Self-Check — Lab 5</h4>
+        <label><input type="checkbox"> Unmatched transactions identified on both sides</label>
+        <label><input type="checkbox"> Amount discrepancies flagged with differences shown</label>
+        <label><input type="checkbox"> Duplicate entries checked in the General Ledger</label>
+        <label><input type="checkbox"> Reconciliation status summarized with balances</label>
+        <label><input type="checkbox"> Close checklist analyzed for readiness and risks</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="section">
+    <h2>Troubleshooting &amp; Common Issues</h2>
+    <table class="troubleshoot-table">
+      <thead>
+        <tr>
+          <th style="width:35%">Issue</th>
+          <th>Solution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Copilot button doesn't appear in Excel</td>
+          <td>Ensure the file is saved to OneDrive or SharePoint (not stored locally). Copilot requires cloud storage. Also verify your Copilot license is active and the file is in a supported format (.xlsx).</td>
+        </tr>
+        <tr>
+          <td>Copilot says "I can't work with this data"</td>
+          <td>The data must be in a <strong>formatted Excel Table</strong> (not just raw cells). Select the data range and press <strong>Ctrl+T</strong> to convert it to a table first.</td>
+        </tr>
+        <tr>
+          <td>"Insert Column" or "Apply" buttons don't appear</td>
+          <td>Wait for Copilot to fully process the request. If the buttons are missing, try rephrasing the prompt to be more explicit about the action (e.g., "Add a column called X" instead of "Calculate X").</td>
+        </tr>
+        <tr>
+          <td><code>COPILOT()</code> function returns <code>#NAME?</code></td>
+          <td>The COPILOT() function is in <strong>Preview</strong>. You need to be on the Beta or Current Channel Preview update channel. Check <strong>File → Account → Update Channel</strong>. Labs 0–3 and 5 work without it.</td>
+        </tr>
+        <tr>
+          <td>Variance calculations seem wrong (revenue shows as unfavorable when over plan)</td>
+          <td>Variance direction depends on the formula. For revenue: positive variance is favorable. For expenses: negative variance (under budget) is favorable. Verify by checking the formula Copilot generated.</td>
+        </tr>
+        <tr>
+          <td>Aging buckets are incorrect for paid invoices</td>
+          <td>Rephrase your prompt to explicitly handle paid invoices: "If Amount Paid equals Invoice Amount, show 'Paid' — otherwise, calculate the aging bucket based on Days Outstanding."</td>
+        </tr>
+        <tr>
+          <td>Copilot generated commentary cites wrong numbers</td>
+          <td>Verify the cell reference range in your <code>COPILOT()</code> formula covers all the data. If the range is too narrow, Copilot only sees a subset. Expand the range and re-enter the formula.</td>
+        </tr>
+        <tr>
+          <td>Bank rec matching is imprecise</td>
+          <td>Copilot matches on heuristics (amount, date proximity, description similarity). For production reconciliations, use dedicated recon tools. Copilot is best for quick ad hoc analysis and first-pass matching.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DISCUSSION QUESTIONS -->
+  <div class="section">
+    <h2>Discussion Questions</h2>
+    <p>Use these for group debriefs in instructor-led sessions, or reflect on them individually:</p>
+    <ol class="discussion-list">
+      <li>Which lab exercise maps most directly to a task you do every month? How much time would Copilot realistically save you on that specific task?</li>
+      <li>In Lab 4, the <code>COPILOT()</code> function generated variance commentary. What review steps would you add before including AI-generated commentary in an official finance package?</li>
+      <li>Think about your month-end close process. Which manual steps could Copilot handle, and which require human judgment that shouldn't be delegated to AI?</li>
+      <li>How would you train a new staff accountant to use Copilot effectively? What guidelines or guardrails would you set for your team?</li>
+      <li>What data do you work with regularly that isn't in a table format? How could you restructure it to work better with Copilot?</li>
+    </ol>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="section">
+    <h2>Key Takeaways</h2>
+    <div class="takeaways-grid">
+      <div class="takeaway-card">
+        <div class="num">01</div>
+        <h4>Real Formulas, Not Magic</h4>
+        <p>Every column Copilot adds uses real Excel formulas you can inspect and edit. It's a productivity accelerator, not a black box.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="num">02</div>
+        <h4>Prompt Quality = Output Quality</h4>
+        <p>Specific prompts with column names, thresholds, and output formats get dramatically better results than vague requests.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="num">03</div>
+        <h4>COPILOT() Changes the Game</h4>
+        <p>AI as a native Excel formula means commentary, categorization, and risk ratings that stay live and update with your data.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="num">04</div>
+        <h4>Trust but Verify</h4>
+        <p>Copilot handles the mechanics. You bring the accounting judgment. Always review AI output before it enters official records.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="num">05</div>
+        <h4>Compound Time Savings</h4>
+        <p>One prompt saves minutes. A full workflow (GL prep → variance → aging → commentary) saves hours every close cycle.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="num">06</div>
+        <h4>Start with Your Workflow</h4>
+        <p>The best way to learn Copilot is to apply it to your actual data. Start with the task you dread most each month.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Copilot in Excel for Finance — Hands-On Training Labs</p>
+    <p>Built for enterprise finance teams learning Microsoft 365 Copilot</p>
+  </div>
+
+</div>
+
+<script>
+  // === Force real download for .xlsx links (avoids Office Online redirect) ===
+  document.querySelectorAll('a[download][href$=".xlsx"]').forEach(link => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = link.getAttribute('href');
+      const filename = url.split('/').pop();
+      const original = link.innerHTML;
+      try {
+        link.innerHTML = '⏳ Downloading…';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const blob = await res.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = objectUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+        link.innerHTML = original;
+      } catch (err) {
+        link.innerHTML = original;
+        console.error('Download failed:', err);
+        window.location.href = url;
+      }
+    });
+  });
+
+  function toggleLab(header) {
+    header.closest('.lab-card').classList.toggle('collapsed');
+  }
+
+  function copyPrompt(btn) {
+    const box = btn.closest('.prompt-box, .formula-box');
+    const text = box.innerText
+      .replace(/📋[^\n]*/g, '')
+      .replace('Copy', '')
+      .trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+
+  function scrollToLab(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      if (el.classList.contains('collapsed')) el.classList.remove('collapsed');
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Progress bar tracking
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const stepMap = { 'lab0': 0, 'lab1': 1, 'lab2': 2, 'lab3': 3, 'lab4': 4, 'lab5': 5 };
+        const idx = stepMap[entry.target.id] ?? -1;
+        if (idx >= 0) {
+          document.querySelectorAll('.progress-step').forEach((step, i) => {
+            step.classList.remove('active', 'completed');
+            if (i < idx) step.classList.add('completed');
+            if (i === idx) step.classList.add('active');
+          });
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.lab-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
