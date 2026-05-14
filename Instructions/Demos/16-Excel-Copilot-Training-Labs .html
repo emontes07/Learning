@@ -1,9 +1,3 @@
----
-demo:
-    title: 'Excel Copilot Training — Guided Labs'
-layout: none
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -309,6 +303,7 @@ layout: none
       <li><a href="#lab3">Lab 3 — Copilot can analyze and visualize</a></li>
       <li><a href="#lab4">Lab 4 — Copilot becomes part of Excel formulas <em>(Preview)</em></a></li>
       <li><a href="#lab5">Lab 5 — Copilot solves a real business problem</a></li>
+      <li><a href="#lab6">Lab 6 — Cowork: one prompt, four deliverables</a></li>
     </ol>
   </div>
 
@@ -442,6 +437,10 @@ layout: none
         <span class="chip">📄 Sheets: NamesAndEmails, ExtractText, PullCountryOutOfLocation, DateColumns, Potluck</span>
       </div>
 
+      <div class="callout note">
+        <strong>📂 File for this lab:</strong> <a href="../../ResourceFiles/Excel-Copilot-Labs-1-to-3.xlsx" download>Excel-Copilot-Labs-1-to-3.xlsx</a> — same workbook as Lab 1, just switch to the listed sheets.
+      </div>
+
       <p>Now you'll let Copilot <strong>do things on the sheet</strong> — split text, extract values, add calculated columns, and reshape data. After each prompt, look at the formula Copilot wrote — that's how you'll learn.</p>
 
       <h4>Exercise 2.1 — Split emails into first and last name</h4>
@@ -506,6 +505,10 @@ layout: none
         <span class="chip">📄 Sheets: Charts1, Charts2, Highlighting, SummarizeVerbatims</span>
       </div>
 
+      <div class="callout note">
+        <strong>📂 File for this lab:</strong> <a href="../../ResourceFiles/Excel-Copilot-Labs-1-to-3.xlsx" download>Excel-Copilot-Labs-1-to-3.xlsx</a> — same workbook as Labs 1 and 2, just switch to the listed sheets.
+      </div>
+
       <p>Charts and conditional formatting used to mean clicking through multiple menus. With Copilot, just describe what you want.</p>
 
       <h4>Exercise 3.1 — A simple column chart</h4>
@@ -564,7 +567,11 @@ layout: none
         <span class="chip">⏱️ 20 minutes</span>
         <span class="chip">🎯 Goal: Use the new COPILOT() function inside cells</span>
         <span class="chip">🧪 Preview feature</span>
-        <span class="chip">📄 Workbook: Copilot Excel - Command v02</span>
+        <span class="chip">📄 Workbook: Excel-Copilot-Labs-4-and-5.xlsx</span>
+      </div>
+
+      <div class="callout note">
+        <strong>📂 File for this lab:</strong> <a href="../../ResourceFiles/Excel-Copilot-Labs-4-and-5.xlsx" download>Excel-Copilot-Labs-4-and-5.xlsx</a> — open this workbook in Excel (saved to OneDrive or SharePoint). Lab 4 uses the Feedback, Category, Sentiment, Pivot Table, Transactions, and Customer Feedback sheets.
       </div>
 
       <div class="callout important">
@@ -672,6 +679,10 @@ layout: none
         <span class="chip">💼 Finance use case</span>
       </div>
 
+      <div class="callout note">
+        <strong>📂 File for this lab:</strong> <a href="../../ResourceFiles/Excel-Copilot-Labs-4-and-5.xlsx" download>Excel-Copilot-Labs-4-and-5.xlsx</a> — same workbook as Lab 4, switch to the <strong>Financial Report</strong> sheet.
+      </div>
+
       <p>You've learned the techniques. Now put them together on a realistic finance scenario: a monthly Profit &amp; Loss statement with budget vs. actuals, variance dollars, and variance percentages. The goal is to produce <strong>commentary leadership can actually read</strong>.</p>
 
       <h4>The data</h4>
@@ -728,6 +739,105 @@ layout: none
 
       <div class="callout tip">
         <strong>💡 TIP:</strong> The most productive Copilot users treat it as a conversation. Start broad, refine based on results, and iterate until the output matches what you'd present to your leadership.
+      </div>
+    </div>
+  </details>
+
+  <!-- ============ LAB 6 ============ -->
+  <details class="lab" id="lab6">
+    <summary>Lab 6 — Cowork: one prompt, four deliverables</summary>
+    <div class="lab-body">
+      <div class="lab-meta">
+        <span class="chip">⏱️ 20–25 minutes</span>
+        <span class="chip">🎯 Goal: Run a multi-artifact Cowork scenario end-to-end</span>
+        <span class="chip">👤 Persona: VP Finance / FP&amp;A Director</span>
+        <span class="chip">💼 Finance use case</span>
+        <span class="chip">🤝 Cowork</span>
+      </div>
+
+      <div class="callout note">
+        <strong>📂 File for this lab:</strong> <a href="../../ResourceFiles/EDG_Finance_Performance.xlsx" download>EDG_Finance_Performance.xlsx</a> — download this workbook and save it to your <strong>OneDrive or SharePoint</strong> before starting. It contains Edgewell Personal Care's Q2 FY26 Budget vs Actual data by department × month, key drivers, and an open close-task list.
+      </div>
+
+      <p>In Labs 1–5 you used Copilot as a single-step helper inside Excel. <strong>Cowork</strong> is different — you give Copilot one rich prompt and it produces multiple connected deliverables (a variance workbook, a CFO brief, a QBR deck, and a one-page HTML dashboard) in a single agentic run. The persona below is a VP of Finance closing Q2 FY26 books for Edgewell Personal Care and preparing the variance review for the CFO.</p>
+
+      <h3>The scenario</h3>
+      <p><strong>Company:</strong> Edgewell Personal Care (NYSE: EPC) — ~$2.2B in revenue across three segments (Wet Shave, Sun &amp; Skin Care, Feminine Care) plus DTC brands (Billie, Jack Black). Fiscal year ends September 30.</p>
+      <p><strong>What's pressuring the quarter:</strong></p>
+      <ul>
+        <li><strong>Wet Shave</strong> — volume softness in North America private label</li>
+        <li><strong>Sun &amp; Skin Care</strong> — residual <em>Banana Boat</em> recall echo holding back NA shelf placement</li>
+        <li><strong>Cuautitlan plant</strong> — operator attrition driving unfavorable labor variance</li>
+        <li><strong>A&amp;P spend</strong> — running 80 bps over plan to defend share</li>
+        <li><strong>Billie CAC</strong> — $28.40 vs $24.00 budgeted</li>
+        <li><strong>Productivity savings</strong> — ~380 bps GM tailwind partially offsetting ~195 bps materials inflation</li>
+      </ul>
+
+      <h3>Prompt Title: Q2 FY26 Variance Read &amp; Close-Risk Brief for Edgewell</h3>
+
+      <h4>Exercise 6.1 — The Cowork prompt</h4>
+      <p>Open Copilot Chat (Microsoft 365 Copilot, not just the Excel side pane). Attach <code class="inline">EDG_Finance_Performance.xlsx</code> and paste this prompt:</p>
+
+      <div class="prompt">
+        <div class="prompt-label">💬 Cowork prompt — paste in full</div>
+        <button class="copy-btn">Copy</button>
+        <pre class="prompt-text">You are my FP&amp;A partner for Edgewell Personal Care. We are closing Q2 FY26 and I need to walk the CFO through the variance story and the open close risks tomorrow morning.
+
+STEP 1 — ANALYZE
+Read EDG_Finance_Performance.xlsx and build a Q2 FY26 variance read:
+• Compare Actual vs Budget by department and by month for Q2 FY26 (Jan–Mar 2026 calendar / fiscal Q2).
+• Identify the top 5 favorable and top 5 unfavorable variances in absolute dollars AND as a % of plan.
+• Call out anything that crosses ±10% vs plan or ±$500K in absolute terms.
+• Map variances back to the named drivers in the file (Wet Shave NA volume, Banana Boat recall echo, Cuautitlan attrition, A&amp;P over plan, Billie CAC, productivity savings).
+• Flag the three highest-risk items on the open close-task list.
+
+STEP 2 — OUTPUTS (produce all four)
+1. EDG_Finance_VarianceDashboard.xlsx — a clean variance workbook with: a summary tab (Actual / Budget / Variance $ / Variance % by department), a drivers tab tying the largest variances to root causes, and a close-risk tab listing the three highest-risk open tasks with owner, ETA, and impact.
+2. EDG_Finance_CFO_Brief.docx — a 2-page memo for the CFO: TL;DR up top, Revenue read, Gross Margin read, Operating Expense read, Close-Risk section, and a Recommendation paragraph.
+3. EDG_Finance_QBR_Deck.pptx — a 6–8 slide deck for the quarterly business review: title, Q2 headline, segment view (Wet Shave / Sun &amp; Skin Care / Feminine Care / DTC), GM bridge (materials inflation vs productivity), A&amp;P and CAC slide, close-risk slide, ask/recommendation.
+4. EDG_Finance_Dashboard.html — a single-page HTML KPI summary the team can open in a browser: top metrics tiles, the segment variance chart, and the three close-risk items.
+
+STEP 3 — TALK TRACK
+At the end, give me a 60–120 second executive talk track I can use to open the CFO meeting. Lead with YTD top line, then the Sun &amp; Skin Care NA swing (12–18% below plan), then the GM story (195 bps materials inflation offset by ~380 bps productivity), then the A&amp;P 80 bps over plan, then the three highest-risk close tasks. Keep it crisp.
+
+Rules:
+• Only use numbers and drivers that are in the attached file. If something isn't in the data, mark it [ASSUMPTION] in the deliverable.
+• Don't invent customer names, contract values, or forecast numbers.
+• Where you make a judgment call, say so in one line and explain why.</pre>
+      </div>
+
+      <h4>What Copilot produces</h4>
+      <p>One Cowork run should hand you back four linked files:</p>
+      <ul>
+        <li><code class="inline">EDG_Finance_VarianceDashboard.xlsx</code> — summary, drivers, and close-risk tabs</li>
+        <li><code class="inline">EDG_Finance_CFO_Brief.docx</code> — 2-page memo for the CFO</li>
+        <li><code class="inline">EDG_Finance_QBR_Deck.pptx</code> — 6–8 slide quarterly business review deck</li>
+        <li><code class="inline">EDG_Finance_Dashboard.html</code> — one-page browser-friendly KPI summary</li>
+      </ul>
+
+      <div class="callout tip">
+        <strong>🎤 Executive talk track (what "good" sounds like):</strong> "YTD we're tracking roughly in line on top line, but Q2 has a Sun &amp; Skin Care NA swing 12–18% below plan — that's the Banana Boat recall echo still holding back shelf placement. Gross margin is the bright spot under the surface: ~195 bps of materials inflation, fully offset by ~380 bps of productivity from Cuautitlan and Sri Lanka. The watch-out is A&amp;P running 80 bps over plan as we defend share, plus Billie CAC at $28.40 vs the $24 we budgeted. On close, three items are live: Cuautitlan labor variance reconciliation, the Banana Boat returns reserve true-up, and the DTC subscription deferred revenue split. I'd like 48 more hours on the first two before we lock the books."
+      </div>
+
+      <div class="callout important">
+        <strong>🔴 IMPORTANT — Assumptions vs Facts:</strong> Anything Copilot produces that is NOT in <code class="inline">EDG_Finance_Performance.xlsx</code> should be marked <code class="inline">[ASSUMPTION]</code> in the deliverables. Customer names, future-period forecast figures, and any contract dollars not in the file are out of bounds. Sanity-check every number against the source workbook before sharing with the CFO.
+      </div>
+
+      <h4>Stretch — optional follow-ups</h4>
+      <p>Once the main run lands, try these as separate Copilot prompts in the same chat:</p>
+      <div class="prompt">
+        <div class="prompt-label">💬 Stretch prompt 1 — Q3 forecast scenario</div>
+        <button class="copy-btn">Copy</button>
+        <pre class="prompt-text">Using the Q2 actuals and the named drivers, build a Q3 FY26 forecast scenario with three cases (low / base / high). Assume Sun &amp; Skin Care NA recovers 30% / 50% / 70% of the gap, Cuautitlan attrition stabilizes by mid-Q3, and A&amp;P holds at the current run rate. Show segment revenue, GM%, and Adjusted EBITDA for each case.</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-label">💬 Stretch prompt 2 — one-page close-risk memo</div>
+        <button class="copy-btn">Copy</button>
+        <pre class="prompt-text">Write a one-page close-risk memo to the Controller covering only the three highest-risk open close tasks. For each: what the risk is, the dollar exposure range, the owner, and the recommended path to resolution before we lock the books.</pre>
+      </div>
+
+      <div class="callout warn">
+        <strong>⚠️ WARNING:</strong> Cowork output is a starting draft, not a final deliverable. Always reconcile the numbers in the generated workbook against your source ERP data, review the CFO brief for tone and accuracy, and verify chart figures on the deck slides before presenting. The agent is a force multiplier — not the signer-off.
       </div>
     </div>
   </details>
