@@ -273,6 +273,104 @@ layout: none
     border-top: 1px solid var(--border);
   }
 
+  /* ===== LEFT SIDEBAR NAV ===== */
+  :root { --sidebar-width: 250px; }
+  .sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 16px 0;
+    font-size: 0.88rem;
+    z-index: 100;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .sidebar .sb-home {
+    display: block;
+    padding: 6px 18px 12px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar .sb-home:hover { text-decoration: underline; }
+  .sidebar .sb-title {
+    padding: 8px 18px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--brand-dark);
+  }
+  .sidebar a.nav-link {
+    display: block;
+    padding: 7px 18px;
+    color: var(--muted);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  .sidebar a.nav-link:hover {
+    color: var(--text);
+    background: var(--tip-bg);
+  }
+  .sidebar a.nav-link.active {
+    color: var(--brand-dark);
+    font-weight: 600;
+    border-left-color: var(--brand);
+    background: var(--tip-bg);
+  }
+  body.has-sidebar .container { margin-left: var(--sidebar-width); }
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    z-index: 200;
+    background: var(--brand);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .sidebar-toggle:hover { background: var(--brand-dark); }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 150;
+  }
+  .sidebar-overlay.open { display: block; }
+  [id] { scroll-margin-top: 12px; }
+
+  @media (max-width: 960px) {
+    .sidebar {
+      left: -280px;
+      width: 270px;
+      transition: left 0.3s ease;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+      z-index: 300;
+    }
+    .sidebar.open { left: 0; }
+    .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+    body.has-sidebar .container { margin-left: 0; }
+  }
+
+  @media print {
+    .sidebar, .sidebar-toggle, .sidebar-overlay { display: none !important; }
+    body.has-sidebar .container { margin-left: 0; }
+  }
+
   @media (max-width: 640px) {
     .container { padding: 20px 16px 60px; }
     header.page-header { padding: 28px 20px; }
@@ -281,7 +379,25 @@ layout: none
   }
 </style>
 </head>
-<body>
+<body class="has-sidebar">
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<nav class="sidebar" id="sidebar" aria-label="Page navigation">
+  <a class="sb-home" href="../../index.html">← Back to Index</a>
+  <div class="sb-title">Excel Copilot Labs</div>
+  <a href="#lab0" class="nav-link">Lab 0 — Quick Start</a>
+  <a href="#lab1" class="nav-link">Lab 1 — Trust Copilot</a>
+  <a href="#lab2" class="nav-link">Lab 2 — Act on Your Data</a>
+  <a href="#lab3" class="nav-link">Lab 3 — Analyze & Visualize</a>
+  <a href="#lab4" class="nav-link">Lab 4 — COPILOT() Function</a>
+  <a href="#lab5" class="nav-link">Lab 5 — Business Problem</a>
+  <a href="#lab6" class="nav-link">Lab 6 — Cowork</a>
+  <a href="#wrapup" class="nav-link">Wrap-up & Next Steps</a>
+</nav>
+
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
 <div class="container">
 
   <nav class="back-nav">
@@ -914,6 +1030,49 @@ Rules:
         }, 1500);
       });
     });
+  });
+
+  // === Sidebar: mobile open/close ===
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+
+  // === Sidebar links: auto-expand target <details> and close mobile sidebar ===
+  document.querySelectorAll('.sidebar a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').substring(1);
+      const target = document.getElementById(id);
+      if (target && target.tagName.toLowerCase() === 'details' && !target.open) {
+        target.open = true;
+      }
+      if (window.innerWidth <= 960) closeSidebar();
+    });
+  });
+
+  // === Sidebar active-link scrollspy ===
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.sidebar a[href^="#"]');
+    const map = new Map();
+    links.forEach(l => {
+      const el = document.getElementById(l.getAttribute('href').substring(1));
+      if (el) map.set(el, l);
+    });
+    if (!('IntersectionObserver' in window) || map.size === 0) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const link = map.get(entry.target);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    map.forEach((_, el) => observer.observe(el));
   });
 </script>
 </body>
