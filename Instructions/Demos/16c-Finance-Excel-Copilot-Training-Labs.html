@@ -42,6 +42,19 @@ layout: none
     background: var(--neutral-100);
   }
 
+  .back-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--neutral-200);
+    padding: 8px 24px;
+    font-size: 0.88rem;
+  }
+  .back-bar a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-bar a:hover { text-decoration: underline; }
+
   /* Hero */
   .hero {
     background: linear-gradient(135deg, #1B5E20 0%, #217346 40%, #0078D4 100%);
@@ -429,6 +442,11 @@ layout: none
 </style>
 </head>
 <body>
+
+<!-- ===== BACK TO INDEX BAR ===== -->
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
