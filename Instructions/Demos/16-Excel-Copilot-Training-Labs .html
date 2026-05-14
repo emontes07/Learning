@@ -273,13 +273,89 @@ layout: none
     border-top: 1px solid var(--border);
   }
 
+  /* ===== TOP BAR (back to index) ===== */
+  .back-bar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 24px;
+    font-size: 0.88rem;
+  }
+  .back-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-bar a:hover { text-decoration: underline; }
+
+  /* ===== HERO (full-width banner) ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .hero .subtitle {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    margin-bottom: 18px;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  /* ===== LAYOUT: SIDEBAR + MAIN ===== */
+  :root { --sidebar-width: 260px; }
+  .layout {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 24px 80px;
+  }
+
   /* ===== LEFT SIDEBAR NAV ===== */
-  :root { --sidebar-width: 250px; }
   .sidebar {
     width: var(--sidebar-width);
-    position: fixed;
+    flex-shrink: 0;
+    position: sticky;
     top: 0;
-    left: 0;
+    align-self: flex-start;
     height: 100vh;
     overflow-y: auto;
     background: var(--card);
@@ -325,7 +401,6 @@ layout: none
     border-left-color: var(--brand);
     background: var(--tip-bg);
   }
-  body.has-sidebar .container { margin-left: var(--sidebar-width); }
   .sidebar-toggle {
     display: none;
     position: fixed;
@@ -348,14 +423,17 @@ layout: none
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.4);
-    z-index: 150;
+    z-index: 250;
   }
   .sidebar-overlay.open { display: block; }
   [id] { scroll-margin-top: 12px; }
 
   @media (max-width: 960px) {
     .sidebar {
+      position: fixed;
       left: -280px;
+      top: 0;
+      height: 100vh;
       width: 270px;
       transition: left 0.3s ease;
       box-shadow: 4px 0 20px rgba(0,0,0,0.15);
@@ -363,26 +441,50 @@ layout: none
     }
     .sidebar.open { left: 0; }
     .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
-    body.has-sidebar .container { margin-left: 0; }
+    .main-content { padding: 24px 18px 60px; }
   }
 
   @media print {
-    .sidebar, .sidebar-toggle, .sidebar-overlay { display: none !important; }
-    body.has-sidebar .container { margin-left: 0; }
+    .sidebar, .sidebar-toggle, .sidebar-overlay, .back-bar { display: none !important; }
+    .main-content { padding: 0; }
   }
 
   @media (max-width: 640px) {
-    .container { padding: 20px 16px 60px; }
-    header.page-header { padding: 28px 20px; }
-    header.page-header h1 { font-size: 1.5rem; }
+    .hero { padding: 28px 20px; }
+    .hero h1 { font-size: 1.5rem; }
     .prompt-text { padding-right: 70px; font-size: 0.85rem; }
   }
 </style>
 </head>
-<body class="has-sidebar">
+<body>
 
+<!-- ===== BACK TO INDEX BAR ===== -->
+<div class="back-bar">
+  <a href="../../index.html">← Back to Index</a>
+</div>
+
+<!-- ===== HERO (full-width banner) ===== -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Excel Copilot Training — Guided Labs</h1>
+    <div class="subtitle">From "trusting Copilot" to solving real business problems — five hands-on labs plus a quick-start.</div>
+    <div class="badges">
+      <span class="badge">⏱️ 60–90 minutes</span>
+      <span class="badge">👥 Business users & analysts</span>
+      <span class="badge">🎯 Beginner → Intermediate</span>
+      <span class="badge">🛠️ Hands-on</span>
+      <span class="badge">📊 Excel + Copilot</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SIDEBAR OVERLAY (mobile) ===== -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+
+<!-- ===== SIDEBAR NAV ===== -->
 <nav class="sidebar" id="sidebar" aria-label="Page navigation">
   <a class="sb-home" href="../../index.html">← Back to Index</a>
   <div class="sb-title">Excel Copilot Labs</div>
@@ -396,25 +498,8 @@ layout: none
   <a href="#wrapup" class="nav-link">Wrap-up & Next Steps</a>
 </nav>
 
-<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
-
-<div class="container">
-
-  <nav class="back-nav">
-    <a href="../../index.html">← Back to Index</a>
-  </nav>
-
-  <header class="page-header">
-    <h1>Excel Copilot Training — Guided Labs</h1>
-    <div class="subtitle">From "trusting Copilot" to solving real business problems — five hands-on labs plus a quick-start.</div>
-    <div class="badges">
-      <span class="badge">⏱️ 60–90 minutes</span>
-      <span class="badge">👥 Business users & analysts</span>
-      <span class="badge">🎯 Beginner → Intermediate</span>
-      <span class="badge">🛠️ Hands-on</span>
-      <span class="badge">📊 Excel + Copilot</span>
-    </div>
-  </header>
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
 
   <div class="toc">
     <h2>📚 In this training</h2>
@@ -1000,7 +1085,11 @@ Rules:
     <p>Excel Copilot Training — Guided Labs · Last updated 2026-05-14</p>
   </footer>
 
-</div>
+</div> <!-- end main-content -->
+</div> <!-- end layout -->
+
+<!-- ===== MOBILE SIDEBAR TOGGLE ===== -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
 
 <script>
   document.querySelectorAll('.copy-btn').forEach(btn => {
