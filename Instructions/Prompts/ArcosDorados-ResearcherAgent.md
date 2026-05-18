@@ -1,11 +1,54 @@
 ---
-demo:
-    title: 'Researcher and Analyst Demo'
+layout: none
 ---
 
-[Back to Index](https://github.com/emontes07/Learning/)
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agente Researcher — Arcos Dorados | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #B71C1C; --hero-via: #D32F2F; --hero-to: #FFC107; }</style>
+</head>
+<body>
 
-# Agente Researcher
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>🔬 Agente Researcher — Arcos Dorados</h1>
+    <p class="subtitle">Investigación multi-paso con Copilot y el agente Researcher.</p>
+    <div class="hero-meta">
+      <span>🔬 Researcher</span>
+      <span>🍔 Arcos Dorados</span>
+      <span>💬 Copilot</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Arcos Dorados</div>
+
+  <a href="#sec-intro" class="section-link">Overview</a>
+  <a href="#part1-researcher-construye-un-plan-de-marketing" class="part-link">Researcher: Construye un Plan de Marketing</a>
+  <a href="#part2-researcher-segmentación-de-clientes-y-modelado-financiero" class="part-link">Researcher: Segmentación de Clientes y Modelado Financiero</a>
+  <a href="#part3-preguntas-de-seguimiento-para-el-researcher-agent" class="part-link">Preguntas de Seguimiento para el Researcher Agent</a>
+  <a href="#part4-escenarios-adicionales-para-researcher" class="part-link">Escenarios adicionales para Researcher</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-intro">
+<div markdown="1">
 
 Esta demostración destaca cómo usar el agente **Researcher**, este es un agente experto integrados en la aplicación Copilot. Researcher te ayuda a abordar tareas de investigación de múltiples pasos, combinando datos web con archivos y conocimientos de tu empresa.
 
@@ -50,8 +93,17 @@ Para acceder a estos agentes:
 
 ---
 
-### Researcher: Construye un Plan de Marketing
+</div>
+</div>
 
+<div class="part-card" id="part1-researcher-construye-un-plan-de-marketing">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Researcher: Construye un Plan de Marketing</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
 
 1. Abre **Researcher** desde la navegación izquierda en la aplicación de Copilot.  
 
@@ -59,14 +111,11 @@ Para acceder a estos agentes:
 
 2. Ingresa el siguiente prompt:
 
-    ```text
-    Crea un plan de marketing para la próxima campaña de Cajita Feliz 
-    durante el evento en Ciudad de México (24-26 octubre 2025). 
-    Destaca posibles alianzas con franquicias infantiles, 
-    recomienda el tipo de juguetes más atractivos para niños de 4 a 10 años 
-    y sugiere la mezcla de canales más efectiva (TV, redes sociales, activaciones en restaurante). 
-    Incluye aprendizajes de campañas pasadas y referencias de competidores como Burger King y KFC.
-    ```
+</div>
+
+<div class="prompt-box">    Crea un plan de marketing para la próxima campaña de Cajita Feliz <br>    durante el evento en Ciudad de México (24-26 octubre 2025). <br>    Destaca posibles alianzas con franquicias infantiles, <br>    recomienda el tipo de juguetes más atractivos para niños de 4 a 10 años <br>    y sugiere la mezcla de canales más efectiva (TV, redes sociales, activaciones en restaurante). <br>    Incluye aprendizajes de campañas pasadas y referencias de competidores como Burger King y KFC.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 1. Adjunta los archivos de referencia usando `/` (apuntando a SharePoint/OneDrive):  
 
@@ -85,9 +134,20 @@ Researcher hará lo siguiente:
 - Estructurará un plan de marketing con recomendaciones sobre la mezcla de canales y la estrategia de contenidos.  
 - Citará las fuentes para que puedas validar el análisis.  
 
-> **Nota:** Researcher muestra su ruta de razonamiento (“chain of thought”) y puede invocar otros agentes si es necesario.  
+> **Nota:** Researcher muestra su ruta de razonamiento (“chain of thought”) y puede invocar otros agentes si es necesario.
 
-### Researcher: Segmentación de Clientes y Modelado Financiero
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-researcher-segmentación-de-clientes-y-modelado-financiero">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Researcher: Segmentación de Clientes y Modelado Financiero</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
 
 1. Abre **Researcher** desde la navegación izquierda en la aplicación de Copilot. 
 
@@ -96,16 +156,11 @@ Researcher hará lo siguiente:
 
 1. Ingresa el siguiente prompt:
 
-    ```text
-    Con base en las recomendaciones identificadas para la campaña de Cajita Feliz, realiza un análisis de priorización estratégica.  
-    Clasifica cada recomendación según su ROI estimado, facilidad de implementación y alineación con los objetivos de McDonald's para 2025.  
-    Asigna una ponderación: ROI (50%), facilidad de implementación (30%) y alineación estratégica (20%).  
-    Presenta los tres principales enfoques priorizados incluyendo:
-    – Recursos necesarios y tiempos estimados  
-    – Riesgos o dependencias potenciales  
-    – KPIs sugeridos para medir el impacto inicial  
-    Incluye una matriz de acción (impacto vs. esfuerzo) y una narrativa breve que justifique cada prioridad.
-    ```
+</div>
+
+<div class="prompt-box">    Con base en las recomendaciones identificadas para la campaña de Cajita Feliz, realiza un análisis de priorización estratégica.  <br>    Clasifica cada recomendación según su ROI estimado, facilidad de implementación y alineación con los objetivos de McDonald's para 2025.  <br>    Asigna una ponderación: ROI (50%), facilidad de implementación (30%) y alineación estratégica (20%).  <br>    Presenta los tres principales enfoques priorizados incluyendo:<br>    – Recursos necesarios y tiempos estimados  <br>    – Riesgos o dependencias potenciales  <br>    – KPIs sugeridos para medir el impacto inicial  <br>    Incluye una matriz de acción (impacto vs. esfuerzo) y una narrativa breve que justifique cada prioridad.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 1. Click **Submit**. 
 
@@ -117,52 +172,71 @@ Researcher hará lo siguiente:
 
   ![Captura de pantalla resultados del agente Researcher.](../Prompts/Media/ArcosAnalyst06.png)
 
-### Preguntas de Seguimiento para el Researcher Agent
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-preguntas-de-seguimiento-para-el-researcher-agent">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Preguntas de Seguimiento para el Researcher Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 Después de recibir el primer análisis, puedes hacer estas dos preguntas para profundizar en el escenario:
 
-**Pregunta 1:Estrategia de Comunicación Digital**  
+**Pregunta 1:Estrategia de Comunicación Digital**
 
-```text
-Propón una estrategia de comunicación digital que complemente la campaña de Cajita Feliz en Ciudad de México.
-Incluye ejemplos de publicaciones para TikTok, dinámicas interactivas en Instagram y activaciones en restaurante.  
-Asegúrate de adaptar el tono y estilo al público infantil y familiar, y de integrar elementos visuales que refuercen el mensaje de la campaña.
-```
+</div>
 
-**Pregunta 2:Alianzas Estratégicas**  
+<div class="prompt-box">Propón una estrategia de comunicación digital que complemente la campaña de Cajita Feliz en Ciudad de México.<br>Incluye ejemplos de publicaciones para TikTok, dinámicas interactivas en Instagram y activaciones en restaurante.  <br>Asegúrate de adaptar el tono y estilo al público infantil y familiar, y de integrar elementos visuales que refuercen el mensaje de la campaña.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-```text
-Sugiere posibles alianzas con franquicias infantiles para la campaña de Cajita Feliz.
-Evalúa el potencial de colaboración con marcas de películas, series animadas, videojuegos o juguetes educativos.  
-Incluye ejemplos de campañas similares exitosas y justifica por qué estas alianzas podrían aumentar el alcance y la relevancia de la campaña.
-```
+<div markdown="1">
 
+**Pregunta 2:Alianzas Estratégicas**
 
-### Escenarios adicionales para Researcher
+</div>
+
+<div class="prompt-box">Sugiere posibles alianzas con franquicias infantiles para la campaña de Cajita Feliz.<br>Evalúa el potencial de colaboración con marcas de películas, series animadas, videojuegos o juguetes educativos.  <br>Incluye ejemplos de campañas similares exitosas y justifica por qué estas alianzas podrían aumentar el alcance y la relevancia de la campaña.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-escenarios-adicionales-para-researcher">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Escenarios adicionales para Researcher</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 Puedes ejecutar estos mensajes adicionales para variar. Cada uno sigue el mismo patrón: **Mensaje → Adjuntar archivo → Enviar → Revisar resultados.**
 
-- **Evaluación de Canales**  
+- **Evaluación de Canales**
 
-    ```text
-    Compara el mix de medios de campañas pasadas con el comportamiento actual de consumo de medios en familias urbanas mexicanas. Identifica si estamos sobreinvirtiendo o subinvirtiendo en algún canal y sugiere ajustes.
-    ```  
+</div>
 
+<div class="prompt-box">    Compara el mix de medios de campañas pasadas con el comportamiento actual de consumo de medios en familias urbanas mexicanas. Identifica si estamos sobreinvirtiendo o subinvirtiendo en algún canal y sugiere ajustes.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-- **Mensajes y Creatividad**  
+<div markdown="1">
 
-    ```text
-    Evalúa si el tono y lenguaje de las campañas pasadas siguen siendo relevantes para niños y padres en 2025.  Propón ajustes creativos o de storytelling que conecten mejor con el público objetivo.
-    ```  
+- **Mensajes y Creatividad**
 
+</div>
 
-- **Innovación en la Experiencia**  
+<div class="prompt-box">    Evalúa si el tono y lenguaje de las campañas pasadas siguen siendo relevantes para niños y padres en 2025.  Propón ajustes creativos o de storytelling que conecten mejor con el público objetivo.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Propón ideas innovadoras para que la Cajita Feliz incorpore experiencias digitales, por ejemplo juegos con realidad aumentada, códigos QR con minijuegos o coleccionables virtuales.
+<div markdown="1">
 
-    ```  
+- **Innovación en la Experiencia**
 
+</div>
+
+<div class="prompt-box">    Propón ideas innovadoras para que la Cajita Feliz incorpore experiencias digitales, por ejemplo juegos con realidad aumentada, códigos QR con minijuegos o coleccionables virtuales.<br><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **💡 Tips útiles:** 
 - Cita siempre fuentes confiables y actualizadas (por ejemplo: datos 2024–2025 de INEGI, Euromonitor, Kantar).
@@ -180,5 +254,14 @@ Puedes ejecutar estos mensajes adicionales para variar. Cada uno sigue el mismo 
 
 Juntos, Researcher y Analyst acortan el camino de la **pregunta al conocimiento**, convirtiendo semanas de trabajo en minutos.
 
-[Back to Index](https://emontes07.github.io/Learning/)
+</div>
+  </div>
+</div>
 
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

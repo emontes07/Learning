@@ -1,9 +1,60 @@
 ---
-task:
-    title: 'Copilot Chats'
+layout: none
 ---
 
-# **Arcos Dorados: IT Edition**
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcos Dorados — IT Edition | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #B71C1C; --hero-via: #D32F2F; --hero-to: #FFC107; }</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>💻 Arcos Dorados — IT Edition</h1>
+    <p class="subtitle">Sesión interactiva para equipos de IT con Copilot.</p>
+    <div class="hero-meta">
+      <span>💻 IT</span>
+      <span>🍔 Arcos Dorados</span>
+      <span>💬 Copilot</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">IT Edition</div>
+
+  <a href="#sec-intro" class="section-link">Overview</a>
+  <a href="#part1-práctica-1-memoria-y-personalización-de-copilot" class="part-link">Práctica 1: Memoria y Personalización de Copilot</a>
+  <a href="#part2-práctica-2-guardar-prompts-en-copilot" class="part-link">Práctica 2: Guardar Prompts en Copilot</a>
+  <a href="#part3-práctica-3-crear-y-editar-un-briefing-en-copilot-loop-y-word" class="part-link">Práctica 3: Crear y editar un briefing en Copilot, Loop y Word</a>
+  <a href="#part4-práctica-4-trabajar-con-documentos-de-word" class="part-link">Práctica 4: Trabajar con documentos de Word</a>
+  <a href="#part5-práctica-5-meeting-recap-decision-owners" class="part-link">Práctica 5: Meeting Recap – Decision & Owners</a>
+  <a href="#part6-práctica-6-resumir-y-recapitular-correos-en-outlook" class="part-link">Práctica 6: Resumir y Recapitular Correos en Outlook</a>
+  <a href="#part7-práctica-7-agente-researcher-crea-un-documento-técnico-white" class="part-link">Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)</a>
+  <a href="#part8-prompting-framework-gcse" class="part-link">Prompting Framework: GCSE</a>
+  <a href="#part9-prompting-best-practices" class="part-link">Prompting Best Practices</a>
+  <a href="#part10-get-started" class="part-link">Get Started</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-intro">
+<div markdown="1">
 
 Bienvenido a esta sesión interactiva diseñada para ayudarte a desbloquear todo el potencial de Microsoft Copilot dominando el arte y la ciencia de la creación efectiva de prompts.
 Aprenderás técnicas prácticas para crear prompts claros e impactantes que generen valor real para el negocio, ahorren tiempo y aumenten la productividad.
@@ -12,7 +63,17 @@ Prepárate para una experiencia práctica y colaborativa, donde experimentarás,
 
 ---
 
-## Práctica 1: Memoria y Personalización de Copilot
+</div>
+</div>
+
+<div class="part-card" id="part1-práctica-1-memoria-y-personalización-de-copilot">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Práctica 1: Memoria y Personalización de Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
 Copilot con base en tus chats previos, perfil de trabajo, instrucciones
@@ -53,7 +114,18 @@ puedes agregar a Copilot: Copilot instructions:
 
 - [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
 
-## Práctica 2: Guardar Prompts en Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-práctica-2-guardar-prompts-en-copilot">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Práctica 2: Guardar Prompts en Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
 
 Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
 consultas sin tener que escribirlas cada vez. A continuación, se explica
@@ -86,11 +158,12 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 **Paso 2: Guardar un Prompt**
 
 1.  Comienza ejecutando un prompt, por ejemplo:
-   
-    ```text
-    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
 
-    ```
+</div>
+
+<div class="prompt-box">    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.<br><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 3.  Pasa el cursor sobre el prompt.
 
@@ -106,15 +179,27 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 > • Comparte los prompts más usados con tu equipo para mantener la coherencia.  
 > • Revisa y actualiza periódicamente los prompts guardados para mantenerlos relevantes.
 
-## Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-práctica-3-crear-y-editar-un-briefing-en-copilot-loop-y-word">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Práctica 3: Crear y editar un briefing en Copilot, Loop y Word</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 1.  **Ejecuta el prompt en Copilot**  
     Copia y pega este prompt en Copilot:
 
-    ```text
-    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.
+</div>
 
-    ```
+<div class="prompt-box">    Crea un briefing en español, tono ejecutivo, para una sesión con el equipo de TI y liderazgo de Arcos Dorados (McDonald’s LATAM). El documento debe tener 1 página (~600–800 palabras) e incluir: resumen ejecutivo, tendencias recientes del sector QSR en LATAM, implicaciones para TI (modernización POS, nube, apps, seguridad, IA generativa), oportunidades para Microsoft 365 Copilot, riesgos y plan de acción 30–60–90 días. Usa encabezados claros, párrafos cortos, resalta 3–5 ideas clave en negrita y cita fuentes recientes.<br><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 2.  **Selecciona el ícono “Editar en Pages”**
 
@@ -138,7 +223,18 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 > <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Práctica 4: Trabajar con documentos de Word
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-práctica-4-trabajar-con-documentos-de-word">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Práctica 4: Trabajar con documentos de Word</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 - **1.Abre el documento en Word**  
 Desde Loop, selecciona la opción **Abrir en Word** (esquina superior
@@ -164,14 +260,27 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 - **3. Abre la ventana de Copilot y ejecuta el siguiente prompt**:
 
-    ```text
-    Convierte este briefing en una lista de preguntas estratégicas para la sesión
-    ```
+</div>
+
+<div class="prompt-box">    Convierte este briefing en una lista de preguntas estratégicas para la sesión<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Copilot transformará el contenido en preguntas que podrás usar para
 guiar la conversación con el equipo.
 
-## Práctica 5: Meeting Recap – Decision & Owners
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part5-práctica-5-meeting-recap-decision-owners">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Práctica 5: Meeting Recap – Decision & Owners</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body5">
+<div markdown="1">
 
 - **Pre-requisitos (rápido)**  
 • La reunión debe existir en tu calendario de Teams (ideal si tuvo
@@ -222,59 +331,64 @@ fechas).
 
 2.  Ejecuta este *prompt* base para orientar el objetivo:
 
-    ```text
-    Resume la reunión en 5–7 puntos y convierte cada punto en una
-    decisión con un responsable y una fecha objetivo. Si faltan datos,
-    sugiere responsables y fechas tentativas basándote en el contexto de
-    la conversación.
-    ```  
+</div>
 
-- **Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**  
+<div class="prompt-box">    Resume la reunión en 5–7 puntos y convierte cada punto en una<br>    decisión con un responsable y una fecha objetivo. Si faltan datos,<br>    sugiere responsables y fechas tentativas basándote en el contexto de<br>    la conversación.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.
-    ```   
+<div markdown="1">
 
-    ```text
-    Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado. 
-    ```   
+- **Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**
 
-    ```text
-    ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. 
-    ```  
+</div>
 
-    ```text
-    Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.
-    ```  
+<div class="prompt-box">    Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Genera un plan 30–60–90 días a partir de las decisiones tomadas, con hitos y responsables.
-    ```  
+<div class="prompt-box">    Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado. <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    Genera un plan 30–60–90 días a partir de las decisiones tomadas, con hitos y responsables.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 - **4) Da forma final a “Decisiones y Responsables”**
 
-- Pide el resultado como tabla para facilitar su uso:  
+- Pide el resultado como tabla para facilitar su uso:
 
-    ```text
-    Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
-    ``` 
+</div>
+
+<div class="prompt-box">    Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **Tip:** Durante la reunión, utiliza Facilitator para mantener el enfoque en los temas clave y registrar acuerdos en tiempo real. Además, puedes hacerle preguntas o solicitarle resúmenes directamente mencionándolo con “@Facilitator” en el chat de la reunión.
 
 > **Tip:** Usa el agente Translator para comunicarte con participantes que hablen otros idiomas durante la reunión.
 
-## Práctica 6: Resumir y Recapitular Correos en Outlook
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part6-práctica-6-resumir-y-recapitular-correos-en-outlook">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>Práctica 6: Resumir y Recapitular Correos en Outlook</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body6">
+<div markdown="1">
 
 Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de los hilos de correo.
 
 **Sample Prompt:**
-```text
-    Recapitula mi correo y muéstrame:
-    1. Qué se está pidiendo
-    2. Qué se le está pidiendo al equipo
-    3. Qué se me está pidiendo directamente a mí
-    Enumera fechas y temas en una tabla
-```
+
+</div>
+
+<div class="prompt-box">    Recapitula mi correo y muéstrame:<br>    1. Qué se está pidiendo<br>    2. Qué se le está pidiendo al equipo<br>    3. Qué se me está pidiendo directamente a mí<br>    Enumera fechas y temas en una tabla<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:** También puedes agregar instrucciones personalizadas para que Copilot priorice ciertos temas o formatos al generar los resúmenes.
 > Accede a opciones avanzadas
@@ -303,7 +417,18 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 # Ejercicio: Realizar investigación en línea usando Agentes
 
-## Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part7-práctica-7-agente-researcher-crea-un-documento-técnico-white">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body7">
+<div markdown="1">
 
 > **IMPORTANTE:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
 
@@ -313,11 +438,11 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 1. Escribe el siguiente prompt::
 
-    ```text
-    Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.
-Incluye secciones sobre gestión del cambio, preparación de los empleados, concientización sobre privacidad de datos y uso responsable de la IA.
-Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la innovación con la gobernanza, y destaca las lecciones aprendidas de las primeras implementaciones de Copilot para garantizar productividad, confianza y cumplimiento.
-    ```
+</div>
+
+<div class="prompt-box">    Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.<br>Incluye secciones sobre gestión del cambio, preparación de los empleados, concientización sobre privacidad de datos y uso responsable de la IA.<br>Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la innovación con la gobernanza, y destaca las lecciones aprendidas de las primeras implementaciones de Copilot para garantizar productividad, confianza y cumplimiento.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 1. Adjunta los archivos de referencia usando `/` (apunta a SharePoint/OneDrive):  
 
@@ -348,13 +473,15 @@ Crea un agente relacionado con tu rol o usa la siguiente guía para crear tu pri
 
    ![Screenshot showing create an agent link.](../Prompts/Media/create-agent.png)  
 
-2. En la pestaña **Describe**, redacta las instrucciones de tu agente. Por ejemplo:  
+2. En la pestaña **Describe**, redacta las instrucciones de tu agente. Por ejemplo:
 
-   ```text
-   Tú eres un agente que me ayudará a resolver dudas sobre Copilot: cómo utilizar la herramienta, cómo crear agentes en Copilot Studio y cómo aplicar sus funciones en los escenarios de Arcos Dorados.
-   ```  
+</div>
 
-   ![Screenshot showing describe agent with sample prompt filled in.](../Prompts/Media/create-agent-through-describe.png)  
+<div class="prompt-box">   Tú eres un agente que me ayudará a resolver dudas sobre Copilot: cómo utilizar la herramienta, cómo crear agentes en Copilot Studio y cómo aplicar sus funciones en los escenarios de Arcos Dorados.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
+![Screenshot showing describe agent with sample prompt filled in.](../Prompts/Media/create-agent-through-describe.png)  
 
 3. Selecciona la pestaña **Configure** y agrega una fuente de conocimiento (por ejemplo, archivos, sitios de SharePoint o páginas web).
 
@@ -378,7 +505,18 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 ---
 
-## Prompting Framework: GCSE
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part8-prompting-framework-gcse">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2>Prompting Framework: GCSE</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body8">
+<div markdown="1">
 
 To get the best results from Copilot, use the GCSE framework: 
 
@@ -393,7 +531,18 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Prompting Best Practices
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part9-prompting-best-practices">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>Prompting Best Practices</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body9">
+<div markdown="1">
 
 - Break down complex tasks into manageable steps.
 - Use persona-based prompting for specialized guidance.
@@ -404,6 +553,29 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Get Started
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part10-get-started">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body10', this)">
+    <h2>Get Started</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body10">
+<div markdown="1">
 
 Partner with us to build a business case, explore pre-built agents, and keep up with Copilot news on WorkLab: https://www.microsoft.com/en-us/worklab/ai-at-work/
+
+</div>
+  </div>
+</div>
+
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

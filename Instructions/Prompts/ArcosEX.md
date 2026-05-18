@@ -1,9 +1,67 @@
 ---
-task:
-    title: 'Copilot Chats'
+layout: none
 ---
 
-# **Arcos Dorados: Executives Edition**
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcos Dorados — Executives Edition | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #B71C1C; --hero-via: #D32F2F; --hero-to: #FFC107; }</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>👔 Arcos Dorados — Executives Edition</h1>
+    <p class="subtitle">Crea prompts efectivos para decisiones estratégicas.</p>
+    <div class="hero-meta">
+      <span>👔 Executives</span>
+      <span>🍔 Arcos Dorados</span>
+      <span>💬 Copilot</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Executives Edition</div>
+
+  <a href="#sec-intro" class="section-link">Overview</a>
+  <a href="#part1-sección-1-ejemplo-de-búsqueda-vs-razonamiento" class="part-link">Sección 1: Ejemplo de búsqueda vs razonamiento</a>
+  <a href="#part2-sección-2-información-estratégica-para-ejecutivos-arcos-dora" class="part-link">Sección 2: Información estratégica para ejecutivos (Arcos Dorados)</a>
+  <a href="#part3-sección-3-preparación-de-earnings-calls-con-copilot" class="part-link">Sección 3: Preparación de Earnings Calls con Copilot</a>
+  <a href="#part4-práctica-1-guardar-prompts-en-copilot" class="part-link">Práctica 1: Guardar Prompts en Copilot</a>
+  <a href="#part5-práctica-2-memoria-y-personalización-de-copilot" class="part-link">Práctica 2: Memoria y Personalización de Copilot</a>
+  <a href="#part6-práctica-3-crear-y-editar-un-briefing-en-copilot-loop-y-word" class="part-link">Práctica 3: Crear y editar un briefing en Copilot, Loop y Word</a>
+  <a href="#part7-práctica-4-trabajar-con-documentos-de-word" class="part-link">Práctica 4: Trabajar con documentos de Word</a>
+  <a href="#part8-práctica-5-meeting-recap-decision-owners" class="part-link">Práctica 5: Meeting Recap – Decision & Owners</a>
+  <a href="#part9-práctica-6-resumir-y-recapitular-correos-en-outlook" class="part-link">Práctica 6: Resumir y Recapitular Correos en Outlook</a>
+  <a href="#part10-práctica-7-agente-researcher-crea-un-documento-técnico-white" class="part-link">Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)</a>
+  <a href="#part11-qué-es-un-notebook" class="part-link">¿Qué es un Notebook?</a>
+  <a href="#part12-pasos-para-usar-notebooks" class="part-link">Pasos para usar Notebooks</a>
+  <a href="#part13-ejercicio-sugerido-para-practicar" class="part-link">Ejercicio sugerido para practicar</a>
+  <a href="#part14-resultado-final" class="part-link">Resultado final</a>
+  <a href="#part15-prompting-framework-gcse" class="part-link">Prompting Framework: GCSE</a>
+  <a href="#part16-prompting-best-practices" class="part-link">Prompting Best Practices</a>
+  <a href="#part17-get-started" class="part-link">Get Started</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-intro">
+<div markdown="1">
 
 Bienvenido a esta sesión interactiva diseñada para ayudarte a desbloquear todo el potencial de Microsoft Copilot dominando el arte y la ciencia de la creación efectiva de prompts.
 Aprenderás técnicas prácticas para crear prompts claros e impactantes que generen valor real para el negocio, ahorren tiempo y aumenten la productividad.
@@ -12,7 +70,18 @@ Prepárate para una experiencia práctica y colaborativa, donde experimentarás,
 
 ---
 
-## Sección 1: Ejemplo de búsqueda vs razonamiento
+</div>
+</div>
+
+<div class="part-card" id="part1-sección-1-ejemplo-de-búsqueda-vs-razonamiento">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Sección 1: Ejemplo de búsqueda vs razonamiento</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
+
 Objetivo: Mostrar cómo Copilot responde preguntas simples y luego razona con datos estratégicos.
 
 **Pasos**:
@@ -23,87 +92,151 @@ Objetivo: Mostrar cómo Copilot responde preguntas simples y luego razona con da
     ![screenshot showing Work mode tab.](../Prompts/Media/web-mode.png)
 
 Prompt 1 (búsqueda simple)
-```text
-¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
-```
+
+</div>
+
+<div class="prompt-box">¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 ¿Cuántos restaurantes opera Arcos Dorados en Latinoamérica?
 > **Nota:** Copilot obtiene el dato desde fuentes públicas o reportes trimestrales.
 
 Prompt 2 (razonamiento)
-```text
-Si Arcos Dorados quisiera aumentar un 10% el número de restaurantes en Brasil, ¿cuántos nuevos locales tendría que abrir?
-```
+
+</div>
+
+<div class="prompt-box">Si Arcos Dorados quisiera aumentar un 10% el número de restaurantes en Brasil, ¿cuántos nuevos locales tendría que abrir?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 > **Nota:** Copilot calcula con base en la cifra inicial y proyecta el incremento.
 
 Prompt 3 (comparación rápida)
-```text
-¿Cómo se compara el número de restaurantes de Arcos Dorados con el de Burger King en la región?
-```
+
+</div>
+
+<div class="prompt-box">¿Cómo se compara el número de restaurantes de Arcos Dorados con el de Burger King en la región?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 > **Nota:** Copilot genera una tabla comparativa usando datos públicos.
 
-## Sección 2: Información estratégica para ejecutivos (Arcos Dorados)
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-sección-2-información-estratégica-para-ejecutivos-arcos-dora">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Sección 2: Información estratégica para ejecutivos (Arcos Dorados)</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
+
 Objetivo: Mostrar cómo Copilot puede generar insights valiosos para la toma de decisiones usando fuentes públicas.
 
 
 Metas técnicas y operativas:
-```text
-¿Cuáles son las metas técnicas y operativas de Arcos Dorados según sus últimas llamadas de resultados y reportes trimestrales?
-```
+
+</div>
+
+<div class="prompt-box">¿Cuáles son las metas técnicas y operativas de Arcos Dorados según sus últimas llamadas de resultados y reportes trimestrales?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Antecedentes de la marca:
-```text
-Dame un panorama completo sobre Arcos Dorados y qué los hace únicos como marca en la industria de comida rápida en Latinoamérica.
-```
+
+</div>
+
+<div class="prompt-box">Dame un panorama completo sobre Arcos Dorados y qué los hace únicos como marca en la industria de comida rápida en Latinoamérica.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Comparación con competidores:
-```text
-Compara el desempeño de ingresos de Arcos Dorados con competidores (por ejemplo, McDonald’s Corp, Burger King, Subway) y muestra los datos en una tabla.
-```
+
+</div>
+
+<div class="prompt-box">Compara el desempeño de ingresos de Arcos Dorados con competidores (por ejemplo, McDonald’s Corp, Burger King, Subway) y muestra los datos en una tabla.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Métricas de empleados:
-```text
-Usando estos competidores, agrega el número de empleados y el ingreso por empleado en una tabla comparativa.
-```
+
+</div>
+
+<div class="prompt-box">Usando estos competidores, agrega el número de empleados y el ingreso por empleado en una tabla comparativa.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Discurso para inversionistas:
-```text
-Escribe un breve discurso para inversionistas sobre cómo Arcos Dorados ha crecido en relación con su competencia.
-```
+
+</div>
+
+<div class="prompt-box">Escribe un breve discurso para inversionistas sobre cómo Arcos Dorados ha crecido en relación con su competencia.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Versión simplificada para niños:
-```text
-Reescribe este discurso para un grupo de estudiantes de quinto grado que están aprendiendo sobre negocios.
-```
 
-## Sección 3: Preparación de Earnings Calls con Copilot
+</div>
+
+<div class="prompt-box">Reescribe este discurso para un grupo de estudiantes de quinto grado que están aprendiendo sobre negocios.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-sección-3-preparación-de-earnings-calls-con-copilot">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Sección 3: Preparación de Earnings Calls con Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 Objetivo: Mostrar cómo Copilot puede ayudar a ejecutivos (CEO, CFO, IR) a prepararse para una próxima earnings call, anticipar preguntas de inversionistas y mejorar la claridad del mensaje.
 
 **Predicción de preguntas de inversionistas:**
-```text
-Con base en el desempeño financiero reciente de Arcos Dorados y las tendencias de la industria QSR, genera 8 preguntas difíciles que podrían surgir durante la próxima earnings call y propone respuestas claras y concisas.
-```
+
+</div>
+
+<div class="prompt-box">Con base en el desempeño financiero reciente de Arcos Dorados y las tendencias de la industria QSR, genera 8 preguntas difíciles que podrían surgir durante la próxima earnings call y propone respuestas claras y concisas.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **Simulación de sentimiento de inversionistas:**
-```text
-Analiza los resultados recientes de Arcos Dorados y simula el sentimiento probable de inversionistas institucionales y minoristas. Resume las principales preocupaciones y oportunidades que podrían mencionar.
-```
+
+</div>
+
+<div class="prompt-box">Analiza los resultados recientes de Arcos Dorados y simula el sentimiento probable de inversionistas institucionales y minoristas. Resume las principales preocupaciones y oportunidades que podrían mencionar.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **Consistencia del mensaje frente a trimestres anteriores:**
-```text
-Compara el mensaje actual del guion con el del trimestre anterior y resalta discrepancias en tono, narrativa o posicionamiento estratégico.
-```
+
+</div>
+
+<div class="prompt-box">Compara el mensaje actual del guion con el del trimestre anterior y resalta discrepancias en tono, narrativa o posicionamiento estratégico.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **Mejorar claridad y precisión del mensaje:**
-```text
-Analiza los últimos 2 minutos del guion y sugiere mejoras para hacerlo más claro, directo y alineado con lo que los inversionistas más valoran: ejecución operativa, márgenes, digitalización y experiencia del cliente.
-```
+
+</div>
+
+<div class="prompt-box">Analiza los últimos 2 minutos del guion y sugiere mejoras para hacerlo más claro, directo y alineado con lo que los inversionistas más valoran: ejecución operativa, márgenes, digitalización y experiencia del cliente.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **Crear versión simplificada para audiencias no financieras:**
-```text
-Reescribe este extracto de la earnings call en un lenguaje más simple para inversionistas minoristas que no están familiarizados con métricas financieras avanzadas.
-```
- 
+
+</div>
+
+<div class="prompt-box">Reescribe este extracto de la earnings call en un lenguaje más simple para inversionistas minoristas que no están familiarizados con métricas financieras avanzadas.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 > **Nota:** La siguiente guía demuestra cómo los ejecutivos de Arcos Dorados pueden usar Microsoft Copilot para prepararse de manera más efectiva para una earnings call, anticipar preguntas difíciles y optimizar el mensaje antes de hablar con analistas e inversionistas.
 
 - [Preparación de Earnings Calls con Copilot](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S___gZBvO6C4DFYj9S8S2NPLUSSIGNSv7cUNdZ8vjg___dg32LvyzynI3___M0livxq4bmWzU4JZpFXgNwOTYXR0gySdlKHY3PLUSSIGNE6)
@@ -114,7 +247,18 @@ Reescribe este extracto de la earnings call en un lenguaje más simple para inve
 
 # **Arcos Dorados: Práctica**
 
-## Práctica 1: Guardar Prompts en Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-práctica-1-guardar-prompts-en-copilot">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Práctica 1: Guardar Prompts en Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 Guardar prompts te ayuda a reutilizar rápidamente instrucciones o
 consultas sin tener que escribirlas cada vez. A continuación, se explica
@@ -125,12 +269,12 @@ cómo administrarlos y guardarlos:
 **Paso 1: Guardar un Prompt**
 
 1.  Comienza ejecutando un prompt, por ejemplo:
-   
-    ```text
-Por favor, elabora un resumen de mis correos electrónicos, mensajes de Teams y reuniones del día laboral anterior, destacando cualquier mención directa a mi nombre.
-Presenta también mis reuniones programadas para hoy en una tabla que incluya: asunto, participantes y los puntos clave de preparación.
-Utiliza un tono inspirador y un toque ligero que ayude a comenzar la jornada con energía positiva.
-    ```
+
+</div>
+
+<div class="prompt-box">Por favor, elabora un resumen de mis correos electrónicos, mensajes de Teams y reuniones del día laboral anterior, destacando cualquier mención directa a mi nombre.<br>Presenta también mis reuniones programadas para hoy en una tabla que incluya: asunto, participantes y los puntos clave de preparación.<br>Utiliza un tono inspirador y un toque ligero que ayude a comenzar la jornada con energía positiva.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 3.  Pasa el cursor sobre el prompt.
 
@@ -168,7 +312,18 @@ alt="A screenshot of a chat AI-generated content may be incorrect." />
 <img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Práctica 2: Memoria y Personalización de Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part5-práctica-2-memoria-y-personalización-de-copilot">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Práctica 2: Memoria y Personalización de Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body5">
+<div markdown="1">
 
 Copilot Memory ofrece una experiencia más personalizada al entrenar a
 Copilot con base en tus chats previos, perfil de trabajo, instrucciones
@@ -209,37 +364,27 @@ puedes agregar a Copilot: Copilot instructions:
 
 - [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
 
-## Práctica 3: Crear y editar un briefing en Copilot, Loop y Word
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part6-práctica-3-crear-y-editar-un-briefing-en-copilot-loop-y-word">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>Práctica 3: Crear y editar un briefing en Copilot, Loop y Word</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body6">
+<div markdown="1">
 
 1.  **Ejecuta el prompt en Copilot**  
     Copia y pega este prompt en Copilot:
 
-    ```text
-    Crea un informe ejecutivo en español, de 1 página (700–900 palabras), dirigido al equipo C-level de Arcos Dorados (CEO, CFO, COO, CMO, CHRO, CIO). Incluye:
-    1. Resumen ejecutivo de las tendencias recientes del sector QSR en Latinoamérica (crecimiento, tráfico, delivery, digital, precios, inflación y consumo).
-    2. Análisis competitivo comparando a Arcos Dorados con McDonald’s Corp, Restaurant Brands International (Burger King), Yum! Brands (KFC), Subway y cadenas locales relevantes. Incluye:
-      - Comparación de ingresos (“top-line revenue”) en una tabla.
-     - Número de restaurantes por marca.
-     - Empleados totales y “ingreso por empleado”.
-    - Métricas de eficiencia operativa si están disponibles (AUV, crecimiento de ventas comparables, digitalización, delivery mix).
-    3. Riesgos y oportunidades estratégicas para los próximos 12 meses:
-     - Inflación y poder adquisitivo del consumidor.
-     - Competencia en precio vs. valor.
-     - Expansión de delivery y canales digitales.
-     - Transformación operativa y experiencia del cliente.
-    4. Implicaciones para cada área del C-level:
-      - CEO: crecimiento, visión, prioridades estratégicas.
-     - CFO: márgenes, costos operativos, CAPEX, proyecciones.
-      - COO: eficiencia, operaciones, estandarización, supply chain.
-     - CMO: marca, percepción del consumidor, promociones, lealtad.
-     - CHRO: talento, rotación, capacitación, productividad por empleado.
-     - CIO/CTO: digital, analítica, automatización, IA generativa.
-    5. Recomendaciones ejecutivas trimestrales:
-      - 5 prioridades estratégicas para el próximo trimestre.
-     - Indicadores clave que deben revisarse mensualmente.
-     - Acciones sugeridas basadas en benchmarks del sector.
-    Usa encabezados claros, párrafos breves, tablas cuando aplique, resalta 5–7 ideas clave en **negrita** e incluye fuentes recientes para datos del sector QSR.
-    ```
+</div>
+
+<div class="prompt-box">    Crea un informe ejecutivo en español, de 1 página (700–900 palabras), dirigido al equipo C-level de Arcos Dorados (CEO, CFO, COO, CMO, CHRO, CIO). Incluye:<br>    1. Resumen ejecutivo de las tendencias recientes del sector QSR en Latinoamérica (crecimiento, tráfico, delivery, digital, precios, inflación y consumo).<br>    2. Análisis competitivo comparando a Arcos Dorados con McDonald’s Corp, Restaurant Brands International (Burger King), Yum! Brands (KFC), Subway y cadenas locales relevantes. Incluye:<br>      - Comparación de ingresos (“top-line revenue”) en una tabla.<br>     - Número de restaurantes por marca.<br>     - Empleados totales y “ingreso por empleado”.<br>    - Métricas de eficiencia operativa si están disponibles (AUV, crecimiento de ventas comparables, digitalización, delivery mix).<br>    3. Riesgos y oportunidades estratégicas para los próximos 12 meses:<br>     - Inflación y poder adquisitivo del consumidor.<br>     - Competencia en precio vs. valor.<br>     - Expansión de delivery y canales digitales.<br>     - Transformación operativa y experiencia del cliente.<br>    4. Implicaciones para cada área del C-level:<br>      - CEO: crecimiento, visión, prioridades estratégicas.<br>     - CFO: márgenes, costos operativos, CAPEX, proyecciones.<br>      - COO: eficiencia, operaciones, estandarización, supply chain.<br>     - CMO: marca, percepción del consumidor, promociones, lealtad.<br>     - CHRO: talento, rotación, capacitación, productividad por empleado.<br>     - CIO/CTO: digital, analítica, automatización, IA generativa.<br>    5. Recomendaciones ejecutivas trimestrales:<br>      - 5 prioridades estratégicas para el próximo trimestre.<br>     - Indicadores clave que deben revisarse mensualmente.<br>     - Acciones sugeridas basadas en benchmarks del sector.<br>    Usa encabezados claros, párrafos breves, tablas cuando aplique, resalta 5–7 ideas clave en **negrita** e incluye fuentes recientes para datos del sector QSR.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 2.  **Selecciona el ícono “Editar en Pages”**
 
@@ -263,7 +408,18 @@ puedes agregar a Copilot: Copilot instructions:
 > <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Práctica 4: Trabajar con documentos de Word
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part7-práctica-4-trabajar-con-documentos-de-word">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>Práctica 4: Trabajar con documentos de Word</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body7">
+<div markdown="1">
 
 - **1.Abre el documento en Word**  
 Desde Loop, selecciona la opción **Abrir en Word** (esquina superior
@@ -289,14 +445,27 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 - **3. Abre la ventana de Copilot y ejecuta el siguiente prompt**:
 
-    ```text
-    Convierte este briefing en una lista de preguntas estratégicas para la sesión
-    ```
+</div>
+
+<div class="prompt-box">    Convierte este briefing en una lista de preguntas estratégicas para la sesión<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Copilot transformará el contenido en preguntas que podrás usar para
 guiar la conversación con el equipo.
 
-## Práctica 5: Meeting Recap – Decision & Owners
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part8-práctica-5-meeting-recap-decision-owners">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2>Práctica 5: Meeting Recap – Decision & Owners</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body8">
+<div markdown="1">
 
 - **Pre-requisitos (rápido)**  
 • La reunión debe existir en tu calendario de Teams (ideal si tuvo
@@ -347,59 +516,64 @@ fechas).
 
 2.  Ejecuta este *prompt* base para orientar el objetivo:
 
-    ```text
-    Resume la reunión en 5–7 puntos y convierte cada punto en una
-    decisión con un responsable y una fecha objetivo. Si faltan datos,
-    sugiere responsables y fechas tentativas basándote en el contexto de
-    la conversación.
-    ```  
+</div>
 
-- **Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**  
+<div class="prompt-box">    Resume la reunión en 5–7 puntos y convierte cada punto en una<br>    decisión con un responsable y una fecha objetivo. Si faltan datos,<br>    sugiere responsables y fechas tentativas basándote en el contexto de<br>    la conversación.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.
-    ```   
+<div markdown="1">
 
-    ```text
-    Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado. 
-    ```   
+- **Prompts específicos para “Decisiones y Responsables” (elige o combina según necesites):**
 
-    ```text
-    ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. 
-    ```  
+</div>
 
-    ```text
-    Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.
-    ```  
+<div class="prompt-box">    Extrae todas las decisiones explícitas e implícitas. Para cada una,sugiere responsable, fecha objetivo y primer siguiente paso.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Genera un plan 30–60–90 días a partir de las decisiones tomadas, con hitos y responsables.
-    ```  
+<div class="prompt-box">    Crea una tabla con: Decisión \| Responsable \| Fecha objetivo \| Primer siguiente paso \| Riesgo/Bloqueador asociado. <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    ¿Quién se comprometió a qué durante la reunión? Normaliza los compromisos como tareas accionables. <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    Identifica riesgos y dependencias mencionadas y asigna un owner de mitigación.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">    Genera un plan 30–60–90 días a partir de las decisiones tomadas, con hitos y responsables.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 - **4) Da forma final a “Decisiones y Responsables”**
 
-- Pide el resultado como tabla para facilitar su uso:  
+- Pide el resultado como tabla para facilitar su uso:
 
-    ```text
-    Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).
-    ``` 
+</div>
+
+<div class="prompt-box">    Reestructura el resultado en una tabla. Campos: Decisión \| Owner \| Due date \| Next step \| Estado (Nuevo/En curso) \| Referencia(timestamp de la transcripción).<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **Tip:** Durante la reunión, utiliza Facilitator para mantener el enfoque en los temas clave y registrar acuerdos en tiempo real. Además, puedes hacerle preguntas o solicitarle resúmenes directamente mencionándolo con “@Facilitator” en el chat de la reunión.
 
 > **Tip:** Usa el agente Translator para comunicarte con participantes que hablen otros idiomas durante la reunión.
 
-## Práctica 6: Resumir y Recapitular Correos en Outlook
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part9-práctica-6-resumir-y-recapitular-correos-en-outlook">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>Práctica 6: Resumir y Recapitular Correos en Outlook</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body9">
+<div markdown="1">
 
 Usa Copilot Chat en Outlook para extraer solicitudes clave y fechas límite de los hilos de correo.
 
 **Sample Prompt:**
-```text
-    Recapitula mi correo y muéstrame:
-    1. Qué se está pidiendo
-    2. Qué se le está pidiendo al equipo
-    3. Qué se me está pidiendo directamente a mí
-    Enumera fechas y temas en una tabla
-```
+
+</div>
+
+<div class="prompt-box">    Recapitula mi correo y muéstrame:<br>    1. Qué se está pidiendo<br>    2. Qué se le está pidiendo al equipo<br>    3. Qué se me está pidiendo directamente a mí<br>    Enumera fechas y temas en una tabla<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:** También puedes agregar instrucciones personalizadas para que Copilot priorice ciertos temas o formatos al generar los resúmenes.
 > Accede a opciones avanzadas
@@ -409,12 +583,13 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 
 > **TIP:** puedes usar la función de **Coaching** para que Copilot proporcione sugerencias a tus correos electróicos. Por ejemplo:
-```text
- Dear team,
- I wanted to provide a quick update on our project timeline. We’ve encountered a brief delay in one of the development phases due to additional testing and validation needs. The team is actively addressing the issue, and our overall progress remains strong.
-I want to reassure you that we are still on track to meet our planned go-live dates, and this adjustment will help ensure a smoother launch and higher quality results. I’ll continue to keep you updated as we move forward.
-Best regards,
- ```
+
+</div>
+
+<div class="prompt-box"> Dear team,<br> I wanted to provide a quick update on our project timeline. We’ve encountered a brief delay in one of the development phases due to additional testing and validation needs. The team is actively addressing the issue, and our overall progress remains strong.<br>I want to reassure you that we are still on track to meet our planned go-live dates, and this adjustment will help ensure a smoother launch and higher quality results. I’ll continue to keep you updated as we move forward.<br>Best regards,<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 <img src="../Prompts/Media/ADimage12.png" style="width:6.5in;height:2.95in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -424,7 +599,18 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 # Ejercicio: Realizar investigación en línea usando Agentes
 
-## Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part10-práctica-7-agente-researcher-crea-un-documento-técnico-white">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body10', this)">
+    <h2>Práctica 7: Agente Researcher - Crea un documento técnico (whitepaper)</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body10">
+<div markdown="1">
 
 > **IMPORTANTE:** Los pasos 1–4 deben completarse al inicio de la sesión para darle a Researcher suficiente tiempo para completar el primer prompt.
 
@@ -434,11 +620,11 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
 
 1. Escribe el siguiente prompt::
 
-    ```text
-    Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.
-Incluye secciones sobre gestión del cambio, preparación de los empleados, concientización sobre privacidad de datos y uso responsable de la IA.
-Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la innovación con la gobernanza, y destaca las lecciones aprendidas de las primeras implementaciones de Copilot para garantizar productividad, confianza y cumplimiento.
-    ```
+</div>
+
+<div class="prompt-box">    Crea un documento técnico (whitepaper) que describa las mejores prácticas para adoptar Copilot y herramientas de IA generativa en toda una empresa.<br>Incluye secciones sobre gestión del cambio, preparación de los empleados, concientización sobre privacidad de datos y uso responsable de la IA.<br>Proporciona ejemplos de cómo las organizaciones líderes están equilibrando la innovación con la gobernanza, y destaca las lecciones aprendidas de las primeras implementaciones de Copilot para garantizar productividad, confianza y cumplimiento.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 1. Adjunta los archivos de referencia usando `/` (apunta a SharePoint/OneDrive):  
 
@@ -463,7 +649,18 @@ Los Notebooks de Copilot permiten trabajar con ideas, análisis y contenido comp
 
 ---
 
-## ¿Qué es un Notebook?
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part11-qué-es-un-notebook">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body11', this)">
+    <h2>¿Qué es un Notebook?</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body11">
+<div markdown="1">
 
 Un Notebook es un espacio dividido en bloques donde puedes:
 
@@ -475,7 +672,18 @@ Un Notebook es un espacio dividido en bloques donde puedes:
 
 ---
 
-## Pasos para usar Notebooks
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part12-pasos-para-usar-notebooks">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body12', this)">
+    <h2>Pasos para usar Notebooks</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body12">
+<div markdown="1">
 
 ### 1. Abrir un Notebook
 
@@ -542,7 +750,18 @@ Cuando finalices tu Notebook puedes:
 
 ---
 
-## Ejercicio sugerido para practicar
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part13-ejercicio-sugerido-para-practicar">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body13', this)">
+    <h2>Ejercicio sugerido para practicar</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body13">
+<div markdown="1">
 
 Puedes copiar estos pasos dentro de un Notebook:
 
@@ -553,7 +772,18 @@ Puedes copiar estos pasos dentro de un Notebook:
 
 ---
 
-## Resultado final
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part14-resultado-final">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body14', this)">
+    <h2>Resultado final</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body14">
+<div markdown="1">
 
 Con esta práctica, cualquier ejecutivo podrá:
 
@@ -577,7 +807,18 @@ Este recurso es especialmente útil para ejecutivos que desean convertir ideas e
 
 ---
 
-## Prompting Framework: GCSE
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part15-prompting-framework-gcse">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body15', this)">
+    <h2>Prompting Framework: GCSE</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body15">
+<div markdown="1">
 
 To get the best results from Copilot, use the GCSE framework: 
 
@@ -592,7 +833,18 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Prompting Best Practices
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part16-prompting-best-practices">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body16', this)">
+    <h2>Prompting Best Practices</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body16">
+<div markdown="1">
 
 - Break down complex tasks into manageable steps.
 - Use persona-based prompting for specialized guidance.
@@ -603,7 +855,18 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Get Started
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part17-get-started">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body17', this)">
+    <h2>Get Started</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body17">
+<div markdown="1">
 
 Partner with us to build a business case, explore pre-built agents, and keep up with Copilot news on WorkLab: 
 
@@ -611,4 +874,16 @@ Partner with us to build a business case, explore pre-built agents, and keep up 
 
 👉 [Excecutives Copilot guide](https://adoption.microsoft.com/en-us/scenario-library/executives/)
 
-👉 [Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).  
+👉 [Notebooks guide](https://support.microsoft.com/en-us/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06).
+
+</div>
+  </div>
+</div>
+
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

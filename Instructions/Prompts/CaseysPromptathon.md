@@ -1,15 +1,87 @@
 ---
-task:
-    title: 'Prompt-a-Thon Caseys'
+layout: none
 ---
 
-# **Prompt-a-Thon: Casey’s Edition**
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt-a-Thon — Casey's Edition | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #C62828; --hero-via: #D32F2F; --hero-to: #FF6F00; }</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>🏆 Prompt-a-Thon — Casey's Edition</h1>
+    <p class="subtitle">Hands-on prompting workshop for real business challenges.</p>
+    <div class="hero-meta">
+      <span>🏆 Prompt-a-Thon</span>
+      <span>💬 Copilot</span>
+      <span>🛠️ Copilot Studio</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Casey's Edition</div>
+
+  <a href="#sec-intro" class="section-link">Overview</a>
+  <a href="#part1-what-youll-do" class="part-link">What You’ll Do</a>
+  <a href="#part2-template" class="part-link">Template</a>
+  <a href="#part3-choose-a-scenario-to-apply-your-prompting-skills" class="part-link">Choose a scenario to apply your prompting skills:</a>
+  <a href="#part4-prompting-framework-gcse" class="part-link">Prompting Framework: GCSE</a>
+  <a href="#part5-guided-exercise-1-perform-online-research-analysis" class="part-link">Guided Exercise #1: Perform Online Research & Analysis</a>
+  <a href="#part6-analyst-customer-segmentation-financial-modeling" class="part-link">Analyst: Customer Segmentation & Financial Modeling</a>
+  <a href="#part7-key-takeaway" class="part-link">Key Takeaway</a>
+  <a href="#part8-guided-excercise-2" class="part-link"><strong>Guided Excercise #2</strong></a>
+  <a href="#part9-create-your-first-agent" class="part-link">Create your first Agent</a>
+  <a href="#part10-guided-excercise-3" class="part-link"><strong>Guided Excercise #3</strong></a>
+  <a href="#part11-step-1-access-copilot-studio-lite" class="part-link">Step 1: Access Copilot Studio Lite</a>
+  <a href="#part12-step-2-create-a-new-agent" class="part-link">Step 2: Create a New Agent</a>
+  <a href="#part13-step-3-name-your-agent" class="part-link">Step 3: Name Your Agent</a>
+  <a href="#part14-step-4-add-description" class="part-link">Step 4: Add Description</a>
+  <a href="#part15-step-5-write-instructions" class="part-link">Step 5: Write Instructions</a>
+  <a href="#part16-step-6-insert-knowledge-source" class="part-link">Step 6: Insert Knowledge Source</a>
+  <a href="#part17-step-7-add-starter-prompts" class="part-link">Step 7: Add Starter Prompts</a>
+  <a href="#part18-step-8-test-pane" class="part-link">Step 8: Test Pane</a>
+  <a href="#part19-step-9-create-your-agent" class="part-link">Step 9: Create Your Agent</a>
+  <a href="#part20-prompting-best-practices" class="part-link">Prompting Best Practices</a>
+  <a href="#part21-get-started" class="part-link">Get Started</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-intro">
+<div markdown="1">
 
 Welcome to the Prompt-a-Thon! This interactive session is designed to help you unlock the full potential of Microsoft Copilot by mastering the art and science of effective prompting. You’ll learn practical techniques to create clear, impactful prompts that drive real business value, save time, and boost productivity. Expect a hands-on, collaborative experience where you’ll experiment, iterate, and discover how Copilot can streamline your workflows and empower your team to achieve more.
 
 ---
 
-## What You’ll Do
+</div>
+</div>
+
+<div class="part-card" id="part1-what-youll-do">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>What You’ll Do</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
 
 1. **Solve a Business Problem:**  
    Use Copilot to address a real-world challenge or workflow in your organization.
@@ -26,12 +98,35 @@ Welcome to the Prompt-a-Thon! This interactive session is designed to help you u
 
 This next section is designed to help you practice and deepen your prompting skills. You can choose to work with Copilot Agents—such as Analyst or Researcher—or use the Copilot Agent to address a real business process. We’ve provided a list of suggested scenarios to inspire you, but if you have a specific challenge or workflow in mind, we highly encourage you to use your own. The goal is to apply what you’ve learned in a way that’s most relevant to your role and objectives.
 
-## Template
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-template">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Template</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
+
 Feel free to use this template to capture and organize your ideas throughout the session.
 Download the following file by right-clicking then 'Open link in new tab' to download the file to your local drive:
 - [Copilot Prompathon Template](https://livesend.microsoft.com/i/k4q___WIdiFKfaj1vqFypZjU5j0Iof9fdA1CiqKWm1bhkM6jfQsFqv___JH9i87lPLUSSIGNG9We88zkqSPLUSSIGNyrwTdtK9XLIePSQ7S7kakS90rQ1TNQrPFHbpNYxfO5oeso___rRYZTLohh)
 
-## Choose a scenario to apply your prompting skills:
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-choose-a-scenario-to-apply-your-prompting-skills">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Choose a scenario to apply your prompting skills:</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 **Scenario #1 Overview:**
 We have just announced an organizational realignment within the Customer Solutions-Operations team. Many leaders will have new direct reports, a new leader, and possibly a new business to learn. The goal of this activity is to create a framework and supporting tools that will help the leader navigate this change effectively, develop a 60-day plan to assimilate into the new business, analyze the business operations, and get to know the team. Leverage Copilot to build resources (60-day plan, meet and greet templates, etc.).
@@ -56,7 +151,18 @@ The Internal Communications team is tasked with driving clarity and engagement d
 
 ---
 
-## Prompting Framework: GCSE
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-prompting-framework-gcse">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Prompting Framework: GCSE</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 To get the best results from Copilot, use the GCSE framework: 
 
@@ -71,7 +177,18 @@ To get the best results from Copilot, use the GCSE framework:
 
 ---
 
-## Guided Exercise #1: Perform Online Research & Analysis
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part5-guided-exercise-1-perform-online-research-analysis">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Guided Exercise #1: Perform Online Research & Analysis</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body5">
+<div markdown="1">
 
 ### Researcher: Build a Marketing Plan
 
@@ -83,13 +200,13 @@ To get the best results from Copilot, use the GCSE framework:
 
 2. Enter the following prompt:
 
-    ```text
-    You are the Casey’s U.S. Retail & Foodservice Research Agent.Analyze the latest U.S. convenience and holiday retail data (NACS, NRF, Adobe Digital Economy Index), 2024 shopper trends (mobile ordering, loyalty engagement, sustainable packaging, social commerce), and competitive activations (7-Eleven, Kwik Trip, Circle K). Deliver a concise analysis identifying 2–3 emerging trends or gaps in Casey’s current holiday plan—such as missed mobile-first, loyalty, or social opportunities—and recommend actionable shifts (e.g., in-app bundles, fuel-plus-food rewards, or AR holiday engagement).
+</div>
 
-    Use clustering, correlation, and forecasting as needed. Include two brief visualizations (trend adoption rates and projected lift from recommendations) and suggest revised SMART KPIs aligned to 2025 benchmarks (e.g., +15% app order frequency). Conclude with a one-slide executive summary highlighting top opportunities and expected business impact. (If reference files are provided, incorporate them into your analysis.)
-    ```
+<div class="prompt-box">    You are the Casey’s U.S. Retail &amp; Foodservice Research Agent.Analyze the latest U.S. convenience and holiday retail data (NACS, NRF, Adobe Digital Economy Index), 2024 shopper trends (mobile ordering, loyalty engagement, sustainable packaging, social commerce), and competitive activations (7-Eleven, Kwik Trip, Circle K). Deliver a concise analysis identifying 2–3 emerging trends or gaps in Casey’s current holiday plan—such as missed mobile-first, loyalty, or social opportunities—and recommend actionable shifts (e.g., in-app bundles, fuel-plus-food rewards, or AR holiday engagement).<br><br>    Use clustering, correlation, and forecasting as needed. Include two brief visualizations (trend adoption rates and projected lift from recommendations) and suggest revised SMART KPIs aligned to 2025 benchmarks (e.g., +15% app order frequency). Conclude with a one-slide executive summary highlighting top opportunities and expected business impact. (If reference files are provided, incorporate them into your analysis.)<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    If you have any supporting reference files, attach them using `/` (for example, **/Caseys Holiday Marketing Plan.docx** or **/Retail Trends     2024.xlsx).** This allows Copilot to use those documents as context.
+<div markdown="1">
+
+If you have any supporting reference files, attach them using `/` (for example, **/Caseys Holiday Marketing Plan.docx** or **/Retail Trends     2024.xlsx).** This allows Copilot to use those documents as context.
 For this specific scenario, we don’t have any supporting files to attach — simply run the prompt as-is.
 
 
@@ -101,10 +218,20 @@ Researcher will:
 - Structure a marketing plan with recommendations on channels and content strategy.  
 - Cite sources so you can validate its work.  
 
-> **Note:** Researcher shows its reasoning path (“chain of thought”), and can call other agents when needed.  
+> **Note:** Researcher shows its reasoning path (“chain of thought”), and can call other agents when needed.
 
+</div>
+  </div>
+</div>
 
-## Analyst: Customer Segmentation & Financial Modeling
+<div class="part-card" id="part6-analyst-customer-segmentation-financial-modeling">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>Analyst: Customer Segmentation & Financial Modeling</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body6">
+<div markdown="1">
 
 1. Open **Analyst** from the left navigation in the Copilot app.  
 
@@ -112,9 +239,11 @@ Researcher will:
 
 2. Enter the following prompt:
 
-    ```text
-    Load the attached files. Produce a table of total Spend, Impressions, Clicks, Conversions, CTR, Conversion Rate, and ROAS, broken out first by Campaign and then by Channel. Provide a concise narrative summarizing the top‐level trends you observe (e.g., which campaign had the highest overall ROI, which channel drove the most impressions
-    ```
+</div>
+
+<div class="prompt-box">    Load the attached files. Produce a table of total Spend, Impressions, Clicks, Conversions, CTR, Conversion Rate, and ROAS, broken out first by Campaign and then by Channel. Provide a concise narrative summarizing the top‐level trends you observe (e.g., which campaign had the highest overall ROI, which channel drove the most impressions<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 3. Attach the file using **+**:  
 
@@ -139,27 +268,38 @@ Analyst will:
 
 You can run these additional prompts for variety. Each follows the same pattern: **Prompt → Attach file → Submit → Review results.** But you don't have to attach the file again if you will be using the same input data.
 
-- **Budget Reallocation Scenario & Projection**  
+- **Budget Reallocation Scenario & Projection**
 
-    ```text
-    Based on historical ROI per channel and demographic segment, simulate a budget reallocation: shift 20% of spend away from the bottom-performing channel(s) into the top-performing one(s) while keeping total budget constant. Project the estimated change in total Conversions and overall ROAS under this new allocation, and present side-by-side charts of “Before vs. After.”    
-    ```  
+</div>
 
-- **Audience Segment Analysis**  
+<div class="prompt-box">    Based on historical ROI per channel and demographic segment, simulate a budget reallocation: shift 20% of spend away from the bottom-performing channel(s) into the top-performing one(s) while keeping total budget constant. Project the estimated change in total Conversions and overall ROAS under this new allocation, and present side-by-side charts of “Before vs. After.”    <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    ```text
-    Segment the data by Age Group and Gender. For each segment, calculate Conversion Rate, Cost per Conversion, and overall ROI. Rank segments by ROI and recommend the top 5 segments where Ross Stores should double down, and the bottom 5 to deprioritize, with supporting charts (e.g., bar-charts of ROI by segment).
-    ```  
+<div markdown="1">
 
-- **Campaign Performance**  
+- **Audience Segment Analysis**
 
-    ```text
-    Analyze and visualize how the marketing campaign performed across each target segment 
-    and help me decide where to re-target our next campaign.
-    ```  
+</div>
 
+<div class="prompt-box">    Segment the data by Age Group and Gender. For each segment, calculate Conversion Rate, Cost per Conversion, and overall ROI. Rank segments by ROI and recommend the top 5 segments where Ross Stores should double down, and the bottom 5 to deprioritize, with supporting charts (e.g., bar-charts of ROI by segment).<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-## Key Takeaway
+<div markdown="1">
+
+- **Campaign Performance**
+
+</div>
+
+<div class="prompt-box">    Analyze and visualize how the marketing campaign performed across each target segment <br>    and help me decide where to re-target our next campaign.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+  </div>
+</div>
+
+<div class="part-card" id="part7-key-takeaway">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>Key Takeaway</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body7">
+<div markdown="1">
 
 - **Researcher**: accelerates strategy and planning with high-quality research.  
 - **Analyst**: delivers data-driven insights with advanced analysis and visualizations.  
@@ -168,9 +308,33 @@ Together, Researcher and Analyst shorten the path from **question to insight**�
 
 ---
 
-## **Guided Excercise #2**
+</div>
+  </div>
+</div>
 
-## Create your first Agent
+<div class="part-card" id="part8-guided-excercise-2">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2><strong>Guided Excercise #2</strong></h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body8">
+<div markdown="1">
+
+
+
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part9-create-your-first-agent">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>Create your first Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body9">
+<div markdown="1">
 
 Discover how Microsoft 365 Copilot and Copilot Studio lite can help you solve everyday productivity challenges by designing a simple **retrieval-based agent**. This streamlined exercise will walk you through identifying a common issue, exploring how AI could help, and then creating a simple agent to test.  
 
@@ -204,12 +368,11 @@ Examples:
 
     **Sample Prompt:**
 
-    ```text
-    Summarize the top challenges I face in my daily work, based on recent emails, chats, and documents. Show results in a simple list with: 
-    
-    - Title (short label for the issue) 
-    - Description (1–2 sentences) 
-    ```  
+</div>
+
+<div class="prompt-box">    Summarize the top challenges I face in my daily work, based on recent emails, chats, and documents. Show results in a simple list with: <br>    <br>    - Title (short label for the issue) <br>    - Description (1–2 sentences) <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 ### Task 2: Explore AI Solution Ideas with Researcher  
 
@@ -221,13 +384,15 @@ Use the **Researcher Agent** to explore how Copilot or agents might help with yo
 
    ![Screenshot showing Researcher selected in M365 Copilot menu.](../Prompts/Media/researcher.png)  
 
-- Try a sample prompt like this:  
+- Try a sample prompt like this:
 
-   ```text
-   Explore possible AI solutions to help with [insert productivity issue]. Focus on retrieval-based approaches using Microsoft Copilot or Copilot Studio agents. Summarize two or three ways an agent could help me find, organize, or summarize information more efficiently.
-   ```  
+</div>
 
-    > **TIP:** Keep the focus on practical, everyday use cases—like quickly surfacing a doc or pulling updates from multiple sources.
+<div class="prompt-box">   Explore possible AI solutions to help with [insert productivity issue]. Focus on retrieval-based approaches using Microsoft Copilot or Copilot Studio agents. Summarize two or three ways an agent could help me find, organize, or summarize information more efficiently.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
+> **TIP:** Keep the focus on practical, everyday use cases—like quickly surfacing a doc or pulling updates from multiple sources.
   
     > **NOTE:** Researcher may take 5–10 minutes to complete, depending on your request. Its responses are highly detailed, so while it’s working, try running the same prompt in Copilot Chat. Comparing the two outputs is a great way to see how each tool approaches the task.
     
@@ -241,13 +406,15 @@ Now, create a simple retrieval agent in **Copilot Studio Lite** to address your 
 
    ![Screenshot showing create an agent link.](../Prompts/Media/create-agent.png)  
 
-1. In the **Describe** tab, draft your agent’s role. For example:  
+1. In the **Describe** tab, draft your agent’s role. For example:
 
-   ```text
-   You’re a virtual assistant that helps me with [key task]. Be concise and always reference my recent files or resources when possible.
-   ```  
+</div>
 
-   ![Screenshot showing describe agent with sample prompt filled in.](../Prompts/Media/create-agent-through-describe.png)  
+<div class="prompt-box">   You’re a virtual assistant that helps me with [key task]. Be concise and always reference my recent files or resources when possible.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
+![Screenshot showing describe agent with sample prompt filled in.](../Prompts/Media/create-agent-through-describe.png)  
 
 1. Select the **Configure** Tab and add one knowledge source (e.g., **My Emails** or **My Teams chats and meetings**).
 
@@ -258,7 +425,18 @@ Now, create a simple retrieval agent in **Copilot Studio Lite** to address your 
 
 > **TIP:** Even a very simple agent—like one that helps you find recent project files—can show the power of retrieval in your daily work.
 
-## **Guided Excercise #3**
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part10-guided-excercise-3">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body10', this)">
+    <h2><strong>Guided Excercise #3</strong></h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body10">
+<div markdown="1">
 
 # Business Problem & Solution
 
@@ -279,11 +457,33 @@ This assistant will streamline access, improve customer experience, and strength
 
 # Step-by-Step Guide to Create the Agent
 
-## Step 1: Access Copilot Studio Lite
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part11-step-1-access-copilot-studio-lite">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body11', this)">
+    <h2>Step 1: Access Copilot Studio Lite</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body11">
+<div markdown="1">
 
 Open a new browser tab and navigate to m365.cloud.microsoft/chat (or however you usually navigate to Copilot).
 
-## Step 2: Create a New Agent
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part12-step-2-create-a-new-agent">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body12', this)">
+    <h2>Step 2: Create a New Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body12">
+<div markdown="1">
 
 Click “Create New Agent”.
 
@@ -293,17 +493,50 @@ Find the “Configure Toggle”.
 
 You’ll see fields for Name, Description, and Instructions. You will be inputting this information in Steps 3-5; examples are provided below.
 
-## Step 3: Name Your Agent
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part13-step-3-name-your-agent">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body13', this)">
+    <h2>Step 3: Name Your Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body13">
+<div markdown="1">
 
 Enter:  
 **Name:** Casey’s Assistant
 
-## Step 4: Add Description
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part14-step-4-add-description">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body14', this)">
+    <h2>Step 4: Add Description</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body14">
+<div markdown="1">
 
 **Example:**  
 Casey’s Assistant helps customers find store locations, check promotions, and place online orders quickly and easily.
 
-## Step 5: Write Instructions
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part15-step-5-write-instructions">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body15', this)">
+    <h2>Step 5: Write Instructions</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body15">
+<div markdown="1">
 
 **Example:**  
 
@@ -320,15 +553,37 @@ Casey’s Assistant helps customers find store locations, check promotions, and 
 4. Always confirm user intent before sharing details.
 5. Never share personal data or sensitive info.
 
-![Effective Prompt.](../Prompts/Media/Caseys101.png)  
+![Effective Prompt.](../Prompts/Media/Caseys101.png)
 
-## Step 6: Insert Knowledge Source
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part16-step-6-insert-knowledge-source">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body16', this)">
+    <h2>Step 6: Insert Knowledge Source</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body16">
+<div markdown="1">
 
 Insert https://www.caseys.com/ into the knowledge source.
 
-![Effective Prompt.](../Prompts/Media/Caseys102.png)  
+![Effective Prompt.](../Prompts/Media/Caseys102.png)
 
-## Step 7: Add Starter Prompts
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part17-step-7-add-starter-prompts">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body17', this)">
+    <h2>Step 7: Add Starter Prompts</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body17">
+<div markdown="1">
 
 Go ahead and add some starter prompts; you can add up to 6.
 
@@ -354,13 +609,35 @@ Go ahead and add some starter prompts; you can add up to 6.
 **Corporate & Real Estate**
 - How can I learn more about Casey’s real estate opportunities or selling my convenience store?
 
-## Step 8: Test Pane
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part18-step-8-test-pane">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body18', this)">
+    <h2>Step 8: Test Pane</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body18">
+<div markdown="1">
 
 Test your agent on the right-hand side of the screen by asking it a question. You can use a starter prompt or type any question you can think of!
 
-![Effective Prompt.](../Prompts/Media/Caseys104.png)  
+![Effective Prompt.](../Prompts/Media/Caseys104.png)
 
-## Step 9: Create Your Agent
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part19-step-9-create-your-agent">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body19', this)">
+    <h2>Step 9: Create Your Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body19">
+<div markdown="1">
 
 Click create agent and congratulations on building the agent.
 
@@ -368,7 +645,18 @@ Click create agent and congratulations on building the agent.
 
 ---
 
-## Prompting Best Practices
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part20-prompting-best-practices">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body20', this)">
+    <h2>Prompting Best Practices</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body20">
+<div markdown="1">
 
 - Break down complex tasks into manageable steps.
 - Use persona-based prompting for specialized guidance.
@@ -379,6 +667,29 @@ Click create agent and congratulations on building the agent.
 
 ---
 
-## Get Started
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part21-get-started">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body21', this)">
+    <h2>Get Started</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body21">
+<div markdown="1">
 
 Partner with us to build a business case, explore pre-built agents, and keep up with Copilot news on WorkLab: https://www.microsoft.com/en-us/worklab/ai-at-work/
+
+</div>
+  </div>
+</div>
+
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

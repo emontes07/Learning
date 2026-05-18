@@ -1,9 +1,61 @@
 ---
-task:
-    title: 'Copilot Chats'
+layout: none
 ---
 
-## Copilot Chat  
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot Chat — Practices | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #1565C0; --hero-via: #1976D2; --hero-to: #42A5F5; }</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
+
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>💬 Copilot Chat — Practices</h1>
+    <p class="subtitle">Hands-on practice exercises for Microsoft 365 Copilot Chat.</p>
+    <div class="hero-meta">
+      <span>💬 Copilot Chat</span>
+      <span>📝 Word</span>
+      <span>🎯 Practice</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Practices</div>
+
+  <a href="#sec-intro" class="section-link">Overview</a>
+  <a href="#part1-practice-1-how-to-save-prompts-in-copilot" class="part-link">Practice 1: How to Save Prompts in Copilot</a>
+  <a href="#part2-practice-2-memory-and-customization-of-copilot" class="part-link">Practice 2: Memory and Customization of Copilot</a>
+  <a href="#part3-practice-3-create-and-edit-a-brief-in-copilot-loop-and-word" class="part-link">Practice 3: Create and edit a brief in Copilot, Loop, and Word</a>
+  <a href="#part4-practice-4-working-with-word-documents" class="part-link">Practice 4: Working with Word Documents</a>
+  <a href="#part5-practice-5-refine-results-with-follow-up-questions" class="part-link">Practice 5: Refine Results with Follow-Up Questions</a>
+  <a href="#part6-practice-6-summarize-and-recap-emails-in-outlook" class="part-link">Practice 6: Summarize and Recap Emails in Outlook</a>
+  <a href="#part7-practice-7-analyze-reviews-visualize-sentiments" class="part-link">Practice 7: Analyze Reviews & Visualize Sentiments</a>
+  <a href="#part8-practice-8-visualize-financial-data-with-charts-heat-maps" class="part-link">Practice 8: Visualize Financial Data with Charts & Heat Maps</a>
+  <a href="#part9-practice-9-perform-calculations-from-excel-data" class="part-link">Practice 9: Perform Calculations from Excel Data</a>
+  <a href="#part10-practice-10-convert-files-to-another-format" class="part-link">Practice 10: Convert Files to Another Format</a>
+  <a href="#part11-practice-11-fyi-create-or-replace-an-excel-macro-with-copilo" class="part-link">Practice 11 (FYI): Create or Replace an Excel Macro with Copilot</a>
+</nav>
+
+<div class="main-content">
+
+<div class="section" id="sec-intro">
+<div markdown="1">
 
 Enhance decision-making by gathering insights, conducting online analysis, and drafting professional communications.  
 
@@ -19,7 +71,17 @@ You'll perform three tasks:
 
 ---
 
-## Practice 1: How to Save Prompts in Copilot
+</div>
+</div>
+
+<div class="part-card" id="part1-practice-1-how-to-save-prompts-in-copilot">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Practice 1: How to Save Prompts in Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
 
 Saving prompts helps you quickly reuse instructions or queries without having to rewrite them each time. Below is an explanation of how to manage and save them:
 
@@ -29,10 +91,12 @@ Saving prompts helps you quickly reuse instructions or queries without having to
 
 1.  Open a new browser tab and navigate to [M365copilot.com](https://m365copilot.com/). 
 2.  Start by running a prompt, for example::
-   
-    ```text
-I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. 
-    ```
+
+</div>
+
+<div class="prompt-box">I work in marketing and focus on competitor research. Give me a concise summary of recent news about Microsoft. Focus on web articles from the last 3 months. Provide the answer in two to three paragraphs and use a business tone. <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 3. Hover over the prompt.
 
@@ -69,7 +133,18 @@ alt="A screenshot of a chat AI-generated content may be incorrect." />
 <img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Practice 2: Memory and Customization of Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-practice-2-memory-and-customization-of-copilot">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Practice 2: Memory and Customization of Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
 
 Copilot Memory offers a more personalized experience when training Copilot based on your previous chats, work profile, custom instructions, and other metadata. This allows Copilot to understand you best and suits your needs.
 
@@ -99,33 +174,27 @@ You can add your custom instructions in this section. How reference, here's a gu
 
 - [Copilot Custom Instructions](https://livesend.microsoft.com/i/rNoOVLzAAYKpEIxHcPLUSSIGNURf0AnaauPLUSSIGNpTT12ioHC1iT2S9v5zfm___ebPPLUSSIGNq8yBBDVxGsPLUSSIGNGevpl4gM20eehkcX55fDwwHvmMnfisgImZ___gDPLUSSIGN7MtPeWjGSVb8I5OJM40FI6OPIj)
 
-## Practice 3: Create and edit a brief in Copilot, Loop, and Word
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-practice-3-create-and-edit-a-brief-in-copilot-loop-and-word">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Practice 3: Create and edit a brief in Copilot, Loop, and Word</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 1.  **Run the prompt in Copilot**  
     Copy and paste this prompt into Copilot:
 
-    ```text
-    Provide a comprehensive regional update for [Michigan] to assist in planning store operations.
-    The update should include the latest news and insights on the following aspects:
+</div>
 
-    Demographic Trends:
-    - Population growth or decline
-    - Age distribution
-    - Income levels
-    - Consumer behavior patterns
+<div class="prompt-box">    Provide a comprehensive regional update for [Michigan] to assist in planning store operations.<br>    The update should include the latest news and insights on the following aspects:<br><br>    Demographic Trends:<br>    - Population growth or decline<br>    - Age distribution<br>    - Income levels<br>    - Consumer behavior patterns<br><br>    Financial Events:<br>    - Economic indicators (e.g., employment rates, inflation, GDP growth)<br>    - Major business developments (e.g., new businesses opening, closures, expansions)<br>    - Changes in consumer spending habits<br><br>    Weather Events:<br>    - Current weather conditions and forecasts<br>    - Recent and upcoming severe weather events (e.g., storms, hurricanes, heatwaves)<br>    - Impact of weather on local infrastructure and transportation<br><br>    Please provide detailed information and relevant data sources for each aspect to support strategic decision-making for store operations.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-    Financial Events:
-    - Economic indicators (e.g., employment rates, inflation, GDP growth)
-    - Major business developments (e.g., new businesses opening, closures, expansions)
-    - Changes in consumer spending habits
-
-    Weather Events:
-    - Current weather conditions and forecasts
-    - Recent and upcoming severe weather events (e.g., storms, hurricanes, heatwaves)
-    - Impact of weather on local infrastructure and transportation
-
-    Please provide detailed information and relevant data sources for each aspect to support strategic decision-making for store operations.
-```
+<div markdown="1">
 
 2.  **Select the *"Edit in Pages"* icon **
 
@@ -145,16 +214,29 @@ You can add your custom instructions in this section. How reference, here's a gu
 > <img src="../Prompts/Media/ADimage9.png" style="width:5.52806in;height:4.10438in"
 > alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Practice 4: Working with Word Documents
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-practice-4-working-with-word-documents">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Practice 4: Working with Word Documents</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 - **1.Open the document in Word**  
 From Loop, select the **Open in Word** option (top corner right). The document will open in Word Online or in the desk.
 
 - **2. Open the Copilot window and run the following prompt:**
 
-    ```text
-    Explain this document using questions (FAQ)
-    ```
+</div>
+
+<div class="prompt-box">    Explain this document using questions (FAQ)<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 Copilot will transform content into questions that you can use to guide the conversation with the team.
 
@@ -176,20 +258,11 @@ If you don’t have internal meeting notes available, you can use a sample trans
 
 **Sample Prompt** *(after uploading meeting notes)*:
 
-```text
-Using my meeting notes, create a formal meeting notes structure and align the content with a meeting title that encapsulates the meeting goal or agenda. 
+</div>
 
-The final output should format my notes with these sections:
-- Title  
-- Attendees  
-- Goal  
-- Topics to Discuss  
-- Product Details  
-- Tasks to be Completed  
-- Timelines and Responsibilities  
-- Resources  
-- Q&A and Next Steps
-```
+<div class="prompt-box">Using my meeting notes, create a formal meeting notes structure and align the content with a meeting title that encapsulates the meeting goal or agenda. <br><br>The final output should format my notes with these sections:<br>- Title  <br>- Attendees  <br>- Goal  <br>- Topics to Discuss  <br>- Product Details  <br>- Tasks to be Completed  <br>- Timelines and Responsibilities  <br>- Resources  <br>- Q&amp;A and Next Steps<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **NOTE:** You can ask Copilot to adjust the level of detail (e.g., “make the summary more concise” or “expand on tasks to be completed”).
 
@@ -198,7 +271,18 @@ After completing this task, you'll know how to turn unstructured notes into a pr
 
 ---
 
-## Practice 5: Refine Results with Follow-Up Questions  
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part5-practice-5-refine-results-with-follow-up-questions">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Practice 5: Refine Results with Follow-Up Questions</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body5">
+<div markdown="1">
 
 Using **Copilot Chat**, practice enhancing your results by asking follow-up questions. This task shows how you can go beyond the first answer, structure the data, and get actionable insights for decision-making.  
 
@@ -212,25 +296,33 @@ Using **Copilot Chat**, practice enhancing your results by asking follow-up ques
 
 **Sample Prompt Sequence**:
 
-```text
-Please identify trends in consumer preferences for grocery markets and use these insights to develop ideas for new products for our grocery market chain.
-```
+</div>
 
-```text
-Please structure those ideas in a table format and for each idea add a column for the potential target groups and ideas for an advertising campaign.
-```
+<div class="prompt-box">Please identify trends in consumer preferences for grocery markets and use these insights to develop ideas for new products for our grocery market chain.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-```text
-How can I prioritize these ideas effectively?
-```
+<div class="prompt-box">Please structure those ideas in a table format and for each idea add a column for the potential target groups and ideas for an advertising campaign.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">How can I prioritize these ideas effectively?<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:**  Follow-up questions help refine and upscale your results. Try clarifying prompts like: “Expand the table with additional product ideas based on recent market trends,” “Which ideas might have the highest ROI in the next 12 months?,” or “Create a prioritization matrix ranking these ideas by market demand, profitability, and alignment with brand values.”
 
 > **Learning Outcome:**
 After completing this task, you’ll understand how to use follow-up prompts to get richer insights and actionable recommendations from Copilot Chat.
 
+</div>
+  </div>
+</div>
 
-## Practice 6: Summarize and Recap Emails in Outlook  
+<div class="part-card" id="part6-practice-6-summarize-and-recap-emails-in-outlook">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>Practice 6: Summarize and Recap Emails in Outlook</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body6">
+<div markdown="1">
 
 Use **Copilot Chat** in Outlook to quickly understand the content of an email and extract key actions. This task will help you summarize a long email thread and clearly identify what is being requested — both from you and from your team.  
 
@@ -246,16 +338,13 @@ This task is perfect for staying on top of priorities, deadlines, and next steps
 ![screenshot showing sentiment analysis pie chart and word cloud](../Prompts/Media/TaskEmail.png)  
 
 
-**Sample Prompt**:  
+**Sample Prompt**:
 
-```text
-Recap my email, show me:
-1. What is being asked
-2. What is being asked of the team
-3. What is being asked directly of me
+</div>
 
-If there are any dates or topics mentioned, put those in a table.
-```
+<div class="prompt-box">Recap my email, show me:<br>1. What is being asked<br>2. What is being asked of the team<br>3. What is being asked directly of me<br><br>If there are any dates or topics mentioned, put those in a table.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **💡 Tip:**
 If your email thread is very long, try adding “summarize in 3 bullet points” or “summarize in less than 100 words” to the prompt for a quicker, more focused summary.
@@ -263,8 +352,18 @@ If your email thread is very long, try adding “summarize in 3 bullet points”
 > **🎯 Learning Outcome:**
 You will learn how to use Copilot Chat in Outlook to extract key requests, action items, and deadlines from a single email or an entire thread, helping you and your team stay organized and responsive.
 
+</div>
+  </div>
+</div>
 
-## Practice 7: Analyze Reviews & Visualize Sentiments  
+<div class="part-card" id="part7-practice-7-analyze-reviews-visualize-sentiments">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>Practice 7: Analyze Reviews & Visualize Sentiments</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body7">
+<div markdown="1">
 
 Use **Copilot Chat** to transform raw survey or review data into actionable insights with charts and dashboards. You'll use a `.csv` file exported from Excel and ask Copilot to identify sentiment, uncover key themes, and generate visuals like a pie chart and word cloud.  
 
@@ -283,22 +382,29 @@ This task is perfect for analyzing customer feedback or product reviews and crea
 
 **Sample Prompt** *(after uploading your CSV file)*:
 
-```text
-For each review, analyze the whole sentence and provide a sentiment analysis.  
-List the top 10 sentiments with counts based on reviews using the attached file. Analyze the column “Reviews” located in column C.
+</div>
 
-Then, list the sentiment with counts on reviews and the top 10 themes in the reviews.  
-Create a pie graph with Easter-themed colors based on the sentiment count and then create a word cloud based on themes and mentions.
-```
+<div class="prompt-box">For each review, analyze the whole sentence and provide a sentiment analysis.  <br>List the top 10 sentiments with counts based on reviews using the attached file. Analyze the column “Reviews” located in column C.<br><br>Then, list the sentiment with counts on reviews and the top 10 themes in the reviews.  <br>Create a pie graph with Easter-themed colors based on the sentiment count and then create a word cloud based on themes and mentions.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
+<div markdown="1">
 
 > **TIP:**  If you want to customize the visuals further, follow up with questions like: Can you provide a downloadable version of the word cloud? Can you generate a more vibrant color scheme for the pie chart? What software can I use to recreate these visuals manually?
 
 > **Learning Outcome:** 
 After completing this task, you’ll be able to analyze qualitative data from reviews or survey feedback, extract themes and sentiment, and create visual summaries with Copilot Chat.
 
+</div>
+  </div>
+</div>
 
-## Practice 8: Visualize Financial Data with Charts & Heat Maps  
+<div class="part-card" id="part8-practice-8-visualize-financial-data-with-charts-heat-maps">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2>Practice 8: Visualize Financial Data with Charts & Heat Maps</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body8">
+<div markdown="1">
 
 Use **Copilot Chat** to create a variety of data visualizations from Excel data, such as **monthly trends**, **product sales**, and **revenue distribution**. In this task, you'll explore the charting capabilities of Copilot with structured sales data to uncover key insights.  
 
@@ -317,21 +423,19 @@ Use **Copilot Chat** to create a variety of data visualizations from Excel data,
 
 **Sample Prompt** *(after uploading your CSV file)*:
 
-```text
-List the visual charts you can create from the sales data and then create those charts.  
-```
-```text
-Create a Monthly Revenue Trend chart.  
-```
-```text
-Create a "Units Sold Distribution by Sales Channel" pie chart.
-```
-```text
-Create a "Total Revenue by Product" chart.  
-```
-```text
-Create a heat map of the most purchased products without purchase dates.
-```
+</div>
+
+<div class="prompt-box">List the visual charts you can create from the sales data and then create those charts.  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">Create a Monthly Revenue Trend chart.  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">Create a &quot;Units Sold Distribution by Sales Channel&quot; pie chart.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">Create a &quot;Total Revenue by Product&quot; chart.  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box">Create a heat map of the most purchased products without purchase dates.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:** 
 Once the visuals are generated, try these follow-up prompts to enhance your analysis: Can you add trendlines or highlight seasonal peaks in the revenue chart? What does the heat map reveal about customer preferences? Group sales by category and create a stacked bar chart.Export these charts as image files I can use in PowerPoint.
@@ -339,8 +443,18 @@ Once the visuals are generated, try these follow-up prompts to enhance your anal
 > **Learning Outcome:**
 After completing this task, you’ll be able to transform numerical sales data into various visual formats using Copilot Chat—including line charts, pie charts, bar charts, and heat maps—empowering you to extract and present insights for better decision-making.
 
+</div>
+  </div>
+</div>
 
-## Practice 9: Perform Calculations from Excel Data  
+<div class="part-card" id="part9-practice-9-perform-calculations-from-excel-data">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>Practice 9: Perform Calculations from Excel Data</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body9">
+<div markdown="1">
 
 Use **Copilot Chat** to perform calculations directly from Excel data—without needing formulas or pivot tables. In this task, you’ll calculate the **total revenue** and the **average sales revenue** from a provided spreadsheet and explore how to break down those results further.
 
@@ -358,9 +472,11 @@ This is a great use case for operations, finance, or business teams looking for 
 
 **Sample Prompt** *(after uploading your Excel file)*:
 
-```text
-Calculate the total revenue and the average sales revenue.
-```
+</div>
+
+<div class="prompt-box">Calculate the total revenue and the average sales revenue.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:** 
 Once the results are shown, try these follow-up prompts to dig deeper:
@@ -371,8 +487,18 @@ Once the results are shown, try these follow-up prompts to dig deeper:
 > **Learning Outcome:**
 After completing this task, you’ll be able to use Copilot Chat to quickly calculate financial metrics like total and average revenue, and follow up with deeper questions to uncover trends or performance breakdowns in your Excel data.
 
+</div>
+  </div>
+</div>
 
-## Practice 10: Convert Files to Another Format  
+<div class="part-card" id="part10-practice-10-convert-files-to-another-format">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body10', this)">
+    <h2>Practice 10: Convert Files to Another Format</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body10">
+<div markdown="1">
 
 Use **Copilot Chat** to convert files between formats quickly and easily. This task helps you explore supported conversion types—perfect when you need to standardize formats or extract data for analysis.  
 
@@ -383,11 +509,14 @@ Use **Copilot Chat** to convert files between formats quickly and easily. This t
 
 ![screenshot showing a PDF converted to Word](../Prompts/Media/Task7.png)
 
-**Sample Prompt**:  
+**Sample Prompt**:
 
-```text
-Convert this PDF to a Word document.
-```
+</div>
+
+<div class="prompt-box">Convert this PDF to a Word document.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
+
 You can also request Copilot to perform other conversions such the one mentioned in the image.
 
 
@@ -400,8 +529,18 @@ Ask follow-up questions like:
 > **Learning Outcome:**
 After completing this task, you’ll know how to use Copilot Chat to convert files into various formats, making it easier to prepare data, create editable documents, and streamline workflows.
 
+</div>
+  </div>
+</div>
 
-## Practice 11 (FYI): Create or Replace an Excel Macro with Copilot
+<div class="part-card" id="part11-practice-11-fyi-create-or-replace-an-excel-macro-with-copilo">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body11', this)">
+    <h2>Practice 11 (FYI): Create or Replace an Excel Macro with Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body11">
+<div markdown="1">
 
 This advanced, **FYI-only** task shows two ways to handle VBA-style calculations using **Copilot Chat**—either by asking Copilot to do the equivalent calculation from an uploaded spreadsheet, or by having Copilot help author/adjust the VBA macro.  
 > **Heads-up:** VBA macros don’t run in **Excel for the web**; Copilot Chat can still perform the same calculations from your uploaded workbook.
@@ -418,26 +557,19 @@ This advanced, **FYI-only** task shows two ways to handle VBA-style calculations
 
 Upload your `Revenue.xlsx` (or similar) and run:
 
-```text
-Please create an Excel Macro script that performs the following task:
-Calculate the total and average revenue from the "Sales by Product" worksheet.
+</div>
 
-For Excel web users, execute the equivalent calculation now on the uploaded file and report:
-- Total Revenue
-- Average Revenue
-```
+<div class="prompt-box">Please create an Excel Macro script that performs the following task:<br>Calculate the total and average revenue from the &quot;Sales by Product&quot; worksheet.<br><br>For Excel web users, execute the equivalent calculation now on the uploaded file and report:<br>- Total Revenue<br>- Average Revenue<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 **Option 2 – Ask Copilot to draft/modify the VBA macro**
 
-```text
-Write a VBA macro that calculates the total and average revenue from the
-"Sales by Product" worksheet and displays the results in a message box.
+</div>
 
-Now modify the script so it writes:
-- Total Revenue to cell J4
-- Average Revenue to cell J5
-and formats both as currency.
-```
+<div class="prompt-box">Write a VBA macro that calculates the total and average revenue from the<br>&quot;Sales by Product&quot; worksheet and displays the results in a message box.<br><br>Now modify the script so it writes:<br>- Total Revenue to cell J4<br>- Average Revenue to cell J5<br>and formats both as currency.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 > **TIP:**
 > Explain what this macro does line by line.
@@ -463,19 +595,11 @@ Use **Copilot Chat** to create a professional job description based on web resea
 
 **Sample Prompt** *(Step 1 – Build the job description)*:
 
-```text
-In a table format perform a web analysis for a "data analyst" role for finance to include:
-- Industry job titles  
-- Basic definition  
-- Key attributes  
-- Ideal average years of education  
-- Salary range  
-- A list of 10 questions and answers to ask this role in an interview  
+</div>
 
-Then provide some KPIs for the role.  
+<div class="prompt-box">In a table format perform a web analysis for a &quot;data analyst&quot; role for finance to include:<br>- Industry job titles  <br>- Basic definition  <br>- Key attributes  <br>- Ideal average years of education  <br>- Salary range  <br>- A list of 10 questions and answers to ask this role in an interview  <br><br>Then provide some KPIs for the role.  <br><br>Finally, based on the above information, write a job description with a competitive salary based on years of experience. This job description will serve as the guide for our hiring board.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
 
-Finally, based on the above information, write a job description with a competitive salary based on years of experience. This job description will serve as the guide for our hiring board.
-```
+<div markdown="1">
 
 > **TIP:**
 > Rank the candidate from 1–10 based on fit for the role.
@@ -485,3 +609,14 @@ Finally, based on the above information, write a job description with a competit
 > **Learning Outcome:**
 After completing this task, you’ll be able to create a well-structured job description, identify KPIs for a role, and perform a resume gap analysis with Copilot Chat—streamlining your hiring process and improving candidate evaluation consistency.
 
+</div>
+  </div>
+</div>
+
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>

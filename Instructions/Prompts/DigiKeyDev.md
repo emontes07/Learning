@@ -1,13 +1,75 @@
 ---
-demo:
-    title: 'Developer & IT Copilot Training'
+layout: none
 ---
 
-[Back to Index](https://emontes07.github.io/Learning/)
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer & IT Copilot Training | Learning</title>
+<link rel="stylesheet" href="../../Allfiles/demo-style.css">
+<style>:root { --hero-from: #263238; --hero-via: #37474F; --hero-to: #546E7A; }</style>
+</head>
+<body>
 
-# Developer & IT Copilot Training
+<div class="back-bar">
+  <a href="https://emontes07.github.io/Learning/">← Back to Index</a>
+</div>
 
-## Copilot for Developers & IT Teams
+<button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open menu">☰ Menu</button>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>👩‍💻 Developer & IT Copilot Training</h1>
+    <p class="subtitle">Sixteen hands-on practices for developers and IT professionals.</p>
+    <div class="hero-meta">
+      <span>👩‍💻 Developers</span>
+      <span>💻 IT</span>
+      <span>💬 Copilot Chat</span>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <a class="sb-home" href="https://emontes07.github.io/Learning/">← Back to Index</a>
+  <div class="sb-title">Developer & IT Copilot Training</div>
+
+  <a href="#part1-copilot-for-developers-it-teams" class="part-link">Copilot for Developers & IT Teams</a>
+  <a href="#part2-practice-1-save-prompts-in-copilot" class="part-link">Practice 1: Save Prompts in Copilot</a>
+  <a href="#part3-practice-2-copilot-memory-and-personalization" class="part-link">Practice 2: Copilot Memory and Personalization</a>
+  <a href="#part4-task-1-write-review-code-with-copilot" class="part-link">Task 1: Write & Review Code with Copilot</a>
+  <a href="#part5-task-2-summarize-understand-large-documentation-sets" class="part-link">Task 2: Summarize & Understand Large Documentation Sets</a>
+  <a href="#part6-task-3-research-new-technologies-with-copilots-research-agen" class="part-link">Task 3: Research New Technologies with Copilot’s Research Agent</a>
+  <a href="#part7-task-4-accelerate-standups-sprint-reviews-with-loop-copilot" class="part-link">Task 4: Accelerate Standups & Sprint Reviews with Loop + Copilot</a>
+  <a href="#part8-task-5-convert-meetings-into-actionable-engineering-work" class="part-link">Task 5: Convert Meetings into Actionable Engineering Work</a>
+  <a href="#part9-task-6-generate-technical-documentation-automatically" class="part-link">Task 6: Generate Technical Documentation Automatically</a>
+  <a href="#part10-task-7-create-automation-scripts-for-it-operations" class="part-link">Task 7: Create Automation Scripts for IT Operations</a>
+  <a href="#part11-task-8-troubleshoot-systems-environments-with-logs-and-error" class="part-link">Task 8: Troubleshoot Systems & Environments with Logs and Errors</a>
+  <a href="#part12-task-9-create-diagrams-architecture-from-text" class="part-link">Task 9: Create Diagrams & Architecture from Text</a>
+  <a href="#part13-task-10-prepare-and-deliver-technical-presentations" class="part-link">Task 10: Prepare and Deliver Technical Presentations</a>
+  <a href="#part14-task-11-write-or-improve-policies-sops-and-governance-docs" class="part-link">Task 11: Write or Improve Policies, SOPs, and Governance Docs</a>
+  <a href="#part15-task-12-analyse-large-devops-or-monitoring-data" class="part-link">Task 12: Analyse Large DevOps or Monitoring Data</a>
+  <a href="#part16-task-13-recap-teams-meetings-generate-notes" class="part-link">Task 13: Recap Teams Meetings & Generate Notes</a>
+  <a href="#part17-task-14-draft-and-refine-emails-in-outlook" class="part-link">Task 14: Draft and Refine Emails in Outlook</a>
+  <a href="#part18-task-15-summarise-work-create-daily-or-weekly-digests" class="part-link">Task 15: Summarise Work & Create Daily or Weekly Digests</a>
+  <a href="#part19-task-16-find-retrieve-information-across-m365" class="part-link">Task 16: Find & Retrieve Information Across M365</a>
+  <a href="#part20-final-thoughts" class="part-link">Final Thoughts</a>
+</nav>
+
+<div class="main-content">
+
+<div class="part-card" id="part1-copilot-for-developers-it-teams">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body1', this)">
+    <h2>Copilot for Developers & IT Teams</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body1">
+<div markdown="1">
 
 Microsoft 365 Copilot is more than a writing aid—it’s a multifaceted
 assistant that can help your engineering and IT teams code faster,
@@ -27,19 +89,30 @@ so you can immediately apply Copilot in your daily workflows.
 
 ------------------------------------------------------------------------
 
-## Practice 1: Save Prompts in Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part2-practice-1-save-prompts-in-copilot">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body2', this)">
+    <h2>Practice 1: Save Prompts in Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body2">
+<div markdown="1">
 
 Saving prompts helps you quickly reuse instructions or queries without having to type them out each time. Below is how to manage and save them.
 
 **Step 1: Save a Prompt**
 
 1.  Run a prompt — start by running the prompt you want to save. For example:
-   
-    ```text
-    Please prepare a summary of my emails, Teams messages, and meetings from the previous workday, highlighting any direct mentions of my name.
-    Also present my meetings scheduled for today in a table that includes: subject, participants and key preparation points.
-    Use an inspirational tone and a light touch that helps start the day with positive energy.
-    ```
+
+</div>
+
+<div class="prompt-box">    Please prepare a summary of my emails, Teams messages, and meetings from the previous workday, highlighting any direct mentions of my name.<br>    Also present my meetings scheduled for today in a table that includes: subject, participants and key preparation points.<br>    Use an inspirational tone and a light touch that helps start the day with positive energy.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+<div markdown="1">
 
 3.  Hover your cursor over the prompt until a bookmark icon appears.
 
@@ -76,7 +149,18 @@ alt="A screenshot of a chat AI-generated content may be incorrect." />
 <img src="../Prompts/Media/ADimage5.png" style="width:5.424in;height:3.25382in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
-## Practice 2: Copilot Memory and Personalization
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part3-practice-2-copilot-memory-and-personalization">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body3', this)">
+    <h2>Practice 2: Copilot Memory and Personalization</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body3">
+<div markdown="1">
 
 Copilot Memory offers a more personalised experience by training Copilot based on your previous chats, work profile, custom instructions, metadata and more. This allows Copilot to better understand you and adapt to your needs.
 
@@ -110,7 +194,18 @@ You can add your custom instructions in this section. As a reference, here is a 
 
 ------------------------------------------------------------------------
 
-## Task 1: Write & Review Code with Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part4-task-1-write-review-code-with-copilot">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body4', this)">
+    <h2>Task 1: Write & Review Code with Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body4">
+<div markdown="1">
 
 Use **Copilot** (via the Copilot web app or the Copilot pane inside
 Microsoft 365 apps) to generate and refine code snippets and scripts.
@@ -161,7 +256,18 @@ help refine or troubleshoot them.
 
 ------------------------------------------------------------------------
 
-## Task 2: Summarize & Understand Large Documentation Sets
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part5-task-2-summarize-understand-large-documentation-sets">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body5', this)">
+    <h2>Task 2: Summarize & Understand Large Documentation Sets</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body5">
+<div markdown="1">
 
 Developers and IT admins often work with lengthy runbooks, architecture
 specs, or wiki pages. Copilot can summarize these documents and extract
@@ -202,7 +308,18 @@ search for information, summarize documents, and draft meeting notes.
 
 ------------------------------------------------------------------------
 
-## Task 3: Research New Technologies with Copilot’s Research Agent
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part6-task-3-research-new-technologies-with-copilots-research-agen">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body6', this)">
+    <h2>Task 3: Research New Technologies with Copilot’s Research Agent</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body6">
+<div markdown="1">
 
 Copilot can search the web and return concise, sourced answers.
 Microsoft notes that Copilot provides direct answers and can conduct
@@ -245,7 +362,18 @@ frameworks.
 
 ------------------------------------------------------------------------
 
-## Task 4: Accelerate Standups & Sprint Reviews with Loop + Copilot
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part7-task-4-accelerate-standups-sprint-reviews-with-loop-copilot">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body7', this)">
+    <h2>Task 4: Accelerate Standups & Sprint Reviews with Loop + Copilot</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body7">
+<div markdown="1">
 
 Copilot inside **Microsoft Loop** helps teams co‑create content, stay
 informed, and pick up where others left off. Use it to prepare standup
@@ -282,7 +410,18 @@ meetings and work items.
 
 ------------------------------------------------------------------------
 
-## Task 5: Convert Meetings into Actionable Engineering Work
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part8-task-5-convert-meetings-into-actionable-engineering-work">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body8', this)">
+    <h2>Task 5: Convert Meetings into Actionable Engineering Work</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body8">
+<div markdown="1">
 
 Copilot in **Microsoft Teams** can summarize meetings, capture who said
 what, and suggest action items. Turn design reviews, incident calls, or
@@ -318,7 +457,18 @@ planning sessions into structured work items.
 
 ------------------------------------------------------------------------
 
-## Task 6: Generate Technical Documentation Automatically
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part9-task-6-generate-technical-documentation-automatically">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body9', this)">
+    <h2>Task 6: Generate Technical Documentation Automatically</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body9">
+<div markdown="1">
 
 AI tools like Copilot can generate explanations of code blocks and
 project documentation using prompts. Use Copilot to create API docs,
@@ -360,7 +510,18 @@ materials without leaving the Microsoft 365 ecosystem.
 
 ------------------------------------------------------------------------
 
-## Task 7: Create Automation Scripts for IT Operations
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part10-task-7-create-automation-scripts-for-it-operations">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body10', this)">
+    <h2>Task 7: Create Automation Scripts for IT Operations</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body10">
+<div markdown="1">
 
 IT administrators often need to automate tasks like account creation,
 device configuration, or policy enforcement. Copilot can generate
@@ -396,7 +557,18 @@ and refine or troubleshoot them.
 
 ------------------------------------------------------------------------
 
-## Task 8: Troubleshoot Systems & Environments with Logs and Errors
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part11-task-8-troubleshoot-systems-environments-with-logs-and-error">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body11', this)">
+    <h2>Task 8: Troubleshoot Systems & Environments with Logs and Errors</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body11">
+<div markdown="1">
 
 When debugging, developers often paste log files or error messages into
 Copilot to get precise answers. Guidance from Microsoft and the GitHub
@@ -433,7 +605,18 @@ when chatting with Copilot.
 
 ------------------------------------------------------------------------
 
-## Task 9: Create Diagrams & Architecture from Text
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part12-task-9-create-diagrams-architecture-from-text">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body12', this)">
+    <h2>Task 9: Create Diagrams & Architecture from Text</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body12">
+<div markdown="1">
 
 Copilot can generate diagrams using code—for example, by producing
 Mermaid syntax. Copilot can create diagrams, such as Gantt charts, to
@@ -468,7 +651,18 @@ is useful for architecture diagrams, sequence diagrams, or data flows.
 
 ------------------------------------------------------------------------
 
-## Task 10: Prepare and Deliver Technical Presentations
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part13-task-10-prepare-and-deliver-technical-presentations">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body13', this)">
+    <h2>Task 10: Prepare and Deliver Technical Presentations</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body13">
+<div markdown="1">
 
 Copilot in **PowerPoint** can read through a long presentation and
 provide a bulleted summary of key points, and it can also help you build
@@ -513,7 +707,18 @@ changes.
 
 ------------------------------------------------------------------------
 
-## Task 11: Write or Improve Policies, SOPs, and Governance Docs
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part14-task-11-write-or-improve-policies-sops-and-governance-docs">
+  <div class="part-header-bar magenta"></div>
+  <div class="part-header" onclick="togglePart('body14', this)">
+    <h2>Task 11: Write or Improve Policies, SOPs, and Governance Docs</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body14">
+<div markdown="1">
 
 Copilot can help you update and improve policies or standard operating
 procedures (SOPs). The Microsoft Scenario Library shows an HR use case
@@ -553,7 +758,18 @@ controls, or change‑management procedures.
 
 ------------------------------------------------------------------------
 
-## Task 12: Analyse Large DevOps or Monitoring Data
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part15-task-12-analyse-large-devops-or-monitoring-data">
+  <div class="part-header-bar blue"></div>
+  <div class="part-header" onclick="togglePart('body15', this)">
+    <h2>Task 12: Analyse Large DevOps or Monitoring Data</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body15">
+<div markdown="1">
 
 Copilot can analyse large datasets from CSV or Excel files, producing
 charts and summaries. Microsoft notes that Copilot can perform complex
@@ -592,7 +808,18 @@ metrics from build pipelines, deployment logs, or system monitoring.
 
 ------------------------------------------------------------------------
 
-## Task 13: Recap Teams Meetings & Generate Notes
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part16-task-13-recap-teams-meetings-generate-notes">
+  <div class="part-header-bar green"></div>
+  <div class="part-header" onclick="togglePart('body16', this)">
+    <h2>Task 13: Recap Teams Meetings & Generate Notes</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body16">
+<div markdown="1">
 
 Copilot in **Teams** can now generate an AI‑powered recap for meetings
 you attended or missed. This feature provides a summary of key
@@ -633,7 +860,18 @@ what happened.
 
 ------------------------------------------------------------------------
 
-## Task 14: Draft and Refine Emails in Outlook
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part17-task-14-draft-and-refine-emails-in-outlook">
+  <div class="part-header-bar purple"></div>
+  <div class="part-header" onclick="togglePart('body17', this)">
+    <h2>Task 14: Draft and Refine Emails in Outlook</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body17">
+<div markdown="1">
 
 Copilot in **Outlook** can help you draft, refine, and adjust the tone
 of your emails. It can summarise long threads, suggest content based on
@@ -676,7 +914,18 @@ audiences or communicating sensitive updates.
 
 ------------------------------------------------------------------------
 
-## Task 15: Summarise Work & Create Daily or Weekly Digests
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part18-task-15-summarise-work-create-daily-or-weekly-digests">
+  <div class="part-header-bar orange"></div>
+  <div class="part-header" onclick="togglePart('body18', this)">
+    <h2>Task 15: Summarise Work & Create Daily or Weekly Digests</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body18">
+<div markdown="1">
 
 Use Copilot to generate a digest of your recent work—summarising emails,
 meetings, chats, and tasks. This helps you plan your day or review what
@@ -711,7 +960,18 @@ happened over the past week.
 
 ------------------------------------------------------------------------
 
-## Task 16: Find & Retrieve Information Across M365
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part19-task-16-find-retrieve-information-across-m365">
+  <div class="part-header-bar teal"></div>
+  <div class="part-header" onclick="togglePart('body19', this)">
+    <h2>Task 16: Find & Retrieve Information Across M365</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body19">
+<div markdown="1">
 
 Copilot can search your organisation’s data—including emails, documents,
 and chats—when you can’t remember where something is stored. Use it as a
@@ -750,7 +1010,18 @@ knowledge retrieval assistant to save time.
 
 ------------------------------------------------------------------------
 
-## Final Thoughts
+</div>
+  </div>
+</div>
+
+<div class="part-card" id="part20-final-thoughts">
+  <div class="part-header-bar navy"></div>
+  <div class="part-header" onclick="togglePart('body20', this)">
+    <h2>Final Thoughts</h2>
+    <span class="toggle-icon open">▾</span>
+  </div>
+  <div class="part-body" id="body20">
+<div markdown="1">
 
 These sixteen scenarios showcase how Microsoft 365 Copilot can amplify
 the productivity of developers and IT professionals. By integrating
@@ -759,3 +1030,15 @@ tasks, meetings, policy updates, data analyses, communication, and daily
 planning, you’ll free time for more creative and strategic work.
 Continue experimenting with prompts and exploring Copilot across other
 M365 apps—every iteration brings new insights and efficiencies.
+
+</div>
+  </div>
+</div>
+
+
+</div><!-- /main-content -->
+</div><!-- /layout -->
+
+<script src="../../Allfiles/demo-script.js"></script>
+</body>
+</html>
