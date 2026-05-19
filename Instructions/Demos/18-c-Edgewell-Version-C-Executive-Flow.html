@@ -271,24 +271,30 @@ section.act .body{
 .nextsteps .step h4{color:#fff;font-size:1.04rem;margin:6px 0 6px;text-transform:none;letter-spacing:0}
 .nextsteps .step p{color:#dfeaf2;font-size:.92rem;margin:0;line-height:1.5}
 
-/* Sticky rail */
-nav.rail{
-  position:fixed;top:50%;left:20px;transform:translateY(-50%);
-  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
-  border:1px solid var(--border);border-radius:16px;padding:16px 12px;
-  box-shadow:var(--shadow);z-index:10;display:flex;flex-direction:column;gap:4px;
-  min-width:220px;max-width:260px;
+/* Layout shell with sidebar */
+.shell{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:32px;padding:28px 32px 60px}
+@media (max-width:980px){.shell{grid-template-columns:1fr;padding:20px}}
+
+/* Sidebar */
+aside.nav{
+  position:sticky;top:18px;align-self:start;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:14px 10px;box-shadow:var(--shadow);max-height:calc(100vh - 36px);overflow:auto
 }
-nav.rail a{
-  display:block;padding:10px 14px;font-size:.95rem;color:var(--text);
-  border-radius:8px;border-left:3px solid transparent;line-height:1.4;
+aside.nav .title{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:6px 10px}
+aside.nav a{
+  display:block;padding:8px 12px;border-radius:8px;color:var(--text);font-size:.95rem;
+  border-left:3px solid transparent;margin:1px 0;
 }
-nav.rail a:hover{background:#f1f5fa;text-decoration:none}
-nav.rail a.active{
-  background:linear-gradient(90deg,rgba(14,124,134,.10),rgba(124,197,118,.06));
+aside.nav a:hover{background:#f1f5fa;text-decoration:none}
+aside.nav a.active{
+  background:linear-gradient(90deg,rgba(14,124,134,.10),rgba(124,197,118,.08));
   border-left-color:var(--secondary);color:var(--primary);font-weight:600
 }
-@media (max-width:1100px){nav.rail{display:none}}
+@media (max-width:980px){aside.nav{display:none}}
+
+/* Main column */
+.shell > main{min-width:0}
 
 /* Section header anchor */
 .section-eye{
@@ -318,16 +324,6 @@ footer a{color:#fff}
 <div style="background:#fff;border-bottom:1px solid var(--border);padding:8px 24px;font-size:.88rem">
   <a href="https://emontes07.github.io/Learning/" style="color:var(--secondary);text-decoration:none;font-weight:600">← Back to Index</a>
 </div>
-
-<nav class="rail" aria-label="Sections">
-  <a href="#opening" class="active">Opening</a>
-  <a href="#run">1 · Run the day</a>
-  <a href="#decide">2 · Make decisions</a>
-  <a href="#move">3 · Move work forward</a>
-  <a href="#delegate">4 · Delegate work</a>
-  <a href="#governance">5 · Trust &amp; governance</a>
-  <a href="#next">6 · What's next</a>
-</nav>
 
 <header class="hero">
   <div class="hero-inner">
@@ -377,6 +373,18 @@ footer a{color:#fff}
     </div>
   </div>
 </div>
+
+<div class="shell">
+  <aside class="nav" aria-label="Page navigation">
+    <div class="title">On this page</div>
+    <a href="#opening" class="active">Opening</a>
+    <a href="#run">1 · Run the day</a>
+    <a href="#decide">2 · Make decisions</a>
+    <a href="#move">3 · Move work forward</a>
+    <a href="#delegate">4 · Delegate work</a>
+    <a href="#governance">5 · Trust &amp; governance</a>
+    <a href="#next">6 · What's next</a>
+  </aside>
 
 <main>
 
@@ -678,6 +686,7 @@ footer a{color:#fff}
 </section>
 
 </main>
+</div>
 
 <footer>
   <div><b style="color:#fff">Version C · Executive Flow</b> — Edgewell Personal Care</div>
@@ -703,7 +712,7 @@ footer a{color:#fff}
   });
 
   // sticky rail active state
-  var links=Array.from(document.querySelectorAll('nav.rail a[href^="#"]'));
+  var links=Array.from(document.querySelectorAll('aside.nav a[href^="#"]'));
   var map={};
   links.forEach(function(a){
     var id=a.getAttribute('href').slice(1);
