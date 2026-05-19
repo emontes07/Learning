@@ -1,0 +1,1843 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edgewell × Microsoft 365 Copilot — From Field to Forecast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1A1A2E; background: #FAFAFA; line-height: 1.65;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Progress Bar ─── */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, #00A99D, #00C9B7);
+  z-index: 10001; transition: width 0.15s ease-out;
+  box-shadow: 0 0 8px rgba(0,169,157,0.5);
+}
+
+/* ─── Navigation ─── */
+nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 10000;
+  background: rgba(26,26,46,0.97); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow 0.3s ease;
+}
+nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 24px; height: 56px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 15px; color: #fff; letter-spacing: -0.3px;
+  text-decoration: none; flex-shrink: 0;
+}
+.nav-brand img { flex-shrink: 0; }
+.nav-links {
+  display: flex; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px;
+  font-weight: 500; padding: 8px 12px; border-radius: 8px;
+  white-space: nowrap; transition: all 0.25s ease; position: relative;
+}
+.nav-links a:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
+.nav-links a.active { color: #00E8D4; background: rgba(0,169,157,0.12); }
+.nav-links a:focus-visible { outline: 2px solid #00A99D; outline-offset: 2px; }
+.nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; align-items: center; }
+  .nav-links {
+    display: none; position: absolute; top: 56px; left: 0; right: 0;
+    background: rgba(26,26,46,0.98); flex-direction: column; padding: 12px 16px;
+    gap: 2px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 16px; border-radius: 10px; font-size: 14px; }
+}
+
+/* ─── Layout ─── */
+main { padding-top: 59px; }
+.section {
+  padding: 80px 24px; opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+.section.alt-bg { background: #E0F5F3; }
+.section-inner { max-width: 800px; margin: 0 auto; }
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(160deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  color: #fff; text-align: center; padding: 120px 24px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(0,169,157,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-brand { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 32px; }
+.hero-brand span { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px;
+  color: #00E8D4; margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5.5vw, 56px); font-weight: 800; letter-spacing: -1.5px;
+  line-height: 1.1; margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 30%, #00E8D4 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero h2 {
+  font-size: clamp(16px, 2.5vw, 20px); font-weight: 400; color: rgba(255,255,255,0.7);
+  letter-spacing: -0.2px; margin-bottom: 8px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.6;
+}
+.hero-date {
+  display: inline-block; margin: 24px 0 36px; padding: 6px 18px;
+  background: rgba(0,169,157,0.15); border: 1px solid rgba(0,169,157,0.3);
+  border-radius: 100px; font-size: 14px; font-weight: 500; color: #00E8D4;
+}
+.hero-welcome {
+  max-width: 640px; margin: 0 auto 36px; font-size: 15px; line-height: 1.75;
+  color: rgba(255,255,255,0.7); font-weight: 300;
+}
+.brand-strip {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 20px 28px; max-width: 800px; margin: 0 auto; padding-top: 16px;
+}
+.brand-logo {
+  height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.brand-logo:hover { opacity: 0.85; }
+
+@media (max-width: 600px) { .brand-logo { height: 24px; } .brand-strip { gap: 14px 20px; } }
+
+/* ─── Chapter Header ─── */
+.chapter-header { margin-bottom: 40px; }
+.chapter-number {
+  font-size: 80px; font-weight: 900; letter-spacing: -3px;
+  background: linear-gradient(135deg, rgba(0,169,157,0.15) 0%, rgba(0,169,157,0.05) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1; margin-bottom: -8px; display: block;
+}
+.alt-bg .chapter-number {
+  background: linear-gradient(135deg, rgba(0,169,157,0.25) 0%, rgba(0,169,157,0.08) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.chapter-title {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -1px;
+  line-height: 1.2; color: #1A1A2E;
+}
+.chapter-subtitle {
+  font-size: 14px; font-weight: 600; color: #00A99D; text-transform: uppercase;
+  letter-spacing: 1.5px; margin-top: 8px;
+}
+
+/* ─── Scenario Block ─── */
+.scenario {
+  background: #fff; border-radius: 16px; padding: 28px 32px;
+  border-left: 4px solid #1A1A2E; margin-bottom: 36px;
+  font-size: 15px; color: #3A3A5C; line-height: 1.7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.alt-bg .scenario { background: #fff; }
+.scenario-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.8px; color: #1A1A2E; margin-bottom: 8px;
+}
+
+/* ─── Prompt Card ─── */
+.prompt-card {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 14px; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+}
+.prompt-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  background: #00A99D; opacity: 0; transition: opacity 0.25s ease;
+}
+.prompt-card:hover {
+  border-color: #00A99D; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,169,157,0.1);
+}
+.prompt-card:hover::before { opacity: 1; }
+.prompt-card:active { transform: translateY(0); }
+.prompt-card:focus-visible { outline: 2px solid #00A99D; outline-offset: 2px; }
+.alt-bg .prompt-card { background: #fff; }
+.prompt-label { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.prompt-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: linear-gradient(135deg, #E0F5F3, #C8F0EC);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.prompt-icon svg { width: 14px; height: 14px; }
+.prompt-tag {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: #00A99D;
+}
+.prompt-copy-hint {
+  font-size: 11px; color: #A0A0B8; margin-left: auto; font-weight: 500;
+  opacity: 1; display: flex; align-items: center; gap: 4px;
+}
+.prompt-text { font-size: 15px; line-height: 1.7; color: #2A2A44; }
+
+/* ─── Role Accordions ─── */
+.role-variants { margin-top: 16px; margin-bottom: 20px; }
+.role-variants details {
+  border: 1px solid #E8E8EE; border-radius: 12px; overflow: hidden;
+  background: #FAFAFA; margin-bottom: 0;
+}
+.alt-bg .role-variants details { background: #fff; }
+.role-variants summary {
+  padding: 14px 20px; cursor: pointer; font-size: 13px; font-weight: 600;
+  color: #5A5A7A; list-style: none; display: flex; align-items: center; gap: 8px;
+  transition: color 0.2s ease, background 0.2s ease; user-select: none;
+}
+.role-variants summary::-webkit-details-marker { display: none; }
+.role-variants summary::before {
+  content: ''; width: 18px; height: 18px; border-radius: 4px;
+  background: #E0F5F3; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2300A99D'%3E%3Cpath d='M2 3.5L5 7l3-3.5H2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+.role-variants details[open] summary::before { transform: rotate(180deg); }
+.role-variants summary:hover { color: #00A99D; background: rgba(0,169,157,0.03); }
+.role-variants .role-content { padding: 4px 20px 20px; }
+.role-item {
+  padding: 16px 20px; border-radius: 10px; margin-bottom: 8px;
+  background: #fff; border: 1px solid #F0F0F5; cursor: pointer;
+  transition: all 0.2s ease;
+}
+.alt-bg .role-item { background: #FAFAFA; }
+.role-item:hover {
+  border-color: #00A99D; transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,169,157,0.08);
+}
+.role-item:active { transform: translateY(0); }
+.role-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.role-emoji { font-size: 16px; }
+.role-name { font-size: 12px; font-weight: 700; color: #1A1A2E; text-transform: uppercase; letter-spacing: 0.8px; }
+.role-item .prompt-text { font-size: 14px; color: #3A3A5C; }
+.role-item .prompt-copy-hint { font-size: 10px; }
+
+/* ─── Trainer Tip ─── */
+.trainer-tip {
+  background: #fff; border-left: 4px solid #00A99D; border-radius: 0 12px 12px 0;
+  padding: 20px 24px; margin: 28px 0; display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.alt-bg .trainer-tip { background: rgba(255,255,255,0.8); }
+.trainer-tip-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 18px;
+}
+.trainer-tip-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: #00A99D; margin-bottom: 4px;
+}
+.trainer-tip-text { font-size: 14px; color: #3A3A5C; line-height: 1.65; }
+
+/* ─── Activity Groups ─── */
+.activity-group { margin-top: 36px; margin-bottom: 18px; }
+.activity-label {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: #1A1A2E; padding-bottom: 8px;
+  border-bottom: 2px solid #E0F5F3; display: inline-block;
+}
+
+/* ─── Content Blocks ─── */
+.content-block { margin-bottom: 28px; font-size: 15px; color: #3A3A5C; line-height: 1.75; }
+.content-block h3 { font-size: 18px; font-weight: 700; color: #1A1A2E; margin-bottom: 10px; }
+.memory-list { list-style: none; padding: 0; margin: 16px 0; }
+.memory-item {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 8px; font-size: 14px; color: #3A3A5C;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.alt-bg .memory-item { background: rgba(255,255,255,0.7); }
+.memory-icon {
+  width: 24px; height: 24px; border-radius: 6px; background: #E0F5F3;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 12px; margin-top: 1px;
+}
+
+/* ─── DAY ARC TIMELINE ─── */
+.day-arc {
+  background: #fff; border-radius: 20px; padding: 40px 32px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #E8E8EE;
+  margin-bottom: 48px; overflow-x: auto;
+}
+.day-arc h3 {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: #00A99D; margin-bottom: 32px; text-align: center;
+}
+.day-arc-track {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+  position: relative; min-width: 700px;
+}
+.day-arc-track::before {
+  content: ''; position: absolute; top: 18px; left: 24px; right: 24px; height: 2px;
+  background: linear-gradient(90deg, #00A99D, #00C9B7); z-index: 0;
+}
+.day-arc-item { text-align: center; position: relative; z-index: 1; }
+.day-arc-dot {
+  width: 36px; height: 36px; border-radius: 50%; margin: 0 auto 12px;
+  background: linear-gradient(135deg, #00A99D, #00C9B7);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 14px; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,169,157,0.3);
+}
+.day-arc-time { font-size: 14px; font-weight: 700; color: #1A1A2E; margin-bottom: 4px; }
+.day-arc-label { font-size: 13px; font-weight: 600; color: #3A3A5C; margin-bottom: 2px; }
+.day-arc-sub { font-size: 11px; color: #8A8AA0; }
+@media (max-width: 768px) {
+  .day-arc-track { grid-template-columns: repeat(3, 1fr); gap: 24px 8px; min-width: unset; }
+  .day-arc-track::before { display: none; }
+}
+
+/* ─── THREE CARDS ─── */
+.three-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0;
+}
+.three-cards .card {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px 20px; text-align: center;
+  transition: all 0.25s ease;
+}
+.three-cards .card:hover {
+  border-color: #00A99D; transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,169,157,0.08);
+}
+.alt-bg .three-cards .card { background: #fff; }
+.card-icon { font-size: 28px; margin-bottom: 12px; }
+.card-badge {
+  display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px;
+  background: #E0F5F3; color: #00A99D;
+}
+.card h4 { font-size: 15px; font-weight: 700; color: #1A1A2E; margin-bottom: 6px; }
+.card p { font-size: 13px; color: #5A5A7A; line-height: 1.6; }
+@media (max-width: 700px) {
+  .three-cards { grid-template-columns: 1fr; }
+}
+
+/* ─── PULL QUOTE ─── */
+.pull-quote {
+  border-left: 4px solid #00A99D; padding: 24px 28px; margin: 36px 0;
+  background: linear-gradient(135deg, rgba(0,169,157,0.04), transparent);
+  border-radius: 0 14px 14px 0;
+}
+.pull-quote p {
+  font-family: 'Lora', Georgia, serif; font-size: 18px; font-style: italic;
+  color: #1A1A2E; line-height: 1.7; font-weight: 400;
+}
+.pull-quote .attribution {
+  font-family: 'Inter', sans-serif; font-style: normal; font-size: 12px;
+  font-weight: 600; color: #00A99D; margin-top: 10px; text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ─── OUTCOME BLOCK ─── */
+.outcome-block {
+  background: linear-gradient(135deg, #E0F5F3, #F0FAF9); border-radius: 14px;
+  padding: 24px 28px; margin: 28px 0; border: 1px solid rgba(0,169,157,0.15);
+}
+.outcome-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #00A99D; margin-bottom: 8px;
+}
+.outcome-text { font-size: 15px; color: #1A1A2E; line-height: 1.7; font-weight: 500; }
+
+/* ─── STATS ROW ─── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0;
+}
+.stat-card {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 28px 20px; text-align: center;
+}
+.alt-bg .stat-card { background: #fff; }
+.stat-number {
+  font-size: 36px; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, #00A99D, #00C9B7);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 14px; font-weight: 700; color: #1A1A2E; margin-top: 4px; }
+.stat-desc { font-size: 12px; color: #8A8AA0; margin-top: 4px; }
+@media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
+
+/* ─── COWORK APPROVAL ─── */
+.cowork-approval {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px; margin: 28px 0;
+}
+.cowork-approval h4 {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #1A1A2E; margin-bottom: 16px;
+}
+.approval-item {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+  background: #FAFAFA; border-radius: 10px; margin-bottom: 8px;
+  border: 1px solid #F0F0F5;
+}
+.approval-icon { font-size: 20px; }
+.approval-content { flex: 1; }
+.approval-title { font-size: 14px; font-weight: 600; color: #1A1A2E; }
+.approval-desc { font-size: 12px; color: #8A8AA0; }
+.approval-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 4px 10px; border-radius: 100px; background: #FFF3E0; color: #E85D4A;
+  white-space: nowrap;
+}
+
+/* ─── GOVERNANCE GRID ─── */
+.governance-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0;
+}
+.gov-tile {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px; transition: all 0.25s ease;
+}
+.gov-tile:hover { border-color: #00A99D; box-shadow: 0 4px 16px rgba(0,169,157,0.08); }
+.alt-bg .gov-tile { background: #fff; }
+.gov-tile-icon { font-size: 24px; margin-bottom: 10px; }
+.gov-tile h4 { font-size: 15px; font-weight: 700; color: #1A1A2E; margin-bottom: 6px; }
+.gov-tile p { font-size: 13px; color: #5A5A7A; line-height: 1.6; }
+@media (max-width: 600px) { .governance-grid { grid-template-columns: 1fr; } }
+
+/* ─── NEXT STEPS ─── */
+.next-steps {
+  background: linear-gradient(160deg, #1A1A2E, #16213E); border-radius: 20px;
+  padding: 48px 36px; margin: 36px 0; color: #fff; position: relative; overflow: hidden;
+}
+.next-steps::before {
+  content: ''; position: absolute; top: -40%; right: -20%; width: 60%; height: 180%;
+  background: radial-gradient(ellipse, rgba(0,169,157,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.next-steps h3 {
+  font-size: 24px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px;
+}
+.next-steps .ns-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+.ns-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; position: relative; z-index: 1; }
+.ns-item {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 20px 16px; text-align: center;
+}
+.ns-number {
+  font-size: 28px; font-weight: 800; color: #00E8D4; margin-bottom: 8px;
+}
+.ns-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.ns-item p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+@media (max-width: 700px) { .ns-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ─── CALLOUTS ─── */
+.callout {
+  border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0;
+  display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.65;
+}
+.callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.callout-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.callout.tip { background: #F0FFF4; border-left: 4px solid #38A169; color: #22543D; }
+.callout.tip .callout-label { color: #38A169; }
+.callout.expect { background: #FAF5FF; border-left: 4px solid #805AD5; color: #44337A; }
+.callout.expect .callout-label { color: #805AD5; }
+.callout.check { background: #EBF8FF; border-left: 4px solid #3182CE; color: #2A4365; }
+.callout.check .callout-label { color: #3182CE; }
+.callout.warn { background: #FFFFF0; border-left: 4px solid #D69E2E; color: #744210; }
+.callout.warn .callout-label { color: #D69E2E; }
+.callout.note { background: #EBF8FF; border-left: 4px solid #4299E1; color: #2B6CB0; }
+.callout.note .callout-label { color: #4299E1; }
+
+/* ─── SELF-CHECK ─── */
+.self-check {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 22px 24px; margin: 24px 0;
+}
+.alt-bg .self-check { background: #fff; }
+.self-check h4 {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #3182CE; margin-bottom: 12px;
+}
+.self-check label {
+  display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+  font-size: 14px; color: #3A3A5C; cursor: pointer; line-height: 1.5;
+}
+.self-check input[type="checkbox"] {
+  accent-color: #00A99D; width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0;
+}
+
+/* ─── PERSONA ROW ─── */
+.persona-row {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.persona-pill {
+  font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px;
+  background: #E0F5F3; color: #00A99D; display: flex; align-items: center; gap: 4px;
+}
+
+/* ─── Toast ─── */
+#toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #1A1A2E; color: #fff; padding: 12px 24px; border-radius: 12px;
+  font-size: 14px; font-weight: 600; z-index: 11000;
+  opacity: 0; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+#toast .toast-check {
+  width: 20px; height: 20px; border-radius: 50%; background: #00A99D;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+/* ─── HOW-TO DROPDOWN ─── */
+.how-to-section { margin: 24px 0; }
+.how-to-section details {
+  background: linear-gradient(135deg, #EBF8FF, #F0F7FF); border: 1px solid #C3DAFE;
+  border-radius: 12px; overflow: hidden;
+}
+.how-to-section summary {
+  padding: 14px 20px; cursor: pointer; font-size: 14px; font-weight: 700;
+  color: #2A4365; list-style: none; display: flex; align-items: center; gap: 8px;
+  user-select: none; transition: background 0.2s ease;
+}
+.how-to-section summary::-webkit-details-marker { display: none; }
+.how-to-section summary:hover { background: rgba(49,130,206,0.06); }
+.how-to-section summary::after {
+  content: '▾'; margin-left: auto; font-size: 12px; color: #3182CE;
+  transition: transform 0.2s ease;
+}
+.how-to-section details[open] summary::after { transform: rotate(180deg); }
+.how-to-steps {
+  padding: 4px 20px 20px; font-size: 14px; color: #2A4365; line-height: 1.7;
+}
+.how-to-steps ol { padding-left: 20px; margin: 0; }
+.how-to-steps li { margin-bottom: 8px; }
+
+/* ─── Download Button ─── */
+.download-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00A99D, #00C9B7);
+  color: #fff; font-weight: 600; font-size: 14px;
+  padding: 12px 24px; border-radius: 10px;
+  text-decoration: none; transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0,169,157,0.25);
+}
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,169,157,0.35);
+}
+
+/* ─── Footer ─── */
+footer {
+  background: #1A1A2E; color: rgba(255,255,255,0.6); text-align: center;
+  padding: 72px 24px 48px;
+}
+footer .tagline {
+  font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -1px;
+  color: #fff; margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 30%, #00E8D4 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+footer p { font-size: 15px; line-height: 1.7; max-width: 560px; margin: 0 auto 8px; }
+footer .footer-date { font-size: 13px; margin-top: 24px; color: rgba(255,255,255,0.35); }
+footer .footer-brands {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px;
+  margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+footer .footer-brands span { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.3); }
+
+/* ─── Print ─── */
+@media print {
+  nav, #progress-bar, #toast, .prompt-copy-hint, .day-arc-track::before { display: none !important; }
+  main { padding-top: 0 !important; }
+  .section { opacity: 1 !important; transform: none !important; padding: 32px 0; page-break-inside: avoid; }
+  .hero { padding: 48px 24px; }
+  .prompt-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  .three-cards .card, .stat-card, .gov-tile, .ns-item { break-inside: avoid; }
+  details { break-inside: avoid; }
+  .next-steps { background: #1A1A2E !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .section { padding: 56px 16px; }
+  .hero { padding: 100px 16px 72px; }
+  .chapter-number { font-size: 56px; }
+  .prompt-card { padding: 18px 20px; }
+  .scenario { padding: 20px 22px; }
+  .trainer-tip { flex-direction: column; gap: 10px; }
+  .nav-inner { padding: 0 16px; }
+  .pull-quote p { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- Navigation -->
+<nav id="main-nav" aria-label="Chapter navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand" aria-label="Back to top">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABLCAMAAAACjvqfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABjUExURQAAAP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5pFDaAAAAAhdFJOUwAQnwjP/6d4MK9w30gg90CPx7+3h1jv1xhgUJfnOIBoKBmoIPsAAAAJcEhZcwAAD2EAAA9hAag/p2kAAAKTSURBVFhHrdjZcusgDAZgvPypkzTO7qRZ3PP+T3lGAmzAiTsR0k0NY3/xAhLUGIqiLPivSlQ1aj1uAehxX6BQ4hrGtLglgNVaifsmx2yUOLq1xihxVQss6UCFowfd8pEGtwPayh4qcEtg74/zuT2wGBrZ3Boox1YuF2u53AE4hu08bhF8BY4s7gS08aU53BbAOe7K4To3s4LI4Eo766OQc5Qs05vL4KgqrNLOCdecDof2cijPf/zEtQXwnfbG3A+1XJTX5NQ4zgC69NWFXHMZLQDtV3puFKd57tZZZX8/PuzRwuWw10HZ/C33w8DpyX3XM4PHOa46vuf4jV2sRVHRk8g5ALvo2ic9uYjj5+qT3kbI2Xe2S3r5s6Wxj770K85ivqj54IXBi4h+dMoxRlPlETxVQae9juDSKcdYz8PnNnS6D1OX/TSGkzhizmGcFmp/isVO4zUzEXIe4wKOjT2BsWDwzcfIjRjfnE0yk8zyR3guwEzlM+CnmOf6ADOmti/uc8xxEUb59CHDBi743nSnQsyYX8K64Lo70EkxN52C1UkJdDkYJYmxVLhELsX6J6VJ37XJxOz49ze3ysW4LLo1Z8UZMwfjN+9W17wNy8PMzS9PnlS8BRgBw6C9upUYVwYB9o+GxTgDHtyQDtqCRlWQBtekSTEeE+HKizQxRkNiHV7XAaUUo5kd1BJjCjsBZBhtLIdSQkHLMJpe84u1N0Eby2hpTmUUWLvq8mHck20DLzilGG0FD2GbVupiLN280Z5EjtF4CArBhqaFHDNtqNk1pRyjJx220NkYbVP9cMvHeITY5KiAcaLkpY8GZgr3LxsVjF8ctloYj9daC3O7Iy3MNDzPlTBXsrQwLsN6mDG9JpYf/wEUZSnaejJAjQAAAABJRU5ErkJggg==" alt="Edgewell" style="height: 24px; width: auto; filter: brightness(0) invert(1);">
+      <span>edgewell</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+    </button>
+    <div class="nav-links" role="list">
+      <a href="#hero" role="listitem">Overview</a>
+      <a href="#ch1" role="listitem">01 Run the Day</a>
+      <a href="#ch2" role="listitem">02 Operating Rhythm</a>
+      <a href="#ch3" role="listitem">03 Intelligence</a>
+      <a href="#ch4" role="listitem">04 Momentum</a>
+      <a href="#ch5" role="listitem">05 Cowork</a>
+      <a href="#ch6" role="listitem">06 Next Steps</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Toast -->
+<div id="toast" role="status" aria-live="polite">
+  <span class="toast-check"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5.5"/></svg></span>
+  Prompt copied!
+</div>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero section visible" id="hero">
+  <div class="hero-brand">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABLCAMAAAACjvqfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABjUExURQAAAP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5pFDaAAAAAhdFJOUwAQnwjP/6d4MK9w30gg90CPx7+3h1jv1xhgUJfnOIBoKBmoIPsAAAAJcEhZcwAAD2EAAA9hAag/p2kAAAKTSURBVFhHrdjZcusgDAZgvPypkzTO7qRZ3PP+T3lGAmzAiTsR0k0NY3/xAhLUGIqiLPivSlQ1aj1uAehxX6BQ4hrGtLglgNVaifsmx2yUOLq1xihxVQss6UCFowfd8pEGtwPayh4qcEtg74/zuT2wGBrZ3Boox1YuF2u53AE4hu08bhF8BY4s7gS08aU53BbAOe7K4To3s4LI4Eo766OQc5Qs05vL4KgqrNLOCdecDof2cijPf/zEtQXwnfbG3A+1XJTX5NQ4zgC69NWFXHMZLQDtV3puFKd57tZZZX8/PuzRwuWw10HZ/C33w8DpyX3XM4PHOa46vuf4jV2sRVHRk8g5ALvo2ic9uYjj5+qT3kbI2Xe2S3r5s6Wxj770K85ivqj54IXBi4h+dMoxRlPlETxVQae9juDSKcdYz8PnNnS6D1OX/TSGkzhizmGcFmp/isVO4zUzEXIe4wKOjT2BsWDwzcfIjRjfnE0yk8zyR3guwEzlM+CnmOf6ADOmti/uc8xxEUb59CHDBi743nSnQsyYX8K64Lo70EkxN52C1UkJdDkYJYmxVLhELsX6J6VJ37XJxOz49ze3ysW4LLo1Z8UZMwfjN+9W17wNy8PMzS9PnlS8BRgBw6C9upUYVwYB9o+GxTgDHtyQDtqCRlWQBtekSTEeE+HKizQxRkNiHV7XAaUUo5kd1BJjCjsBZBhtLIdSQkHLMJpe84u1N0Eby2hpTmUUWLvq8mHck20DLzilGG0FD2GbVupiLN280Z5EjtF4CArBhqaFHDNtqNk1pRyjJx220NkYbVP9cMvHeITY5KiAcaLkpY8GZgr3LxsVjF8ctloYj9daC3O7Iy3MNDzPlTBXsrQwLsN6mDG9JpYf/wEUZSnaejJAjQAAAABJRU5ErkJggg==" alt="Edgewell" style="height: 40px; width: auto; filter: brightness(0) invert(1);">
+    <span>edgewell</span>
+  </div>
+  <div class="hero-eyebrow">Edgewell Personal Care · Executive Immersion</div>
+  <h1>From Field to Forecast:<br>Your Copilot Experience</h1>
+  <h2>A story-driven executive immersion that takes your leadership team from "just back from the field" to a board-ready decision pack — using Microsoft 365 Copilot as the operating layer.</h2>
+  <div class="hero-date">May 21, 2026</div>
+  <p class="hero-welcome">Today we're not walking through features — we're walking through how an executive runs their day differently with AI. Every prompt is built for your context. Every scenario reflects the decisions, responsibilities, and challenges your leadership team faces every week. By the end, you'll leave with a personal operating system — not just a tool demo.</p>
+<div class="brand-strip">
+    <img src="data:image/png;base64,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" alt="Schick" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Schick Intuition" class="brand-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAYAAACB4MgqAAABCmlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGBckZOcW8wkwMCQm1dSFOTupBARGaXAfoeBkUGSgZlBk8EyMbm4wDEgwIcBJ/h2DagaCC7rgszCrQ4r4ExJLU4G0h+AOD65oKiEgYERZBdPeUkBiB0BZIsUAR0FZOeA2OkQdgOInQRhTwGrCQlyBrJ5gGyHdCR2EhIbahcIsCYbJWciOyS5tKgMypQC4tOMJ5mTWSdxZHN/E7AXDZQ2UfyoOcFIwnqSG2tgeezb7IIq1s6Ns2rWZO6vvXz4pcH//yWpFSUgzc7OBgygMEQPG4RY/iIGBouvDAzMExBiSTMZGLa3MjBI3EKIqSxgYOBvYWDYdh4A8P1N247YzPkAAALhSURBVHja1Zm9axRRFMV/d7IYC4lFRPxAFMFgwCBETfwC0ULQTjCINoJVLPQPEAsLGyGtgv+AhRaihcEisYqQRLCIBE1nDIqQRkjQJDNzLLwjk8lssptsdmcPPIa382bnvPvux3tnjA1C0mngLHAcOATsBtqArYCABeAX8B2YAsaBETMbpd6Q1C1pQNKkpFjVI5L0SdIjSUfrQfikpFc5REJvUZmJxH4vGZe991JSbzVcLEPsIHAVOAXsAkLgGzAMHAHupp4JgcDbehB7K6X6T8zsTrXWvCdproJlDlV7hKmVmpR0olLS91N/spRa0jDTj7W5WPLrvKQrq7qKpA5gAmhxNwhoLCLnIuCamb3IGxQAl4EtqX6j0eL+LuCZpHPliG/3gUVCYsAS8LzcgLGCWDqPWwjslPRmxU0zGwRGfYmigpEvOflLkm6syOMeoK+Bjrz83mDEzmfazA4s8yUzmwIGfEBUQJeJgP2Sbq+onJLGfaOUpCMKaPUvZtb53+KSepx0XEDSCU8BhyWdT6edvtTMiookt/eliV8sUAFazeoGXEhKfifwEWilORACPQHQ66TjJiCdbIN7A+BYkliagHjCsTsAOgtYdNY6+HQEwL4mJL43ANppPrSbpD9NlFESLJqkqOD5OzdISx6pqlYRaEAmWZYWk/1uawHTXlLiS3lFqAR8ddksXsOq2+roUpba7EXAvP8m5/DTqtBdpj11xps8AQGzwHvgLfDOzD7nHY0qxYK7VZw5zNaynAfZk85qZ7qKc2fOeNUwaJMgnKn0MFopngI7/AWhE+5PxYbVgLiAD/VQbx+6ZLZYA3ku8uuZemnlj2skekrScL2F/gcuVEbrsHyimy9I6mrEV4rBdcjQYcpFbjWm1EkzGV8thzjzZSKU1N8o0l1OOM9V4tSnlOykxuoWjGWI36zCPX5LGpJ0nQ2KirXALDAI7PHWxj/NPQTmgB/AJDACDJnZxEZf+BcE8EwoS8rkDwAAAABJRU5ErkJggg==" alt="Banana Boat" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Hawaiian Tropic" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Billie" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Bulldog" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Jack Black" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Cremo" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Wet Ones" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Edge" class="brand-logo">
+    <img src="data:image/png;base64,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" alt="Skintimate" class="brand-logo">
+  </div>
+</section>
+
+<!-- ═══════════ DAY ARC + STAKES ═══════════ -->
+<section class="section" id="overview">
+  <div class="section-inner">
+
+    <!-- Day Arc Timeline -->
+    <div class="day-arc">
+      <h3>Your Day with Copilot</h3>
+      <div class="day-arc-track">
+        <div class="day-arc-item">
+          <div class="day-arc-dot">1</div>
+          <div class="day-arc-time">6:50 AM</div>
+          <div class="day-arc-label">Run the Day</div>
+          <div class="day-arc-sub">Catch up · Prioritize</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">2</div>
+          <div class="day-arc-time">9:00 AM</div>
+          <div class="day-arc-label">Operating Rhythm</div>
+          <div class="day-arc-sub">Personalization · Prompts</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">3</div>
+          <div class="day-arc-time">10:00 AM</div>
+          <div class="day-arc-label">Intelligence</div>
+          <div class="day-arc-sub">Analyst · Researcher · Excel</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">4</div>
+          <div class="day-arc-time">11:15 AM</div>
+          <div class="day-arc-label">Momentum</div>
+          <div class="day-arc-sub">Meetings · Follow-ups</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">5</div>
+          <div class="day-arc-time">1:30 PM</div>
+          <div class="day-arc-label">Cowork</div>
+          <div class="day-arc-sub">Delegate · Approve · Scale</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">6</div>
+          <div class="day-arc-time">3:00 PM</div>
+          <div class="day-arc-label">What's Next</div>
+          <div class="day-arc-sub">Governance · 90-day plan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What's At Stake -->
+    <div class="content-block">
+      <p>The executives who adopt AI in 2026 won't be the ones who learned every feature. They'll be the ones who changed how they operate — how they catch up, how they prepare, how they decide. This experience is designed to show your leadership team what that looks like, in your context, with your data.</p>
+    </div>
+
+
+
+    <div class="pull-quote">
+      <p>The executives who'll win over the next three years are the ones who change how they operate — not the ones who add another report.</p>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════ SECTION 1: RUN THE DAY ═══════════ -->
+<section class="section alt-bg" id="ch1">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">01</span>
+      <h2 class="chapter-title">Run the Day</h2>
+      <p class="chapter-subtitle">Catch up, prioritize, prep — before the day starts running you</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">💻 IT</span>
+      <span class="persona-pill">👥 HR</span>
+      <span class="persona-pill">🏭 Operations</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      You've just returned from a week of travel visiting a manufacturing facility and meeting with retail partners. It's Sunday evening. You have 847 unread emails, 63 unread Teams messages, and Monday's exec staff meeting is in 14 hours. You don't need to read everything — you need to know what matters.
+    </div>
+
+    <!-- How-To Dropdown -->
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>On your phone, open the <strong>Microsoft 365 Copilot</strong> app</li>
+            <li>Tap the <strong>microphone icon</strong> at the bottom to start voice mode</li>
+            <li>Speak your prompt naturally — Copilot will listen and respond</li>
+            <li>To switch to Outlook, open the <strong>Outlook</strong> mobile app → open a long email thread → tap the <strong>Copilot icon</strong> in the top bar</li>
+            <li>For Teams, open the <strong>Teams</strong> mobile app → go to a recent chat or channel → tap the <strong>Copilot</strong> icon to summarize</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <div class="card-badge">Copilot Voice</div>
+        <h4>Verbal Briefing</h4>
+        <p>Hands-free catch-up on your phone before you've even opened your laptop.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <div class="card-badge">Outlook Mobile</div>
+        <h4>Inbox Triage</h4>
+        <p>Prioritize and respond to what matters — skip the noise.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-badge">Teams</div>
+        <h4>Teams Catch-Up</h4>
+        <p>Summarize one week of messages into four decision buckets.</p>
+      </div>
+    </div>
+
+    <div class="trainer-tip">
+      <div class="trainer-tip-icon">💡</div>
+      <div>
+        <div class="trainer-tip-label">Presenter Note</div>
+        <p class="trainer-tip-text">Your presenter will demonstrate Copilot Voice on their mobile device. This is the "on the tarmac" moment — show how an executive catches up before they even reach the car. Have participants listen, then try their own voice prompt on their phones.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Voice Catch-Up</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice briefing prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Copilot Voice</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I just landed after one week of travel visiting facilities and meeting with key customers. Give me a verbal briefing in two minutes: what's the most urgent thing waiting for me, what decisions are blocked on me, and what one piece of good news I should know before Monday. Keep it conversational, not a list.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice follow-up prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Voice Follow-Up</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Pause on that last point. Who exactly is asking for the decision, what's the deadline, and is anything on hold because I haven't responded?</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice closing prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Voice Closing</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Based on everything that came in while I was traveling, what are the three themes I should walk into Monday's executive staff meeting prepared to discuss? Give me a one-sentence point of view for each.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Outlook Mobile Triage</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Outlook triage prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+        <span class="prompt-tag">Outlook Mobile</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Summarize this thread in five bullets. Then tell me: what is the actual ask of me, what's the deadline, and is there a position the team has already converged on that I can either endorse or push back on?</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Teams Catch-Up</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Teams catch-up prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="prompt-tag">Teams Chat</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I've been off Teams for one week. Summarize my unread messages across all my chats. Group them into: (1) needs my decision, (2) FYI from my direct reports, (3) congratulations or recognition I should respond to, (4) noise I can ignore.</p>
+    </div>
+
+    <!-- Role Variants -->
+    <div class="role-variants">
+      <details>
+        <summary>🎯 Role-specific catch-up variants</summary>
+        <div class="role-content">
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👤</span><span class="role-name">Executive / Senior Leader</span></div>
+            <p class="prompt-text">Summarize board-related communications or investor inquiries from the past week. Highlight anything that needs a senior leader response before Monday's staff meeting. Include any media mentions of [your company] or key brands.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💰</span><span class="role-name">Finance Leader</span></div>
+            <p class="prompt-text">Pull together finance-related emails — highlight budget approvals pending, quarterly close updates, or tariff discussions. Prioritize anything with a dollar amount or deadline attached.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">📢</span><span class="role-name">Brand / Marketing Leader</span></div>
+            <p class="prompt-text">Catch me up on communications from retail partners and channel teams. Any promotional calendar changes, listing decisions, or buyer feedback that needs my attention this week.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💻</span><span class="role-name">IT / Technology Leader</span></div>
+            <p class="prompt-text">Summarize IT-related communications — system incidents, security alerts, project milestone updates, and vendor escalations from the past week. Prioritize anything affecting production systems or user-facing services.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👥</span><span class="role-name">Human Resources Leader</span></div>
+            <p class="prompt-text">Flag any HR, legal, or regulatory communications — pending contracts, compliance issues, employee relations matters, or organizational changes that arrived in the last week.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🏭</span><span class="role-name">Operations / Supply Chain Leader</span></div>
+            <p class="prompt-text">Summarize communications about manufacturing operations and any supplier escalations. Include production status updates, logistics delays, and quality incidents from the past week.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome by 7:30 AM</div>
+      <p class="outcome-text">The executive arrives at the office already current. Three replies sent. One meeting prep complete. Zero inbox-scroll required. The day hasn't started yet — and you're already ahead.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Can name the most urgent decision waiting for you</label>
+      <label><input type="checkbox"> Know who needs a reply before Monday morning</label>
+      <label><input type="checkbox"> Identified the three themes for staff meeting</label>
+      <label><input type="checkbox"> Did the catch-up entirely with voice (no typing)</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 2: YOUR OPERATING RHYTHM ═══════════ -->
+<section class="section" id="ch2">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">02</span>
+      <h2 class="chapter-title">Your Operating Rhythm</h2>
+      <p class="chapter-subtitle">Personalization, memory &amp; the art of the prompt</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">💻 IT</span>
+      <span class="persona-pill">👥 HR</span>
+      <span class="persona-pill">🏭 Operations</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      Your Copilot should understand who you are, what you care about, and how you work. This section builds the foundation — your personal operating instructions, memory, and the prompts that will become second nature. The difference between a "meh" Copilot and a great one is this setup.
+    </div>
+
+    <!-- How-To Dropdown -->
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>Open <strong>copilot.microsoft.com</strong> (or the Copilot app in Teams)</li>
+            <li>Ensure the <strong>Work</strong> toggle is selected (not Web)</li>
+            <li>Click your <strong>profile icon</strong> → <strong>Settings</strong> → <strong>Personalization</strong> to set Custom Instructions</li>
+            <li>To add memories, use the <strong>Memory</strong> section in Personalization settings</li>
+            <li>For Prompt Coach, simply ask Copilot to evaluate your prompt — no special navigation needed</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- Custom Instructions -->
+    <div class="activity-group"><span class="activity-label">A · Custom Instructions</span></div>
+
+    <div class="content-block">
+      <h3>Teach Copilot Who You Are</h3>
+      <p>Custom instructions are persistent context that Copilot applies to <em>every</em> interaction. Set these once and Copilot will draft emails in your voice, prioritize the way you prioritize, and flag risks you'd catch yourself. Navigate to <strong>Copilot Chat → Settings → Custom Instructions</strong>.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy custom instructions">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <span class="prompt-tag">Custom Instructions — All Roles</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I am a senior executive at [your company]. Our portfolio includes multiple product lines across several categories. Our top channels include major retailers and e-commerce. Always: (1) draft email replies in a warm but executive tone — direct, no filler, no exclamation points; (2) when summarizing, lead with the decision needed, not the chronology; (3) if you reference data, name the source thread or document; (4) prefer brevity — three sentences over five — unless I ask for depth; (5) if a reply would commit [your company] to a number, a date, or a public statement, flag it for me before sending.</p>
+    </div>
+
+    <!-- Role-specific custom instructions -->
+    <div class="role-variants">
+      <details>
+        <summary>🎯 Role-specific custom instructions</summary>
+        <div class="role-content">
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👤</span><span class="role-name">Executive / Senior Leader</span></div>
+            <p class="prompt-text">I am a senior executive at [your company]. I manage a portfolio of brands across multiple categories. My priorities are organic growth, margin expansion, and portfolio simplification. When drafting communications, use a strategic but approachable tone. Always flag anything that could be material to investors. I prefer one-page summaries with a clear recommendation at the top.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💰</span><span class="role-name">Finance Leader</span></div>
+            <p class="prompt-text">I am the finance leader at [your company]. My focus areas are EBITDA margin improvement, working capital optimization, tariff impact analysis, and capital allocation across our brand portfolio. When summarizing, always include the financial impact. Use precise numbers, not ranges. Flag any commitment that creates a liability or changes our guidance. Format financial data in tables when possible.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">📢</span><span class="role-name">Brand / Marketing Leader</span></div>
+            <p class="prompt-text">I lead brand and marketing at [your company]. I own the P&L for key markets. My key retail partners include major national retailers and e-commerce platforms. When summarizing, focus on sell-through data, promotional ROI, and competitive shelf dynamics. I care about category share, not just brand share. Be direct — I want recommendations, not options.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💻</span><span class="role-name">IT / Technology Leader</span></div>
+            <p class="prompt-text">I lead IT and technology at [your company]. My priorities are digital transformation, cybersecurity posture, ERP modernization, and enabling AI adoption across the organization. When summarizing, include system impact, timeline, and risk level. Flag security incidents and compliance gaps immediately. Format project status in tables with RAG indicators.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👥</span><span class="role-name">Human Resources Leader</span></div>
+            <p class="prompt-text">I lead HR and people operations at [your company]. I oversee talent acquisition, employee relations, compliance, and organizational development. When drafting, be precise on legal language — do not paraphrase contractual terms. Flag regulatory risks, employment law issues, and anything requiring board approval. Keep a professional, measured tone. Always note jurisdiction when legal issues are geography-specific.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🏭</span><span class="role-name">Operations / Supply Chain Leader</span></div>
+            <p class="prompt-text">I lead global supply chain at [your company]. Our manufacturing spans multiple facilities across several regions. Key concerns: manufacturing efficiency, supplier diversification, logistics costs, and inventory optimization. When summarizing, include facility impact, SKU-level detail, and timeline. Always flag single-source supplier risks.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="trainer-tip">
+      <div class="trainer-tip-icon">💡</div>
+      <div>
+        <div class="trainer-tip-label">Trainer Tip</div>
+        <p class="trainer-tip-text">Have each participant paste the base custom instructions, then personalize with their specific role variant. The difference in Copilot output quality is immediately visible — show a before/after with and without custom instructions to make the point.</p>
+      </div>
+    </div>
+
+    <!-- Memory -->
+    <div class="activity-group"><span class="activity-label">B · Memory</span></div>
+
+    <div class="content-block">
+      <h3>Copilot Remembers</h3>
+      <p>Over time, Copilot learns your preferences through Memory. It stores facts you tell it and patterns it observes. You can view, edit, and delete memories at any time in <strong>Settings → Memory</strong>. Here are examples of what Copilot might learn:</p>
+    </div>
+
+    <ul class="memory-list">
+      <li class="memory-item"><div class="memory-icon">🧠</div><span>"My direct reports are Sarah (Marketing), James (Finance), and Priya (Operations)."</span></li>
+      <li class="memory-item"><div class="memory-icon">🧠</div><span>"I prefer data in tables, not paragraphs. Keep emails under 150 words."</span></li>
+      <li class="memory-item"><div class="memory-icon">🧠</div><span>"When I say 'the number,' I mean net revenue unless I specify gross."</span></li>
+      <li class="memory-item"><div class="memory-icon">🧠</div><span>"Our fiscal year ends September 30. Q3 = April–June."</span></li>
+      <li class="memory-item"><div class="memory-icon">🧠</div><span>"[Brand name] is our #1 brand in its category. [Brand name] is our premium positioning."</span></li>
+    </ul>
+
+    <!-- Prompt Coach -->
+    <div class="activity-group"><span class="activity-label">C · Prompt Coach</span></div>
+
+    <div class="content-block">
+      <p>Not sure where to start? Ask Copilot to generate prompts tailored to your role. This is the "teach me how to use you" moment.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Prompt Coach prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <span class="prompt-tag">Prompt Coach</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I am the [INSERT ROLE] at [your company]. I am a newer AI user. Please generate 5 Copilot prompts that would be highly relevant to my role at a consumer products company with multiple brands. Make each prompt specific enough that I can paste it and get a useful answer immediately.</p>
+    </div>
+
+    <!-- Day-in-the-Life Prompt Library -->
+    <div class="activity-group"><span class="activity-label">D · Day-in-the-Life Prompt Library</span></div>
+
+    <div class="content-block">
+      <p>These are the prompts executives use most often — organized by the activity, not the app. Each one works in Copilot Chat, Outlook, or Teams.</p>
+    </div>
+
+    <h3 style="font-size:15px; font-weight:700; color:#1A1A2E; margin-bottom:12px;">📥 Catching Up</h3>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+        <span class="prompt-tag">Inbox Prioritization</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Look at my inbox from the last 7 days. Group the unread items into: (1) Decisions needed from me — include who's asking and by when; (2) FYI only — important context but no action required; (3) Delegatable — things my team can handle with a one-line forward from me. For group 1, draft a short reply for each.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+        <span class="prompt-tag">Thread Summary</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Summarize this email thread. Lead with the decision or ask — not the history. Tell me who's aligned, who's pushing back, and what I need to do next.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="prompt-tag">Meeting Prep</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Prepare me for my next meeting. Summarize the agenda, list the key participants and their likely positions, and surface any recent emails or documents relevant to the topics we'll discuss.</p>
+    </div>
+
+    <h3 style="font-size:15px; font-weight:700; color:#1A1A2E; margin: 24px 0 12px;">📋 Task & Status Checking</h3>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <span class="prompt-tag">Action Items</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">What action items have been assigned to me in the last week across emails, Teams messages, and meeting recaps? List them with who assigned them and when they're due.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <span class="prompt-tag">Status Check</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">What's the current status of the [project or initiative name] plan? Find the latest emails, Teams discussions, and shared documents related to this initiative and give me a progress summary.</p>
+    </div>
+
+    <h3 style="font-size:15px; font-weight:700; color:#1A1A2E; margin: 24px 0 12px;">🔍 Information Gathering</h3>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <span class="prompt-tag">Enterprise Search</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I was traveling for the past week. Find updates and related communications from my team about [initiative or project name]. Include any decisions made while I was out and any open items waiting for my input.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <span class="prompt-tag">Document Finder</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Find the most recent version of our [document name, e.g. strategic plan or annual operating plan]. Who last edited it, when, and what were the key changes from the prior version?</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <span class="prompt-tag">Cross-Reference</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Compare what we said about [topic] in last quarter's board deck versus what appeared in the most recent update. Are we telling a consistent story?</p>
+    </div>
+
+    <h3 style="font-size:15px; font-weight:700; color:#1A1A2E; margin: 24px 0 12px;">👥 People Management</h3>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="prompt-tag">1:1 Prep</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">I have a 1:1 with [NAME] in 30 minutes. Summarize our recent email exchanges, any open action items between us, and what they've been working on based on Teams activity. Suggest two coaching questions I should ask.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Custom instructions are saved in Copilot settings</label>
+      <label><input type="checkbox"> Tested the Prompt Coach and received 5 role-specific prompts</label>
+      <label><input type="checkbox"> Tried at least 2 day-in-the-life prompts with your own data</label>
+      <label><input type="checkbox"> Understand where to find and manage Memory</label>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════ SECTION 3: STRATEGIC INTELLIGENCE ═══════════ -->
+<section class="section alt-bg" id="ch3">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">03</span>
+      <h2 class="chapter-title">Strategic Intelligence</h2>
+      <p class="chapter-subtitle">From scattered signals to decision-ready insight in minutes</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">💻 IT</span>
+      <span class="persona-pill">👥 HR</span>
+      <span class="persona-pill">🏭 Operations</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      Your leadership team is preparing for a quarterly business review. You need to quickly analyze industry trends, competitive positioning, and internal performance data. You don't have a strategy analyst on call. But you have Copilot Agents and a Notebook. In 45 minutes, you'll have a sourced, defensible point of view.
+    </div>
+
+    <!-- How-To Dropdown -->
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>Open <strong>copilot.microsoft.com</strong> → ensure <strong>Work</strong> mode is on</li>
+            <li>In the prompt bar, type <strong>@</strong> and select <strong>Analyst</strong> from the agent list</li>
+            <li>For Researcher, type <strong>@</strong> and select <strong>Researcher</strong></li>
+            <li>For Notebook, click <strong>Notebook</strong> in the left sidebar to open the extended prompt editor</li>
+            <li>Paste your prompt and submit — results appear in the main pane</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-badge">Analyst Agent</div>
+        <h4>Financial Analysis</h4>
+        <p>Annual reports, earnings calls, segment performance — structured and sourced.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-badge">Researcher Agent</div>
+        <h4>Market Trends</h4>
+        <p>Industry trends, consumer shifts, and competitive intelligence from credible public sources.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📓</div>
+        <div class="card-badge">Notebook</div>
+        <h4>Multi-Source Synthesis</h4>
+        <p>Combine multiple analyses into one structured workspace for decision-making.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The executive's job stops being to gather information and becomes to set the question, judge the answer, and own the decision.</p>
+    </div>
+
+    <!-- Analyst Agent -->
+    <div class="activity-group"><span class="activity-label">Analyst Agent</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Analyst annual report prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <span class="prompt-tag">Analyst — Company Deep Dive</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Analyze [your company]'s most recent annual report and quarterly earnings. Summarize key revenue trends, margin performance, and strategic priorities highlighted by leadership. Present findings in a table format where possible.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Analyst peer comparison prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <span class="prompt-tag">Analyst — Peer Comparison</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Compare [your company]'s financial performance against [competitor 1] and [competitor 2] across key metrics: revenue growth, gross margin, operating efficiency, and free cash flow. Highlight where we're winning and where we're most vulnerable.</p>
+    </div>
+
+    <!-- Researcher Agent -->
+    <div class="activity-group"><span class="activity-label">Researcher Agent</span></div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div>
+        <div class="callout-label">Prompt Improvement Tip</div>
+        <p><strong>Before:</strong> "Research trends in our industry."<br><strong>After:</strong> The prompt below. Notice the difference — context about your company, specific trend areas, and a clear output format. Better prompts = dramatically better results.</p>
+      </div>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Researcher prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <span class="prompt-tag">Researcher — Trend Analysis</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Research emerging trends in [your industry] for 2026-2028. Identify consumer behavior shifts, innovation opportunities, and competitive dynamics. For each trend, include: (1) evidence of consumer adoption, (2) which of our brands or product lines is best positioned to respond, (3) competitive moves already made by key players, (4) the strategic implication for our portfolio. Provide sourced findings.</p>
+    </div>
+
+    <!-- Notebook -->
+    <div class="activity-group"><span class="activity-label">Notebook — Competitive Teardown</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Notebook prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <span class="prompt-tag">Notebook — Multi-Source Comparison</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Compare [your company]'s latest annual report against key competitors. For each competitor, analyze: revenue scale, growth rate, margin profile, R&D investment, and stated strategic priorities. Where are we winning? Where are we most vulnerable? What's the one move a board member would challenge us to make?</p>
+    </div>
+
+    <!-- Data Analysis with Excel Agent -->
+    <div class="activity-group"><span class="activity-label">Data Analysis with Excel Agent</span></div>
+
+    <div class="content-block">
+      <p>Use Excel Agent Mode to transform raw data into executive-ready dashboards. Upload your business performance data and let Copilot build the analysis.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Excel Agent prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
+        <span class="prompt-tag">Excel Agent — Business Dashboard</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Using the attached business performance data, build a dashboard showing: (1) revenue trends by product line and region, (2) top-performing and underperforming segments, (3) year-over-year growth rates, and (4) key insights the leadership team should discuss at the next quarterly review.</p>
+    </div>
+
+    <div style="margin: 20px 0;">
+      <a href="Edgewell-Business-Performance-Sample.xlsx" download class="download-btn">📥 Download Sample Business Dataset</a>
+    </div>
+
+    <div class="trainer-tip">
+      <div class="trainer-tip-icon">💡</div>
+      <div>
+        <div class="trainer-tip-label">Presenter Note</div>
+        <p class="trainer-tip-text">The Excel Agent Mode is a powerful demonstration for financially-oriented executives. Show it with a real Excel file containing sample data. The "wow moment" is when Copilot builds formulas, creates charts, and applies formatting — all from a single natural language prompt.</p>
+      </div>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome</div>
+      <p class="outcome-text">A defensible, sourced point of view on your competitive position — with specific numbers, peer comparisons, and a board-ready recommendation. Done in 45 minutes. Owned by the executive, not a strategy consultant.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Successfully used the Analyst Agent on at least one annual report</label>
+      <label><input type="checkbox"> Compared the "before" and "after" Researcher prompts</label>
+      <label><input type="checkbox"> Created a Notebook with multiple sources</label>
+      <label><input type="checkbox"> Tried Excel Agent Mode with a data analysis prompt</label>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════ SECTION 4: FROM MEETINGS TO MOMENTUM ═══════════ -->
+<section class="section" id="ch4">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">04</span>
+      <h2 class="chapter-title">From Meetings to Momentum</h2>
+      <p class="chapter-subtitle">Convert meetings into decisions and action items</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">💻 IT</span>
+      <span class="persona-pill">👥 HR</span>
+      <span class="persona-pill">🏭 Operations</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      Monday's executive staff meeting just ended. Twelve people in the room, six agenda items, two decisions made, four deferred. By the time you walk to your next meeting, the follow-ups should already be in motion — owners named, drafts staged, next steps clear. That's the "meetings to momentum" shift.
+    </div>
+
+    <!-- How-To Dropdown -->
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>Open <strong>Microsoft Teams</strong> → go to a recent meeting with transcription enabled</li>
+            <li>Click the <strong>Recap</strong> tab in the meeting → Copilot summarizes decisions and action items</li>
+            <li>In <strong>Outlook</strong>, open the Copilot pane (right side) → paste inbox triage prompts</li>
+            <li>For Excel Agent Mode: open a spreadsheet → click <strong>Copilot</strong> in the ribbon → toggle <strong>Agent Mode</strong> on</li>
+            <li>Paste your dashboard prompt and review the generated analysis</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-badge">Teams Recap</div>
+        <h4>Meeting Summary</h4>
+        <p>Decisions, action items, and open questions — auto-extracted.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <div class="card-badge">Outlook</div>
+        <h4>Follow-Up Drafts</h4>
+        <p>Replies and forwards staged for review in seconds.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-badge">Excel Agent</div>
+        <h4>Executive Artifacts</h4>
+        <p>Dashboards and analysis built from conversation, not from scratch.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Meeting Recap</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy meeting summary prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <span class="prompt-tag">Teams — Meeting Recap</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Summarize all key decisions made in this meeting, including the rationale behind each. List every action item discussed, specifying the owner, deadline, and expected outcome. Highlight any cross-functional dependencies. Draft a follow-up message for the leadership team that recaps decisions and next steps, ready to send in Teams.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy close-the-meeting prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <span class="prompt-tag">Close the Meeting</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">From this meeting, generate the decisions-and-owners block: (1) decisions made — specific commitments, not themes; (2) action items — named owner, specific next step, due date; (3) open questions we're carrying forward; (4) the one decision we explicitly chose not to make today and when we'll revisit it.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Inbox Triage & Drafts</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy inbox scan prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+        <span class="prompt-tag">Outlook — Inbox Scan & Draft</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Scan my inbox and identify emails that need my reply. For each one, draft a response that's consistent with my communication style. Group them: Focus Now (up to 5 items that need my personal response today), Delegate (I'll forward with a one-liner), and Acknowledge (a simple "thank you" or "noted" is sufficient). Stage the Focus Now drafts for my review.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Excel Agent Mode</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Excel Agent prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
+        <span class="prompt-tag">Excel Agent</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Build a dashboard to visualize our quarterly revenue by business segment. Include total revenue, year-over-year growth rates, and gross margin trends. Add conditional formatting to highlight segments growing faster than 3% and margins above target. Create a chart showing the revenue mix over time.</p>
+    </div>
+
+    <!-- Role Variants -->
+    <div class="role-variants">
+      <details>
+        <summary>🎯 Role-specific meeting follow-up variants</summary>
+        <div class="role-content">
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👤</span><span class="role-name">Executive / Senior Leader</span></div>
+            <p class="prompt-text">From today's executive meeting, identify the two most consequential decisions and draft a short note I can send to the board summarizing our direction and rationale. Flag any items that might need board awareness.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💰</span><span class="role-name">Finance Leader</span></div>
+            <p class="prompt-text">Extract all financially material commitments from this meeting — budget approvals, spend authorizations, headcount changes, timeline shifts. Draft a finance team follow-up noting what needs to be reflected in our forecast.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">📢</span><span class="role-name">Brand / Marketing Leader</span></div>
+            <p class="prompt-text">From this meeting, identify any decisions that affect our brand strategy, promotional calendar, or channel partnerships. Draft follow-up notes to the relevant brand and sales teams.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💻</span><span class="role-name">IT / Technology Leader</span></div>
+            <p class="prompt-text">Extract all technology-related commitments from this meeting — system changes, integration requests, timeline dependencies, and resource asks. Draft a tech team follow-up with priorities and blockers.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👥</span><span class="role-name">Human Resources Leader</span></div>
+            <p class="prompt-text">From this meeting, identify any people-related decisions — organizational changes, hiring approvals, policy updates, or team restructuring. Draft an HR follow-up with compliance considerations noted.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🏭</span><span class="role-name">Operations / Supply Chain Leader</span></div>
+            <p class="prompt-text">Extract all operations commitments from this meeting — production changes, supplier actions, logistics adjustments, and capacity decisions. Draft an operations follow-up with timeline and facility impact noted.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome by end of morning</div>
+      <p class="outcome-text">The morning's decisions are already in motion. Owners know what they own. Follow-up emails are sent. The meeting didn't create work — it completed work. That's momentum.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Generated a meeting recap with decisions and owners</label>
+      <label><input type="checkbox"> Drafted follow-up emails from the meeting recap</label>
+      <label><input type="checkbox"> Used Copilot to triage inbox and draft responses</label>
+      <label><input type="checkbox"> Tried Excel Agent Mode with a data prompt</label>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════ SECTION 5: COWORK ═══════════ -->
+<section class="section alt-bg" id="ch5">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">05</span>
+      <h2 class="chapter-title">Cowork — From Assistant to Operator</h2>
+      <p class="chapter-subtitle">Everything so far helps you work faster. Cowork helps you not do the work at all.</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">💻 IT</span>
+      <span class="persona-pill">👥 HR</span>
+      <span class="persona-pill">🏭 Operations</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">The Shift</div>
+      Cowork represents the next evolution of AI assistance. Instead of asking Copilot to help you write an email, you describe your intent — and Cowork drafts, schedules, and stages the work for your review. Your role shifts from doing the work to approving the work.
+    </div>
+
+    <!-- How-To Dropdown -->
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>Open <strong>copilot.microsoft.com</strong> → start a new chat</li>
+            <li>Describe what you want Cowork to do (draft emails, build documents, schedule meetings)</li>
+            <li>Cowork stages actions for your review — nothing executes without your approval</li>
+            <li>Review each staged action → click <strong>Approve</strong> or <strong>Edit</strong> before it runs</li>
+            <li>Check the <strong>Activity</strong> panel to see completed and pending Cowork actions</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="pull-quote">
+      <p>Stop optimizing how you do the work. Start choosing which work you no longer need to do.</p>
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">✉️</div>
+        <div class="card-badge">Draft & Send</div>
+        <h4>Communicate with Intent</h4>
+        <p>Describe what you need communicated. Cowork drafts the emails, sets the right tone, and stages them for your review before sending.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📑</div>
+        <div class="card-badge">Build & Organize</div>
+        <h4>Create Deliverables</h4>
+        <p>Need a document, a deck, or a summary? Describe the deliverable. Cowork assembles it from your existing content and stages it for review.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📆</div>
+        <div class="card-badge">Coordinate & Schedule</div>
+        <h4>Orchestrate Meetings</h4>
+        <p>Need a meeting with the right people? Describe the purpose. Cowork finds availability, drafts the agenda, and stages the invite.</p>
+      </div>
+    </div>
+
+    <!-- Cowork Approval Queue -->
+    <div class="cowork-approval">
+      <h4>⏳ Staged for Your Review</h4>
+      <div class="approval-item">
+        <span class="approval-icon">📧</span>
+        <div class="approval-content">
+          <div class="approval-title">Outlook · Draft & Send</div>
+          <div class="approval-desc">Follow-up emails to 4 meeting attendees with their specific action items, scheduled for 8:00 AM tomorrow.</div>
+        </div>
+        <span class="approval-badge">Review</span>
+      </div>
+      <div class="approval-item">
+        <span class="approval-icon">📄</span>
+        <div class="approval-content">
+          <div class="approval-title">Word · Build</div>
+          <div class="approval-desc">Executive summary document assembled from this morning's meeting notes and analysis. Staged in your OneDrive.</div>
+        </div>
+        <span class="approval-badge">Review</span>
+      </div>
+      <div class="approval-item">
+        <span class="approval-icon">📅</span>
+        <div class="approval-content">
+          <div class="approval-title">Calendar · Coordinate</div>
+          <div class="approval-desc">Team kickoff meeting proposed for Thursday 2:00 PM. 5 attendees, 45 minutes, agenda attached.</div>
+        </div>
+        <span class="approval-badge">Review</span>
+      </div>
+    </div>
+
+    <!-- Cowork Prompts -->
+    <div class="activity-group"><span class="activity-label">Cowork Prompts</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Cowork draft prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <span class="prompt-tag">Cowork — Draft & Send</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Draft follow-up emails to each person who had an action item from today's meeting. Include their specific commitment, the agreed deadline, and a professional but direct tone. Stage them for my review before sending.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Cowork build prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <span class="prompt-tag">Cowork — Build & Organize</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Create a one-page executive summary of the analysis we just completed. Include key findings, recommended actions, and next steps. Save it to my OneDrive for review.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Cowork coordinate prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00A99D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <span class="prompt-tag">Cowork — Coordinate & Schedule</span>
+        <span class="prompt-copy-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Click to copy</span>
+      </div>
+      <p class="prompt-text">Schedule a 45-minute meeting this week with [names]. The purpose is to kick off the action plan from today's discussion. Draft an agenda based on our conversation and include a Teams link.</p>
+    </div>
+
+    <!-- Role-specific Cowork Prompts -->
+    <div class="role-variants">
+      <details>
+        <summary>🎯 Role-specific Cowork prompts</summary>
+        <div class="role-content">
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">��</span><span class="role-name">Executive / Senior Leader</span></div>
+            <p class="prompt-text">Review my calendar for this week. For any meeting where I'm the decision-maker, draft a pre-read summary of relevant emails and documents. Stage them in my OneDrive 24 hours before each meeting.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💰</span><span class="role-name">Finance Leader</span></div>
+            <p class="prompt-text">Compile the monthly close data from the shared Finance folder. Draft a variance analysis highlighting any department more than 5% over budget. Stage the report for my review.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">📢</span><span class="role-name">Brand / Marketing Leader</span></div>
+            <p class="prompt-text">Draft social media response templates for the top 3 customer questions from this week. Match our brand voice guidelines. Stage them for review.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💻</span><span class="role-name">IT / Technology Leader</span></div>
+            <p class="prompt-text">Summarize the open IT support tickets from this week. Group by priority and department. Draft a status update email for the leadership team.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">��</span><span class="role-name">Human Resources Leader</span></div>
+            <p class="prompt-text">Pull together the quarterly headcount report. Include attrition rates by department, open positions, and time-to-fill metrics. Stage the report for review.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🏭</span><span class="role-name">Operations / Supply Chain Leader</span></div>
+            <p class="prompt-text">Create a weekly operations dashboard summary. Include production metrics, quality incidents, and supply chain updates from this week's reports.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="callout expect">
+      <span class="callout-icon">🔮</span>
+      <div>
+        <div class="callout-label">Preview Capability</div>
+        <p>Cowork is a preview capability. Every action — emails, meetings, documents — is staged for your explicit review and approval before it executes. Nothing sends, schedules, or saves without your confirmation.</p>
+      </div>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Understand how Cowork stages actions for approval</label>
+      <label><input type="checkbox"> Tried a Draft & Send prompt with Cowork</label>
+      <label><input type="checkbox"> Understand the difference between Copilot assistance and Cowork delegation</label>
+      <label><input type="checkbox"> Know that nothing executes without your explicit approval</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 6: TRUST, GOVERNANCE & WHAT'S NEXT ═══════════ -->
+<section class="section" id="ch6">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">06</span>
+      <h2 class="chapter-title">Trust, Governance &amp; What's Next</h2>
+      <p class="chapter-subtitle">The 90-day path from immersion to impact</p>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">The Question</div>
+      Every executive in this room will be asked the same question by their teams: <em>"Is this safe?"</em> Here's how you answer it — in one sentence for each concern.
+    </div>
+
+    <!-- Governance Grid -->
+    <div class="governance-grid">
+      <div class="gov-tile">
+        <div class="gov-tile-icon">🔐</div>
+        <h4>Permission-Based</h4>
+        <p>Copilot only accesses data the user already has permission to see. It inherits existing Microsoft 365 access controls — no new permissions, no backdoors.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">👁️</div>
+        <h4>Only What You Can Access</h4>
+        <p>If you can't see a SharePoint file, Copilot can't either. Sensitivity labels, DLP policies, and conditional access all apply — exactly as they do today.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">✅</div>
+        <h4>Cowork Requires Approval</h4>
+        <p>Copilot never sends an email, books a meeting, or shares a document without explicit human approval. Every action is staged, reviewed, and confirmed by you.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">🛡️</div>
+        <h4>Oversharing Is Managed</h4>
+        <p>Microsoft Purview identifies overshared content and helps remediate it. SharePoint Advanced Management restricts broad access. Copilot surfaces issues — it doesn't create them.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The executives who'll adopt AI fastest are the ones who can answer "is this safe?" in one sentence.</p>
+    </div>
+
+    <!-- What's Next -->
+    <div class="activity-group"><span class="activity-label">Your 90-Day Plan</span></div>
+
+    <div class="next-steps">
+      <h3>What's Next</h3>
+      <p class="ns-sub">From immersion to operating rhythm in 90 days</p>
+      <div class="ns-grid">
+        <div class="ns-item">
+          <div class="ns-number">01</div>
+          <h4>Executive Workflows</h4>
+          <p>Identify 2 workflows each executive will run through Copilot — daily catch-up, meeting prep, or strategic analysis.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">02</div>
+          <h4>Functional Workflows</h4>
+          <p>Identify 2 team-level workflows — brand planning, competitive monitoring with agents, or pipeline reviews in Excel.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">03</div>
+          <h4>Assign Champions</h4>
+          <p>Name one champion per function who will coach their peers, share prompts, and report what's working in the first 30 days.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">04</div>
+          <h4>Start Small, Scale Fast</h4>
+          <p>Don't try everything. Pick four things, name four owners, and protect ninety days. Measure by decisions accelerated, not prompts sent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block" style="margin-top:36px;">
+      <p>The leaders who change how your organization operates won't be the ones who learn every Copilot feature. They'll be the ones who pick four things, name four owners, and protect ninety days. The question isn't <em>"what can Copilot do?"</em> — it's <em>"what do I stop doing manually, starting Monday?"</em></p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <p class="tagline">Never Stop Learning.</p>
+  <p>Today you experienced how Microsoft 365 Copilot transforms the way leadership operates — from catching up to strategic intelligence to delegating entire workflows.</p>
+  <p>Every prompt in this guide is designed for executive use. Save it, share it, and start using it Monday.</p>
+  <div class="footer-brands">
+    <span>Schick</span><span>Banana Boat</span><span>Hawaiian Tropic</span><span>Billie</span>
+    <span>Bulldog</span><span>Jack Black</span><span>Cremo</span><span>Wet Ones</span>
+    <span>Edge</span><span>Skintimate</span><span>Playtex</span><span>Stayfree</span><span>Carefree</span>
+  </div>
+  <p class="footer-date">May 21, 2026 · Edgewell Personal Care × Microsoft · Executive Immersion</p>
+  <p style="font-size:12px; color:rgba(255,255,255,0.25); margin-top:16px;">💡 Tip: Use Ctrl+P / ⌘P to print or save as PDF. The guide is print-optimized.</p>
+</footer>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ─── Scroll Progress Bar ───
+  const progressBar = document.getElementById('progress-bar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // ─── Nav scroll shadow ───
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ─── Section fade-in ───
+  const sections = document.querySelectorAll('.section:not(.visible)');
+  const sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  sections.forEach(function(s) { sectionObserver.observe(s); });
+
+  // ─── Active nav highlighting ───
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navSections = [];
+  navLinks.forEach(function(link) {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) navSections.push({ link: link, target: target });
+  });
+  // Track which section is most visible
+  var currentSection = null;
+  var sectionPositions = [];
+  function updateActiveNav() {
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    navSections.forEach(function(ns) {
+      var rect = ns.target.getBoundingClientRect();
+      var top = rect.top + window.scrollY;
+      if (scrollY >= top) active = ns;
+    });
+    if (active && active !== currentSection) {
+      currentSection = active;
+      navLinks.forEach(function(l) { l.classList.remove('active'); });
+      active.link.classList.add('active');
+    }
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // ─── Close mobile nav on link click ───
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // ─── Toast ───
+  const toast = document.getElementById('toast');
+  let toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = '';
+    var check = document.createElement('span');
+    check.className = 'toast-check';
+    check.innerHTML = '<svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5.5"/></svg>';
+    toast.appendChild(check);
+    toast.appendChild(document.createTextNode(' ' + (msg || 'Prompt copied!')));
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2200);
+  }
+
+  // ─── Copy to clipboard ───
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Prompt copied!');
+      }).catch(function() {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  }
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showToast('Prompt copied!'); }
+    catch(e) { showToast('Copy failed — select manually'); }
+    document.body.removeChild(ta);
+  }
+
+  // ─── Prompt card click-to-copy ───
+  document.querySelectorAll('.prompt-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var textEl = card.querySelector('.prompt-text');
+      if (textEl) copyText(textEl.textContent.trim());
+    });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var textEl = card.querySelector('.prompt-text');
+        if (textEl) copyText(textEl.textContent.trim());
+      }
+    });
+  });
+
+  // ─── Role item click-to-copy ───
+  document.querySelectorAll('.role-item').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var textEl = item.querySelector('.prompt-text');
+      if (textEl) copyText(textEl.textContent.trim());
+    });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        var textEl = item.querySelector('.prompt-text');
+        if (textEl) copyText(textEl.textContent.trim());
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
