@@ -1,0 +1,728 @@
+---
+demo:
+    title: 'Edgewell Executive Flow — Version C — How an executive runs their day with AI'
+layout: none
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Edgewell · Version C — How an executive runs their day with AI</title>
+<style>
+:root{
+  --primary:#0A2540;
+  --secondary:#0E7C86;
+  --accent:#7CC576;
+  --warm:#F26B5E;
+  --sand:#FFD9A8;
+  --bg:#F5F7FA;
+  --surface:#ffffff;
+  --text:#1a2733;
+  --muted:#5b6b7d;
+  --border:#e3e8ef;
+  --shadow:0 1px 2px rgba(10,37,64,.06),0 16px 36px rgba(10,37,64,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--secondary);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{color:var(--primary);line-height:1.18;margin:0 0 .35em;letter-spacing:-.01em}
+h1{font-size:3rem;font-weight:700}
+h2{font-size:2.05rem;font-weight:650;margin-top:0}
+h3{font-size:1.32rem;font-weight:650;margin-top:1.2em}
+h4{font-size:1rem;font-weight:650;color:#143057;text-transform:uppercase;letter-spacing:.06em;font-size:.84rem;margin:1.2em 0 .4em}
+p{margin:.6em 0;font-size:1.04rem}
+ul,ol{margin:.5em 0 1em;padding-left:1.4em}
+li{margin:.3em 0}
+
+/* Hero */
+header.hero{
+  position:relative;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,#04101e 0%,#0A2540 28%,#0E7C86 62%,#7CC576 100%);
+  padding:80px 32px 110px;
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 380px at 100% 0%,rgba(255,255,255,.10),transparent 60%),
+    radial-gradient(600px 280px at 0% 110%,rgba(255,255,255,.06),transparent 60%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero .eyebrow{
+  display:inline-block;background:rgba(255,255,255,.14);color:#fff;
+  padding:6px 14px;border-radius:999px;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:20px;backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22)
+}
+.hero h1{color:#fff;max-width:920px;margin:0 0 .25em;font-size:3.1rem}
+.hero .lede{color:#dfeaf2;font-size:1.18rem;max-width:760px;margin:.4em 0 0;line-height:1.55}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:.94rem;color:#cbd9e6;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:22px;max-width:920px
+}
+.hero-meta span b{color:#fff;display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#9ab9c8;margin-bottom:3px;font-weight:600}
+
+/* The day arc */
+.dayarc-wrap{margin-top:-60px;padding:0 24px 0;position:relative;z-index:2}
+.dayarc{
+  max-width:1100px;margin:0 auto;background:#fff;border-radius:18px;
+  box-shadow:var(--shadow);border:1px solid var(--border);padding:22px 26px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px
+}
+.dayarc .step{position:relative;padding:6px 8px}
+.dayarc .step::before{
+  content:"";position:absolute;left:0;right:0;top:30px;height:3px;
+  background:linear-gradient(90deg,#dfe7ef,#dfe7ef)
+}
+.dayarc .step:first-child::before{left:50%}
+.dayarc .step:last-child::before{right:50%}
+.dayarc .step .dot{
+  width:18px;height:18px;border-radius:50%;background:var(--secondary);
+  margin:22px auto 10px;position:relative;z-index:1;border:3px solid #fff;box-shadow:0 0 0 2px var(--secondary)
+}
+.dayarc .step .dot.warm{background:var(--warm);box-shadow:0 0 0 2px var(--warm)}
+.dayarc .step .dot.green{background:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.dayarc .step .dot.deep{background:var(--primary);box-shadow:0 0 0 2px var(--primary)}
+.dayarc .step .time{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center}
+.dayarc .step .label{font-size:.96rem;font-weight:600;color:var(--primary);text-align:center;margin-top:2px}
+.dayarc .step .sub{font-size:.78rem;color:var(--muted);text-align:center;margin-top:2px}
+@media (max-width:780px){
+  .dayarc{grid-template-columns:1fr 1fr;gap:18px}
+  .dayarc .step::before{display:none}
+}
+
+/* Layout */
+main{max-width:1100px;margin:0 auto;padding:60px 32px 40px}
+
+/* Section */
+section.act{margin:0 0 64px;position:relative}
+section.act .stake{
+  display:flex;gap:18px;align-items:flex-start;margin-bottom:16px;
+  padding:14px 18px;background:#fff;border:1px solid var(--border);
+  border-left:5px solid var(--secondary);border-radius:10px;box-shadow:var(--shadow)
+}
+section.act .stake.warm{border-left-color:var(--warm)}
+section.act .stake.green{border-left-color:var(--accent)}
+section.act .stake.deep{border-left-color:var(--primary)}
+section.act .stake .ix{
+  flex:0 0 56px;width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--secondary),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700
+}
+section.act .stake .ix.warm{background:linear-gradient(135deg,var(--primary),var(--warm))}
+section.act .stake .ix.green{background:linear-gradient(135deg,var(--secondary),var(--accent))}
+section.act .stake .ix.deep{background:linear-gradient(135deg,#061a2e,var(--secondary))}
+section.act .stake .meta{flex:1}
+section.act .stake .eye{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+section.act .stake h2{margin:2px 0 4px;color:var(--primary)}
+section.act .stake .tagline{color:var(--muted);font-size:.98rem;margin:0}
+
+section.act .body{
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px 34px;
+  box-shadow:var(--shadow)
+}
+@media (max-width:720px){section.act .body{padding:22px 20px}}
+
+.outcome{
+  margin-top:18px;background:linear-gradient(135deg,rgba(14,124,134,.08),rgba(124,197,118,.06));
+  border:1px solid rgba(14,124,134,.18);border-radius:12px;padding:16px 20px
+}
+.outcome .lbl{font-size:.72rem;color:var(--secondary);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+.outcome p{margin:.2em 0;font-size:1.02rem;color:var(--primary)}
+.outcome.warm{background:linear-gradient(135deg,rgba(242,107,94,.07),rgba(255,217,168,.10));border-color:rgba(242,107,94,.22)}
+.outcome.warm .lbl{color:#b9442f}
+.outcome.green{background:linear-gradient(135deg,rgba(124,197,118,.10),rgba(14,124,134,.07));border-color:rgba(124,197,118,.30)}
+.outcome.green .lbl{color:#3d7a3a}
+
+/* Pull quote */
+.pullquote{
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;color:var(--primary);
+  font-size:1.4rem;line-height:1.45;border-left:4px solid var(--secondary);
+  padding:8px 0 8px 20px;margin:28px 6px;max-width:780px
+}
+.pullquote.warm{border-left-color:var(--warm)}
+.pullquote.green{border-left-color:var(--accent)}
+
+/* Three-up cards */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 0}
+@media (max-width:780px){.three{grid-template-columns:1fr}}
+.card{
+  background:#fafcfe;border:1px solid var(--border);border-radius:12px;padding:18px 18px;
+  display:flex;flex-direction:column;gap:6px
+}
+.card .pill{
+  display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--secondary);padding:2px 9px;border-radius:999px;align-self:flex-start;font-weight:600
+}
+.card .pill.warm{background:var(--warm)}
+.card .pill.green{background:var(--accent);color:#0a2540}
+.card .pill.deep{background:var(--primary)}
+.card h4{font-size:1rem;margin:6px 0 2px;color:var(--primary);text-transform:none;letter-spacing:0}
+.card p{margin:0;font-size:.96rem;color:var(--text)}
+.card .note{font-size:.86rem;color:var(--muted);margin-top:8px}
+
+/* Two-up */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 0}
+@media (max-width:780px){.two{grid-template-columns:1fr}}
+
+/* Prompt (compact, executive — fewer than the labs) */
+.prompt-label{
+  display:inline-block;font-size:.7rem;color:var(--secondary);background:#e7f1f2;
+  border:1px solid #c6e2e4;padding:2px 9px;border-radius:6px;letter-spacing:.05em;
+  text-transform:uppercase;margin:16px 0 6px;font-weight:600
+}
+.prompt{
+  position:relative;background:#0b1d33;color:#e8f2ff;border-radius:10px;
+  padding:13px 56px 13px 16px;font-family:'Cascadia Mono','Consolas','SF Mono',monospace;
+  font-size:.86rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;
+  border:1px solid #0b2745
+}
+.prompt .copy-btn{
+  position:absolute;top:8px;right:8px;background:rgba(255,255,255,.10);color:#fff;
+  border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:7px;cursor:pointer;
+  font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;font-family:inherit
+}
+.prompt .copy-btn:hover{background:rgba(255,255,255,.2)}
+.prompt .copy-btn.copied{background:var(--accent);color:#0a2540;border-color:var(--accent)}
+
+/* Big stat row in opening */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 4px}
+@media (max-width:720px){.stats{grid-template-columns:1fr}}
+.stat{
+  background:linear-gradient(180deg,#fff,#f4f8fb);border:1px solid var(--border);
+  border-radius:12px;padding:18px 18px;text-align:center
+}
+.stat .n{font-size:1.55rem;font-weight:700;color:var(--primary);letter-spacing:-.02em}
+.stat .l{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:5px}
+
+/* Cowork visual */
+.cowork-frame{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;box-shadow:var(--shadow);margin:22px 0 0
+}
+.cowork-frame .head{
+  display:flex;gap:10px;align-items:center;padding:11px 16px;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff;font-size:.92rem
+}
+.cowork-frame .head .pulse{
+  display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:#dfeaf2;margin-left:auto
+}
+.cowork-frame .head .pulse::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(124,197,118,.25)}
+.cowork-frame .row{
+  display:grid;grid-template-columns:140px 1fr 110px;gap:14px;padding:12px 16px;
+  border-bottom:1px solid var(--border);font-size:.94rem;align-items:center
+}
+.cowork-frame .row:last-child{border-bottom:none}
+.cowork-frame .who{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.cowork-frame .approve{
+  font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;
+  color:#fff;background:var(--accent);padding:5px 10px;border-radius:999px;text-align:center;color:#0a2540
+}
+.cowork-frame .approve.pending{background:#fff3e6;color:#8a4400;border:1px solid #f0c891}
+@media (max-width:680px){
+  .cowork-frame .row{grid-template-columns:1fr;gap:4px}
+  .cowork-frame .approve{align-self:flex-start}
+}
+
+/* Governance */
+.gov{
+  background:linear-gradient(135deg,#f4f8fb 0%,#ffffff 60%);
+  border:1px solid var(--border);border-radius:14px;padding:30px 34px;
+  box-shadow:var(--shadow)
+}
+.gov h2{color:var(--primary)}
+.gov .four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 0}
+@media (max-width:880px){.gov .four{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.gov .four{grid-template-columns:1fr}}
+.gov .tile{
+  background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;
+  display:flex;flex-direction:column;gap:6px
+}
+.gov .tile .ico{
+  width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--secondary),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700
+}
+.gov .tile h4{margin:6px 0 2px;font-size:.95rem;text-transform:none;letter-spacing:0;color:var(--primary)}
+.gov .tile p{margin:0;font-size:.9rem;color:var(--text)}
+
+/* Next steps */
+.nextsteps{
+  background:linear-gradient(135deg,#061a2e 0%,#0A2540 50%,#0E7C86 100%);
+  color:#fff;border-radius:18px;padding:42px 38px;box-shadow:var(--shadow);margin-top:8px
+}
+.nextsteps h2{color:#fff;margin:0 0 6px}
+.nextsteps .sub{color:#cbd9e6;font-size:1.05rem;margin:0 0 24px;max-width:680px}
+.nextsteps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:880px){.nextsteps .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.nextsteps .grid{grid-template-columns:1fr}}
+.nextsteps .step{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;padding:18px;backdrop-filter:blur(6px)
+}
+.nextsteps .step .num{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#9ec1c5;font-weight:600}
+.nextsteps .step h4{color:#fff;font-size:1.04rem;margin:6px 0 6px;text-transform:none;letter-spacing:0}
+.nextsteps .step p{color:#dfeaf2;font-size:.92rem;margin:0;line-height:1.5}
+
+/* Sticky rail */
+nav.rail{
+  position:fixed;top:50%;left:18px;transform:translateY(-50%);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:14px;padding:10px 8px;
+  box-shadow:var(--shadow);z-index:10;display:flex;flex-direction:column;gap:2px
+}
+nav.rail a{
+  display:block;padding:6px 12px;font-size:.82rem;color:var(--text);
+  border-radius:7px;border-left:3px solid transparent;
+}
+nav.rail a:hover{background:#f1f5fa;text-decoration:none}
+nav.rail a.active{
+  background:linear-gradient(90deg,rgba(14,124,134,.10),rgba(124,197,118,.06));
+  border-left-color:var(--secondary);color:var(--primary);font-weight:600
+}
+@media (max-width:1280px){nav.rail{display:none}}
+
+/* Section header anchor */
+.section-eye{
+  display:inline-flex;align-items:center;gap:10px;font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:10px
+}
+.section-eye::before{content:"";width:26px;height:2px;background:var(--secondary);display:inline-block}
+
+/* Footer */
+footer{
+  background:#0A2540;color:#cbd9e6;padding:30px 32px;text-align:center;font-size:.88rem;margin-top:40px
+}
+footer a{color:#fff}
+
+@media print{
+  nav.rail,.copy-btn{display:none !important}
+  body{background:#fff}
+  section.act{break-inside:avoid}
+  .prompt{color:#0a2540;background:#f4f8fb;border:1px solid #cdd6e0}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== BACK TO INDEX BAR ===== -->
+<div style="background:#fff;border-bottom:1px solid var(--border);padding:8px 24px;font-size:.88rem">
+  <a href="https://emontes07.github.io/Learning/" style="color:var(--secondary);text-decoration:none;font-weight:600">← Back to Index</a>
+</div>
+
+<nav class="rail" aria-label="Sections">
+  <a href="#opening" class="active">Opening</a>
+  <a href="#run">1 · Run the day</a>
+  <a href="#decide">2 · Make decisions</a>
+  <a href="#move">3 · Move work forward</a>
+  <a href="#delegate">4 · Delegate work</a>
+  <a href="#governance">5 · Trust &amp; governance</a>
+  <a href="#next">6 · What's next</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Version C · Executive Flow</span>
+    <h1>How an executive at Edgewell runs their day with AI.</h1>
+    <p class="lede">This is not a tour of features. It's the story of a senior leader moving from fragmented information to decision, from decision to momentum, and from momentum to leverage — all in the same morning.</p>
+    <div class="hero-meta">
+      <span><b>Audience</b>Edgewell executive leadership</span>
+      <span><b>Format</b>Story-led executive briefing</span>
+      <span><b>Length</b>~25 minutes</span>
+      <span><b>Outcome</b>A new operating model, sketched</span>
+    </div>
+  </div>
+</header>
+
+<div class="dayarc-wrap">
+  <div class="dayarc" role="img" aria-label="A leader's day in five moments">
+    <div class="step">
+      <div class="dot deep"></div>
+      <div class="time">6:50 AM</div>
+      <div class="label">Run the day</div>
+      <div class="sub">Catch up, prioritize, prep</div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div class="time">9:30 AM</div>
+      <div class="label">Make decisions</div>
+      <div class="sub">Signals → insight</div>
+    </div>
+    <div class="step">
+      <div class="dot warm"></div>
+      <div class="time">11:15 AM</div>
+      <div class="label">Move work forward</div>
+      <div class="sub">Recap, follow up, package</div>
+    </div>
+    <div class="step">
+      <div class="dot green"></div>
+      <div class="time">1:30 PM</div>
+      <div class="label">Delegate the work</div>
+      <div class="sub">Cowork acts on your behalf</div>
+    </div>
+    <div class="step">
+      <div class="dot deep"></div>
+      <div class="time">4:00 PM</div>
+      <div class="label">Trust &amp; next steps</div>
+      <div class="sub">Governance &amp; scale</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ OPENING ============ -->
+<section class="act" id="opening">
+  <div class="body">
+    <div class="section-eye">Opening</div>
+    <h2>Today we're not walking through features — we're walking through how an executive runs their day differently with AI.</h2>
+    <p>Edgewell's leaders are navigating a category that has shifted faster in the last 18 months than in the prior decade. Walmart and Target buyer teams move quicker. Private label has reshaped the shave aisle. Coppertone and Sun Bum keep redrawing what "sun care" means. Schick, Banana Boat, Billie, Bulldog and Jack Black each compete in a different sub-conversation. And the supply chain — Sayreville, Milford, Dover, plus international — is no longer back-office; it's a board topic.</p>
+    <p>The job isn't to know more. It's to <b>decide faster, with sharper conviction, and move the organization with you</b>. That's what we're showing.</p>
+
+    <div class="pullquote">"The executives who'll win in personal care over the next three years are the ones who change how they operate — not the ones who add another report."</div>
+
+    <h4>What's at stake</h4>
+    <div class="stats">
+      <div class="stat"><div class="n">Speed</div><div class="l">Days collapsed to minutes</div></div>
+      <div class="stat"><div class="n">Clarity</div><div class="l">From scattered signals to a single point of view</div></div>
+      <div class="stat"><div class="n">Decision quality</div><div class="l">Sourced, defensible, ready for the board</div></div>
+    </div>
+
+    <p style="margin-top:22px;color:var(--muted)">The next five sections walk through one Edgewell executive's morning — the kind of morning every leader at this table will have this week.</p>
+  </div>
+</section>
+
+<!-- ============ 1 · RUN THE DAY ============ -->
+<section class="act" id="run">
+  <div class="stake deep">
+    <div class="ix deep">1</div>
+    <div class="meta">
+      <div class="eye">6:50 AM · Run the day</div>
+      <h2>Catch up, prioritize, prep — before the day starts running you.</h2>
+      <p class="tagline">A senior leader walks out of the house with their phone and a coffee. Twenty minutes later they're oriented, prioritized, and ready for their first meeting.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>The old pattern: open email on the drive in, scroll through 80 unread messages, react. The new pattern: a verbal briefing on the way to the car, an inbox already sorted by what needs a decision, and the first meeting's pre-read already drafted before the executive sits down.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill deep">Voice</span>
+        <h4>The 90-second briefing</h4>
+        <p>On the walk to the car, Copilot reads the room: the most urgent decision waiting, anything blocked on the executive, and the one positive signal worth knowing.</p>
+        <div class="note">Phone in pocket. Hands free.</div>
+      </div>
+      <div class="card">
+        <span class="pill deep">Inbox</span>
+        <h4>Sorted by decision</h4>
+        <p>Inbox grouped by what's needed: decisions, retailer escalations, brand-launch gates, people items. Three replies drafted in the executive's voice.</p>
+        <div class="note">Five minutes, not fifty.</div>
+      </div>
+      <div class="card">
+        <span class="pill deep">Prep</span>
+        <h4>First meeting, already prepped</h4>
+        <p>For the 9:00 AM brand review: a one-page pre-read, the three discussion questions worth raising, and the position the leader should walk in with.</p>
+        <div class="note">No "skim while it starts."</div>
+      </div>
+    </div>
+
+    <span class="prompt-label">One prompt — voice, on the move</span>
+    <div class="prompt" data-prompt="Give me a two-minute verbal briefing on what I missed since Friday — what decision is most urgent, what's blocked on me, and what one positive signal I should walk into Monday knowing.">Give me a two-minute verbal briefing on what I missed since Friday — what decision is most urgent, what's blocked on me, and what one positive signal I should walk into Monday knowing.</div>
+
+    <div class="outcome">
+      <div class="lbl">Outcome by 7:30 AM</div>
+      <p>The executive arrives at the office already current. Three replies sent. One meeting prep complete. The day is not running them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · MAKE DECISIONS ============ -->
+<section class="act" id="decide">
+  <div class="stake">
+    <div class="ix">2</div>
+    <div class="meta">
+      <div class="eye">9:30 AM · Make decisions · core value</div>
+      <h2>From scattered signals to decision-ready insight in minutes.</h2>
+      <p class="tagline">The CFO has asked for a point of view on Banana Boat ahead of the board. Two years ago this was a consulting engagement. Today it's a morning.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>Three AI agents work in parallel on the same question — each playing the role a real analyst would play, but on the executive's timeline. The leader stays in the driver's seat: orchestrating, challenging, deciding.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill">Researcher</span>
+        <h4>External signals</h4>
+        <p>The market moves Edgewell needs to see: mineral SPF growth, Sun Bum's Walmart shelf gains, Coppertone's pricing posture, what Gen-Z is doing in sun and shave. Sourced, cited, with the weakest claims flagged honestly.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Analyst</span>
+        <h4>Internal data</h4>
+        <p>Edgewell vs. Energizer, Church &amp; Dwight, and Kenvue from the 10-Ks. Revenue growth, gross margin, R&amp;D, ad spend as % of revenue. The math is shown — every number traceable to a filing.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Notebook</span>
+        <h4>Synthesis &amp; clarity</h4>
+        <p>External and internal pulled into one workspace. A board-ready teardown: where Edgewell is winning, where it's losing, the move worth arguing for, the risk that move carries.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">"The executive's job stops being to gather information and becomes to <b>set the question, judge the answer, and own the decision</b>."</div>
+
+    <h4>A real moment — the morning before a board discussion</h4>
+    <p>Energizer Holdings reported on Thursday. Church &amp; Dwight reports next week. The leader has 20 minutes before walking into a strategy review where the CFO will ask, "what are we hearing from the street, and what does it mean for us?" In the old model, that's a frantic skim of three earnings transcripts and a sell-side note. In the new model, it's a single prompt — and a sharper conversation than the legacy briefing produced.</p>
+
+    <span class="prompt-label">The earnings-call brief</span>
+    <div class="prompt" data-prompt="Summarize the most recent earnings call for [Energizer Holdings / Church & Dwight / Kenvue / Procter & Gamble — pick one]. Highlight: (1) key financial results and the drivers behind them, (2) the major strategic priorities the leadership team chose to emphasize, (3) the analyst questions and concerns that came up — especially the ones management dodged, (4) the risks, headwinds, and market pressures named, (5) the implications for Edgewell — where it threatens our position, where it reveals an opening, and the one question this raises for our own strategy.">Summarize the most recent earnings call for [Energizer Holdings / Church &amp; Dwight / Kenvue / Procter &amp; Gamble — pick one]. Highlight: (1) key financial results and the drivers behind them, (2) the major strategic priorities the leadership team chose to emphasize, (3) the analyst questions and concerns that came up — especially the ones management dodged, (4) the risks, headwinds, and market pressures named, (5) the implications for Edgewell — where it threatens our position, where it reveals an opening, and the one question this raises for our own strategy.</div>
+
+    <p style="margin-top:14px;color:var(--muted);font-style:italic">An executive-ready snapshot of what matters most — without having to read the full transcript or wait for the analyst note.</p>
+
+    <p style="margin-top:18px">That snapshot is the start, not the end. Pair it with <b>Analyst</b> for the internal financial picture, with <b>Researcher</b> for the broader market trend, and let <b>Notebook</b> synthesize across all three. The 20-minute brief becomes a 45-minute point of view — sourced, defensible, and ready for the CFO's question.</p>
+
+    <span class="prompt-label">One orchestrating prompt</span>
+    <div class="prompt" data-prompt="Researcher: pull the most credible public view on the U.S. mineral SPF face category — leaders, growth, retailer signals. Analyst: pull Edgewell sun-care performance from our 10-K and compare to the relevant peer segments at Energizer, Church & Dwight, and Kenvue. Bring both into one Notebook. Give me a two-page teardown: where we're winning, where we're losing, the single strategic move I'd argue for to the board, and the risk that move carries. Cite every number.">Researcher: pull the most credible public view on the U.S. mineral SPF face category — leaders, growth, retailer signals. Analyst: pull Edgewell sun-care performance from our 10-K and compare to the relevant peer segments at Energizer, Church &amp; Dwight, and Kenvue. Bring both into one Notebook. Give me a two-page teardown: where we're winning, where we're losing, the single strategic move I'd argue for to the board, and the risk that move carries. Cite every number.</div>
+
+    <div class="outcome">
+      <div class="lbl">Outcome by 10:30 AM</div>
+      <p>A defensible, sourced point of view on Banana Boat that the executive can take to the CEO this afternoon. The kind of analysis that used to require a six-week consulting engagement. Done in 45 minutes. Owned by the executive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · MOVE WORK FORWARD ============ -->
+<section class="act" id="move">
+  <div class="stake warm">
+    <div class="ix warm">3</div>
+    <div class="meta">
+      <div class="eye">11:15 AM · Move work forward</div>
+      <h2>This is where organizations typically lose momentum. AI closes that gap.</h2>
+      <p class="tagline">Insight is worthless if it doesn't move. Most leadership teams convert 50–70% of decisions into action. The rest dies between the meeting and the follow-up.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>The brand review wraps at 11:15. The room agreed on a direction. In the legacy operating model, the next two days are spent re-explaining what was decided to people who weren't in the room. In the AI-enabled model, those two days are an hour.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill warm">Teams</span>
+        <h4>Recap with decisions</h4>
+        <p>The meeting ends with a posted recap — decisions made, owners named, due dates set, the one decision the room explicitly chose <i>not</i> to make today. Not a transcript. A commitment.</p>
+      </div>
+      <div class="card">
+        <span class="pill warm">Outlook</span>
+        <h4>Follow-ups that land</h4>
+        <p>Each owner gets a personalized note from the executive: what was decided, what's expected, when. Written in the leader's voice. Reviewed and sent in minutes.</p>
+      </div>
+      <div class="card">
+        <span class="pill warm">Word / PPT</span>
+        <h4>Executive-ready artifacts</h4>
+        <p>The morning's work becomes a 1-page CEO brief, a 5-slide board narrative, and a one-paragraph email summary. Same content, three altitudes.</p>
+      </div>
+    </div>
+
+    <span class="prompt-label">One prompt — close the meeting properly</span>
+    <div class="prompt" data-prompt="From this meeting, generate the decisions-and-owners block I can post to the chat right now: (1) decisions made — specific commitments, not themes; (2) action items — named owner, specific next step, due date; (3) open questions we're carrying forward; (4) the one decision we explicitly chose not to make today and when we'll revisit it.">From this meeting, generate the decisions-and-owners block I can post to the chat right now: (1) decisions made — specific commitments, not themes; (2) action items — named owner, specific next step, due date; (3) open questions we're carrying forward; (4) the one decision we explicitly chose not to make today and when we'll revisit it.</div>
+
+    <div class="outcome warm">
+      <div class="lbl">Outcome by 12:30 PM</div>
+      <p>The morning's decisions are already in motion. Owners know what they own. The CEO brief is drafted. The board deck has its spine. Nothing decided this morning is waiting to die in a follow-up email next week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · DELEGATE WORK / COWORK ============ -->
+<section class="act" id="delegate">
+  <div class="stake green">
+    <div class="ix green">4</div>
+    <div class="meta">
+      <div class="eye">1:30 PM · Delegate work · the step change</div>
+      <h2>Everything so far helps you work faster. Cowork helps you not do the work at all.</h2>
+      <p class="tagline">This is the shift most executives haven't yet experienced. Up to here, AI made the leader more productive. From here, AI takes over the doing — with the leader as approver, not author.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>Cowork is the next chapter. Instead of asking Copilot to <i>help</i> the executive write a follow-up email, the executive describes the intent — and Cowork drafts, schedules, and stages the work for review. The leader's role becomes <b>oversight, not effort</b>.</p>
+
+    <div class="pullquote green">"Stop optimizing how you do the work. Start choosing which work you no longer need to do."</div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill green">Draft &amp; send</span>
+        <h4>Outbound communications</h4>
+        <p>"Draft the follow-up to each meeting owner with their specific commitment, schedule it to send at 8 AM tomorrow, and flag any that touch a customer." Reviewed in one pass, approved, done.</p>
+      </div>
+      <div class="card">
+        <span class="pill green">Build artifacts</span>
+        <h4>Documents &amp; decks</h4>
+        <p>"Assemble the board deck from the Banana Boat teardown and this morning's brand review. Use Edgewell brand standards. Stage it in my SharePoint." The executive reviews the draft, not the empty page.</p>
+      </div>
+      <div class="card">
+        <span class="pill green">Coordinate</span>
+        <h4>Meetings &amp; scheduling</h4>
+        <p>"Get the 90-day plan kickoff on calendars this week — Brand President, FP&amp;A lead, Head of Sales, CMO. 45 minutes. Use the brief as the agenda." Cowork proposes; the executive confirms.</p>
+      </div>
+    </div>
+
+    <div class="cowork-frame" aria-label="Cowork actions awaiting approval">
+      <div class="head">
+        <span>🤝 Cowork — actions staged for your review</span>
+        <span class="pulse">3 items ready · approval required</span>
+      </div>
+      <div class="row">
+        <div class="who">Outlook · Draft &amp; send</div>
+        <div>Follow-up emails to 4 meeting owners, scheduled for 8:00 AM tomorrow. Banana Boat 90-day plan commitments — one per owner.</div>
+        <div class="approve pending">Review</div>
+      </div>
+      <div class="row">
+        <div class="who">PowerPoint · Build</div>
+        <div>5-slide board deck assembled from this morning's Notebook. Edgewell brand standards applied. Staged in /Sun Care / Board 2026 Q3.</div>
+        <div class="approve pending">Review</div>
+      </div>
+      <div class="row">
+        <div class="who">Calendar · Coordinate</div>
+        <div>"Banana Boat 90-day kickoff" proposed for Thursday 2:00 PM. Brand President, FP&amp;A lead, Head of Sales, CMO. 45 min, agenda attached.</div>
+        <div class="approve pending">Review</div>
+      </div>
+    </div>
+
+    <div class="outcome green" style="margin-top:18px">
+      <div class="lbl">Outcome by 2:15 PM</div>
+      <p>Three pieces of work the executive would have done themselves — drafting four emails, building a 5-slide deck, coordinating a four-person meeting across busy calendars — are queued, approved with one review pass each, and in motion. The executive's afternoon is freed for the work only they can do.</p>
+    </div>
+
+    <p style="margin-top:18px;font-size:.94rem;color:var(--muted)">
+      <b style="color:var(--primary)">A note on this experience.</b> Cowork is a preview capability for many organizations today. Actions are always <b>reviewed and approved by the executive before they execute</b> — no email leaves, no meeting is booked, no document is shared without a human pass. Read on for how that works.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 5 · GOVERNANCE ============ -->
+<section class="act" id="governance">
+  <div class="gov">
+    <div class="section-eye">5 · Trust &amp; governance</div>
+    <h2>The questions every executive should ask — and the short answers.</h2>
+    <p>The story above only works if leaders trust the system underneath it. Four principles, kept deliberately short.</p>
+
+    <div class="four">
+      <div class="tile">
+        <div class="ico">🔒</div>
+        <h4>Permission-based</h4>
+        <p>Every interaction respects existing Edgewell access controls. The same rules that govern SharePoint and Outlook today govern AI tomorrow.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">👁</div>
+        <h4>Only what you can access</h4>
+        <p>Copilot can only see what the user is already permitted to see. It does not bypass labels, sensitivity classifications, or sharing boundaries.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">✋</div>
+        <h4>Cowork requires approval</h4>
+        <p>Every outbound action — emails, meetings, document shares, edits to others' files — is staged for explicit human review before it executes.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">🧭</div>
+        <h4>Oversharing is managed</h4>
+        <p>Edgewell controls what content the AI can reach. Stale shares, broad permissions, and unclassified content are surfaced for cleanup — not amplified.</p>
+      </div>
+    </div>
+
+    <div class="pullquote" style="margin-top:28px">"The executives who'll adopt AI fastest are the ones who can answer 'is this safe?' in one sentence. We've made that sentence short on purpose."</div>
+
+    <p style="margin-top:8px;color:var(--muted);font-size:.94rem">For the deeper conversation on tenant configuration, sensitivity labels, and audit — a 30-minute follow-up with Edgewell IT is the right next step.</p>
+  </div>
+</section>
+
+<!-- ============ 6 · WHAT'S NEXT ============ -->
+<section class="act" id="next">
+  <div class="nextsteps">
+    <div class="section-eye" style="color:#9ec1c5">6 · What's next</div>
+    <h2>What should Edgewell do next?</h2>
+    <p class="sub">Not a roadmap. A 90-day starting move. The leaders in this room can authorize each of these by the end of the week.</p>
+
+    <div class="grid">
+      <div class="step">
+        <div class="num">Step 1</div>
+        <h4>Identify two executive workflows</h4>
+        <p>The two recurring rituals leaders in this room do every week (e.g., Monday brief, retailer prep). These become the first AI-native habits.</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 2</div>
+        <h4>Identify two functional workflows</h4>
+        <p>The two recurring processes a function depends on (e.g., JBP prep, S&amp;OP question intake). These become the first agent builds.</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 3</div>
+        <h4>Assign champions</h4>
+        <p>One champion per workflow — a person, not a committee. They own pattern, prompt library, and the first 90 days of adoption.</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 4</div>
+        <h4>Start small, then scale</h4>
+        <p>Four workflows. Four champions. Ninety days. Then a review with this room — what worked, what didn't, what scales next.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:26px;color:#dfeaf2;font-size:1rem;max-width:740px">
+      The leaders who change how Edgewell operates won't be the ones who learn every Copilot feature. They'll be the ones who pick four things, name four owners, and protect ninety days. Everything else follows.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div><b style="color:#fff">Version C · Executive Flow</b> — Edgewell Personal Care</div>
+  <div style="margin-top:6px;color:#9fb1c4;font-size:.82rem">Story-led executive briefing · self-contained HTML · GitHub Pages-ready</div>
+  <div style="margin-top:10px;font-size:.82rem"><a href="18b-Edgewell-Executive-Copilot-Lab.html">Part I — hands-on labs</a> &nbsp;·&nbsp; <a href="18-Edgewell-Executive-Copilot-CoWork-Lab.html">Part II — CoWork deep dive</a></div>
+</footer>
+
+<script>
+(function(){
+  // copy buttons
+  document.querySelectorAll('.prompt').forEach(function(p){
+    var btn=document.createElement('button');
+    btn.className='copy-btn';btn.type='button';btn.textContent='Copy';
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var text=p.getAttribute('data-prompt')||p.textContent.replace(/Copy$/,'').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},1600);
+      });
+    });
+    p.appendChild(btn);
+  });
+
+  // sticky rail active state
+  var links=Array.from(document.querySelectorAll('nav.rail a[href^="#"]'));
+  var map={};
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el)map[id]=a;
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var a=map[e.target.id]; if(a)a.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id); if(el)io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
