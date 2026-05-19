@@ -1,0 +1,1109 @@
+---
+demo:
+    title: 'Edgewell Executive Copilot CoWork Lab | Lead the team, not just the work'
+layout: none
+---
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Edgewell Executive CoWork Lab — Lead the team, not just the work</title>
+<style>
+:root{
+  --brand-primary:#0A2540;
+  --brand-secondary:#0E7C86;
+  --brand-accent:#7CC576;
+  --brand-warm:#F26B5E;
+  --brand-sand:#FFD9A8;
+  --bg:#F5F7FA;
+  --surface:#ffffff;
+  --text:#1a2733;
+  --text-muted:#5b6b7d;
+  --border:#e3e8ef;
+  --code-bg:#0b1d33;
+  --code-text:#e8f2ff;
+  --shadow:0 1px 2px rgba(10,37,64,.06),0 8px 24px rgba(10,37,64,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand-secondary);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{color:var(--brand-primary);line-height:1.25;margin:0 0 .4em}
+h1{font-size:2.1rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.55rem;margin-top:1.4em;font-weight:650}
+h3{font-size:1.2rem;margin-top:1.2em;font-weight:600}
+h4{font-size:1.02rem;margin-top:1em;font-weight:600;color:#143057}
+p{margin:.6em 0}
+ul,ol{margin:.5em 0 .8em;padding-left:1.4em}
+li{margin:.2em 0}
+code,kbd{font-family:'Cascadia Mono','Consolas','SF Mono',monospace;background:#eef2f7;padding:1px 6px;border-radius:5px;font-size:.92em;color:#143057}
+kbd{box-shadow:inset 0 -1px 0 rgba(0,0,0,.08);border:1px solid #d0d7e2}
+
+/* Hero */
+header.hero{
+  background:linear-gradient(135deg,#061a2e 0%,#0A2540 30%,#0E7C86 65%,#7CC576 100%);
+  color:#fff;padding:48px 32px 60px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(700px 320px at 110% 10%,rgba(255,255,255,.12),transparent 70%),
+             radial-gradient(500px 220px at -10% 110%,rgba(255,255,255,.08),transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.hero .eyebrow{
+  display:inline-block;background:rgba(255,255,255,.16);color:#fff;
+  padding:5px 12px;border-radius:999px;font-size:.78rem;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:14px;backdrop-filter:blur(6px)
+}
+.hero h1{color:#fff;font-size:2.35rem;margin:0 0 .25em;max-width:900px}
+.hero .lede{color:#dfeaf2;font-size:1.05rem;max-width:780px;margin:.2em 0 0}
+.hero .companion{
+  margin-top:18px;display:inline-flex;gap:10px;align-items:center;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  padding:8px 14px;border-radius:10px;color:#fff;font-size:.9rem;
+}
+.hero .companion a{color:#fff;font-weight:600;text-decoration:underline}
+.hero .hero-meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:.92rem;color:#cbd9e6}
+.hero .hero-meta span b{color:#fff}
+
+/* Layout */
+.shell{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:32px;padding:28px 32px 60px}
+@media (max-width:980px){.shell{grid-template-columns:1fr;padding:20px}}
+
+/* Sidebar */
+aside.nav{
+  position:sticky;top:18px;align-self:start;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:14px 10px;box-shadow:var(--shadow);max-height:calc(100vh - 36px);overflow:auto
+}
+aside.nav .title{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);padding:6px 10px}
+aside.nav a{
+  display:block;padding:7px 10px;border-radius:8px;color:var(--text);font-size:.93rem;
+  border-left:3px solid transparent;margin:1px 0;
+}
+aside.nav a:hover{background:#f1f5fa;text-decoration:none}
+aside.nav a.active{
+  background:linear-gradient(90deg,rgba(14,124,134,.10),rgba(124,197,118,.08));
+  border-left-color:var(--brand-secondary);color:var(--brand-primary);font-weight:600
+}
+aside.nav .group{margin-top:8px}
+aside.nav .group .glabel{font-size:.74rem;color:var(--text-muted);padding:8px 10px 4px;text-transform:uppercase;letter-spacing:.08em}
+
+/* Main */
+main{min-width:0}
+section.surface{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin:0 0 22px;box-shadow:var(--shadow)}
+section.scenario{margin:0 0 22px}
+.scenario-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.scenario-header{
+  padding:22px 28px;color:#fff;
+  background:linear-gradient(135deg,var(--brand-primary) 0%,var(--brand-secondary) 100%);
+}
+.scenario-header.warm{background:linear-gradient(135deg,var(--brand-primary) 0%,var(--brand-warm) 100%)}
+.scenario-header.green{background:linear-gradient(135deg,var(--brand-secondary) 0%,var(--brand-accent) 100%)}
+.scenario-header.deep{background:linear-gradient(135deg,#061a2e 0%,#0A2540 60%,#0E7C86 100%)}
+.scenario-header .badge{
+  display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);
+  padding:3px 10px;border-radius:999px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px
+}
+.scenario-header h2{color:#fff;margin:0;font-size:1.5rem}
+.scenario-header .story-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:.86rem;color:#dfeaf2;margin-top:8px}
+.scenario-body{padding:22px 26px}
+.story{background:#f4f8fb;border-left:4px solid var(--brand-secondary);padding:14px 18px;border-radius:8px;margin:0 0 14px;color:#1f3548;font-size:.98rem}
+.story b{color:var(--brand-primary)}
+
+/* Lab */
+details.lab{border:1px solid var(--border);border-radius:12px;margin:16px 0;background:#fff;overflow:hidden;transition:box-shadow .15s}
+details.lab[open]{box-shadow:0 1px 2px rgba(10,37,64,.06),0 12px 32px rgba(10,37,64,.08)}
+details.lab > summary.lab-summary{
+  list-style:none;cursor:pointer;padding:14px 18px;display:grid;
+  grid-template-columns:48px 1fr 24px;gap:14px;align-items:center;
+}
+details.lab > summary.lab-summary::-webkit-details-marker{display:none}
+.lab-num{
+  width:42px;height:42px;border-radius:10px;background:var(--brand-primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;letter-spacing:.02em
+}
+.lab-num.warm{background:var(--brand-warm)}
+.lab-num.green{background:var(--brand-accent);color:#0a2540}
+.lab-title h3{margin:0;font-size:1.06rem;color:var(--brand-primary)}
+.lab-meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--text-muted);font-size:.84rem;margin-top:3px}
+.lab-meta b{color:#143057}
+.chev{color:var(--text-muted);transition:transform .2s;font-size:1.1rem;text-align:center}
+details[open] .chev{transform:rotate(180deg)}
+.lab-body{padding:6px 18px 22px 80px;border-top:1px solid var(--border);background:#fbfcfe}
+@media (max-width:680px){.lab-body{padding:6px 18px 22px}}
+
+/* Prompt */
+.prompt-label{
+  display:inline-block;font-size:.74rem;color:var(--brand-primary);background:#e7f1f2;
+  border:1px solid #c6e2e4;padding:2px 9px;border-radius:6px;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px
+}
+.prompt{
+  position:relative;background:var(--code-bg);color:var(--code-text);
+  border-radius:10px;padding:14px 56px 14px 16px;font-family:'Cascadia Mono','Consolas','SF Mono',monospace;
+  font-size:.86rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;
+  border:1px solid #0b2745
+}
+.prompt .copy-btn{
+  position:absolute;top:8px;right:8px;background:rgba(255,255,255,.10);color:#fff;
+  border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:7px;cursor:pointer;
+  font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;font-family:inherit
+}
+.prompt .copy-btn:hover{background:rgba(255,255,255,.2)}
+.prompt .copy-btn.copied{background:var(--brand-accent);color:#0a2540;border-color:var(--brand-accent)}
+
+/* Callouts */
+.callout{
+  border-radius:10px;padding:12px 14px 12px 14px;margin:12px 0;font-size:.94rem;
+  border-left:4px solid #c7d2dc;background:#f4f7fb
+}
+.callout .callout-title{display:block;font-weight:650;margin-bottom:4px;color:var(--brand-primary)}
+.callout.tip{background:#eef9ee;border-left-color:var(--brand-accent)}
+.callout.tip .callout-title{color:#1f7a39}
+.callout.warn{background:#fff3e6;border-left-color:#ed8b35}
+.callout.warn .callout-title{color:#8a4400}
+.callout.important{background:#fdecea;border-left-color:var(--brand-warm)}
+.callout.important .callout-title{color:#9a2a23}
+.callout.note{background:#eef3fb;border-left-color:#5b8bd9}
+.callout.note .callout-title{color:#1a3a78}
+.callout.inst{background:#f5eefb;border-left-color:#8e4ec6}
+.callout.inst .callout-title{color:#5a249a}
+.callout.expect{background:#e8f6f7;border-left-color:var(--brand-secondary)}
+.callout.expect .callout-title{color:#055e66}
+.callout.check{background:#f8fbe8;border-left-color:#b6c84a}
+.callout.check .callout-title{color:#5a6a14}
+
+/* Misc */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.kpi{
+  background:#f4f8fb;border:1px solid var(--border);border-radius:10px;padding:14px;
+  text-align:center
+}
+.kpi .v{font-size:1.45rem;font-weight:700;color:var(--brand-primary);line-height:1.1}
+.kpi .l{font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+
+.persona-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 4px}
+.persona{
+  background:#f1f5fa;color:var(--brand-primary);border:1px solid var(--border);
+  padding:4px 10px;border-radius:999px;font-size:.82rem;display:inline-flex;gap:7px;align-items:center
+}
+.persona .dot{width:8px;height:8px;border-radius:50%;background:var(--brand-secondary)}
+.persona .dot.warm{background:var(--brand-warm)}
+.persona .dot.green{background:var(--brand-accent)}
+
+table.facts{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:.92rem}
+table.facts th,table.facts td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+table.facts th{background:#f4f7fb;color:var(--brand-primary);font-weight:650;width:30%}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:22px 0}
+
+.controls{display:flex;gap:10px;justify-content:flex-end;margin:0 0 14px}
+.btn{
+  background:#fff;border:1px solid var(--border);color:var(--brand-primary);
+  padding:7px 13px;border-radius:8px;cursor:pointer;font-size:.86rem;font-family:inherit
+}
+.btn:hover{background:#f4f8fb}
+
+.illus{display:block;width:100%;height:auto;margin:10px 0 16px;border-radius:12px;
+  background:linear-gradient(180deg,#f7fafd,#ffffff);border:1px solid var(--border)}
+
+footer{
+  background:#0A2540;color:#cbd9e6;padding:26px 32px;font-size:.88rem;
+  text-align:center;margin-top:30px
+}
+footer a{color:#fff}
+
+/* Pages mockup */
+.pages-mock{
+  background:#fff;border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:var(--shadow);margin:14px 0
+}
+.pages-mock .pmhead{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f4f7fb;border-bottom:1px solid var(--border);
+  font-size:.86rem;color:var(--text-muted)
+}
+.pages-mock .avatars{display:inline-flex;margin-left:auto}
+.pages-mock .av{
+  width:26px;height:26px;border-radius:50%;border:2px solid #fff;
+  display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;margin-left:-8px
+}
+.pages-mock .av.h1{background:#0E7C86}
+.pages-mock .av.h2{background:#F26B5E}
+.pages-mock .av.h3{background:#0A2540}
+.pages-mock .av.ag1{background:#7CC576;color:#0a2540}
+.pages-mock .av.ag2{background:#FFD9A8;color:#0a2540}
+.pages-mock .pmbody{padding:14px 18px}
+.pages-mock .pmline{font-size:.92rem;color:#1a2733;padding:5px 0;border-bottom:1px dashed #e3e8ef}
+.pages-mock .pmline:last-child{border-bottom:none}
+.pages-mock .pmline .tag{display:inline-block;font-size:.72rem;padding:2px 7px;border-radius:6px;margin-right:8px;color:#fff}
+.pages-mock .tag.human{background:#0E7C86}
+.pages-mock .tag.agent{background:#7CC576;color:#0a2540}
+.pages-mock .tag.human2{background:#F26B5E}
+.pages-mock .tag.human3{background:#0A2540}
+
+@media print {
+  aside.nav, .controls, .copy-btn, footer { display:none !important; }
+  details.lab { break-inside:avoid; }
+  details.lab > summary { cursor:default; }
+  details.lab:not([open]) > .lab-body { display:block; }
+  body { background:#fff; }
+  .shell { grid-template-columns:1fr; }
+  .prompt { color:#0a2540; background:#f4f8fb; border:1px solid #cdd6e0; }
+  header.hero { color:#fff; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Edgewell Personal Care · Executive Immersion · Part II</span>
+    <h1>The Edgewell CoWork Lab — lead the team, not just the work</h1>
+    <p class="lede">Five hands-on labs that turn Copilot from your personal assistant into how your leadership team actually operates. Pages, multi-agent workspaces, SharePoint agents, and a custom Copilot Studio agent — culminating in a live 90-day plan built by humans and agents together.</p>
+    <div class="companion">
+      <span>Companion to:</span>
+      <a href="Edgewell-Executive-Copilot-Lab.html">Part I — Edgewell Executive Copilot Lab →</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Audience:</b> Edgewell executive leadership team</span>
+      <span><b>Modes:</b> Self-paced &amp; facilitator-led</span>
+      <span><b>Duration:</b> ~45 minutes hands-on</span>
+      <span><b>Outcome:</b> A live, multi-player Edgewell 90-day execution plan</span>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="nav" aria-label="Page navigation">
+    <div class="title">On this page</div>
+    <a href="#overview" class="active">Overview</a>
+    <a href="#setup">Setup &amp; Prerequisites</a>
+    <div class="group">
+      <div class="glabel">From One to Many</div>
+      <a href="#lab-cw1">CW1 · Pages 101 — from chat to multi-player</a>
+      <a href="#lab-cw2">CW2 · Multi-agent working session</a>
+    </div>
+    <div class="group">
+      <div class="glabel">Institutional Leverage</div>
+      <a href="#lab-cw3">CW3 · SharePoint Brand Agent</a>
+      <a href="#lab-cw4">CW4 · Custom agent in Copilot Studio</a>
+    </div>
+    <div class="group">
+      <div class="glabel">The Capstone</div>
+      <a href="#lab-cw5">CW5 · Live 90-day execution plan</a>
+    </div>
+    <div class="group">
+      <div class="glabel">Close</div>
+      <a href="#wrapup">Wrap-up &amp; commitments</a>
+      <a href="#facilitator">Facilitator notes</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="controls">
+      <button class="btn" id="expand-all">Expand all labs</button>
+      <button class="btn" id="collapse-all">Collapse all</button>
+      <button class="btn" onclick="window.print()">Print / PDF</button>
+    </div>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="surface" id="overview">
+  <h2>Overview — from personal assistant to leadership operating system</h2>
+  <p>Part I taught you how to use Copilot as <i>your</i> assistant. This page is about something different: how a <b>leadership team</b> uses Copilot to operate together. The shift is real and it changes what's possible.</p>
+
+  <div class="grid-3" style="margin-top:14px">
+    <div class="kpi"><div class="v">1 → many</div><div class="l">From private chat to shared workspace</div></div>
+    <div class="kpi"><div class="v">Humans + Agents</div><div class="l">Working in the same artifact at the same time</div></div>
+    <div class="kpi"><div class="v">Persistent</div><div class="l">Institutional memory that doesn't leave when people do</div></div>
+  </div>
+
+  <h3 style="margin-top:24px">The story arc</h3>
+  <p>Part I ended with Scenario D — the board-ready brief is done, the recommendation made. This page picks up Monday morning of the following week. You're no longer alone with Copilot. You're standing up the 90-day execution plan with your peers, with brand teams, with FP&amp;A, with sales — and with agents alongside them.</p>
+
+  <table class="facts">
+    <tr><th>CW1 · Pages 101</th><td>Turn a Copilot Chat answer into a live, multi-player Page your leadership team co-edits. The shift from "frozen PDF" to "living artifact."</td></tr>
+    <tr><th>CW2 · Multi-agent session</th><td>Three executives + two agents (Analyst, Researcher) in the same Page working a brand review at the same time.</td></tr>
+    <tr><th>CW3 · SharePoint Brand Agent</th><td>A persistent agent that lives in the Schick (or Banana Boat) SharePoint site and gives consistent, sourced answers to anyone in the brand org.</td></tr>
+    <tr><th>CW4 · Custom Copilot Studio agent</th><td>A low-code agent purpose-built for a recurring Edgewell process — a "JBP Prep Agent" or an "S&amp;OP Question Agent."</td></tr>
+    <tr><th>CW5 · Capstone</th><td>Live, multi-player 90-day execution plan with named owners, agent-maintained sections, and a CFO-trackable structure.</td></tr>
+  </table>
+
+  <h3>Why this matters — for an Edgewell executive</h3>
+  <p>The hard truth: most Copilot pilots stall not because individuals don't see value, but because the value doesn't compound across the org. CoWork is where compounding happens. When the Schick brand team's tribal knowledge becomes an agent, when the JBP prep that took three meetings becomes one Page, when the 90-day plan is a living artifact instead of a slide that goes stale on Tuesday — that's the leverage.</p>
+
+  <h3>Learning objectives</h3>
+  <ul>
+    <li>Use <b>Copilot Pages</b> as the multi-player workspace for executive work, not just a chat overflow.</li>
+    <li>Run a <b>multi-agent, multi-human</b> working session where the agents are part of the conversation.</li>
+    <li>Recognize when a body of work deserves a <b>persistent SharePoint agent</b>, and what that buys you.</li>
+    <li>Know what <b>Copilot Studio</b> is, when to use it, and how to scope an Edgewell-shaped custom agent without writing code.</li>
+    <li>Convert a strategic brief into a <b>live execution artifact</b> the leadership team commits to.</li>
+  </ul>
+
+  <h3>How to use this guide</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Self-paced executive</h4>
+      <p>Work through CW1 to CW5 in order — they build on each other. CW3 and CW4 require someone with SharePoint admin access if you want to actually create the agent (you can also watch and ideate). The capstone (CW5) is best run with at least one teammate, even just over a Teams call.</p>
+    </div>
+    <div>
+      <h4>Facilitator-led immersion</h4>
+      <p>Run as a second 60–75 minute session a week after Part I. Form 3-person pods at tables; each pod produces a CW5 capstone. Most leaders find CW3 ("the SharePoint brand agent") is the conceptual unlock — leave 8 minutes of discussion time there.</p>
+    </div>
+  </div>
+
+  <div class="callout important">
+    <b class="callout-title">Prerequisite: Part I matters</b>
+    This page assumes you've done the Part I immersion — or at least built a personalized Copilot profile (Part I, lab B2) and used the Analyst + Researcher agents (Part I, labs C1–C2). If you skip those, CW2 and onward will feel disorienting.
+  </div>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section class="surface" id="setup">
+  <h2>Setup &amp; Prerequisites</h2>
+  <p>Three minutes of prep saves twenty minutes of friction.</p>
+
+  <h3>What you need</h3>
+  <table class="facts">
+    <tr><th>Microsoft 365 Copilot license</th><td>Same as Part I — assigned to your @edgewell.com account.</td></tr>
+    <tr><th>Pages enabled</th><td>Open Copilot Chat → look for the "Create a Page" affordance below the response, or the Pages icon in the left rail. If it's missing, your tenant admin needs to confirm Pages is enabled.</td></tr>
+    <tr><th>At least one teammate available</th><td>For CW2 and CW5 you'll want one or two people on a Teams call to actually co-edit. A 1:1 with your chief of staff works. Don't do CW5 alone.</td></tr>
+    <tr><th>SharePoint site ownership (optional)</th><td>For CW3 you'll want owner-level access to a SharePoint site that has Edgewell brand content (e.g., the Schick brand site, the Banana Boat marketing site, or your function's hub).</td></tr>
+    <tr><th>Copilot Studio (optional)</th><td>For CW4 — your tenant needs Copilot Studio enabled. If it isn't, the lab is still readable as a design exercise.</td></tr>
+    <tr><th>Part I artifacts</th><td>Have your Part I capstone (the C3 Notebook teardown, the D2 dashboard, the D3 Word brief and deck) accessible in OneDrive. CW1 starts from the C3 synthesis.</td></tr>
+  </table>
+
+  <h3>A two-minute orientation to the building blocks</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Copilot Pages</h4>
+      <p>A live, shareable, multi-player document that Copilot can read from and write into. Think Loop + Word + a Copilot side-pane that everyone can see. Comes from a Chat answer, but lives forever.</p>
+    </div>
+    <div>
+      <h4>SharePoint Agents</h4>
+      <p>An agent that you point at a SharePoint site (or a folder, a library, a set of files). It answers questions only from those sources. Anyone with access to the site can use it. Edgewell's institutional memory, on demand.</p>
+    </div>
+    <div>
+      <h4>Copilot Studio</h4>
+      <p>A low-code builder for custom agents. Where SharePoint Agents are "point at content," Studio is "design a behavior." Use it for recurring processes (JBP prep, S&amp;OP cycles, new-product launch gates) where the agent needs to do, not just answer.</p>
+    </div>
+    <div>
+      <h4>Specialist agents (Analyst, Researcher)</h4>
+      <p>You met these in Part I. In CoWork you'll use them differently — not in private chat but inside a Page where others can see what you asked, what they answered, and contribute alongside.</p>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <b class="callout-title">Tip — name your Pages well</b>
+    Pages accumulate. By month two your team will have dozens. The name is the only navigation that scales. Use the pattern <code>[Brand or Function] — [Decision or Artifact] — [Quarter]</code>. Example: "Schick — Q3 JBP for Walmart — Plan."
+  </div>
+  <div class="callout warn">
+    <b class="callout-title">Permission boundaries still apply</b>
+    A Page inherits sharing. An agent inherits source-document permissions. If you share a Page with someone who doesn't have access to a source file, they won't see content drawn from that file. This is a feature, not a bug — but it can surprise people. Explain it once to your team.
+  </div>
+</section>
+
+<!-- ============ SCENARIO: FROM ONE TO MANY ============ -->
+<section class="scenario" id="scen-1">
+  <article class="scenario-card">
+    <header class="scenario-header deep">
+      <span class="badge">CoWork · Part 1 of 3</span>
+      <h2>From One to Many — make your work multi-player</h2>
+      <p style="margin:4px 0 0;color:#dfeaf2">You stop sending screenshots from your private Copilot Chat. You start inviting the team — and the agents — into the same room.</p>
+      <div class="story-meta">
+        <span><b>Persona:</b> Brand President, CMO, Head of Sales, Head of Insights</span>
+        <span><b>Tools:</b> Copilot Pages, Copilot Chat, Analyst + Researcher agents</span>
+        <span><b>Deliverable:</b> A live, multi-player working Page for one Edgewell brand decision</span>
+      </div>
+    </header>
+    <div class="scenario-body">
+      <div class="story">
+        <b>The story.</b> In Part I you produced a strong board brief on Banana Boat (or Schick — pick whichever you ran your capstone on). Monday morning, you need the brand team and FP&amp;A to actually engage with it. Emailing the deck around starts the death cycle: redlines in private, conflicting versions, no shared point of view. Instead, you make the work multi-player — a Page that the whole team is editing at the same time, with agents working alongside them.
+      </div>
+      <div class="persona-row">
+        <span class="persona"><span class="dot"></span>Brand President</span>
+        <span class="persona"><span class="dot"></span>CMO</span>
+        <span class="persona"><span class="dot"></span>Head of Sales</span>
+        <span class="persona"><span class="dot"></span>Head of Insights</span>
+        <span class="persona"><span class="dot"></span>FP&amp;A lead</span>
+      </div>
+
+<!-- ===== LAB CW1 ===== -->
+<details class="lab" id="lab-cw1" open>
+  <summary class="lab-summary">
+    <span class="lab-num">CW1</span>
+    <span class="lab-title">
+      <h3>Pages 101 — turn a Copilot answer into a living, shared workspace</h3>
+      <div class="lab-meta">
+        <span><b>Time:</b> 8 min</span>
+        <span><b>Tool:</b> Copilot Chat → Pages</span>
+        <span><b>Goal:</b> One Edgewell brand decision, in a Page, with at least one teammate co-editing</span>
+        <span><b>Level:</b> Basic / Intermediate</span>
+      </div>
+    </span>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="lab-body">
+    <p>Open Copilot Chat. If you still have your Part I C3 Notebook synthesis, you can paste it in. If not, generate a fresh starter with the prompt below.</p>
+
+    <span class="prompt-label">Starter prompt — produce the seed in chat</span>
+    <div class="prompt" data-prompt="Based on what you know about my role at Edgewell, my brands, and what's happening in the personal care category, draft me a working brief titled 'Banana Boat — what we change in the next 90 days.' Structure it as: (1) one-sentence point of view, (2) three things we know are true, (3) three things we think are true but should validate, (4) the move I'd argue for, (5) the open questions I need brand, sales, insights, and FP&A to answer before we commit. Keep it editable — short sentences, no flourish.">Based on what you know about my role at Edgewell, my brands, and what's happening in the personal care category, draft me a working brief titled "Banana Boat — what we change in the next 90 days." Structure it as: (1) one-sentence point of view, (2) three things we know are true, (3) three things we think are true but should validate, (4) the move I'd argue for, (5) the open questions I need brand, sales, insights, and FP&amp;A to answer before we commit. Keep it editable — short sentences, no flourish.</div>
+
+    <h4>Now convert chat to a Page</h4>
+    <p>Below the answer, click <b>Create Page</b> (or "Edit in Pages"). Copilot opens a new Page with the brief inside it. Now you do three things in fast succession:</p>
+    <ol>
+      <li><b>Rename it</b> using the naming pattern: <code>Banana Boat — Q3 90-day plan — Working draft</code></li>
+      <li><b>Share it</b> with two real teammates (Brand President for Banana Boat, the Head of Insights). Set them to <i>edit</i>, not <i>view</i>.</li>
+      <li><b>Get them into the Page now</b> — drop a Teams message: "I just started a working Page for the Banana Boat 90-day plan. Open it now, take 5 minutes, redline anything you disagree with."</li>
+    </ol>
+
+    <span class="prompt-label">Once teammates are in the Page — co-edit prompt</span>
+    <div class="prompt" data-prompt="Look at the comments and edits my teammates have made in the last 15 minutes. Summarize where we agree, where we disagree, and the single most substantive challenge that was raised. Then propose a revised paragraph 4 (the move) that incorporates the strongest pushback. Mark anything you changed so we can see the diff.">Look at the comments and edits my teammates have made in the last 15 minutes. Summarize where we agree, where we disagree, and the single most substantive challenge that was raised. Then propose a revised paragraph 4 (the move) that incorporates the strongest pushback. Mark anything you changed so we can see the diff.</div>
+
+    <div class="pages-mock" aria-hidden="true">
+      <div class="pmhead">
+        <span>📄</span>
+        <span><b>Banana Boat — Q3 90-day plan — Working draft</b></span>
+        <span style="color:#7CC576;font-weight:600">● Live</span>
+        <span class="avatars" aria-label="Co-editors">
+          <span class="av h1" title="You">You</span>
+          <span class="av h2" title="Brand President">BP</span>
+          <span class="av h3" title="Head of Insights">HI</span>
+        </span>
+      </div>
+      <div class="pmbody">
+        <div class="pmline"><span class="tag human">You</span>POV: Banana Boat wins the season by leaning into mineral SPF for kids and sport.</div>
+        <div class="pmline"><span class="tag human2">BP comment</span>Push back — kids is where Coppertone is strongest. Consider face SPF instead.</div>
+        <div class="pmline"><span class="tag human3">HI comment</span>+1, mineral face SPF is the highest-growth subsegment in our scan.</div>
+        <div class="pmline"><span class="tag human">You</span>Update paragraph 4: pivot to mineral face SPF for the season.</div>
+      </div>
+    </div>
+
+    <div class="callout expect">
+      <b class="callout-title">Expected outcome</b>
+      A shared Page (not a Word doc, not a PDF, not a Teams chat) that two or more people have actively edited. You should feel a difference: comments resolve in seconds, not days; the document <i>is</i> the conversation.
+    </div>
+    <div class="callout tip">
+      <b class="callout-title">Tip — make Pages the meeting itself</b>
+      The next time you'd schedule a 30-minute "alignment meeting" — don't. Open a Page, share it, set a 20-minute window, ask everyone to edit live. You'll get further than a meeting in half the time.
+    </div>
+    <div class="callout warn">
+      <b class="callout-title">A Page is not a deck</b>
+      Pages are working artifacts. They're not the executive read-out. When the work is done, you can ask Copilot to turn the Page into a Word brief or a PowerPoint — but the Page is where the thinking happens, not where it's polished.
+    </div>
+    <div class="callout check">
+      <b class="callout-title">Self-check</b>
+      <ul>
+        <li>At least one teammate edited the Page, not just commented on it.</li>
+        <li>I used Copilot inside the Page to summarize the edits.</li>
+        <li>I named the Page using the standard pattern so it's findable in two weeks.</li>
+      </ul>
+    </div>
+    <div class="callout inst">
+      <b class="callout-title">Facilitator note</b>
+      Pair execs at tables. One creates the Page, the other joins from their laptop. The "ah ha" is watching the avatars appear. Have the room narrate: "Now Sarah is in. Now Marcus is editing paragraph 3." Make the multi-player nature visible.
+    </div>
+  </div>
+</details>
+
+<!-- ===== LAB CW2 ===== -->
+<details class="lab" id="lab-cw2">
+  <summary class="lab-summary">
+    <span class="lab-num">CW2</span>
+    <span class="lab-title">
+      <h3>Multi-agent working session — three people, two agents, one Page</h3>
+      <div class="lab-meta">
+        <span><b>Time:</b> 12 min</span>
+        <span><b>Tool:</b> Copilot Page + Analyst Agent + Researcher Agent</span>
+        <span><b>Goal:</b> Run the brand-review conversation with agents as participants</span>
+        <span><b>Level:</b> Advanced</span>
+      </div>
+    </span>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="lab-body">
+    <p>This is the lab that breaks people's mental model. Agents are not buttons that produce answers; they're participants you bring into a working session. In CW1 you and your humans co-edited a Page. Now you bring the Analyst Agent and the Researcher Agent into the same Page — and the four of you (plus the second human) work on it together.</p>
+
+    <h4>The setup — 3 minutes</h4>
+    <ol>
+      <li>Open your CW1 Page ("Banana Boat — Q3 90-day plan — Working draft").</li>
+      <li>In the Page's Copilot pane, type <code>@</code> and invite the <b>Analyst</b> and <b>Researcher</b> agents into the Page context.</li>
+      <li>Make sure a real teammate is in the Page with you (Brand President or Head of Insights).</li>
+    </ol>
+
+    <h4>Section 1 — orchestrate the agents</h4>
+    <span class="prompt-label">In the Page Copilot pane</span>
+    <div class="prompt" data-prompt="For the next 10 minutes, I want to work this Page with my teammate and with two agents helping. Researcher: pull the most current public view on the U.S. mineral SPF face category — growth, leaders (Supergoop, EltaMD, Sun Bum mineral face, Neutrogena Sheer Zinc), retailer signals. Cite. Analyst: separately, pull Edgewell's Banana Boat face-SPF revenue, units, and ad spend from any internal files in our tenant — also pull what's publicly disclosed for Edgewell sun-care in our most recent 10-K. Coordinate so you're not duplicating work. Put your findings into the Page under a new section called 'Evidence.'">For the next 10 minutes, I want to work this Page with my teammate and with two agents helping. Researcher: pull the most current public view on the U.S. mineral SPF face category — growth, leaders (Supergoop, EltaMD, Sun Bum mineral face, Neutrogena Sheer Zinc), retailer signals. Cite. Analyst: separately, pull Edgewell's Banana Boat face-SPF revenue, units, and ad spend from any internal files in our tenant — also pull what's publicly disclosed for Edgewell sun-care in our most recent 10-K. Coordinate so you're not duplicating work. Put your findings into the Page under a new section called "Evidence."</div>
+
+    <h4>Section 2 — humans react, in the Page</h4>
+    <p>While the agents work, you and your teammate edit the brief in real time. Comment on what the agents drop in. Strike through anything that's wrong. Promote what's strong. The agents see your edits and adjust.</p>
+
+    <span class="prompt-label">Mid-session — direct the room</span>
+    <div class="prompt" data-prompt="My teammate has just commented that the Walmart relationship is the binding constraint, not the consumer demand. Researcher — find any public evidence about Walmart's SPF planogram changes, mineral SPF buyer rotation, or pricing dynamics in mass sun care. Analyst — find any internal Edgewell Walmart JBP files or 4-blocker notes that touch sun care. Both: put findings in a new Page section called 'Walmart channel reality.' Then I'll synthesize.">My teammate has just commented that the Walmart relationship is the binding constraint, not the consumer demand. Researcher — find any public evidence about Walmart's SPF planogram changes, mineral SPF buyer rotation, or pricing dynamics in mass sun care. Analyst — find any internal Edgewell Walmart JBP files or 4-blocker notes that touch sun care. Both: put findings in a new Page section called "Walmart channel reality." Then I'll synthesize.</div>
+
+    <h4>Section 3 — close the loop</h4>
+    <span class="prompt-label">Closing the working session</span>
+    <div class="prompt" data-prompt="Together with my teammate, summarize this Page as it stands now in 6 bullets: (1) what we now believe, (2) what changed in our thinking in the last 15 minutes, (3) the move we're going to argue for, (4) the strongest single piece of evidence supporting it, (5) the strongest pushback we expect from FP&A and our response, (6) the three open questions we still need to answer before we commit. Highlight which agent contributed which evidence so we can revisit sources.">Together with my teammate, summarize this Page as it stands now in 6 bullets: (1) what we now believe, (2) what changed in our thinking in the last 15 minutes, (3) the move we're going to argue for, (4) the strongest single piece of evidence supporting it, (5) the strongest pushback we expect from FP&amp;A and our response, (6) the three open questions we still need to answer before we commit. Highlight which agent contributed which evidence so we can revisit sources.</div>
+
+    <div class="pages-mock" aria-hidden="true">
+      <div class="pmhead">
+        <span>📄</span>
+        <span><b>Banana Boat — Q3 90-day plan — Working draft</b></span>
+        <span style="color:#7CC576;font-weight:600">● 5 contributors live</span>
+        <span class="avatars">
+          <span class="av h1">You</span>
+          <span class="av h2">BP</span>
+          <span class="av h3">HI</span>
+          <span class="av ag1" title="Analyst">An</span>
+          <span class="av ag2" title="Researcher">Re</span>
+        </span>
+      </div>
+      <div class="pmbody">
+        <div class="pmline"><span class="tag agent">Researcher</span>Mineral face SPF grew 28% YoY in mass — Supergoop and Sun Bum lead. Walmart added two facings in spring planogram.</div>
+        <div class="pmline"><span class="tag agent">Analyst</span>Banana Boat face SPF YTD: $X.Xm rev, -4% vs PY; ad spend +12%. (Source: internal FY26 brand P&amp;L.)</div>
+        <div class="pmline"><span class="tag human2">BP</span>Walmart added 2 facings — that's the unlock. Plan must be Walmart-led.</div>
+        <div class="pmline"><span class="tag human">You</span>Revised POV: lead with Walmart mineral face SPF in spring set. Researcher — what does the buyer team look for?</div>
+      </div>
+    </div>
+
+    <div class="callout expect">
+      <b class="callout-title">Expected outcome</b>
+      A Page that has both human and agent contributions visible side-by-side. The thinking visibly moved in the last 15 minutes. You and your teammate left with a sharper point of view than either of you brought in, supported by real evidence and named sources.
+    </div>
+    <div class="callout important">
+      <b class="callout-title">Agents are participants, not oracles</b>
+      Treat agent contributions exactly like a junior analyst's: read them, challenge them, edit them. The point of putting them in the Page is that everyone sees the work, including the wobble. Don't paper over weak agent output — call it out so the next iteration is better.
+    </div>
+    <div class="callout tip">
+      <b class="callout-title">Tip — assign agents like you'd assign people</b>
+      "Researcher takes external, Analyst takes internal" works. "Both of you, find me something on mineral SPF" produces overlap and disagreement you have to reconcile. The orchestrating prompt is the leadership skill.
+    </div>
+    <div class="callout check">
+      <b class="callout-title">Self-check</b>
+      <ul>
+        <li>Both agents contributed to the Page (not just to my private chat).</li>
+        <li>My teammate visibly edited the Page during the session.</li>
+        <li>I called out at least one agent contribution as weak or wrong, in writing.</li>
+        <li>The Page is meaningfully better than when it started.</li>
+      </ul>
+    </div>
+    <div class="callout inst">
+      <b class="callout-title">Facilitator note</b>
+      This is the lab where execs realize how this is different from "asking ChatGPT a question." Slow down. Pause at minute 5 and have one volunteer narrate what they're seeing in the Page. Reinforce: "Notice — the work is visible. There's no private chat where someone has a different answer."
+    </div>
+  </div>
+</details>
+
+    </div>
+  </article>
+</section>
+<!-- ============ SCENARIO: INSTITUTIONAL LEVERAGE ============ -->
+<section class="scenario" id="scen-2">
+  <article class="scenario-card">
+    <header class="scenario-header warm">
+      <span class="badge">CoWork · Part 2 of 3</span>
+      <h2>Institutional Leverage — agents that outlast the individual</h2>
+      <p style="margin:4px 0 0;color:#fde6e2">The next move stops being about <i>you</i> using Copilot well. It's about Edgewell's knowledge stopping being trapped in people's heads.</p>
+      <div class="story-meta">
+        <span><b>Persona:</b> Brand leadership, IT, function leads, CIO</span>
+        <span><b>Tools:</b> SharePoint Agents, Copilot Studio</span>
+        <span><b>Deliverable:</b> One brand agent your team will use this week + the design for one custom Edgewell agent</span>
+      </div>
+    </header>
+    <div class="scenario-body">
+      <div class="story">
+        <b>The story.</b> Every Edgewell brand has a brain. It lives in the Brand President's head, the senior brand manager who's been here twelve years, the FP&amp;A analyst who's the only one who remembers the 2022 promo dynamics. The CoWork shift is making that institutional knowledge available the way email is available — to anyone, anytime, with sources. Two paths to get there: <b>SharePoint Agents</b> (point at content the team already produces) and <b>Copilot Studio</b> (design a behavior for a recurring process).
+      </div>
+      <div class="persona-row">
+        <span class="persona"><span class="dot warm"></span>Brand President</span>
+        <span class="persona"><span class="dot warm"></span>Senior Brand Manager</span>
+        <span class="persona"><span class="dot warm"></span>CIO / IT Partner</span>
+        <span class="persona"><span class="dot warm"></span>Function Lead (Sales, S&amp;OP)</span>
+      </div>
+
+<!-- ===== LAB CW3 ===== -->
+<details class="lab" id="lab-cw3">
+  <summary class="lab-summary">
+    <span class="lab-num warm">CW3</span>
+    <span class="lab-title">
+      <h3>The Schick Brand Agent — make a SharePoint site answer questions</h3>
+      <div class="lab-meta">
+        <span><b>Time:</b> 12 min</span>
+        <span><b>Tool:</b> SharePoint Agents (Copilot agent on a SharePoint site)</span>
+        <span><b>Goal:</b> A working brand agent your team can talk to this afternoon</span>
+        <span><b>Level:</b> Intermediate</span>
+      </div>
+    </span>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="lab-body">
+    <p>SharePoint Agents are the lowest-effort, highest-leverage CoWork move at Edgewell. If you have a SharePoint site with brand content — growth plans, JBP decks, scan-data PDFs, agency briefs, S&amp;OP recaps — you can stand up an agent in under ten minutes that answers questions <b>only from that content</b>. Cited. Permissioned. Always up to date as files change.</p>
+
+    <h4>Step 1 — pick the right site</h4>
+    <p>The site needs three properties to be a good agent candidate:</p>
+    <ul>
+      <li><b>Concentrated</b> — most of the brand's working files actually live there (not scattered across personal OneDrives).</li>
+      <li><b>Curated</b> — someone owns the site and keeps stale content archived. An agent over stale content is worse than no agent.</li>
+      <li><b>Permissioned for the right audience</b> — the agent inherits site permissions. Anyone who can read the site can use the agent.</li>
+    </ul>
+    <p>Good Edgewell candidates: Schick brand site, Banana Boat marketing site, Sun Care S&amp;OP site, Walmart account team site, Insights &amp; analytics hub.</p>
+
+    <h4>Step 2 — create the agent</h4>
+    <p>Open the SharePoint site → top-right toolbar → <b>Create an agent</b>. SharePoint creates a default agent over the site. Now you customize.</p>
+
+    <span class="prompt-label">Customize the agent's instructions</span>
+    <div class="prompt" data-prompt="You are the Schick Brand Agent. You answer questions only from the files in this SharePoint site, which contains Schick's growth plans, JBP decks, scan-data reports, agency briefs, S&OP recaps, and competitive trackers from the last 24 months. Behavior rules: (1) Always cite the specific file and page or slide where information came from. (2) If a question can be answered from older content (>12 months), say so and flag that it may be stale. (3) When asked about competitors (Gillette, Harry's, BIC), only use what's in our internal files plus what's quoted from public sources — do not invent. (4) When asked about financials, ground in our brand P&L and 4-blockers, never estimate. (5) If a question can't be answered from the site content, say so explicitly and suggest who likely has the answer (e.g., 'this would be a question for the Schick FP&A analyst'). (6) Use Edgewell terminology — refer to retailers by name, use brand portfolio language, treat 'shave system' and 'disposable' as distinct categories. Audience: Schick brand team, sales partners, insights team, executives.">You are the Schick Brand Agent. You answer questions only from the files in this SharePoint site, which contains Schick's growth plans, JBP decks, scan-data reports, agency briefs, S&amp;OP recaps, and competitive trackers from the last 24 months. Behavior rules: (1) Always cite the specific file and page or slide where information came from. (2) If a question can be answered from older content (&gt;12 months), say so and flag that it may be stale. (3) When asked about competitors (Gillette, Harry's, BIC), only use what's in our internal files plus what's quoted from public sources — do not invent. (4) When asked about financials, ground in our brand P&amp;L and 4-blockers, never estimate. (5) If a question can't be answered from the site content, say so explicitly and suggest who likely has the answer (e.g., "this would be a question for the Schick FP&amp;A analyst"). (6) Use Edgewell terminology — refer to retailers by name, use brand portfolio language, treat "shave system" and "disposable" as distinct categories. Audience: Schick brand team, sales partners, insights team, executives.</div>
+
+    <h4>Step 3 — seed the starter questions</h4>
+    <p>The agent panel lets you define <b>starter prompts</b> — the questions that appear as chips when someone opens it. These shape adoption more than anything else. Set five:</p>
+    <span class="prompt-label">Starter prompts to set on the agent</span>
+    <div class="prompt" data-prompt="Set the following five starter prompts on this agent so they appear as suggested questions when anyone opens it:
+1. What's Schick's current point of view on private-label competition in disposables?
+2. Summarize our most recent JBP commitments with Walmart for Schick.
+3. What did our last consumer research say about Gen-Z and wet shave?
+4. Show me Schick's YTD performance vs. plan, and the biggest gap.
+5. What changed in the last 60 days that I should know about?">Set the following five starter prompts on this agent so they appear as suggested questions when anyone opens it:
+1. What's Schick's current point of view on private-label competition in disposables?
+2. Summarize our most recent JBP commitments with Walmart for Schick.
+3. What did our last consumer research say about Gen-Z and wet shave?
+4. Show me Schick's YTD performance vs. plan, and the biggest gap.
+5. What changed in the last 60 days that I should know about?</div>
+
+    <h4>Step 4 — test it like a new hire would</h4>
+    <span class="prompt-label">Open the agent in the side pane and ask</span>
+    <div class="prompt" data-prompt="Pretend I'm a new brand manager who started Monday on the Schick team. I have three questions: (1) what is the brand's current strategic position in one paragraph, (2) who are the three most important retailers and what is the open issue with each, (3) what consumer insight from the last year has most shaped how we're going to market this year. Cite everything.">Pretend I'm a new brand manager who started Monday on the Schick team. I have three questions: (1) what is the brand's current strategic position in one paragraph, (2) who are the three most important retailers and what is the open issue with each, (3) what consumer insight from the last year has most shaped how we're going to market this year. Cite everything.</div>
+
+    <h4>Step 5 — pin it where the team works</h4>
+    <p>From the agent → "Add to Teams." Pin it as a tab in the Schick brand Teams channel. Now anyone on the team can talk to it without leaving Teams. <b>This is the adoption moment.</b> If it's a click away, it gets used; if it's three clicks away, it doesn't.</p>
+
+    <div class="callout expect">
+      <b class="callout-title">Expected outcome</b>
+      A live SharePoint agent over a real Edgewell brand site, with custom instructions, five starter prompts, and a Teams pin. You can ask it a question right now and get a cited answer from real files. Share the URL with your brand team before you close this page.
+    </div>
+    <div class="callout tip">
+      <b class="callout-title">Tip — naming the agent matters</b>
+      <code>Schick Brand Agent</code> is good. <code>Schick AI</code> is bad — too generic, gets ignored. <code>Ask Schick</code> is great if your culture leans informal. The name shapes whether people use it.
+    </div>
+    <div class="callout warn">
+      <b class="callout-title">Garbage in, garbage out — at scale</b>
+      The agent will faithfully reproduce whatever's in your SharePoint site, including the 2023 plan that nobody ever archived. Spend 20 minutes archiving stale content before you launch the agent. Then commit one person to a 30-minute quarterly cleanup.
+    </div>
+    <div class="callout important">
+      <b class="callout-title">Don't agentify what you wouldn't share</b>
+      The agent inherits site permissions. That's good. But also remember: anyone who has site access can now ask the agent <i>synthesizing</i> questions ("compare our 2024 and 2025 plans"). Some things that were safe-because-buried are no longer safe-because-buried. Audit accordingly.
+    </div>
+    <div class="callout check">
+      <b class="callout-title">Self-check</b>
+      <ul>
+        <li>The agent answers a question with a cited file.</li>
+        <li>I customized the instructions and the starter prompts — not the defaults.</li>
+        <li>The agent is pinned in the brand's Teams channel.</li>
+        <li>I sent at least one teammate a Teams message: "Try this and tell me what it gave you."</li>
+      </ul>
+    </div>
+    <div class="callout inst">
+      <b class="callout-title">Facilitator note</b>
+      Bring the room to one exec's laptop and create one brand agent live, end-to-end. The "it's this easy?" is the unlock. After the demo, send each exec back to their own table to do it in their own function. Time-box at 8 minutes — they'll iterate later, the point is to have created one.
+    </div>
+  </div>
+</details>
+
+<!-- ===== LAB CW4 ===== -->
+<details class="lab" id="lab-cw4">
+  <summary class="lab-summary">
+    <span class="lab-num warm">CW4</span>
+    <span class="lab-title">
+      <h3>Copilot Studio — design a custom Edgewell agent for a recurring process</h3>
+      <div class="lab-meta">
+        <span><b>Time:</b> 14 min</span>
+        <span><b>Tool:</b> Microsoft Copilot Studio (low-code)</span>
+        <span><b>Goal:</b> Scope &amp; sketch a custom agent for a real Edgewell process — e.g., JBP Prep Agent</span>
+        <span><b>Level:</b> Advanced (executive sponsor, not builder)</span>
+      </div>
+    </span>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="lab-body">
+    <p>SharePoint Agents are <i>"point at content."</i> Copilot Studio is <i>"design a behavior."</i> When the same conversation happens every quarter (JBP prep, S&amp;OP review, new product launch gate, agency brief intake), it's a Studio candidate. The point of this lab is not for you to <i>build</i> the agent — it's for you to be a strong product owner for the team that will. Most executives skip this step and end up with an agent that doesn't solve a real problem.</p>
+
+    <h4>Step 1 — pick one process</h4>
+    <p>Best candidates are processes that are: (a) <b>recurring</b> (you do it more than 4× a year), (b) <b>repeatable shape</b> (always asks for similar inputs), (c) <b>knowledge-heavy</b> (the prep work is in many files), (d) <b>painful</b> (the team complains about it). Edgewell examples:</p>
+    <ul>
+      <li><b>JBP Prep Agent</b> — walks a sales lead through pulling the right data, last-year commitments, open chargebacks, and category context before a retailer JBP.</li>
+      <li><b>S&amp;OP Question Agent</b> — answers the routine questions that come into the S&amp;OP team during the cycle (forecast variance, capacity, demand signals) from a defined data set.</li>
+      <li><b>Launch Gate Agent</b> — assembles the stage-gate package for a new product launch by asking the brand team a series of questions, pulling artifacts, and flagging gaps.</li>
+      <li><b>Insights Triage Agent</b> — routes consumer research requests, suggests existing studies, drafts the brief, and books the methodology review.</li>
+    </ul>
+
+    <h4>Step 2 — write the product brief for the agent (don't build yet)</h4>
+    <span class="prompt-label">Use Copilot Chat to draft the agent product brief</span>
+    <div class="prompt" data-prompt="Help me write a product brief for a custom Copilot Studio agent at Edgewell. The process I want to agentify is: [name the process — e.g., Walmart JBP Prep]. Cover: (1) WHO uses this agent (sales lead, brand team, FP&A) and what role they're in when they use it; (2) WHAT problem the agent solves in one sentence, with the alternative-today (current pain) named; (3) WHAT inputs the agent asks the user for (specific fields, not vague); (4) WHAT data sources it draws from (name actual SharePoint sites, files, internal systems); (5) WHAT artifact it produces (a draft deck, a doc, a checklist?); (6) FAILURE MODES — three ways this agent could be wrong or unhelpful, and how we'd detect; (7) SUCCESS METRIC — what would make us say in 90 days 'this was worth it.' Keep it to one page. Executive product-owner tone.">Help me write a product brief for a custom Copilot Studio agent at Edgewell. The process I want to agentify is: [name the process — e.g., Walmart JBP Prep]. Cover: (1) WHO uses this agent (sales lead, brand team, FP&amp;A) and what role they're in when they use it; (2) WHAT problem the agent solves in one sentence, with the alternative-today (current pain) named; (3) WHAT inputs the agent asks the user for (specific fields, not vague); (4) WHAT data sources it draws from (name actual SharePoint sites, files, internal systems); (5) WHAT artifact it produces (a draft deck, a doc, a checklist?); (6) FAILURE MODES — three ways this agent could be wrong or unhelpful, and how we'd detect; (7) SUCCESS METRIC — what would make us say in 90 days "this was worth it." Keep it to one page. Executive product-owner tone.</div>
+
+    <h4>Step 3 — sketch the agent's conversation in Studio</h4>
+    <p>Open Copilot Studio. Create a new agent. In the <b>Instructions</b> field, paste the design prompt below. Studio will generate a starter agent you can iterate on. This is enough for a working prototype — your IT partner can wire up data connections after.</p>
+
+    <span class="prompt-label">Initial agent design — paste into Studio instructions</span>
+    <div class="prompt" data-prompt="You are the JBP Prep Agent for Edgewell sales leads. Your job is to walk a sales lead through preparing for a Joint Business Plan meeting with a retailer (Walmart, Target, Costco, Amazon, CVS, Walgreens, Kroger, Club, or international). When a user starts, ask them: (1) which retailer is the JBP for, (2) which brands are in scope (Schick, Banana Boat, Hawaiian Tropic, Playtex, etc.), (3) the JBP date, (4) what they remember being committed to in the last JBP. Then, based on the answers, do the following: (A) pull from the appropriate SharePoint site the most recent JBP deck, last year's commitments, current YTD performance, open chargebacks, and category competitive context; (B) produce a structured prep document with sections — 'Where we stand,' 'What we owe them,' 'What we want from them,' 'Tension points,' 'Open data we still need'; (C) before finishing, ask the user three sharpening questions that the user must answer before the prep doc is finalized; (D) output the final prep doc to a new Page in the user's OneDrive titled '[Retailer] JBP Prep — [Date].' Tone: efficient, retailer-savvy, never breezy. If the user asks something outside JBP prep, redirect them gently. If you can't find a source for a number, say so — never estimate.">You are the JBP Prep Agent for Edgewell sales leads. Your job is to walk a sales lead through preparing for a Joint Business Plan meeting with a retailer (Walmart, Target, Costco, Amazon, CVS, Walgreens, Kroger, Club, or international). When a user starts, ask them: (1) which retailer is the JBP for, (2) which brands are in scope (Schick, Banana Boat, Hawaiian Tropic, Playtex, etc.), (3) the JBP date, (4) what they remember being committed to in the last JBP. Then, based on the answers, do the following: (A) pull from the appropriate SharePoint site the most recent JBP deck, last year's commitments, current YTD performance, open chargebacks, and category competitive context; (B) produce a structured prep document with sections — "Where we stand," "What we owe them," "What we want from them," "Tension points," "Open data we still need"; (C) before finishing, ask the user three sharpening questions that the user must answer before the prep doc is finalized; (D) output the final prep doc to a new Page in the user's OneDrive titled "[Retailer] JBP Prep — [Date]." Tone: efficient, retailer-savvy, never breezy. If the user asks something outside JBP prep, redirect them gently. If you can't find a source for a number, say so — never estimate.</div>
+
+    <h4>Step 4 — pressure-test the design with a peer</h4>
+    <span class="prompt-label">In Copilot Chat (or back in your CW1 Page), with a teammate</span>
+    <div class="prompt" data-prompt="Critique this Copilot Studio agent design from the perspective of a senior Edgewell sales lead who'd actually use it. Where is the conversation flow weak? Where is the prep doc structure likely to feel useless? What inputs am I asking for that don't matter? What inputs am I NOT asking for that I should? What's the one change that would make the difference between this getting used and this getting ignored after week 2?">Critique this Copilot Studio agent design from the perspective of a senior Edgewell sales lead who'd actually use it. Where is the conversation flow weak? Where is the prep doc structure likely to feel useless? What inputs am I asking for that don't matter? What inputs am I NOT asking for that I should? What's the one change that would make the difference between this getting used and this getting ignored after week 2?</div>
+
+    <div class="callout expect">
+      <b class="callout-title">Expected outcome</b>
+      A one-page product brief and a draft Studio agent for one real Edgewell process. You're not "done" — the next step is a 2-week build with IT and a pilot user. But you'd walk out of this room ready to assign that work, with a clear definition of what success looks like.
+    </div>
+    <div class="callout tip">
+      <b class="callout-title">Tip — start with the artifact, work backwards</b>
+      The strongest Studio agents are designed from the output. If you can describe the exact artifact ("a 6-section Word doc named X with these fields filled in"), the conversation flow falls out naturally. If you can't describe the artifact, you're not ready to build the agent yet.
+    </div>
+    <div class="callout warn">
+      <b class="callout-title">Don't agentify a broken process</b>
+      If your JBP prep is bad today because the underlying data is bad, agentifying it will create a faster, cleaner, more impressive bad JBP prep. Fix the data foundation first, then automate. Otherwise you're scaling a problem.
+    </div>
+    <div class="callout important">
+      <b class="callout-title">This is an IT + business co-build</b>
+      Studio agents that touch real systems (Salesforce, SAP, Edgewell's internal financial systems, syndicated data feeds) need IT to wire the connections. Bring IT in at the brief stage. Building first and asking for connections after is the classic anti-pattern.
+    </div>
+    <div class="callout check">
+      <b class="callout-title">Self-check</b>
+      <ul>
+        <li>I picked one specific process — not "agents in general."</li>
+        <li>I wrote a one-page brief with WHO, WHAT, INPUTS, SOURCES, OUTPUT, FAILURE MODES, and a 90-day success metric.</li>
+        <li>I have a critique from a peer in the role who'd actually use the agent.</li>
+        <li>I know what I'd ask IT to wire up next.</li>
+      </ul>
+    </div>
+    <div class="callout inst">
+      <b class="callout-title">Facilitator note</b>
+      Cap this lab at 14 minutes. The temptation is to over-design. Tell the room: "By the end of this lab, you have a brief and an opinion — you don't have a finished agent. That's deliberate." Use the remaining time to have two execs read their briefs aloud and the room critique.
+    </div>
+  </div>
+</details>
+
+    </div>
+  </article>
+</section>
+<!-- ============ SCENARIO: THE CAPSTONE ============ -->
+<section class="scenario" id="scen-3">
+  <article class="scenario-card">
+    <header class="scenario-header green">
+      <span class="badge">CoWork · Part 3 of 3 — Capstone</span>
+      <h2>The 90-Day Execution Plan — built by the leadership team, with agents</h2>
+      <p style="margin:4px 0 0;color:#e2f3df">Part I produced a board brief. CoWork makes it real. This is the live, multi-player plan the CFO will actually track against.</p>
+      <div class="story-meta">
+        <span><b>Persona:</b> Brand President + CFO/FP&amp;A + Head of Sales + CMO</span>
+        <span><b>Tools:</b> Copilot Page + Analyst Agent + Researcher Agent + Brand Agent (CW3)</span>
+        <span><b>Deliverable:</b> A live execution plan with named owners, agent-maintained sections, and a CFO-trackable structure</span>
+      </div>
+    </header>
+    <div class="scenario-body">
+      <div class="story">
+        <b>The story.</b> The board meeting was Friday. The CEO opened with your recommendation. The board endorsed the direction. Now the leadership team has 90 days to make it real. In a normal Edgewell, that means a 22-slide deck, a steering committee, four cross-functional meetings, and a plan that's already out of date by week three. In CoWork Edgewell, that means one Page, three people, three agents, and a 25-minute working session that produces a living artifact.
+      </div>
+      <div class="persona-row">
+        <span class="persona"><span class="dot green"></span>Brand President</span>
+        <span class="persona"><span class="dot green"></span>CFO / FP&amp;A lead</span>
+        <span class="persona"><span class="dot green"></span>Head of Sales</span>
+        <span class="persona"><span class="dot green"></span>CMO</span>
+      </div>
+
+<!-- ===== LAB CW5 ===== -->
+<details class="lab" id="lab-cw5" open>
+  <summary class="lab-summary">
+    <span class="lab-num green">CW5</span>
+    <span class="lab-title">
+      <h3>Capstone — the live 90-day execution plan</h3>
+      <div class="lab-meta">
+        <span><b>Time:</b> 25 min</span>
+        <span><b>Tool:</b> Copilot Page + Analyst + Researcher + your CW3 Brand Agent</span>
+        <span><b>Goal:</b> A living plan, not a deck</span>
+        <span><b>Level:</b> Capstone</span>
+      </div>
+    </span>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="lab-body">
+    <p>This lab brings everything together. The Page from CW1 (a working artifact). The multi-agent posture from CW2 (humans + agents in the same room). The institutional agent from CW3 (your brand agent now part of the cast). And a tight 25-minute session that ends with a plan the CFO can actually use.</p>
+
+    <h4>The setup — 3 minutes</h4>
+    <ol>
+      <li>Create a new Page. Name it: <code>[Brand] — 90-day execution plan — Q[N]</code>.</li>
+      <li>Share it edit-access with: Brand President, FP&amp;A lead, Head of Sales for that brand's channel, CMO.</li>
+      <li>In the Page's Copilot pane, <code>@</code>-invite: Analyst Agent, Researcher Agent, and your CW3 Brand Agent.</li>
+      <li>Drop one message in the Page's chat: "We have 25 minutes to produce the 90-day plan. Everyone in. No private side-chats."</li>
+    </ol>
+
+    <h4>Section 1 — the spine (5 minutes)</h4>
+    <span class="prompt-label">Generate the plan spine from the board commitment</span>
+    <div class="prompt" data-prompt="The board endorsed our recommendation: [paste the one-sentence recommendation from your Part I D3 brief]. Generate the spine of a 90-day execution plan to deliver against it. Structure: Section 1 — The single goal we're driving to (one sentence, with the success metric). Section 2 — The three workstreams that get us there. For each workstream: the desired end-state at day 90, the named owner, the first three milestones with dates, and the one risk that would derail it. Section 3 — Weekly operating rhythm: who meets, when, what they're accountable for. Section 4 — The leading indicators we'll watch (not lagging — leading). Section 5 — Decisions we're explicitly NOT making now, and when we'll revisit. Output it as the structure of the Page itself, with placeholders my team will fill in.">The board endorsed our recommendation: [paste the one-sentence recommendation from your Part I D3 brief]. Generate the spine of a 90-day execution plan to deliver against it. Structure: Section 1 — The single goal we're driving to (one sentence, with the success metric). Section 2 — The three workstreams that get us there. For each workstream: the desired end-state at day 90, the named owner, the first three milestones with dates, and the one risk that would derail it. Section 3 — Weekly operating rhythm: who meets, when, what they're accountable for. Section 4 — The leading indicators we'll watch (not lagging — leading). Section 5 — Decisions we're explicitly NOT making now, and when we'll revisit. Output it as the structure of the Page itself, with placeholders my team will fill in.</div>
+
+    <h4>Section 2 — agents and humans, in parallel (12 minutes)</h4>
+    <p>Now run the working session. Direct each agent and each human to a different section. <b>Important:</b> do this in the Page so everyone sees the same thing.</p>
+
+    <span class="prompt-label">Orchestrate the working session — paste in the Page</span>
+    <div class="prompt" data-prompt="For the next 12 minutes, here is who owns what in this Page. ANALYST AGENT: take the success metric and the leading indicators. Pull baseline numbers from our brand P&L. Propose three leading indicators (e.g., weekly POS, share of distribution, ad-driven traffic to the brand site) with current values and 90-day targets. Cite sources. BRAND AGENT [@Schick or @Banana Boat agent]: take the 'where we stand' context. Pull from our brand site: the most recent JBP commitments, the current promo calendar, any open chargebacks or recalls, and the three biggest unresolved tensions with retail partners. RESEARCHER AGENT: take the 'external watchlist' — three competitor moves we should be tracking in the next 90 days, with reasoning. BRAND PRESIDENT: fill in Workstream 1 (the brand-side moves). FP&A LEAD: fill in Workstream 2 (the financial commitments and gates). HEAD OF SALES: fill in Workstream 3 (the retailer execution). CMO: write the one-sentence goal and pressure-test our success metric. Everyone work simultaneously. I'll synthesize at minute 12.">For the next 12 minutes, here is who owns what in this Page. ANALYST AGENT: take the success metric and the leading indicators. Pull baseline numbers from our brand P&amp;L. Propose three leading indicators (e.g., weekly POS, share of distribution, ad-driven traffic to the brand site) with current values and 90-day targets. Cite sources. BRAND AGENT [@Schick or @Banana Boat agent]: take the "where we stand" context. Pull from our brand site: the most recent JBP commitments, the current promo calendar, any open chargebacks or recalls, and the three biggest unresolved tensions with retail partners. RESEARCHER AGENT: take the "external watchlist" — three competitor moves we should be tracking in the next 90 days, with reasoning. BRAND PRESIDENT: fill in Workstream 1 (the brand-side moves). FP&amp;A LEAD: fill in Workstream 2 (the financial commitments and gates). HEAD OF SALES: fill in Workstream 3 (the retailer execution). CMO: write the one-sentence goal and pressure-test our success metric. Everyone work simultaneously. I'll synthesize at minute 12.</div>
+
+    <h4>Section 3 — the synthesis (5 minutes)</h4>
+    <span class="prompt-label">At minute 12 — pull it together</span>
+    <div class="prompt" data-prompt="Synthesize across everything humans and agents have put into this Page in the last 12 minutes. Tell me: (1) Where the workstreams are mutually reinforcing — call out specific dependencies. (2) Where the workstreams contradict each other or compete for the same resource — name the conflict. (3) Which milestones have the same owner — flag any concentration risk. (4) Which leading indicators are most defensible vs. which are aspirational. (5) The single thing this plan is implicitly assuming that, if untrue, breaks the whole thing. Be direct. The CFO will read this on Friday.">Synthesize across everything humans and agents have put into this Page in the last 12 minutes. Tell me: (1) Where the workstreams are mutually reinforcing — call out specific dependencies. (2) Where the workstreams contradict each other or compete for the same resource — name the conflict. (3) Which milestones have the same owner — flag any concentration risk. (4) Which leading indicators are most defensible vs. which are aspirational. (5) The single thing this plan is implicitly assuming that, if untrue, breaks the whole thing. Be direct. The CFO will read this on Friday.</div>
+
+    <h4>Section 4 — make it self-maintaining (3 minutes)</h4>
+    <p>This is the move that separates a plan from a deck. Configure two sections of the Page to refresh themselves.</p>
+
+    <span class="prompt-label">Set up agent-maintained sections</span>
+    <div class="prompt" data-prompt="Set up two sections of this Page to refresh automatically every Monday morning. (1) 'This week's read on the leading indicators' — the Analyst Agent should pull the current value of each indicator we defined, compare to plan, and flag anything off track in red, with a 2-sentence interpretation. (2) 'External watchlist update' — the Researcher Agent should check for any new credible signal on the three competitor moves we're tracking (earnings releases, trade press, new product launches) and post a 3-bullet update. Both should be timestamped. Both should cite. Notify @[me] and @[brand president] when they refresh.">Set up two sections of this Page to refresh automatically every Monday morning. (1) "This week's read on the leading indicators" — the Analyst Agent should pull the current value of each indicator we defined, compare to plan, and flag anything off track in red, with a 2-sentence interpretation. (2) "External watchlist update" — the Researcher Agent should check for any new credible signal on the three competitor moves we're tracking (earnings releases, trade press, new product launches) and post a 3-bullet update. Both should be timestamped. Both should cite. Notify @[me] and @[brand president] when they refresh.</div>
+
+    <h4>Section 5 — close with commitments (2 minutes)</h4>
+    <span class="prompt-label">Generate the commitment block</span>
+    <div class="prompt" data-prompt="In the final 2 minutes, produce the commitment block for the bottom of this Page. List, by named person: (1) what they own at day 30, (2) what they own at day 60, (3) what they own at day 90. Make sure each entry is a specific verb (deliver, decide, commit, ship) not a vague verb (review, discuss, look into). Then add one final line: 'We agreed not to revisit this plan until day 30 unless a leading indicator goes red.'">In the final 2 minutes, produce the commitment block for the bottom of this Page. List, by named person: (1) what they own at day 30, (2) what they own at day 60, (3) what they own at day 90. Make sure each entry is a specific verb (deliver, decide, commit, ship) not a vague verb (review, discuss, look into). Then add one final line: "We agreed not to revisit this plan until day 30 unless a leading indicator goes red."</div>
+
+    <div class="pages-mock" aria-hidden="true">
+      <div class="pmhead">
+        <span>📄</span>
+        <span><b>Banana Boat — 90-day execution plan — Q3</b></span>
+        <span style="color:#7CC576;font-weight:600">● Auto-refresh: every Monday 7:00 AM</span>
+        <span class="avatars">
+          <span class="av h1">You</span>
+          <span class="av h2">BP</span>
+          <span class="av h3">CFO</span>
+          <span class="av ag1">An</span>
+          <span class="av ag2">Re</span>
+        </span>
+      </div>
+      <div class="pmbody">
+        <div class="pmline"><b>Goal:</b> Win the season in Walmart mineral face SPF · Success metric: 3 incremental facings + 18% YoY in face SPF.</div>
+        <div class="pmline"><b>Workstream 1 (BP):</b> 4-SKU mineral face line locked Day 14 · agency creative Day 30 · sell-in Day 45.</div>
+        <div class="pmline"><b>Workstream 2 (CFO):</b> Trade investment +12% from contingency · gate review Day 30 · pull-back trigger if POS &lt; plan -8%.</div>
+        <div class="pmline"><b>Workstream 3 (Sales):</b> Bentonville visit Day 21 · planogram sign-off Day 45 · launch in-store Day 80.</div>
+        <div class="pmline"><span class="tag agent">Analyst (auto · Mon 7am)</span>Week 1 read: POS +3% vs plan ✅, distribution at 78% of target ⚠️.</div>
+        <div class="pmline"><span class="tag agent">Researcher (auto · Mon 7am)</span>Coppertone announced new mineral SPF for face at $14.99; Sun Bum filed FDA for new mineral SKU.</div>
+      </div>
+    </div>
+
+    <div class="callout expect">
+      <b class="callout-title">Expected outcome — the artifact that matters</b>
+      A single Page that contains: a goal, three workstreams with named owners and dated milestones, leading indicators with baselines, an external watchlist, two agent-maintained sections that refresh weekly, and a commitment block with day-30/60/90 specifics. This Page replaces a 22-slide deck and four steering committee meetings. <b>It is the plan.</b>
+    </div>
+    <div class="callout important">
+      <b class="callout-title">This is the executive shift</b>
+      Most leadership teams have plans. Few have <i>living</i> plans. The agent-maintained sections are what make this different — they remove the entropy that turns plans into wallpaper. Don't skip section 4.
+    </div>
+    <div class="callout tip">
+      <b class="callout-title">Tip — weekly cadence, not daily</b>
+      Resist the urge to make every section refresh daily. Leadership attention is the scarce resource. Weekly is right for indicators and watchlist. Day 30 / 60 / 90 are right for the deeper review.
+    </div>
+    <div class="callout warn">
+      <b class="callout-title">The CFO test</b>
+      Send the Page to the CFO. If they can't answer "are we on track?" in 60 seconds of reading, the plan isn't yet what it needs to be. Iterate the metrics and the structure until that 60-second test passes.
+    </div>
+    <div class="callout check">
+      <b class="callout-title">Self-check — the capstone</b>
+      <ul>
+        <li>The plan has named human owners on every workstream and every milestone.</li>
+        <li>The leading indicators are leading, not lagging, and have current baselines.</li>
+        <li>Two sections are configured to refresh automatically with agent contributions.</li>
+        <li>The commitment block uses specific verbs (deliver, decide, commit, ship).</li>
+        <li>The CFO read the Page in 60 seconds and could answer "are we on track?"</li>
+      </ul>
+    </div>
+    <div class="callout inst">
+      <b class="callout-title">Facilitator note — the high-stakes finish</b>
+      Run this as a live 25-minute exercise in 3-person pods. Provide a timer on the projector. At minute 12, ring a bell — that's the synthesis moment. Hold a 5-minute share-out where one pod shows their Page to the room. The room should be able to critique using the CFO test. End the immersion here — don't add more after CW5. The Page <i>is</i> the takeaway.
+    </div>
+  </div>
+</details>
+
+    </div>
+  </article>
+</section>
+<!-- ============ WRAP-UP ============ -->
+<section class="surface" id="wrapup">
+  <h2>Wrap-up — what changes for the leadership team</h2>
+  <p>Part I changed how you work. CoWork changes how your team works. The behaviors that compound the most are the ones that feel slightly uncomfortable at first.</p>
+
+  <div class="grid-3" style="margin-top:14px">
+    <div class="kpi"><div class="v">Pages</div><div class="l">The default for shared thinking</div></div>
+    <div class="kpi"><div class="v">Agents</div><div class="l">Participants in the work, not just answer-machines</div></div>
+    <div class="kpi"><div class="v">Living plans</div><div class="l">Sections that refresh themselves so the plan doesn't go stale</div></div>
+  </div>
+
+  <h3 style="margin-top:24px">Three behaviors to install this month</h3>
+  <ol>
+    <li><b>The next "alignment meeting" becomes a Page instead.</b> 20-minute window, everyone editing live, Copilot in the pane. If you do this once a week for four weeks, your team's pace changes visibly.</li>
+    <li><b>Every brand, every function, gets one agent.</b> Start with the SharePoint agent on the site that has the most concentrated content. Name a "Copilot champion" inside the function to maintain it.</li>
+    <li><b>Every 90-day plan becomes a live Page with agent-maintained sections.</b> The CFO knows, on Monday morning, whether the plan is on track — without anyone preparing a status update.</li>
+  </ol>
+
+  <h3>Reflection — answer in writing</h3>
+  <ol>
+    <li>Of the five labs, which one most changed how you think your team should operate? Why?</li>
+    <li>Where in Edgewell is institutional knowledge most trapped in individuals' heads today? Which lab would you apply there first?</li>
+    <li>What's one meeting on your calendar this week that should become a Page instead? Cancel it and convert it.</li>
+    <li>What's the one Edgewell process — recurring, repeatable, knowledge-heavy, painful — that deserves a Copilot Studio agent in the next 90 days? Who would own the brief?</li>
+  </ol>
+
+  <h3>Make it permanent — three executive commitments</h3>
+  <div class="grid-2">
+    <div>
+      <h4>For yourself</h4>
+      <ul>
+        <li>Create one Page this week and share it with two teammates.</li>
+        <li>Pin one SharePoint agent to a Teams channel you check daily.</li>
+        <li>Add a "Monday morning Page review" to your calendar — 10 minutes to check what the agents posted overnight.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>For your function</h4>
+      <ul>
+        <li>Name a Copilot champion who owns your function's agent and prompt library.</li>
+        <li>Convert one recurring meeting into a Page-first working session.</li>
+        <li>Sponsor one Copilot Studio agent build with IT in the next quarter.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout important">
+    <b class="callout-title">The honest measure of success</b>
+    Sixty days from now, walk through the Edgewell tenant. Count the number of <b>Pages</b> with multiple editors. Count the number of <b>SharePoint agents</b> with weekly active users. Count the number of <b>living plans</b> with agent-maintained sections. If those three numbers aren't growing, this immersion was a workshop — not a change in how Edgewell operates. They're the only metrics that matter.
+  </div>
+
+  <h3>The full executive arc — Part I + CoWork</h3>
+  <table class="facts">
+    <tr><th>Part I, Scenario A</th><td>Back from the field — personal catch-up, mobile, voice, Outlook, Teams recap.</td></tr>
+    <tr><th>Part I, Scenario B</th><td>Operating rhythm — personalization, memory, prompt library, search.</td></tr>
+    <tr><th>Part I, Scenario C</th><td>Brand &amp; competitive strategy — Analyst, Researcher, Notebook teardown.</td></tr>
+    <tr><th>Part I, Scenario D</th><td>Insight to action — Meeting-to-Momentum, Excel Agent dashboard, board-ready capstone.</td></tr>
+    <tr><th>CoWork, Part 1</th><td>From one to many — Pages 101, multi-agent working sessions.</td></tr>
+    <tr><th>CoWork, Part 2</th><td>Institutional leverage — SharePoint brand agents, custom Copilot Studio agents.</td></tr>
+    <tr><th>CoWork, Capstone</th><td>The live 90-day execution plan — the artifact the CFO tracks against.</td></tr>
+  </table>
+  <p style="margin-top:10px"><a href="Edgewell-Executive-Copilot-Lab.html">↩ Back to Part I — Edgewell Executive Copilot Lab</a></p>
+</section>
+
+<!-- ============ FACILITATOR ============ -->
+<section class="surface" id="facilitator">
+  <h2>Facilitator notes &amp; debrief</h2>
+  <p>For instructors running this CoWork session as a 60–75 minute facilitated follow-up to Part I.</p>
+
+  <h3>Recommended cadence (75-minute version)</h3>
+  <table class="facts">
+    <tr><th>Opening</th><td>8 min — reconnect to Part I, frame the shift: "Part I was you using Copilot. CoWork is your team operating with Copilot. That's a different muscle."</td></tr>
+    <tr><th>CW1 — Pages 101</th><td>10 min — live creation by one exec while others follow along on their laptops</td></tr>
+    <tr><th>CW2 — Multi-agent session</th><td>12 min — pairs; one human invites two agents into a Page and runs a working session</td></tr>
+    <tr><th>CW3 — SharePoint Brand Agent</th><td>14 min — full-room demo of creating one brand agent end-to-end, then each exec starts one in their own function</td></tr>
+    <tr><th>CW4 — Copilot Studio brief</th><td>10 min — individual writing exercise, then 2-minute peer critique pairs</td></tr>
+    <tr><th>CW5 — Capstone Page</th><td>15 min — 3-person pods produce a live 90-day execution Page; one pod presents to the room</td></tr>
+    <tr><th>Wrap</th><td>6 min — three behaviors to install, commitments shared aloud</td></tr>
+  </table>
+
+  <h3>Conversational anchors</h3>
+  <ul>
+    <li><b>Make the shift from "asking Copilot" to "working with Copilot" visible.</b> The Page is the artifact that makes this real. Linger on it.</li>
+    <li><b>Don't oversell Studio.</b> Studio is real, but most Edgewell value will come from Pages and SharePoint agents in the first 6 months. Position Studio as "the natural next step once you've earned your pattern."</li>
+    <li><b>Name the data foundation conversation.</b> Every CoWork question eventually points back to "is the data in a good shape?" Don't dodge it. Invite the CIO to comment if in the room.</li>
+    <li><b>Convert intellectual interest into committed builds.</b> Each exec should leave with: one Page created, one agent started, one Studio brief drafted, and one cancelled meeting.</li>
+  </ul>
+
+  <h3>If you have less time</h3>
+  <ul>
+    <li><b>30-min version:</b> CW1 + CW3 only. Get them building one Page and one brand agent. Save CW2, CW4, CW5 for a follow-up.</li>
+    <li><b>45-min version:</b> CW1 + CW3 + CW5. The capstone with a smaller cast (2 humans, 1 agent) still produces a real artifact.</li>
+    <li><b>60-min version:</b> Drop CW4. Keep CW1, CW2, CW3, CW5. This is the version most executive teams should run first.</li>
+  </ul>
+
+  <h3>What to bring</h3>
+  <ul>
+    <li>A pre-built sample Page for CW1 so you can demo end-to-end without typing.</li>
+    <li>Owner access to one Edgewell SharePoint site (e.g., a sandbox brand site) for the CW3 live demo.</li>
+    <li>Copilot Studio access for the facilitator account so CW4 can show the design surface.</li>
+    <li>A printed page with the CW4 product brief template (WHO / WHAT / INPUTS / SOURCES / OUTPUT / FAILURE MODES / SUCCESS).</li>
+    <li>An IT partner in the room for the Studio and SharePoint questions. CoWork makes these conversations land.</li>
+  </ul>
+
+  <h3>Common executive questions — short answers</h3>
+  <table class="facts">
+    <tr><th>"Is a Page just a Word doc?"</th><td>No. A Page is multi-player by default, lives in Copilot's context, and Copilot can read and write into it as a participant. Word is a finished document; a Page is a working surface.</td></tr>
+    <tr><th>"What happens to a Page when it's done?"</th><td>You can export it to Word, turn it into a PowerPoint via Copilot, archive it in SharePoint, or just let it live. Living plans should stay as Pages. One-time briefs can move to Word.</td></tr>
+    <tr><th>"Will a SharePoint agent leak confidential content?"</th><td>It inherits site permissions. If you can read the site, you can ask the agent. If you can't, the agent won't show you content from it. The risk is that anyone with site access can now <i>synthesize</i> across files faster — audit accordingly.</td></tr>
+    <tr><th>"What does a Copilot Studio agent cost to run?"</th><td>Licensing model varies. The honest answer for execs: ask IT for the per-message cost forecast before you green-light a build. Don't over-engineer the first agent — start with a SharePoint agent (free with Copilot license) and graduate to Studio when the use case demands.</td></tr>
+    <tr><th>"How do we know the agents are getting better?"</th><td>Two signals: usage (people coming back) and quality (people not having to correct the output). Have your Copilot champion track both for the agents in your function.</td></tr>
+    <tr><th>"What if our SharePoint is a mess?"</th><td>It probably is — most enterprise SharePoints are. Pick the one cleanest site and start there. The cleanup that follows pays back many times over.</td></tr>
+  </table>
+
+  <div class="callout inst">
+    <b class="callout-title">The one thing not to forget</b>
+    CoWork is not about adopting Copilot. It's about how the leadership team chooses to work. The technology is the easy part. The discipline of converting a meeting into a Page, of pinning an agent to a channel, of refusing to revisit a plan until day 30 — that's the change. Build the room toward that discipline, not toward more features.
+  </div>
+</section>
+
+  </main>
+</div>
+
+<footer>
+  <div>Edgewell Executive CoWork Lab · companion to the Edgewell Executive Copilot Lab · built for senior leaders at Edgewell Personal Care</div>
+  <div style="margin-top:6px;color:#9fb1c4;font-size:.82rem">Self-contained HTML · open in any modern browser · GitHub Pages-ready</div>
+</footer>
+
+<script>
+(function(){
+  // copy buttons on every .prompt
+  document.querySelectorAll('.prompt').forEach(function(p){
+    var btn=document.createElement('button');
+    btn.className='copy-btn';btn.type='button';btn.textContent='Copy';
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var text=p.getAttribute('data-prompt')||p.textContent.replace(/Copy$/,'').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},1600);
+      });
+    });
+    p.appendChild(btn);
+  });
+
+  // expand / collapse all
+  document.getElementById('expand-all').addEventListener('click',function(){
+    document.querySelectorAll('details.lab').forEach(function(d){d.open=true;});
+  });
+  document.getElementById('collapse-all').addEventListener('click',function(){
+    document.querySelectorAll('details.lab').forEach(function(d){d.open=false;});
+  });
+
+  // active nav state via IntersectionObserver
+  var links=Array.from(document.querySelectorAll('aside.nav a[href^="#"]'));
+  var map={};
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el)map[id]=a;
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var a=map[e.target.id]; if(a)a.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id); if(el)io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>

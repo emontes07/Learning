@@ -1,0 +1,1361 @@
+---
+demo:
+    title: 'Edgewell Cowork Executive Lab | The 45-Minute Chief-of-Staff Session'
+layout: none
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edgewell Cowork Executive Lab | The 45-Minute Chief-of-Staff Session</title>
+<meta name="description" content="A focused, 45-minute Cowork lab for Edgewell Personal Care executives — eight prompts that turn Cowork into the operating rhythm of your week." />
+<style>
+  :root {
+    --navy:      #0B3D5E;
+    --navy-2:    #143E63;
+    --teal:      #1E7A8C;
+    --teal-2:    #2C95A8;
+    --mist:      #E6EEF3;
+    --bg:        #F5F7FA;
+    --card:      #FFFFFF;
+    --line:      #E2E8EE;
+    --ink:       #1A2433;
+    --ink-2:     #2C3849;
+    --muted:     #5A6577;
+    --coral:     #FF7A59;
+    --coral-2:   #E85C3A;
+    --gold:      #E8A33A;
+    --success:   #2BA37A;
+    --warn-bg:   #FFF6E8;
+    --tip-bg:    #E8F3F1;
+    --fac-bg:    #F1ECFB;
+    --shadow:    0 1px 3px rgba(11,61,94,0.06), 0 8px 24px rgba(11,61,94,0.08);
+    --shadow-lg: 0 4px 12px rgba(11,61,94,0.08), 0 18px 48px rgba(11,61,94,0.12);
+    --r:         12px;
+    --r-sm:      8px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    color: #fff;
+    background:
+      radial-gradient(circle at 80% 25%, rgba(255,122,89,0.40) 0%, transparent 45%),
+      radial-gradient(circle at 12% 75%, rgba(44,149,168,0.55) 0%, transparent 50%),
+      linear-gradient(135deg, #082A43 0%, #0B3D5E 35%, #1E7A8C 100%);
+    padding: 56px 6vw 64px;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral) 0%, var(--gold) 50%, var(--teal-2) 100%);
+  }
+  .hero-back {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .hero-back:hover { color: #fff; text-decoration: none; }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(1.9rem, 4.2vw, 2.9rem);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .hero .lede {
+    font-size: clamp(1rem, 1.7vw, 1.18rem);
+    max-width: 880px;
+    color: rgba(255,255,255,0.92);
+    margin: 0 0 28px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-size: 0.82rem;
+    color: #fff;
+    font-weight: 500;
+  }
+  .chip strong { font-weight: 600; }
+  .hero-companion {
+    margin-top: 22px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--r-sm);
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.92);
+    max-width: 880px;
+  }
+  .hero-companion a { color: #fff; text-decoration: underline; }
+
+  /* ===== LAYOUT ===== */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 36px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 36px 4vw 96px;
+  }
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; gap: 24px; padding-top: 24px; }
+  }
+
+  /* ===== SIDE NAV ===== */
+  .side-nav {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 20px 16px;
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  .side-nav .nav-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+    padding: 0 10px;
+    font-weight: 600;
+  }
+  .side-nav ul { list-style: none; padding: 0; margin: 0; }
+  .side-nav li { margin: 2px 0; }
+  .side-nav a {
+    display: block;
+    padding: 9px 10px 9px 12px;
+    border-radius: var(--r-sm);
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    border-left: 3px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .side-nav a:hover { background: var(--mist); text-decoration: none; color: var(--navy); }
+  .side-nav a.active {
+    background: var(--mist);
+    color: var(--navy);
+    border-left-color: var(--coral);
+    font-weight: 600;
+  }
+  .side-nav .nav-step {
+    display: inline-block;
+    min-width: 22px;
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-right: 8px;
+  }
+  .side-nav a.active .nav-step { color: var(--coral-2); }
+  .side-nav .nav-time {
+    float: right;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  @media (max-width: 960px) {
+    .side-nav { position: static; max-height: none; }
+  }
+
+  /* ===== MAIN ===== */
+  main { min-width: 0; }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .section-head {
+    padding: 22px 26px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%);
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+  }
+  .section-head:hover { background: linear-gradient(180deg, #FFFFFF 0%, #F2F5F9 100%); }
+  .section-num {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(11,61,94,0.18);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--navy);
+    flex: 1 1 auto;
+    letter-spacing: -0.005em;
+  }
+  .section-head h2 .subtitle {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0;
+  }
+  .time-pill {
+    flex: 0 0 auto;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--coral-2);
+    background: #FFF0EA;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #FFD8C9;
+  }
+  .toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background 0.15s;
+    flex: 0 0 auto;
+  }
+  .section.open .toggle { transform: rotate(180deg); background: var(--mist); color: var(--navy); }
+  .section-body { display: none; padding: 4px 26px 28px; }
+  .section.open .section-body { display: block; }
+
+  /* ===== TYPOGRAPHY ===== */
+  h3 {
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 28px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h4 {
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    margin: 20px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  p { margin: 8px 0 14px; }
+  ul, ol { padding-left: 22px; margin: 8px 0 14px; }
+  li { margin: 5px 0; }
+  strong { color: var(--ink); }
+
+  /* ===== CALLOUTS ===== */
+  .callout {
+    border-radius: var(--r-sm);
+    padding: 14px 16px;
+    margin: 16px 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
+  }
+  .callout .ctitle {
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .callout.why  { background: var(--mist);    border-color: var(--teal);   color: var(--navy); }
+  .callout.tip  { background: var(--tip-bg);  border-color: var(--success); }
+  .callout.warn { background: var(--warn-bg); border-color: var(--gold);   }
+  .callout.fac  { background: var(--fac-bg);  border-color: #7B5BC4;       }
+  .callout.outcome { background: #FFF0EA; border-color: var(--coral); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout ul:last-child, .callout ol:last-child { margin-bottom: 0; }
+
+  /* ===== PROMPTS ===== */
+  .prompt-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin: 10px 0 6px;
+  }
+  .prompt-meta .pm {
+    background: #F5F8FB;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 8px 12px;
+    font-size: 0.86rem;
+  }
+  .prompt-meta .pm-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .prompt {
+    position: relative;
+    background: #0F2A3F;
+    color: #E8EEF3;
+    border-radius: var(--r-sm);
+    padding: 18px 56px 18px 18px;
+    margin: 10px 0 18px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    border-left: 4px solid var(--coral);
+    overflow-x: auto;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 500;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.22); }
+  .copy-btn.copied { background: var(--success); border-color: var(--success); }
+
+  /* ===== SELF-CHECK ===== */
+  .self-check {
+    background: linear-gradient(135deg, #F4F8FB 0%, #EBF2F6 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 18px 20px;
+    margin: 24px 0 6px;
+  }
+  .self-check h4 {
+    margin-top: 0;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .self-check label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    cursor: pointer;
+    color: var(--ink-2);
+    font-size: 0.94rem;
+    line-height: 1.45;
+  }
+  .self-check input[type="checkbox"] {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--teal);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .self-check label.done {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  /* ===== INTRO BLOCKS ===== */
+  .intro {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+    padding: 26px;
+    margin-bottom: 22px;
+  }
+  .intro h2 {
+    margin-top: 0;
+    color: var(--navy);
+    font-size: 1.25rem;
+    letter-spacing: -0.005em;
+  }
+  .objectives, .prereqs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 16px 0 4px;
+  }
+  .obj, .pre {
+    background: #F5F8FB;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--teal);
+    border-radius: var(--r-sm);
+    padding: 12px 14px;
+    font-size: 0.93rem;
+  }
+  .obj strong, .pre strong { display: block; color: var(--navy); margin-bottom: 3px; font-size: 0.95rem; }
+  .pre { border-left-color: var(--coral); }
+
+  /* ===== COWORK VS COPILOT TABLE ===== */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0 8px;
+  }
+  @media (max-width: 760px) { .compare { grid-template-columns: 1fr; } }
+  .compare-card {
+    border-radius: var(--r-sm);
+    padding: 18px;
+    border: 1px solid var(--line);
+  }
+  .compare-card.copilot {
+    background: #F5F8FB;
+    border-left: 4px solid var(--teal);
+  }
+  .compare-card.cowork {
+    background: linear-gradient(180deg, #FFF0EA 0%, #FFE3D6 100%);
+    border-left: 4px solid var(--coral);
+  }
+  .compare-card h4 {
+    margin: 0 0 8px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--navy);
+    font-size: 1.05rem;
+  }
+  .compare-card p { margin: 0 0 8px; font-size: 0.95rem; }
+  .compare-card ul { margin: 6px 0 0; padding-left: 18px; }
+  .compare-card li { font-size: 0.92rem; }
+
+  /* ===== STORYLINE ===== */
+  .storyline {
+    background: linear-gradient(135deg, #0B3D5E 0%, #1E7A8C 100%);
+    color: #fff;
+    border-radius: var(--r);
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-lg);
+  }
+  .storyline h2 { margin-top: 0; color: #fff; font-size: 1.3rem; }
+  .storyline p { color: rgba(255,255,255,0.92); }
+  .storyline .arc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .storyline .step {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--r-sm);
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  .storyline .step strong { color: var(--coral); display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+
+  /* ===== CADENCE ===== */
+  .cadence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 16px 0 8px;
+  }
+  .cad {
+    background: #F5F8FB;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 14px;
+    border-top: 3px solid var(--teal);
+  }
+  .cad .when {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--coral-2);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .cad h4 { margin: 0 0 6px; text-transform: none; letter-spacing: 0; font-size: 0.98rem; color: var(--navy); }
+  .cad p { margin: 0; font-size: 0.88rem; color: var(--muted); }
+
+  /* ===== KEY TAKEAWAYS ===== */
+  .takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 18px 0 8px;
+  }
+  .tk {
+    background: #F5F8FB;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 16px;
+  }
+  .tk .icon { font-size: 1.6rem; margin-bottom: 6px; }
+  .tk h4 { margin: 4px 0 6px; text-transform: none; letter-spacing: 0; color: var(--navy); font-size: 1rem; }
+  .tk p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    background: var(--mist);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #FAFBFD; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    padding: 32px 6vw;
+    font-size: 0.88rem;
+    border-top: 4px solid var(--coral);
+  }
+  footer a { color: #fff; }
+  footer .ft-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+  }
+  footer h4 { color: #fff; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.8rem; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin: 6px 0; }
+
+  /* Print friendly */
+  @media print {
+    .side-nav, .copy-btn, .toggle { display: none !important; }
+    .section, .section-body { display: block !important; page-break-inside: avoid; }
+    .hero { background: var(--navy) !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <a class="hero-back" href="../../">← Back to Index</a>
+  <div class="hero-badge">Edgewell Personal Care · Cowork Executive Lab</div>
+  <h1>Cowork: Your Chief of Staff, in 45 Minutes</h1>
+  <p class="lede">A focused executive session built around one idea — Cowork doesn't just help you draft, it runs your week. Nine prompts. One Edgewell portfolio. End the session with a daily rhythm, a weekly rhythm, and a board-ready story already in your hands.</p>
+  <div class="hero-meta">
+    <span class="chip">⏱ <strong>45 minutes</strong> · facilitator-led</span>
+    <span class="chip">🎯 <strong>9 prompts</strong> — curated, not exhaustive</span>
+    <span class="chip">🤝 <strong>Cowork-only</strong> deep dive</span>
+    <span class="chip">🎓 Audience: <strong>C-suite &amp; senior leaders</strong></span>
+  </div>
+  <div class="hero-companion">
+    <strong>Pair it with the full week:</strong> This session focuses entirely on Cowork. For the broader story — Copilot Voice on mobile, Custom Instructions, Analyst &amp; Researcher agents — see <a href="15-Edgewell-Executive-Copilot-Training.html">A Week in the Life of an Edgewell Leader</a>.
+  </div>
+</header>
+
+<!-- ===================== LAYOUT ===================== -->
+<div class="layout">
+
+  <!-- ============ SIDE NAV ============ -->
+  <aside class="side-nav" aria-label="Lab navigation">
+    <p class="nav-title">The 45 Minutes</p>
+    <ul>
+      <li><a href="#overview"><span class="nav-step">·</span>Why Cowork<span class="nav-time">5 min</span></a></li>
+      <li><a href="#setup"><span class="nav-step">·</span>Setup<span class="nav-time">2 min</span></a></li>
+      <li><a href="#lab1"><span class="nav-step">1</span>Daily Briefing<span class="nav-time">6 min</span></a></li>
+      <li><a href="#lab2"><span class="nav-step">2</span>Weekly Rhythm<span class="nav-time">7 min</span></a></li>
+      <li><a href="#lab3"><span class="nav-step">3</span>Meetings to Momentum<span class="nav-time">6 min</span></a></li>
+      <li><a href="#lab4"><span class="nav-step">4</span>Market Edge<span class="nav-time">6 min</span></a></li>
+      <li><a href="#lab5"><span class="nav-step">5</span>Leading Through Change<span class="nav-time">5 min</span></a></li>
+      <li><a href="#lab6"><span class="nav-step">6</span>Board Narrative<span class="nav-time">5 min</span></a></li>
+      <li><a href="#cadence"><span class="nav-step">·</span>Set the Cadence<span class="nav-time">3 min</span></a></li>
+      <li><a href="#takeaways"><span class="nav-step">·</span>Takeaways</a></li>
+      <li><a href="#troubleshooting"><span class="nav-step">·</span>Troubleshooting</a></li>
+    </ul>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- ====== OVERVIEW ====== -->
+    <section class="intro" id="overview">
+      <h2>What changes with Cowork</h2>
+      <p>Copilot is the assistant. Cowork is the chief of staff. Both are powerful — but they solve different problems, and executives feel the difference inside the first prompt.</p>
+
+      <div class="compare">
+        <div class="compare-card copilot">
+          <h4>Microsoft 365 Copilot</h4>
+          <p>Helps you <strong>think and draft</strong> on individual tasks — write an email, summarize a thread, build a slide.</p>
+          <ul>
+            <li>One task at a time</li>
+            <li>One app at a time</li>
+            <li>You orchestrate the steps</li>
+          </ul>
+        </div>
+        <div class="compare-card cowork">
+          <h4>Cowork</h4>
+          <p>Helps you <strong>run your rhythm</strong> — connects email, calendar, and documents to give you one actionable picture of your day, week, and priorities.</p>
+          <ul>
+            <li>Multi-step, multi-app, in one motion</li>
+            <li>Knows your week before you ask</li>
+            <li>Drafts; you approve before anything sends</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>What you'll have at the end of 45 minutes</h4>
+      <div class="objectives">
+        <div class="obj"><strong>A morning ritual</strong>One prompt that catches you up before you sit down — every day.</div>
+        <div class="obj"><strong>A Friday rhythm</strong>A weekly leadership update and shareable HTML dashboard built from a week of your own activity.</div>
+        <div class="obj"><strong>Sharper meetings</strong>Prep brief in, decisions and owners out — same motion.</div>
+        <div class="obj"><strong>A market read</strong>Competitor moves and retail-partner context fused with your inbox.</div>
+        <div class="obj"><strong>A change-leadership playbook</strong>Workforce comms and rapid-response statement packs when stakes spike.</div>
+        <div class="obj"><strong>A board-ready narrative</strong>The quarter's story — 2-page memo, 8-slide deck, metrics table — in one run.</div>
+      </div>
+    </section>
+
+    <!-- ====== STORYLINE ====== -->
+    <section class="storyline">
+      <h2>The shape of the 45 minutes</h2>
+      <p>One executive arc — short, deliberate, end-to-end. Each lab earns its time by producing something you'd actually want.</p>
+      <div class="arc">
+        <div class="step"><strong>Morning</strong>Daily Brief + Inbox Triage</div>
+        <div class="step"><strong>Mid-week</strong>Weekly Update + HTML Dashboard</div>
+        <div class="step"><strong>Meetings</strong>Prep → Recap → Follow-Up</div>
+        <div class="step"><strong>Outside-in</strong>Competitor + Retail Partner</div>
+        <div class="step"><strong>When stakes spike</strong>Workforce + Rapid Response</div>
+        <div class="step"><strong>Friday</strong>Quarterly Narrative</div>
+      </div>
+    </section>
+
+    <!-- ====== SETUP ====== -->
+    <section class="intro" id="setup">
+      <h2>Two-minute setup</h2>
+      <p>Quick check before the demo. The session is sharper when prompts run against the executive's own tenant.</p>
+      <div class="prereqs">
+        <div class="pre"><strong>Cowork access</strong>Signed in and working before the session starts.</div>
+        <div class="pre"><strong>Microsoft 365 Copilot license</strong>Required for any work-grounded prompt.</div>
+        <div class="pre"><strong>Outlook activity</strong>Sharper outputs with ~2 weeks of recent email + calendar.</div>
+        <div class="pre"><strong>Brand &amp; retailer names</strong>Have your top 2–3 brands and 2–3 retailers ready to swap into the prompts.</div>
+      </div>
+      <div class="callout fac">
+        <div class="ctitle">🎤 Facilitator note</div>
+        <p>Run this entirely against the executive's own data. The whole pitch is "Cowork already knows your week" — a demo tenant kills the moment. If you must run it on yours, name the brands and retailers Edgewell-relevant so the output still lands.</p>
+      </div>
+      <div class="callout warn">
+        <div class="ctitle">⚠ Safety &amp; control</div>
+        <p>Cowork drafts; you approve. No emails are sent, no files are shared, and no calendar invites are created without your explicit approval. Every output in this session is a draft until you say otherwise.</p>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 1: Daily Briefing ======================================== -->
+    <!-- =================================================================== -->
+    <section class="section open" id="lab1">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">1</div>
+        <h2>The Morning Ritual
+          <span class="subtitle">Daily Executive Briefing &amp; Inbox Triage — start every day with clarity</span>
+        </h2>
+        <div class="time-pill">6 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this is the anchor prompt</div>
+          <p>If you only ever use one Cowork prompt, this is the one. It's the difference between starting Monday inside your inbox and starting Monday <em>above</em> it. Run it before you open email — the briefing already knows what's there.</p>
+        </div>
+
+        <h3>Prompt 1 — Daily Executive Briefing &amp; Inbox Triage</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Starting each day with clarity on priorities and urgent emails</div>
+          <div class="pm"><span class="pm-label">Apps</span>Outlook + Calendar + Word</div>
+          <div class="pm"><span class="pm-label">Output</span>1-page briefing + 3 draft replies</div>
+          <div class="pm"><span class="pm-label">Cadence</span>Every morning, 7:30 AM</div>
+        </div>
+        <div class="prompt">Review my emails, calendar, and recent documents from the past 24 hours. Create a concise executive briefing (1 page max) with:
+1) Top priorities for today (meetings + key topics)
+2) Emails that require my response (ranked by urgency)
+3) Decisions required today
+4) Risks or escalations to be aware of
+5) Suggested follow-ups based on commitments I've made
+
+Then draft 3 short reply suggestions for my highest-priority emails.
+Tone: direct, executive-ready, no fluff.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout tip">
+          <div class="ctitle">✅ Pro tip — make it Edgewell-shaped</div>
+          <p>Add one line to the end: <em>"Group emails by brand — Schick, Banana Boat, Hawaiian Tropic, Wet Ones, premium grooming — and flag any retailer escalation separately."</em> The brief gets sharper instantly.</p>
+        </div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>A 1-page brief on the executive's actual day, with three draft replies queued for review. Total time from prompt to reading: under 90 seconds.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I ran the briefing against my own inbox + calendar</label>
+          <label><input type="checkbox" /> I reviewed the 3 drafted replies and identified which I'd send</label>
+          <label><input type="checkbox" /> I decided whether this becomes my recurring morning prompt</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 2: Weekly Rhythm ========================================= -->
+    <!-- =================================================================== -->
+    <section class="section" id="lab2">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">2</div>
+        <h2>The Friday Rhythm
+          <span class="subtitle">Weekly Leadership Update + Shareable HTML Dashboard</span>
+        </h2>
+        <div class="time-pill">7 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this matters</div>
+          <p>The Friday leadership update is the single most common request from any executive's chief of staff. Cowork builds it from a week of your own activity — no manual scraping, no chasing your own team for status. The HTML dashboard is the version you can actually share or save.</p>
+        </div>
+
+        <h3>Prompt 2 — Weekly Leadership Update Builder</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Turning a week of activity into a clear leadership narrative</div>
+          <div class="pm"><span class="pm-label">Apps</span>Outlook + Calendar + Word + PowerPoint</div>
+          <div class="pm"><span class="pm-label">Output</span>1-page Word update + 5-slide PPT outline</div>
+          <div class="pm"><span class="pm-label">Cadence</span>Every Friday, 3:00 PM</div>
+        </div>
+        <div class="prompt">Review my Microsoft 365 activity from the past 5 business days (emails, meetings, and documents). Include Teams context only if available. Create:
+1) A 1-page Word leadership update with: Key accomplishments, Risks &amp; blockers, Decisions made, Open items, Recommended next steps.
+2) A 5-slide PowerPoint outline:
+   Status &gt; Accomplishments &gt; Risks &gt; Decisions needed &gt; Next steps.
+
+Write for a senior executive audience. Keep it concise and structured.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <h3>Prompt 3 — Weekly Executive Summary Dashboard (Safe HTML)</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>A clean, browser-ready weekly report — no formatting dependencies</div>
+          <div class="pm"><span class="pm-label">Apps</span>Outlook + Calendar — HTML file output</div>
+          <div class="pm"><span class="pm-label">Output</span>Self-contained HTML report you can open or share</div>
+        </div>
+        <div class="prompt">Review my emails, calendar, and recent activity over the past 7 days. Summarize: key priorities, major meetings/outcomes (if identifiable), top collaborators, risks/follow-ups.
+
+Create a self-contained HTML report with:
+1) Title: "Weekly Executive Summary" + date range
+2) Key priorities section (bullets)
+3) Activity table: Activity Type | Topic | Participants | Summary
+4) Top 5 focus areas
+5) Risks &amp; follow-ups
+
+Design requirements:
+- Simple HTML with inline CSS only
+- Clean, modern formatting (black/white + one accent color)
+- No external libraries, scripts, fonts, or dependencies
+- Fully self-contained and easy to open in any browser
+
+If data is limited, infer where reasonable and clearly label assumptions.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout tip">
+          <div class="ctitle">✅ Pro tip — keep the window tight</div>
+          <p>Cowork is consistently sharper over <strong>5 business days</strong> than over "the past month." When output feels thin, the fix is almost always to narrow the window and re-run with explicit names (your top 2 brands, your top 2 retailers).</p>
+        </div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>Two artifacts ready to use: a Word memo + slide outline for the Monday leadership team, and an HTML dashboard you can save, screenshot, or send.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I generated a Word + slide outline weekly update</label>
+          <label><input type="checkbox" /> I produced the HTML executive summary dashboard</label>
+          <label><input type="checkbox" /> I picked which of the two formats matches my leadership style</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 3: Meetings to Momentum ================================== -->
+    <!-- =================================================================== -->
+    <section class="section" id="lab3">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">3</div>
+        <h2>Meetings to Momentum
+          <span class="subtitle">Meeting Preparation &amp; Follow-Through — in one motion</span>
+        </h2>
+        <div class="time-pill">6 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this matters</div>
+          <p>The cost of a meeting isn't the hour. It's everything that doesn't happen afterwards because nobody wrote down what was decided. Cowork closes that gap by prepping you going in and drafting the follow-up going out — same prompt, same motion.</p>
+        </div>
+
+        <h3>Prompt 4 — Meeting Preparation &amp; Follow-Through</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Walking in prepared, walking out with the follow-up already drafted</div>
+          <div class="pm"><span class="pm-label">Apps</span>Outlook + Calendar + Word</div>
+          <div class="pm"><span class="pm-label">Output</span>Prep brief + talking points + follow-up email template</div>
+        </div>
+        <div class="prompt">Prepare me for my upcoming meeting with [person/team, e.g., the Banana Boat brand team] on [date]. Summarize recent interactions (email + meetings), current topics, open threads, and unresolved questions. Provide:
+1) 3 recommended talking points
+2) 3 questions I should ask
+3) Any risks/sensitivities to watch for
+
+Then draft a short follow-up email template I can send after the meeting. Keep it concise and practical.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout tip">
+          <div class="ctitle">✅ Pro tip — chain it</div>
+          <p>After the meeting, hand Cowork the transcript or your notes and ask it to <em>finish</em> the follow-up email it drafted before the meeting. The pre-meeting prep and the post-meeting recap become one continuous loop instead of two separate efforts.</p>
+        </div>
+
+        <div class="callout fac">
+          <div class="ctitle">🎤 Facilitator note</div>
+          <p>Pick the executive's <em>next real meeting</em> on their calendar and run this against it live. Watching Cowork pull the relevant prior emails, name the open threads, and draft the follow-up before the meeting has even started is one of the highest-rated demo moments in this session.</p>
+        </div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>A prep brief for a real upcoming meeting, plus a follow-up email template that's already 80% written before the meeting starts.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I prepped a real meeting on this week's calendar</label>
+          <label><input type="checkbox" /> I reviewed the drafted follow-up template</label>
+          <label><input type="checkbox" /> I committed to using it on one meeting this week</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 4: Market Edge =========================================== -->
+    <!-- =================================================================== -->
+    <section class="section" id="lab4">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">4</div>
+        <h2>Market Edge
+          <span class="subtitle">Competitor Move Tracker + Retail Partner Health Check</span>
+        </h2>
+        <div class="time-pill">6 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this matters</div>
+          <p>Edgewell leaders who walk into reviews with the outside read tied to the inside read win the room. Cowork is the only thing in your stack that fuses the public web (what competitors and retailers are doing) with your inbox (what your team has been saying about it).</p>
+        </div>
+
+        <h3>Prompt 5 — Competitor Move Tracker</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Staying ahead of competitor product, pricing, marketing, and leadership moves</div>
+          <div class="pm"><span class="pm-label">Apps</span>Web + Outlook + Excel + Word</div>
+          <div class="pm"><span class="pm-label">Output</span>Competitor scorecard (Excel) + 1-page "so-what" memo</div>
+        </div>
+        <div class="prompt">Search the web for the most material moves over the past 30 days from these competitors: [Procter &amp; Gamble / Gillette, Unilever / Dove Men+Care, Beiersdorf / Nivea, Coty, Kenvue, Harry's, Dollar Shave Club, Sun Bum, Coppertone — edit list as needed]. Cover: new products, price changes, marketing campaigns, athlete or celebrity signings, exec hires/departures, earnings or guidance updates, and retail/DTC expansion.
+
+Then scan my Outlook (past 30 days) for any internal discussion that references the same competitors and pull the key threads.
+
+Create:
+1) An Excel scorecard with columns:
+   Competitor | Move | Date | Category | Source | Threat (H/M/L) | Internal mention? | Recommended response
+2) A 1-page Word memo titled "Competitor Pulse — [date]" covering:
+   - Top 3 moves that matter to us and why
+   - Where we should defend
+   - Where we should consider going on offense
+
+Cite every external claim with a source link. Distinguish confirmed facts from inferred implications.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <h3>Prompt 6 — Retail Partner Health Check</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Pre-call prep on a major retailer with current public + internal context</div>
+          <div class="pm"><span class="pm-label">Apps</span>Web + Outlook + Excel + Word</div>
+          <div class="pm"><span class="pm-label">Output</span>Partner brief + talking points + risks to watch</div>
+        </div>
+        <div class="prompt">I have an upcoming meeting with [Walmart / Target / CVS / Walgreens / Amazon / Kroger / Costco] on [date].
+
+Pull recent public signals from the web (past 60 days): earnings, store openings/closings, leadership changes, strategy announcements, analyst commentary, and any major news affecting them.
+
+Then scan my Outlook (past 90 days) for everything I have on this partner: open threads, commitments made, escalations, sell-through numbers shared, and unresolved questions.
+
+Create:
+1) A 1-page Word brief titled "[Partner] — Pre-Call Brief" with:
+   - Where they are headed (public read)
+   - Where we stand with them (internal read)
+   - 3 talking points
+   - 3 questions to ask them
+   - 2 risks / sensitivities
+2) An Excel tracker with columns: Topic | Last touch | Owner | Status | Next step
+
+Keep the brief skim-ready in 2 minutes. Cite every public claim.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>A competitor pulse memo grounded in the past 30 days, and a retailer pre-call brief that fuses public news with the internal history of the account. Both ready inside ten minutes.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I ran the competitor tracker for my top 3–5 competitors</label>
+          <label><input type="checkbox" /> I prepped a real upcoming retailer meeting with the partner brief</label>
+          <label><input type="checkbox" /> I noted which moves to discuss in this week's leadership team</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 5: Leading Through Change ================================ -->
+    <!-- =================================================================== -->
+    <section class="section" id="lab5">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">5</div>
+        <h2>Leading Through Change
+          <span class="subtitle">Workforce Transition Pack + Rapid Response Statement Builder</span>
+        </h2>
+        <div class="time-pill">5 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this matters</div>
+          <p>Personal-care leaders run businesses through real change — portfolio resets, plant transitions, recall windows, retailer escalations. Under pressure, executives need a chief of staff who can turn around a workforce communication or a holding statement in minutes, not hours. These are the two prompts that earn their keep on the worst days.</p>
+        </div>
+
+        <h3>Prompt 7 — Workforce Transition Communication Pack</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Town halls, manager talking points, and sensitive 1:1s during change</div>
+          <div class="pm"><span class="pm-label">Apps</span>Outlook + Word + Teams</div>
+          <div class="pm"><span class="pm-label">Output</span>Town hall remarks + manager FAQ + retention 1:1 guide</div>
+        </div>
+        <div class="prompt">Using the most recent internal communications I have access to (leadership emails, all-hands recaps, HR guidance, and relevant Teams threads), help me prepare a workforce transition communication pack for [team / org / brand unit].
+
+Produce:
+1) Town hall remarks (~3 minutes spoken): acknowledge the change, name what stays true, name what is changing, and what people can expect next
+2) Manager FAQ: the 10 questions managers are most likely to face, with suggested answer language and what NOT to say
+3) Retention 1:1 guide: a short framework for talking with key people who were not impacted but may be unsettled — what to ask, what to commit, what to escalate
+
+Tone: empathetic, direct, on-message. No spin, no over-promising. Flag any language that should be reviewed by HR, Legal, or Communications before use.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <h3>Prompt 8 — Rapid Response / Crisis Statement Builder</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Drafting stakeholder-facing statements under pressure</div>
+          <div class="pm"><span class="pm-label">Apps</span>Word + Outlook + Web</div>
+          <div class="pm"><span class="pm-label">Output</span>Holding statement + Q&amp;A bank + escalation paths</div>
+        </div>
+        <div class="prompt">Situation: [describe the issue in 2–3 lines — what happened, what is public, what is being said].
+
+Build a fast-response statement pack with:
+1) Holding statement (under 60 words): for press, social, and inbound inquiries within the first 2 hours
+2) Employee message: what people inside the company need to hear and from whom
+3) Partner/retailer message: tailored language for key external partners
+4) Investor-sensitive language check: phrases to avoid until IR signs off
+5) Q&amp;A bank: the 8 toughest questions and prepared answers
+6) Escalation paths: which functions must approve before anything goes out (Legal, IR, Comms, HR), and who owns the next update window
+
+Tone: calm, factual, accountable. Do not speculate. Flag every assumption.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout warn">
+          <div class="ctitle">⚠ Hard rule on these two</div>
+          <p>Anything externally facing — workforce transition language, holding statements, partner messages — runs through Legal, IR, and Communications before it goes out. Cowork drafts in minutes; the approval chain stays the same. Treat these outputs as sharp starting points, never final copy.</p>
+        </div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>Two playbooks in your back pocket for the days you hope never come — and the confidence that when they do, you've got a first draft inside five minutes instead of five hours.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I ran the workforce transition pack against a hypothetical scenario</label>
+          <label><input type="checkbox" /> I ran the rapid-response pack against a hypothetical issue</label>
+          <label><input type="checkbox" /> I identified who needs to be in the approval chain at Edgewell</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ==== LAB 6: Board Narrative ======================================= -->
+    <!-- =================================================================== -->
+    <section class="section" id="lab6">
+      <div class="section-head" onclick="toggleSection(this)">
+        <div class="section-num">6</div>
+        <h2>The Board Narrative — Capstone
+          <span class="subtitle">Quarterly Executive Narrative Builder — the deliverable that justifies the session</span>
+        </h2>
+        <div class="time-pill">5 min</div>
+        <div class="toggle">▾</div>
+      </div>
+      <div class="section-body">
+
+        <div class="callout why">
+          <div class="ctitle">💡 Why this is the close</div>
+          <p>The first five labs are the rhythm. This one is the proof. Watching a 90-day quarter become a 2-page memo + 8-slide deck + metrics table in a single prompt is the moment executives stop asking "what is Cowork" and start asking "when can I have it."</p>
+        </div>
+
+        <h3>Prompt 9 — Quarterly Executive Narrative Builder</h3>
+        <div class="prompt-meta">
+          <div class="pm"><span class="pm-label">Best for</span>Turning a quarter of activity + market context into a polished executive story</div>
+          <div class="pm"><span class="pm-label">Apps</span>Web + Outlook + Word + PowerPoint + Excel</div>
+          <div class="pm"><span class="pm-label">Output</span>2-page narrative + 8-slide deck + metrics table</div>
+          <div class="pm"><span class="pm-label">Cadence</span>Quarterly, ahead of board prep</div>
+        </div>
+        <div class="prompt">Build the story of the past quarter for an executive audience.
+
+Step 1 — Internal: review my Outlook (past 90 days) and any attached Excel / Word files I reference, and surface: wins, key decisions, open risks, top stakeholder feedback, and commitments made across our brand portfolio (Schick, Banana Boat, Hawaiian Tropic, Wet Ones, premium grooming).
+
+Step 2 — External: pull web context on the personal-care category over the same quarter (competitor moves, consumer trends, channel shifts, macro signals) so the story is told against the market — not in a vacuum.
+
+Create:
+1) A 2-page Word memo titled "Q[X] Narrative — [my portfolio]" with:
+   - Opening: the market this quarter (3 lines)
+   - What we did and why it mattered
+   - Wins, risks, and what we are watching
+   - Recommended focus for next quarter
+2) An 8-slide PowerPoint executive deck:
+   1: Market context
+   2: Our quarter at a glance
+   3–5: Top 3 wins (one slide each)
+   6: Risks &amp; mitigations
+   7: Stakeholder voice (quoted feedback themes)
+   8: Where we go next
+3) A simple Excel table tracking the metrics I referenced in emails so the deck has hard numbers behind every claim.
+
+Tone: confident, factual, story-driven. Cite external claims. Label any inference clearly so I can validate before sharing.<button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+
+        <div class="callout fac">
+          <div class="ctitle">🎤 Facilitator note — close on this</div>
+          <p>Don't ship the deck during the session. Skim it together. The point isn't the artifact — it's the executive realizing this is what they could be doing every quarter before every board cycle. End with: <em>"Imagine running this every Friday, every quarter, before every board meeting. That's the rhythm."</em></p>
+        </div>
+
+        <div class="callout outcome">
+          <div class="ctitle">🎯 Expected outcome</div>
+          <p>A 2-page narrative memo, an 8-slide executive deck, and a metrics table — all grounded in the executive's own portfolio. The leave-behind that proves the 45 minutes was worth it.</p>
+        </div>
+
+        <div class="self-check">
+          <h4>✅ Self-check</h4>
+          <label><input type="checkbox" /> I ran the capstone against my own portfolio</label>
+          <label><input type="checkbox" /> I skimmed the 2-page memo and the 8-slide outline</label>
+          <label><input type="checkbox" /> I identified the one prompt I'll run before my next board cycle</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CADENCE ====== -->
+    <section class="intro" id="cadence">
+      <h2>⏰ Set the cadence — the part most people miss</h2>
+      <p>The eight prompts you just ran are useful once. They're transformative on a cadence. Treat Cowork like a chief of staff: tell it when to show up.</p>
+
+      <div class="cadence-grid">
+        <div class="cad">
+          <div class="when">Every weekday · 7:30 AM</div>
+          <h4>Daily Briefing</h4>
+          <p>Prompt 1. The brief is waiting when you sit down.</p>
+        </div>
+        <div class="cad">
+          <div class="when">Every Friday · 3:00 PM</div>
+          <h4>Weekly Leadership Update</h4>
+          <p>Prompts 2 + 3. Memo + slide outline + shareable HTML.</p>
+        </div>
+        <div class="cad">
+          <div class="when">Every Monday · 8:00 AM</div>
+          <h4>Competitor Pulse</h4>
+          <p>Prompt 5. Walk into the week with the outside read.</p>
+        </div>
+        <div class="cad">
+          <div class="when">2 days before each JBP</div>
+          <h4>Retail Partner Brief</h4>
+          <p>Prompt 6. Public + internal context, fused.</p>
+        </div>
+        <div class="cad">
+          <div class="when">First Friday of the quarter</div>
+          <h4>Quarterly Narrative</h4>
+          <p>Prompt 8. 90 days into a board-ready story.</p>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="ctitle">✅ How to set it up</div>
+        <p>In Cowork, ask: <em>"Run this prompt every weekday at 7:30 AM and have the output waiting for me."</em> You'll be asked to confirm — that's it. The same prompts you just ran become standing rituals without you ever opening Cowork again.</p>
+      </div>
+    </section>
+
+    <!-- ====== KEY TAKEAWAYS ====== -->
+    <section class="intro" id="takeaways">
+      <h2>🔑 What to walk out with</h2>
+      <div class="takeaways">
+        <div class="tk">
+          <div class="icon">🌅</div>
+          <h4>One morning prompt</h4>
+          <p>The Daily Briefing should run before you open email tomorrow. Pick the time, set the cadence.</p>
+        </div>
+        <div class="tk">
+          <div class="icon">📅</div>
+          <h4>One Friday prompt</h4>
+          <p>Weekly leadership update either as Word + slides or as a shareable HTML dashboard — pick the format that matches your style.</p>
+        </div>
+        <div class="tk">
+          <div class="icon">🤝</div>
+          <h4>One meeting motion</h4>
+          <p>Pick the next high-stakes meeting on your calendar. Run the prep + follow-through prompt against it.</p>
+        </div>
+        <div class="tk">
+          <div class="icon">🌍</div>
+          <h4>One market read</h4>
+          <p>Pick your top 3–5 competitors. The Competitor Pulse becomes your Monday walk-in read.</p>
+        </div>
+        <div class="tk">
+          <div class="icon">📖</div>
+          <h4>One quarterly run</h4>
+          <p>Put the Quarterly Narrative on your calendar one week before your next board cycle.</p>
+        </div>
+        <div class="tk">
+          <div class="icon">🧠</div>
+          <h4>You stay in control</h4>
+          <p>Cowork drafts. You approve. Every email, file, and calendar invite waits for your sign-off.</p>
+        </div>
+      </div>
+
+      <h3>Five rules that make Cowork sharper</h3>
+      <ul>
+        <li><strong>Keep time windows tight</strong> — 24 hours or 5 business days, not "the past month."</li>
+        <li><strong>Name names</strong> — your top 2–3 brands, retailers, or stakeholders. Vague in, vague out.</li>
+        <li><strong>Cap the length</strong> — <em>"1 page max"</em> or <em>"assume I'll skim in 2 minutes"</em> changes the output dramatically.</li>
+        <li><strong>Re-run with sharper context</strong> — if the first pass feels thin, the second pass with names + tighter window almost always lands.</li>
+        <li><strong>Save what works</strong> — the prompts that produce output you'd want again belong on a cadence.</li>
+      </ul>
+    </section>
+
+    <!-- ====== TROUBLESHOOTING ====== -->
+    <section class="intro" id="troubleshooting">
+      <h2>🛠 Troubleshooting</h2>
+      <table>
+        <thead>
+          <tr><th>Issue</th><th>Likely fix</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cowork output feels generic</td>
+            <td>Narrow the time window, name 3–8 specific priorities or stakeholders, and add <em>"1 page max"</em>. Re-run.</td>
+          </tr>
+          <tr>
+            <td>The briefing missed a key thread</td>
+            <td>Cowork searches by relevance, not exhaustively. Name the brand, retailer, or person explicitly in your next run.</td>
+          </tr>
+          <tr>
+            <td>The weekly update reads like a list, not a story</td>
+            <td>Add to the prompt: <em>"Write this as a narrative for a senior executive audience, not bullet points."</em></td>
+          </tr>
+          <tr>
+            <td>Cowork drafted an email — but I didn't want it to send</td>
+            <td>It hasn't. Cowork drafts; you approve. Nothing leaves your tenant without an explicit confirmation from you.</td>
+          </tr>
+          <tr>
+            <td>The HTML dashboard looks broken</td>
+            <td>Save the file and open in a browser. Some email previews strip inline CSS — the file itself renders correctly.</td>
+          </tr>
+          <tr>
+            <td>The competitor tracker missed obvious news</td>
+            <td>Web search is bounded by what's published and indexed. Add the date range explicitly and re-run with named competitors.</td>
+          </tr>
+          <tr>
+            <td>The quarterly narrative inferred something incorrect</td>
+            <td>Cowork labels inferences. Spot them, correct them in your version, and the next run will hold the correction.</td>
+          </tr>
+          <tr>
+            <td>I want to set a recurring run but don't know how</td>
+            <td>Ask Cowork directly: <em>"Set this prompt to run every weekday at 7:30 AM."</em> Confirm when prompted.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <h4>About this lab</h4>
+      <p style="margin:0;">A focused 45-minute Cowork-only executive session for Edgewell Personal Care leaders. Eight prompts. One executive arc. Designed as a leave-behind for the days you're not in the room.</p>
+    </div>
+    <div>
+      <h4>The 45 minutes, at a glance</h4>
+      <ul>
+        <li>Morning — Daily Briefing</li>
+        <li>Friday — Weekly Update + Dashboard</li>
+        <li>Meetings — Prep &amp; Follow-Through</li>
+        <li>Outside-in — Competitor + Retail Partner</li>
+        <li>Stakes up — Workforce + Rapid Response</li>
+        <li>Capstone — Quarterly Narrative</li>
+      </ul>
+    </div>
+    <div>
+      <h4>See also</h4>
+      <ul>
+        <li><a href="15-Edgewell-Executive-Copilot-Training.html">A Week in the Life of an Edgewell Leader</a> — the full 90–120 min lab</li>
+        <li>Powered by Microsoft 365 Copilot &amp; Cowork</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Collapsible sections
+  function toggleSection(headEl) {
+    const sec = headEl.parentElement;
+    sec.classList.toggle('open');
+  }
+
+  // Copy prompt to clipboard
+  function copyPrompt(btn) {
+    const prompt = btn.parentElement;
+    const text = Array.from(prompt.childNodes)
+      .filter(n => n.nodeType === Node.TEXT_NODE || (n.nodeType === Node.ELEMENT_NODE && n.tagName !== 'BUTTON'))
+      .map(n => n.textContent)
+      .join('')
+      .trim();
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1800);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); btn.textContent = '✓ Copied'; }
+      catch (e) { btn.textContent = 'Copy failed'; }
+      document.body.removeChild(ta);
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+    });
+  }
+
+  // Self-check strike-through
+  document.addEventListener('change', (e) => {
+    if (e.target.type === 'checkbox' && e.target.closest('.self-check')) {
+      const label = e.target.closest('label');
+      if (label) label.classList.toggle('done', e.target.checked);
+    }
+  });
+
+  // Side-nav active highlight via IntersectionObserver
+  const navLinks = document.querySelectorAll('.side-nav a[href^="#"]');
+  const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // Smooth-scroll + expand collapsed section on nav click
+  navLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target && target.classList.contains('section') && !target.classList.contains('open')) {
+        target.classList.add('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
