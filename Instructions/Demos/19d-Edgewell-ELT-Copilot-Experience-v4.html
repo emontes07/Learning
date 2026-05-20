@@ -1134,15 +1134,30 @@ footer .footer-brands span { font-size: 12px; font-weight: 500; color: rgba(255,
       <p class="chapter-subtitle">From scattered signals to decision-ready insight in minutes</p>
     </div>
 
-    <h3>Download the Sample Workbook</h3>
+    <h3>Download the Sample Workbook.</h3>
     <p>Download the Excel workbook used in this session. Save it to your <strong>OneDrive</strong> before opening.</p>
     
     <div style="margin: 1rem 0;">
     <a href="../../ResourceFiles/Edgewell-Business-Performance-Sample.xlsx"
-       class="download-btn" 
-       download="Edgewell-Business-Performance-Sample.xlsx">
+       class="download-btn"
+       onclick="forceDownload(event, this.href, 'Edgewell-Business-Performance-Sample.xlsx')">
       📥 Edgewell Business Performance Sample (Excel)
-    </a>  
+    </a>
+    
+    <script>
+    function forceDownload(e, url, filename) {
+      e.preventDefault();
+      fetch(url)
+        .then(res => res.blob())
+        .then(blob => {
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = filename;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+    }
+    </script>
     </div>
     
     <div class="callout callout-note">
