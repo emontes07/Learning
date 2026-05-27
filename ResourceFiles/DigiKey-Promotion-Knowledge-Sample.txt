@@ -1,0 +1,60 @@
+DigiKey Supplier Promotion Knowledge Sample
+
+Purpose
+This fictional sample file is for a hands-on Copilot Studio Lite agent lab. It gives learners a realistic promotion file they can upload to an agent, store in OneDrive, or place in a SharePoint document library. Validate any generated recommendations before using them with customers.
+
+Promotion name
+Embedded Design Acceleration Offer
+
+Promotion window
+June 3, 2026 through August 30, 2026
+
+Target audience
+Design engineers, procurement specialists, product managers, and small engineering teams evaluating embedded, power management, wireless, and automation components for new product introductions.
+
+Eligible product categories
+1. Microcontrollers and development kits
+2. Sensors and signal chain components
+3. Power management ICs and evaluation boards
+4. Wireless modules and antennas
+5. Industrial automation and connector accessories
+
+Priority supplier themes
+Supplier A: Low-power embedded development kits for battery-operated devices.
+Supplier B: Fast prototyping sensors for environmental monitoring and condition-based maintenance.
+Supplier C: Power conversion and battery management evaluation boards.
+Supplier D: Wireless modules for connected industrial equipment.
+
+Promotion mechanics
+Customers who purchase eligible products during the promotion window may qualify for one of the following offers:
+1. Free standard shipping on eligible orders over 75 USD.
+2. A 10 percent discount on qualifying development kits.
+3. A bundle offer that pairs an evaluation board with recommended accessories.
+4. A request-for-quote follow-up for volume opportunities above 500 units.
+
+Recommended agent response rules
+1. Always ask which product category, supplier, region, and customer segment the user is working with if that context is missing.
+2. Summarize only what is present in this file or connected knowledge sources.
+3. If the user asks for pricing, inventory, lead time, or compliance status, remind them to verify in the official DigiKey systems.
+4. Do not invent discount terms, dates, suppliers, part numbers, inventory, or eligibility rules.
+5. Provide concise answers first, then offer a more detailed table if useful.
+
+Frequently asked questions
+
+Q: Which customer problems does this promotion address?
+A: It helps customers move faster from design exploration to prototype by making evaluation hardware and accessories easier to identify and purchase.
+
+Q: What should sales or support teams ask first?
+A: Ask what the customer is building, whether they are choosing components or validating a design, and whether they need development kits, accessories, or volume follow-up.
+
+Q: What should the agent avoid?
+A: The agent should avoid making claims about exact price, stock, lead time, regulatory compliance, or supplier commitments unless the connected source explicitly includes that information.
+
+Q: What is a good suggested prompt?
+A: "Help me explain this promotion to a design engineer who is evaluating wireless modules for a connected industrial sensor."
+
+Example customer scenario
+A design engineer is building a connected environmental sensor for an industrial facility. They need a low-power microcontroller, humidity and temperature sensors, a wireless module, and an evaluation board to test the design. The agent should help the user identify the relevant promotion category, summarize the offer, and recommend what to verify in official systems before sending a customer-facing response.
+
+Example internal summary
+The Embedded Design Acceleration Offer is a limited-time promotion that helps customers evaluate components for embedded and connected product designs. It focuses on development kits, sensors, power management evaluation boards, wireless modules, and related accessories. Teams should use the promotion to guide discovery conversations, but they must verify pricing, stock, lead time, compliance, and final eligibility in official DigiKey systems.
