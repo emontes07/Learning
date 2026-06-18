@@ -1,0 +1,1357 @@
+---
+demo:
+    title: 'Tyson — From Plant Floor to Boardroom'
+layout: none
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tyson Foods × Microsoft 365 Copilot — From Plant Floor to Boardroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1A1A2E; background: #FAFAFA; line-height: 1.65;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Brand Tokens (Tyson) ─── */
+:root {
+  --tyson-red: #C8102E;
+  --tyson-red-bright: #E81F36;
+  --tyson-navy: #14213D;
+  --tyson-navy-deep: #0B1429;
+  --tyson-gold: #F2A900;
+  --tyson-cream: #FFF8EE;
+  --tyson-tint: #FBE9EC;
+  --tyson-tint-2: #FDF3F4;
+}
+
+/* ─── Progress Bar ─── */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--tyson-red), var(--tyson-red-bright));
+  z-index: 10001; transition: width 0.15s ease-out;
+  box-shadow: 0 0 8px rgba(200,16,46,0.5);
+}
+
+/* ─── Navigation ─── */
+nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 10000;
+  background: rgba(11,20,41,0.97); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow 0.3s ease;
+}
+nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 24px; height: 56px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 15px; color: #fff; letter-spacing: 0.5px;
+  text-decoration: none; flex-shrink: 0; text-transform: uppercase;
+}
+.nav-brand .wordmark {
+  background: var(--tyson-red); padding: 4px 10px; border-radius: 4px;
+  font-size: 13px; letter-spacing: 1px;
+}
+.nav-links {
+  display: flex; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px;
+  font-weight: 500; padding: 8px 12px; border-radius: 8px;
+  white-space: nowrap; transition: all 0.25s ease;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-links a.active { color: #fff; background: rgba(200,16,46,0.25); }
+.nav-links a:focus-visible { outline: 2px solid var(--tyson-red-bright); outline-offset: 2px; }
+.nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; align-items: center; }
+  .nav-links {
+    display: none; position: absolute; top: 56px; left: 0; right: 0;
+    background: rgba(11,20,41,0.98); flex-direction: column; padding: 12px 16px;
+    gap: 2px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 16px; border-radius: 10px; font-size: 14px; }
+}
+
+/* ─── Layout ─── */
+main { padding-top: 59px; }
+.section {
+  padding: 80px 24px; opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+.section.alt-bg { background: var(--tyson-tint-2); }
+.section-inner { max-width: 820px; margin: 0 auto; }
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(160deg, var(--tyson-navy-deep) 0%, var(--tyson-navy) 50%, #2A1218 100%);
+  color: #fff; text-align: center; padding: 120px 24px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(200,16,46,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-brand { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 32px; }
+.hero-brand .wordmark {
+  background: var(--tyson-red); color: #fff; padding: 10px 22px; border-radius: 6px;
+  font-size: 28px; font-weight: 900; letter-spacing: 2px;
+  box-shadow: 0 4px 16px rgba(200,16,46,0.4);
+}
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+  color: var(--tyson-gold); margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5.5vw, 56px); font-weight: 800; letter-spacing: -1.5px;
+  line-height: 1.1; margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 30%, var(--tyson-gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero h2 {
+  font-size: clamp(16px, 2.5vw, 20px); font-weight: 400; color: rgba(255,255,255,0.72);
+  letter-spacing: -0.2px; margin-bottom: 8px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.6;
+}
+.hero-date {
+  display: inline-block; margin: 24px 0 36px; padding: 6px 18px;
+  background: rgba(200,16,46,0.18); border: 1px solid rgba(200,16,46,0.4);
+  border-radius: 100px; font-size: 14px; font-weight: 600; color: #fff;
+}
+.hero-welcome {
+  max-width: 660px; margin: 0 auto 36px; font-size: 15px; line-height: 1.75;
+  color: rgba(255,255,255,0.72); font-weight: 300;
+}
+.brand-strip {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 12px 18px; max-width: 820px; margin: 0 auto; padding-top: 16px;
+}
+.brand-pill {
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.15);
+  padding: 6px 14px; border-radius: 100px; transition: all 0.3s ease;
+}
+.brand-pill:hover { color: #fff; border-color: var(--tyson-gold); }
+
+/* ─── Chapter Header ─── */
+.chapter-header { margin-bottom: 40px; }
+.chapter-number {
+  font-size: 80px; font-weight: 900; letter-spacing: -3px;
+  background: linear-gradient(135deg, rgba(200,16,46,0.18) 0%, rgba(200,16,46,0.05) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1; margin-bottom: -8px; display: block;
+}
+.alt-bg .chapter-number {
+  background: linear-gradient(135deg, rgba(200,16,46,0.3) 0%, rgba(200,16,46,0.08) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.chapter-title {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -1px;
+  line-height: 1.2; color: var(--tyson-navy);
+}
+.chapter-subtitle {
+  font-size: 14px; font-weight: 700; color: var(--tyson-red); text-transform: uppercase;
+  letter-spacing: 1.5px; margin-top: 8px;
+}
+
+/* ─── Scenario Block ─── */
+.scenario {
+  background: #fff; border-radius: 16px; padding: 28px 32px;
+  border-left: 4px solid var(--tyson-navy); margin-bottom: 36px;
+  font-size: 15px; color: #3A3A5C; line-height: 1.75;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.scenario-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.8px; color: var(--tyson-red); margin-bottom: 8px;
+}
+
+/* ─── Prompt Card ─── */
+.prompt-card {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 14px; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+}
+.prompt-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  background: var(--tyson-red); opacity: 0; transition: opacity 0.25s ease;
+}
+.prompt-card:hover {
+  border-color: var(--tyson-red); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,16,46,0.1);
+}
+.prompt-card:hover::before { opacity: 1; }
+.prompt-card:active { transform: translateY(0); }
+.prompt-card:focus-visible { outline: 2px solid var(--tyson-red); outline-offset: 2px; }
+.prompt-label { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.prompt-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--tyson-tint), var(--tyson-tint-2));
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.prompt-icon svg { width: 14px; height: 14px; }
+.prompt-tag {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--tyson-red);
+}
+.prompt-copy-hint {
+  font-size: 11px; color: #A0A0B8; margin-left: auto; font-weight: 500;
+  display: flex; align-items: center; gap: 4px;
+}
+.prompt-text { font-size: 15px; line-height: 1.7; color: #2A2A44; }
+
+/* ─── Role Accordions ─── */
+.role-variants { margin-top: 16px; margin-bottom: 20px; }
+.role-variants details {
+  border: 1px solid #E8E8EE; border-radius: 12px; overflow: hidden;
+  background: #FAFAFA;
+}
+.alt-bg .role-variants details { background: #fff; }
+.role-variants summary {
+  padding: 14px 20px; cursor: pointer; font-size: 13px; font-weight: 700;
+  color: var(--tyson-navy); list-style: none; display: flex; align-items: center; gap: 10px;
+  transition: color 0.2s ease, background 0.2s ease; user-select: none;
+}
+.role-variants summary::-webkit-details-marker { display: none; }
+.role-variants summary::after {
+  content: '▾'; margin-left: auto; font-size: 12px; color: var(--tyson-red);
+  transition: transform 0.2s ease;
+}
+.role-variants details[open] summary::after { transform: rotate(180deg); }
+.role-variants summary:hover { color: var(--tyson-red); background: rgba(200,16,46,0.03); }
+.role-variants .role-content { padding: 4px 20px 20px; }
+.role-item {
+  padding: 16px 20px; border-radius: 10px; margin-bottom: 8px;
+  background: #fff; border: 1px solid #F0F0F5; cursor: pointer;
+  transition: all 0.2s ease;
+}
+.alt-bg .role-item { background: #FAFAFA; }
+.role-item:hover {
+  border-color: var(--tyson-red); transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200,16,46,0.08);
+}
+.role-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.role-emoji { font-size: 16px; }
+.role-name { font-size: 12px; font-weight: 700; color: var(--tyson-navy); text-transform: uppercase; letter-spacing: 0.8px; }
+.role-item .prompt-text { font-size: 14px; color: #3A3A5C; }
+
+/* ─── Trainer Tip ─── */
+.trainer-tip {
+  background: #fff; border-left: 4px solid var(--tyson-gold); border-radius: 0 12px 12px 0;
+  padding: 20px 24px; margin: 28px 0; display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.trainer-tip-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #FFF4D6, #FFE8A6);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 18px;
+}
+.trainer-tip-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: #B8810A; margin-bottom: 4px;
+}
+.trainer-tip-text { font-size: 14px; color: #3A3A5C; line-height: 1.65; }
+
+/* ─── Activity Groups ─── */
+.activity-group { margin-top: 36px; margin-bottom: 18px; }
+.activity-label {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--tyson-navy); padding-bottom: 8px;
+  border-bottom: 2px solid var(--tyson-tint); display: inline-block;
+}
+
+/* ─── Content Blocks ─── */
+.content-block { margin-bottom: 28px; font-size: 15px; color: #3A3A5C; line-height: 1.75; }
+.content-block h3 { font-size: 18px; font-weight: 700; color: var(--tyson-navy); margin-bottom: 10px; }
+.content-block p { margin-bottom: 12px; }
+
+/* ─── DAY ARC TIMELINE ─── */
+.day-arc {
+  background: #fff; border-radius: 20px; padding: 40px 32px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #E8E8EE;
+  margin-bottom: 48px; overflow-x: auto;
+}
+.day-arc h3 {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--tyson-red); margin-bottom: 32px; text-align: center;
+}
+.day-arc-track {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+  position: relative; min-width: 720px;
+}
+.day-arc-track::before {
+  content: ''; position: absolute; top: 18px; left: 24px; right: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--tyson-red), var(--tyson-gold)); z-index: 0;
+}
+.day-arc-item { text-align: center; position: relative; z-index: 1; }
+.day-arc-dot {
+  width: 36px; height: 36px; border-radius: 50%; margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--tyson-red), var(--tyson-red-bright));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 14px; font-weight: 800;
+  box-shadow: 0 2px 8px rgba(200,16,46,0.35);
+}
+.day-arc-time { font-size: 14px; font-weight: 700; color: var(--tyson-navy); margin-bottom: 4px; }
+.day-arc-label { font-size: 13px; font-weight: 700; color: #3A3A5C; margin-bottom: 2px; }
+.day-arc-sub { font-size: 11px; color: #8A8AA0; }
+@media (max-width: 768px) {
+  .day-arc-track { grid-template-columns: repeat(3, 1fr); gap: 24px 8px; min-width: unset; }
+  .day-arc-track::before { display: none; }
+}
+
+/* ─── THREE CARDS ─── */
+.three-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0;
+}
+.three-cards .card {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px 20px; text-align: center;
+  transition: all 0.25s ease;
+}
+.three-cards .card:hover {
+  border-color: var(--tyson-red); transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200,16,46,0.08);
+}
+.card-icon { font-size: 28px; margin-bottom: 12px; }
+.card-badge {
+  display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px;
+  background: var(--tyson-tint); color: var(--tyson-red);
+}
+.card h4 { font-size: 15px; font-weight: 700; color: var(--tyson-navy); margin-bottom: 6px; }
+.card p { font-size: 13px; color: #5A5A7A; line-height: 1.6; }
+@media (max-width: 700px) { .three-cards { grid-template-columns: 1fr; } }
+
+/* ─── PULL QUOTE ─── */
+.pull-quote {
+  border-left: 4px solid var(--tyson-red); padding: 24px 28px; margin: 36px 0;
+  background: linear-gradient(135deg, rgba(200,16,46,0.05), transparent);
+  border-radius: 0 14px 14px 0;
+}
+.pull-quote p {
+  font-family: 'Lora', Georgia, serif; font-size: 18px; font-style: italic;
+  color: var(--tyson-navy); line-height: 1.7;
+}
+.pull-quote .attribution {
+  font-family: 'Inter', sans-serif; font-style: normal; font-size: 12px;
+  font-weight: 700; color: var(--tyson-red); margin-top: 10px; text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ─── OUTCOME BLOCK ─── */
+.outcome-block {
+  background: linear-gradient(135deg, var(--tyson-tint), var(--tyson-tint-2));
+  border-radius: 14px;
+  padding: 24px 28px; margin: 28px 0; border: 1px solid rgba(200,16,46,0.18);
+}
+.outcome-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--tyson-red); margin-bottom: 8px;
+}
+.outcome-text { font-size: 15px; color: var(--tyson-navy); line-height: 1.7; font-weight: 500; }
+
+/* ─── STATS / GOVERNANCE ─── */
+.governance-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0;
+}
+.gov-tile {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 24px; transition: all 0.25s ease;
+}
+.gov-tile:hover { border-color: var(--tyson-red); box-shadow: 0 4px 16px rgba(200,16,46,0.08); }
+.gov-tile-icon { font-size: 24px; margin-bottom: 10px; }
+.gov-tile h4 { font-size: 15px; font-weight: 700; color: var(--tyson-navy); margin-bottom: 6px; }
+.gov-tile p { font-size: 13px; color: #5A5A7A; line-height: 1.6; }
+@media (max-width: 600px) { .governance-grid { grid-template-columns: 1fr; } }
+
+/* ─── NEXT STEPS ─── */
+.next-steps {
+  background: linear-gradient(160deg, var(--tyson-navy-deep), var(--tyson-navy));
+  border-radius: 20px;
+  padding: 48px 36px; margin: 36px 0; color: #fff; position: relative; overflow: hidden;
+}
+.next-steps::before {
+  content: ''; position: absolute; top: -40%; right: -20%; width: 60%; height: 180%;
+  background: radial-gradient(ellipse, rgba(200,16,46,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.next-steps h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+.next-steps .ns-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 28px; }
+.ns-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; position: relative; z-index: 1; }
+.ns-item {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 20px 16px; text-align: center;
+}
+.ns-number {
+  font-size: 28px; font-weight: 800; color: var(--tyson-gold); margin-bottom: 8px;
+}
+.ns-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.ns-item p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+@media (max-width: 700px) { .ns-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ─── SELF-CHECK ─── */
+.self-check {
+  background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+  padding: 22px 24px; margin: 24px 0;
+}
+.self-check h4 {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--tyson-red); margin-bottom: 12px;
+}
+.self-check label {
+  display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+  font-size: 14px; color: #3A3A5C; cursor: pointer; line-height: 1.5;
+}
+.self-check input[type="checkbox"] {
+  accent-color: var(--tyson-red); width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0;
+}
+
+/* ─── PERSONA ROW ─── */
+.persona-row {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.persona-pill {
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+  background: var(--tyson-tint); color: var(--tyson-red); display: flex; align-items: center; gap: 4px;
+}
+
+/* ─── Toast ─── */
+#toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--tyson-navy-deep); color: #fff; padding: 12px 24px; border-radius: 12px;
+  font-size: 14px; font-weight: 600; z-index: 11000;
+  opacity: 0; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+#toast .toast-check {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--tyson-red);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+/* ─── HOW-TO DROPDOWN ─── */
+.how-to-section { margin: 24px 0; }
+.how-to-section details {
+  background: linear-gradient(135deg, #EEF3FB, #F5F8FD); border: 1px solid #C7D6EC;
+  border-radius: 12px; overflow: hidden;
+}
+.how-to-section summary {
+  padding: 14px 20px; cursor: pointer; font-size: 14px; font-weight: 700;
+  color: var(--tyson-navy); list-style: none; display: flex; align-items: center; gap: 8px;
+  user-select: none; transition: background 0.2s ease;
+}
+.how-to-section summary::-webkit-details-marker { display: none; }
+.how-to-section summary:hover { background: rgba(20,33,61,0.06); }
+.how-to-section summary::after {
+  content: '▾'; margin-left: auto; font-size: 12px; color: var(--tyson-navy);
+  transition: transform 0.2s ease;
+}
+.how-to-section details[open] summary::after { transform: rotate(180deg); }
+.how-to-steps { padding: 4px 20px 20px; font-size: 14px; color: var(--tyson-navy); line-height: 1.75; }
+.how-to-steps ol { padding-left: 20px; margin: 0; }
+.how-to-steps li { margin-bottom: 8px; }
+
+/* ─── CALLOUTS ─── */
+.callout {
+  border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0;
+  display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.65;
+}
+.callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.callout-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.callout.warn { background: #FFFBEB; border-left: 4px solid var(--tyson-gold); color: #6B4F00; }
+.callout.warn .callout-label { color: #B8810A; }
+.callout.note { background: #F0F4FB; border-left: 4px solid var(--tyson-navy); color: var(--tyson-navy); }
+.callout.note .callout-label { color: var(--tyson-navy); }
+
+/* ─── Footer ─── */
+footer {
+  background: var(--tyson-navy-deep); color: rgba(255,255,255,0.6); text-align: center;
+  padding: 72px 24px 48px;
+}
+footer .tagline {
+  font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -1px;
+  color: #fff; margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 30%, var(--tyson-gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+footer p { font-size: 15px; line-height: 1.7; max-width: 580px; margin: 0 auto 8px; }
+footer .footer-date { font-size: 13px; margin-top: 24px; color: rgba(255,255,255,0.35); }
+footer .footer-brands {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px;
+  margin-top: 20px; max-width: 700px; margin-left: auto; margin-right: auto;
+}
+footer .footer-brands span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 1px; text-transform: uppercase; }
+
+/* ─── Print ─── */
+@media print {
+  nav, #progress-bar, #toast, .prompt-copy-hint, .day-arc-track::before { display: none !important; }
+  main { padding-top: 0 !important; }
+  .section { opacity: 1 !important; transform: none !important; padding: 32px 0; page-break-inside: avoid; }
+  .prompt-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  details { break-inside: avoid; }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .section { padding: 56px 16px; }
+  .hero { padding: 100px 16px 72px; }
+  .chapter-number { font-size: 56px; }
+  .prompt-card { padding: 18px 20px; }
+  .scenario { padding: 20px 22px; }
+  .trainer-tip { flex-direction: column; gap: 10px; }
+  .nav-inner { padding: 0 16px; }
+  .pull-quote p { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+<nav id="main-nav" aria-label="Chapter navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand" aria-label="Back to top">
+      <span class="wordmark">TYSON</span>
+      <span>× Copilot</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+    </button>
+    <div class="nav-links" role="list">
+      <a href="#hero" role="listitem">Overview</a>
+      <a href="#ch1" role="listitem">01 Run the Day</a>
+      <a href="#ch2" role="listitem">02 Operating Rhythm</a>
+      <a href="#ch3" role="listitem">03 Intelligence</a>
+      <a href="#ch4" role="listitem">04 Momentum</a>
+      <a href="#ch5" role="listitem">05 Cowork</a>
+      <a href="#ch6" role="listitem">06 Next Steps</a>
+    </div>
+  </div>
+</nav>
+
+<div id="toast" role="status" aria-live="polite">
+  <span class="toast-check"><svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5.5"/></svg></span>
+  Prompt copied!
+</div>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero section visible" id="hero">
+  <div class="hero-brand">
+    <span class="wordmark">TYSON</span>
+  </div>
+  <div class="hero-eyebrow">Tyson Foods · Executive Immersion</div>
+  <h1>From Plant Floor to Boardroom:<br>Your Copilot Experience</h1>
+  <h2>A story-driven executive immersion that takes your leadership team from "just back from the plant" to a board-ready protein strategy — using Microsoft 365 Copilot as the operating layer.</h2>
+  <div class="hero-date">June 18, 2026</div>
+  <p class="hero-welcome">Today we're not walking through features — we're walking through how a Tyson executive runs their day differently with AI. Every prompt is built for your context: commodity volatility, retail buyer pressure, plant operations, and a portfolio of America's most-loved protein brands. By the end, you'll leave with a personal operating system — not just a tool demo.</p>
+  <div class="brand-strip">
+    <span class="brand-pill">Tyson</span>
+    <span class="brand-pill">Jimmy Dean</span>
+    <span class="brand-pill">Hillshire Farm</span>
+    <span class="brand-pill">Ball Park</span>
+    <span class="brand-pill">Wright</span>
+    <span class="brand-pill">Aidells</span>
+    <span class="brand-pill">State Fair</span>
+    <span class="brand-pill">Hillshire Reserve</span>
+  </div>
+</section>
+
+<!-- ═══════════ DAY ARC + STAKES ═══════════ -->
+<section class="section" id="overview">
+  <div class="section-inner">
+
+    <div class="day-arc">
+      <h3>Your Day with Copilot</h3>
+      <div class="day-arc-track">
+        <div class="day-arc-item">
+          <div class="day-arc-dot">1</div>
+          <div class="day-arc-time">5:45 AM</div>
+          <div class="day-arc-label">Run the Day</div>
+          <div class="day-arc-sub">Catch up · Prioritize</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">2</div>
+          <div class="day-arc-time">8:30 AM</div>
+          <div class="day-arc-label">Operating Rhythm</div>
+          <div class="day-arc-sub">Personalization · Prompts</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">3</div>
+          <div class="day-arc-time">10:00 AM</div>
+          <div class="day-arc-label">Intelligence</div>
+          <div class="day-arc-sub">Analyst · Researcher · Excel</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">4</div>
+          <div class="day-arc-time">11:30 AM</div>
+          <div class="day-arc-label">Momentum</div>
+          <div class="day-arc-sub">Meetings · Follow-ups</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">5</div>
+          <div class="day-arc-time">1:30 PM</div>
+          <div class="day-arc-label">Cowork</div>
+          <div class="day-arc-sub">Delegate · Approve · Scale</div>
+        </div>
+        <div class="day-arc-item">
+          <div class="day-arc-dot">6</div>
+          <div class="day-arc-time">3:00 PM</div>
+          <div class="day-arc-label">What's Next</div>
+          <div class="day-arc-sub">Governance · 90-day plan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <p>Tyson Foods feeds the world like family — and that scale comes with relentless complexity: live cattle and grain markets that move every hour, plant operations that never stop, retail and food service partners that expect daily answers, and consumer brands that have to stay relevant from <em>Jimmy Dean</em> breakfast sandwiches to <em>Hillshire Reserve</em> premium lunchmeat.</p>
+      <p>The executives who adopt AI in 2026 won't be the ones who learned every feature. They'll be the ones who changed how they operate — how they catch up after a plant visit, how they brief a buyer, how they decide. This experience is designed to show your leadership team what that looks like, in your context, with your data.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>From farm to fork is a 24/7 operation. The leaders who'll win the next three years are the ones who let AI carry the load on the things that don't need a human — so they can spend every minute that counts on the things that do.</p>
+      <div class="attribution">— The premise of today's experience</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 1: RUN THE DAY ═══════════ -->
+<section class="section alt-bg" id="ch1">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">01</span>
+      <h2 class="chapter-title">Run the Day</h2>
+      <p class="chapter-subtitle">Catch up, prioritize, prep — before the line starts running you</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">🛒 Sales / Customer</span>
+      <span class="persona-pill">📢 Brand &amp; Marketing</span>
+      <span class="persona-pill">🏭 Operations / Plant</span>
+      <span class="persona-pill">🚚 Supply Chain</span>
+      <span class="persona-pill">👥 Team Member Experience</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      You spent the last three days at the Springdale processing facility and one of our beef plants, then drove up to Bentonville for a top-customer line review. It's 5:45 AM Monday. You have 612 unread emails, 47 unread Teams messages, a chicken margin update from the commodity desk, and the Monday morning ops sync starts at 7:00. You don't need to read everything — you need to know what matters before you step into a meeting where every minute will cost or save real money.
+    </div>
+
+    <div class="how-to-section">
+      <details>
+        <summary>📍 Where to do this — step-by-step</summary>
+        <div class="how-to-steps">
+          <ol>
+            <li>On your phone, open the <strong>Microsoft 365 Copilot</strong> app</li>
+            <li>Tap the <strong>microphone icon</strong> at the bottom to start voice mode</li>
+            <li>Speak your prompt naturally — Copilot will listen and respond</li>
+            <li>To dig into a thread, open the <strong>Outlook</strong> mobile app → open the email → tap the <strong>Copilot icon</strong> in the top bar</li>
+            <li>For Teams, open the <strong>Teams</strong> mobile app → go to the chat or channel → tap the <strong>Copilot</strong> icon to summarize</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <div class="card-badge">Copilot Voice</div>
+        <h4>Verbal Briefing</h4>
+        <p>Hands-free catch-up on your phone before you've left the hotel parking lot.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <div class="card-badge">Outlook Mobile</div>
+        <h4>Inbox Triage</h4>
+        <p>Cut through retail, plant, commodity, and PR noise to what actually needs you.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-badge">Teams</div>
+        <h4>Teams Catch-Up</h4>
+        <p>One week of plant and customer chatter, summarized into four decision buckets.</p>
+      </div>
+    </div>
+
+    <div class="trainer-tip">
+      <div class="trainer-tip-icon">💡</div>
+      <div>
+        <div class="trainer-tip-label">Presenter Note</div>
+        <p class="trainer-tip-text">Demonstrate Copilot Voice on a mobile device first — this is the "windshield time" moment. Show how a Tyson executive catches up on the drive from the hotel to the plant or the buyer meeting. Then have participants try their own voice prompt before opening laptops.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Voice Catch-Up</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice briefing prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Copilot Voice</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">I just spent three days at our Springdale poultry plant and a beef facility, plus a buyer line review in Bentonville. Give me a verbal briefing in two minutes: what's the most urgent thing waiting for me, what decisions are blocked on me, and what one piece of good news I should know before the 7 AM ops sync. Keep it conversational, not a list.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice follow-up prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Voice Follow-Up</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Pause on that last point. Who exactly is asking for the decision, what's the dollar exposure or volume impact, and is a customer commitment or a plant restart waiting on me?</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy voice closing prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+        <span class="prompt-tag">Voice Closing</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Based on everything that came in while I was in plants and at the customer, what are the three themes I should walk into the Monday ops sync prepared to discuss across chicken, beef/pork, and prepared foods? Give me a one-sentence point of view for each.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Outlook Mobile Triage</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Outlook triage prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+        <span class="prompt-tag">Outlook Mobile</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Summarize this thread in five bullets. Then tell me: what is the actual ask of me, what's the deadline, what's the volume or margin at stake, and is there a position the team has already converged on that I can either endorse or push back on?</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Teams Catch-Up</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button" aria-label="Copy Teams catch-up prompt">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="prompt-tag">Teams Chat</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">I've been off Teams for three days while in plants. Summarize my unread messages across all my chats and channels. Group them into: (1) needs my decision (with dollar/volume impact if known), (2) FYI from my direct reports, (3) customer or supplier escalations, (4) recognition or noise I can ignore.</p>
+    </div>
+
+    <div class="role-variants">
+      <details>
+        <summary>🎯 Role-specific catch-up variants</summary>
+        <div class="role-content">
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👤</span><span class="role-name">CEO / Senior Leader</span></div>
+            <p class="prompt-text">Summarize board, investor, and external-affairs communications from the past week. Highlight anything that needs a senior leader response before the next earnings prep or board call. Include any media mentions of Tyson Foods, our brands, or our peers (Pilgrim's, Cargill, JBS, Hormel).</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">💰</span><span class="role-name">CFO / Finance Leader</span></div>
+            <p class="prompt-text">Pull together finance-related emails — highlight chicken, beef, and pork segment commentary, quarterly close updates, grain and energy hedging notes, and any tariff or trade discussions. Prioritize anything with a dollar amount, a covenant trigger, or a deadline attached.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🛒</span><span class="role-name">Chief Customer / Sales Officer</span></div>
+            <p class="prompt-text">Catch me up on communications from top retail and food service customers — Walmart, Kroger, Costco, McDonald's, Chick-fil-A, Sysco, US Foods. Any promotional calendar changes, listing decisions, service complaints, or buyer feedback that needs my attention this week.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">📢</span><span class="role-name">Chief Marketing / Brand Officer</span></div>
+            <p class="prompt-text">Summarize brand and consumer communications across Tyson, Jimmy Dean, Hillshire Farm, Ball Park, and Hillshire Reserve. Flag campaign performance, social sentiment shifts, retail merchandising issues, and any innovation gates (e.g., Chicken Dip Wedges, Restaurant-Style Waffle Nuggets) that need my sign-off.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🏭</span><span class="role-name">COO / Operations Leader</span></div>
+            <p class="prompt-text">Summarize plant operations communications — production status, downtime events, yield variances, food safety holds, USDA inspection notes, and any labor or staffing escalations from the past three days across chicken, beef, pork, and prepared foods.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">🚚</span><span class="role-name">Supply Chain Leader</span></div>
+            <p class="prompt-text">Catch me up on live supply, grain procurement, cold-chain logistics, and DC throughput. Flag any carrier escalations, refrigerated capacity issues, or supplier risk events. Prioritize anything affecting customer fill rates this week.</p>
+          </div>
+          <div class="role-item" tabindex="0" role="button">
+            <div class="role-item-header"><span class="role-emoji">👥</span><span class="role-name">Chief People Officer</span></div>
+            <p class="prompt-text">Flag any team member, labor, safety, or community communications — plant safety incidents, pending labor negotiations, EHS metrics, plant town hall feedback, or community impact items that arrived in the last three days.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome by 6:45 AM</div>
+      <p class="outcome-text">You walk into the 7 AM ops sync already current. Three replies sent. The chicken margin update digested. One buyer commitment confirmed. Zero inbox-scroll required — and you're already ahead of the line.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Can name the most urgent decision waiting for you</label>
+      <label><input type="checkbox"> Know which customer or plant escalation needs a reply before noon</label>
+      <label><input type="checkbox"> Identified the three themes for the ops sync</label>
+      <label><input type="checkbox"> Did the catch-up entirely with voice (no typing)</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 2: OPERATING RHYTHM ═══════════ -->
+<section class="section" id="ch2">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">02</span>
+      <h2 class="chapter-title">Your Operating Rhythm</h2>
+      <p class="chapter-subtitle">Personalization, memory &amp; the art of the prompt</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">🛒 Sales</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">🏭 Operations</span>
+      <span class="persona-pill">🚚 Supply Chain</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      Your Copilot should understand who you are at Tyson, what businesses you own, who your customers are, and how you communicate. This section builds the foundation — your personal operating instructions, Copilot memory, and the prompt patterns that will become second nature.
+    </div>
+
+    <div class="trainer-tip">
+      <div class="trainer-tip-icon">🧠</div>
+      <div>
+        <div class="trainer-tip-label">Why this matters</div>
+        <p class="trainer-tip-text">A generic Copilot gives you generic answers. A Copilot that knows you run the prepared foods segment, that your top three customers are Walmart, Sam's Club and Kroger, and that you brief the CFO every Friday — gives you executive answers.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Set Your Personal Context (paste once)</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg></div>
+        <span class="prompt-tag">Copilot Memory</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Remember this about me for all future conversations: I'm a senior leader at Tyson Foods. My segment is [Chicken / Beef / Pork / Prepared Foods / International]. My top customers are [list]. My direct reports include [list]. I have a weekly business review on [day], a monthly operating review on [day], and quarterly earnings prep starts [timeframe]. When you draft for me, default to: direct, decision-first, no marketing fluff. Lead with the recommendation, then evidence, then risks. Use plain English a plant manager and a Wall Street analyst would both understand.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <div class="prompt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/></svg></div>
+        <span class="prompt-tag">Stakeholder Map</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Also remember my stakeholder context: my CEO cares most about [top three priorities]; my CFO is focused on margin recovery in [segment]; our board is watching [strategic priority]; our top customer's category manager values [data, on-time delivery, joint business planning]. When I draft anything to these stakeholders, tailor the tone and depth to them by default.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">The Five Prompt Patterns That Earn Their Keep</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Pattern 1 · Brief Me</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Brief me on [topic] in 200 words or less. Tell me: what changed, why it matters to Tyson, what the team is recommending, and what decision I'll need to make. Cite the documents or emails you pulled from.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Pattern 2 · Steelman Both Sides</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">My team is recommending [decision]. Steelman the case <em>for</em> it in 100 words and the case <em>against</em> it in 100 words. Then tell me what data I'd need to break the tie.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Pattern 3 · So-What</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Read this report/email/deck. Skip the summary — give me the three "so-whats" for my segment and one question I should be asking that nobody in the document is asking.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Pattern 4 · Draft in My Voice</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Draft this in my voice: direct, no fluff, lead with the point, use plant-floor plain English. Three short paragraphs max. End with a clear ask or next step.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Pattern 5 · Prep Me for the Room</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">I have a meeting with [person/team] at [time]. Pull the last 60 days of email and Teams I have with them. Tell me: their top concern right now, what I committed to last time, what's outstanding, and the three questions they're most likely to ask me.</p>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome</div>
+      <p class="outcome-text">Your Copilot now knows your segment, your customers, your rhythm, and your voice. The same five patterns work for a margin review, a buyer call, a town hall, or a board prep — every day, every meeting.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Saved your personal context and stakeholder map to Copilot memory</label>
+      <label><input type="checkbox"> Tried at least three of the five prompt patterns</label>
+      <label><input type="checkbox"> Got a draft back that actually sounded like you</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 3: INTELLIGENCE ═══════════ -->
+<section class="section alt-bg" id="ch3">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">03</span>
+      <h2 class="chapter-title">Intelligence</h2>
+      <p class="chapter-subtitle">Analyst · Researcher · Excel — the work that used to take a week</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">🛒 Sales</span>
+      <span class="persona-pill">📢 Marketing</span>
+      <span class="persona-pill">🏭 Operations</span>
+      <span class="persona-pill">🚚 Supply Chain</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      It's the run-up to quarterly earnings. The CFO has asked for a clean read on Prepared Foods margin: what moved, why, and what we're doing about it. You also need a competitive read on Hormel and Conagra's latest moves, and a customer-by-customer view of the top-10 retail accounts. Two years ago, that was a team of four for a week. Today, it's you and Copilot for an afternoon — if you steer it right.
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-badge">Analyst</div>
+        <h4>Margin Bridge</h4>
+        <p>Reason over multiple quarters of internal data to build the variance story.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-badge">Researcher</div>
+        <h4>Competitor &amp; Market</h4>
+        <p>Deep web + internal blend on Hormel, Conagra, commodity outlook, USDA data.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-badge">Copilot in Excel</div>
+        <h4>Customer Cube</h4>
+        <p>Slice top-10 accounts by volume, mix, price, and trade spend without a single formula.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Analyst — Build the Margin Story</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Analyst Agent</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">You are an Analyst. Pull from the Prepared Foods segment files in my OneDrive and the last four quarterly close decks. Build me a margin bridge from Q3 last year to this quarter. Break it into: volume, mix (Jimmy Dean vs Hillshire Farm vs Ball Park vs Hillshire Reserve), price/promo, raw material (pork belly, pork trim, turkey), freight, labor, and plant productivity. Show me the three largest movers in dollars. Cite the source files for every line.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Refinement</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Now write three sentences of CFO-grade narrative for the largest unfavorable mover, including what the team is doing about it in the next two quarters. Flag any assumptions you made and the data points I should personally double-check before this goes into the earnings prep deck.</p>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-icon">⚠️</span>
+      <div>
+        <div class="callout-label">Verify before you publish</div>
+        Any number that lands in an earnings deck, a board read, or a customer JBP must be traced back to source. Always ask Copilot to show its citations and reconcile the totals to your system of record before you sign off.
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Researcher — Read the Market</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Researcher Agent</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">You are a Researcher. Pull the last 90 days of public commentary, earnings transcripts, and analyst notes on Hormel and Conagra Brands. I want: what they say their growth bets are in refrigerated and frozen prepared foods, where they say they're losing, and any pricing action they've announced. Then cross-reference with Tyson's last earnings call — where are they pointing and where are we pointing? Give me the three places we'd be wise to look harder.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Commodity Read</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Researcher: pull the latest USDA WASDE report, current CME live cattle, lean hog, and corn futures, and any major news on grain stocks or avian influenza in the last 30 days. Summarize the implications for Tyson's chicken, beef, and pork segments over the next two quarters in 200 words. End with "the question this raises for our hedging strategy is…"</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Copilot in Excel — Customer Cube</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Excel</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">In this workbook of top-10 customer sales: build a view that shows each customer's volume, net price per lb, trade spend %, gross margin %, and YoY change for the last 8 quarters. Flag every customer where trade spend grew faster than volume. Then explain in plain English which two accounts are the biggest profitability risk and why.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Excel Refinement</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Now build a single chart that tells the story I'd put in front of my CFO in 30 seconds. Title it like a headline, not a label. Save the file and tell me exactly what changed so I can audit it.</p>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome by 1:00 PM</div>
+      <p class="outcome-text">A draft margin bridge with citations, a one-page competitor read, a customer profitability cube with two clear risks called out, and a single chart for the CFO. What used to take a week of analyst time is on your screen — and you spent the morning thinking, not formatting.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Margin bridge ties to source files (you spot-checked at least two)</label>
+      <label><input type="checkbox"> Competitor read produced at least one insight you didn't already have</label>
+      <label><input type="checkbox"> Customer cube identified the two highest-risk accounts</label>
+      <label><input type="checkbox"> You can defend every number in the room</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 4: MOMENTUM ═══════════ -->
+<section class="section" id="ch4">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">04</span>
+      <h2 class="chapter-title">Momentum</h2>
+      <p class="chapter-subtitle">Meetings, follow-ups &amp; the work after the work</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">🛒 Sales</span>
+      <span class="persona-pill">🏭 Operations</span>
+      <span class="persona-pill">👥 Team Member Experience</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      11:30 AM. You just finished a top-customer joint business planning session over Teams. The buyer asked tough questions about Tyson's service levels last quarter, our innovation pipeline for back-to-school, and our pricing for the summer grilling reset. You committed to four things. In the old world, half of those commitments would slip by Friday. Today, Copilot turns the meeting into action before you're out of the chair.
+    </div>
+
+    <div class="activity-group"><span class="activity-label">After the Meeting (Teams)</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Teams Recap</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Recap the customer JBP meeting we just had. Give me: (1) the buyer's top three concerns in their words, (2) every commitment I made and to whom, with the date I said I'd deliver, (3) any commitment the buyer made to us, and (4) the two unresolved items that need a follow-up call. Tone: factual, not promotional.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Customer Follow-Up Draft</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Draft a follow-up email to the buyer in my voice. Restate what we heard them say (so they know we listened), confirm the four commitments I made with dates, ask explicitly for the two things they committed to us, and propose a 30-minute mid-month check-in. Keep it under 200 words.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Internal Cascade</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Now draft a Teams post for my account team channel: summarize the meeting in five bullets, assign each of my four commitments to the right function (supply chain, brand, innovation, finance), tag the owner, and ask them to confirm the date by end of day.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Plant Town Hall Prep</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Town Hall</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">I'm doing a town hall at the [plant location] facility next week. Pull the last 90 days of plant performance data, safety incidents, and the most recent team member engagement survey results for that site. Draft me a 10-minute talk that: opens with thanks to specific shift teams, names the two performance wins, addresses the two honest concerns the survey raised, and ends with what we're going to do differently. Plain English. Plant-floor tone, not corporate.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Executive Briefing</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">CEO Read-Out</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Draft a half-page brief for the CEO on this week in my segment. Three sections: (1) Customer — what the top accounts told us and what we owe them, (2) Operations — fill rate, yield, and safety vs. plan, (3) Decisions I need from you. Use bullets, no adjectives. Cite where the data came from.</p>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome by 12:30 PM</div>
+      <p class="outcome-text">Customer recap sent. Account team mobilized. Town hall talk drafted. CEO briefing in the chamber. The meeting is no longer the work — the work is the decision you made <em>in</em> the meeting, and Copilot carried it forward.</p>
+    </div>
+
+    <div class="callout note">
+      <span class="callout-icon">📌</span>
+      <div>
+        <div class="callout-label">Privacy reminder</div>
+        Anything you send externally — to a customer, supplier, or the public — gets read by you before it leaves. Copilot drafts; you decide. Especially for buyer commitments, pricing, and anything sensitivity-labeled.
+      </div>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Customer follow-up sent within 30 minutes of the meeting ending</label>
+      <label><input type="checkbox"> Every commitment has a named owner and a date</label>
+      <label><input type="checkbox"> Town hall talk sounds like you, not a press release</label>
+      <label><input type="checkbox"> CEO brief fits on half a page</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 5: COWORK ═══════════ -->
+<section class="section alt-bg" id="ch5">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">05</span>
+      <h2 class="chapter-title">Cowork</h2>
+      <p class="chapter-subtitle">Delegating to agents — the work that runs while you run the business</p>
+    </div>
+
+    <div class="persona-row">
+      <span class="persona-pill">👤 Executive</span>
+      <span class="persona-pill">💰 Finance</span>
+      <span class="persona-pill">🛒 Sales</span>
+      <span class="persona-pill">🚚 Supply Chain</span>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario</div>
+      You don't just want a faster Copilot — you want a team of small, focused agents that handle recurring work in the background, surface what matters, and tee up decisions for you and your team. Today, you'll see three Tyson-shaped agent ideas, approve the ones that should be built, and learn the governance guardrails that keep them safe.
+    </div>
+
+    <div class="three-cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-badge">Agent Idea 1</div>
+        <h4>Customer Health Agent</h4>
+        <p>Daily read of fill rate, OTIF, complaints, and trade spend by top-25 account — escalates only the ones drifting.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐄</div>
+        <div class="card-badge">Agent Idea 2</div>
+        <h4>Commodity Pulse Agent</h4>
+        <p>Pre-market briefing on cattle, hog, corn, soy, and energy — with the so-what for your segment, every morning at 6 AM.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥩</div>
+        <div class="card-badge">Agent Idea 3</div>
+        <h4>Innovation Gate Agent</h4>
+        <p>Tracks every active brand innovation (Tyson, Jimmy Dean, Hillshire Reserve) against its stage-gate dates and flags slips.</p>
+      </div>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Co-Approve the Backlog</span></div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Agent Charter</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">Draft a one-page charter for the "Customer Health Agent." Cover: (1) the business problem it solves, (2) the data it needs and the systems it must connect to, (3) what it does autonomously vs. what it escalates to a human, (4) the metrics that prove it's working in 90 days, (5) the risks and the human-in-the-loop controls, and (6) who owns it. Use language a non-technical executive sponsor can approve.</p>
+    </div>
+
+    <div class="prompt-card" tabindex="0" role="button">
+      <div class="prompt-label">
+        <span class="prompt-tag">Quick-Build Prototype</span>
+        <span class="prompt-copy-hint">📋 Click to copy</span>
+      </div>
+      <p class="prompt-text">For the Commodity Pulse Agent: draft the exact daily prompt the agent should run, the sources it should pull from, the format of the morning brief (email vs. Teams post vs. mobile push), and three example outputs for chicken, beef, and pork segment leaders. Keep each output to 150 words.</p>
+    </div>
+
+    <div class="activity-group"><span class="activity-label">Governance Guardrails</span></div>
+
+    <div class="governance-grid">
+      <div class="gov-tile">
+        <div class="gov-tile-icon">🔒</div>
+        <h4>Data boundaries</h4>
+        <p>Agents only see what their owner sees. Sensitivity-labeled content (pricing, M&amp;A, food-safety) is governed by your existing MIP labels — Copilot respects them.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">👁️</div>
+        <h4>Human-in-the-loop</h4>
+        <p>Anything customer-facing, supplier-facing, or regulator-facing requires a human approval before it's sent. Agents draft; people decide.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">📜</div>
+        <h4>Audit trail</h4>
+        <p>Every agent action is logged. If it sent it, drafted it, or recommended it — we can show the work.</p>
+      </div>
+      <div class="gov-tile">
+        <div class="gov-tile-icon">🛑</div>
+        <h4>Kill switch</h4>
+        <p>An executive sponsor and IT can pause any agent within minutes. Behavior changes are tested in a controlled environment before they reach production.</p>
+      </div>
+    </div>
+
+    <div class="outcome-block">
+      <div class="outcome-label">Outcome</div>
+      <p class="outcome-text">Three Tyson-shaped agents on the backlog with sponsors and a 90-day measurable. Governance is decided up-front — not after the first incident. The principle is the same as the plant floor: design the controls in, don't bolt them on.</p>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Self-Check</h4>
+      <label><input type="checkbox"> Picked the one agent your segment will charter first</label>
+      <label><input type="checkbox"> Named the executive sponsor and the 90-day metric</label>
+      <label><input type="checkbox"> Confirmed the four governance guardrails are clear</label>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 6: NEXT STEPS ═══════════ -->
+<section class="section" id="ch6">
+  <div class="section-inner">
+    <div class="chapter-header">
+      <span class="chapter-number">06</span>
+      <h2 class="chapter-title">What's Next</h2>
+      <p class="chapter-subtitle">Your 90-day plan — from immersion to operating habit</p>
+    </div>
+
+    <div class="content-block">
+      <p>Today was the demo. The next 90 days are where the value gets booked. Here's the path your leadership team will walk together — every step has a named owner, a date, and a measurable.</p>
+    </div>
+
+    <div class="next-steps">
+      <h3>Your First 90 Days</h3>
+      <p class="ns-sub">From this room to a repeatable Tyson operating habit.</p>
+      <div class="ns-grid">
+        <div class="ns-item">
+          <div class="ns-number">30</div>
+          <h4>Days · Personal Habit</h4>
+          <p>Every ELT member uses Copilot daily for catch-up, drafts, and prep. Memory configured. Five prompt patterns in muscle memory.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">60</div>
+          <h4>Days · Team Habit</h4>
+          <p>One signature use case adopted per segment (margin bridge, customer JBP recap, town hall prep). Documented and shared.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">90</div>
+          <h4>Days · First Agent</h4>
+          <p>First Tyson agent live in pilot — Customer Health, Commodity Pulse, or Innovation Gate. Sponsor named. Metric tracked.</p>
+        </div>
+        <div class="ns-item">
+          <div class="ns-number">∞</div>
+          <h4>Then · Scale</h4>
+          <p>Agent backlog reviewed monthly by the ELT. Governance reviewed quarterly. New use cases sourced from the plant floor up.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>We feed the world like family. We're going to run the business like a family that finally has a few hours back in the day — to spend on the people, the plants, and the brands that built this company.</p>
+      <div class="attribution">— Your operating commitment</div>
+    </div>
+
+    <div class="self-check">
+      <h4>✅ Leadership Commitments</h4>
+      <label><input type="checkbox"> I will use Copilot daily for the next 30 days (catch-up, draft, prep)</label>
+      <label><input type="checkbox"> I will pick one signature use case for my segment by end of week</label>
+      <label><input type="checkbox"> I will sponsor or co-sponsor one agent in the 90-day plan</label>
+      <label><input type="checkbox"> I will share one Copilot win at the next ELT meeting</label>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="tagline">We feed the world like family — now we run the business like one too.</div>
+  <p>This immersion was built for Tyson Foods leadership using Microsoft 365 Copilot. Every prompt is yours to take, edit, and make your own.</p>
+  <div class="footer-date">June 18, 2026 · Tyson Foods × Microsoft</div>
+  <div class="footer-brands">
+    <span>Tyson</span><span>Jimmy Dean</span><span>Hillshire Farm</span><span>Ball Park</span><span>Wright</span><span>Aidells</span><span>State Fair</span><span>Hillshire Reserve</span>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+  progressBar.style.width = (scrolled * 100) + '%';
+  document.getElementById('main-nav').classList.toggle('scrolled', h.scrollTop > 20);
+});
+
+// Section reveal
+const sections = document.querySelectorAll('.section');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+sections.forEach(s => io.observe(s));
+
+// Active nav state
+const navLinks = document.querySelectorAll('.nav-links a');
+const navIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-30% 0px -50% 0px' });
+document.querySelectorAll('section[id]').forEach(s => navIo.observe(s));
+
+// Copy prompts on click
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast() {
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+function attachCopy(el) {
+  el.addEventListener('click', () => {
+    const text = el.querySelector('.prompt-text').innerText.trim();
+    navigator.clipboard.writeText(text).then(showToast).catch(() => {});
+  });
+  el.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); el.click(); }
+  });
+}
+document.querySelectorAll('.prompt-card, .role-item').forEach(attachCopy);
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+
+</body>
+</html>
