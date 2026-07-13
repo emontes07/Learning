@@ -1,0 +1,1106 @@
+---
+demo:
+    title: 'Discount Tire — M365 Copilot in your daily work'
+layout: none
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Discount Tire · Knowledge Worker AI Guide — M365 Copilot in your daily work</title>
+<style>
+:root{
+  --primary:#1a1a1a;
+  --secondary:#CC0000;
+  --accent:#E8352D;
+  --warm:#D4272E;
+  --steel:#4A5568;
+  --silver:#A0AEC0;
+  --blue:#2B6CB0;
+  --teal:#319795;
+  --bg:#F7F8FA;
+  --surface:#ffffff;
+  --text:#1a2733;
+  --muted:#5b6b7d;
+  --border:#e3e8ef;
+  --shadow:0 1px 2px rgba(0,0,0,.06),0 16px 36px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--secondary);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{color:var(--primary);line-height:1.18;margin:0 0 .35em;letter-spacing:-.01em}
+h1{font-size:3rem;font-weight:700}
+h2{font-size:2.05rem;font-weight:650;margin-top:0}
+h3{font-size:1.32rem;font-weight:650;margin-top:1.2em}
+h4{font-size:1rem;font-weight:650;color:#2d2d2d;text-transform:uppercase;letter-spacing:.06em;font-size:.84rem;margin:1.2em 0 .4em}
+p{margin:.6em 0;font-size:1.04rem}
+ul,ol{margin:.5em 0 1em;padding-left:1.4em}
+li{margin:.3em 0}
+
+/* Hero */
+header.hero{
+  position:relative;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 22%,#2d1515 48%,#CC0000 80%,#E8352D 100%);
+  padding:80px 32px 110px;
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 380px at 100% 0%,rgba(255,255,255,.08),transparent 60%),
+    radial-gradient(600px 280px at 0% 110%,rgba(204,0,0,.15),transparent 60%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero .eyebrow{
+  display:inline-block;background:rgba(255,255,255,.14);color:#fff;
+  padding:6px 14px;border-radius:999px;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:20px;backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22)
+}
+.hero h1{color:#fff;max-width:920px;margin:0 0 .25em;font-size:3.1rem}
+.hero .lede{color:#e8d0d0;font-size:1.18rem;max-width:760px;margin:.4em 0 0;line-height:1.55}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:.94rem;color:#d4b0b0;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:22px;max-width:920px
+}
+.hero-meta span b{color:#fff;display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#c4a0a0;margin-bottom:3px;font-weight:600}
+
+/* Day arc */
+.dayarc-wrap{margin-top:-60px;padding:0 24px 0;position:relative;z-index:2}
+.dayarc{
+  max-width:1100px;margin:0 auto;background:#fff;border-radius:18px;
+  box-shadow:var(--shadow);border:1px solid var(--border);padding:22px 26px;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:14px
+}
+.dayarc .step{position:relative;padding:6px 8px}
+.dayarc .step::before{
+  content:"";position:absolute;left:0;right:0;top:30px;height:3px;
+  background:linear-gradient(90deg,#dfe7ef,#dfe7ef)
+}
+.dayarc .step:first-child::before{left:50%}
+.dayarc .step:last-child::before{right:50%}
+.dayarc .step .dot{
+  width:18px;height:18px;border-radius:50%;background:var(--secondary);
+  margin:22px auto 10px;position:relative;z-index:1;border:3px solid #fff;box-shadow:0 0 0 2px var(--secondary)
+}
+.dayarc .step .dot.dark{background:var(--primary);box-shadow:0 0 0 2px var(--primary)}
+.dayarc .step .dot.accent{background:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.dayarc .step .dot.steel{background:var(--steel);box-shadow:0 0 0 2px var(--steel)}
+.dayarc .step .dot.blue{background:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+.dayarc .step .dot.teal{background:var(--teal);box-shadow:0 0 0 2px var(--teal)}
+.dayarc .step .time{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center}
+.dayarc .step .label{font-size:.88rem;font-weight:600;color:var(--primary);text-align:center;margin-top:2px}
+.dayarc .step .sub{font-size:.74rem;color:var(--muted);text-align:center;margin-top:2px}
+@media (max-width:880px){
+  .dayarc{grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .dayarc .step::before{display:none}
+}
+@media (max-width:520px){
+  .dayarc{grid-template-columns:1fr 1fr;gap:14px}
+}
+
+/* Layout */
+main{max-width:1100px;margin:0 auto;padding:60px 32px 40px}
+
+/* Section */
+section.act{margin:0 0 64px;position:relative}
+section.act .stake{
+  display:flex;gap:18px;align-items:flex-start;margin-bottom:16px;
+  padding:14px 18px;background:#fff;border:1px solid var(--border);
+  border-left:5px solid var(--secondary);border-radius:10px;box-shadow:var(--shadow)
+}
+section.act .stake.dark{border-left-color:var(--primary)}
+section.act .stake.accent{border-left-color:var(--accent)}
+section.act .stake.steel{border-left-color:var(--steel)}
+section.act .stake.blue{border-left-color:var(--blue)}
+section.act .stake.teal{border-left-color:var(--teal)}
+section.act .stake .ix{
+  flex:0 0 56px;width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--secondary),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700
+}
+section.act .stake .ix.dark{background:linear-gradient(135deg,#0d0d0d,#3d3d3d)}
+section.act .stake .ix.accent{background:linear-gradient(135deg,var(--secondary),var(--accent))}
+section.act .stake .ix.steel{background:linear-gradient(135deg,var(--steel),#718096)}
+section.act .stake .ix.blue{background:linear-gradient(135deg,var(--blue),#4299E1)}
+section.act .stake .ix.teal{background:linear-gradient(135deg,var(--teal),#4FD1C5)}
+section.act .stake .meta{flex:1}
+section.act .stake .eye{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+section.act .stake h2{margin:2px 0 4px;color:var(--primary)}
+section.act .stake .tagline{color:var(--muted);font-size:.98rem;margin:0}
+
+section.act .body{
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px 34px;
+  box-shadow:var(--shadow)
+}
+@media (max-width:720px){section.act .body{padding:22px 20px}}
+
+.outcome{
+  margin-top:18px;background:linear-gradient(135deg,rgba(204,0,0,.06),rgba(232,53,45,.04));
+  border:1px solid rgba(204,0,0,.15);border-radius:12px;padding:16px 20px
+}
+.outcome .lbl{font-size:.72rem;color:var(--secondary);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+.outcome p{margin:.2em 0;font-size:1.02rem;color:var(--primary)}
+.outcome.dark{background:linear-gradient(135deg,rgba(26,26,26,.06),rgba(74,85,104,.04));border-color:rgba(26,26,26,.15)}
+.outcome.dark .lbl{color:var(--steel)}
+.outcome.steel{background:linear-gradient(135deg,rgba(74,85,104,.08),rgba(160,174,192,.06));border-color:rgba(74,85,104,.20)}
+.outcome.steel .lbl{color:var(--steel)}
+.outcome.blue{background:linear-gradient(135deg,rgba(43,108,176,.07),rgba(66,153,225,.04));border-color:rgba(43,108,176,.18)}
+.outcome.blue .lbl{color:var(--blue)}
+.outcome.teal{background:linear-gradient(135deg,rgba(49,151,149,.07),rgba(79,209,197,.04));border-color:rgba(49,151,149,.18)}
+.outcome.teal .lbl{color:var(--teal)}
+
+/* Pull quote */
+.pullquote{
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;color:var(--primary);
+  font-size:1.4rem;line-height:1.45;border-left:4px solid var(--secondary);
+  padding:8px 0 8px 20px;margin:28px 6px;max-width:780px
+}
+.pullquote.steel{border-left-color:var(--steel)}
+.pullquote.blue{border-left-color:var(--blue)}
+.pullquote.teal{border-left-color:var(--teal)}
+
+/* Three-up cards */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 0}
+@media (max-width:780px){.three{grid-template-columns:1fr}}
+.card{
+  background:#fafcfe;border:1px solid var(--border);border-radius:12px;padding:18px 18px;
+  display:flex;flex-direction:column;gap:6px
+}
+.card .pill{
+  display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--secondary);padding:2px 9px;border-radius:999px;align-self:flex-start;font-weight:600
+}
+.card .pill.dark{background:var(--primary)}
+.card .pill.accent{background:var(--accent)}
+.card .pill.steel{background:var(--steel)}
+.card .pill.blue{background:var(--blue)}
+.card .pill.teal{background:var(--teal)}
+.card .pill.green{background:#38A169;color:#fff}
+.card h4{font-size:1rem;margin:6px 0 2px;color:var(--primary);text-transform:none;letter-spacing:0}
+.card p{margin:0;font-size:.96rem;color:var(--text)}
+.card .note{font-size:.86rem;color:var(--muted);margin-top:8px}
+
+/* Two-up */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 0}
+@media (max-width:780px){.two{grid-template-columns:1fr}}
+
+/* Four-up */
+.four-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 0}
+@media (max-width:880px){.four-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.four-grid{grid-template-columns:1fr}}
+
+/* Prompt */
+.prompt-label{
+  display:inline-block;font-size:.7rem;color:var(--secondary);background:#fce8e8;
+  border:1px solid #f0c4c4;padding:2px 9px;border-radius:6px;letter-spacing:.05em;
+  text-transform:uppercase;margin:16px 0 6px;font-weight:600
+}
+.prompt{
+  position:relative;background:#0d0d0d;color:#f5e8e8;border-radius:10px;
+  padding:13px 56px 13px 16px;font-family:'Cascadia Mono','Consolas','SF Mono',monospace;
+  font-size:.86rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;
+  border:1px solid #2a1010
+}
+.prompt .copy-btn{
+  position:absolute;top:8px;right:8px;background:rgba(255,255,255,.10);color:#fff;
+  border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:7px;cursor:pointer;
+  font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;font-family:inherit
+}
+.prompt .copy-btn:hover{background:rgba(255,255,255,.2)}
+.prompt .copy-btn.copied{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+
+/* Big stat row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0 4px}
+@media (max-width:720px){.stats{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.stats{grid-template-columns:1fr}}
+.stat{
+  background:linear-gradient(180deg,#fff,#faf7f7);border:1px solid var(--border);
+  border-radius:12px;padding:18px 18px;text-align:center
+}
+.stat .n{font-size:1.55rem;font-weight:700;color:var(--primary);letter-spacing:-.02em}
+.stat .l{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:5px}
+
+/* Before/After */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.ba .col{padding:20px 22px}
+.ba .col.before{background:#faf5f5}
+.ba .col.after{background:#f0faf0}
+.ba .col .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px}
+.ba .col.before .tag{color:#b33}
+.ba .col.after .tag{color:#2a7a2a}
+.ba .col p{margin:.4em 0;font-size:.95rem}
+@media (max-width:600px){.ba{grid-template-columns:1fr}}
+
+/* Governance */
+.gov{
+  background:linear-gradient(135deg,#f7f8fa 0%,#ffffff 60%);
+  border:1px solid var(--border);border-radius:14px;padding:30px 34px;
+  box-shadow:var(--shadow)
+}
+.gov h2{color:var(--primary)}
+.gov .four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 0}
+@media (max-width:880px){.gov .four{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.gov .four{grid-template-columns:1fr}}
+.gov .tile{
+  background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;
+  display:flex;flex-direction:column;gap:6px
+}
+.gov .tile .ico{
+  width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--secondary),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:700
+}
+.gov .tile h4{margin:6px 0 2px;font-size:.95rem;text-transform:none;letter-spacing:0;color:var(--primary)}
+.gov .tile p{margin:0;font-size:.9rem;color:var(--text)}
+
+/* Next steps */
+.nextsteps{
+  background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 40%,#3d0a0a 75%,#CC0000 100%);
+  color:#fff;border-radius:18px;padding:42px 38px;box-shadow:var(--shadow);margin-top:8px
+}
+.nextsteps h2{color:#fff;margin:0 0 6px}
+.nextsteps .sub{color:#d4b0b0;font-size:1.05rem;margin:0 0 24px;max-width:680px}
+.nextsteps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:880px){.nextsteps .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.nextsteps .grid{grid-template-columns:1fr}}
+.nextsteps .step{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;padding:18px;backdrop-filter:blur(6px)
+}
+.nextsteps .step .num{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#c4a0a0;font-weight:600}
+.nextsteps .step h4{color:#fff;font-size:1.04rem;margin:6px 0 6px;text-transform:none;letter-spacing:0}
+.nextsteps .step p{color:#e8d0d0;font-size:.92rem;margin:0;line-height:1.5}
+
+/* Sticky rail */
+nav.rail{
+  position:fixed;top:50%;right:18px;transform:translateY(-50%);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:14px;padding:10px 8px;
+  box-shadow:var(--shadow);z-index:10;display:flex;flex-direction:column;gap:2px
+}
+nav.rail a{
+  display:block;padding:6px 12px;font-size:.82rem;color:var(--text);
+  border-radius:7px;border-left:3px solid transparent;
+}
+nav.rail a:hover{background:#f8f0f0;text-decoration:none}
+nav.rail a.active{
+  background:linear-gradient(90deg,rgba(204,0,0,.08),rgba(232,53,45,.04));
+  border-left-color:var(--secondary);color:var(--primary);font-weight:600
+}
+@media (max-width:1280px){nav.rail{display:none}}
+
+/* Section header anchor */
+.section-eye{
+  display:inline-flex;align-items:center;gap:10px;font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:10px
+}
+.section-eye::before{content:"";width:26px;height:2px;background:var(--secondary);display:inline-block}
+
+/* Instructor note callout */
+.instructor-note{
+  margin:18px 0;background:#FFF8E1;border:1px solid #FFE082;border-left:4px solid #FFB300;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.instructor-note .lbl{font-size:.72rem;color:#F57F17;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* Tip callout */
+.tip{
+  margin:18px 0;background:#E8F5E9;border:1px solid #A5D6A7;border-left:4px solid #43A047;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.tip .lbl{font-size:.72rem;color:#2E7D32;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* Warning callout */
+.warning{
+  margin:18px 0;background:#FFF3E0;border:1px solid #FFCC80;border-left:4px solid #EF6C00;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.warning .lbl{font-size:.72rem;color:#E65100;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* Try-it badge */
+.try-it{
+  display:inline-flex;align-items:center;gap:6px;margin:22px 0 8px;
+  background:#1a1a1a;color:#fff;padding:5px 14px;border-radius:999px;font-size:.78rem;
+  font-weight:600;letter-spacing:.06em;text-transform:uppercase
+}
+.try-it::before{content:"▸";font-size:.9rem}
+
+/* Footer */
+footer{
+  background:#1a1a1a;color:#c4b0b0;padding:30px 32px;text-align:center;font-size:.88rem;margin-top:40px
+}
+footer a{color:#fff}
+
+@media print{
+  nav.rail,.copy-btn{display:none !important}
+  body{background:#fff}
+  section.act{break-inside:avoid}
+  .prompt{color:#1a1a1a;background:#f7f8fa;border:1px solid #cdd6e0}
+}
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Sections">
+  <a href="#opening" class="active">Your AI workday</a>
+  <a href="#outlook">1 · Outlook</a>
+  <a href="#teams">2 · Teams</a>
+  <a href="#excel">3 · Excel</a>
+  <a href="#word">4 · Word</a>
+  <a href="#powerpoint">5 · PowerPoint</a>
+  <a href="#copilot-chat">6 · Copilot Chat</a>
+  <a href="#agents">7 · Agents</a>
+  <a href="#governance">Trust &amp; tips</a>
+  <a href="#next">Get started</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">M365 Copilot · Knowledge Worker Guide</span>
+    <h1>Your work, amplified — AI in every app you already use.</h1>
+    <p class="lede">This is your practical guide to Microsoft 365 Copilot. Not theory — real prompts, real workflows, real time saved. Every example maps to something you already do every week in Outlook, Teams, Excel, Word, and PowerPoint.</p>
+    <div class="hero-meta">
+      <span><b>Audience</b>All M365 users</span>
+      <span><b>Format</b>Hands-on workflow guide</span>
+      <span><b>Length</b>~25 minutes</span>
+      <span><b>Products</b>Outlook · Teams · Excel · Word · PowerPoint · Copilot Chat · Agents</span>
+    </div>
+  </div>
+</header>
+
+<div class="dayarc-wrap">
+  <div class="dayarc" role="img" aria-label="Copilot across your workday">
+    <div class="step">
+      <div class="dot dark"></div>
+      <div class="time">7:30 AM</div>
+      <div class="label">Outlook</div>
+      <div class="sub">Inbox zero, faster</div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div class="time">9:00 AM</div>
+      <div class="label">Teams</div>
+      <div class="sub">Meetings &amp; chats</div>
+    </div>
+    <div class="step">
+      <div class="dot accent"></div>
+      <div class="time">10:30 AM</div>
+      <div class="label">Excel</div>
+      <div class="sub">Data &amp; analysis</div>
+    </div>
+    <div class="step">
+      <div class="dot blue"></div>
+      <div class="time">1:00 PM</div>
+      <div class="label">Word</div>
+      <div class="sub">Write &amp; edit</div>
+    </div>
+    <div class="step">
+      <div class="dot teal"></div>
+      <div class="time">2:30 PM</div>
+      <div class="label">PowerPoint</div>
+      <div class="sub">Present &amp; persuade</div>
+    </div>
+    <div class="step">
+      <div class="dot steel"></div>
+      <div class="time">4:00 PM</div>
+      <div class="label">Chat &amp; Agents</div>
+      <div class="sub">Research &amp; automate</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ OPENING ============ -->
+<section class="act" id="opening">
+  <div class="body">
+    <div class="section-eye">Your AI workday</div>
+    <h2>Same tools you know. A completely different way to use them.</h2>
+    <p>You already live in Microsoft 365. You check email in Outlook, join calls in Teams, crunch numbers in Excel, write in Word, and present in PowerPoint. Copilot doesn't add a new app to your day — it makes every one of those apps <b>dramatically faster</b>.</p>
+    <p>Think about your last week. How much time did you spend summarizing email threads? Formatting spreadsheets? Staring at a blank page trying to start a document? Building slides from scratch? Scrolling through a chat thread trying to find what was decided? That's the time Copilot gives back to you — not by doing your job, but by handling the parts of your job that slow you down.</p>
+
+    <div class="pullquote">"Copilot doesn't replace what you do. It removes the friction between what you know and getting it done."</div>
+
+    <h4>The shift in numbers</h4>
+    <div class="stats">
+      <div class="stat"><div class="n">1.1 hrs</div><div class="l">Saved per day, on average</div></div>
+      <div class="stat"><div class="n">64%</div><div class="l">Faster on routine writing tasks</div></div>
+      <div class="stat"><div class="n">4×</div><div class="l">Faster to catch up after time off</div></div>
+      <div class="stat"><div class="n">85%</div><div class="l">Say it helps them get to a good first draft faster</div></div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:4px">Source: Microsoft Work Trend Index 2024–2025 early adopter research.</p>
+
+    <div class="tip">
+      <div class="lbl">How to use this guide</div>
+      <p style="margin:0">Each section below covers one M365 app. Every section has <b>real prompts you can copy and paste</b> right now. Start with the app you use most — you don't need to go in order. Try one prompt today, another tomorrow. Build the habit gradually.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1 · OUTLOOK ============ -->
+<section class="act" id="outlook">
+  <div class="stake dark">
+    <div class="ix dark">1</div>
+    <div class="meta">
+      <div class="eye">Outlook · Email, reinvented</div>
+      <h2>Stop reading every email. Start reading only what matters.</h2>
+      <p class="tagline">The average knowledge worker spends 28% of their workday on email. Copilot in Outlook cuts through the noise so you focus on what needs action.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ba">
+      <div class="col before">
+        <div class="tag">Before Copilot</div>
+        <p>Open a 14-message thread. Read every reply. Figure out what was decided. Compose a careful response. 15 minutes.</p>
+      </div>
+      <div class="col after">
+        <div class="tag">With Copilot</div>
+        <p>Click "Summarize." Read the 3-sentence summary. Hit "Draft reply." Edit two sentences. Send. 2 minutes.</p>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill dark">Summarize</span>
+        <h4>Long threads → key points</h4>
+        <p>Open any email thread and click <b>Summary by Copilot</b> at the top. Copilot reads every message and gives you the highlights: what was discussed, what was decided, and what's still open.</p>
+        <div class="note">Works on any thread with 3+ messages.</div>
+      </div>
+      <div class="card">
+        <span class="pill dark">Draft</span>
+        <h4>Replies in your voice</h4>
+        <p>Click the Copilot icon while composing and describe what you want to say. Copilot writes the draft. You adjust the tone — professional, casual, direct, diplomatic — and hit send.</p>
+        <div class="note">Adjust length and tone with one click.</div>
+      </div>
+      <div class="card">
+        <span class="pill dark">Coach</span>
+        <h4>Better writing, instantly</h4>
+        <p>Wrote your own reply? Ask Copilot to review it: "Is this clear?" "Is the tone right for a VP audience?" "Can you make this more concise?" Coaching before you hit send.</p>
+        <div class="note">Like a proofreader who's always available.</div>
+      </div>
+    </div>
+
+    <div class="try-it">Try these prompts</div>
+
+    <span class="prompt-label">Summarize a thread</span>
+    <div class="prompt" data-prompt="Summarize this email thread. What was the original ask? What's been decided so far? What's still pending?">Summarize this email thread. What was the original ask? What's been decided so far? What's still pending?</div>
+
+    <span class="prompt-label">Draft a reply</span>
+    <div class="prompt" data-prompt="Draft a reply confirming I can attend the meeting on Thursday. Ask if they can share the agenda ahead of time so I can prepare. Keep it professional but friendly.">Draft a reply confirming I can attend the meeting on Thursday. Ask if they can share the agenda ahead of time so I can prepare. Keep it professional but friendly.</div>
+
+    <span class="prompt-label">Draft a new email</span>
+    <div class="prompt" data-prompt="Write an email to my team summarizing this week's priorities. Include: the Q3 report deadline on Friday, the all-hands on Wednesday, and a reminder to complete their training by end of month. Keep it upbeat and under 150 words.">Write an email to my team summarizing this week's priorities. Include: the Q3 report deadline on Friday, the all-hands on Wednesday, and a reminder to complete their training by end of month. Keep it upbeat and under 150 words.</div>
+
+    <span class="prompt-label">Adjust tone</span>
+    <div class="prompt" data-prompt="Make this more concise and direct. The reader is a senior leader who wants the bottom line first, then the details.">Make this more concise and direct. The reader is a senior leader who wants the bottom line first, then the details.</div>
+
+    <div class="outcome dark">
+      <div class="lbl">Time saved</div>
+      <p>A 30-minute inbox session becomes 10 minutes. Replies are better written, faster, and you never miss the key decision buried in message 11 of a 14-message thread.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Open a real long email thread and hit "Summarize" — the instant summary is the quickest win. Then show "Draft with Copilot" for a reply. These two features are what people use on Day 1 and never stop using.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · TEAMS ============ -->
+<section class="act" id="teams">
+  <div class="stake">
+    <div class="ix">2</div>
+    <div class="meta">
+      <div class="eye">Teams · Meetings &amp; chats</div>
+      <h2>Meetings that drive action — not meetings that drain your calendar.</h2>
+      <p class="tagline">The meeting itself isn't the problem. The problem is everything before and after: the prep you didn't have time for, the notes nobody took, the follow-up that never happened.</p>
+    </div>
+  </div>
+  <div class="body">
+
+    <h3>During the meeting</h3>
+    <p>Copilot joins the meeting and listens — privately. You can ask it questions <i>during</i> the meeting without anyone else seeing your prompts. Late to a call? "What's been discussed so far?" Zoned out for a minute? "What did Sarah just suggest?"</p>
+
+    <div class="two">
+      <div class="card">
+        <span class="pill">Live catch-up</span>
+        <h4>Jump in without being lost</h4>
+        <p>"Catch me up — what's been discussed in the last 10 minutes?" Copilot gives you a fast summary so you can contribute immediately, not sit silently for 5 minutes trying to figure out what you missed.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Live questions</span>
+        <h4>Ask without interrupting</h4>
+        <p>"What questions are still unresolved?" or "Has anyone mentioned the budget?" — ask Copilot instead of derailing the conversation. Your prompts are private to you.</p>
+      </div>
+    </div>
+
+    <div class="try-it">During-meeting prompts</div>
+
+    <span class="prompt-label">Catch up mid-meeting</span>
+    <div class="prompt" data-prompt="What has been discussed so far? Summarize the key points and any decisions that have been made.">What has been discussed so far? Summarize the key points and any decisions that have been made.</div>
+
+    <span class="prompt-label">Track action items in real time</span>
+    <div class="prompt" data-prompt="What action items have been mentioned so far? List each one with the person responsible.">What action items have been mentioned so far? List each one with the person responsible.</div>
+
+    <span class="prompt-label">Check for unresolved topics</span>
+    <div class="prompt" data-prompt="Are there any open questions or disagreements that haven't been resolved yet?">Are there any open questions or disagreements that haven't been resolved yet?</div>
+
+    <h3 style="margin-top:30px">After the meeting</h3>
+    <p>This is where the real magic is. Instead of a raw transcript nobody reads, Copilot gives you a <b>structured recap</b> in any format you want — decisions, action items, key topics. You can even ask it to draft the follow-up email.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill">Recap</span>
+        <h4>Custom-format summaries</h4>
+        <p>Ask for the recap <i>your way</i>: "List only the decisions and owners" or "Give me a recap I can paste into our project tracker." Same transcript, different outputs for different needs.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Follow-up</span>
+        <h4>Draft the post-meeting email</h4>
+        <p>"Draft a follow-up email with the action items and next steps." Copilot writes it from the meeting content. You review and send. The follow-up goes out in 2 minutes, not 2 days.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Missed it?</span>
+        <h4>Catch up without the recording</h4>
+        <p>Couldn't attend? Open the meeting in Teams and ask Copilot what happened. A 60-minute meeting becomes a 60-second summary. No playback. No scrolling through a transcript.</p>
+      </div>
+    </div>
+
+    <div class="try-it">After-meeting prompts</div>
+
+    <span class="prompt-label">Custom recap</span>
+    <div class="prompt" data-prompt="Give me a recap organized as: (1) Decisions made — specific commitments, not themes; (2) Action items — who owns it, what they need to do, and the deadline; (3) Key discussion points; (4) Open questions to follow up on.">Give me a recap organized as: (1) Decisions made — specific commitments, not themes; (2) Action items — who owns it, what they need to do, and the deadline; (3) Key discussion points; (4) Open questions to follow up on.</div>
+
+    <span class="prompt-label">Draft a follow-up email</span>
+    <div class="prompt" data-prompt="Draft a follow-up email to the attendees. Include the key decisions, action items with owners, and next steps. Keep it professional and under 200 words.">Draft a follow-up email to the attendees. Include the key decisions, action items with owners, and next steps. Keep it professional and under 200 words.</div>
+
+    <span class="prompt-label">Catch up on a missed meeting</span>
+    <div class="prompt" data-prompt="I missed this meeting. Give me a summary of the main topics discussed, any decisions that were made, and any action items that involve me or my team.">I missed this meeting. Give me a summary of the main topics discussed, any decisions that were made, and any action items that involve me or my team.</div>
+
+    <h3 style="margin-top:30px">In chats and channels</h3>
+    <p>Copilot works in Teams chats too — not just meetings. Catch up on any conversation in seconds.</p>
+
+    <span class="prompt-label">Catch up on a chat</span>
+    <div class="prompt" data-prompt="Summarize this conversation. What were the key points? Are there any decisions or action items I need to know about?">Summarize this conversation. What were the key points? Are there any decisions or action items I need to know about?</div>
+
+    <div class="outcome">
+      <div class="lbl">Time saved</div>
+      <p>The 20-minute post-meeting ritual — re-read notes, type up action items, send follow-up — becomes 3 minutes. And the follow-up is better written and more complete than anything you'd have typed from memory.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The <b>custom recap</b> is the headliner — show it from a real recent meeting if possible. The format flexibility ("give me just the decisions and owners") is what hooks people. If you only show one thing in Teams, show the after-meeting recap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · EXCEL ============ -->
+<section class="act" id="excel">
+  <div class="stake accent">
+    <div class="ix accent">3</div>
+    <div class="meta">
+      <div class="eye">Excel · Data &amp; analysis</div>
+      <h2>Ask questions about your data in plain English. Get answers in seconds.</h2>
+      <p class="tagline">You don't need to be an Excel expert to get expert-level analysis. Describe what you want to know — Copilot does the formulas, the formatting, and the charts.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ba">
+      <div class="col before">
+        <div class="tag">Before Copilot</div>
+        <p>Google the VLOOKUP syntax. Try it. Get an error. Google the error. Try again. 20 minutes later, the formula works. Build a pivot table. Format the chart. 45 minutes total.</p>
+      </div>
+      <div class="col after">
+        <div class="tag">With Copilot</div>
+        <p>"Show me the top 10 by revenue with a bar chart." Done. "Add a column flagging anything below target." Done. "What trends should I know about?" Answer in 10 seconds.</p>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill accent">Ask</span>
+        <h4>Questions in plain language</h4>
+        <p>"What's the average by region?" "Which rows are missing data?" "What's the trend over the last 6 months?" — ask questions like you'd ask a coworker. Copilot reads your data and answers.</p>
+        <div class="note">No formula syntax required.</div>
+      </div>
+      <div class="card">
+        <span class="pill accent">Create</span>
+        <h4>Formulas and new columns</h4>
+        <p>"Add a column that calculates year-over-year growth" — Copilot writes the formula and applies it. Complex logic like IF/AND/VLOOKUP, described in words instead of code.</p>
+        <div class="note">Always review the formula before using it.</div>
+      </div>
+      <div class="card">
+        <span class="pill accent">Visualize</span>
+        <h4>Charts and highlights</h4>
+        <p>"Create a chart showing monthly trends" — Copilot picks the right chart type, formats it, and inserts it. Need conditional formatting? "Highlight anything below 80% in red."</p>
+        <div class="note">Ask for specific chart types if you prefer.</div>
+      </div>
+    </div>
+
+    <div class="try-it">Try these prompts</div>
+
+    <span class="prompt-label">Analyze your data</span>
+    <div class="prompt" data-prompt="What are the top 10 rows by total revenue? Show me a summary with any notable trends or outliers.">What are the top 10 rows by total revenue? Show me a summary with any notable trends or outliers.</div>
+
+    <span class="prompt-label">Add a calculated column</span>
+    <div class="prompt" data-prompt="Add a new column called 'Status'. Mark each row as 'On Track' if the actual value is at least 90% of the target, 'At Risk' if between 75-90%, and 'Behind' if below 75%.">Add a new column called 'Status'. Mark each row as 'On Track' if the actual value is at least 90% of the target, 'At Risk' if between 75-90%, and 'Behind' if below 75%.</div>
+
+    <span class="prompt-label">Create a chart</span>
+    <div class="prompt" data-prompt="Create a bar chart comparing actual vs. target for each category. Use green for bars that met or exceeded target and red for those below target.">Create a bar chart comparing actual vs. target for each category. Use green for bars that met or exceeded target and red for those below target.</div>
+
+    <span class="prompt-label">Spot insights</span>
+    <div class="prompt" data-prompt="Analyze this data and tell me the 3 most important insights. What patterns do you see? What should I pay attention to? Are there any anomalies?">Analyze this data and tell me the 3 most important insights. What patterns do you see? What should I pay attention to? Are there any anomalies?</div>
+
+    <span class="prompt-label">Sort and filter</span>
+    <div class="prompt" data-prompt="Sort this table by the 'Revenue' column in descending order. Then filter to show only rows where the region is 'West' or 'Southwest'.">Sort this table by the 'Revenue' column in descending order. Then filter to show only rows where the region is 'West' or 'Southwest'.</div>
+
+    <div class="warning">
+      <div class="lbl">Always verify</div>
+      <p style="margin:0">Copilot writes formulas and performs calculations — but <b>you own the numbers</b>. Spot-check a few results before sharing with your team or leadership. The AI handles the heavy lifting; your judgment makes it trustworthy.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Time saved</div>
+      <p>The 45-minute "clean, format, pivot, chart" ritual becomes 5 minutes. And the person who used to spend their morning wrestling with formulas now spends it <b>interpreting what the data means</b> — which is the real job.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">If you have a sample spreadsheet, the "top 10 with a chart" prompt is fast and visual. The "add a calculated column" prompt shows formula generation — always a crowd-pleaser for people who struggle with Excel formulas. Remind the room: <b>Copilot works on data in tables</b> — press Ctrl+T to format data as a table first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · WORD ============ -->
+<section class="act" id="word">
+  <div class="stake blue">
+    <div class="ix blue">4</div>
+    <div class="meta">
+      <div class="eye">Word · Write &amp; edit</div>
+      <h2>The blank page is the enemy. Copilot eliminates it.</h2>
+      <p class="tagline">Whether it's a report, a proposal, an SOP, or a status update — the hardest part is always the first draft. Copilot handles the 80% that's structure and phrasing so you can focus on the 20% that's your expertise.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ba">
+      <div class="col before">
+        <div class="tag">Before Copilot</div>
+        <p>Stare at blank page. Write an outline. Start drafting. Get stuck. Delete a paragraph. Start over. 90 minutes for a first draft that's… okay.</p>
+      </div>
+      <div class="col after">
+        <div class="tag">With Copilot</div>
+        <p>Describe what you need. Copilot drafts the structure and prose. You refine, add your expertise, adjust the tone. 20 minutes for a draft that's better than "okay."</p>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill blue">Draft</span>
+        <h4>First drafts in minutes</h4>
+        <p>Describe what you need — a report, a proposal, a summary, a communication — and Copilot writes the first draft with structure, headers, and professional prose. You make it yours.</p>
+        <div class="note">Works with a blank doc or an existing one.</div>
+      </div>
+      <div class="card">
+        <span class="pill blue">Rewrite</span>
+        <h4>Select text, transform it</h4>
+        <p>Select any paragraph and ask Copilot to make it shorter, change the tone, simplify the language, or expand a bullet into a full section. Instant editing without the rewriting pain.</p>
+        <div class="note">Adjust tone: formal, casual, confident, empathetic.</div>
+      </div>
+      <div class="card">
+        <span class="pill blue">Reference</span>
+        <h4>Write from existing files</h4>
+        <p>"Draft a summary based on /Q3 Performance Report.docx" — Copilot reads your existing files and uses them as source material. Same data, new document, fraction of the time.</p>
+        <div class="note">Reference files in OneDrive or SharePoint with /.</div>
+      </div>
+    </div>
+
+    <div class="try-it">Try these prompts</div>
+
+    <span class="prompt-label">Draft from scratch</span>
+    <div class="prompt" data-prompt="Write a project status update for my manager. Include sections for: What we accomplished this week, What's in progress, Blockers or risks, and Next week's priorities. Keep it clear and concise — no more than one page.">Write a project status update for my manager. Include sections for: What we accomplished this week, What's in progress, Blockers or risks, and Next week's priorities. Keep it clear and concise — no more than one page.</div>
+
+    <span class="prompt-label">Draft from a reference file</span>
+    <div class="prompt" data-prompt="Based on /[your file name], write a one-page executive summary. Lead with the key findings, then the recommended actions, then the supporting data. Keep it at an executive level — no jargon, no deep technical detail.">Based on /[your file name], write a one-page executive summary. Lead with the key findings, then the recommended actions, then the supporting data. Keep it at an executive level — no jargon, no deep technical detail.</div>
+
+    <span class="prompt-label">Rewrite for a different audience</span>
+    <div class="prompt" data-prompt="Rewrite this section for a non-technical audience. Remove the jargon, use plain language, and keep the key message. It should be understandable by someone outside our department.">Rewrite this section for a non-technical audience. Remove the jargon, use plain language, and keep the key message. It should be understandable by someone outside our department.</div>
+
+    <span class="prompt-label">Make it shorter</span>
+    <div class="prompt" data-prompt="Make this document more concise. Cut the length by about half while keeping all the key points and recommendations. Tighten the language — every sentence should earn its place.">Make this document more concise. Cut the length by about half while keeping all the key points and recommendations. Tighten the language — every sentence should earn its place.</div>
+
+    <span class="prompt-label">Write a process document</span>
+    <div class="prompt" data-prompt="Write a standard operating procedure for [describe your process]. Include: Purpose, Scope, Step-by-step instructions with numbered steps, Roles and responsibilities, and Exceptions or special cases. Use clear, direct language that a new team member could follow on their first day.">Write a standard operating procedure for [describe your process]. Include: Purpose, Scope, Step-by-step instructions with numbered steps, Roles and responsibilities, and Exceptions or special cases. Use clear, direct language that a new team member could follow on their first day.</div>
+
+    <div class="tip">
+      <div class="lbl">Power tip — the / reference</div>
+      <p style="margin:0">When drafting in Word, type <b>/</b> in the Copilot prompt to reference another file from your OneDrive or SharePoint. This lets you say "draft a summary based on this existing report" — and Copilot reads the source and writes from it. Huge time saver for creating executive summaries, proposals from RFPs, or reports from raw data docs.</p>
+    </div>
+
+    <div class="outcome blue">
+      <div class="lbl">Time saved</div>
+      <p>A first draft that used to take 60–90 minutes takes 10. The document that sat on your to-do list for three days because you couldn't face the blank page? Done before lunch. And the quality of the first draft means less revision later.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The "project status update" prompt is universally relatable — everyone writes these. Open a blank Word doc and demo it live. The <b>/reference</b> feature is the advanced move that impresses — if you have a OneDrive file to reference, show it. Otherwise, narrate the concept and move on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · POWERPOINT ============ -->
+<section class="act" id="powerpoint">
+  <div class="stake teal">
+    <div class="ix teal">5</div>
+    <div class="meta">
+      <div class="eye">PowerPoint · Present &amp; persuade</div>
+      <h2>From idea to polished deck — without the death-by-slide-building.</h2>
+      <p class="tagline">Nobody's job is "build slides." But somehow, building slides takes hours every week. Copilot creates the deck so you can focus on the story you want to tell.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ba">
+      <div class="col before">
+        <div class="tag">Before Copilot</div>
+        <p>Find last quarter's deck. Copy and rename it. Delete old content. Rearrange slides. Write new content. Fix formatting. Adjust the layout. Add speaker notes. 2-3 hours.</p>
+      </div>
+      <div class="col after">
+        <div class="tag">With Copilot</div>
+        <p>"Create a presentation about…" First draft in 60 seconds. Add slides, adjust content, write speaker notes — all from prompts. Polish and present. 30 minutes.</p>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill teal">Create</span>
+        <h4>Decks from a description</h4>
+        <p>Describe the presentation you need and Copilot creates it — title slide, agenda, content slides, and closing — with a coherent structure and professional design.</p>
+        <div class="note">Applies your org's template automatically.</div>
+      </div>
+      <div class="card">
+        <span class="pill teal">From a doc</span>
+        <h4>Turn a document into a deck</h4>
+        <p>"Create a presentation from this Word document" — Copilot reads the doc, identifies the narrative, and structures it into slides. Your report becomes your presentation.</p>
+        <div class="note">The Word → PPT flow is a game-changer.</div>
+      </div>
+      <div class="card">
+        <span class="pill teal">Enhance</span>
+        <h4>Add, edit, polish</h4>
+        <p>"Add a slide about risks." "Write speaker notes for every slide." "Make this slide more visual." Copilot extends and refines the deck, slide by slide or all at once.</p>
+        <div class="note">Speaker notes make you a better presenter.</div>
+      </div>
+    </div>
+
+    <div class="try-it">Try these prompts</div>
+
+    <span class="prompt-label">Create a deck from scratch</span>
+    <div class="prompt" data-prompt="Create a presentation about our team's quarterly results. Include: Title slide, Agenda, Key Metrics (with placeholders for numbers), Top Wins this quarter, Challenges and what we're doing about them, Priorities for next quarter, and a Q&A slide. 8-10 slides, clean modern design.">Create a presentation about our team's quarterly results. Include: Title slide, Agenda, Key Metrics (with placeholders for numbers), Top Wins this quarter, Challenges and what we're doing about them, Priorities for next quarter, and a Q&amp;A slide. 8-10 slides, clean modern design.</div>
+
+    <span class="prompt-label">Create from a Word document</span>
+    <div class="prompt" data-prompt="Create a presentation based on /[your Word document]. Pull out the key points and organize them into a clear narrative. Keep it to 10 slides max. Each slide should make one point clearly — no walls of text.">Create a presentation based on /[your Word document]. Pull out the key points and organize them into a clear narrative. Keep it to 10 slides max. Each slide should make one point clearly — no walls of text.</div>
+
+    <span class="prompt-label">Add a slide</span>
+    <div class="prompt" data-prompt="Add a slide after this one that summarizes the 3 biggest risks we're tracking. Use a layout with icons or callout boxes. Keep text minimal — each risk should be one sentence with a brief mitigation note.">Add a slide after this one that summarizes the 3 biggest risks we're tracking. Use a layout with icons or callout boxes. Keep text minimal — each risk should be one sentence with a brief mitigation note.</div>
+
+    <span class="prompt-label">Write speaker notes</span>
+    <div class="prompt" data-prompt="Write speaker notes for every slide in this deck. Each note should help the presenter tell a story — not just read the slide. Include key talking points, transition phrases between slides, and any data points worth emphasizing verbally.">Write speaker notes for every slide in this deck. Each note should help the presenter tell a story — not just read the slide. Include key talking points, transition phrases between slides, and any data points worth emphasizing verbally.</div>
+
+    <span class="prompt-label">Simplify a dense slide</span>
+    <div class="prompt" data-prompt="This slide has too much text. Rewrite it to be more visual and concise. Keep the 3 most important points and remove everything else. Suggest a better layout if possible.">This slide has too much text. Rewrite it to be more visual and concise. Keep the 3 most important points and remove everything else. Suggest a better layout if possible.</div>
+
+    <div class="outcome teal">
+      <div class="lbl">Time saved</div>
+      <p>A 10-slide deck that took 2 hours now takes 30 minutes. And the speaker notes mean you show up prepared — not reading bullets off the screen. The hours you used to spend building slides? That's now time for practice, for thinking about the story, for the work that makes the presentation actually land.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Two killer demos: (1) Open a blank PowerPoint and prompt "Create a presentation about…" — the 60-second deck generation always gets a reaction. (2) If you created a Word doc in the previous section, now say "Create a presentation from this document" in PowerPoint — the Word → PPT pipeline is the strongest cross-app moment. Pick one; both is even better if you have time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · COPILOT CHAT (BizChat) ============ -->
+<section class="act" id="copilot-chat">
+  <div class="stake steel">
+    <div class="ix steel">6</div>
+    <div class="meta">
+      <div class="eye">Copilot Chat · Your AI assistant across M365</div>
+      <h2>One place to ask anything — across all your files, emails, chats, and calendar.</h2>
+      <p class="tagline">Copilot Chat (formerly BizChat) sits above individual apps. It can search across your entire M365 world — emails, documents, meetings, chats — and give you answers grounded in your work data.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>Think of Copilot Chat as your <b>universal entry point</b>. Instead of opening five apps to find five pieces of information, open Copilot Chat and ask one question. It searches across Outlook, Teams, OneDrive, SharePoint, and Calendar — and gives you an answer that references your actual work context.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill steel">Research</span>
+        <h4>Find anything across M365</h4>
+        <p>"What did our team decide about the Q3 timeline?" Copilot searches your emails, meetings, and chats to find the answer — even if you can't remember which app the conversation happened in.</p>
+      </div>
+      <div class="card">
+        <span class="pill steel">Prepare</span>
+        <h4>Meeting prep in 60 seconds</h4>
+        <p>"Prepare me for my 2 PM meeting with the regional managers. What have we discussed recently? What files have been shared? What should I review?" All context, one prompt.</p>
+      </div>
+      <div class="card">
+        <span class="pill steel">Catch up</span>
+        <h4>After time off or a busy week</h4>
+        <p>"What did I miss while I was out last Thursday and Friday? Highlight anything that needs my attention this week." Copilot reads across everything and gives you the briefing.</p>
+      </div>
+    </div>
+
+    <div class="try-it">Try these prompts</div>
+
+    <span class="prompt-label">Morning briefing</span>
+    <div class="prompt" data-prompt="What should I focus on today? Summarize my most important emails from the last 24 hours, highlight anything that needs a decision from me, and list my meetings for today with any context I should know going in.">What should I focus on today? Summarize my most important emails from the last 24 hours, highlight anything that needs a decision from me, and list my meetings for today with any context I should know going in.</div>
+
+    <span class="prompt-label">Meeting prep</span>
+    <div class="prompt" data-prompt="Prepare me for my next meeting. What's on the agenda? What files or emails relate to this topic? What was discussed in our last meeting on this subject? What should I be ready to talk about?">Prepare me for my next meeting. What's on the agenda? What files or emails relate to this topic? What was discussed in our last meeting on this subject? What should I be ready to talk about?</div>
+
+    <span class="prompt-label">Catch up after time off</span>
+    <div class="prompt" data-prompt="I was out of office Monday and Tuesday. What did I miss? Summarize the most important emails, meetings, and chat messages. Highlight anything that needs my attention this week and any decisions that were made without me.">I was out of office Monday and Tuesday. What did I miss? Summarize the most important emails, meetings, and chat messages. Highlight anything that needs my attention this week and any decisions that were made without me.</div>
+
+    <span class="prompt-label">Find a past decision</span>
+    <div class="prompt" data-prompt="When did we decide on the new process for [topic]? Search my emails, Teams chats, and meeting transcripts for the most recent discussion about this. Who was involved and what was decided?">When did we decide on the new process for [topic]? Search my emails, Teams chats, and meeting transcripts for the most recent discussion about this. Who was involved and what was decided?</div>
+
+    <span class="prompt-label">Research a person before a meeting</span>
+    <div class="prompt" data-prompt="I have a meeting with [person's name] tomorrow. What have they emailed me about recently? What files have they shared with me? What topics have we discussed in Teams? Give me a quick brief so I'm prepared.">I have a meeting with [person's name] tomorrow. What have they emailed me about recently? What files have they shared with me? What topics have we discussed in Teams? Give me a quick brief so I'm prepared.</div>
+
+    <div class="tip">
+      <div class="lbl">Where to find Copilot Chat</div>
+      <p style="margin:0">Access Copilot Chat at <b>m365.cloud.microsoft/chat</b>, in the Microsoft 365 app, in the Teams sidebar, or from the Copilot icon in your Windows taskbar. Same experience, multiple entry points — use whichever is fastest for you.</p>
+    </div>
+
+    <div class="outcome steel">
+      <div class="lbl">Why this matters</div>
+      <p>You stop being the person who digs through five apps looking for one answer. You become the person who asks one question and gets a sourced, contextual answer in 10 seconds. The time you save isn't just minutes — it's the mental energy of <i>searching</i> that you redirect to <i>thinking</i>.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Copilot Chat is the "wow" moment for many people — the cross-app intelligence is what sets M365 Copilot apart from generic AI. Show the <b>morning briefing</b> prompt live (it uses real data from your tenant). The "catch up after time off" prompt is universally relatable. If someone says "I can do that with ChatGPT," this is the rebuttal: ChatGPT doesn't know your emails, meetings, and files.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · AGENTS ============ -->
+<section class="act" id="agents">
+  <div class="stake">
+    <div class="ix">7</div>
+    <div class="meta">
+      <div class="eye">Agents &amp; Copilot Studio · Scale what works</div>
+      <h2>When one person's productivity tip becomes the whole team's advantage.</h2>
+      <p class="tagline">Copilot makes you faster. Agents make your team's processes faster — automatically, consistently, and without someone having to remember every step.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>There's a difference between "I'm more productive" and "our process is more productive." Everything above is about the first. Agents are about the second. An agent is an AI-powered assistant that's grounded on <i>your</i> content, connected to <i>your</i> systems, and available to <i>your</i> team — 24/7, consistent, and always citing sources.</p>
+
+    <div class="pullquote">"Think about the questions your team asks every week that always have the same answer. Now imagine those questions never reaching your inbox."</div>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill">SharePoint agents</span>
+        <h4>An expert on your content</h4>
+        <p>Point an agent at a SharePoint site — your HR policies, your operations manual, your safety procedures — and it becomes an instant expert. Employees ask questions; the agent answers from your approved content and cites the source.</p>
+        <div class="note">Set up in minutes. No code required.</div>
+      </div>
+      <div class="card">
+        <span class="pill">Copilot Studio</span>
+        <h4>Build custom agents</h4>
+        <p>For more complex workflows — routing questions, triggering approvals, connecting to business systems — Copilot Studio lets you build agents that do exactly what you need. Describe the agent in plain language; the platform does the rest.</p>
+        <div class="note">Connects to your data, your rules, your logic.</div>
+      </div>
+      <div class="card">
+        <span class="pill">In Teams</span>
+        <h4>Deploy where people work</h4>
+        <p>Agents live in Teams — in channels, in chats, in the apps sidebar. A new hire asks "What's the PTO policy?" in a Teams channel. The agent answers immediately and accurately. No ticket. No waiting.</p>
+        <div class="note">Available 24/7. Same answer every time.</div>
+      </div>
+    </div>
+
+    <h4>Agent ideas for any team</h4>
+    <div class="four-grid">
+      <div class="card">
+        <span class="pill green">HR</span>
+        <h4>Policy Q&amp;A</h4>
+        <p>"What's the dress code?" "How do I request time off?" Instant, accurate answers from your HR docs.</p>
+      </div>
+      <div class="card">
+        <span class="pill green">Operations</span>
+        <h4>Procedures &amp; SOPs</h4>
+        <p>"What's the warranty process?" "How do I close out the register?" Consistent answers grounded in your manuals.</p>
+      </div>
+      <div class="card">
+        <span class="pill green">IT</span>
+        <h4>Help desk tier-0</h4>
+        <p>"How do I reset my password?" "How do I connect to VPN?" Answer the top 20 questions without a ticket.</p>
+      </div>
+      <div class="card">
+        <span class="pill green">Training</span>
+        <h4>Onboarding guide</h4>
+        <p>"What do I need to complete in my first week?" "Where's the safety training?" Onboarding on autopilot.</p>
+      </div>
+    </div>
+
+    <span class="prompt-label">SharePoint agent setup — what you'd do</span>
+    <div class="prompt" data-prompt="Create an agent grounded on our SharePoint site [site name]. It should answer employee questions about company policies and procedures. It should always cite the specific document it's referencing. If it doesn't know the answer, it should say 'I couldn't find that in our documentation — please contact [team name].'">Create an agent grounded on our SharePoint site [site name]. It should answer employee questions about company policies and procedures. It should always cite the specific document it's referencing. If it doesn't know the answer, it should say 'I couldn't find that in our documentation — please contact [team name].'</div>
+
+    <div class="outcome">
+      <div class="lbl">Why agents matter</div>
+      <p>Instead of 50 people asking the same question and waiting for someone to respond, one agent gives the right answer instantly, consistently, and with sources. The people who used to field those questions get their time back for work that requires judgment — not repetition.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Agents are aspirational for most audiences — they show where this is going. Focus on the <b>SharePoint agent</b> concept: "imagine your operations manual could answer questions." The four-card grid of use cases lets you point to whichever is most relevant for the room. If time is tight, narrate this section in 90 seconds — "and here's what's coming next" — rather than doing a live demo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOVERNANCE ============ -->
+<section class="act" id="governance">
+  <div class="gov">
+    <div class="section-eye">Trust &amp; practical tips</div>
+    <h2>Everything you should know about safety, privacy, and getting the most out of Copilot.</h2>
+
+    <div class="four">
+      <div class="tile">
+        <div class="ico">🔒</div>
+        <h4>Your access, your boundaries</h4>
+        <p>Copilot can only see what you can already see. If you don't have access to a file or a SharePoint site, neither does Copilot. Existing permissions apply — nothing changes.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">🛡</div>
+        <h4>Your data stays yours</h4>
+        <p>Your business data is not used to train Microsoft's AI models. Everything stays within your Microsoft 365 tenant. Period.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">✋</div>
+        <h4>You're always in charge</h4>
+        <p>Copilot suggests. You decide. Every draft, every formula, every summary is a <i>suggestion</i> that you review before using. AI is the assistant; you own the final work.</p>
+      </div>
+      <div class="tile">
+        <div class="ico">💡</div>
+        <h4>Better prompts = better results</h4>
+        <p>Be specific. Give context. Tell Copilot the format, the audience, and the tone you want. "Write a professional summary of this meeting for my VP" beats "summarize this."</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px">Quick-start tips for better prompts</h3>
+    <div class="two">
+      <div class="card">
+        <h4>The prompt formula</h4>
+        <p><b>Goal</b> + <b>Context</b> + <b>Format</b> + <b>Tone</b> = great results.<br/><br/>Example: "Write a <b>status update</b> [goal] about our <b>Q3 hiring progress</b> [context] as a <b>bulleted email</b> [format] that's <b>professional but upbeat</b> [tone]."</p>
+      </div>
+      <div class="card">
+        <h4>Iterate, don't start over</h4>
+        <p>If the first result isn't right, <b>refine it</b>. "Make it shorter." "Add more detail about the timeline." "Change the tone to be more formal." Copilot remembers the conversation — each follow-up builds on the last.</p>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:18px">
+      <div class="lbl">The golden rule</div>
+      <p style="margin:0"><b>Always review before you send, share, or present.</b> Copilot gives you a strong first draft — but the final quality check is always yours. Verify numbers, check tone, confirm accuracy. The AI does the heavy lifting; your judgment makes it trustworthy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GET STARTED ============ -->
+<section class="act" id="next">
+  <div class="nextsteps">
+    <div class="section-eye" style="color:#c4a0a0">Get started</div>
+    <h2>Your first week with Copilot — four things to try.</h2>
+    <p class="sub">You don't need to learn everything at once. Start with one habit, build from there. Here's a practical first-week plan.</p>
+
+    <div class="grid">
+      <div class="step">
+        <div class="num">Day 1</div>
+        <h4>Summarize an email thread</h4>
+        <p>Open the longest email thread in your inbox. Click "Summarize." See 14 messages become 3 sentences. You'll never read another long thread the old way.</p>
+      </div>
+      <div class="step">
+        <div class="num">Day 2</div>
+        <h4>Recap a meeting</h4>
+        <p>After your next Teams meeting, ask Copilot for a recap with decisions and action items. Compare it to the notes you would have taken. Notice the difference.</p>
+      </div>
+      <div class="step">
+        <div class="num">Day 3</div>
+        <h4>Draft a document</h4>
+        <p>The next time you need to write something — a status update, a process doc, an email to the team — start with Copilot. Describe what you need. Edit from there.</p>
+      </div>
+      <div class="step">
+        <div class="num">Day 4–5</div>
+        <h4>Explore what matters to you</h4>
+        <p>Try Copilot in the app you use most. Excel formulas? PowerPoint decks? Copilot Chat? Pick the workflow that costs you the most time and see how Copilot changes it.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:26px;color:#e8d0d0;font-size:1rem;max-width:740px">
+      The people who get the most from Copilot aren't the ones who learn every feature. They're the ones who find <b>two or three things that save them time every day</b> — and make them habits. Start small. Be consistent. The compound effect is real.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div><b style="color:#fff">M365 Copilot · Knowledge Worker Guide</b> — Discount Tire</div>
+  <div style="margin-top:6px;color:#9f8888;font-size:.82rem">Hands-on workflow guide · self-contained HTML · GitHub Pages-ready</div>
+</footer>
+
+<script>
+(function(){
+  // Copy buttons
+  document.querySelectorAll('.prompt').forEach(function(p){
+    var btn=document.createElement('button');
+    btn.className='copy-btn';btn.type='button';btn.textContent='Copy';
+    btn.setAttribute('aria-label','Copy prompt to clipboard');
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var text=p.getAttribute('data-prompt')||p.textContent.replace(/Copy$/,'').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},1600);
+      });
+    });
+    p.appendChild(btn);
+  });
+
+  // Sticky rail active state
+  var links=Array.from(document.querySelectorAll('nav.rail a[href^="#"]'));
+  var map={};
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el)map[id]=a;
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var a=map[e.target.id]; if(a)a.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id); if(el)io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
