@@ -1,0 +1,892 @@
+---
+demo:
+    title: 'Discount Tire · M365 Copilot Demo Script — Contract Review &amp; Team Collaboration'
+layout: none
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Discount Tire · M365 Copilot Demo Script — Contract Review &amp; Team Collaboration</title>
+<style>
+:root{
+  --primary:#1a1a1a;
+  --secondary:#CC0000;
+  --accent:#E8352D;
+  --warm:#D4272E;
+  --steel:#4A5568;
+  --silver:#A0AEC0;
+  --blue:#2B6CB0;
+  --teal:#319795;
+  --bg:#F7F8FA;
+  --surface:#ffffff;
+  --text:#1a2733;
+  --muted:#5b6b7d;
+  --border:#e3e8ef;
+  --shadow:0 1px 2px rgba(0,0,0,.06),0 16px 36px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--secondary);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{color:var(--primary);line-height:1.18;margin:0 0 .35em;letter-spacing:-.01em}
+h1{font-size:3rem;font-weight:700}
+h2{font-size:2.05rem;font-weight:650;margin-top:0}
+h3{font-size:1.32rem;font-weight:650;margin-top:1.2em}
+h4{font-size:1rem;font-weight:650;color:#2d2d2d;text-transform:uppercase;letter-spacing:.06em;font-size:.84rem;margin:1.2em 0 .4em}
+p{margin:.6em 0;font-size:1.04rem}
+ul,ol{margin:.5em 0 1em;padding-left:1.4em}
+li{margin:.3em 0}
+
+/* Hero */
+header.hero{
+  position:relative;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 25%,#3d0a0a 55%,#CC0000 85%,#E8352D 100%);
+  padding:80px 32px 110px;
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 380px at 100% 0%,rgba(255,255,255,.08),transparent 60%),
+    radial-gradient(600px 280px at 0% 110%,rgba(204,0,0,.15),transparent 60%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero .eyebrow{
+  display:inline-block;background:rgba(255,255,255,.14);color:#fff;
+  padding:6px 14px;border-radius:999px;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:20px;backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22)
+}
+.hero h1{color:#fff;max-width:920px;margin:0 0 .25em;font-size:2.8rem}
+.hero .lede{color:#e8d0d0;font-size:1.18rem;max-width:760px;margin:.4em 0 0;line-height:1.55}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:.94rem;color:#d4b0b0;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:22px;max-width:920px
+}
+.hero-meta span b{color:#fff;display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#c4a0a0;margin-bottom:3px;font-weight:600}
+
+/* Day arc */
+.dayarc-wrap{margin-top:-60px;padding:0 24px 0;position:relative;z-index:2}
+.dayarc{
+  max-width:1100px;margin:0 auto;background:#fff;border-radius:18px;
+  box-shadow:var(--shadow);border:1px solid var(--border);padding:22px 26px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px
+}
+.dayarc .step{position:relative;padding:6px 8px}
+.dayarc .step::before{
+  content:"";position:absolute;left:0;right:0;top:30px;height:3px;
+  background:linear-gradient(90deg,#dfe7ef,#dfe7ef)
+}
+.dayarc .step:first-child::before{left:50%}
+.dayarc .step:last-child::before{right:50%}
+.dayarc .step .dot{
+  width:18px;height:18px;border-radius:50%;background:var(--secondary);
+  margin:22px auto 10px;position:relative;z-index:1;border:3px solid #fff;box-shadow:0 0 0 2px var(--secondary)
+}
+.dayarc .step .dot.dark{background:var(--primary);box-shadow:0 0 0 2px var(--primary)}
+.dayarc .step .dot.accent{background:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.dayarc .step .dot.steel{background:var(--steel);box-shadow:0 0 0 2px var(--steel)}
+.dayarc .step .dot.blue{background:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+.dayarc .step .time{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center}
+.dayarc .step .label{font-size:.92rem;font-weight:600;color:var(--primary);text-align:center;margin-top:2px}
+.dayarc .step .sub{font-size:.76rem;color:var(--muted);text-align:center;margin-top:2px}
+@media (max-width:780px){
+  .dayarc{grid-template-columns:1fr 1fr;gap:18px}
+  .dayarc .step::before{display:none}
+}
+
+/* Layout */
+main{max-width:1100px;margin:0 auto;padding:60px 32px 40px}
+
+/* Section */
+section.act{margin:0 0 64px;position:relative}
+section.act .stake{
+  display:flex;gap:18px;align-items:flex-start;margin-bottom:16px;
+  padding:14px 18px;background:#fff;border:1px solid var(--border);
+  border-left:5px solid var(--secondary);border-radius:10px;box-shadow:var(--shadow)
+}
+section.act .stake.dark{border-left-color:var(--primary)}
+section.act .stake.accent{border-left-color:var(--accent)}
+section.act .stake.steel{border-left-color:var(--steel)}
+section.act .stake.blue{border-left-color:var(--blue)}
+section.act .stake .ix{
+  flex:0 0 56px;width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--secondary),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700
+}
+section.act .stake .ix.dark{background:linear-gradient(135deg,#0d0d0d,#3d3d3d)}
+section.act .stake .ix.accent{background:linear-gradient(135deg,var(--secondary),var(--accent))}
+section.act .stake .ix.steel{background:linear-gradient(135deg,var(--steel),#718096)}
+section.act .stake .ix.blue{background:linear-gradient(135deg,var(--blue),#4299E1)}
+section.act .stake .meta{flex:1}
+section.act .stake .eye{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+section.act .stake h2{margin:2px 0 4px;color:var(--primary)}
+section.act .stake .tagline{color:var(--muted);font-size:.98rem;margin:0}
+
+section.act .body{
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px 34px;
+  box-shadow:var(--shadow)
+}
+@media (max-width:720px){section.act .body{padding:22px 20px}}
+
+.outcome{
+  margin-top:18px;background:linear-gradient(135deg,rgba(204,0,0,.06),rgba(232,53,45,.04));
+  border:1px solid rgba(204,0,0,.15);border-radius:12px;padding:16px 20px
+}
+.outcome .lbl{font-size:.72rem;color:var(--secondary);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+.outcome p{margin:.2em 0;font-size:1.02rem;color:var(--primary)}
+.outcome.dark{background:linear-gradient(135deg,rgba(26,26,26,.06),rgba(74,85,104,.04));border-color:rgba(26,26,26,.15)}
+.outcome.dark .lbl{color:var(--steel)}
+.outcome.steel{background:linear-gradient(135deg,rgba(74,85,104,.08),rgba(160,174,192,.06));border-color:rgba(74,85,104,.20)}
+.outcome.steel .lbl{color:var(--steel)}
+.outcome.blue{background:linear-gradient(135deg,rgba(43,108,176,.07),rgba(66,153,225,.04));border-color:rgba(43,108,176,.18)}
+.outcome.blue .lbl{color:var(--blue)}
+
+/* Pull quote */
+.pullquote{
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;color:var(--primary);
+  font-size:1.4rem;line-height:1.45;border-left:4px solid var(--secondary);
+  padding:8px 0 8px 20px;margin:28px 6px;max-width:780px
+}
+.pullquote.steel{border-left-color:var(--steel)}
+
+/* Cards */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 0}
+@media (max-width:780px){.three{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 0}
+@media (max-width:780px){.two{grid-template-columns:1fr}}
+.card{
+  background:#fafcfe;border:1px solid var(--border);border-radius:12px;padding:18px 18px;
+  display:flex;flex-direction:column;gap:6px
+}
+.card .pill{
+  display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--secondary);padding:2px 9px;border-radius:999px;align-self:flex-start;font-weight:600
+}
+.card .pill.dark{background:var(--primary)}
+.card .pill.accent{background:var(--accent)}
+.card .pill.steel{background:var(--steel)}
+.card .pill.blue{background:var(--blue)}
+.card .pill.green{background:#38A169;color:#fff}
+.card .pill.purple{background:#7C3AED}
+.card h4{font-size:1rem;margin:6px 0 2px;color:var(--primary);text-transform:none;letter-spacing:0}
+.card p{margin:0;font-size:.96rem;color:var(--text)}
+.card .note{font-size:.86rem;color:var(--muted);margin-top:8px}
+
+/* Prompt */
+.prompt-label{
+  display:inline-block;font-size:.7rem;color:var(--secondary);background:#fce8e8;
+  border:1px solid #f0c4c4;padding:2px 9px;border-radius:6px;letter-spacing:.05em;
+  text-transform:uppercase;margin:16px 0 6px;font-weight:600
+}
+.prompt{
+  position:relative;background:#0d0d0d;color:#f5e8e8;border-radius:10px;
+  padding:13px 56px 13px 16px;font-family:'Cascadia Mono','Consolas','SF Mono',monospace;
+  font-size:.86rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;
+  border:1px solid #2a1010
+}
+.prompt .copy-btn{
+  position:absolute;top:8px;right:8px;background:rgba(255,255,255,.10);color:#fff;
+  border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:7px;cursor:pointer;
+  font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;font-family:inherit
+}
+.prompt .copy-btn:hover{background:rgba(255,255,255,.2)}
+.prompt .copy-btn.copied{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+
+/* Demo step */
+.demo-step{
+  margin:20px 0;padding:18px 22px;background:#f8fafd;border:1px solid var(--border);
+  border-left:4px solid var(--secondary);border-radius:10px
+}
+.demo-step .step-num{
+  display:inline-block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--secondary);font-weight:700;margin-bottom:6px
+}
+.demo-step h4{margin:0 0 6px;text-transform:none;letter-spacing:0;font-size:1.02rem;color:var(--primary)}
+.demo-step p{margin:.3em 0;font-size:.96rem}
+.demo-step.accent{border-left-color:var(--accent)}
+.demo-step.steel{border-left-color:var(--steel)}
+.demo-step.blue{border-left-color:var(--blue)}
+.demo-step.dark{border-left-color:var(--primary)}
+
+/* Feature highlight */
+.feature{
+  margin:16px 0;padding:14px 18px;background:linear-gradient(135deg,rgba(204,0,0,.04),rgba(232,53,45,.02));
+  border:1px solid rgba(204,0,0,.12);border-radius:10px
+}
+.feature .feat-label{
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--secondary);
+  font-weight:700;margin-bottom:4px
+}
+.feature h4{margin:0 0 4px;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--primary)}
+.feature p{margin:0;font-size:.94rem;color:var(--text)}
+
+/* Instructor note callout */
+.instructor-note{
+  margin:18px 0;background:#FFF8E1;border:1px solid #FFE082;border-left:4px solid #FFB300;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.instructor-note .lbl{font-size:.72rem;color:#F57F17;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* Tip */
+.tip{
+  margin:18px 0;background:#E8F5E9;border:1px solid #A5D6A7;border-left:4px solid #43A047;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.tip .lbl{font-size:.72rem;color:#2E7D32;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* What to expect */
+.expect{
+  margin:18px 0;background:#EDE7F6;border:1px solid #B39DDB;border-left:4px solid #7C3AED;
+  border-radius:10px;padding:14px 18px;font-size:.94rem
+}
+.expect .lbl{font-size:.72rem;color:#4A148C;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+
+/* Governance */
+.nextsteps{
+  background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 40%,#3d0a0a 75%,#CC0000 100%);
+  color:#fff;border-radius:18px;padding:42px 38px;box-shadow:var(--shadow);margin-top:8px
+}
+.nextsteps h2{color:#fff;margin:0 0 6px}
+.nextsteps .sub{color:#d4b0b0;font-size:1.05rem;margin:0 0 24px;max-width:680px}
+.nextsteps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:880px){.nextsteps .grid{grid-template-columns:1fr}}
+.nextsteps .step{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;padding:18px;backdrop-filter:blur(6px)
+}
+.nextsteps .step .num{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#c4a0a0;font-weight:600}
+.nextsteps .step h4{color:#fff;font-size:1.04rem;margin:6px 0 6px;text-transform:none;letter-spacing:0}
+.nextsteps .step p{color:#e8d0d0;font-size:.92rem;margin:0;line-height:1.5}
+
+/* Sticky rail */
+nav.rail{
+  position:fixed;top:50%;right:18px;transform:translateY(-50%);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:14px;padding:10px 8px;
+  box-shadow:var(--shadow);z-index:10;display:flex;flex-direction:column;gap:2px
+}
+nav.rail a{
+  display:block;padding:6px 12px;font-size:.82rem;color:var(--text);
+  border-radius:7px;border-left:3px solid transparent;
+}
+nav.rail a:hover{background:#f8f0f0;text-decoration:none}
+nav.rail a.active{
+  background:linear-gradient(90deg,rgba(204,0,0,.08),rgba(232,53,45,.04));
+  border-left-color:var(--secondary);color:var(--primary);font-weight:600
+}
+@media (max-width:1280px){nav.rail{display:none}}
+
+.section-eye{
+  display:inline-flex;align-items:center;gap:10px;font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:10px
+}
+.section-eye::before{content:"";width:26px;height:2px;background:var(--secondary);display:inline-block}
+
+/* Footer */
+footer{
+  background:#1a1a1a;color:#c4b0b0;padding:30px 32px;text-align:center;font-size:.88rem;margin-top:40px
+}
+footer a{color:#fff}
+
+@media print{
+  nav.rail,.copy-btn{display:none !important}
+  body{background:#fff}
+  section.act{break-inside:avoid}
+  .prompt{color:#1a1a1a;background:#f7f8fa;border:1px solid #cdd6e0}
+}
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Sections">
+  <a href="#opening" class="active">Setup</a>
+  <a href="#teams-catchup">1 · Teams catch-up</a>
+  <a href="#teams-agent">2 · Agent in chat</a>
+  <a href="#excel-model">3 · Excel model &amp; customize</a>
+  <a href="#excel-skills">4 · Skills &amp; WorkIQ</a>
+  <a href="#excel-report">5 · Report &amp; sensitivity</a>
+  <a href="#calendar">6 · Calendar prep</a>
+  <a href="#teams-recap">7 · Teams recap</a>
+  <a href="#facilitator">8 · Facilitator &amp; Planner</a>
+  <a href="#wrap">Wrap-up</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">M365 Copilot · Live Demo Script</span>
+    <h1>Contract review, team collaboration, and AI-powered meetings.</h1>
+    <p class="lede">A senior analyst starts the day with an urgent contract review thread, brings the right people in, leverages Excel Copilot with advanced features, and closes the loop with intelligent meeting collaboration. This is one morning — from first notification to meeting prep.</p>
+    <div class="hero-meta">
+      <span><b>Audience</b>VP-level leadership</span>
+      <span><b>Format</b>Live demo script</span>
+      <span><b>Length</b>~20 minutes</span>
+      <span><b>Scenario</b>Contract risk review · Drone &amp; e-bike company</span>
+    </div>
+  </div>
+</header>
+
+<div class="dayarc-wrap">
+  <div class="dayarc" role="img" aria-label="Demo flow in five moments">
+    <div class="step">
+      <div class="dot dark"></div>
+      <div class="time">Scene 1</div>
+      <div class="label">Teams catch-up</div>
+      <div class="sub">Chat summary &amp; agent</div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div class="time">Scene 2</div>
+      <div class="label">Excel analysis</div>
+      <div class="sub">Model, customize, skills</div>
+    </div>
+    <div class="step">
+      <div class="dot accent"></div>
+      <div class="time">Scene 3</div>
+      <div class="label">WorkIQ &amp; report</div>
+      <div class="sub">Find data, build report</div>
+    </div>
+    <div class="step">
+      <div class="dot blue"></div>
+      <div class="time">Scene 4</div>
+      <div class="label">Calendar</div>
+      <div class="sub">Confirm &amp; prep</div>
+    </div>
+    <div class="step">
+      <div class="dot steel"></div>
+      <div class="time">Scene 5</div>
+      <div class="label">Meeting collab</div>
+      <div class="sub">Recap, Facilitator, Planner</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ OPENING / SETUP ============ -->
+<section class="act" id="opening">
+  <div class="body">
+    <div class="section-eye">Demo setup &amp; context</div>
+    <h2>The scenario: an urgent contract review lands in your lap.</h2>
+    <p>You're a senior analyst at a drone and e-bike company. You cover multiple roles including suppliers and contract analysis. You provide reports to leadership — not just data, but interpretation and recommendations. This morning, you notice an urgent Teams chat: <b>"Contract Review ASAP"</b>.</p>
+    <p>The demo follows your natural workflow: catch up on what you missed → bring in the right people → analyze the data in Excel → build the leadership report → confirm and prep for the decision meeting.</p>
+
+    <div class="instructor-note">
+      <div class="lbl">Before you start</div>
+      <p style="margin:0"><b>Pre-requisites:</b> Teams chat named "Contract Review ASAP" with existing messages · Excel file with contract data · Copilot added as an agent in the chat · Calendar event for the contract review meeting · Facilitator enabled in Teams.</p>
+    </div>
+
+    <div class="pullquote">"This isn't a feature tour. It's a real morning — the kind where AI turns an urgent request into a structured response, not a scramble."</div>
+  </div>
+</section>
+
+<!-- ============ 1 · TEAMS CATCH-UP ============ -->
+<section class="act" id="teams-catchup">
+  <div class="stake dark">
+    <div class="ix dark">1</div>
+    <div class="meta">
+      <div class="eye">Scene 1 · Teams · Catch up on what you missed</div>
+      <h2>You see a notification — "Contract Review ASAP." What did you miss?</h2>
+      <p class="tagline">Instead of scrolling through 30 messages to figure out what happened, you ask Copilot to bring you up to speed in seconds.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>You start your day and see the Teams chat <b>"Contract Review ASAP"</b> has been active. Multiple messages, urgency signals, and you need to get current — fast.</p>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Open the chat</div>
+      <h4>Navigate to "Contract Review ASAP" in Teams</h4>
+      <p>Open the chat. Notice the messages you've missed. Instead of reading everything, open Copilot in the chat pane.</p>
+    </div>
+
+    <div class="demo-step">
+      <div class="step-num">Step 2 — Ask Copilot to catch you up</div>
+      <h4>Get a summary of the conversation</h4>
+      <p>In the Copilot panel (or in the M365 Portal), ask for a summary of everything that's been discussed.</p>
+    </div>
+
+    <span class="prompt-label">Try this in Teams — Copilot pane</span>
+    <div class="prompt" data-prompt="Catch me up on this conversation. What's been discussed, what decisions have been made, and what's urgent?">Catch me up on this conversation. What's been discussed, what decisions have been made, and what's urgent?</div>
+
+    <span class="prompt-label">Alternative — in Copilot Chat (Portal)</span>
+    <div class="prompt" data-prompt="Summarize the Teams chat 'Contract Review ASAP'. What's the situation, who's involved, and what actions are pending?">Summarize the Teams chat "Contract Review ASAP". What's the situation, who's involved, and what actions are pending?</div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">Copilot reads the full thread and gives you: what the contract issue is, who raised it, what's been discussed so far, and what's still pending. You're oriented in 30 seconds, not 10 minutes.</p>
+    </div>
+
+    <div class="outcome dark">
+      <div class="lbl">Key message for the audience</div>
+      <p>This works in the Teams chat pane <b>and</b> in the Copilot Chat portal — same intelligence, wherever you are. No scrolling, no re-reading, just instant context.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Show both options quickly — the Teams pane summary and mention the Portal. The fact that it works from both places reinforces the "Copilot is everywhere" message. Keep this to 2 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · TEAMS AGENT IN CHAT ============ -->
+<section class="act" id="teams-agent">
+  <div class="stake">
+    <div class="ix">2</div>
+    <div class="meta">
+      <div class="eye">Scene 2 · Teams · Copilot as an agent in the chat</div>
+      <h2>Add the right person and let Copilot handle the onboarding.</h2>
+      <p class="tagline">Lisa Taylor needs to lead the contract evaluation. Instead of manually summarizing everything for her, you tell Copilot to do it — right in the chat.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>You notice Lisa Taylor isn't in the chat, but she should be — she needs to lead the contract evaluation and provide legal support. You add her and use the <b>Copilot agent in the chat</b> to bring her up to speed and set expectations.</p>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Add Lisa to the chat</div>
+      <h4>Bring in the right person</h4>
+      <p>Add Lisa Taylor to the "Contract Review ASAP" chat. Then use the Copilot agent (already added to the chat) to onboard her.</p>
+    </div>
+
+    <span class="prompt-label">@Copilot — Add and assign</span>
+    <div class="prompt" data-prompt="@Copilot Adding Lisa Taylor to the chat. She needs to lead the contract evaluation and provide any legal support.">@Copilot Adding Lisa Taylor to the chat. She needs to lead the contract evaluation and provide any legal support.</div>
+
+    <div class="demo-step accent">
+      <div class="step-num">Step 2 — Get Lisa up to speed</div>
+      <h4>Let Copilot brief the new participant</h4>
+      <p>Instead of typing out a summary yourself, ask Copilot to handle it — plus, inform the group about the upcoming meeting.</p>
+    </div>
+
+    <span class="prompt-label">@Copilot — Brief and inform</span>
+    <div class="prompt" data-prompt="@Copilot get her up to speed on everything we have been discussing. We will be sharing a high priority meeting to discuss the contracts and the current report.">@Copilot get her up to speed on everything we have been discussing. We will be sharing a high priority meeting to discuss the contracts and the current report.</div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">Copilot posts a comprehensive summary <b>visible to everyone in the chat</b> — bringing Lisa current and giving the whole group a shared understanding of the situation and next steps.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Key message for the audience</div>
+      <p>The Copilot agent in the chat isn't just for you — it's for the <b>team</b>. Any participant can @mention it. It posts publicly so everyone benefits. This is how you onboard someone into a complex discussion in seconds, not minutes of re-typing.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The @Copilot interaction in the chat is a big moment — it shows Copilot as a <b>team member</b>, not just a personal assistant. Emphasize that the response is visible to everyone. This differentiates from the private Copilot pane. 2-3 minutes on this scene.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · EXCEL MODEL & CUSTOMIZE ============ -->
+<section class="act" id="excel-model">
+  <div class="stake accent">
+    <div class="ix accent">3</div>
+    <div class="meta">
+      <div class="eye">Scene 3 · Excel · Model selection &amp; Customize Copilot</div>
+      <h2>Set up Copilot to work the way you work — before you even start analyzing.</h2>
+      <p class="tagline">Two powerful features most people don't know about: choosing the right AI model and teaching Copilot your role, your standards, and your formatting preferences.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>Before diving into the contract data, you configure Copilot to work like <i>your</i> analyst — with your role context, your formatting standards, and your presentation expectations.</p>
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>Model Selection</h4>
+      <p>Show the audience that you can <b>switch AI models</b> depending on the task. Different models excel at different things — reasoning, speed, creativity. Pick the right tool for the job.</p>
+    </div>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Show model selection</div>
+      <h4>Change the model in Copilot</h4>
+      <p>Open the model selector and show that you can choose between available models. Explain that different tasks benefit from different models.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>Customize Copilot — Persistent Instructions</h4>
+      <p>Tell Copilot <b>who you are</b> and <b>how you work</b>. These instructions persist across your session — every prompt benefits from this context without you repeating it.</p>
+    </div>
+
+    <div class="demo-step accent">
+      <div class="step-num">Step 2 — Set custom instructions</div>
+      <h4>Configure "Customize Copilot" with your role and formatting standards</h4>
+      <p>Open the Customize Copilot settings and enter your professional context and formatting preferences.</p>
+    </div>
+
+    <span class="prompt-label">Custom instructions to enter</span>
+    <div class="prompt" data-prompt="I'm a senior analyst on a drone and e-bike company. I cover various roles including suppliers and contract analysis. I have to provide reports to leadership not just providing the data but also interpretation of the data. Show data with green/red fills and icons like 'Check' or 'X' whenever appropriate. Never let text get cut off: merge and wrap prose (reasons, notes); auto-fit data columns to their content once, and don't let a lower table resize a column a higher one already set.">I'm a senior analyst on a drone and e-bike company. I cover various roles including suppliers and contract analysis. I have to provide reports to leadership not just providing the data but also interpretation of the data. Show data with green/red fills and icons like "Check" or "X" whenever appropriate. Never let text get cut off: merge and wrap prose (reasons, notes); auto-fit data columns to their content once, and don't let a lower table resize a column a higher one already set.</div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">From this point forward, every Copilot response in Excel will follow these instructions — formatted for leadership, with conditional formatting, proper column widths, and interpretive analysis, not just raw data.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Key message for the audience</div>
+      <p><b>Customize Copilot</b> means you set your context once and every interaction benefits. No more repeating "I'm an analyst" or "format it professionally" in every prompt. Copilot knows your role, your standards, and your audience — permanently.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Model selection is a quick show — 15 seconds. The <b>Customize Copilot</b> feature is the star here. Read the instructions aloud as you type them — the audience should hear the specificity. Then show that subsequent prompts automatically apply those standards. 3 minutes total.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · EXCEL SKILLS & WORKIQ ============ -->
+<section class="act" id="excel-skills">
+  <div class="stake">
+    <div class="ix">4</div>
+    <div class="meta">
+      <div class="eye">Scene 4 · Excel · Skills &amp; WorkIQ</div>
+      <h2>Reusable skills, intelligent file discovery, and cross-app intelligence.</h2>
+      <p class="tagline">Skills teach Copilot how to do a specific recurring task consistently. WorkIQ finds the right files across your M365 environment without you hunting for them.</p>
+    </div>
+  </div>
+  <div class="body">
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>Skills — Reusable instructions for recurring work</h4>
+      <p>Skills are reusable instructions or capabilities Copilot uses to complete recurring work consistently. Think of them as "saved expertise" — teach Copilot once how you do a specific analysis, and it applies that same methodology every time.</p>
+    </div>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Show Skills</div>
+      <h4>Demonstrate how to add a Skill</h4>
+      <p>Show the audience the Skills feature. Explain that a Skill provides Copilot with specific instructions on how to perform a particular task — like a playbook it follows consistently.</p>
+    </div>
+
+    <div class="tip">
+      <div class="lbl">What are Skills?</div>
+      <p style="margin:0"><b>Skills</b> = reusable instructions for Copilot. If you run the same type of analysis every month — contract risk scoring, vendor evaluation, budget variance — you create a Skill so Copilot does it the same way every time, with the same criteria, the same output format, and the same quality.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>WorkIQ — Intelligent file discovery</h4>
+      <p>When you reference content in a prompt, Copilot uses WorkIQ to <b>find relevant files across your M365 environment</b>. It suggests files based on your text — you don't need to know the exact file name or location.</p>
+    </div>
+
+    <div class="demo-step accent">
+      <div class="step-num">Step 2 — Run the analysis prompt</div>
+      <h4>Ask Copilot to find and analyze the contract data</h4>
+      <p>Use a natural language prompt that references the data — Copilot uses WorkIQ to locate the file and suggests using it.</p>
+    </div>
+
+    <span class="prompt-label">The power prompt — WorkIQ finds the file</span>
+    <div class="prompt" data-prompt="Can you find the 'contracts data' file and analyze all of them, is there any contract at risk? Create rich dashboards if possible. @buyer-list">Can you find the "contracts data" file and analyze all of them, is there any contract at risk? Create rich dashboards if possible. @buyer-list</div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">Copilot uses WorkIQ to locate the "contracts data" file from your M365 environment, suggests it for use, and then performs the analysis — identifying at-risk contracts and creating visual dashboards. The @buyer-list reference pulls in additional context from a Skill or data source.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Key message for the audience</div>
+      <p>You didn't need to find the file, open it, copy data, or build the dashboard manually. You described what you needed in plain English — and Copilot found the data, analyzed it, and created the output. <b>This is the difference between using AI and working with AI.</b></p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The WorkIQ moment is magical — type the prompt and pause when Copilot suggests the file. Say "I didn't tell it where the file is. It found it based on the context." Then let the analysis run. The dashboard creation with green/red formatting (from your custom instructions) ties back to Scene 3. 3-4 minutes here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · EXCEL REPORT & SENSITIVITY ============ -->
+<section class="act" id="excel-report">
+  <div class="stake accent">
+    <div class="ix accent">5</div>
+    <div class="meta">
+      <div class="eye">Scene 5 · Excel · Leadership report &amp; sensitivity labels</div>
+      <h2>From analysis to leadership-ready report — with enterprise security built in.</h2>
+      <p class="tagline">Copilot helps you complete the report for leadership, and the sensitivity label is automatically applied — protecting the content from the moment it's created.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>The analysis is done. Now you need the leadership report — not just the data, but the <i>interpretation</i>, the risks flagged, the recommendations clear. And because this involves contract data, the document must be properly classified.</p>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Complete the report</div>
+      <h4>Ask Copilot to help build the leadership report</h4>
+      <p>With the analysis complete, ask Copilot to help you structure and write the report for leadership.</p>
+    </div>
+
+    <span class="prompt-label">Build the leadership report</span>
+    <div class="prompt" data-prompt="Help me complete the report for the leadership team. Summarize the key findings from the contract analysis, highlight the contracts at risk with specific reasons, and provide recommended actions. Include the visual dashboard. Format it for a VP-level audience — interpretation first, data second.">Help me complete the report for the leadership team. Summarize the key findings from the contract analysis, highlight the contracts at risk with specific reasons, and provide recommended actions. Include the visual dashboard. Format it for a VP-level audience — interpretation first, data second.</div>
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>Sensitivity Labels — Automatic protection</h4>
+      <p>When the document is created or saved, the <b>sensitivity label</b> is automatically applied based on your organization's policies. The content is classified and protected from the moment it exists — no manual step required.</p>
+    </div>
+
+    <div class="demo-step accent">
+      <div class="step-num">Step 2 — Show the sensitivity label</div>
+      <h4>Point out the label applied to the new document</h4>
+      <p>Show the audience that the sensitivity label was automatically applied to the newly created document. This means the content is protected, and sharing/access controls are enforced from the start.</p>
+    </div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">The report is formatted for leadership (interpretation + data), the dashboards are included, and the sensitivity label is visible in the document header — showing that enterprise security is baked into the AI workflow, not bolted on after.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Key message for the audience</div>
+      <p>Two critical points in one scene: (1) Copilot produces <b>leadership-ready output</b> — not just data, but interpretation and recommendations. (2) <b>Security travels with the content</b> — sensitivity labels are applied automatically. Your governance posture is preserved even when AI accelerates the work.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The report generation shows the "Customize Copilot" paying off — the output should already be formatted with green/red, icons, and interpretive prose because of your earlier instructions. Then point to the sensitivity label in the ribbon/header. Don't dwell — just say "notice the label was applied automatically. Security travels with the content." 2-3 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · CALENDAR PREP ============ -->
+<section class="act" id="calendar">
+  <div class="stake blue">
+    <div class="ix blue">6</div>
+    <div class="meta">
+      <div class="eye">Scene 6 · Calendar · Confirm &amp; prep for the meeting</div>
+      <h2>Accept the meeting and walk in fully prepared — one click.</h2>
+      <p class="tagline">The contract review meeting is on the calendar. You confirm attendance and ask Copilot to prepare you — pulling together everything relevant from emails, chats, and files.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>The report is done. The meeting to discuss contracts is coming up. You go to your calendar, confirm your attendance, and do one last thing: let Copilot prep you so you walk in ready.</p>
+
+    <div class="demo-step blue">
+      <div class="step-num">Step 1 — Confirm attendance</div>
+      <h4>Accept the meeting invitation</h4>
+      <p>Navigate to your calendar, find the contract review meeting, and confirm your attendance.</p>
+    </div>
+
+    <div class="demo-step blue">
+      <div class="step-num">Step 2 — Prep for the meeting</div>
+      <h4>Use "Prep me for this meeting"</h4>
+      <p>Click on the meeting and select <b>"Prep me for this meeting"</b> — Copilot pulls together all relevant context: who's attending, what's been discussed in related emails and chats, what files have been shared, and what you should be ready to discuss.</p>
+    </div>
+
+    <span class="prompt-label">Or manually in Copilot Chat</span>
+    <div class="prompt" data-prompt="Prep me for my upcoming contract review meeting. Who's attending? What have we discussed in related emails and chats? What files should I review? What should I be ready to talk about?">Prep me for my upcoming contract review meeting. Who's attending? What have we discussed in related emails and chats? What files should I review? What should I be ready to talk about?</div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">Copilot assembles: attendee list with roles, recent communications about this topic, relevant files (including the report you just built), and key discussion points. You walk into the meeting fully briefed.</p>
+    </div>
+
+    <div class="outcome blue">
+      <div class="lbl">Key message for the audience</div>
+      <p>Full circle: you started the day catching up on a chat, analyzed the data, built the report, and now you're walking into the decision meeting <b>fully prepared</b> — all in the same morning. No scrambling. No "let me look that up." Ready.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">This is the narrative payoff — the audience sees the full arc from notification to meeting-ready in one continuous flow. The "Prep me for this meeting" button is quick to show. Keep it to 1-2 minutes. Then transition: "Now let's look at what happens IN the meeting…"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · TEAMS RECAP ============ -->
+<section class="act" id="teams-recap">
+  <div class="stake steel">
+    <div class="ix steel">7</div>
+    <div class="meta">
+      <div class="eye">Scene 7 · Teams · Meeting recap &amp; Facilitator</div>
+      <h2>The meeting ends — and everything that was decided is already captured.</h2>
+      <p class="tagline">Teams Recap gives you a structured summary. Facilitator takes live notes and creates tasks during the meeting — no note-taker needed.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>This is the second scenario. After the meeting, you show how Teams Copilot captures everything — and how the <b>Facilitator</b> agent turns discussion into structured notes and actionable tasks in real time.</p>
+
+    <div class="feature">
+      <div class="feat-label">Feature spotlight</div>
+      <h4>Teams Recap</h4>
+      <p>After any meeting with transcription enabled, Copilot generates a <b>structured recap</b> — decisions, action items, key topics — available in the meeting chat. Not a transcript. An actionable summary.</p>
+    </div>
+
+    <div class="demo-step steel">
+      <div class="step-num">Show — Teams Recap</div>
+      <h4>Demonstrate the post-meeting recap</h4>
+      <p>Open a completed meeting and show the Copilot recap: decisions made, action items assigned, key discussion points. Emphasize that this appears automatically — no manual notes needed.</p>
+    </div>
+
+    <span class="prompt-label">Custom recap format</span>
+    <div class="prompt" data-prompt="Give me a recap of this meeting organized as: (1) Decisions made — specific commitments, not themes; (2) Action items — owner, next step, due date; (3) Key discussion points; (4) Open questions we need to follow up on.">Give me a recap of this meeting organized as: (1) Decisions made — specific commitments, not themes; (2) Action items — owner, next step, due date; (3) Key discussion points; (4) Open questions we need to follow up on.</div>
+
+    <div class="outcome steel">
+      <div class="lbl">Key message for the audience</div>
+      <p>Nobody needs to be "the note-taker" anymore. The recap captures what matters — decisions and ownership — and it's available to everyone in the meeting chat immediately. No more "can someone send the notes?"</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">Show a real meeting recap if you have one. The custom format prompt is powerful — show that you can ask for exactly the format you want. Then transition to Facilitator: "But what if you want notes captured <i>during</i> the meeting?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · FACILITATOR & PLANNER ============ -->
+<section class="act" id="facilitator">
+  <div class="stake">
+    <div class="ix">8</div>
+    <div class="meta">
+      <div class="eye">Scene 8 · Teams · Facilitator &amp; Planner integration</div>
+      <h2>Facilitator takes live notes, creates tasks, and syncs with Planner — during the meeting.</h2>
+      <p class="tagline">While the meeting is happening, Facilitator captures structured notes. And when someone says "let's add a task" — it happens right there, assigned and tracked.</p>
+    </div>
+  </div>
+  <div class="body">
+    <p>Facilitator is an agent that participates in your meeting — taking structured notes, capturing decisions, and letting you create tasks on the fly that sync directly to <b>Microsoft Planner</b>.</p>
+
+    <div class="three">
+      <div class="card">
+        <span class="pill">Live notes</span>
+        <h4>Structured capture, in real time</h4>
+        <p>Facilitator takes notes as the meeting progresses — not a raw transcript, but organized observations: topics discussed, decisions, parking lot items.</p>
+        <div class="note">Notes are editable during the meeting.</div>
+      </div>
+      <div class="card">
+        <span class="pill">Tasks on demand</span>
+        <h4>Create tasks by @mentioning Facilitator</h4>
+        <p>When a task comes up in discussion, just say it: "@Facilitator add a task about 'discuss use cases' and assign that to Dakota." The task is created immediately and syncs to Planner.</p>
+        <div class="note">No switching apps. No forgetting.</div>
+      </div>
+      <div class="card">
+        <span class="pill">Planner sync</span>
+        <h4>Tasks appear in Planner instantly</h4>
+        <p>Every task Facilitator creates is tracked in Microsoft Planner — assigned, visible, and ready for follow-up. The meeting's commitments don't live in a notes doc; they live in the work management tool.</p>
+        <div class="note">Show the tasks in Planner after the meeting.</div>
+      </div>
+    </div>
+
+    <div class="demo-step">
+      <div class="step-num">Step 1 — Show Facilitator taking notes</div>
+      <h4>Demonstrate live note-taking during a meeting</h4>
+      <p>Show how Facilitator captures structured notes as the meeting progresses. Point out that notes are organized by topic, not chronological transcript.</p>
+    </div>
+
+    <div class="demo-step">
+      <div class="step-num">Step 2 — Create a task via @Facilitator</div>
+      <h4>Add a task to Planner right from the meeting</h4>
+      <p>During the meeting, type the @Facilitator mention to create a task on the spot.</p>
+    </div>
+
+    <span class="prompt-label">Create a task in the meeting</span>
+    <div class="prompt" data-prompt="@Facilitator add a task about 'discuss use cases' and assign that to Dakota">@Facilitator add a task about "discuss use cases" and assign that to Dakota</div>
+
+    <div class="demo-step accent">
+      <div class="step-num">Step 3 — Show the task in Planner</div>
+      <h4>Navigate to Planner and show the task</h4>
+      <p>After creating the task, switch to Microsoft Planner and show that the task appeared — assigned to Dakota, with the meeting context attached. The loop is closed.</p>
+    </div>
+
+    <div class="expect">
+      <div class="lbl">What to expect</div>
+      <p style="margin:0">The task appears in Planner immediately — assigned to Dakota, tagged from the meeting. No manual entry, no "I'll add that later," no tasks lost between the meeting and the follow-up.</p>
+    </div>
+
+    <div class="outcome">
+      <div class="lbl">Key message for the audience</div>
+      <p>Meetings produce three things: decisions, notes, and tasks. <b>Facilitator captures all three without a designated note-taker.</b> And because tasks sync to Planner, commitments don't die in a meeting notes document nobody re-reads. They become real work, tracked and assigned.</p>
+    </div>
+
+    <div class="instructor-note">
+      <div class="lbl">Presenter note</div>
+      <p style="margin:0">The @Facilitator task creation is the wow moment — type it, watch the task appear, then switch to Planner and show it there. Quick, visual, satisfying. If Facilitator isn't available in your environment, narrate it with the concept: "imagine every time someone says 'let's track that,' it actually gets tracked — assigned, in Planner, zero effort." 3 minutes for this whole section.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRAP-UP ============ -->
+<section class="act" id="wrap">
+  <div class="nextsteps">
+    <div class="section-eye" style="color:#c4a0a0">Wrap-up</div>
+    <h2>One morning. One urgent request. Every tool working together.</h2>
+    <p class="sub">What you just saw wasn't a feature demo — it was a real workflow. From notification to meeting-ready in under an hour. From meeting to tracked tasks in real time.</p>
+
+    <div class="grid">
+      <div class="step">
+        <div class="num">Scenario 1</div>
+        <h4>From notification to decision-ready</h4>
+        <p>Caught up on a chat → added the right person → analyzed contract data with custom AI → built a leadership report with sensitivity labels → prepped for the meeting. One continuous flow.</p>
+      </div>
+      <div class="step">
+        <div class="num">Scenario 2</div>
+        <h4>Meetings that produce action</h4>
+        <p>Structured recap captures decisions → Facilitator takes live notes → tasks created with @mention → tasks tracked in Planner. Nothing decided in the meeting dies in the follow-up.</p>
+      </div>
+      <div class="step">
+        <div class="num">The multiplier</div>
+        <h4>300 licenses × this workflow</h4>
+        <p>Imagine this isn't one person — it's every team lead, every regional manager, every analyst. The same time savings, the same quality, the same security. That's what's ahead.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:26px;color:#e8d0d0;font-size:1rem;max-width:740px">
+      The tools are already there. The licenses are in place. What changes is how your teams <b>work</b> — from reactive to proactive, from scattered to structured, from manual to AI-assisted. This is the new operating rhythm.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div><b style="color:#fff">M365 Copilot · Live Demo Script</b> — Discount Tire</div>
+  <div style="margin-top:6px;color:#9f8888;font-size:.82rem">Contract review &amp; team collaboration · self-contained HTML · GitHub Pages-ready</div>
+  <div style="margin-top:10px;font-size:.82rem"><a href="DiscountTire-Executive-AI-Briefing.html">Executive AI Briefing</a> &nbsp;·&nbsp; <a href="DiscountTire-KnowledgeWorker-AI-Guide.html">Knowledge Worker Guide</a></div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.prompt').forEach(function(p){
+    var btn=document.createElement('button');
+    btn.className='copy-btn';btn.type='button';btn.textContent='Copy';
+    btn.setAttribute('aria-label','Copy prompt to clipboard');
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var text=p.getAttribute('data-prompt')||p.textContent.replace(/Copy$/,'').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},1600);
+      });
+    });
+    p.appendChild(btn);
+  });
+  var links=Array.from(document.querySelectorAll('nav.rail a[href^="#"]'));
+  var map={};
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el)map[id]=a;
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var a=map[e.target.id]; if(a)a.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id); if(el)io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
