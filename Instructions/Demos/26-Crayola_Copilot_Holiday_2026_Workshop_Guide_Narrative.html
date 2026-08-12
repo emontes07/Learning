@@ -1,0 +1,774 @@
+---
+demo:
+    title: 'Crayola Holiday 2026 | Narrative Copilot Workshop'
+layout: none
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crayola Holiday 2026 | Narrative Copilot Workshop</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 7.5rem; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(145deg, var(--cp-accent-soft), transparent 28%),
+        var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+    }
+    button, a { font: inherit; }
+    a { color: var(--cp-link); }
+    .hero {
+      min-height: 22rem;
+      display: grid;
+      align-items: end;
+      padding: 4rem max(1.25rem, calc((100vw - 76rem) / 2)) 3rem;
+      background:
+        linear-gradient(110deg, var(--cp-surface) 0 58%, transparent 58%),
+        repeating-linear-gradient(90deg, var(--cp-accent-soft) 0 2.5rem, var(--cp-surface-soft) 2.5rem 5rem);
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .hero-inner { max-width: 48rem; }
+    .eyebrow, .kicker {
+      margin: 0 0 .65rem;
+      color: var(--cp-accent);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; max-width: 12ch; font-size: clamp(2.6rem, 8vw, 5.8rem); line-height: .92; letter-spacing: 0; }
+    .hero p { max-width: 44rem; margin: 1.25rem 0 0; font-size: 1.08rem; color: var(--cp-text-muted); }
+    .story-chip { display: inline-flex; margin-top: 1.25rem; padding: .5rem .75rem; border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-surface); font-weight: 700; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem max(1rem, calc((100vw - 76rem) / 2));
+      overflow-x: auto;
+      background: var(--cp-panel-strong);
+      border-bottom: 1px solid var(--cp-border);
+      backdrop-filter: blur(12px);
+    }
+    .topbar a { flex: 0 0 auto; color: var(--cp-text); text-decoration: none; font-size: .78rem; font-weight: 700; }
+    .topbar a:hover { color: var(--cp-accent); }
+    .topbar .spacer { flex: 1 0 1rem; }
+    .icon-btn {
+      min-width: 2.45rem;
+      min-height: 2.45rem;
+      border: 1px solid var(--cp-border);
+      border-radius: .625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .icon-btn:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
+    main { width: min(76rem, calc(100% - 2rem)); margin: 0 auto; }
+    .agenda { padding: 3rem 0 1rem; }
+    .section-title { margin: 0 0 .5rem; font-size: 1.85rem; letter-spacing: 0; }
+    .section-lede { max-width: 50rem; margin: 0 0 1.5rem; color: var(--cp-text-muted); }
+    .agenda-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    .agenda-item { display: grid; grid-template-columns: 3rem 1fr auto; gap: .75rem; align-items: center; padding: .9rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); }
+    .agenda-num { color: var(--cp-accent); font-size: 1.25rem; font-weight: 900; }
+    .agenda-name { font-weight: 700; }
+    .time { color: var(--cp-text-muted); font-family: Consolas, "Courier New", Courier, monospace; font-size: .8rem; white-space: nowrap; }
+    .module { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1.5rem; padding: 4rem 0; border-top: 1px solid var(--cp-border); }
+    .module-time { position: sticky; top: 6rem; align-self: start; text-align: right; }
+    .module-time strong { display: block; color: var(--cp-accent); font-size: 2rem; line-height: 1; }
+    .module-time span { color: var(--cp-text-muted); font-size: .78rem; }
+    .module-head { display: flex; gap: 1rem; justify-content: space-between; align-items: start; }
+    .module h2 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: 0; }
+    .module h3 { margin: 0 0 .55rem; font-size: 1.06rem; letter-spacing: 0; }
+    .badges { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: end; }
+    .badge { display: inline-flex; padding: .25rem .5rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface-soft); color: var(--cp-text-muted); font-size: .72rem; font-weight: 800; white-space: nowrap; }
+    .badge.hero-badge { border-color: var(--cp-accent); background: var(--cp-accent); color: var(--cp-accent-fg); }
+    .badge.availability { border-color: var(--cp-warning); color: var(--cp-text); }
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 1.5rem 0; }
+    .panel { padding: 1rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); }
+    .panel p { margin: 0; color: var(--cp-text-muted); }
+    .prompt { margin: 1rem 0; border: 1px solid var(--cp-border-strong); border-radius: .625rem; overflow: hidden; background: var(--cp-bg-elevated); }
+    .prompt-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .55rem .75rem; background: var(--cp-surface-soft); border-bottom: 1px solid var(--cp-border); }
+    .prompt-label { font-size: .72rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .copy-btn { border: 0; background: transparent; color: var(--cp-accent); cursor: pointer; font-weight: 800; }
+    .copy-btn:hover { color: var(--cp-accent-hover); }
+    pre { margin: 0; padding: 1rem; white-space: pre-wrap; word-break: break-word; color: var(--cp-text); font: .88rem/1.55 Consolas, "Courier New", Courier, monospace; }
+    .personalize { margin: 1rem 0; padding: .8rem 1rem; border-left: .3rem solid var(--cp-accent); background: var(--cp-accent-soft); }
+    .personalize strong { color: var(--cp-accent); }
+    .file-callout { display: flex; gap: .75rem; align-items: start; margin: 1rem 0; padding: .8rem 1rem; border: 1px dashed var(--cp-border-strong); border-radius: .625rem; background: var(--cp-surface-soft); }
+    .file-callout span:first-child { font-size: 1.25rem; }
+    .file-callout p { margin: 0; color: var(--cp-text-muted); }
+    .easy { margin-top: 1.25rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); }
+    .easy summary, .deep summary { cursor: pointer; padding: 1rem; font-weight: 800; }
+    .easy-content, .deep-content { padding: 0 1rem 1rem; }
+    .prompt-ladder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .prompt-ladder .prompt { margin: 0; }
+    .coach-note { margin: 1rem 0 .5rem; color: var(--cp-text-muted); }
+    .fallback { margin-top: 1rem; padding: 1rem; border: 1px solid var(--cp-warning); border-radius: .625rem; background: var(--cp-surface); }
+    .fallback h3 { color: var(--cp-warning); }
+    .deep { margin-top: 1rem; border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-bg-elevated); }
+    .deep-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .steps { margin: .5rem 0 0; padding-left: 1.25rem; }
+    .steps li { margin: .4rem 0; }
+    .output-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: 1rem 0; }
+    .output-strip div { padding: .8rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); }
+    .output-strip strong { display: block; color: var(--cp-accent); }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { padding: .7rem; border-bottom: 1px solid var(--cp-border); text-align: left; vertical-align: top; }
+    th { color: var(--cp-text-muted); font-size: .75rem; text-transform: uppercase; }
+    .hero-module { margin: 1rem -1rem; padding: 4rem 1rem; border: 1px solid var(--cp-accent); border-radius: 1rem; background: linear-gradient(145deg, var(--cp-accent-soft), var(--cp-surface)); }
+    .facilitator { margin: 3rem 0 5rem; padding: 1.25rem; border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-surface); }
+    .facilitator summary { cursor: pointer; font-size: 1.15rem; font-weight: 900; }
+    .facilitator-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .footer { padding: 2rem 1rem; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); text-align: center; font-size: .8rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 800px) {
+      .hero { min-height: 18rem; background: linear-gradient(145deg, var(--cp-surface), var(--cp-accent-soft)); }
+      .agenda-grid, .summary-grid, .prompt-ladder, .deep-grid, .facilitator-grid { grid-template-columns: 1fr; }
+      .module { grid-template-columns: 1fr; gap: .75rem; }
+      .module-time { position: static; text-align: left; display: flex; gap: .35rem; align-items: baseline; }
+      .module-time strong { font-size: 1.3rem; }
+      .module-head { display: block; }
+      .badges { justify-content: start; margin-top: .75rem; }
+      .output-strip { grid-template-columns: 1fr; }
+      .hero-module { margin-left: 0; margin-right: 0; }
+    }
+    @media print {
+      :root { color-scheme: light; }
+      html[data-theme] { color-scheme: light; }
+      body { background: var(--cp-surface); }
+      .topbar, .copy-btn { display: none; }
+      .hero { min-height: auto; padding: 1rem 0 2rem; background: var(--cp-surface); }
+      main { width: 100%; }
+      .module { display: block; padding: 1.5rem 0; break-before: page; }
+      .module-time { position: static; text-align: left; margin-bottom: .5rem; }
+      .module-time strong { display: inline; margin-right: .25rem; font-size: 1rem; }
+      .hero-module { margin: 0; padding: 1.5rem 0; border: 0; }
+      .panel, .prompt, .easy, .deep, .fallback, .facilitator { break-inside: avoid; box-shadow: none; }
+      details > * { display: block !important; }
+      a { color: var(--cp-text); text-decoration: none; }
+      @page { margin: .55in; }
+    }
+
+    /* Narrative visual variant: based on the supplied Crayola launch-story guide. */
+    :root {
+      --narrative-hero-start: var(--cp-text);
+      --narrative-on-hero: var(--cp-surface);
+      --narrative-prompt-bg: var(--cp-text);
+      --narrative-prompt-fg: var(--cp-surface);
+    }
+    html[data-theme="dark"] {
+      --narrative-hero-start: var(--cp-bg-elevated);
+      --narrative-on-hero: var(--cp-text);
+      --narrative-prompt-bg: var(--cp-bg-elevated);
+      --narrative-prompt-fg: var(--cp-text);
+    }
+    body { background: var(--cp-bg); font-size: 16px; line-height: 1.6; }
+    .hero {
+      min-height: 0;
+      display: block;
+      padding: 4.5rem 2rem 7.5rem;
+      color: var(--narrative-on-hero);
+      background: linear-gradient(135deg, var(--narrative-hero-start), var(--cp-link) 48%, var(--cp-accent));
+      border-bottom: .375rem solid var(--cp-warning);
+    }
+    .hero-inner { max-width: 68.75rem; margin: 0 auto; }
+    .hero .eyebrow {
+      display: inline-block;
+      padding: .35rem .85rem;
+      border: 1px solid var(--cp-sheen);
+      border-radius: 1rem;
+      background: var(--cp-sheen);
+      color: var(--narrative-on-hero);
+      font-size: .78rem;
+    }
+    .hero h1 {
+      max-width: 57.5rem;
+      margin-top: .75rem;
+      color: var(--narrative-on-hero);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.1;
+    }
+    .hero p { max-width: 48rem; color: var(--narrative-on-hero); font-size: 1.1rem; }
+    .story-chip { border-color: var(--cp-sheen); background: var(--cp-sheen); color: var(--narrative-on-hero); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; max-width: 57.5rem; margin-top: 1.4rem; padding-top: 1.25rem; border-top: 1px solid var(--cp-sheen); }
+    .hero-meta span { color: var(--narrative-on-hero); font-size: .9rem; }
+    .hero-meta b { display: block; margin-bottom: .15rem; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+    .topbar {
+      position: absolute;
+      top: 1rem;
+      right: max(1rem, calc((100vw - 68.75rem) / 2));
+      z-index: 20;
+      width: auto;
+      padding: 0;
+      overflow: visible;
+      background: transparent;
+      border: 0;
+      backdrop-filter: none;
+    }
+    .topbar a, .topbar .spacer { display: none; }
+    .topbar .icon-btn { background: var(--cp-panel-strong); }
+    .launcharc-wrap { position: relative; z-index: 3; margin-top: -3.75rem; padding: 0 1.5rem; }
+    .launcharc {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: .5rem;
+      max-width: 68.75rem;
+      margin: 0 auto;
+      padding: 1.25rem 1rem;
+      border: 1px solid var(--cp-border);
+      border-radius: 1rem;
+      background: var(--cp-surface);
+      box-shadow: var(--cp-shadow);
+    }
+    .arc-step { position: relative; min-width: 0; text-align: center; text-decoration: none; }
+    .arc-step::before { content: ""; position: absolute; top: 1rem; left: 0; right: 0; height: .18rem; background: var(--cp-border); }
+    .arc-step:first-child::before { left: 50%; }
+    .arc-step:last-child::before { right: 50%; }
+    .arc-dot { position: relative; z-index: 1; width: .9rem; height: .9rem; margin: .6rem auto .55rem; border: .18rem solid var(--cp-surface); border-radius: 50%; background: var(--cp-link); box-shadow: 0 0 0 .12rem var(--cp-link); }
+    .arc-step:nth-child(3n+2) .arc-dot { background: var(--cp-accent); box-shadow: 0 0 0 .12rem var(--cp-accent); }
+    .arc-step:nth-child(3n) .arc-dot { background: var(--cp-success); box-shadow: 0 0 0 .12rem var(--cp-success); }
+    .arc-step.hero-step .arc-dot { width: 1.15rem; height: 1.15rem; margin-top: .45rem; background: var(--cp-accent); box-shadow: 0 0 0 .12rem var(--cp-accent), 0 0 0 .35rem var(--cp-warning); }
+    .arc-time { color: var(--cp-text-muted); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; }
+    .arc-label { overflow-wrap: anywhere; color: var(--cp-text); font-size: .78rem; font-weight: 800; line-height: 1.2; }
+    .arc-sub { margin-top: .15rem; color: var(--cp-text-muted); font-size: .65rem; line-height: 1.2; }
+    .shell { display: grid; grid-template-columns: 15.5rem minmax(0, 1fr); gap: 2rem; width: min(80rem, calc(100% - 2rem)); margin: 0 auto; padding: 2rem 0 4rem; }
+    .shell > main { width: auto; min-width: 0; margin: 0; }
+    .side-nav { position: sticky; top: 1rem; align-self: start; max-height: calc(100vh - 2rem); overflow: auto; padding: .8rem .65rem; border: 1px solid var(--cp-border); border-radius: .625rem; background: var(--cp-surface); box-shadow: 0 0 2px var(--cp-border); }
+    .side-nav-title { padding: .35rem .65rem; color: var(--cp-text-muted); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .side-nav a { display: block; margin: .1rem 0; padding: .48rem .65rem; border-left: .18rem solid transparent; border-radius: .4rem; color: var(--cp-text); font-size: .84rem; text-decoration: none; }
+    .side-nav a:hover, .side-nav a.active { border-left-color: var(--cp-accent); background: var(--cp-accent-soft); color: var(--cp-accent); }
+    .agenda { padding: 0 0 1rem; }
+    .section-title, .module h2 { display: inline-block; padding-bottom: .35rem; border-bottom: .2rem solid var(--cp-warning); color: var(--cp-text); }
+    .agenda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .agenda-item { box-shadow: 0 1px 2px var(--cp-border); text-decoration: none; }
+    .module {
+      display: grid;
+      grid-template-columns: 4.5rem minmax(0, 1fr);
+      gap: 1rem;
+      margin: 0 0 1rem;
+      padding: 1.25rem;
+      border: 1px solid var(--cp-border);
+      border-radius: .75rem;
+      background: var(--cp-surface);
+      box-shadow: 0 1px 2px var(--cp-border);
+    }
+    .module-time { position: static; text-align: center; }
+    .module-time strong { width: 2.2rem; height: 2.2rem; margin: 0 auto .25rem; border-radius: 50%; background: var(--cp-accent); color: var(--cp-accent-fg); font-size: 1rem; line-height: 2.2rem; }
+    .module h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.15; }
+    .hero-module { margin: 0 0 1rem; padding: 1.25rem; border: .15rem solid var(--cp-warning); background: var(--cp-surface); }
+    .panel { border-radius: .625rem; box-shadow: none; }
+    .prompt { position: relative; border-color: var(--cp-border-strong); background: var(--narrative-prompt-bg); }
+    .prompt-head { background: transparent; border-bottom-color: var(--cp-border-strong); }
+    .prompt-label, .prompt pre { color: var(--narrative-prompt-fg); }
+    .prompt .copy-btn { padding: .3rem .65rem; border-radius: .4rem; background: var(--cp-warning); color: var(--cp-accent-fg); }
+    .easy, .deep { overflow: hidden; }
+    .easy summary, .deep summary { background: linear-gradient(90deg, var(--cp-accent-soft), var(--cp-surface)); }
+    .personalize { border-left-color: var(--cp-link); background: var(--cp-accent-soft); }
+    .personalize strong { color: var(--cp-link); }
+    .fallback { border-left: .3rem solid var(--cp-warning); border-top-color: var(--cp-border); border-right-color: var(--cp-border); border-bottom-color: var(--cp-border); }
+    .facilitator { margin-bottom: 1rem; }
+    @media (max-width: 1000px) {
+      .launcharc { grid-template-columns: repeat(3, 1fr); }
+      .arc-step::before { display: none; }
+      .shell { grid-template-columns: 1fr; }
+      .side-nav { display: none; }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 4.5rem 1.25rem 6.5rem; }
+      .hero h1 { font-size: 2.1rem; }
+      .launcharc-wrap { padding: 0 .75rem; }
+      .launcharc { grid-template-columns: repeat(2, 1fr); }
+      .agenda-grid, .summary-grid, .prompt-ladder, .deep-grid, .facilitator-grid { grid-template-columns: 1fr; }
+      .module { grid-template-columns: 1fr; }
+      .module-time { display: flex; align-items: center; gap: .4rem; text-align: left; }
+      .module-time strong { margin: 0; }
+    }
+    @media print {
+      .launcharc-wrap { margin: 0; padding: 0; }
+      .launcharc { box-shadow: none; }
+      .shell { display: block; width: 100%; padding: 1rem 0; }
+      .side-nav { display: none; }
+      .module { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Crayola × Microsoft 365 Copilot · Hands-on workshop</p>
+      <h1>Launch a Holiday 2026 product end-to-end with Copilot grounded in Crayola’s work.</h1>
+      <p>Build a Crayola product launch from personal setup through market research, an on-brand deck, a grounded agent, a rollout app, approvals, and a complete launch package.</p>
+      <div class="story-chip">Running story: Crayola Glow Markers | Holiday 2026</div>
+      <div class="hero-meta">
+        <span><b>Scenario</b>Launch Glow Markers</span>
+        <span><b>Audience</b>Marketing · Ops · Creative · IT · Leadership</span>
+        <span><b>Format</b>Hands-on · 96 minutes</span>
+        <span><b>Platform</b>Microsoft 365 Copilot · Agents · Cowork</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="launcharc-wrap" aria-label="Workshop launch arc">
+    <div class="launcharc">
+      <a class="arc-step" href="#m1"><div class="arc-dot"></div><div class="arc-time">8 min</div><div class="arc-label">Personalize</div><div class="arc-sub">Work IQ</div></a>
+      <a class="arc-step" href="#m2"><div class="arc-dot"></div><div class="arc-time">8 min</div><div class="arc-label">Prompt</div><div class="arc-sub">Prompt Coach</div></a>
+      <a class="arc-step" href="#m3"><div class="arc-dot"></div><div class="arc-time">10 min</div><div class="arc-label">Research</div><div class="arc-sub">Researcher</div></a>
+      <a class="arc-step hero-step" href="#m4"><div class="arc-dot"></div><div class="arc-time">18 min · Hero</div><div class="arc-label">Build deck</div><div class="arc-sub">PowerPoint</div></a>
+      <a class="arc-step" href="#m5"><div class="arc-dot"></div><div class="arc-time">12 min</div><div class="arc-label">Build agent</div><div class="arc-sub">Agent Builder</div></a>
+      <a class="arc-step" href="#m6"><div class="arc-dot"></div><div class="arc-time">12 min</div><div class="arc-label">Build app</div><div class="arc-sub">App Builder</div></a>
+      <a class="arc-step" href="#m7"><div class="arc-dot"></div><div class="arc-time">10 min</div><div class="arc-label">Approve</div><div class="arc-sub">Workflows</div></a>
+      <a class="arc-step" href="#m8"><div class="arc-dot"></div><div class="arc-time">10 min</div><div class="arc-label">Pull together</div><div class="arc-sub">Cowork</div></a>
+      <a class="arc-step" href="#excel"><div class="arc-dot"></div><div class="arc-time">8 min</div><div class="arc-label">Polish chart</div><div class="arc-sub">Excel skill</div></a>
+    </div>
+  </div>
+
+  <nav class="topbar" aria-label="Workshop modules">
+    <a href="#agenda">Pacing</a>
+    <a href="#m1">1 Personalize</a>
+    <a href="#m2">2 Prompt</a>
+    <a href="#m3">3 Research</a>
+    <a href="#m4">4 Deck</a>
+    <a href="#m5">5 Agent</a>
+    <a href="#m6">6 App</a>
+    <a href="#m7">7 Approvals</a>
+    <a href="#m8">8 Cowork</a>
+    <a href="#excel">Excel skill</a>
+    <a href="#facilitator">Facilitator</a>
+    <span class="spacer"></span>
+    <button class="icon-btn" id="themeButton" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <button class="icon-btn" id="printButton" type="button" title="Print or save as PDF" aria-label="Print or save as PDF">▣</button>
+  </nav>
+
+  <div class="shell">
+    <aside class="side-nav" aria-label="On this page">
+      <div class="side-nav-title">On this page</div>
+      <a href="#agenda" class="active">Workshop pacing</a>
+      <a href="#m1">1 · Personalize Copilot</a>
+      <a href="#m2">2 · Improve the prompt</a>
+      <a href="#m3">3 · Research the market</a>
+      <a href="#m4">4 · Build the launch deck</a>
+      <a href="#m5">5 · Build the agent</a>
+      <a href="#m6">6 · Build the tracker app</a>
+      <a href="#m7">7 · Route approvals</a>
+      <a href="#m8">8 · Pull it together</a>
+      <a href="#excel">Excel skill lab</a>
+      <a href="#facilitator">Facilitator notes</a>
+    </aside>
+    <main>
+    <section class="agenda" id="agenda">
+      <p class="kicker">Facilitator pacing</p>
+      <h2 class="section-title">One launch, eight connected moves</h2>
+      <p class="section-lede">Core flow: 88 minutes. Add the 8-minute Excel skill lab for a 96-minute workshop. Each participant runs the prompt, checks the output, and personalizes the result.</p>
+      <div class="agenda-grid" id="agendaGrid"></div>
+    </section>
+    <div id="modules"></div>
+
+    <section class="module" id="excel">
+      <aside class="module-time"><strong>8</strong><span>minutes</span></aside>
+      <div>
+        <div class="module-head">
+          <div><p class="kicker">Supplemental hands-on lab</p><h2>Polish the launch chart in Excel</h2></div>
+          <div class="badges"><span class="badge">Out-of-the-box skill</span><span class="badge availability">File must be in cloud storage</span></div>
+        </div>
+        <div class="summary-grid">
+          <article class="panel"><h3>What we are doing</h3><p>Invoke the workbook's <strong>chart-design</strong> skill on the raw monthly series in the A tab, then compare it with the B tab output.</p></article>
+          <article class="panel"><h3>Why it matters to Crayola</h3><p>A launch audience reads a polished trend chart faster than a raw grid. This skill turns launch performance into a deck-ready visual in under a minute.</p></article>
+        </div>
+        <div class="file-callout"><span>⇩</span><p><strong>Open this exact file:</strong> <code>Excel Plugins.xlsx</code>. Prerequisite: save it to OneDrive or SharePoint before opening it in Excel. A local-only file will not work for this lab.</p></div>
+        <ol class="steps">
+          <li>Open <code>Excel Plugins.xlsx</code> from OneDrive or SharePoint.</li>
+          <li>Open <code>05a Chart Design DATA</code> and select cells <code>A5:D17</code>.</li>
+          <li>Open Copilot in Excel and ask it to use the <code>chart-design</code> skill on the selected range.</li>
+          <li>Paste the prompt below and run it. Keep the workbook open while the skill works.</li>
+          <li>Compare the result with <code>05b Chart Design DEMO</code>, the paired expected-output tab.</li>
+        </ol>
+        <div class="prompt"><div class="prompt-head"><span class="prompt-label">Exact Excel invocation</span><button class="copy-btn" type="button">Copy</button></div><pre>Use the chart-design skill on the selected range in "05a Chart Design DATA." Show monthly Revenue ($000s) as a line and Gross Margin % on a secondary axis. Use one purposeful color per series, horizontal gridlines only, a bottom legend, clean number formats, and a takeaway title that states the change from January to December. Make the result ready to use in the Crayola Holiday 2026 launch deck.</pre></div>
+        <div class="output-strip">
+          <div><strong>Before</strong>13 rows of monthly revenue, margin, and new-customer data.</div>
+          <div><strong>After</strong>A dual-axis trend chart with restrained formatting and a takeaway title.</div>
+          <div><strong>Visible value</strong>The paired output computes: revenue grew 94% while gross margin expanded 510 bps.</div>
+        </div>
+        <div class="panel"><h3>Why this skill</h3><p><code>chart-design</code> reads naturally for a consumer-products launch, produces a result the room can judge immediately, and feeds the PowerPoint hero moment. The workbook also includes <code>clean-data</code>, but chart design makes the value more visible in under a minute.</p></div>
+        <div class="panel" style="margin-top:.75rem"><h3>What good looks like</h3><p>A clean monthly line chart; revenue and margin use separate axes; colors encode the two series rather than decorate; labels are not crowded; and the title states the business takeaway instead of saying only “Revenue and Margin.”</p></div>
+        <div class="personalize"><strong>Personalize this:</strong> replace the sample monthly series with your product, account, or channel KPIs while preserving the same four-column layout.</div>
+        <details class="easy"><summary>Easy prompting | starter → better → Prompt Coach</summary><div class="easy-content">
+          <div class="prompt-ladder">
+            <div class="prompt"><div class="prompt-head"><span class="prompt-label">Starter</span><button class="copy-btn" type="button">Copy</button></div><pre>Make a chart from this data.</pre></div>
+            <div class="prompt"><div class="prompt-head"><span class="prompt-label">Better</span><button class="copy-btn" type="button">Copy</button></div><pre>Use the chart-design skill on this monthly revenue and margin data. Use separate axes and make the title state the January-to-December takeaway.</pre></div>
+          </div>
+          <p class="coach-note"><strong>Prompt Coach before:</strong> “Make this launch-ready.” <strong>Coach adds:</strong> audience, selected range, chart rules, and an observable deliverable.</p>
+          <div class="prompt"><div class="prompt-head"><span class="prompt-label">Prompt Coach after</span><button class="copy-btn" type="button">Copy</button></div><pre>For Crayola marketing and retail leaders, use the chart-design skill on selected cells A5:D17. Create a dual-axis monthly trend for revenue and gross margin, apply restrained launch-ready formatting, and title the chart with the strongest January-to-December takeaway. Preserve the raw data.</pre></div>
+        </details>
+        <div class="fallback"><h3>30-second fallback</h3><p>Open <code>05b Chart Design DEMO</code>. Point to the design-decision table and cells B16:B18, then say: “The skill chooses the visual treatment and computes the takeaway; changing the A-tab data updates the B-tab output.”</p></div>
+      </div>
+    </section>
+
+    <details class="facilitator" id="facilitator">
+      <summary>Facilitator only | fallbacks, rough edges, and preview language</summary>
+      <div class="facilitator-grid">
+        <article class="panel"><h3>Pre-stage the hero</h3><p>Seed two prior launch decks, the sales workbook, and the Crayola template in Marketing SharePoint. Rehearse modules 3 → 4 → 8. Keep a screenshot of the generated deck if Work IQ retrieval is slow.</p></article>
+        <article class="panel"><h3>Known rough edges</h3><p>Researcher can take several minutes. Generated PowerPoint layouts still need human review. App Builder is for a simple internal Lists-backed tracker, not a customer-facing production app. Pre-run Cowork and keep the completed package open.</p></article>
+        <article class="panel"><h3>If availability varies</h3><p>Say: “This capability is not enabled in every tenant. We will use the prepared output so you can evaluate the workflow, then confirm licensing, region, and rollout status with your Microsoft administrator.” Do not imply a date or GA status not present in the supplied materials.</p></article>
+        <article class="panel"><h3>Researcher guardrail</h3><p>Researcher measures category visibility and recommends content actions. It does not increase citation or ranking by itself; the lift comes from content Crayola chooses to publish.</p></article>
+        <article class="panel"><h3>Agent guardrail</h3><p>Keep it read-only. Require confirmation before any action that changes, sends, shares, or approves content. Ask attendees to verify citations and escalate when the source folder does not answer.</p></article>
+        <article class="panel"><h3>Excel source note</h3><p>The supplied workbook names <code>chart-design</code> and shows paired A/B tabs, but it does not document a special command token. Use the Copilot pane and the full natural-language invocation in this guide.</p></article>
+      </div>
+    </details>
+    </main>
+  </div>
+
+  <footer class="footer">Internal workshop resource for Crayola. Copilot accelerates the work; people verify claims, numbers, citations, brand decisions, and approvals before use.</footer>
+
+  <script>
+    const modules = [
+      {
+        id: "m1", n: "01", time: 8, title: "Personalize Copilot", product: "Work IQ", badges: ["Quick win", "Work IQ"],
+        what: "Create a concise tone profile and turn it into Custom Instructions so Copilot starts in your preferred role, voice, and decision style.",
+        why: "Crayola leaders get useful output sooner when Copilot understands whether they are writing for a retail buyer, a creative team, operations, or IT.",
+        prompt: "Look up my job title, role and department from my Microsoft 365 profile using Work IQ. Then analyze how I write across recent sent emails and Teams messages. Create a concise Tone Profile with: formality, sentence cadence, greetings and sign-offs, signature phrases, how my tone changes for leadership, my team, retail partners and creative partners, and what I avoid. Finish with a ready-to-paste Custom Instructions block of no more than 350 characters that leads with decisions, uses short bullets, surfaces risks, and gives a recommendation. If you cannot determine my role or access enough writing, ask me for it before continuing.",
+        good: "A labeled tone profile that sounds recognizably like the attendee, plus a ≤350-character instruction block they can paste into Settings → Personalization.",
+        fallback: "Show the prepared Custom Instructions example and ask attendees to replace the role, three priorities, and tone words. They still leave with a usable setup even if Work IQ retrieval is unavailable.",
+        personalize: "Swap in your real team, audience, role, and two communication habits you want Copilot to follow.",
+        file: "No input file needed. If Work IQ cannot read enough writing, paste 5–10 sent-message samples directly into the prompt.",
+        easy: {
+          starter: "Tell me how I write.",
+          better: "Analyze my recent sent email and Teams writing. Summarize my tone, sentence style, greetings, sign-offs, signature phrases, audience shifts, and habits to avoid.",
+          before: "Make Copilot sound like me.",
+          after: "Using my recent sent email and Teams messages, create a labeled Tone Profile for an executive audience. Then produce one ready-to-paste Custom Instructions block under 350 characters. Ask for writing samples if the source is too thin."
+        }
+      },
+      {
+        id: "m2", n: "02", time: 8, title: "Turn an idea into a strong prompt", product: "Easy Prompting + Prompt Coach", badges: ["Standing pattern"],
+        what: "Practice a repeatable prompt pattern: goal, context, sources, constraints, and output. Then use Prompt Coach to identify what is missing.",
+        why: "Marketing, ops, creative, and IT can use the same pattern without memorizing prompt jargon, which makes live follow-along more reliable.",
+        prompt: "Help me improve this request for the Holiday 2026 Glow Markers launch: ‘Give me launch ideas.’ Ask no more than three clarifying questions. Then rewrite it with a clear goal, Crayola context, sources to use, constraints, and the exact output format. Explain the three most important improvements in one sentence each.",
+        good: "A prompt that names the audience, launch goal, trusted sources, boundaries, time horizon, and a concrete deliverable such as a table, brief, or slide outline.",
+        fallback: "Put the five-part pattern on screen and ask the room to call out one missing element. Rewrite the starter prompt together without relying on Prompt Coach.",
+        personalize: "Replace Glow Markers with your product, account, process, or leadership decision and name the audience who will use the result.",
+        file: "No input file needed. Save the refined prompt in your prompt library for reuse during the remaining modules.",
+        easy: {
+          starter: "Give me launch ideas.",
+          better: "Generate five Holiday 2026 launch ideas for Glow Markers aimed at parents and retail buyers. Ground them in category signals and keep each idea to a headline, rationale, and activation.",
+          before: "Create a launch plan.",
+          after: "Create a one-page Holiday 2026 launch plan for Glow Markers for marketing, retail ops, and creative leads. Use the approved launch brief and current category research. Include objective, audience, three campaign moves, owners, dates, risks, and decisions needed. Flag assumptions."
+        }
+      },
+      {
+        id: "m3", n: "03", time: 10, title: "Research the market", product: "Researcher", badges: ["Web-grounded research", "Verify sources"],
+        what: "Use Researcher to scan category signals, the retail landscape, seasonal behavior, and content gaps for a Holiday 2026 Glow Markers launch.",
+        why: "Crayola can turn a broad category question into a source-backed brief that informs positioning, content, and the launch deck.",
+        prompt: "Research emerging signals in the kids’ creative and arts-and-crafts category over the last 12 months for a Holiday 2026 launch of Crayola Glow Markers for ages 6+. Cover seasonal demand, screen-free play, classroom and gifting use cases, major retail channel patterns, shopper questions, and content gaps in public category coverage. Use credible recent sources and cite every material claim. Deliver: (1) five signals, (2) a retail landscape table by channel, (3) six unanswered shopper questions Crayola content should address, (4) three launch angles, and (5) risks or assumptions. Do not claim the research changes search or citation performance by itself.",
+        good: "A structured, cited brief with recent dates, a channel table, clear content gaps, three usable launch angles, and explicit assumptions rather than unsupported certainty.",
+        fallback: "Open a prepared Researcher result. Spend 30 seconds on one cited signal, one unanswered shopper question, and one implication for the launch deck. Say that Researcher measures and recommends; Crayola decides what to publish.",
+        personalize: "Replace the product, age range, geography, retailer account, or category question with the market you own.",
+        file: "Live run needs no attachment. Optional grounding file: <code>Crayola Holiday 2026 Launch Brief.docx</code>. Attach it only if the facilitator has staged an approved copy.",
+        easy: {
+          starter: "Research the marker market.",
+          better: "Research recent kids’ marker and screen-free-play signals for a Holiday 2026 Glow Markers launch. Cite sources and summarize implications for Crayola.",
+          before: "Find trends for our launch.",
+          after: "For Crayola marketing and retail leaders, research the last 12 months of kids’ creative-category and Holiday gifting signals relevant to Glow Markers. Cite recent sources; separate evidence from inference; return five signals, a retail-channel table, six content gaps, and three launch angles."
+        }
+      },
+      {
+        id: "m4", n: "04", time: 18, title: "Build the launch deck", product: "Copilot in PowerPoint + Work IQ", hero: true, badges: ["Hero moment", "Work IQ"],
+        what: "Build a 10-slide Holiday 2026 launch deck from prior Crayola launch decks, the approved brand template, sales data, and the Researcher brief, then refine one slide live.",
+        why: "The value is not a generic presentation. It is a Crayola deck grounded in the files, data, brand choices, and launch work the team already owns.",
+        prompt: "Draft a 10-slide launch deck for Crayola Glow Markers for Holiday 2026, aimed at retail buyers and internal leadership. Use Work IQ to find the two most recent approved Crayola product-launch decks in Marketing SharePoint as structural references. Use the staged FY25 category and channel sales workbook to anchor the market opportunity, and use the Researcher brief from this workshop for category signals and shopper questions. Apply the approved Crayola launch template. Include: cover, product overview, target audience, market opportunity with one chart, shopper insight, positioning, packaging and content direction, launch plan, retail channel plan, KPIs and decision ask. Draft concise speaker notes for every slide. Cite source files in the notes and flag any missing data instead of inventing it.",
+        good: "Ten coherent slides on the approved template; a data-backed opportunity chart; visible continuity with prior launches; concise notes; source references; and clearly flagged gaps.",
+        fallback: "Open the prepared deck screenshot or pre-generated file. Show three slides: market opportunity, positioning, and decision ask. Then run only the short refinement prompt so attendees still see an in-app change.",
+        personalize: "Replace the product, retail audience, geography, source decks, KPI set, and final decision ask with your own launch.",
+        file: "Stage these exact workshop names in Marketing SharePoint: <code>Crayola Holiday 2026 Launch Template.pptx</code>, <code>Crayola FY25 Category and Channel Performance.xlsx</code>, <code>Crayola Prior Launch 01.pptx</code>, and <code>Crayola Prior Launch 02.pptx</code>.",
+        easy: {
+          starter: "Make a launch deck for Glow Markers.",
+          better: "Create a 10-slide Holiday 2026 Glow Markers launch deck for retail buyers using our approved template, recent launch decks, sales workbook, and Researcher brief. Include notes and flag missing data.",
+          before: "Make the deck executive-ready.",
+          after: "Refine the Holiday 2026 Glow Markers deck for a 12-minute executive review. Keep one message per slide, convert dense text to visuals, verify every number against the sales workbook, add source notes, and end with one clear decision and owner."
+        },
+        deep: "powerpoint"
+      },
+      {
+        id: "m5", n: "05", time: 12, title: "Build a launch knowledge agent", product: "Agent Builder", badges: ["Read-only", "SharePoint grounded"],
+        what: "Create a Launch Knowledge Agent grounded in the Crayola SharePoint launch folder and test it from the starter prompts attendees will actually use.",
+        why: "Launch guidance, brand rules, approvals, and retail plans become easier to find with citations, while source permissions remain the boundary.",
+        prompt: "Create a read-only agent named “Launch Knowledge Agent” for Crayola’s Holiday 2026 Glow Markers launch. Ground it only in the approved Crayola SharePoint launch folder. It should answer launch, brand, retail, timeline, ownership, and approval questions with source citations; distinguish facts from assumptions; say when the sources do not answer; and never send, edit, approve, or share anything without explicit user confirmation.",
+        good: "The agent answers in a predictable shape, cites the launch folder, stays within scope, admits missing evidence, and does not take action without confirmation.",
+        fallback: "Use the prepared agent and run one test question. If grounding stalls, open the cited source next to the expected answer shape and explain how permissions and source quality control the result.",
+        personalize: "Replace the SharePoint folder, launch, region, business unit, and expected answer format with your team’s knowledge boundary.",
+        file: "Knowledge source: the approved SharePoint folder <code>Marketing / Product Launches / Holiday 2026 / Glow Markers</code>. Do not upload local copies that bypass the governed source.",
+        easy: {
+          starter: "Build an agent for our launch files.",
+          better: "Build a read-only Holiday 2026 launch agent grounded only in the approved SharePoint folder. Cite sources, stay in scope, and say when evidence is missing.",
+          before: "Answer questions about the launch.",
+          after: "Answer Holiday 2026 Glow Markers questions for marketing, retail ops, creative, and IT. Start with the direct answer, cite the exact source, list owner and next date when present, separate source facts from inference, and require confirmation before any action."
+        },
+        deep: "agent"
+      },
+      {
+        id: "m6", n: "06", time: 12, title: "Build a retail rollout tracker app", product: "App Builder", badges: ["Microsoft Lists backend", "Internal tracker"],
+        what: "Build a deliberately small Retail Rollout Tracker with a Microsoft List, then add one status roll-up and one at-risk view.",
+        why: "Marketing ops and field teams get one shared view of account readiness without a database, developer ticket, or production app project.",
+        prompt: "Create an app called “Retail Rollout Tracker” for the Crayola Glow Markers Holiday 2026 launch using Microsoft Lists as the backend. Include fields for retail account, region, launch phase, ship-by date, planogram status, sell-in confirmed (yes/no), owner, and risk notes. Add a board view grouped by launch phase and a list view sorted by ship-by date.",
+        good: "A simple internal app with the eight requested fields, an editable form, a board grouped by launch phase, and a ship-by-date list that is usable without customization.",
+        fallback: "Show the prepared List and two views. Add one sample account live, move it between launch phases, and explain that the exercise proves the internal tracking pattern rather than a production app lifecycle.",
+        personalize: "Replace retail account with store, distributor, region, event, or workstream and rename the phases to match your operating rhythm.",
+        file: "No attachment required. Backend created during the lab: Microsoft List <code>Retail Rollout Tracker</code>.",
+        easy: {
+          starter: "Build a retail tracker app.",
+          better: "Build a Microsoft Lists-backed rollout tracker with account, region, phase, ship-by date, planogram status, sell-in, owner, and risk notes. Add board and date-sorted views.",
+          before: "Add an at-risk view.",
+          after: "Add a status roll-up by launch phase and a saved view named “At risk | next 14 days” that shows only accounts with risk notes or incomplete readiness and a ship-by date in the next 14 days. Do not add external integrations."
+        },
+        deep: "app"
+      },
+      {
+        id: "m7", n: "07", time: 10, title: "Route launch approvals automatically", product: "Workflows", badges: ["Human approval", "Cross-app"],
+        what: "Create a repeatable approval route from a SharePoint launch request through marketing, brand, legal, and retail operations, with a Teams update at the end.",
+        why: "Every Holiday launch follows the same control points. A visible approval trail reduces status chasing without removing human accountability.",
+        prompt: "Create a workflow called “Holiday 2026 Launch Approval.” When an item in the SharePoint list “Product Launches” changes to “Ready for approval,” request approval in sequence from the Marketing Lead, Brand Lead, Legal Approver, and Retail Operations Lead named in the item. Include the launch brief link, requested decision date, and submitter comments. If anyone rejects, update status to “Changes requested,” record the approver and comment, and notify the owner. If all approve, update status to “Approved,” post a summary in the “Product Marketing” Teams channel, and notify the owner. Show me the full workflow and ask for confirmation before creating or enabling it.",
+        good: "A visible sequential route, clear approval inputs, rejection handling, status updates, notifications, and a final review step before anything is enabled.",
+        fallback: "Walk through a prepared workflow diagram or run history. Point to trigger, approval sequence, rejection branch, and final Teams notification; do not enable a partially configured workflow live.",
+        personalize: "Swap in your list, approver roles, threshold, channel, escalation rule, and service-level date.",
+        file: "Input is a SharePoint list, not an attachment: <code>Product Launches</code>. Each item needs owner, approver roles, brief link, decision date, and status.",
+        easy: {
+          starter: "Automate launch approvals.",
+          better: "When a Product Launches item is ready, route sequential approval to marketing, brand, legal, and retail ops; handle rejection; update status; and notify Teams.",
+          before: "Make an approval workflow.",
+          after: "Create a sequential Holiday 2026 launch approval from the Product Launches list. Define trigger, approvers, required context, rejection path, status values, owner notifications, Teams summary, and a confirmation checkpoint before enablement."
+        }
+      },
+      {
+        id: "m8", n: "08", time: 10, title: "Pull the launch together", product: "Cowork", badges: ["Long-running task", "Availability varies"], availability: true,
+        what: "Delegate the closing assembly: gather the deck, rollout tracker, approval status, agent-grounded guidance, and brand assets into a review-ready launch package.",
+        why: "The closing moment connects the workshop outputs into one governed package while the team keeps control of what is shared and when.",
+        prompt: "Prepare the review package for the Crayola Glow Markers Holiday 2026 launch. Gather the latest approved launch deck, the Retail Rollout Tracker summary, the current Holiday 2026 Launch Approval status, the approved brand assets, and source-backed guidance from the Launch Knowledge Agent. Create: (1) a one-page executive summary, (2) a launch-day checklist with owners and dates, (3) a retail-readiness table, and (4) a press-release starter clearly marked DRAFT. Put the files in the Marketing SharePoint folder named “Glow Markers | Holiday 2026 | Launch Package.” Do not send, publish, overwrite, or change approvals. Show me the proposed files, sources, and destination and wait for my confirmation before creating or sharing anything.",
+        good: "A review-ready package with named outputs, source traceability, current owners and dates, a clearly marked draft, and a confirmation checkpoint before files are created or shared.",
+        fallback: "Open the pre-run package. Trace one item from source to output, then show the pending confirmation checkpoint. Say that long-running work is valuable only when the user can inspect sources and approve actions.",
+        personalize: "Replace the launch, destination folder, source artifacts, deliverables, notification channel, and approval boundary with your own closing workflow.",
+        file: "No new attachment. Cowork uses the staged outputs from modules 3–7 and destination folder <code>Glow Markers | Holiday 2026 | Launch Package</code>.",
+        easy: {
+          starter: "Pull the launch package together.",
+          better: "Gather the approved deck, rollout summary, approval status, brand assets, and launch guidance into an executive summary, checklist, readiness table, and draft release. Ask before creating or sharing files.",
+          before: "Finish the launch work.",
+          after: "Prepare a review-only Holiday 2026 Glow Markers launch package from the named approved sources. List every planned output and destination, flag stale or missing inputs, preserve source links, mark external copy DRAFT, and wait for confirmation before creating, sharing, or notifying."
+        }
+      }
+    ];
+
+    const extraContent = {
+      powerpoint: {
+        title: "Hero run-of-show | spend the most time here",
+        html: `<div class="deep-grid"><div class="panel"><h3>Live sequence</h3><ol class="steps"><li>Open PowerPoint and start from the approved template.</li><li>Run the full deck prompt and show Work IQ finding files by relevance.</li><li>Walk only the opportunity, positioning, and decision slides.</li><li>Run the refinement prompt below.</li><li>Verify the chart source and one speaker-note citation.</li></ol></div><div class="panel"><h3>Hero refinement</h3><p>Call back to the Researcher output so the room sees continuity across tools.</p><div class="prompt"><div class="prompt-head"><span class="prompt-label">Live follow-up</span><button class="copy-btn" type="button">Copy</button></div><pre>Add a retail positioning slide immediately after “Shopper insight.” Use the three strongest category signals and unanswered shopper questions from the Researcher brief. Show how Glow Markers answers those needs by channel. Keep it visual, cite the brief in speaker notes, and do not add claims the brief does not support.</pre></div></div></div>`
+      },
+      agent: {
+        title: "Full agent configuration and test",
+        html: `<div class="deep-grid"><div><div class="prompt"><div class="prompt-head"><span class="prompt-label">Name</span><button class="copy-btn" type="button">Copy</button></div><pre>Launch Knowledge Agent</pre></div><div class="prompt"><div class="prompt-head"><span class="prompt-label">Description</span><button class="copy-btn" type="button">Copy</button></div><pre>Read-only guide for Crayola’s Holiday 2026 Glow Markers launch, grounded in the approved SharePoint launch folder. Answers launch, brand, retail, timeline, ownership, and approval questions with citations.</pre></div></div><div class="prompt"><div class="prompt-head"><span class="prompt-label">Instructions</span><button class="copy-btn" type="button">Copy</button></div><pre>You are the Crayola Launch Knowledge Agent for the Holiday 2026 Glow Markers launch. Answer only from the approved SharePoint launch folder. Start with a direct answer, then cite the source document and section. Distinguish source facts from your inference. When the sources contain an owner, due date, approval state, or version, include it. If sources conflict, identify the conflict and prefer the newest approved file; do not silently reconcile it. If the sources do not answer, say so and suggest which owner or document is needed. Keep responses concise and useful to marketing, creative, retail operations, and IT. Remain read-only. Never send, edit, approve, publish, share, or change a file or record. Require explicit confirmation before any action is proposed outside this answer.</pre></div></div></div><h3>Starter prompts attendees test from</h3><div class="deep-grid" data-prompt-list="agent"></div><h3>Test your agent</h3><table><thead><tr><th>Question</th><th>Expected answer shape</th></tr></thead><tbody><tr><td>What are the three decisions due next for Glow Markers?</td><td>Decision, owner, due date, status, citation; missing items called out.</td></tr><tr><td>Can this retail endcap use a modified logo lockup?</td><td>Direct answer, quoted or summarized brand rule, citation, required approval path.</td></tr><tr><td>What changed between the latest two launch briefs?</td><td>Version/date comparison, material changes, unresolved conflict, citations to both files.</td></tr></tbody></table><div class="panel"><h3>Scope and confirmation</h3><p><strong>Read-only:</strong> yes. The agent may summarize and draft text in chat. <strong>Confirmation:</strong> require it before any action involving a file, message, approval, publication, sharing, or record change.</p></div>`
+      },
+      app: {
+        title: "Validated build and refine prompts",
+        html: `<div class="prompt"><div class="prompt-head"><span class="prompt-label">Prompt A | Build</span><button class="copy-btn" type="button">Copy</button></div><pre>Create an app called “Retail Rollout Tracker” for the Crayola Glow Markers Holiday 2026 launch using Microsoft Lists as the backend. Include fields for retail account, region, launch phase, ship-by date, planogram status, sell-in confirmed (yes/no), owner, and risk notes. Add a board view grouped by launch phase and a list view sorted by ship-by date.</pre></div><div class="prompt"><div class="prompt-head"><span class="prompt-label">Prompt B | Refine</span><button class="copy-btn" type="button">Copy</button></div><pre>Add a simple status roll-up that counts retail accounts by launch phase. Add a filtered view named “At risk | next 14 days” showing only accounts at risk in the next 14 days based on ship-by date and incomplete readiness or populated risk notes. Keep the app simple and keep Microsoft Lists as the backend.</pre></div><div class="deep-grid"><div class="panel"><h3>What good looks like | screenshot description</h3><p>A compact internal tracker with a left-to-right board for launch phases, one card per retail account, visible owner and ship-by date, a small phase-count roll-up above, and a separate date-sorted list. The at-risk view shows only near-term accounts needing attention; no decorative dashboard or custom database.</p></div><div class="panel"><h3>What App Builder will not do live</h3><p>It will not deliver a customer-facing production app, replace architecture and security review, create a custom database, integrate external retail systems, or complete enterprise deployment and lifecycle management during this workshop.</p></div></div>`
+      }
+    };
+
+    const agentStarters = [
+      "What are the three decisions due next for the Glow Markers launch? Include owner, date, status, and citations.",
+      "Summarize the approved Holiday 2026 positioning and list the source files that support it.",
+      "What is the approval path for co-branded retail endcap artwork? Cite the relevant brand and launch guidance.",
+      "Which retail accounts have launch dependencies called out in the source folder, and who owns each dependency?",
+      "Compare the latest approved launch brief with the previous version. Show only material changes and cite both files.",
+      "Draft a response to a retail partner asking for an off-palette execution. Cite the rule and suggest an approved next step."
+    ];
+
+    function promptBlock(label, text) {
+      const wrap = document.createElement("div");
+      wrap.className = "prompt";
+      const head = document.createElement("div");
+      head.className = "prompt-head";
+      const name = document.createElement("span");
+      name.className = "prompt-label";
+      name.textContent = label;
+      const button = document.createElement("button");
+      button.className = "copy-btn";
+      button.type = "button";
+      button.textContent = "Copy";
+      const pre = document.createElement("pre");
+      pre.textContent = text;
+      head.append(name, button);
+      wrap.append(head, pre);
+      return wrap;
+    }
+
+    function buildEasy(easy) {
+      const details = document.createElement("details");
+      details.className = "easy";
+      details.innerHTML = `<summary>Easy prompting | starter → better → Prompt Coach</summary><div class="easy-content"><div class="prompt-ladder"></div><p class="coach-note"><strong>Prompt Coach before:</strong> ${easy.before} <strong>Coach adds:</strong> audience, source, boundaries, and output shape.</p></div>`;
+      const ladder = details.querySelector(".prompt-ladder");
+      ladder.append(promptBlock("Starter", easy.starter), promptBlock("Better", easy.better));
+      details.querySelector(".easy-content").append(promptBlock("Prompt Coach after", easy.after));
+      return details;
+    }
+
+    function buildModule(module) {
+      const section = document.createElement("section");
+      section.id = module.id;
+      section.className = `module${module.hero ? " hero-module" : ""}`;
+      const badges = module.badges.map((badge, index) => `<span class="badge${module.hero && index === 0 ? " hero-badge" : ""}${module.availability && badge === "Availability varies" ? " availability" : ""}">${badge}</span>`).join("");
+      section.innerHTML = `<aside class="module-time"><strong>${module.time}</strong><span>minutes</span></aside><div><div class="module-head"><div><p class="kicker">Module ${module.n} | ${module.product}</p><h2>${module.title}</h2></div><div class="badges">${badges}</div></div><div class="summary-grid"><article class="panel"><h3>What we are doing</h3><p>${module.what}</p></article><article class="panel"><h3>Why it matters to Crayola</h3><p>${module.why}</p></article></div></div>`;
+      const content = section.lastElementChild;
+      content.append(promptBlock("Exact prompt | run this", module.prompt));
+      const good = document.createElement("article");
+      good.className = "panel";
+      good.innerHTML = `<h3>What good looks like</h3><p>${module.good}</p>`;
+      content.append(good);
+      const personal = document.createElement("div");
+      personal.className = "personalize";
+      personal.innerHTML = `<strong>Personalize this:</strong> ${module.personalize}`;
+      content.append(personal);
+      const file = document.createElement("div");
+      file.className = "file-callout";
+      file.innerHTML = `<span>⇩</span><p><strong>Input / attachable file:</strong> ${module.file}</p>`;
+      content.append(file);
+      if (module.deep) {
+        const deep = document.createElement("details");
+        deep.className = "deep";
+        deep.open = module.hero;
+        deep.innerHTML = `<summary>${extraContent[module.deep].title}</summary><div class="deep-content">${extraContent[module.deep].html}</div>`;
+        content.append(deep);
+      }
+      content.append(buildEasy(module.easy));
+      const fallback = document.createElement("div");
+      fallback.className = "fallback";
+      fallback.innerHTML = `<h3>30-second fallback</h3><p>${module.fallback}</p>`;
+      content.append(fallback);
+      return section;
+    }
+
+    const agendaGrid = document.getElementById("agendaGrid");
+    const modulesHost = document.getElementById("modules");
+    modules.forEach(module => {
+      const item = document.createElement("a");
+      item.className = "agenda-item";
+      item.href = `#${module.id}`;
+      item.innerHTML = `<span class="agenda-num">${module.n}</span><span class="agenda-name">${module.title}</span><span class="time">${module.time} min</span>`;
+      agendaGrid.append(item);
+      modulesHost.append(buildModule(module));
+    });
+
+    document.querySelectorAll('[data-prompt-list="agent"]').forEach(host => {
+      agentStarters.forEach((text, index) => host.append(promptBlock(`Starter ${index + 1}`, text)));
+    });
+
+    function fallbackCopy(text) {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.append(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+
+    document.addEventListener("click", event => {
+      const button = event.target.closest(".copy-btn");
+      if (!button) return;
+      const text = button.closest(".prompt").querySelector("pre").textContent;
+      const done = () => {
+        button.textContent = "Copied";
+        window.setTimeout(() => { button.textContent = "Copy"; }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, () => { fallbackCopy(text); done(); });
+      else { fallbackCopy(text); done(); }
+    });
+
+    document.getElementById("themeButton").addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem("crayola-workshop-theme", next); } catch (error) {}
+    });
+    try {
+      const saved = localStorage.getItem("crayola-workshop-theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch (error) {}
+
+    const printState = new Map();
+    window.addEventListener("beforeprint", () => {
+      document.querySelectorAll("details").forEach(detail => { printState.set(detail, detail.open); detail.open = true; });
+    });
+    window.addEventListener("afterprint", () => {
+      printState.forEach((open, detail) => { detail.open = open; });
+      printState.clear();
+    });
+    document.getElementById("printButton").addEventListener("click", () => window.print());
+  </script>
+</body>
+</html>
