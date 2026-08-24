@@ -146,6 +146,7 @@ layout: none
   .sec-title{margin:0;font-family:var(--sans);font-weight:700;font-size:clamp(1.5rem,2.6vw,1.9rem);
     line-height:1.2;color:var(--headline);border-bottom:3px solid var(--ac);padding-bottom:8px;display:inline-block}
   .sec-sub{margin:12px 0 0;font-size:.96rem;color:var(--muted);max-width:74ch;white-space:pre-line}
+  .sec-sub-link{color:var(--ac);font-weight:800;text-decoration-thickness:2px;text-underline-offset:3px}
   .sec-body{min-width:0}
 
   /* ============ OVERVIEW ============ */
@@ -1014,7 +1015,7 @@ layout: none
      "useCase": "One short prompt, four finished artifacts, from a single input file",
      "solution": "Copilot Cowork",
      "resText": "Open CRA_Marketing_QBR_Brief_v2.docx",
-     "url": "https://microsoft-my.sharepoint.com/:w:/r/personal/erikmontes_microsoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BF99B7E81-DE7E-4498-807C-CD50417BDB6A%7D&file=CRA_Marketing_QBR_Brief_v2.docx&action=default&mobileredirect=true&web=1&share=cQqBfpv5ft6YRIB8zVBBe9tqEgUC3aIIYx1DqBDaekhtfwDmPg",
+    "url": "../../ResourceFiles/CRA_Marketing_QBR_Brief_v2.docx",
      "prompts": [
       "Attach CRA_Marketing_QBR_Brief_v2.docx, then paste this:\n\nRead the attached marketing QBR brief and tell me the efficiency story: which campaigns are carrying the quarter, which are losing money, where the weekly trend dipped and recovered, and which creative won.\n\nThen build all four of these for me:\n1) an Excel dashboard of results by campaign and channel\n2) a one-page Word brief for leadership with an action plan\n3) a 6-8 slide PowerPoint readout\n4) an interactive HTML dashboard, light mode, with KPI cards and charts\n\nUse only the figures in the file. Keep everything executive-ready and concise."
      ],
@@ -1064,6 +1065,7 @@ layout: none
    "color": "#2E7D32",
    "title": "5 · Reusable Skills — Excel and your skills library",
    "subtitle": "⏱ 12 min · Hands-on · the workbook must be pre-staged (see the facilitator note below).\n\nAvailability: the built-in Excel skills are generally available and are what this chapter leads with. Custom Office.js skills for Excel are in preview and should not be treated as production — confirm enablement in your tenant before planning any rollout.\n\nBusiness Value: the same workflow, run the same way, by everyone on the team — saved once, invoked by name. This is step 4 of the opening ladder, applied to the tool your finance and marketing teams live in.\n\nTalk Track: 'You have already seen the ladder. This is where it pays off — the analysis you did once becomes something your whole team runs in two words, in the app they already use.'",
+  "subtitleLink": {"text": "Skills", "url": "skills-everywhere-guide.html"},
    "rows": [
     {
      "useCase": "Start with a built-in Excel skill — no custom code, available today",
@@ -1299,14 +1301,23 @@ layout: none
   }
 
   /* ---------- section shell ---------- */
-  function shell(key,color,eyebrow,title,subtitle,idx){
+  function shell(key,color,eyebrow,title,subtitle,idx,subtitleLink){
     var p=el('section','panel');p.id='panel-'+key;p.style.setProperty('--ac',color);
     var head=el('header','sec-head');
     if(idx){head.appendChild(el('span','sec-ghost',idx));}
     var hwrap=el('div','sec-hwrap');
     hwrap.appendChild(el('div','sec-eyebrow',eyebrow));
     hwrap.appendChild(el('h2','sec-title',title));
-    if(subtitle)hwrap.appendChild(el('p','sec-sub',subtitle));
+    if(subtitle){
+      var sub=el('p','sec-sub',subtitle);
+      if(subtitleLink){
+        var subtitleAnchor=el('a','sec-sub-link',subtitleLink.text);
+        subtitleAnchor.href=subtitleLink.url;
+        sub.appendChild(el('br'));
+        sub.appendChild(subtitleAnchor);
+      }
+      hwrap.appendChild(sub);
+    }
     head.appendChild(hwrap);
     var body=el('div','sec-body');
     p.appendChild(head);p.appendChild(body);
@@ -1606,7 +1617,7 @@ layout: none
   /* ---------- Use-case sections ---------- */
   function buildSection(sec){
     var t=splitTitle(sec.title);
-    var s=shell(sec.key,sec.color,'Chapter '+(t.idx||''),t.txt,sec.subtitle,t.idx);
+    var s=shell(sec.key,sec.color,'Chapter '+(t.idx||''),t.txt,sec.subtitle,t.idx,sec.subtitleLink);
     if(sec.spotlight)s.body.appendChild(buildSpotlight(sec.spotlight,sec.color));
     sec.rows.forEach(function(r,ri){
       var card=el('article','uc');
