@@ -170,10 +170,10 @@ details.lab{margin:12px}.story{margin:16px 12px 4px}.card{padding:20px}.hero h1{
 <h3>1. Download the workshop files</h3>
 <p>All files use <b>fictitious data</b> for Zava Supply Co. No real Bunzl customer, supplier or financial information is included. Amounts are in <b>USD thousands ($000s)</b>.</p>
 <div class="files">
-<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Sep2026.xlsx" download><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Sep2026.xlsx</b><br><small>Main file for Modules 1, 2 and 4. Summary, GL P&amp;L Detail, PL_Monthly, OpEx_Detail, Customer Sales, Billing Days, Commentary.</small></span></a>
-<a class="file" href="../../ResourceFiles/Zava_FY26_Forecast_Q3.xlsx" download><span class="xl">XLSX</span><span><b>Zava_FY26_Forecast_Q3.xlsx</b><br><small>Module 3. Overview, Forecast, Adjustments, Variances, R&amp;Os, Billing Days.</small></span></a>
-<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Aug2026.xlsx" download><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Aug2026.xlsx</b><br><small>Module 5. Same layout, different month: the "second dataset" to test your skill.</small></span></a>
-<a class="file" href="../../ResourceFiles/Automate_My_Month_End_Worksheet.xlsx" download><span class="xl">XLSX</span><span><b>Automate_My_Month_End_Worksheet.xlsx</b><br><small>Module 6 and 7. Task inventory, priority score and your commitment.</small></span></a>
+<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Sep2026.xlsx" download="Zava_Monthly_Results_Sep2026.xlsx"><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Sep2026.xlsx</b><br><small>Main file for Modules 1, 2 and 4. Summary, GL P&amp;L Detail, PL_Monthly, OpEx_Detail, Customer Sales, Billing Days, Commentary.</small></span></a>
+<a class="file" href="../../ResourceFiles/Zava_FY26_Forecast_Q3.xlsx" download="Zava_FY26_Forecast_Q3.xlsx"><span class="xl">XLSX</span><span><b>Zava_FY26_Forecast_Q3.xlsx</b><br><small>Module 3. Overview, Forecast, Adjustments, Variances, R&amp;Os, Billing Days.</small></span></a>
+<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Aug2026.xlsx" download="Zava_Monthly_Results_Aug2026.xlsx"><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Aug2026.xlsx</b><br><small>Module 5. Same layout, different month: the "second dataset" to test your skill.</small></span></a>
+<a class="file" href="../../ResourceFiles/Automate_My_Month_End_Worksheet.xlsx" download="Automate_My_Month_End_Worksheet.xlsx"><span class="xl">XLSX</span><span><b>Automate_My_Month_End_Worksheet.xlsx</b><br><small>Module 6 and 7. Task inventory, priority score and your commitment.</small></span></a>
 </div>
 <h3>2. Put the files where Copilot can work with them</h3>
 <ol>
@@ -513,6 +513,24 @@ Output format:
   document.getElementById('resetProg').addEventListener('click',function(){state={};try{localStorage.removeItem(KEY)}catch(e){}boxes.forEach(function(b){b.checked=false});refresh()});
   refresh();
   window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true})});
+})();
+</script>
+<script>
+// Force workshop files to save locally instead of opening in the browser or an online viewer.
+(function(){
+  if(!window.fetch||!window.Blob||!window.URL||!URL.createObjectURL)return;
+  document.querySelectorAll('a[download][href*="ResourceFiles/"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var name=a.getAttribute('download')||decodeURIComponent(a.getAttribute('href').split('/').pop());
+      fetch(a.href).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
+        var url=URL.createObjectURL(new Blob([b],{type:'application/octet-stream'}));
+        var t=document.createElement('a');t.href=url;t.download=name;t.style.display='none';
+        document.body.appendChild(t);t.click();
+        setTimeout(function(){URL.revokeObjectURL(url);t.remove()},2000);
+      }).catch(function(){window.location.href=a.href});
+    });
+  });
 })();
 </script>
 </body>

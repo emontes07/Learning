@@ -253,10 +253,10 @@ footer{text-align:center;color:var(--text-muted);font-size:.85rem;padding:20px}
   <div class="tbl-wrap files"><table>
     <thead><tr><th>File</th><th>What it is</th><th>Used in</th></tr></thead>
     <tbody>
-      <tr><td><a href="../../ResourceFiles/Brightline_Logistics_MSA_SAMPLE.docx" download>Brightline_Logistics_MSA_SAMPLE.docx</a></td><td>A 3PL vendor's Master Services Agreement written on vendor paper, with intentionally one-sided terms.</td><td>A1&ndash;A4, Capstone</td></tr>
-      <tr><td><a href="../../ResourceFiles/Commercial_Contracting_Playbook_SAMPLE.docx" download>Commercial_Contracting_Playbook_SAMPLE.docx</a></td><td>Standard positions, fallbacks, and escalation triggers, plus an agreement-type selector and minimum intake fields.</td><td>A2, A4, B1, B3, E3</td></tr>
-      <tr><td><a href="../../ResourceFiles/Prior_Legal_Guidance_Log_SAMPLE.docx" download>Prior_Legal_Guidance_Log_SAMPLE.docx</a></td><td>Nine past questions and answers from Legal and Trade Compliance.</td><td>B2</td></tr>
-      <tr><td><a href="../../ResourceFiles/Contract_Register_SAMPLE.xlsx" download>Contract_Register_SAMPLE.xlsx</a></td><td>A 30-row contract register with countries, terms, renewal notice periods, values, and owners.</td><td>E1, E2</td></tr>
+      <tr><td><a href="../../ResourceFiles/Brightline_Logistics_MSA_SAMPLE.docx" download="Brightline_Logistics_MSA_SAMPLE.docx">Brightline_Logistics_MSA_SAMPLE.docx</a></td><td>A 3PL vendor's Master Services Agreement written on vendor paper, with intentionally one-sided terms.</td><td>A1&ndash;A4, Capstone</td></tr>
+      <tr><td><a href="../../ResourceFiles/Commercial_Contracting_Playbook_SAMPLE.docx" download="Commercial_Contracting_Playbook_SAMPLE.docx">Commercial_Contracting_Playbook_SAMPLE.docx</a></td><td>Standard positions, fallbacks, and escalation triggers, plus an agreement-type selector and minimum intake fields.</td><td>A2, A4, B1, B3, E3</td></tr>
+      <tr><td><a href="../../ResourceFiles/Prior_Legal_Guidance_Log_SAMPLE.docx" download="Prior_Legal_Guidance_Log_SAMPLE.docx">Prior_Legal_Guidance_Log_SAMPLE.docx</a></td><td>Nine past questions and answers from Legal and Trade Compliance.</td><td>B2</td></tr>
+      <tr><td><a href="../../ResourceFiles/Contract_Register_SAMPLE.xlsx" download="Contract_Register_SAMPLE.xlsx">Contract_Register_SAMPLE.xlsx</a></td><td>A 30-row contract register with countries, terms, renewal notice periods, values, and owners.</td><td>E1, E2</td></tr>
     </tbody>
   </table></div>
   <div class="co imp"><span class="t">Ground rules for legal content</span>
@@ -767,6 +767,24 @@ Mark anything you inferred rather than found in the documents as "Inferred." The
 
   var mb = document.getElementById('menuBtn');
   mb.addEventListener('click', function(){ var n=document.getElementById('sideNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded', o?'true':'false'); });
+})();
+</script>
+<script>
+// Force workshop files to save locally instead of opening in the browser or an online viewer.
+(function(){
+  if(!window.fetch||!window.Blob||!window.URL||!URL.createObjectURL)return;
+  document.querySelectorAll('a[download][href*="ResourceFiles/"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var name=a.getAttribute('download')||decodeURIComponent(a.getAttribute('href').split('/').pop());
+      fetch(a.href).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
+        var url=URL.createObjectURL(new Blob([b],{type:'application/octet-stream'}));
+        var t=document.createElement('a');t.href=url;t.download=name;t.style.display='none';
+        document.body.appendChild(t);t.click();
+        setTimeout(function(){URL.revokeObjectURL(url);t.remove()},2000);
+      }).catch(function(){window.location.href=a.href});
+    });
+  });
 })();
 </script>
 </body>
