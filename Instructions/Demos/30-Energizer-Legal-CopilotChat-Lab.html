@@ -1,0 +1,773 @@
+---
+demo:
+  title: 'Energizer · Copilot Chat for Legal & Trade Compliance - Hands-on Lab'
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot Chat for Legal &amp; Trade Compliance | Energizer Hands-on Lab</title>
+<style>
+:root{
+  --brand-primary:#0b2545; --brand-secondary:#13579b; --brand-accent:#1f9d6b;
+  --brand-surface:#ffffff; --brand-bg:#f4f6fa; --text-main:#172033; --text-muted:#5d6b82; --border:#d8dee9;
+  --tip-bg:#e8f3ff; --tip-bd:#2e75b6; --warning-bg:#fff4df; --warning-bd:#c77700; --important-bg:#ffe8e8; --important-bd:#b42318;
+  --note-bg:#eaf8ef; --note-bd:#1f9d6b; --instr-bg:#f1ecff; --instr-bd:#6b46c1; --code-bg:#0f1b2d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--text-main);background:var(--brand-bg);line-height:1.6}
+a{color:var(--brand-secondary)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #f5b700;outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:100}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--brand-primary),var(--brand-secondary) 55%,var(--brand-accent));color:#fff;padding:44px 28px 36px}
+.hero-inner{max-width:1180px;margin:0 auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:600;opacity:.9}
+.hero h1{margin:.3rem 0 .4rem;font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.2}
+.hero p.sub{margin:0 0 1.1rem;font-size:1.08rem;max-width:880px;opacity:.95}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:4px 12px;border-radius:999px;font-size:.85rem}
+
+/* Layout */
+.layout{display:grid;grid-template-columns:290px 1fr;max-width:1320px;margin:0 auto;gap:28px;padding:24px 20px 60px}
+nav.side{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 10px}
+nav.side .nav-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);padding:4px 10px 8px;font-weight:700}
+nav.side a{display:block;text-decoration:none;color:var(--text-main);padding:6px 10px;border-radius:8px;font-size:.92rem;border-left:3px solid transparent}
+nav.side a.lab{padding-left:24px;font-size:.86rem;color:var(--text-muted)}
+nav.side a.grp{font-weight:600;margin-top:6px}
+nav.side a:hover{background:#eef3fb}
+nav.side a.active{background:#e6f0fb;border-left-color:var(--brand-secondary);color:var(--brand-primary);font-weight:600}
+.nav-tools{display:flex;gap:6px;padding:6px 10px 10px}
+.nav-tools button{flex:1;font-size:.78rem;border:1px solid var(--border);background:#f7f9fc;border-radius:8px;padding:5px 4px;cursor:pointer}
+.menu-btn{display:none}
+main{min-width:0}
+
+/* Cards */
+.card{background:var(--brand-surface);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card h2{margin-top:0;color:var(--brand-primary)}
+h2{font-size:1.5rem}h3{font-size:1.15rem;color:var(--brand-primary)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mini{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:#fbfcfe}
+.mini h4{margin:.1rem 0 .4rem;color:var(--brand-primary)}
+.muted{color:var(--text-muted)}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{border:1px solid var(--border);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#eef2f8;color:var(--brand-primary)}
+.tbl-wrap{overflow-x:auto}
+
+/* Badges */
+.b{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.b-today{background:#dcf5e8;color:#11643f}
+.b-outlook{background:#dbeafe;color:#0b4a8b}
+.b-varies{background:#fff1cc;color:#7a5200}
+.b-metered{background:#ffe3d1;color:#8a3b00}
+.b-premium{background:#ece4ff;color:#4b2a99}
+
+/* Scenario */
+.scenario{background:#fff;border:1px solid var(--border);border-radius:18px;margin-bottom:26px;overflow:hidden}
+.scn-head{padding:20px 26px;background:linear-gradient(90deg,#0b2545,#13579b);color:#fff}
+.scn-head h2{margin:0;color:#fff;font-size:1.4rem}
+.scn-head p{margin:.25rem 0 0;opacity:.92}
+.scn-body{padding:20px 26px}
+.story{border-left:5px solid var(--brand-accent);background:#f3fbf7;padding:14px 18px;border-radius:0 12px 12px 0;margin-bottom:16px}
+.story strong{color:#11643f}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 16px}
+.facts div{background:#f7f9fc;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:.86rem}
+.facts b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+
+/* Labs */
+details.lab{border:1px solid var(--border);border-radius:14px;margin:14px 0;background:#fff}
+details.lab>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:12px;font-weight:600;color:var(--brand-primary)}
+details.lab>summary::-webkit-details-marker{display:none}
+details.lab>summary .num{background:var(--brand-secondary);color:#fff;border-radius:8px;padding:2px 9px;font-size:.82rem}
+details.lab>summary .chev{margin-left:auto;transition:transform .2s}
+details.lab[open]>summary .chev{transform:rotate(90deg)}
+details.lab[open]>summary{border-bottom:1px solid var(--border);background:#f7faff;border-radius:14px 14px 0 0}
+.lab-body{padding:16px 20px 20px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.meta span{font-size:.8rem;background:#eef2f8;border-radius:8px;padding:3px 10px;color:#33415c}
+ol.steps li{margin-bottom:6px}
+
+/* Prompt block */
+.prompt{border-radius:12px;overflow:hidden;margin:12px 0;border:1px solid #1d3354}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;background:#1d3354;color:#cfe0ff;padding:6px 12px;font-size:.8rem;font-weight:600;letter-spacing:.03em}
+.prompt-head button{background:#fff;color:#0b2545;border:0;border-radius:6px;padding:4px 12px;font-weight:700;cursor:pointer;font-size:.8rem}
+.prompt-head button.ok{background:#1f9d6b;color:#fff}
+.prompt pre{margin:0;background:var(--code-bg);color:#eaf1ff;padding:14px 16px;white-space:pre-wrap;word-wrap:break-word;font-family:Consolas,"Cascadia Mono",monospace;font-size:.88rem;line-height:1.55}
+
+/* Callouts */
+.co{border-left:5px solid;border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0;font-size:.94rem}
+.co .t{font-weight:700;display:block;margin-bottom:2px}
+.co.tip{background:var(--tip-bg);border-color:var(--tip-bd)}
+.co.warn{background:var(--warning-bg);border-color:var(--warning-bd)}
+.co.imp{background:var(--important-bg);border-color:var(--important-bd)}
+.co.note{background:var(--note-bg);border-color:var(--note-bd)}
+.co.instr{background:var(--instr-bg);border-color:var(--instr-bd)}
+.co.expect{background:#f0f7ff;border-color:#13579b}
+.co.stretch{background:#fff7ec;border-color:#e07b00}
+.check{list-style:none;padding-left:0}
+.check li{padding-left:28px;position:relative;margin:4px 0}
+.check li::before{content:"☐";position:absolute;left:4px;color:var(--brand-accent);font-weight:700}
+
+/* Run of show */
+.ros td:first-child{white-space:nowrap;font-weight:600}
+.files a{font-weight:600}
+footer{text-align:center;color:var(--text-muted);font-size:.85rem;padding:20px}
+
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  nav.side{position:fixed;inset:0 30% 0 0;max-height:none;z-index:50;transform:translateX(-105%);transition:transform .25s;border-radius:0}
+  nav.side.open{transform:none}
+  .menu-btn{display:inline-block;position:sticky;top:8px;z-index:40;margin:10px 20px 0;background:var(--brand-primary);color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:600}
+  .grid2,.grid3,.facts{grid-template-columns:1fr}
+}
+@media print{
+  nav.side,.menu-btn,.prompt-head button,.nav-tools{display:none!important}
+  .layout{display:block}
+  details.lab{break-inside:avoid}
+  .hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Energizer Legal &amp; Global Trade Compliance &middot; Session 1 of 2</div>
+    <h1>Copilot Chat for Legal Work: What You Can Do Today</h1>
+    <p class="sub">A hands-on lab that follows one busy week in Legal: vendor paper on a deadline, an incomplete intake request, a regulatory change, and the "what did I say last time?" question. Every lab uses capabilities included with your <strong>current</strong> Microsoft Copilot Chat access. Premium features are clearly labeled and saved for Session 2.</p>
+    <div class="tags">
+      <span>Microsoft Copilot Chat (Basic)</span><span>Copilot Chat in Outlook</span><span>Legal &amp; Trade Compliance</span><span>Beginner &rarr; Intermediate</span><span>25-min live demo + 60-min self-paced</span>
+    </div>
+  </div>
+</header>
+
+<button class="menu-btn" id="menuBtn" aria-controls="sideNav" aria-expanded="false">&#9776; Lab menu</button>
+
+<div class="layout">
+<nav class="side" id="sideNav" aria-label="Lab navigation">
+  <div class="nav-title">Lab guide</div>
+  <div class="nav-tools"><button type="button" id="expandAll">Expand all</button><button type="button" id="collapseAll">Collapse all</button></div>
+  <a href="#overview" class="grp">Overview</a>
+  <a href="#today" class="grp">What you have today</a>
+  <a href="#setup" class="grp">Setup &amp; sample files</a>
+  <a href="#prompting" class="grp">Prompting for legal work</a>
+  <a href="#runofshow" class="grp">Facilitator run of show</a>
+  <a href="#scenario-a" class="grp">A &middot; Vendor paper on a deadline</a>
+  <a href="#lab-a1" class="lab">A1 &middot; Get the deal on one page</a>
+  <a href="#lab-a2" class="lab">A2 &middot; Check it against the playbook</a>
+  <a href="#lab-a3" class="lab">A3 &middot; Think deeper on the liability cap</a>
+  <a href="#lab-a4" class="lab">A4 &middot; Fallback language + business email</a>
+  <a href="#scenario-b" class="grp">B &middot; The request that arrives incomplete</a>
+  <a href="#lab-b1" class="lab">B1 &middot; Classify the request</a>
+  <a href="#lab-b2" class="lab">B2 &middot; Reuse prior guidance</a>
+  <a href="#lab-b3" class="lab">B3 &middot; Build a requester checklist</a>
+  <a href="#scenario-c" class="grp">C &middot; Regulatory radar</a>
+  <a href="#lab-c1" class="lab">C1 &middot; Research with citations</a>
+  <a href="#lab-c2" class="lab">C2 &middot; Build an obligations timeline</a>
+  <a href="#lab-c3" class="lab">C3 &middot; Summarize a source in Edge</a>
+  <a href="#lab-c4" class="lab">C4 &middot; Draft the impact note</a>
+  <a href="#scenario-d" class="grp">D &middot; Your inbox is the knowledge base</a>
+  <a href="#lab-d1" class="lab">D1 &middot; "What did I say last time?"</a>
+  <a href="#lab-d2" class="lab">D2 &middot; Triage this week's requests</a>
+  <a href="#lab-d3" class="lab">D3 &middot; Prep and act in Outlook</a>
+  <a href="#scenario-e" class="grp">E &middot; Take back recurring work</a>
+  <a href="#lab-e1" class="lab">E1 &middot; Ask questions of a contract register</a>
+  <a href="#lab-e2" class="lab">E2 &middot; Turn results into Word or PowerPoint</a>
+  <a href="#lab-e3" class="lab">E3 &middot; Build a no-cost intake coach agent</a>
+  <a href="#capstone" class="grp">Capstone</a>
+  <a href="#session2" class="grp">Coming in Session 2</a>
+  <a href="#resources" class="grp">Resources</a>
+</nav>
+
+<main id="main">
+
+<!-- OVERVIEW -->
+<section class="card" id="overview" data-nav>
+  <h2>Overview</h2>
+  <p>In our September 28 planning call, the Legal and Trade Compliance teams described the same pressures again and again: business requesters who don't know which agreement they need, third-party paper with urgent deadlines, prior advice buried in email, repetitive trade questions, and manual monitoring of regulatory change. This lab shows how far you can get on each of those today with <strong>Microsoft Copilot Chat</strong>, which is included with your Microsoft 365 license.</p>
+  <div class="grid3">
+    <div class="mini"><h4>You will</h4><ul><li>Review third-party paper against a playbook</li><li>Turn vague requests into a clear intake</li><li>Research regulations with citations</li><li>Ask your inbox what you said before</li><li>Analyze a contract register and draft deliverables</li></ul></div>
+    <div class="mini"><h4>Learning objectives</h4><ul><li>Know what Copilot Chat can and can't see</li><li>Add files three ways: upload, <code>/</code> reference, or Outlook</li><li>Pick the right response mode</li><li>Write prompts with goal, context, source, and expectations</li><li>Verify output before relying on it</li></ul></div>
+    <div class="mini"><h4>You will produce</h4><ul><li>A one-page issues list for a vendor MSA</li><li>An intake checklist for business requesters</li><li>A regulatory impact note with sources</li><li>A triaged list of open legal requests</li><li>A renewal watchlist and leadership summary</li></ul></div>
+  </div>
+  <div class="co imp"><span class="t">Copilot assists your judgment. It doesn't replace it.</span>Nothing Copilot produces is legal advice. Attorneys and compliance professionals remain responsible for every conclusion, every redline, and every communication. Treat Copilot output like a first draft from a capable new team member: useful, fast, and in need of review.</div>
+  <div class="co tip"><span class="t">How to use this guide</span>Each scenario is a short story that builds toward a deliverable. Open a lab, copy the prompts with the <strong>Copy</strong> button, and paste them into Copilot Chat. Labs within a scenario are designed to run in the <em>same chat</em> so Copilot keeps context. Start a <strong>New chat</strong> when you switch scenarios.</div>
+</section>
+
+<!-- WHAT YOU HAVE TODAY -->
+<section class="card" id="today" data-nav>
+  <h2>What you have today vs. what's premium</h2>
+  <p>Your current access is <strong>Microsoft Copilot Chat</strong>, sometimes shown as <em>Copilot Chat (Basic)</em>. The add-on license is <strong>Microsoft Copilot</strong> (formerly Microsoft 365 Copilot), shown as <em>Premium</em>. The table summarizes Microsoft's current documentation. Your admins control some settings, so a few items can vary.</p>
+  <p>
+    <span class="b b-today">Today</span> available with Copilot Chat &nbsp;
+    <span class="b b-outlook">Today in Outlook</span> available in Outlook's Copilot Chat &nbsp;
+    <span class="b b-varies">Varies</span> depends on tenant settings &nbsp;
+    <span class="b b-metered">Metered</span> pay-as-you-go, admin must enable &nbsp;
+    <span class="b b-premium">Premium</span> needs the Microsoft Copilot add-on (Session 2)
+  </p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Capability</th><th>Status</th><th>What it means for Legal</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td>Secure AI chat grounded on the web, with the latest models and citations</td><td><span class="b b-today">Today</span></td><td>Research regulations, case themes, and public counterparty information with sources you can click and check.</td><td>C1, C2</td></tr>
+      <tr><td>Enterprise data protection (green shield)</td><td><span class="b b-today">Today</span></td><td>Prompts and responses stay within the Microsoft 365 service boundary and aren't used to train foundation models.</td><td>All</td></tr>
+      <tr><td>Choose a response mode: <em>Auto</em>, <em>Quick response</em>, or <em>Think deeper</em></td><td><span class="b b-today">Today</span></td><td>Use <em>Think deeper</em> for complex analysis like liability allocation or applicability questions.</td><td>A3, C2</td></tr>
+      <tr><td>Upload files with <strong>+</strong> or drag and drop (Word, PDF, Excel, and more)</td><td><span class="b b-today">Today</span></td><td>Review a vendor agreement, compare it to a playbook, or analyze a contract list. Uploaded files are stored in your OneDrive.</td><td>A1&ndash;A4, B2, E1</td></tr>
+      <tr><td>Reference a OneDrive or SharePoint file by typing <strong>/</strong></td><td><span class="b b-today">Today</span></td><td>Pull a file you already have access to into the prompt without downloading or re-uploading it.</td><td>A2, B2</td></tr>
+      <tr><td><strong>Copilot Chat in Outlook</strong>: your emails, calendar, meetings, chats, and a limited set of your files</td><td><span class="b b-outlook">Today in Outlook</span></td><td>Find prior advice, triage requests, prep for meetings, draft replies, and take actions like flagging or scheduling. Uses keyword (lexical) search, not the full semantic index.</td><td>D1&ndash;D3</td></tr>
+      <tr><td>Copilot Chat in <strong>Teams</strong> (the Copilot app)</td><td><span class="b b-today">Today</span></td><td>Same web-grounded chat plus files you add. It doesn't read your Teams meetings or chats on its own. To ask about chats, use Copilot Chat in Outlook.</td><td>Any</td></tr>
+      <tr><td>Copilot in <strong>Edge</strong>: summarize the webpage or PDF you have open</td><td><span class="b b-today">Today</span></td><td>Summarize an agency notice, a Federal Register entry, or a published guidance PDF in the side pane.</td><td>C3</td></tr>
+      <tr><td>Generate Word, Excel, or PowerPoint files from chat (Word, Excel, and PowerPoint agents)</td><td><span class="b b-today">Today</span></td><td>Turn an analysis into a downloadable memo, table, or short deck.</td><td>E2</td></tr>
+      <tr><td>Create images</td><td><span class="b b-today">Today</span></td><td>Simple visuals for training material or process diagrams.</td><td>&ndash;</td></tr>
+      <tr><td>Copilot inside the Word, Excel, and PowerPoint side pane</td><td><span class="b b-varies">Varies</span></td><td>Check the label in the app. <em>Microsoft 365 Copilot (Basic)</em> means standard access in those apps. <em>Copilot Chat (Basic)</em> means no in-app chat.</td><td>&ndash;</td></tr>
+      <tr><td>Build and use agents grounded in <strong>instructions and public websites</strong></td><td><span class="b b-today">Today</span></td><td>Create a no-cost "intake coach" that asks requesters the right questions.</td><td>E3</td></tr>
+      <tr><td>Agents grounded in <strong>SharePoint or connector content</strong></td><td><span class="b b-metered">Metered</span></td><td>For example, an agent over a shared contracts library. Billed per use and off by default.</td><td>Session 2</td></tr>
+      <tr><td>Reasoning across <em>all</em> your Microsoft 365 data (Work IQ, semantic index)</td><td><span class="b b-premium">Premium</span></td><td>"Summarize everything about the Brightline deal across mail, Teams, and files."</td><td>Session 2</td></tr>
+      <tr><td>Researcher and Analyst reasoning agents, Teams meeting recaps, Copilot in Word for legal review and redlines</td><td><span class="b b-premium">Premium</span></td><td>Deeper multi-source research, automated redlining against a playbook, and meeting intelligence.</td><td>Session 2</td></tr>
+      <tr><td>Priority access</td><td><span class="b b-premium">Premium</span></td><td>Copilot Chat users get <em>standard</em> access, which can be slower during peak demand.</td><td>&ndash;</td></tr>
+    </tbody>
+  </table></div>
+  <div class="co note"><span class="t">Sources</span><a href="https://learn.microsoft.com/en-us/copilot/overview" target="_blank" rel="noopener">Overview of Microsoft Copilot Chat</a> &middot; <a href="https://learn.microsoft.com/en-us/copilot/privacy-and-protections#organizational-data" target="_blank" rel="noopener">Copilot Chat privacy and organizational data</a> &middot; <a href="https://support.microsoft.com/en-us/outlook/copilot-outlook/chat-with-copilot-in-outlook" target="_blank" rel="noopener">Chat with Copilot in Outlook</a> &middot; <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365" target="_blank" rel="noopener">Microsoft Copilot (free) vs. Copilot in Microsoft 365</a> &middot; <a href="https://learn.microsoft.com/en-us/copilot/agents" target="_blank" rel="noopener">Agents in Copilot Chat</a>. Verified October 2026.</div>
+</section>
+
+<!-- SETUP -->
+<section class="card" id="setup" data-nav>
+  <h2>Setup &amp; sample files</h2>
+  <h3>Before you start</h3>
+  <ol class="steps">
+    <li>Open <a href="https://m365copilot.com/" target="_blank" rel="noopener">m365copilot.com</a> and sign in with your <strong>Energizer work account</strong>. You can also use the Copilot app in Teams or <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener">m365.cloud.microsoft/chat</a>.</li>
+    <li>Confirm the <strong>green shield</strong> near the top of the chat. It means enterprise data protection applies.</li>
+    <li>Download the four sample files below and save them to a folder in your <strong>OneDrive</strong>, such as <em>Copilot Lab</em>. Saving to OneDrive lets you practice the <strong>/</strong> file reference.</li>
+    <li>For Scenario D, open <strong>new Outlook</strong> or <a href="https://outlook.office.com/" target="_blank" rel="noopener">Outlook on the web</a> and select the <strong>Copilot</strong> button.</li>
+    <li>For Scenario C3, open <strong>Microsoft Edge</strong> signed in with your work profile.</li>
+  </ol>
+  <h3>Sample files (fictional)</h3>
+  <div class="tbl-wrap files"><table>
+    <thead><tr><th>File</th><th>What it is</th><th>Used in</th></tr></thead>
+    <tbody>
+      <tr><td><a href="../../ResourceFiles/Brightline_Logistics_MSA_SAMPLE.docx" download>Brightline_Logistics_MSA_SAMPLE.docx</a></td><td>A 3PL vendor's Master Services Agreement written on vendor paper, with intentionally one-sided terms.</td><td>A1&ndash;A4, Capstone</td></tr>
+      <tr><td><a href="../../ResourceFiles/Commercial_Contracting_Playbook_SAMPLE.docx" download>Commercial_Contracting_Playbook_SAMPLE.docx</a></td><td>Standard positions, fallbacks, and escalation triggers, plus an agreement-type selector and minimum intake fields.</td><td>A2, A4, B1, B3, E3</td></tr>
+      <tr><td><a href="../../ResourceFiles/Prior_Legal_Guidance_Log_SAMPLE.docx" download>Prior_Legal_Guidance_Log_SAMPLE.docx</a></td><td>Nine past questions and answers from Legal and Trade Compliance.</td><td>B2</td></tr>
+      <tr><td><a href="../../ResourceFiles/Contract_Register_SAMPLE.xlsx" download>Contract_Register_SAMPLE.xlsx</a></td><td>A 30-row contract register with countries, terms, renewal notice periods, values, and owners.</td><td>E1, E2</td></tr>
+    </tbody>
+  </table></div>
+  <div class="co imp"><span class="t">Ground rules for legal content</span>
+    <ul>
+      <li>Follow Energizer's AI and information-handling policies. Use the sample files for practice. Use real matters only where your policy allows.</li>
+      <li>Copilot Chat prompts and responses are <strong>logged and retained</strong> under your organization's Microsoft Purview policies and are available for audit and eDiscovery. Draft prompts with the same care you would use in email, particularly for privileged matters.</li>
+      <li>Copilot respects your existing permissions. It can't show you files or emails you can't already open.</li>
+      <li>Always open the citations. Verify every date, threshold, citation, and quotation before you rely on it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROMPTING -->
+<section class="card" id="prompting" data-nav>
+  <h2>Prompting for legal work</h2>
+  <p>Strong prompts have four parts. You'll see this pattern in every lab.</p>
+  <div class="grid2">
+    <div class="mini"><h4>1. Goal</h4>What you need. <em>"Identify the five highest-risk clauses…"</em></div>
+    <div class="mini"><h4>2. Context</h4>Who it's for and why. <em>"…for a supply-chain director who must sign by Friday."</em></div>
+    <div class="mini"><h4>3. Source</h4>What Copilot should use. <em>"Use only the attached MSA and our playbook."</em></div>
+    <div class="mini"><h4>4. Expectations</h4>Format, tone, and limits. <em>"Return a table with a section reference for each finding. If a term isn't in the document, write 'not found.'"</em></div>
+  </div>
+  <div class="co tip"><span class="t">Three habits that improve accuracy</span>Ask for <strong>section references</strong> or <strong>quotes</strong>. Tell Copilot to say <strong>"not found"</strong> instead of guessing. Ask a follow-up question rather than starting over.</div>
+</section>
+
+<!-- RUN OF SHOW -->
+<section class="card" id="runofshow" data-nav>
+  <h2>Facilitator run of show &middot; October 21, 11:00 a.m. CT</h2>
+  <p class="muted">For the 20&ndash;30 minute Legal department call (about 40 attendees). The full lab is available for self-paced practice afterward.</p>
+  <div class="tbl-wrap"><table class="ros">
+    <thead><tr><th>Time</th><th>Segment</th><th>Show</th></tr></thead>
+    <tbody>
+      <tr><td>0:00&ndash;0:03</td><td>Why this matters and what you have today</td><td>Capability table, green shield, where to find Copilot Chat (web, Teams, Outlook, Edge)</td></tr>
+      <tr><td>0:03&ndash;0:09</td><td>Vendor paper on a deadline</td><td>A1 + A2: upload the MSA, reference the playbook with <strong>/</strong>, get a red/yellow/green issues table</td></tr>
+      <tr><td>0:09&ndash;0:13</td><td>The incomplete request</td><td>B1: paste the vague request, get the agreement type and clarifying questions</td></tr>
+      <tr><td>0:13&ndash;0:17</td><td>Regulatory radar</td><td>C1: web research on coin and button cell battery requirements, with citations</td></tr>
+      <tr><td>0:17&ndash;0:21</td><td>Your inbox as a knowledge base</td><td>D1 in Outlook: "What have I said about…?"</td></tr>
+      <tr><td>0:21&ndash;0:23</td><td>What's next</td><td>Session 2 preview, labeled by license type</td></tr>
+      <tr><td>0:23&ndash;0:30</td><td>Q&amp;A</td><td>Share this page and the sample files</td></tr>
+    </tbody>
+  </table></div>
+  <div class="co instr"><span class="t">Instructor note</span>Demo with an account that has <strong>Copilot Chat only</strong>, not a Microsoft Copilot (Premium) license, so the audience sees exactly what they'll get. Premium accounts ground on more data and produce different results, which can cause the frustration the team asked us to avoid. Pre-run each prompt the morning of the session and keep the results in an open tab as a backup.</div>
+</section>
+
+<!-- SCENARIO A -->
+<section class="scenario" id="scenario-a" data-nav>
+  <div class="scn-head"><h2>Scenario A &middot; Vendor paper on a deadline</h2><p>Deliverable: an issues list with fallback language and an email to the business owner</p></div>
+  <div class="scn-body">
+    <div class="story"><strong>The story.</strong> At 4:40 p.m. on Thursday, Supply Chain forwards a 3PL Master Services Agreement from Brightline Logistics. It's on Brightline's paper, the go-live date is November 1, and the director wants to sign tomorrow. You have the department playbook and an hour. You need to know what's in the agreement, where it departs from your positions, and what to tell the business.</div>
+    <div class="facts"><div><b>Stakeholder</b>Supply Chain director</div><div><b>Time pressure</b>Signature requested within 24 hours</div><div><b>Sources</b>Vendor MSA + playbook</div><div><b>Deliverable</b>Issues list + business email</div></div>
+
+    <details class="lab" id="lab-a1" data-nav open>
+      <summary><span class="num">A1</span>Get the deal on one page<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Upload a file</span><span>File: Brightline_Logistics_MSA_SAMPLE.docx</span><span>Beginner</span></div>
+        <p>Before negotiating, you need the shape of the deal: parties, term, money, exit rights, and risk allocation. Copilot reads the full agreement in seconds and gives you a structured summary you can check against the source.</p>
+        <ol class="steps"><li>In Copilot Chat, select <strong>+</strong> &rarr; <strong>Upload</strong>, or drag the MSA into the chat box.</li><li>Paste the prompt below.</li></ol>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt A1">Copy</button></div><pre>You are supporting an in-house commercial attorney. Using only the attached Master Services Agreement, create a one-page deal summary for a supply-chain director.
+
+Return a table with these rows: Parties, Services, Effective date, Initial term, Renewal mechanics and notice deadline, Pricing and price-increase rights, Payment terms, Service levels and remedies, Data rights, Liability cap, Indemnity, Insurance, Termination rights, Governing law and disputes, Assignment and subcontracting.
+
+For each row, include a plain-English summary and the section number. If something isn't addressed in the agreement, write "Not addressed." Don't add information that isn't in the document.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>A table of about 15 rows with section references, such as <em>2.2: auto-renews for 3-year terms unless notice is given 120 days before the term ends</em>, and <em>8.2: liability capped at 3 months of fees</em>.</div>
+        <div class="co warn"><span class="t">Verify</span>Open the document and spot-check at least three section references, especially dates and dollar amounts.</div>
+        <p><strong>Follow-up:</strong></p>
+        <div class="prompt"><div class="prompt-head"><span>Follow-up</span><button type="button" aria-label="Copy follow-up A1">Copy</button></div><pre>What important protections would a customer normally expect in a logistics services agreement that are missing from this document? List them with a one-sentence explanation of why each matters.</pre></div>
+        <ul class="check"><li>I can find each summarized term in the source document.</li><li>Copilot said "Not addressed" for missing items instead of inventing them.</li></ul>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-a2" data-nav>
+      <summary><span class="num">A2</span>Check it against the playbook<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 7 min</span><span>Reference a file with /</span><span>File: Commercial_Contracting_Playbook_SAMPLE.docx</span><span>Intermediate</span></div>
+        <p>A summary tells you what the agreement says. A playbook comparison tells you what to do about it. This is the manual first pass that often eats an afternoon.</p>
+        <ol class="steps"><li>In the same chat, type <strong>/</strong> and start typing <em>Commercial_Contracting</em>. Select the playbook from your OneDrive. If it doesn't appear, upload it with <strong>+</strong>.</li><li>Paste the prompt.</li></ol>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt A2">Copy</button></div><pre>Compare the Brightline Master Services Agreement against our Commercial Contracting Playbook.
+
+For every playbook topic, return a table with these columns:
+- Topic
+- What the MSA says (with section number)
+- Playbook standard position
+- Rating: Green (meets standard), Yellow (within fallback), or Red (escalation trigger)
+- Why it matters to the business, in one sentence
+
+Sort Red items first. Then list the top five issues I should raise first in negotiation and explain why. Base every rating only on the two documents.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>Most topics should be <strong>Red</strong>, including 120-day renewal notice, unilateral 9% increases, a 3-month liability cap, a perpetual data license, $0.50/lb goods liability, Nevada arbitration, missing trade-compliance clauses, and incorporated online terms.</div>
+        <div class="co tip"><span class="t">Trade compliance angle</span>Ask: <em>"Which export control, sanctions, anti-bribery, and forced-labor provisions does the playbook require that this MSA lacks? Note where subcontracting outside the U.S. increases that risk."</em></div>
+        <ul class="check"><li>Every Red item maps to an escalation trigger in the playbook.</li><li>I reviewed the ratings myself and changed any I disagree with.</li></ul>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-a3" data-nav>
+      <summary><span class="num">A3</span>Think deeper on the liability cap<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Response mode: Think deeper</span><span>Same chat</span><span>Intermediate</span></div>
+        <p>Some questions need reasoning, not lookup. Liability allocation in a logistics deal interacts with goods value, insurance, indemnity, and data exposure. Switch the response mode so Copilot takes more time to plan and check its work.</p>
+        <ol class="steps"><li>Open the model selector at the top of the chat and choose <strong>Think deeper</strong>.</li><li>Paste the prompt.</li></ol>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt A3">Copy</button></div><pre>Think through how sections 7, 8, 9, and 11 of the Brightline MSA work together.
+
+Assume we store an average of $4 million in battery inventory at Brightline's warehouse and annual fees are about $1.25 million. Walk through three scenarios:
+1. A warehouse fire destroys $2 million of inventory.
+2. A security incident at Brightline exposes our retailer shipment data.
+3. Brightline misses on-time shipment targets for two straight quarters during the holiday season.
+
+For each scenario, estimate what we could realistically recover under the current language and what we could recover under the playbook's standard position. Show your assumptions and calculations. End with the two changes that would reduce our exposure most.</pre></div>
+        <div class="co warn"><span class="t">Verify</span>Scenario math depends on assumptions. Check the arithmetic and treat the output as an issue-spotting aid, not a damages analysis.</div>
+        <div class="co instr"><span class="t">Talking point</span>This is a good moment to compare <em>Quick response</em> and <em>Think deeper</em>. Run the same prompt both ways if time allows.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-a4" data-nav>
+      <summary><span class="num">A4</span>Fallback language + business email<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 6 min</span><span>Drafting</span><span>Same chat</span><span>Intermediate</span></div>
+        <p>Close the loop: propose language the vendor can accept, and tell the business owner, in plain words, why signing tomorrow isn't advisable and what happens next.</p>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt A4">Copy</button></div><pre>For the five Red issues you prioritized, draft proposed replacement language for each clause that reflects the playbook's standard position. Also draft a fallback that reflects the Yellow position. Present each as:
+- Section
+- Current language (short quote)
+- Proposed language
+- Fallback language
+- One-line rationale we can share with the vendor
+
+Keep the drafting concise and consistent with a U.S. commercial agreement.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Then draft the business email</span><button type="button" aria-label="Copy prompt A4 email">Copy</button></div><pre>Now write a short email from me to the Supply Chain director. Explain in plain language, with no legal jargon:
+- The three issues that create the most business risk, and what each could cost us
+- What we'll ask Brightline to change
+- A realistic timeline to signature
+- What the director can do now to keep the November 1 go-live on track
+
+Keep it under 200 words, with a confident and helpful tone.</pre></div>
+        <div class="co note"><span class="t">Real-world note</span>Copilot Chat drafts the language. It doesn't create tracked changes in Word. Automated, playbook-driven redlining in Word is a Session 2 topic.</div>
+        <ul class="check"><li>The proposed language matches the playbook's standard positions.</li><li>The email is something I'd send after a light edit.</li></ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SCENARIO B -->
+<section class="scenario" id="scenario-b" data-nav>
+  <div class="scn-head"><h2>Scenario B &middot; The request that arrives incomplete</h2><p>Deliverable: a correctly classified request, a reply that reuses prior guidance, and a requester checklist</p></div>
+  <div class="scn-body">
+    <div class="story"><strong>The story.</strong> Marketing emails Legal asking for "an MSA" for a holiday influencer campaign. It's missing the counterparty's legal name, the payment structure, and whether content will be reused in paid ads. You've answered almost the same question before. You want to get the right agreement started today and stop the back-and-forth from happening again.</div>
+    <div class="facts"><div><b>Stakeholder</b>Brand marketing manager</div><div><b>Time pressure</b>Campaign starts in two weeks</div><div><b>Sources</b>Request email, playbook, prior guidance log</div><div><b>Deliverable</b>Reply + reusable checklist</div></div>
+
+    <details class="lab" id="lab-b1" data-nav>
+      <summary><span class="num">B1</span>Classify the request and find the gaps<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Paste content</span><span>Playbook via /</span><span>Beginner</span></div>
+        <p>This is the intake triage you described in the planning call: figuring out what the requester actually needs before substantive work can start. Start a <strong>New chat</strong>, reference the playbook with <strong>/</strong>, and paste the prompt, which includes the request text.</p>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt B1">Copy</button></div><pre>Act as a legal intake coordinator. Use the "Agreement type selector" and "Minimum intake information" sections of the attached playbook.
+
+Here is the request we received:
+"Hi Legal - we need an MSA with Northwind Creative ASAP so they can start our holiday social campaign on Nov 1. They'll manage about 12 influencers on TikTok and Instagram, and we want to reuse the best videos in paid ads through Q1. Budget is about $85K. They sent their contract, but it's long, so can we just use ours? Thanks! - Priya, Brand Marketing"
+
+1. Which agreement type is most likely needed, and why isn't a Master Supply Agreement or a generic MSA the right fit?
+2. Which required intake fields are present, and which are missing?
+3. What risks specific to this request should Legal consider? Think about IP and content ownership, FTC endorsement disclosures, talent usage rights for paid ads, and budget thresholds.
+4. Write up to six clarifying questions we should send Priya, in plain language.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>Copilot should recommend a <strong>Marketing / Agency Services Agreement</strong>, flag missing items such as legal entity, country, and personal data, and raise usage rights for repurposing influencer content in paid media.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-b2" data-nav>
+      <summary><span class="num">B2</span>Reuse what we've already said<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Upload or / reference</span><span>File: Prior_Legal_Guidance_Log_SAMPLE.docx</span><span>Beginner</span></div>
+        <p>"What did we say last time?" is one of the most common questions in Legal. If past guidance lives in a document, Copilot Chat can search it in seconds. Scenario D shows the same pattern in your own mailbox.</p>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt B2">Copy</button></div><pre>Search the attached Prior Legal Guidance Log for any past guidance relevant to Priya's influencer campaign request.
+
+Quote the relevant guidance with its date and requesting team. Then draft a reply to Priya that:
+- Confirms we'll use our Marketing / Agency Services template, not the agency's paper
+- Explains the key requirements from prior guidance in plain language
+- Includes the clarifying questions from earlier in this chat
+- Gives a realistic turnaround once she replies
+
+Keep it friendly and under 180 words.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>Copilot should find the 2024-03-12 Marketing entry, which covers IP assignment, morals clause, FTC disclosures, approval rights, and Legal review above $50K, and fold it into the reply.</div>
+        <div class="co warn"><span class="t">Check currency</span>Prior guidance can be outdated. Confirm that the advice still reflects current law and policy before reusing it.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-b3" data-nav>
+      <summary><span class="num">B3</span>Build a requester checklist that prevents the next one<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Generate a document</span><span>Same chat</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt B3">Copy</button></div><pre>Using the playbook's agreement type selector and minimum intake information, create a one-page "Before You Contact Legal" checklist for business requesters.
+
+Include:
+1. A short decision guide: "If you are... you probably need..." for each agreement type
+2. The information to gather before submitting a request
+3. Five common mistakes that slow requests down
+4. Typical turnaround expectations, shown as placeholders for Legal to fill in
+
+Write for a non-lawyer audience and keep it scannable. Then create it as a Word document I can download.</pre></div>
+        <div class="co tip"><span class="t">Make it reusable</span>Hover over a prompt you'll use again and look for the option to <strong>save the prompt</strong>, if your tenant shows it. Name it something like <em>Legal: intake triage</em>.</div>
+        <div class="co note"><span class="t">Today vs. Session 2</span>Today you run this triage by hand in chat. In Session 2 we'll show an intake <em>agent</em> that asks requesters these questions before a request reaches Legal.</div>
+        <ul class="check"><li>A non-lawyer could pick the right agreement type with this checklist.</li><li>I downloaded the Word file and it opens correctly.</li></ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SCENARIO C -->
+<section class="scenario" id="scenario-c" data-nav>
+  <div class="scn-head"><h2>Scenario C &middot; Regulatory radar</h2><p>Deliverable: a sourced obligations timeline and a short impact note for business stakeholders</p></div>
+  <div class="scn-body">
+    <div class="story"><strong>The story.</strong> The AI task force asks Global Trade Compliance for a quick read on two regulatory areas that matter to a consumer battery company: U.S. safety requirements for products with <strong>button and coin cell batteries</strong>, and the staged obligations of the <strong>EU Battery Regulation</strong>. Product, Packaging, and International Sales leaders want to know what applies, when, and who owns it. Monitoring is manual today, so you need a fast, sourced first draft.</div>
+    <div class="facts"><div><b>Stakeholder</b>AI task force + business leaders</div><div><b>Time pressure</b>Leadership meeting next week</div><div><b>Sources</b>Public web, agency pages, Edge</div><div><b>Deliverable</b>Timeline + impact note</div></div>
+
+    <details class="lab" id="lab-c1" data-nav>
+      <summary><span class="num">C1</span>Research with citations<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Web grounding</span><span>New chat</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt C1">Copy</button></div><pre>I work in global trade compliance for a U.S.-headquartered consumer battery and auto-care manufacturer. Using current, authoritative sources (government agencies, the Federal Register, EUR-Lex, and official guidance), summarize:
+
+1. U.S. requirements for consumer products that contain button or coin cell batteries, including Reese's Law and the related CPSC rule: performance, labeling, and packaging requirements, and key effective dates.
+2. Any recent or proposed changes in the last 12 months.
+
+Use a heading for each topic. Cite a source for every requirement and date. If sources conflict or something is still proposed, say so clearly.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>A structured summary with clickable citations. Below the response, expand the citations to see the web search queries Copilot sent. Only short queries derived from your prompt are sent to Bing, never your full prompt or any files.</div>
+        <div class="co warn"><span class="t">Verify</span>Open the primary sources for every date. Regulations change, and web results can lag.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-c2" data-nav>
+      <summary><span class="num">C2</span>Build an obligations timeline<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Think deeper</span><span>Same chat</span><span>Intermediate</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt C2">Copy</button></div><pre>Now research EU Regulation (EU) 2023/1542 on batteries and waste batteries. Focus on obligations relevant to portable batteries sold to consumers, such as household alkaline, lithium coin, and rechargeable cells, and on products sold with batteries included.
+
+Create a table with these columns: Obligation | Applies to (economic operator role) | Effective / application date | What it requires in practice | Likely internal owner (Product, Packaging, Regulatory, Supply Chain, Sales) | Source.
+
+Sort by date. Then list the three obligations most likely to need action in the next 12 months and explain why.</pre></div>
+        <div class="co tip"><span class="t">Make it yours</span>Add one line to the prompt: <em>"We sell in [list your countries] and act as [manufacturer / importer / distributor]."</em> Applicability depends on your role.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-c3" data-nav>
+      <summary><span class="num">C3</span>Summarize a regulatory source in Edge<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 4 min</span><span>Copilot in Edge</span><span>Any agency page or PDF</span><span>Beginner</span></div>
+        <ol class="steps">
+          <li>In Microsoft Edge, open one of the sources Copilot cited, such as the CPSC page on Reese's Law or the EUR-Lex text of the regulation.</li>
+          <li>Open <strong>Copilot</strong> in the Edge side pane, signed in with your work account.</li>
+          <li>Paste the prompt.</li>
+        </ol>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt C3">Copy</button></div><pre>Summarize this page for a compliance professional. List every obligation, deadline, and exemption it mentions, with the exact wording for each deadline. Flag anything that's proposed rather than final.</pre></div>
+        <div class="co note"><span class="t">Why this helps</span>This is the manual "read the source" step in your monitoring process. You keep the primary source open while Copilot pulls out the parts you need to check.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-c4" data-nav>
+      <summary><span class="num">C4</span>Draft the impact note<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 4 min</span><span>Drafting</span><span>Back in the C1/C2 chat</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt C4">Copy</button></div><pre>Using the research in this chat, draft a one-page Regulatory Impact Note for business leaders with these sections:
+- What changed and why it matters (3 bullets)
+- What applies to us, marked as "preliminary, pending compliance review"
+- Key dates
+- Recommended owners and next steps
+- Open questions for Legal and Compliance
+
+Keep it under 350 words, neutral in tone, and list the sources at the end.</pre></div>
+        <div class="co imp"><span class="t">Human applicability review</span>Copilot can draft the note, but the applicability call belongs to Compliance. Keep the "preliminary" label until a reviewer confirms it.</div>
+        <ul class="check"><li>Every date in the note links to a primary source I opened.</li><li>The note separates confirmed obligations from proposed ones.</li></ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SCENARIO D -->
+<section class="scenario" id="scenario-d" data-nav>
+  <div class="scn-head"><h2>Scenario D &middot; Your inbox is the knowledge base</h2><p>Deliverable: prior guidance found, this week's requests triaged, and replies drafted, all in Outlook</p></div>
+  <div class="scn-body">
+    <div class="story"><strong>The story.</strong> Much of Legal's institutional knowledge lives in individual mailboxes. A question lands that you're sure you answered two years ago. Meanwhile a dozen informal requests came in this week by email and chat. <strong>Copilot Chat in Outlook</strong> can search your own email, calendar, meetings, chats, and a limited set of your files, with no add-on license required.</div>
+    <div class="facts"><div><b>Stakeholder</b>You and your internal clients</div><div><b>Time pressure</b>Monday-morning backlog</div><div><b>Sources</b>Your mailbox, calendar, chats</div><div><b>Deliverable</b>Triage list + drafts</div></div>
+    <div class="co tip"><span class="t">Where to click</span>Open <strong>new Outlook</strong> or <a href="https://outlook.office.com/" target="_blank" rel="noopener">Outlook on the web</a> and select the <strong>Copilot</strong> button near the top of the window. Replace the <em>[brackets]</em> in each prompt with your own topics.</div>
+
+    <details class="lab" id="lab-d1" data-nav>
+      <summary><span class="num">D1</span>"What did I say last time?"<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Copilot Chat in Outlook</span><span>Your mailbox</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt D1">Copy</button></div><pre>Find emails I've sent in the last two years about [net payment terms / per-pound liability limits / NDAs with universities / HTS classification requests]. Summarize the guidance I gave, with the date and recipient for each message, and note if my position changed over time.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Follow-up</span><button type="button" aria-label="Copy follow-up D1">Copy</button></div><pre>Turn that into a short, reusable FAQ answer that I could share with the team for review. Remove names and deal-specific details.</pre></div>
+        <div class="co note"><span class="t">How it works</span>Copilot Chat in Outlook uses keyword (lexical) search over your own data. Specific terms, such as clause names, counterparties, or HTS, work better than broad concepts. Broader semantic reasoning across all of Microsoft 365 is a Premium capability.</div>
+        <div class="co warn"><span class="t">Privilege and sharing</span>Before you share a consolidated FAQ, check privilege, confidentiality, and whether the advice still applies. A team-wide review process for reusable guidance is a Session 2 topic.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-d2" data-nav>
+      <summary><span class="num">D2</span>Triage this week's requests<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Copilot Chat in Outlook</span><span>Inbox + chats</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt D2">Copy</button></div><pre>Review emails and chats sent to me in the last 7 days that ask for legal or trade-compliance help. Build a table with these columns: Requester | Topic | Request type (contract, advice, classification, regulatory, other) | Deadline mentioned | Information missing | Suggested priority (High/Medium/Low) and reason.
+
+Sort by priority, then list any requests that look like repeats of questions I've answered before.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Then draft</span><button type="button" aria-label="Copy prompt D2 draft">Copy</button></div><pre>Draft short replies to the two highest-priority requests. Acknowledge each request, ask for any missing information, and give a realistic timeline. Don't send anything. I'll review first.</pre></div>
+        <div class="co tip"><span class="t">Why this matters</span>This gives you a quick view of request volume and repeat topics, which the team said is hard to measure today. Save the output weekly to build a baseline before we discuss intake automation.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-d3" data-nav>
+      <summary><span class="num">D3</span>Prep and act without leaving Outlook<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 4 min</span><span>Copilot Chat in Outlook</span><span>Calendar + actions</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Prep a meeting</span><button type="button" aria-label="Copy prompt D3 prep">Copy</button></div><pre>When is my next meeting with [name or team]? Summarize recent emails between us so I'm prepared, and list any open items I owe them.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Take action</span><button type="button" aria-label="Copy prompt D3 action">Copy</button></div><pre>Flag all unread emails from the last 3 days that mention "contract," "agreement," or "NDA," and schedule a 30-minute focus block tomorrow afternoon titled "Contract review."</pre></div>
+        <div class="co note"><span class="t">Teams tip</span>The Copilot app in Teams gives you the same web-grounded chat plus files you add. It doesn't read your Teams chats and meetings on its own, and Teams meeting recaps require Premium. To ask about your chats, use Copilot Chat in Outlook.</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SCENARIO E -->
+<section class="scenario" id="scenario-e" data-nav>
+  <div class="scn-head"><h2>Scenario E &middot; Take back recurring work</h2><p>Deliverable: a renewal watchlist, a leadership summary, and a reusable intake coach agent</p></div>
+  <div class="scn-body">
+    <div class="story"><strong>The story.</strong> The General Counsel asks the same portfolio questions every quarter. How many active contracts do we have in Germany? Which agreements renew automatically in the next 90 days, and when is the notice deadline? Who owns each decision? The data sits in a spreadsheet export. You'll answer those questions in minutes, package the results, and build a simple agent so requesters get help before they email Legal.</div>
+    <div class="facts"><div><b>Stakeholder</b>General Counsel</div><div><b>Time pressure</b>Quarterly review</div><div><b>Sources</b>Contract register (.xlsx)</div><div><b>Deliverable</b>Watchlist + summary + agent</div></div>
+
+    <details class="lab" id="lab-e1" data-nav>
+      <summary><span class="num">E1</span>Ask questions of a contract register<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 7 min</span><span>Upload Excel</span><span>File: Contract_Register_SAMPLE.xlsx</span><span>Intermediate</span></div>
+        <p>These are the exact questions the team raised in the planning call. Start a <strong>New chat</strong> and upload the register.</p>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt E1">Copy</button></div><pre>Using the attached contract register, and treating today as October 21, 2026, answer the following questions:
+1. How many active contracts do we have in Germany, and of what types?
+2. Which agreements have a 24-month term?
+3. Which auto-renewing agreements reach their non-renewal notice deadline in the next 90 days? Calculate the notice deadline as Expiration Date minus Non-Renewal Notice (Days). Show Contract ID, Counterparty, Business Owner, Expiration Date, Notice Deadline, and Days Remaining, sorted by soonest deadline.
+4. Which agreements are already past their expiration date?
+5. Total annual contract value by Business Unit, sorted from highest to lowest.
+
+Show the logic you used for any calculation.</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>Tables for each question, a short explanation of how dates were calculated, and one contract in "Expired - holdover" status.</div>
+        <div class="co warn"><span class="t">Verify numbers</span>Spot-check two notice-deadline calculations in Excel. Date math is easy to get wrong, for both people and AI.</div>
+        <div class="co note"><span class="t">Today vs. Session 2</span>Today you upload an export and ask questions. In Session 2 we'll show a SharePoint contract library that pulls metadata from each agreement automatically and sends renewal reminders to the owner.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-e2" data-nav>
+      <summary><span class="num">E2</span>Turn results into Word or PowerPoint<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 5 min</span><span>Word / PowerPoint agents</span><span>Same chat</span><span>Beginner</span></div>
+        <div class="prompt"><div class="prompt-head"><span>Try this prompt</span><button type="button" aria-label="Copy prompt E2">Copy</button></div><pre>Create a Word document titled "Q4 Contract Renewal Watchlist" for the General Counsel with these sections:
+- A 3-sentence executive summary
+- The renewal-deadline table from question 3
+- The expired holdover agreements, with a recommended next step for each
+- Value by business unit
+- A recommended action list with owner and due date
+
+Use a clean, professional format.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Or a 3-slide deck</span><button type="button" aria-label="Copy prompt E2 deck">Copy</button></div><pre>Create a 3-slide PowerPoint for the Legal leadership meeting: (1) portfolio snapshot, (2) renewals that need decisions in the next 90 days, (3) recommended actions. Keep the text minimal and use a table on slide 2.</pre></div>
+        <div class="co tip"><span class="t">Where the files go</span>Copilot creates downloadable files. PowerPoint files are saved to your OneDrive when storage is available. Review and label them per Energizer policy before sharing.</div>
+      </div>
+    </details>
+
+    <details class="lab" id="lab-e3" data-nav>
+      <summary><span class="num">E3</span>Build a no-cost intake coach agent<span class="chev">&#9656;</span></summary>
+      <div class="lab-body">
+        <div class="meta"><span>&#9201; 10 min</span><span>Agent Builder</span><span>Instructions only</span><span>Intermediate</span></div>
+        <p>Agents built on <strong>instructions and public websites</strong> are included with Copilot Chat at no extra cost. This one coaches business requesters before they contact Legal. It's an entry-level version of the intake idea from the planning call.</p>
+        <ol class="steps">
+          <li>In Copilot Chat, open <strong>Agents</strong> and select <strong>Create agent</strong>. Your admin settings determine whether you see this option.</li>
+          <li>Describe the agent, or switch to <strong>Configure</strong> and paste the instructions below.</li>
+          <li>Name it <em>Legal Request Coach (pilot)</em>. <strong>Don't</strong> add SharePoint knowledge, which turns it into a metered agent.</li>
+          <li>Test it in the preview pane with a vague request, such as <em>"I need a contract with an influencer agency."</em></li>
+        </ol>
+        <div class="prompt"><div class="prompt-head"><span>Agent instructions</span><button type="button" aria-label="Copy agent instructions E3">Copy</button></div><pre>You are the Legal Request Coach for an in-house legal department. You help business employees prepare a complete, correctly classified legal request before they contact Legal. You don't give legal advice.
+
+Process:
+1. Ask what the employee is trying to accomplish, in their own words.
+2. Ask follow-up questions one or two at a time until you know: counterparty legal name and country; what is being bought, sold, or shared; estimated annual and total value; start date and required signature date; whether personal, consumer, or confidential product data is involved; countries where goods ship or services are performed; and whether the counterparty sent its own contract.
+3. Suggest the most likely agreement type: Master Supply Agreement, Master Services Agreement, Statement of Work under an existing MSA, Marketing/Agency Services Agreement, Mutual NDA, Distribution Agreement, or SaaS/Technology Agreement. Explain why in one sentence.
+4. Produce a clean "Request Summary" the employee can paste into their request to Legal.
+
+Rules:
+- If the request involves litigation, government inquiries, sanctions, export controls, data breaches, or employee matters, stop and tell the employee to contact Legal directly.
+- Never say a contract is approved or acceptable.
+- Keep responses short and in plain language.</pre></div>
+        <div class="prompt"><div class="prompt-head"><span>Test prompt</span><button type="button" aria-label="Copy test prompt E3">Copy</button></div><pre>Hi, we want to start selling our flashlights through a new partner in Brazil next quarter. They'll handle retail placement. What do I need from Legal?</pre></div>
+        <div class="co expect"><span class="t">What to expect</span>The agent asks follow-up questions, suggests a <strong>Distribution Agreement</strong>, notes that trade-compliance review applies, and produces a Request Summary.</div>
+        <div class="co imp"><span class="t">Governance</span>Share agents only with Legal's approval and in line with Energizer's agent policies. Agents that read SharePoint or connector content are <span class="b b-metered">Metered</span> and must be enabled by your admins.</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- CAPSTONE -->
+<section class="card" id="capstone" data-nav>
+  <h2>Capstone &middot; One prompt, a complete review package</h2>
+  <p>Combine what you practiced. In a new chat, attach the MSA and the playbook, choose <strong>Think deeper</strong>, and run:</p>
+  <div class="prompt"><div class="prompt-head"><span>Capstone prompt</span><button type="button" aria-label="Copy capstone prompt">Copy</button></div><pre>Using only the attached Brightline MSA and our Commercial Contracting Playbook, prepare a review package with four parts:
+1. A one-paragraph deal summary for an executive
+2. A red/yellow/green issues table with section references, sorted by risk
+3. Proposed replacement language for every Red item
+4. A 150-word email to the Supply Chain director with a recommendation and timeline
+
+Mark anything you inferred rather than found in the documents as "Inferred." Then create the package as a Word document.</pre></div>
+  <div class="co instr"><span class="t">Debrief questions</span>
+    <ul><li>Where did Copilot save you the most time? Where did you have to correct it?</li><li>Which of your weekly tasks follows a similar read, compare, and draft pattern?</li><li>Which of today's labs would be most valuable to your team as an automated workflow? That answer feeds Session 2.</li></ul>
+  </div>
+</section>
+
+<!-- SESSION 2 -->
+<section class="card" id="session2" data-nav>
+  <h2>Coming in Session 2 &middot; Team leads and premium users</h2>
+  <p>These items came directly from your planning call. They need additional licensing, admin configuration, or technical discovery, so we're covering them separately.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Future-state scenario</th><th>Builds on today's lab</th><th>Typical requirement</th></tr></thead>
+    <tbody>
+      <tr><td>Playbook-driven legal review and redlining in Word</td><td>A2, A4</td><td><span class="b b-premium">Premium</span></td></tr>
+      <tr><td>Contract intake agent that classifies requests, collects fields, prefills templates, and routes work</td><td>B1, B3, E3</td><td><span class="b b-metered">Metered</span> / <span class="b b-premium">Premium</span> + workflow</td></tr>
+      <tr><td>SharePoint contract library with AI metadata extraction, natural-language reporting, and renewal alerts</td><td>E1, E2</td><td>SharePoint AI services + automation</td></tr>
+      <tr><td>Historical legal guidance assistant over a curated, approved knowledge base</td><td>B2, D1</td><td><span class="b b-metered">Metered</span> / <span class="b b-premium">Premium</span></td></tr>
+      <tr><td>ServiceNow triage of repetitive trade-compliance requests, with data from approved systems such as SAP and GTS</td><td>D2</td><td>Connectors + Copilot Studio, technical discovery</td></tr>
+      <tr><td>Regulatory source monitoring with routing for human applicability review</td><td>C1&ndash;C4</td><td>Agents + workflow automation</td></tr>
+      <tr><td>Researcher and Analyst agents; reasoning across all your mail, chats, meetings, and files</td><td>C2, D1</td><td><span class="b b-premium">Premium</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="co tip"><span class="t">Homework for team leads</span>Track how often your team runs Labs A2, B1, D2, and E1 over the next two weeks, and how long each took before Copilot. That gives you a starting baseline for a business case.</div>
+</section>
+
+<!-- RESOURCES -->
+<section class="card" id="resources" data-nav>
+  <h2>Resources</h2>
+  <div class="grid2">
+    <div class="mini"><h4>Learn more about Copilot Chat</h4><ul>
+      <li><a href="https://learn.microsoft.com/en-us/copilot/overview" target="_blank" rel="noopener">Overview of Microsoft Copilot Chat</a></li>
+      <li><a href="https://learn.microsoft.com/en-us/copilot/privacy-and-protections" target="_blank" rel="noopener">Copilot Chat privacy and protections</a></li>
+      <li><a href="https://aka.ms/EDPLearn" target="_blank" rel="noopener">Enterprise data protection</a></li>
+      <li><a href="https://learn.microsoft.com/en-us/copilot/agents" target="_blank" rel="noopener">Agents in Copilot Chat</a></li>
+      <li><a href="https://support.microsoft.com/topic/standard-versus-priority-access-to-features-in-microsoft-365-copilot-chat-12c8d9f8-db32-4f99-8ebe-d8d85879137f" target="_blank" rel="noopener">Standard vs. priority access</a></li>
+    </ul></div>
+    <div class="mini"><h4>Use it and go further</h4><ul>
+      <li><a href="https://m365copilot.com/" target="_blank" rel="noopener">Open Copilot Chat</a></li>
+      <li><a href="https://support.microsoft.com/en-us/outlook/copilot-outlook/chat-with-copilot-in-outlook" target="_blank" rel="noopener">Chat with Copilot in Outlook</a></li>
+      <li><a href="https://support.microsoft.com/en-us/microsoft-365-copilot/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365" target="_blank" rel="noopener">Copilot (free) vs. Copilot in Microsoft 365</a></li>
+      <li><a href="https://adoption.microsoft.com/copilot-chat/success-kit/" target="_blank" rel="noopener">Copilot Chat success kit</a></li>
+      <li><a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-licensing" target="_blank" rel="noopener">Microsoft Copilot licensing options</a></li>
+    </ul></div>
+  </div>
+</section>
+
+<footer>Prepared by Microsoft for Energizer Legal &amp; Global Trade Compliance &middot; Session 1 &middot; October 2026. Sample files are fictional. Capabilities reflect Microsoft documentation as of October 2026 and may vary with tenant configuration.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  // Copy buttons
+  document.querySelectorAll('.prompt-head button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.closest('.prompt').querySelector('pre').innerText;
+      var done = function(){ btn.textContent='Copied'; btn.classList.add('ok'); setTimeout(function(){btn.textContent='Copy'; btn.classList.remove('ok');},1600); };
+      if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+      function fallback(){ var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done(); }
+    });
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.side a[href^="#"]'));
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#'+id); });
+    var act = document.querySelector('nav.side a.active');
+    if (act) { var nav=document.getElementById('sideNav'); var r=act.getBoundingClientRect(), n=nav.getBoundingClientRect(); if (r.top<n.top) nav.scrollTop += r.top-n.top-8; else if (r.bottom>n.bottom) nav.scrollTop += r.bottom-n.bottom+8; }
+  }
+
+  // Nav click opens the target lab
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el && el.tagName === 'DETAILS') el.open = true;
+      setActive(el.id);
+      document.getElementById('sideNav').classList.remove('open');
+      document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Opening a lab updates active nav
+  document.querySelectorAll('details.lab').forEach(function(d){
+    d.addEventListener('toggle', function(){ if (d.open) setActive(d.id); });
+  });
+
+  // Scroll spy: the active item is the last visible section/lab whose top has passed the reading line
+  var targets = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+  var lockUntil = 0, ticking = false;
+  function spy(){
+    ticking = false;
+    if (Date.now() < lockUntil) return;
+    var line = 140, current = null;
+    targets.forEach(function(t){
+      if (t.offsetParent === null) return;
+      var r = t.getBoundingClientRect();
+      if (r.top <= line && r.bottom > 0) current = t.id;
+    });
+    if (current) setActive(current);
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(){ if (!ticking){ ticking = true; requestAnimationFrame(spy); } });
+    targets.forEach(function(s){ obs.observe(s); });
+  }
+  window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(spy); } }, {passive:true});
+  links.forEach(function(a){ a.addEventListener('click', function(){ lockUntil = Date.now() + 1200; }); });
+  window.addEventListener('scrollend', function(){ lockUntil = 0; spy(); });
+
+  document.getElementById('expandAll').addEventListener('click', function(){ document.querySelectorAll('details.lab').forEach(function(d){ d.open=true; }); });
+  document.getElementById('collapseAll').addEventListener('click', function(){ document.querySelectorAll('details.lab').forEach(function(d){ d.open=false; }); });
+
+  var mb = document.getElementById('menuBtn');
+  mb.addEventListener('click', function(){ var n=document.getElementById('sideNav'); var o=n.classList.toggle('open'); mb.setAttribute('aria-expanded', o?'true':'false'); });
+})();
+</script>
+</body>
+</html>
