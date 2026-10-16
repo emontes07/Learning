@@ -1,0 +1,519 @@
+---
+demo:
+  title: 'Zava Supply Co. · Copilot for Finance Controllers - Hands-on Lab Guide'
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copilot for Finance Controllers - Hands-on Lab Guide</title>
+<meta name="description" content="Hands-on Copilot in Excel lab guide for finance controllers: variance analysis, forecast storytelling, and repeatable month-end workflows.">
+<style>
+:root{--brand-primary:#183A5D;--brand-secondary:#245c8a;--brand-accent:#6BB045;--brand-surface:#fff;--brand-bg:#f4f7fa;--text-main:#172033;--text-muted:#5d6b82;--border:#d8dee9;--tip-bg:#e8f3ff;--warning-bg:#fff4df;--important-bg:#ffe8e8;--note-bg:#eaf8ef;--expect-bg:#f1f0ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--text-main);background:var(--brand-bg);line-height:1.55}
+a{color:var(--brand-secondary)}code{background:#eef2f7;padding:1px 6px;border-radius:4px;font-size:.92em}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:99}
+.hero{background:linear-gradient(120deg,var(--brand-primary) 0%,var(--brand-secondary) 55%,var(--brand-accent) 130%);color:#fff;padding:44px 32px 36px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(107,176,69,.25)}
+.hero .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .2em;font-size:2.3rem;line-height:1.15;max-width:900px}
+.hero p{max-width:820px;font-size:1.1rem;opacity:.95;margin:.3em 0 1em}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:4px 12px;border-radius:999px;font-size:.85rem}
+.shell{display:grid;grid-template-columns:270px 1fr;gap:28px;max-width:1320px;margin:0 auto;padding:24px}
+nav.side{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px}
+nav.side .nav-title{font-weight:700;color:var(--brand-primary);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin:2px 6px 8px}
+nav.side a{display:block;text-decoration:none;color:var(--text-main);border-radius:8px;padding:5px 10px;font-size:.92rem;border-left:3px solid transparent}
+nav.side a:hover{background:#eef3f9}
+nav.side a.nav-mod{font-weight:600;margin-top:6px}nav.side a.nav-lab{padding-left:22px;font-size:.86rem;color:var(--text-muted)}
+nav.side a.active{background:#e7f0e1;border-left-color:var(--brand-accent);color:var(--brand-primary);font-weight:600}
+nav.side a.done:after{content:" \2713";color:var(--brand-accent);font-weight:700}
+.progress{margin:6px 6px 12px}.bar{height:8px;background:#e6ebf2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand-secondary),var(--brand-accent));transition:width .3s}
+.progress small{color:var(--text-muted)}
+.controls{display:flex;gap:6px;margin:0 6px 10px}.controls button{flex:1;font:inherit;font-size:.8rem;border:1px solid var(--border);background:#f7f9fc;border-radius:8px;padding:5px;cursor:pointer}
+.controls button:hover{background:#eef3f9}
+main{min-width:0}
+.card,.module{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px 30px;margin-bottom:24px;box-shadow:0 1px 2px rgba(23,32,51,.04)}
+h2{color:var(--brand-primary);margin:.1em 0 .5em;font-size:1.6rem}h3{color:var(--brand-primary);margin:1.4em 0 .5em;font-size:1.15rem}
+.lead{font-size:1.08rem}.muted{color:var(--text-muted)}.small{font-size:.85rem}
+.quote{margin:16px 0;padding:14px 20px;border-left:5px solid var(--brand-accent);background:#f3f9ef;font-size:1.1rem;font-style:italic;border-radius:0 10px 10px 0}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+ul.ticks{list-style:none;padding-left:0}ul.ticks li{padding-left:26px;position:relative;margin:6px 0}ul.ticks li:before{content:"\2714";position:absolute;left:0;color:var(--brand-accent);font-weight:700}
+ol.journey li{margin:6px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.93rem;margin:8px 0}th,td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}th{background:#f0f4f9;color:var(--brand-primary)}
+td.neg{color:#b42318;font-weight:600}td.pos{color:#2f7d1f;font-weight:600}
+.files{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.file>span:last-child{min-width:0;overflow-wrap:anywhere}.file{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text-main);background:#fbfcfe}
+.file:hover{border-color:var(--brand-accent);background:#f6fbf2}.xl{background:#1d6f42;color:#fff;font-weight:700;font-size:.75rem;border-radius:6px;padding:6px 7px;margin-top:2px}.file small{color:var(--text-muted)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mode-card{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:#fbfcfe}.mode-card p{margin:.3em 0 0;font-size:.93rem}
+.mode-name{font-weight:700;color:var(--brand-primary);font-size:1.05rem}
+.recipe{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.recipe div{background:#f0f4f9;border-radius:12px;padding:10px 12px;border-top:4px solid var(--brand-secondary)}.recipe div:last-child{border-top-color:var(--brand-accent)}
+.recipe b{display:block;color:var(--brand-primary)}.recipe span{font-size:.86rem;color:var(--text-muted)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.timeline div{border-left:4px solid var(--brand-accent);background:#f6fbf2;padding:10px 14px;border-radius:0 10px 10px 0}.timeline b{display:block;color:var(--brand-primary)}
+.story-card{border-top:5px solid var(--brand-accent)}
+.module{padding:0;overflow:hidden}.module-head{background:linear-gradient(120deg,var(--brand-primary),var(--brand-secondary));color:#fff;padding:20px 30px}
+.module-head h2{color:#fff;margin:.1em 0}.module-num{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;opacity:.85;font-weight:600}
+.module-tags{display:flex;gap:8px;margin-top:6px}.module-tags span{background:rgba(255,255,255,.18);padding:2px 10px;border-radius:99px;font-size:.8rem}
+.story{margin:20px 30px 6px;padding:14px 18px;background:#f6fbf2;border:1px solid #d6ebc8;border-radius:12px}.story p{margin:.3em 0}
+.story-label{font-weight:700;color:#2f6b1c;text-transform:uppercase;font-size:.75rem;letter-spacing:.1em}
+details.lab{margin:14px 30px;border:1px solid var(--border);border-radius:12px;background:#fff}
+details.lab:last-of-type{margin-bottom:26px}
+details.lab>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:12px;border-radius:12px}
+details.lab>summary::-webkit-details-marker{display:none}
+details.lab>summary:after{content:"+";margin-left:auto;font-size:1.4rem;color:var(--brand-secondary);font-weight:600}
+details.lab[open]>summary:after{content:"\2212"}details.lab[open]>summary{border-bottom:1px solid var(--border);border-radius:12px 12px 0 0;background:#f8fafc}
+details.lab>summary:focus-visible{outline:3px solid var(--brand-accent);outline-offset:2px}
+.lab-num{background:var(--brand-primary);color:#fff;border-radius:8px;padding:3px 9px;font-weight:700;font-size:.85rem;white-space:nowrap}.lab-title{font-weight:600;font-size:1.05rem}
+.lab-body{padding:16px 22px 20px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.meta span{background:#f0f4f9;border-radius:8px;padding:4px 10px;font-size:.84rem}.meta b{color:var(--brand-primary);margin-right:4px}
+.prompt{border:1px solid #c9d6e6;border-radius:12px;margin:12px 0;overflow:hidden;background:#fbfdff}
+.prompt-head{display:flex;align-items:center;gap:10px;padding:7px 12px;background:#eaf1f9;border-bottom:1px solid #c9d6e6}
+.prompt-label{font-weight:700;color:var(--brand-primary);font-size:.85rem}
+.mode{font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 9px;text-transform:uppercase;letter-spacing:.05em}
+.mode-chat{background:#dbeafe;color:#1e40af}.mode-edit{background:#fde7d4;color:#9a3412}.mode-plan{background:#ede9fe;color:#5b21b6}
+.copy{margin-left:auto;font:inherit;font-size:.82rem;font-weight:600;border:1px solid var(--brand-secondary);color:var(--brand-secondary);background:#fff;border-radius:8px;padding:4px 12px;cursor:pointer}
+.copy:hover{background:var(--brand-secondary);color:#fff}.copy.ok{background:var(--brand-accent);border-color:var(--brand-accent);color:#fff}
+.copy:focus-visible{outline:3px solid var(--brand-accent);outline-offset:2px}
+.prompt pre{margin:0;padding:12px 14px;white-space:pre-wrap;word-wrap:break-word;font-family:"Cascadia Code",Consolas,monospace;font-size:.9rem;line-height:1.5;color:#10243e}
+.callout{border-radius:12px;padding:12px 16px;margin:12px 0;border-left:5px solid}.callout-title{font-weight:700;margin-bottom:3px}
+.callout p,.callout ul{margin:.3em 0}
+.tip{background:var(--tip-bg);border-color:#2e75b6}.warning{background:var(--warning-bg);border-color:#d97706}.important{background:var(--important-bg);border-color:#c0392b}.note{background:var(--note-bg);border-color:var(--brand-accent)}
+.expect{background:var(--expect-bg);border-color:#6d5bd0}
+.discuss{background:#fff8e6;border:1px dashed #d9a400;border-radius:12px;padding:12px 16px;margin:12px 0}
+.selfcheck{background:#f6fbf2;border:1px solid #d6ebc8;border-radius:12px;padding:10px 16px;margin-top:14px}.selfcheck ul{list-style:none;padding:0;margin:4px 0}.selfcheck li{margin:4px 0}
+.selfcheck input{accent-color:var(--brand-accent);width:16px;height:16px;vertical-align:-2px;margin-right:6px}
+.challenge{background:linear-gradient(120deg,#183A5D,#245c8a);color:#fff;border-radius:14px;padding:16px 20px}.challenge-title{text-transform:uppercase;font-size:.78rem;letter-spacing:.12em;font-weight:700;color:#bfe3a8}
+details.answer{border:1px solid var(--border);border-radius:12px;margin:12px 0;padding:0 14px}details.answer>summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--brand-secondary)}
+ol.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding-left:0;list-style:none;counter-reset:s}ol.steps li{counter-increment:s;background:#f0f4f9;border-radius:10px;padding:10px 12px}
+ol.steps li:before{content:counter(s);background:var(--brand-accent);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;margin-right:8px}
+.cwr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cwr-step{border-radius:14px;padding:14px 16px;color:#fff}.cwr-step p{margin:.4em 0}.cwr-step small{opacity:.85}
+.cwr-name{font-weight:800;font-size:1.2rem}.crawl{background:#3d7a2a}.walk{background:#245c8a}.run{background:#183A5D}
+.faq details{border-bottom:1px solid var(--border);padding:8px 0}.faq summary{cursor:pointer;font-weight:600}
+.glossary{display:grid;grid-template-columns:1fr 1fr;gap:10px}.glossary div{background:#f7f9fc;border-radius:10px;padding:8px 12px}.glossary b{display:block;color:var(--brand-primary)}.glossary span{font-size:.9rem;color:var(--text-muted)}
+footer{text-align:center;color:var(--text-muted);font-size:.85rem;padding:10px 20px 40px}
+.menu-btn{display:none}
+@media (max-width:960px){.shell{grid-template-columns:1fr;padding:12px}nav.side{position:static;max-height:none;display:none}nav.side.open{display:block}
+.menu-btn{display:block;width:100%;font:inherit;font-weight:600;padding:10px;border-radius:10px;border:1px solid var(--border);background:#fff;margin-bottom:10px;cursor:pointer}
+.grid2,.files,.modes,.timeline,.cwr,.glossary{grid-template-columns:1fr}.recipe{grid-template-columns:1fr 1fr}ol.steps{grid-template-columns:1fr}
+details.lab{margin:12px}.story{margin:16px 12px 4px}.card{padding:20px}.hero h1{font-size:1.7rem}}
+@media print{nav.side,.menu-btn,.copy,.controls{display:none!important}.shell{display:block}.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}details.lab,.card,.module{break-inside:avoid-page}}
+</style>
+</head>
+<body>
+<a class="skip" href="#welcome">Skip to content</a>
+<header class="hero">
+<div class="eyebrow">Bunzl Finance &middot; Copilot Workshop</div>
+<h1>Copilot for Finance Controllers</h1>
+<p>Hands-on labs to find what's driving your numbers, tell the story behind your forecast, and turn your month-end review into a repeatable process with Copilot in Excel.</p>
+<div class="tags"><span>Copilot in Excel</span><span>Finance controllers</span><span>Beginner to intermediate</span><span>About 2.5 hours</span><span>About 70% hands-on</span></div>
+</header>
+<div class="shell">
+<div>
+<button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sideNav">Menu: modules and labs</button>
+<nav class="side" id="sideNav" aria-label="Lab navigation">
+<div class="nav-title">Your progress</div>
+<div class="progress"><div class="bar"><i id="progBar"></i></div><small id="progTxt"></small></div>
+<div class="controls"><button type="button" id="expandAll">Expand all</button><button type="button" id="collapseAll">Collapse all</button></div>
+<a class="nav-top" href="#welcome">Welcome</a><a class="nav-top" href="#setup">Before you start</a><a class="nav-top" href="#story">Meet Zava Supply Co.</a><div class="nav-group"><a class="nav-mod" href="#m1">1. Quick Win</a><a class="nav-lab" href="#lab-1-1">1.1 What matters</a></div><div class="nav-group"><a class="nav-mod" href="#m2">2. Work Smarter</a><a class="nav-lab" href="#lab-2-1">2.1 Largest changes</a><a class="nav-lab" href="#lab-2-2">2.2 What&#x27;s driving them</a><a class="nav-lab" href="#lab-2-3">2.3 Column, Pivot, chart</a><a class="nav-lab" href="#lab-2-4">2.4 Excel coach</a><a class="nav-lab" href="#lab-2-5">2.5 5-minute challenge</a></div><div class="nav-group"><a class="nav-mod" href="#m3">3. Forecast Story</a><a class="nav-lab" href="#lab-3-1">3.1 Prior vs current</a><a class="nav-lab" href="#lab-3-2">3.2 Group by driver</a><a class="nav-lab" href="#lab-3-3">3.3 Draft narrative</a><a class="nav-lab" href="#lab-3-4">3.4 Executive bullets</a><a class="nav-lab" href="#lab-3-5">3.5 Validate &amp; own it</a></div><div class="nav-group"><a class="nav-mod" href="#m4">4. Actual vs Budget</a><a class="nav-lab" href="#lab-4-1">4.1 Fav / unfav</a><a class="nav-lab" href="#lab-4-2">4.2 Unusual expenses</a><a class="nav-lab" href="#lab-4-3">4.3 Customer drivers</a><a class="nav-lab" href="#lab-4-4">4.4 MBR commentary</a><a class="nav-lab" href="#lab-4-5">Side quest: your data</a></div><div class="nav-group"><a class="nav-mod" href="#m5">5. Repeatable Process</a><a class="nav-lab" href="#lab-5-1">5.1 Your recipe</a><a class="nav-lab" href="#lab-5-2">5.2 Create the skill</a><a class="nav-lab" href="#lab-5-3">5.3 Run on August</a><a class="nav-lab" href="#lab-5-4">5.4 Refine</a><a class="nav-lab" href="#lab-5-5">Bonus: PowerPoint</a></div><div class="nav-group"><a class="nav-mod" href="#m6">6. Automate My Month-End</a><a class="nav-lab" href="#lab-6-1">6.1 Your backlog</a></div><div class="nav-group"><a class="nav-mod" href="#m7">7. Crawl, Walk, Run</a><a class="nav-lab" href="#lab-7-1">7.1 Your commitment</a></div><a class="nav-top" href="#reference">Reference</a>
+<div class="controls" style="margin-top:12px"><button type="button" id="resetProg">Reset my checkmarks</button></div>
+</nav>
+</div>
+<main id="main">
+
+<section class="card" id="welcome">
+<h2>Welcome</h2>
+<p class="lead">This guide is yours to keep. Use it during the workshop to follow along and copy prompts, and come back afterwards to practice on your own. Every prompt has a <b>Copy</b> button, so you never have to retype anything.</p>
+<blockquote class="quote">We are not here to turn accountants into AI experts. We are here to remove work you should not have to do manually.</blockquote>
+<h3>What you will do</h3>
+<p>You will step into the role of a controller at <b>Zava Supply Co.</b>, a fictitious distribution company. September is closed, the Q3 forecast update is in, and leadership wants the story behind the numbers. Using Copilot in Excel, you will:</p>
+<ol class="journey">
+<li><b>Get a quick win:</b> ask a workbook what matters most, in one sentence.</li>
+<li><b>Work smarter in Excel:</b> find the biggest cost changes, understand what drives them, and build formulas, PivotTables and charts.</li>
+<li><b>Tell the forecast story:</b> explain the move from the prior forecast to the current forecast in a leadership-ready narrative.</li>
+<li><b>Find the actual vs budget drivers:</b> run the September review yourself, including customers and unusual expenses.</li>
+<li><b>Make it repeatable:</b> turn your best prompts into a <i>Monthly Controller Review</i> skill and run it on August.</li>
+<li><b>Plan your month-end:</b> choose one real task you will try with Copilot next cycle.</li>
+</ol>
+<h3>Learning objectives</h3>
+<div class="grid2">
+<ul class="ticks">
+<li>Choose between <b>Chat</b>, <b>Plan</b> and <b>Edit</b> in Copilot in Excel.</li>
+<li>Ask useful questions of a finance workbook without advanced formulas.</li>
+<li>Identify material changes, variances and anomalies that need attention.</li>
+</ul>
+<ul class="ticks">
+<li>Draft management commentary and refine it for an executive audience.</li>
+<li>Recognize monthly tasks that can be standardized with a reusable skill.</li>
+<li>Leave with one realistic finance task to improve next reporting cycle.</li>
+</ul>
+</div>
+<h3>Agenda at a glance</h3>
+<div class="table-wrap"><table class="agenda">
+<thead><tr><th>Time</th><th>Module</th><th>How</th></tr></thead>
+<tbody>
+<tr><td>0:00 - 0:15</td><td><a href="#m1">1. Welcome + AI Quick Win</a></td><td>Your first Copilot question</td></tr>
+<tr><td>0:15 - 0:45</td><td><a href="#m2">2. Copilot in Excel: Work Smarter</a></td><td>Guided, follow along</td></tr>
+<tr><td>0:45 - 1:15</td><td><a href="#m3">3. Forecast Changes: Tell the Story</a></td><td>Finance scenario</td></tr>
+<tr><td>1:15 - 1:40</td><td><a href="#m4">4. Actual vs Budget: Find the Drivers</a></td><td>Individual challenge</td></tr>
+<tr><td>1:40 - 1:50</td><td>Break</td><td>10 minutes</td></tr>
+<tr><td>1:50 - 2:10</td><td><a href="#m5">5. From Prompt to Repeatable Process</a></td><td>Skills, see one and do one</td></tr>
+<tr><td>2:10 - 2:25</td><td><a href="#m6">6. Automate My Month-End</a></td><td>Small groups</td></tr>
+<tr><td>2:25 - 2:30</td><td><a href="#m7">7. Crawl, Walk, Run</a></td><td>Your next step</td></tr>
+</tbody></table></div>
+<p class="muted">The rhythm for every module: <b>see it</b> (a quick demo), <b>do it</b> (you try), <b>compare</b> (what did your neighbor get?), then <b>try again</b> with one new idea.</p>
+</section>
+
+
+<section class="card" id="setup">
+<h2>Before you start</h2>
+<h3>1. Download the workshop files</h3>
+<p>All files use <b>fictitious data</b> for Zava Supply Co. No real Bunzl customer, supplier or financial information is included. Amounts are in <b>USD thousands ($000s)</b>.</p>
+<div class="files">
+<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Sep2026.xlsx" download><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Sep2026.xlsx</b><br><small>Main file for Modules 1, 2 and 4. Summary, GL P&amp;L Detail, PL_Monthly, OpEx_Detail, Customer Sales, Billing Days, Commentary.</small></span></a>
+<a class="file" href="../../ResourceFiles/Zava_FY26_Forecast_Q3.xlsx" download><span class="xl">XLSX</span><span><b>Zava_FY26_Forecast_Q3.xlsx</b><br><small>Module 3. Overview, Forecast, Adjustments, Variances, R&amp;Os, Billing Days.</small></span></a>
+<a class="file" href="../../ResourceFiles/Zava_Monthly_Results_Aug2026.xlsx" download><span class="xl">XLSX</span><span><b>Zava_Monthly_Results_Aug2026.xlsx</b><br><small>Module 5. Same layout, different month: the "second dataset" to test your skill.</small></span></a>
+<a class="file" href="../../ResourceFiles/Automate_My_Month_End_Worksheet.xlsx" download><span class="xl">XLSX</span><span><b>Automate_My_Month_End_Worksheet.xlsx</b><br><small>Module 6 and 7. Task inventory, priority score and your commitment.</small></span></a>
+</div>
+<h3>2. Put the files where Copilot can work with them</h3>
+<ol>
+<li>Upload the files to your <b>OneDrive</b> (for example a folder called <i>Copilot Workshop</i>).</li>
+<li>Open them in <b>Excel for the web</b> (type <code>excel.new</code> in your browser, or open from OneDrive). Make sure <b>AutoSave</b> is on.</li>
+<li>Select <b>Copilot</b> on the Home ribbon to open the Copilot pane on the right.</li>
+</ol>
+<div class="callout tip"><div class="callout-title">Why the web version today?</div><div>Copilot features roll out to Excel for the web first. Your desktop Excel follows your company's update schedule, so some options, such as <b>Plugins and skills</b>, may appear there a little later. Everything in this guide works in Excel for the web.</div></div>
+<h3>3. Get to know the Copilot pane</h3>
+<div class="modes">
+<div class="mode-card"><div class="mode-name">Chat</div><p>Ask questions and get answers, explanations and suggestions. <b>Your workbook is not changed.</b> Best for understanding data and drafting text.</p></div>
+<div class="mode-card"><div class="mode-name">Plan</div><p>Copilot proposes the <b>steps</b> it would take before doing anything. You review and approve. Best for multi-step work you want to check first.</p></div>
+<div class="mode-card"><div class="mode-name">Edit</div><p>Shown as <i>Allow editing</i>. Copilot <b>makes changes</b> in the workbook: columns, formulas, PivotTables, charts, formatting. Undo with <b>Ctrl+Z</b>.</p></div>
+</div>
+<p>Look for the mode selector under the chat box. Other things you may see: a <b>+</b> button (add files, plugins and skills), a model picker (the default is fine), and the <b>...</b> menu at the top of the pane.</p>
+<h3>4. Ground rules</h3>
+<div class="grid2">
+<div class="callout important"><div class="callout-title">You own the output</div><div>Copilot gets you to a strong first draft faster. You are still accountable for every number and every word that leaves your desk. <i>You can outsource the processing, but not the responsibility.</i></div></div>
+<div class="callout note"><div class="callout-title">Your data stays protected</div><div>When you are signed in with your work account, Microsoft 365 Copilot works within your company's security and compliance boundary and your prompts are not used to train the models. Always follow Bunzl's data policies.</div></div>
+</div>
+<ul>
+<li><b>Verify numbers.</b> Ask Copilot where a number came from, then check the cell.</li>
+<li><b>Save a copy first</b> (File &gt; Save a copy) so you can return to the original. Ctrl+Z undoes Copilot edits.</li>
+<li><b>Different answers are normal.</b> Your neighbor may get different wording. Compare and keep the best.</li>
+<li><b>Context beats clever wording.</b> You do not need perfect prompts. State the outcome, the data, and the format you want.</li>
+</ul>
+<h3>5. A simple prompt recipe</h3>
+<div class="recipe">
+<div><b>Outcome</b><span>What do you want? "Find the five largest cost variances..."</span></div>
+<div><b>Data context</b><span>Which sheet, columns, period? "...in OpEx_Detail for September (Month Num = 9)..."</span></div>
+<div><b>Rules</b><span>Business logic. "...for costs, a positive variance is unfavorable..."</span></div>
+<div><b>Format</b><span>How to show it. "...as a table sorted largest first."</span></div>
+<div><b>Check</b><span>Ask for traceability. "...and show the rows you used."</span></div>
+</div>
+</section>
+
+
+<section class="card story-card" id="story">
+<h2>Meet Zava Supply Co.</h2>
+<p>Zava Supply Co. is a fictitious distributor of everyday essentials with four business units: <b>Foodservice Packaging</b>, <b>Janitorial &amp; Sanitation</b>, <b>Safety &amp; PPE</b> and <b>Retail Supplies</b>. The reports in your files follow a familiar layout: Sales, Gross Margin, GM %, Op Costs, Op Cost %, PBITA, PBITA % and Sales/Day, with Actual, Budget and Prior Year for the month and year to date.</p>
+<div class="timeline">
+<div><b>Monday</b><span>September close is done. The monthly results pack is ready.</span></div>
+<div><b>Tuesday</b><span>The Q3 forecast update (9+3) replaced the Q2 forecast (6+6).</span></div>
+<div><b>Friday</b><span>Leadership monthly business review: they want to know <i>why</i>, not just <i>what</i>.</span></div>
+</div>
+<p>Last month you spent most of a day copying numbers into slides and writing commentary from scratch. This month you will let Copilot do the heavy lifting, while you bring the judgment.</p>
+<p class="muted">Tip: the files contain a few things worth finding, such as a new customer, a lost customer, cost pressure and a couple of unusual postings. Let Copilot help you find them.</p>
+</section>
+
+<section class="module" id="m1"><div class="module-head"><div class="module-num">Module 1</div><h2>Welcome + AI Quick Win</h2><div class="module-tags"><span>15 minutes</span><span>Interactive</span></div></div><div class="story"><div class="story-label">The story</div><p>Before any training, you want to know: <i>can this thing actually help me?</i> You have never seen this workbook. Let's see how fast Copilot can tell you what matters.</p></div><details class="lab" id="lab-1-1" open><summary><span class="lab-num">1.1</span><span class="lab-title">Ask the workbook what matters</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 10 min</span><span><b>Goal</b> Your first useful answer</span><span><b>Use</b> Sep file &gt; <b>Summary</b> sheet</span><span><b>Level</b> Beginner</span></div>
+<p>Open <b>Zava_Monthly_Results_Sep2026.xlsx</b>, go to the <b>Summary</b> sheet, and open the Copilot pane. Make sure you are in <b>Chat</b> mode.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p1">What are the five most important things I should know about this data?</pre></div>
+<p>Now make Copilot show its work. This is a habit you will use all day.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p2">For each of those five points, show me the exact rows and numbers you used so I can check them.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><p>Wording will vary, but you should see points like these:</p><ul>
+<li>September Sales of about <b>$41.9M</b>, <b>+1.5% vs budget</b> and +5.6% vs prior year.</li>
+<li>PBITA of about <b>$2.1M vs $3.1M budget</b> (roughly <b>-$960K</b>, -31%), despite higher sales.</li>
+<li>Op Costs about <b>$1.0M over budget</b> (+12.7%).</li>
+<li><b>Safety &amp; PPE</b> is the largest shortfall: PBITA about -$779K vs budget, GM % 27.8% vs 30.6%.</li>
+<li><b>Foodservice Packaging</b> sales +12.8% vs budget, yet PBITA is below budget. <b>Retail Supplies</b> PBITA is slightly negative. <b>Janitorial &amp; Sanitation</b> beat budget.</li></ul></div></div>
+<div class="callout tip"><div class="callout-title">Try it your way</div><div>Ask the same question in your own words, or ask for "three things a CFO would ask about". Notice how the answer changes when you change the audience.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="1-1-0"> I opened Copilot in Excel and asked my first question.</label></li><li><label><input type="checkbox" data-key="1-1-1"> I asked Copilot to show its sources and checked at least one number in the sheet.</label></li><li><label><input type="checkbox" data-key="1-1-2"> I can name the business unit with the biggest PBITA shortfall.</label></li></ul></div>
+</div></details></section>
+<section class="module" id="m2"><div class="module-head"><div class="module-num">Module 2</div><h2>Copilot in Excel: Work Smarter</h2><div class="module-tags"><span>30 minutes</span><span>Guided, follow along</span></div></div><div class="story"><div class="story-label">The story</div><p>Leadership saw the PBITA shortfall and asked one question: <i>where did the costs come from?</i> You have 468 rows of operating cost detail by month, business unit and account. Use Copilot as your analyst and your Excel coach.</p></div><details class="lab" id="lab-2-1"><summary><span class="lab-num">2.1</span><span class="lab-title">Find the largest operating cost changes</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 6 min</span><span><b>Goal</b> Rank the variances</span><span><b>Use</b> Sep file &gt; <b>OpEx_Detail</b></span><span><b>Level</b> Beginner</span></div>
+<p>Go to the <b>OpEx_Detail</b> sheet. Notice how the prompt includes the sheet, the period, a business rule and the format.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p3">Using the OpEx_Detail table, show me the 10 largest operating cost variances versus budget for September 2026 (Month Num = 9) by business unit and account. For costs, a positive variance is unfavorable. Show the result as a table sorted by the size of the variance, largest first.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><p>The top of your list should look like this (amounts in $000s, Actual vs Budget):</p>
+<div class="table-wrap"><table><thead><tr><th>Business unit</th><th>Account</th><th>Var vs Budget</th></tr></thead><tbody>
+<tr><td>Safety &amp; PPE</td><td>Bad Debt Expense</td><td class="neg">+398.6</td></tr>
+<tr><td>Foodservice Packaging</td><td>Warehouse Wages - Overtime</td><td class="neg">+245.5</td></tr>
+<tr><td>Foodservice Packaging</td><td>Temporary Labor</td><td class="neg">+168.5</td></tr>
+<tr><td>Retail Supplies</td><td>Marketing &amp; Promotions</td><td class="neg">+108.6</td></tr>
+<tr><td>Foodservice Packaging</td><td>Sales Salaries &amp; Commissions</td><td class="neg">about +96</td></tr>
+</tbody></table></div><p>You will also see a favorable item: Safety &amp; PPE Freight Out &amp; Fuel about -51.</p></div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="2-1-0"> I got a ranked table of variances.</label></li><li><label><input type="checkbox" data-key="2-1-1"> I understand why I told Copilot that positive cost variances are unfavorable.</label></li></ul></div>
+</div></details><details class="lab" id="lab-2-2"><summary><span class="lab-num">2.2</span><span class="lab-title">Ask what is driving the changes</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 7 min</span><span><b>Goal</b> Separate one-time from run-rate</span><span><b>Use</b> Sep file &gt; <b>OpEx_Detail</b>, <b>Customer Sales</b></span><span><b>Level</b> Beginner</span></div>
+<p>A ranked list is a start. A controller wants to know <i>is this a blip or the new normal?</i></p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p4">For the top five unfavorable items from your last answer, look at January to September 2026 in OpEx_Detail and tell me whether each one is a one-time spike, a new run-rate, or a possible timing or posting issue. Explain your reasoning in one sentence each and mention the months you looked at.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p5">Which customer or event in this workbook could explain the Foodservice Packaging overtime and temporary labor increase that starts in July? Check the Customer Sales sheet.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><ul>
+<li><b>Bad Debt (Safety &amp; PPE)</b>: one-time spike in September.</li>
+<li><b>Overtime and Temporary Labor (Foodservice Packaging)</b>: a new run-rate since July, three months in a row.</li>
+<li><b>Marketing (Retail Supplies)</b>: new in September.</li>
+<li>Copilot should connect the July step-up to <b>Harbor Grill Group</b>, a new customer with sales from July and no prior-year sales.</li></ul></div></div>
+<div class="callout warning"><div class="callout-title">Correlation is not explanation</div><div>Copilot can spot that Harbor Grill Group and the overtime both start in July. Only you, or the business, can confirm that onboarding the new customer caused it. Treat these as leads to follow up, not conclusions.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="2-2-0"> I can say which cost items look one-time and which look like a new run-rate.</label></li><li><label><input type="checkbox" data-key="2-2-1"> I used a second sheet (Customer Sales) to find a likely cause.</label></li></ul></div>
+</div></details><details class="lab" id="lab-2-3"><summary><span class="lab-num">2.3</span><span class="lab-title">Let Copilot build it: a column, a PivotTable and a chart</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 8 min</span><span><b>Goal</b> Make changes in the workbook</span><span><b>Use</b> Sep file &gt; <b>OpEx_Detail</b></span><span><b>Level</b> Beginner</span></div>
+<p>Switch to <b>Edit</b> mode (<i>Allow editing</i>). Copilot will now change the workbook. Run these one at a time and look at the result before moving on.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Build a column</span><span class="mode mode-edit">Edit mode</span><button class="copy" type="button" aria-label="Copy prompt: Build a column">Copy</button></div><pre id="p6">Add a column to the OpEx_Detail table called &#x27;Fav/Unfav vs Budget&#x27; that shows &#x27;Unfavorable&#x27; when Var vs Budget $ is greater than zero and &#x27;Favorable&#x27; otherwise.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Build a PivotTable</span><span class="mode mode-edit">Edit mode</span><button class="copy" type="button" aria-label="Copy prompt: Build a PivotTable">Copy</button></div><pre id="p7">Create a PivotTable on a new sheet that shows the sum of Actual 2026 from the OpEx_Detail table, with Business Unit in rows and Month Num in columns, for months 1 to 9.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Build a chart</span><span class="mode mode-edit">Edit mode</span><button class="copy" type="button" aria-label="Copy prompt: Build a chart">Copy</button></div><pre id="p8">Create a line chart on a new sheet that shows Warehouse Wages - Overtime and Temporary Labor for Foodservice Packaging by month from January to September 2026, comparing Actual 2026 with Budget 2026.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div>A new calculated column in the table, a PivotTable on its own sheet, and a chart where the overtime and temporary labor lines jump in July while the budget lines stay flat.</div></div>
+<div class="callout tip"><div class="callout-title">Try Plan mode</div><div>Not sure what Copilot will do? Switch to <b>Plan</b> and paste the PivotTable prompt. Copilot lists its steps first and you approve them. Great for bigger changes.</div></div>
+<div class="callout note"><div class="callout-title">Undo is your friend</div><div>If Copilot did something you did not want, press <b>Ctrl+Z</b> or tell it: "Undo the last change."</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="2-3-0"> I added a calculated column with Copilot.</label></li><li><label><input type="checkbox" data-key="2-3-1"> I created a PivotTable and a chart without building them by hand.</label></li><li><label><input type="checkbox" data-key="2-3-2"> I know when I would use Plan instead of Edit.</label></li></ul></div>
+</div></details><details class="lab" id="lab-2-4"><summary><span class="lab-num">2.4</span><span class="lab-title">Use Copilot as your Excel coach</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 4 min</span><span><b>Goal</b> Understand an existing formula</span><span><b>Use</b> Sep file &gt; <b>GL P&amp;L Detail</b>, <b>Summary</b></span><span><b>Level</b> Beginner</span></div>
+<p>Inherited workbooks are full of formulas nobody remembers writing. Ask Copilot to explain them. Switch back to <b>Chat</b>.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p9">Explain the formula in cell F7 on the GL P&amp;L Detail sheet in plain language. Why does it use ABS and IFERROR?</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p10">On the Summary sheet, how is Sales/Day calculated, and why would a controller look at Sales/Day instead of total Sales when comparing months?</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><ul><li>F7 is the <b>Act vs Bud Var %</b>: (Actual - Budget) / |Budget|. <b>ABS</b> keeps the sign meaningful when the budget is negative (for example returns or rebates). <b>IFERROR</b> shows 0 instead of an error when the budget is zero.</li>
+<li>Sales/Day = Sales / billing days. It removes the effect of months with more or fewer working days (September 2026 has 21 billing days, October has 22).</li></ul></div></div>
+<div class="callout tip"><div class="callout-title">Stretch</div><div>Ask: "Write a formula for a new column on the Summary sheet that shows 'Review' when the absolute Act vs Bud Var % is more than 10%." Then ask Copilot to explain it back to you.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="2-4-0"> I can explain the variance % formula to a colleague.</label></li><li><label><input type="checkbox" data-key="2-4-1"> I know why Sales/Day matters.</label></li></ul></div>
+</div></details><details class="lab" id="lab-2-5"><summary><span class="lab-num">2.5</span><span class="lab-title">Five-minute challenge</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 5 min</span><span><b>Goal</b> Solve it on your own</span><span><b>Use</b> Sep file, any sheet</span><span><b>Level</b> Challenge</span></div>
+<div class="challenge"><div class="challenge-title">Your challenge</div>
+<p><b>Which business unit had the largest drop in PBITA % versus budget in September, and what were the two biggest reasons?</b></p>
+<p>No prompt is provided. Write your own using the recipe: outcome, data context, rules, format, check.</p></div>
+<details class="answer"><summary>Check your answer</summary>
+<p><b>Safety &amp; PPE.</b> PBITA % was about <b>4.1% vs 11.7% budget</b> (-7.6 points). The two biggest reasons:</p>
+<ol><li><b>Gross margin</b>: GM % 27.8% vs 30.6% budget, on lower sales (-$758K vs budget). Customer Sales shows <b>Ridgeline Fabrication</b> down about $656K vs prior year.</li>
+<li><b>Bad debt</b>: a reserve of about $399K over budget in September.</li></ol>
+<p>Did your prompt ask for the reasons with evidence? Compare with your neighbor: which prompt got the better answer, and why?</p>
+</details>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="2-5-0"> I wrote my own prompt without help.</label></li><li><label><input type="checkbox" data-key="2-5-1"> My answer named Safety &amp; PPE and both drivers.</label></li></ul></div>
+</div></details></section>
+<section class="module" id="m3"><div class="module-head"><div class="module-num">Module 3</div><h2>Forecast Changes: Tell the Story</h2><div class="module-tags"><span>30 minutes</span><span>Finance scenario</span></div></div><div class="story"><div class="story-label">The story</div><p>The Q3 forecast (9+3) is in, and full-year PBITA has moved down versus the Q2 forecast (6+6). The CFO wants a short narrative for the leadership meeting: <i>what changed, why, and what are we doing about it?</i> The numbers live in the forecast workbook; the context lives in your head. Together with Copilot, you will turn adjustments into a story.</p></div><details class="lab" id="lab-3-1"><summary><span class="lab-num">3.1</span><span class="lab-title">Compare the prior and current forecast</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 6 min</span><span><b>Goal</b> See the size of the change</span><span><b>Use</b> Forecast file &gt; <b>Overview</b></span><span><b>Level</b> Intermediate</span></div>
+<p>Open <b>Zava_FY26_Forecast_Q3.xlsx</b> and go to <b>Overview</b>.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p11">Compare the Prior FCAST (Q2 6+6) with the Current FCAST (Q3 9+3) on the Overview sheet. For the consolidated business and each business unit, show the change in Sales, Gross Margin, Op Costs and PBITA in a table, in $000s and %. Then tell me in two sentences what stands out.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><div class="table-wrap"><table><thead><tr><th>Consolidated FY2026</th><th>Prior FCAST</th><th>Current FCAST</th><th>Change</th></tr></thead><tbody>
+<tr><td>Sales</td><td>478,399.8</td><td>486,520.4</td><td class="pos">+8,120.6 (+1.7%)</td></tr>
+<tr><td>Gross Margin</td><td>126,633.7</td><td>127,118.3</td><td class="pos">+484.6</td></tr>
+<tr><td>Op Costs</td><td>92,865.4</td><td>96,663.7</td><td class="neg">+3,798.3</td></tr>
+<tr><td>PBITA</td><td>33,768.3</td><td>30,454.6</td><td class="neg">-3,313.7 (-9.8%)</td></tr>
+</tbody></table></div><p>What stands out: sales are up but PBITA is down. <b>Safety &amp; PPE</b> accounts for about -$1.9M of the PBITA change; <b>Foodservice Packaging</b> grows sales by $10.5M yet PBITA falls by $0.66M.</p></div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="3-1-0"> I can state the consolidated PBITA change in one sentence.</label></li><li><label><input type="checkbox" data-key="3-1-1"> I noticed that higher sales did not mean higher profit.</label></li></ul></div>
+</div></details><details class="lab" id="lab-3-2"><summary><span class="lab-num">3.2</span><span class="lab-title">Group the changes by driver</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 7 min</span><span><b>Goal</b> Explain the bridge</span><span><b>Use</b> Forecast file &gt; <b>Adjustments</b></span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p12">Using the Adjustments sheet, group the operational adjustments by Driver Category and by Business Unit. Show the PBITA impact of each group, largest negative first, and confirm the total ties to the PBITA change on the Overview sheet.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p13">Which three individual adjustments have the largest PBITA impact? For each one, explain it in one sentence that a non-finance leader would understand.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><p>PBITA impact by driver category ($000s): <b>Cost Inflation -1,317.5</b>, New Customer -623.5, One-time -585.6, Credit Risk -399.5, Volume -312.8, Promotion -304.7, Lost Business -285.8, Price / Cost +177.6, Cost Saving +338.1, Timing 0. Total <b>-3,313.7</b>, which ties to Overview.</p>
+<p>Largest single items: <b>nitrile glove cost increase not yet passed through</b> (Safety &amp; PPE, -1,317.5), <b>Harbor Grill Group onboarding</b> (Foodservice Packaging, -735.3: $11.1M of new sales at a lower margin, plus overtime and temporary labor), and the <b>Ridgeline Fabrication bad debt reserve</b> (-399.5).</p></div></div>
+<div class="callout tip"><div class="callout-title">Spot the timing item</div><div>ADJ-11 (duplicate July utilities accrual) has zero full-year impact because it reverses in October. Ask Copilot: "Are there any adjustments with no full-year impact, and why would they still matter?"</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="3-2-0"> My grouped total ties to the Overview PBITA change.</label></li><li><label><input type="checkbox" data-key="3-2-1"> I can explain the top three adjustments in plain language.</label></li></ul></div>
+</div></details><details class="lab" id="lab-3-3"><summary><span class="lab-num">3.3</span><span class="lab-title">Draft the management narrative, with your color commentary</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 8 min</span><span><b>Goal</b> A leadership-ready first draft</span><span><b>Use</b> Forecast file &gt; <b>Overview</b>, <b>Adjustments</b></span><span><b>Level</b> Intermediate</span></div>
+<p>The workbook knows the numbers. <b>You</b> know things that are not in the workbook. Add that context to the prompt; this is what turns a generic summary into your story. Edit the text in square brackets with anything you would actually say.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p14">Draft a management-ready narrative explaining the change from the Prior FCAST (Q2 6+6) to the Current FCAST (Q3 9+3) for full-year 2026. Use short sections for Sales, Gross Margin, Op Costs and PBITA. Lead with the consolidated PBITA change, then explain the largest drivers by business unit using the Adjustments sheet. Show amounts in $ millions with one decimal. Include this context that is not in the workbook: [Harbor Grill Group onboarding overtime is expected to end in November. Nitrile price increase letters went to customers on October 15 with a November 1 effective date.] Keep it under 250 words, factual and professional.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div>A structured narrative that opens with PBITA down about $3.3M (-9.8%) to about $30.5M, explains that sales are up $8.1M mainly from Harbor Grill Group, and that margin pressure in Safety &amp; PPE (nitrile costs), new-customer onboarding costs, one-time items and the Ridgeline Fabrication reserve more than offset it. Your color commentary should appear in the right sections.</div></div>
+<div class="callout important"><div class="callout-title">Your judgment is the value</div><div>Read every sentence. Is the emphasis right? Is anything missing that leadership will ask about? Would you be comfortable presenting this? If not, tell Copilot what to change, for example: "Make Safety &amp; PPE the lead story" or "Remove the word significant."</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="3-3-0"> I added at least one piece of context that is not in the workbook.</label></li><li><label><input type="checkbox" data-key="3-3-1"> I asked for at least one revision.</label></li></ul></div>
+</div></details><details class="lab" id="lab-3-4"><summary><span class="lab-num">3.4</span><span class="lab-title">Refine it into three executive bullets</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 4 min</span><span><b>Goal</b> Say it in 30 seconds</span><span><b>Use</b> Copilot chat</span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p15">Turn that narrative into three executive bullets of no more than 25 words each. Bullet 1: the headline PBITA change. Bullet 2: the biggest risk. Bullet 3: what we are doing about it.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p16">Using the R&amp;Os sheet, add one sentence on the risks and opportunities that are not yet in the forecast, using the weighted impact.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div>Three crisp bullets, plus a sentence noting a net weighted risk of about <b>-$0.14M</b> (unweighted about -$0.38M) not yet included in the forecast, with nitrile pass-through timing and Ridgeline Fabrication as the main risks.</div></div>
+<div class="callout tip"><div class="callout-title">Try a different audience</div><div>Ask for the same message "as a two-minute verbal update for the CFO" or "for a business unit general manager who is not in finance".</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="3-4-0"> I have three bullets I would actually use.</label></li><li><label><input type="checkbox" data-key="3-4-1"> I included what is not yet in the forecast.</label></li></ul></div>
+</div></details><details class="lab" id="lab-3-5"><summary><span class="lab-num">3.5</span><span class="lab-title">Validate it and own it</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 5 min</span><span><b>Goal</b> Build trust in the output</span><span><b>Use</b> Forecast file</span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p17">Check your narrative and bullets against the workbook. List every number you used, the sheet and cell it came from, and flag anything you inferred or rounded rather than read directly.</pre></div>
+<div class="discuss"><div class="callout-title">Discuss with your table</div><ul>
+<li>Which numbers did you verify, and how?</li>
+<li>What context was missing that only you could add?</li>
+<li>Where does human judgment remain essential: emphasis, tone, what not to say?</li></ul></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="3-5-0"> I traced at least three numbers back to their cells.</label></li><li><label><input type="checkbox" data-key="3-5-1"> I know which parts of the narrative came from me, not the workbook.</label></li></ul></div>
+</div></details></section>
+<section class="module" id="m4"><div class="module-head"><div class="module-num">Module 4</div><h2>Actual vs Budget: Find the Drivers</h2><div class="module-tags"><span>25 minutes</span><span>Individual challenge</span></div></div><div class="story"><div class="story-label">The story</div><p>Now it is your turn to run the September review, the way you will every month. The story is the same as the forecast: explain your Sales, Gross Margin and Op Costs. Only the comparison changes: actual vs budget and actual vs prior year. Work on your own, then compare with others.</p></div><details class="lab" id="lab-4-1"><summary><span class="lab-num">4.1</span><span class="lab-title">Largest favorable and unfavorable variances</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 5 min</span><span><b>Goal</b> Know where to look</span><span><b>Use</b> Sep file &gt; <b>Summary</b></span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p18">On the Summary sheet, list the largest favorable and unfavorable variances versus budget for September 2026 by business unit for Sales, Gross Margin, Op Costs and PBITA. For Op Costs, a positive variance is unfavorable. Show the top three favorable and top three unfavorable in a table with Var $ and Var %.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><p>Unfavorable: Safety &amp; PPE PBITA <b>-778.8</b>, Foodservice Packaging Op Costs <b>+636.1</b>, Safety &amp; PPE Sales <b>-758.4</b> (and Gross Margin -490.9). Favorable: Foodservice Packaging Sales <b>+1,891.0</b>, Foodservice Packaging Gross Margin <b>+433.8</b>, Janitorial &amp; Sanitation PBITA <b>+239.1</b>.</p></div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="4-1-0"> I know the top favorable and unfavorable items.</label></li><li><label><input type="checkbox" data-key="4-1-1"> My Op Costs signs are interpreted correctly.</label></li></ul></div>
+</div></details><details class="lab" id="lab-4-2"><summary><span class="lab-num">4.2</span><span class="lab-title">Spot unusual expense movements</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 7 min</span><span><b>Goal</b> Catch issues before sign-off</span><span><b>Use</b> Sep file &gt; <b>OpEx_Detail</b>, <b>Summary</b></span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p19">Look at OpEx_Detail from January to September 2026 and find unusual expense movements: any month where an account is more than 50% above its budget or above the same month last year. For each one, tell me whether it looks like a one-time item, a possible posting error, or a new run-rate, and suggest one follow-up question I should ask the business.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Follow-up prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Follow-up prompt">Copy</button></div><pre id="p20">Janitorial &amp; Sanitation gross margin % jumped in September. Based on this workbook, can you explain why? If the workbook does not show the reason, say so.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><ul><li><b>Jul</b> Safety &amp; PPE Utilities about 152.5 vs 80.6 budget: looks like a <b>possible duplicate posting</b>.</li>
+<li><b>Aug</b> Janitorial &amp; Sanitation Professional Fees about 302.2 vs 36.3: <b>one-time</b> (consulting).</li>
+<li><b>Jul-Sep</b> Foodservice Packaging Overtime and Temporary Labor: <b>new run-rate</b>.</li>
+<li><b>Sep</b> Safety &amp; PPE Bad Debt and Retail Supplies Marketing: one-time or new.</li>
+<li>For the Janitorial margin (31.0% vs 28.4% budget), a good answer says the workbook does <b>not</b> explain it. You would ask the business unit. (In the forecast file, ADJ-05 shows it was a one-time vendor rebate true-up of about $250K.)</li></ul></div></div>
+<div class="callout warning"><div class="callout-title">Watch for confident guesses</div><div>If Copilot gives a reason that is not in the data, ask: "Where in the workbook did you find that?" A good analyst, human or AI, says "I don't know" when the data doesn't say.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="4-2-0"> I found the possible duplicate posting.</label></li><li><label><input type="checkbox" data-key="4-2-1"> I noticed when Copilot could not explain something from the data.</label></li></ul></div>
+</div></details><details class="lab" id="lab-4-3"><summary><span class="lab-num">4.3</span><span class="lab-title">Explain sales by customer</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 5 min</span><span><b>Goal</b> Move from 'sales were down X%' to 'because of these customers'</span><span><b>Use</b> Sep file &gt; <b>Customer Sales</b></span><span><b>Level</b> Intermediate</span></div>
+<p>Budgets are not set by customer, but because the budget is built as prior year plus growth, the change vs prior year is a good proxy for the budget drivers.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p21">Using the Customer Sales sheet, explain which customers drove the change in sales versus prior year in September 2026 for each business unit. Our budget is built as prior year plus growth, so treat the change vs prior year as a proxy for the budget variance. Show the top three customers up and the top three down in a table, then write one sentence per business unit.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><p>Up: <b>Harbor Grill Group +1,850.0</b> (new customer), <b>Brightway Hospitals +255.0</b>, Metro Stadium Concessions +66.1. Down: <b>Ridgeline Fabrication -656.2</b>, <b>Corner Mart -411.0</b>, Tri-County School District -60.9.</p></div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="4-3-0"> I can name the customers behind each business unit's sales story.</label></li></ul></div>
+</div></details><details class="lab" id="lab-4-4"><summary><span class="lab-num">4.4</span><span class="lab-title">Write the monthly business review commentary</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 8 min</span><span><b>Goal</b> Your MBR draft, done</span><span><b>Use</b> Sep file &gt; <b>Summary</b>, <b>OpEx_Detail</b>, <b>Customer Sales</b>, <b>Commentary</b></span><span><b>Level</b> Intermediate</span></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p22">Using the Summary, OpEx_Detail and Customer Sales sheets, draft September 2026 monthly business review commentary for the consolidated business. Structure: a one-line headline; then Sales, Gross Margin, Op Costs and PBITA sections; then a list of items needing follow-up with a suggested owner. Show amounts in $000s with variance vs budget and vs prior year. Name the customers behind sales changes. Keep one-time items separate from run-rate items. Under 300 words.</pre></div>
+<p>Happy with it? Switch to <b>Edit</b> and put it in the workbook:</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Put it in the workbook</span><span class="mode mode-edit">Edit mode</span><button class="copy" type="button" aria-label="Copy prompt: Put it in the workbook">Copy</button></div><pre id="p23">Put each section of that commentary into the Commentary sheet, column B (Copilot draft), rows 6 to 11, matching the section names in column A.</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div>A complete MBR draft in the Commentary sheet. Your headline should land on: sales ahead of budget, PBITA about $960K below budget, driven by Safety &amp; PPE margin and bad debt, Foodservice Packaging onboarding costs, and Retail Supplies promotions and the Corner Mart loss.</div></div>
+<div class="discuss"><div class="callout-title">Share and compare</div><p>Two or three volunteers share their commentary. What instructions in the prompt led to the better answers?</p></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="4-4-0"> My commentary is in the Commentary sheet.</label></li><li><label><input type="checkbox" data-key="4-4-1"> I marked column D (numbers checked) only after I checked them.</label></li></ul></div>
+</div></details><details class="lab" id="lab-4-5"><summary><span class="lab-num">Side quest</span><span class="lab-title">Try it on your own report</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> Optional</span><span><b>Goal</b> Make it real</span><span><b>Use</b> A copy of a report you own</span><span><b>Level</b> Any</span></div>
+<p>If you finish early, open a copy of one of your own monthly reports from OneDrive and reuse a prompt from this module. Only use data you are allowed to work with, and follow Bunzl's data policies.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p24">What are the five most important changes in this report versus budget and prior year? Show me the rows you used.</pre></div>
+<div class="callout tip"><div class="callout-title">Make it fit</div><div>Replace sheet and column names in any prompt from this guide with the names in your own report. The more context you give, the better the answer.</div></div>
+</div></details></section>
+<section class="module" id="m5"><div class="module-head"><div class="module-num">Module 5</div><h2>From Prompt to Repeatable Process</h2><div class="module-tags"><span>20 minutes</span><span>Skills, see one and do one</span></div></div><div class="story"><div class="story-label">The story</div><p>You just built a great September review. Next month you would have to remember every prompt and every rule again. Instead, capture the recipe once as a <b>skill</b>, a natural-language macro, and run it every month-end. You do not need to be technical: describe what you want, and let Copilot do most of the writing.</p></div><details class="lab" id="lab-5-1"><summary><span class="lab-num">5.1</span><span class="lab-title">Write down your recipe</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 3 min</span><span><b>Goal</b> Know what 'good' looks like</span><span><b>Use</b> Your notes from Modules 3 and 4</span><span><b>Level</b> Intermediate</span></div>
+<p>Look back at what you just did. A strong monthly controller review followed these steps:</p>
+<ol class="steps"><li>Identify variances</li><li>Separate key drivers</li><li>Highlight anomalies</li><li>Flag follow-up items</li><li>Draft commentary</li><li>Format an executive summary</li></ol>
+<p>Also note the <b>rules</b> you had to repeat: the sign convention for costs, using prior year as the customer budget proxy, and "say so if the data doesn't explain it". Those rules belong in the skill.</p>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="5-1-0"> I can list the six steps and at least two rules.</label></li></ul></div></div></details><details class="lab" id="lab-5-2"><summary><span class="lab-num">5.2</span><span class="lab-title">Create the Monthly Controller Review skill</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 6 min</span><span><b>Goal</b> Capture the recipe once</span><span><b>Use</b> Excel for the web, Copilot pane</span><span><b>Level</b> Intermediate</span></div>
+<p><b>Option A: let Copilot write it.</b> In the Sep file, ask:</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p25">Based on the analysis we just did, write reusable instructions for a skill called &#x27;Monthly Controller Review&#x27; that I can run every month on a workbook with the same structure (Summary, GL P&amp;L Detail, OpEx_Detail, Customer Sales). Include the purpose, inputs, rules (sign convention, materiality threshold, how to treat customer budget), step-by-step instructions, the output format, and what it must not do.</pre></div>
+<p><b>Option B: start from ours.</b> Copy this ready-made version and adjust it to your taste.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Monthly Controller Review skill instructions</span><button class="copy" type="button" aria-label="Copy prompt: Monthly Controller Review skill instructions">Copy</button></div><pre id="p26">Monthly Controller Review
+
+Purpose: Produce a consistent monthly controller review for a monthly results workbook with sheets named Summary, GL P&amp;L Detail, OpEx_Detail and Customer Sales. Amounts are in USD thousands.
+
+Inputs: the month to review (for example &quot;August 2026&quot;). If not given, use the latest month in the Summary sheet.
+
+Rules:
+- For Sales, Gross Margin and PBITA a positive variance is favorable. For Cost of Sales and Op Costs a positive variance is unfavorable.
+- Material = absolute variance of at least $50K and at least 5%.
+- Budget is prior year plus growth; there is no customer budget. Use change vs prior year by customer as the proxy for budget drivers.
+- Only state reasons that are supported by the workbook. If the reason is not in the data, write &quot;Reason not in data - confirm with business unit&quot;.
+- Do not change any numbers in the workbook.
+
+Steps:
+1. Variances: list material variances vs budget and vs prior year for Sales, Gross Margin, GM %, Op Costs and PBITA, consolidated and by business unit.
+2. Key drivers: for each business unit, separate drivers into Sales (customers from Customer Sales), Gross Margin and Op Costs (accounts from OpEx_Detail).
+3. Anomalies: from OpEx_Detail, flag any account-month more than 50% above budget or prior year and classify it as one-time, possible posting error, or new run-rate.
+4. Follow-up: list open questions with a suggested owner (business unit controller, operations, credit, purchasing).
+5. Commentary: draft Sales, Gross Margin, Op Costs and PBITA commentary in $000s with variance vs budget and vs prior year.
+6. Executive summary: three bullets, maximum 25 words each.
+
+Output format:
+- Section headings in this order: Headline, Variances table, Drivers by business unit, Anomalies, Follow-ups, Commentary, Executive summary.
+- End with a &quot;Numbers to verify&quot; list showing each figure used and the sheet it came from.</pre></div>
+<p><b>Save it as a skill.</b> In the Copilot pane, select <b>+</b> in the chat box and look for <b>Plugins and skills</b>. If you can create a custom skill, name it <i>Monthly Controller Review</i> and paste the instructions.</p>
+<div class="callout note"><div class="callout-title">Don't see the option?</div><div>Menus are evolving and may differ by version, which is one reason we are using Excel for the web today. If skills are not available to you yet, save the instructions in a Word document or OneNote page and paste them at the start of your chat. You get the same consistent result.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="5-2-0"> I have Monthly Controller Review instructions saved as a skill or in a document.</label></li></ul></div>
+</div></details><details class="lab" id="lab-5-3"><summary><span class="lab-num">5.3</span><span class="lab-title">Run it on a second dataset</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 6 min</span><span><b>Goal</b> Prove it is repeatable</span><span><b>Use</b> <b>Zava_Monthly_Results_Aug2026.xlsx</b></span><span><b>Level</b> Intermediate</span></div>
+<p>Open the <b>August</b> file. Same layout, different month, different story. Run your skill:</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">If you saved a skill</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: If you saved a skill">Copy</button></div><pre id="p27">Run the Monthly Controller Review for August 2026.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">If you saved the instructions in a document</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: If you saved the instructions in a document">Copy</button></div><pre id="p28">Follow these instructions for August 2026 on this workbook: [paste your Monthly Controller Review instructions here]</pre></div>
+<div class="callout expect"><div class="callout-title">What to expect</div><div><ul><li>Headline: PBITA about <b>$1.99M vs $3.19M budget</b> (about -$1.20M, -37.7%); sales about $679K below budget.</li>
+<li>Safety &amp; PPE sales about -$1.58M vs budget: <b>Ridgeline Fabrication</b> (-$676K vs PY) and the <b>Summit Steelworks</b> shutdown (-$548K vs PY).</li>
+<li>Anomaly: Janitorial &amp; Sanitation <b>Professional Fees</b> about +$266K vs budget (one-time).</li>
+<li>Foodservice Packaging overtime and temporary labor about +$439K vs budget combined; Corner Mart sales about -$400K vs PY.</li>
+<li>The same section headings, in the same order, as your September review.</li></ul></div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="5-3-0"> The August output follows the same structure as September.</label></li><li><label><input type="checkbox" data-key="5-3-1"> I checked at least two numbers against the August file.</label></li></ul></div>
+</div></details><details class="lab" id="lab-5-4"><summary><span class="lab-num">5.4</span><span class="lab-title">Refine the skill</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 4 min</span><span><b>Goal</b> Make it better every month</span><span><b>Use</b> Copilot chat</span><span><b>Level</b> Intermediate</span></div>
+<p>Did the skill do exactly what you expected? If not, tell Copilot what happened and what you wanted, and let it update the instructions.</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p29">The Monthly Controller Review did [what it did], but I expected [what you wanted]. Update the skill instructions so that it always [your rule, for example: lists one-time items in their own section / uses a $50K and 5% materiality threshold / ends with three executive bullets]. Show me the full updated instructions.</pre></div>
+<div class="callout tip"><div class="callout-title">Think like a process owner</div><div>Run, review, refine. Each month-end the skill gets a little better, and everyone on the team gets the same quality and format.</div></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="5-4-0"> I made at least one improvement to my skill.</label></li></ul></div>
+</div></details><details class="lab" id="lab-5-5"><summary><span class="lab-num">Bonus</span><span class="lab-title">From commentary to slides in PowerPoint</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> Optional</span><span><b>Goal</b> Skip the copy-and-paste</span><span><b>Use</b> Copilot in PowerPoint</span><span><b>Level</b> Intermediate</span></div>
+<p>Leadership still wants slides. Copy your final commentary, open a new presentation in PowerPoint, and ask Copilot:</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p30">Create a four-slide monthly business review for Zava Supply Co. for September 2026 using the commentary below. Slide 1: headline and three executive bullets. Slide 2: sales drivers by business unit and customer. Slide 3: gross margin and operating cost drivers. Slide 4: follow-up items with owners. Keep the text concise.
+
+[paste your commentary here]</pre></div>
+<div class="callout note"><div class="callout-title">Same idea, other apps</div><div>Reusable instructions and skills are not just for Excel. The same pattern works for leadership presentations in PowerPoint.</div></div>
+</div></details></section>
+<section class="module" id="m6"><div class="module-head"><div class="module-num">Module 6</div><h2>Automate My Month-End</h2><div class="module-tags"><span>15 minutes</span><span>Small-group activity</span></div></div><div class="story"><div class="story-label">The story</div><p>Think about your last month-end. Where did you copy data, compare numbers, find variances, reformat, draft commentary, or repeat the same steps as last month? Those are your best candidates for Copilot.</p></div><details class="lab" id="lab-6-1"><summary><span class="lab-num">6.1</span><span class="lab-title">Build your month-end backlog</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 15 min</span><span><b>Goal</b> One real, high-value candidate per group</span><span><b>Use</b> <b>Automate_My_Month_End_Worksheet.xlsx</b></span><span><b>Level</b> Any</span></div>
+<ol>
+<li><b>On your own (5 min):</b> in the <b>Task Inventory</b> sheet, list two or three tasks. Two example rows show you how. Fill in frequency, hours, inputs, manual steps, expected output, and where human judgment is required.</li>
+<li><b>Score it:</b> choose H/M/L for standardization potential and data readiness. The <b>Priority score</b> calculates automatically.</li>
+<li><b>As a group (7 min):</b> pick one task. Agree on the input, the manual steps, the expected output and the judgment points.</li>
+<li><b>Share (3 min):</b> one person per group shares the candidate process.</li>
+</ol>
+<p>Stuck for ideas? Ask Copilot Chat (in the Microsoft 365 Copilot app or in Excel):</p>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">Try this prompt</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: Try this prompt">Copy</button></div><pre id="p31">I am a finance controller at a distribution company. Here are the steps I do every month-end: [paste or describe your steps]. Which steps are good candidates for Copilot in Excel, which would benefit from a reusable skill, and which still need human judgment? Answer in a table with columns: Step, Copilot approach (Chat, Plan, Edit or Skill), estimated time saved, and what I must check.</pre></div>
+<div class="prompt"><div class="prompt-head"><span class="prompt-label">In the worksheet</span><span class="mode mode-chat">Chat mode</span><button class="copy" type="button" aria-label="Copy prompt: In the worksheet">Copy</button></div><pre id="p32">Sort the Task Inventory by Priority score, largest first, and summarize the top three candidates in two sentences each, including the main risk to check.</pre></div>
+<div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="6-1-0"> I listed at least two real tasks.</label></li><li><label><input type="checkbox" data-key="6-1-1"> My group chose one candidate process and shared it.</label></li></ul></div>
+</div></details></section>
+<section class="module" id="m7"><div class="module-head"><div class="module-num">Module 7</div><h2>Crawl, Walk, Run</h2><div class="module-tags"><span>5 minutes</span><span>Wrap-up</span></div></div><div class="story"><div class="story-label">The story</div><p>You have gone from a single question to a repeatable monthly process in one session. Here is where that fits, and your next step.</p></div><details class="lab" id="lab-7-1"><summary><span class="lab-num">7.1</span><span class="lab-title">Your path and your commitment</span></summary><div class="lab-body"><div class="meta"><span><b>Time</b> 5 min</span><span><b>Goal</b> One task, next cycle</span><span><b>Use</b> <b>Automate_My_Month_End_Worksheet.xlsx</b> &gt; <b>My Commitment</b></span><span><b>Level</b> Any</span></div>
+<div class="cwr">
+<div class="cwr-step crawl"><div class="cwr-name">Crawl</div><p>Ask questions, understand formulas, analyze data, find variances and draft commentary.</p><small>You did this today.</small></div>
+<div class="cwr-step walk"><div class="cwr-name">Walk</div><p>Standardize forecast commentary, actual vs budget reviews, variance analysis and other recurring workflows with skills.</p><small>Start next month-end.</small></div>
+<div class="cwr-step run"><div class="cwr-name">Run</div><p>Connect trusted enterprise data and progressively automate collection, analysis and cross-business reporting.</p><small>A future phase.</small></div>
+</div>
+<h3>Your commitment</h3>
+<p>Open the <b>My Commitment</b> sheet and answer the eight short questions. Pick <b>one task</b> you will try with Copilot during the next reporting cycle, the prompt or skill you will start with, and how you will check the result.</p>
+<div class="callout tip"><div class="callout-title">Keep this guide</div><div>Bookmark this page. Every prompt is here when you need it, and you can download the practice files again at any time.</div></div><div class="selfcheck"><div class="callout-title">Self-check</div><ul><li><label><input type="checkbox" data-key="7-1-0"> I wrote down one task, one prompt and one way to check the output.</label></li><li><label><input type="checkbox" data-key="7-1-1"> I know when I will review how it went.</label></li></ul></div></div></details></section>
+
+<section class="card" id="reference">
+<h2>Reference</h2>
+<h3>Quick prompt library</h3>
+<div class="table-wrap"><table class="lib"><thead><tr><th>When you want to...</th><th>Start with...</th></tr></thead><tbody>
+<tr><td>Get oriented in a new workbook</td><td>"What are the five most important things I should know about this data?"</td></tr>
+<tr><td>Rank variances</td><td>"Show the 10 largest variances vs budget for [month] in [sheet]. For costs, positive is unfavorable. Table, largest first."</td></tr>
+<tr><td>Separate blips from trends</td><td>"For each item, is it one-time, a new run-rate, or a possible posting issue? Mention the months you looked at."</td></tr>
+<tr><td>Explain a formula</td><td>"Explain the formula in [cell] in plain language."</td></tr>
+<tr><td>Build something</td><td>(Edit) "Add a column / create a PivotTable / create a chart that..."</td></tr>
+<tr><td>Draft commentary</td><td>"Draft [audience] commentary for Sales, Gross Margin, Op Costs and PBITA. Include this context: [...]. Under [N] words."</td></tr>
+<tr><td>Make it executive</td><td>"Turn this into three bullets of no more than 25 words each."</td></tr>
+<tr><td>Check the work</td><td>"List every number you used and the sheet and cell it came from. Flag anything inferred."</td></tr>
+</tbody></table></div>
+<h3>Troubleshooting</h3>
+<div class="faq">
+<details><summary>I don't see the Copilot button</summary><p>Make sure the file is saved in OneDrive or SharePoint and AutoSave is on. Try Excel for the web (<code>excel.new</code>) and make sure you are signed in with your work account.</p></details>
+<details><summary>I don't see Plugins and skills in desktop Excel</summary><p>Desktop Excel updates on your company's schedule, so newer options can appear in Excel for the web first. Use Excel for the web, or use the instructions-in-a-document fallback from Lab 5.2.</p></details>
+<details><summary>Copilot says it can't find the data</summary><p>Name the sheet and the columns in your prompt. Copilot works best with data formatted as an Excel table (Home &gt; Format as Table). Most sheets in the workshop files are already tables.</p></details>
+<details><summary>My answer is different from my neighbor's</summary><p>That is normal. Generative AI can phrase and organize answers differently each time. Compare the substance, check the numbers, and keep the better prompt.</p></details>
+<details><summary>Copilot changed something I didn't want</summary><p>Press Ctrl+Z, or ask Copilot to undo the last change. Use Plan mode when you want to approve steps first.</p></details>
+</div>
+<h3>Glossary</h3>
+<div class="glossary">
+<div><b>PBITA</b><span>Profit before interest, tax and amortization. Here: Gross Margin minus Op Costs.</span></div>
+<div><b>GM %</b><span>Gross Margin as a percentage of Sales.</span></div>
+<div><b>Op Costs / Op Cost %</b><span>Warehouse &amp; Delivery + Selling + G&amp;A, and that total as a percentage of Sales.</span></div>
+<div><b>Sales/Day</b><span>Sales divided by billing days, so months of different lengths compare fairly.</span></div>
+<div><b>FCAST 6+6 / 9+3</b><span>6 months actual + 6 months forecast (Q2 update); 9 actual + 3 forecast (Q3 update).</span></div>
+<div><b>Operational Adjustments</b><span>The items that move the prior forecast to the current forecast.</span></div>
+<div><b>R&amp;Os</b><span>Risks and opportunities not yet included in the forecast.</span></div>
+<div><b>pts</b><span>Percentage points: the difference between two percentages.</span></div>
+</div>
+<p class="muted small">Zava Supply Co. and every customer, supplier and number in this guide and the workshop files are fictitious and were created for training purposes only.</p>
+</section>
+
+</main>
+</div>
+<footer>Copilot for Finance Controllers &middot; Hands-on Lab Guide &middot; Prepared by Microsoft for Bunzl &middot; All workshop data is fictitious.</footer>
+<script>
+(function(){
+  // copy buttons
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.closest('.prompt').querySelector('pre').innerText;
+      var done=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)};
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done()})}else{fallback(t);done()}
+    });
+  });
+  function fallback(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a)}
+  // nav active state
+  var links={};document.querySelectorAll('nav.side a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+  function setActive(id){Object.keys(links).forEach(function(k){links[k].classList.toggle('active',k===id)});
+    var a=links[id],n=document.getElementById('sideNav');if(a&&n&&n.scrollHeight>n.clientHeight){var at=a.getBoundingClientRect().top-n.getBoundingClientRect().top+n.scrollTop;if(at<n.scrollTop+40||at>n.scrollTop+n.clientHeight-60){n.scrollTop=at-n.clientHeight/2}}}
+  var targets=Array.prototype.slice.call(document.querySelectorAll('section[id],details.lab[id]'));
+  var lock=0,ticking=false;
+  function spy(){ticking=false;if(Date.now()<lock)return;var cur=null;for(var i=0;i<targets.length;i++){if(targets[i].getBoundingClientRect().top<=140)cur=targets[i].id;else break}
+    if(!cur&&targets.length)cur=targets[0].id;setActive(cur)}
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(spy)}},{passive:true});
+  spy();
+  document.querySelectorAll('details.lab').forEach(function(d){d.addEventListener('toggle',function(){if(d.open){lock=Date.now()+700;setActive(d.id)}})});
+  // opening a lab from nav
+  document.querySelectorAll('nav.side a').forEach(function(a){a.addEventListener('click',function(){var el=document.getElementById(a.getAttribute('href').slice(1));if(el&&el.tagName==='DETAILS')el.open=true;lock=Date.now()+1200;setActive(el?el.id:'');var n=document.querySelector('nav.side');if(window.innerWidth<=960)n.classList.remove('open')})});
+  if(location.hash){var el=document.getElementById(location.hash.slice(1));if(el){if(el.tagName==='DETAILS')el.open=true;setTimeout(function(){el.scrollIntoView();setActive(el.id)},60)}}
+  // expand / collapse
+  document.getElementById('expandAll').addEventListener('click',function(){document.querySelectorAll('details.lab').forEach(function(d){d.open=true})});
+  document.getElementById('collapseAll').addEventListener('click',function(){document.querySelectorAll('details.lab').forEach(function(d){d.open=false})});
+  document.getElementById('menuBtn').addEventListener('click',function(){var n=document.querySelector('nav.side');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))});
+  // self-check progress (saved in this browser only)
+  var KEY='zava-fc-lab-v1',state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  var boxes=document.querySelectorAll('.selfcheck input');
+  function refresh(){var n=0;boxes.forEach(function(b){if(b.checked)n++});var pct=boxes.length?Math.round(n*100/boxes.length):0;
+    document.getElementById('progBar').style.width=pct+'%';document.getElementById('progTxt').textContent=n+' of '+boxes.length+' self-checks complete';
+    document.querySelectorAll('details.lab').forEach(function(d){var bs=d.querySelectorAll('.selfcheck input');if(!bs.length)return;var all=Array.prototype.every.call(bs,function(b){return b.checked});if(links[d.id])links[d.id].classList.toggle('done',all)})}
+  boxes.forEach(function(b){b.checked=!!state[b.dataset.key];b.addEventListener('change',function(){state[b.dataset.key]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}refresh()})});
+  document.getElementById('resetProg').addEventListener('click',function(){state={};try{localStorage.removeItem(KEY)}catch(e){}boxes.forEach(function(b){b.checked=false});refresh()});
+  refresh();
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true})});
+})();
+</script>
+</body>
+</html>
