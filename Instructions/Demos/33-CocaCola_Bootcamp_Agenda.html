@@ -1,0 +1,606 @@
+---
+demo:
+  title: 'Coca-Cola · Bootcamp Copilot (Bepensa) - Agenda'
+layout: none
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coca-Cola | Bootcamp Copilot</title>
+  <style>
+    :root {
+      --bg: #05070f;
+      --bg-soft: #0c1224;
+      --card: rgba(14, 22, 44, 0.72);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #e9efff;
+      --muted: #a8b6d6;
+      --brand-red: #f40009;
+      --brand-blue: #0078d4;
+      --brand-cyan: #35d4ff;
+      --ok: #6ef8c4;
+      --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: "Segoe UI", Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
+    a { color: #9ed5ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(244, 0, 9, 0.3), transparent 60%),
+        radial-gradient(800px 500px at 100% 0%, rgba(0, 120, 212, 0.28), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, rgba(53, 212, 255, 0.18), transparent 58%),
+        linear-gradient(180deg, #05070f 0%, #080d1d 50%, #05070f 100%);
+      overflow: hidden;
+    }
+
+    .bg::before, .bg::after {
+      content: "";
+      position: absolute;
+      width: 150vmax;
+      height: 150vmax;
+      left: -25vmax;
+      top: -60vmax;
+      border-radius: 43%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 65%);
+      animation: swirl 26s linear infinite;
+      transform-origin: 50% 50%;
+    }
+
+    .bg::after {
+      top: -70vmax;
+      left: -10vmax;
+      opacity: 0.55;
+      animation-duration: 34s;
+      animation-direction: reverse;
+    }
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.78;
+    }
+
+    @keyframes swirl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .wrap {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 42px 0 64px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(19, 30, 61, 0.82), rgba(10, 16, 34, 0.86));
+      box-shadow: var(--shadow);
+      padding: 34px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -120px;
+      top: -180px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, rgba(244,0,9,0.45), rgba(0,120,212,0.22), rgba(53,212,255,0.22), rgba(244,0,9,0.45));
+      filter: blur(18px);
+      animation: pulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.94) rotate(0deg); opacity: 0.78; }
+      100% { transform: scale(1.08) rotate(22deg); opacity: 1; }
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      color: #d7e2ff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.08;
+      letter-spacing: .2px;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+    }
+
+    .logo-stage {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+      position: relative;
+    }
+
+    #logo-points {
+      display: block;
+      width: 100%;
+      height: 260px;
+    }
+
+    .logo-caption {
+      margin: 0;
+      padding: 8px 12px 12px;
+      color: #b4c6eb;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .section {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card);
+      backdrop-filter: blur(7px);
+      box-shadow: var(--shadow);
+      animation: rise .6s ease forwards;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .section:nth-of-type(2) { animation-delay: .08s; }
+    .section:nth-of-type(3) { animation-delay: .16s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-head {
+      padding: 16px 18px;
+      background: linear-gradient(90deg, rgba(244, 0, 9, 0.18), rgba(0, 120, 212, 0.08));
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .section-head .meta {
+      color: var(--ok);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: #c7d4f6;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    td { color: #eef3ff; }
+    .hora { width: 160px; color: #d5e1ff; }
+    .duracion { width: 140px; color: #d5e1ff; }
+    .modulo a { font-weight: 600; }
+    .modulo small { display: block; color: var(--muted); margin-top: 4px; font-size: 12px; }
+
+    .js-reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .js-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      border-left: 3px solid rgba(53, 212, 255, 0.65);
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      color: #90a3cc;
+      font-size: 12px;
+    }
+
+    @media (max-width: 720px) {
+      th:nth-child(3), td:nth-child(3) { width: 110px; }
+      .hora { width: 130px; }
+      th, td { padding: 12px 10px; }
+      .hero { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <main class="wrap">
+    <header class="hero">
+      <div class="badges">
+        <span class="badge">Microsoft</span>
+        <span class="badge">Coca-Cola</span>
+        <span class="badge">Bottler Buzz</span>
+      </div>
+      <h1>Bootcamp Copilot para Coca-Cola</h1>
+      <p class="subtitle" id="typing-subtitle" data-text="Agenda oficial en español para las sesiones de lunes y martes, con acceso directo a cada módulo."></p>
+      <div class="logo-stage" aria-hidden="true">
+        <canvas id="logo-points"></canvas>
+        <p class="logo-caption">Animación de puntos: Microsoft ↔ Coca-Cola</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Día 1 · Lunes 9 de noviembre · Bootcamp de Finanzas</h2>
+        <span class="meta">Total sugerido: 5 horas</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Módulo</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hora">9:00</td>
+            <td class="modulo">
+              Microsoft AI Framework
+            </td>
+            <td class="duracion">60 min</td>
+          </tr>
+          <tr>
+            <td class="hora">10:00</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/01.02.%20Collaboration%20Framework/Collaboration_Framework_Copilot_Bepensa.html" target="_blank" rel="noopener noreferrer">Collaboration Framework</a>
+            </td>
+            <td class="duracion">60 min</td>
+          </tr>
+          <tr>
+            <td class="hora">11:00</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/01.03%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_Finanzas.html" target="_blank" rel="noopener noreferrer">Art of Prompting: del prompt a la skill</a>
+            </td>
+            <td class="duracion">30 min</td>
+          </tr>
+          <tr>
+            <td class="hora">11:30</td>
+            <td class="modulo">Break</td>
+            <td class="duracion">30 min</td>
+          </tr>
+          <tr>
+            <td class="hora">12:00</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/01.04.%20Experiencia%20interactiva%20del%20area/Bepensa_Finanzas_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Experiencia interactiva del área (Finanzas)</a>
+            </td>
+            <td class="duracion">120 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Día 2 · Martes 10 de noviembre · Sesión general y agentes</h2>
+        <span class="meta">Total sugerido: 3 horas</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Módulo</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hora">9:00</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/02.01.%20Copilot%20en%20tu%20d%C3%ADa%20a%20d%C3%ADa/Bepensa_General_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Copilot en tu día a día: de los datos a la presentación</a>
+            </td>
+            <td class="duracion">90 min</td>
+          </tr>
+          <tr>
+            <td class="hora">10:30</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/02.02.%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_General.html" target="_blank" rel="noopener noreferrer">Art of Prompting: del prompt a la skill</a>
+            </td>
+            <td class="duracion">30 min</td>
+          </tr>
+          <tr>
+            <td class="hora">11:00</td>
+            <td class="modulo">
+              <a href="../../ResourceFiles/Bepensa/02.03.%20Agentes-%20del%20skill%20al%20agente/Bepensa_Agentes_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Agentes: de la skill al agente que actúa</a>
+            </td>
+            <td class="duracion">60 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">Versión lista para publicación web · Coca-Cola + Microsoft</p>
+  </main>
+  <script>
+    (function () {
+      const subtitle = document.getElementById("typing-subtitle");
+      const fullText = subtitle ? (subtitle.getAttribute("data-text") || "") : "";
+      if (subtitle) {
+        let i = 0;
+        const tick = () => {
+          subtitle.textContent = fullText.slice(0, i);
+          i += 1;
+          if (i <= fullText.length) {
+            window.setTimeout(tick, 18);
+          }
+        };
+        tick();
+      }
+
+      const revealItems = document.querySelectorAll("tbody tr");
+      revealItems.forEach((row) => row.classList.add("js-reveal"));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      revealItems.forEach((item) => observer.observe(item));
+
+      const canvas = document.getElementById("particles");
+      if (!(canvas instanceof HTMLCanvasElement)) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const particles = [];
+      const maxParticles = 60;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = 0;
+      let height = 0;
+
+      const resize = () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+
+      const seedParticle = () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2.2 + 0.5,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        a: Math.random() * 0.4 + 0.2
+      });
+
+      const initParticles = () => {
+        particles.length = 0;
+        for (let i = 0; i < maxParticles; i += 1) {
+          particles.push(seedParticle());
+        }
+      };
+
+      const draw = () => {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i += 1) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -10 || p.x > width + 10 || p.y < -10 || p.y > height + 10) {
+            particles[i] = seedParticle();
+            particles[i].x = Math.random() < 0.5 ? -5 : width + 5;
+            particles[i].y = Math.random() * height;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(158, 213, 255," + p.a.toFixed(2) + ")";
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      };
+
+      resize();
+      initParticles();
+      draw();
+      window.addEventListener("resize", () => {
+        resize();
+        initParticles();
+      });
+
+      const logoCanvas = document.getElementById("logo-points");
+      if (!(logoCanvas instanceof HTMLCanvasElement)) return;
+      const lctx = logoCanvas.getContext("2d");
+      if (!lctx) return;
+
+      const offscreen = document.createElement("canvas");
+      const offctx = offscreen.getContext("2d");
+      if (!offctx) return;
+
+      let lw = 0;
+      let lh = 0;
+      let logoParticles = [];
+      let shapeIndex = 0;
+      let lastSwitch = performance.now();
+      const switchEveryMs = 3600;
+      const pointStep = 7;
+      const maxShapePoints = 980;
+      let sampledShapes = [[], []];
+
+      const logoResize = () => {
+        const rect = logoCanvas.getBoundingClientRect();
+        lw = Math.max(320, Math.floor(rect.width));
+        lh = Math.max(220, Math.floor(rect.height));
+        logoCanvas.width = Math.floor(lw * dpr);
+        logoCanvas.height = Math.floor(lh * dpr);
+        lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        offscreen.width = lw;
+        offscreen.height = lh;
+      };
+
+      const sampleShape = (drawShape) => {
+        offctx.clearRect(0, 0, lw, lh);
+        offctx.fillStyle = "#fff";
+        drawShape(offctx, lw, lh);
+        const data = offctx.getImageData(0, 0, lw, lh).data;
+        const pts = [];
+        for (let y = 0; y < lh; y += pointStep) {
+          for (let x = 0; x < lw; x += pointStep) {
+            const idx = (y * lw + x) * 4 + 3;
+            if (data[idx] > 110) pts.push({ x, y });
+          }
+        }
+        if (pts.length > maxShapePoints) {
+          const keep = [];
+          const step = pts.length / maxShapePoints;
+          for (let i = 0; i < maxShapePoints; i += 1) keep.push(pts[Math.floor(i * step)]);
+          return keep;
+        }
+        return pts;
+      };
+
+      const drawMicrosoftShape = (ctx, w, h) => {
+        const size = Math.min(w, h) * 0.42;
+        const gap = size * 0.11;
+        const cell = (size - gap) / 2;
+        const startX = w * 0.24;
+        const startY = (h - size) / 2;
+        ctx.fillRect(startX, startY, cell, cell);
+        ctx.fillRect(startX + cell + gap, startY, cell, cell);
+        ctx.fillRect(startX, startY + cell + gap, cell, cell);
+        ctx.fillRect(startX + cell + gap, startY + cell + gap, cell, cell);
+      };
+
+      const drawCokeShape = (ctx, w, h) => {
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = "700 " + Math.floor(Math.min(w, h) * 0.24) + "px 'Segoe UI', Arial, sans-serif";
+        ctx.fillText("Coca-Cola", w * 0.62, h * 0.52);
+      };
+
+      const buildShapes = () => {
+        sampledShapes = [
+          sampleShape(drawMicrosoftShape),
+          sampleShape(drawCokeShape)
+        ];
+      };
+
+      const initLogoParticles = () => {
+        const longest = Math.max(sampledShapes[0].length, sampledShapes[1].length);
+        logoParticles = [];
+        for (let i = 0; i < longest; i += 1) {
+          logoParticles.push({
+            x: Math.random() * lw,
+            y: Math.random() * lh,
+            vx: 0,
+            vy: 0
+          });
+        }
+      };
+
+      const animateLogo = (now) => {
+        if (now - lastSwitch > switchEveryMs) {
+          shapeIndex = (shapeIndex + 1) % sampledShapes.length;
+          lastSwitch = now;
+        }
+
+        const target = sampledShapes[shapeIndex];
+        lctx.clearRect(0, 0, lw, lh);
+
+        for (let i = 0; i < logoParticles.length; i += 1) {
+          const p = logoParticles[i];
+          const t = target[i % target.length];
+          const tx = t.x + Math.sin((now * 0.0015) + i * 0.07) * 0.9;
+          const ty = t.y + Math.cos((now * 0.0016) + i * 0.08) * 0.9;
+
+          p.vx = (p.vx + (tx - p.x) * 0.05) * 0.78;
+          p.vy = (p.vy + (ty - p.y) * 0.05) * 0.78;
+          p.x += p.vx;
+          p.y += p.vy;
+
+          const hueMix = shapeIndex === 0 ? 205 : 356;
+          lctx.fillStyle = "hsla(" + hueMix + ", 95%, 72%, 0.90)";
+          lctx.beginPath();
+          lctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
+          lctx.fill();
+        }
+
+        requestAnimationFrame(animateLogo);
+      };
+
+      logoResize();
+      buildShapes();
+      initLogoParticles();
+      requestAnimationFrame(animateLogo);
+      window.addEventListener("resize", () => {
+        logoResize();
+        buildShapes();
+        initLogoParticles();
+      });
+    })();
+  </script>
+</body>
+</html>

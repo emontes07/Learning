@@ -1,0 +1,19 @@
+﻿Columna,Tipo,Obligatoria,Valores o nota
+Title (Folio),Una línea de texto,Sí,"SP-AAAA-NNN, lo asigna el agente"
+Solicitante,Persona o grupo,Sí,Quien envía el correo (se busca en el directorio)
+CorreoSolicitante,Una línea de texto,Sí,Dirección del remitente
+Area,Opción,Sí,Producción; Almacén y distribución; Calidad; Comercial; Administración; Otra
+CentroDeTrabajo,Opción,Sí,Planta Mérida; CEDIS Península; Oficinas Mérida
+PuestoTemporal,Una línea de texto,Sí,Como lo escribe el solicitante
+NumeroDePersonas,Número,Sí,Entero mayor que 0
+FechaInicio,Fecha,Sí,
+FechaFin,Fecha,Sí,
+Turno,Opción,No,Matutino; Vespertino; Nocturno; Mixto
+Motivo,Varias líneas de texto,Sí,Por qué se necesita el personal
+CentroDeCostos,Una línea de texto,Sí,Formato CC-NNNN
+Urgencia,Opción,Sí,Normal; Urgente (inicio en menos de 72 horas)
+Estatus,Opción,Sí,Nueva; Información incompleta; En revisión RH; Aprobada; Rechazada; Cerrada
+DatosFaltantes,Varias líneas de texto,No,Lista de campos que faltan
+ResponsableRH,Persona o grupo,No,Business partner de RH asignado
+FechaRecepcion,Fecha y hora,Sí,Fecha del correo
+Notas,Varias líneas de texto,No,Observaciones del agente para RH

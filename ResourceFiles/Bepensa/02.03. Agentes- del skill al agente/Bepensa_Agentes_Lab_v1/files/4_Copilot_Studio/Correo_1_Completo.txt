@@ -1,0 +1,16 @@
+De: Jefatura de Almacén, CEDIS Península <jefatura.almacen@zavabebidas.example>
+Para: Solicitudes de personal <solicitudes.personal@zavabebidas.example>
+Fecha: lunes 9 de noviembre de 2026, 9:12
+Asunto: Solicitud de personal temporal - temporada alta CEDIS
+
+Hola, equipo de RH:
+Para la temporada alta necesitamos personal temporal en el CEDIS Península:
+- Puesto: auxiliar de almacén
+- Número de personas: 4
+- Fechas: del 16 de noviembre al 15 de diciembre de 2026
+- Turno: matutino
+- Motivo: aumento de volumen por temporada decembrina
+- Centro de costos: CC-4120
+Gracias.
+
+(Correo ficticio de práctica.)

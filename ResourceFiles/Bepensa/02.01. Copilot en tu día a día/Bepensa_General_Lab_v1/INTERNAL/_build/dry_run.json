@@ -1,0 +1,6 @@
+[["Excel para la web 2.1 (modo Chat only) · 1 corrida", "Encontró exactamente los 3 problemas: duplicado Golfo 2026-09, atípico Península 2026-07 (412.0 h; otros meses 18.3 a 20.3 h) y Centro 2026-08 faltante. ~40 s."],
+ ["Excel para la web 2.2a + 2.2b (Allow editing) · 1 corrida", "Creó Datos_limpios (35 renglones, columnas Excluir_del_tiempo y Trimestre), Resumen_3T con ponderaciones y la gráfica. Tiempo 2T 22.9 h → 3T 23.8 h; satisfacción 4.21 → 4.18: coincide con el libro de respuestas. ~2 min."],
+ ["Excel para la web 2.4 (Allow editing) · 1 corrida", "Clasificó los 60 comentarios y marcó los 2 con nombre; tabla con COUNTIF y AVERAGEIF. Conteos: Tiempo 18 (igual), Seguimiento 17, Trato 11, Portal 8, Otros 6. Detectó textos repetidos en los comentarios."],
+ ["Ajuste tras 2.4", "Se reescribieron los 60 comentarios para que sean únicos y menos ambiguos entre Seguimiento y Portal; la guía dice que esos dos temas pueden variar unos cuantos comentarios."],
+ ["Copilot Chat 5.3 (contenido pegado; la carga de archivos está deshabilitada en Scout) · 1 corrida", "6 de 6 veredictos esperados: Verificado, Incorrecto, Incorrecto, Verificado, No verificable, Exagerado."],
+ ["No probados en la app", "2.3, Word (3.x), PowerPoint (4.x), Outlook y Teams (5.1, 5.2), Analista e Investigador: probarlos en el tenant de Bepensa."]]
