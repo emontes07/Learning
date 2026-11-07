@@ -1,606 +1,343 @@
 ---
 demo:
-  title: 'Coca-Cola · Bootcamp Copilot (Bepensa) - Agenda'
+  title: 'Coca-Cola · Bootcamp Microsoft 365 Copilot - TDx Bepensa'
 layout: none
 ---
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coca-Cola | Bootcamp Copilot</title>
-  <style>
-    :root {
-      --bg: #05070f;
-      --bg-soft: #0c1224;
-      --card: rgba(14, 22, 44, 0.72);
-      --line: rgba(255, 255, 255, 0.14);
-      --text: #e9efff;
-      --muted: #a8b6d6;
-      --brand-red: #f40009;
-      --brand-blue: #0078d4;
-      --brand-cyan: #35d4ff;
-      --ok: #6ef8c4;
-      --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Bootcamp Microsoft 365 Copilot · TDx Bepensa</title>
+<style>
+:root{--yellow:#F2C500;--ink:#000;--paper:#fff;--muted:#a7a7a7;--line:rgba(255,255,255,.12);--card:rgba(255,255,255,.04);
+--disp:"Bebas Neue","BebasNeue",Impact,Haettenschweiler,"Arial Narrow Bold","Arial Narrow",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#000;color:var(--paper);font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+body{background:radial-gradient(ellipse 70% 60% at 50% 42%,#1b1600 0%,#0a0800 45%,#000 80%) fixed}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; font-family: "Segoe UI", Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
-    a { color: #9ed5ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+/* ---------- Intro ---------- */
+#intro{position:fixed;inset:0;overflow:hidden;transition:opacity .45s ease}
+#intro.leaving{opacity:0}
+#intro[hidden]{display:none}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.brand{position:absolute;top:clamp(14px,2.4vh,26px);left:clamp(16px,2.4vw,32px);font-family:var(--disp);font-size:clamp(18px,2.2vw,26px);letter-spacing:.08em;color:var(--yellow)}
+.stage{position:absolute;left:0;right:0;bottom:clamp(110px,17vh,170px);text-align:center;padding:0 5vw;pointer-events:none}
+.cap{font-family:var(--disp);letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);font-size:clamp(24px,3.4vw,44px);line-height:1.15;transition:opacity .35s}
+.cap.out{opacity:0}
+.bar{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;padding:14px clamp(12px,2.4vw,32px) clamp(18px,4vh,40px);background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,0))}
+.dots{display:flex;gap:4px;margin:0;padding:0;list-style:none}
+.dots button{width:40px;height:40px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.dots i{display:block;width:14px;height:16px;background:#6b5a00;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transition:background .2s,transform .2s}
+.dots button[aria-current="step"] i{background:var(--yellow);transform:scale(1.35)}
+.dots button:hover i{background:#ffe066}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 26px;border:2px solid var(--yellow);border-radius:24px;background:var(--yellow);color:#000;font:700 16px/1 "Segoe UI",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover{background:#fff;border-color:#fff;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--yellow)}
+.btn.ghost:hover{background:var(--yellow);color:#000;border-color:var(--yellow)}
+.note{position:absolute;top:clamp(14px,2.4vh,26px);right:clamp(16px,2.4vw,32px);max-width:46ch;text-align:right;font-size:13px;color:#d9d9d9}
 
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(900px 500px at 10% -10%, rgba(244, 0, 9, 0.3), transparent 60%),
-        radial-gradient(800px 500px at 100% 0%, rgba(0, 120, 212, 0.28), transparent 55%),
-        radial-gradient(900px 700px at 50% 110%, rgba(53, 212, 255, 0.18), transparent 58%),
-        linear-gradient(180deg, #05070f 0%, #080d1d 50%, #05070f 100%);
-      overflow: hidden;
-    }
-
-    .bg::before, .bg::after {
-      content: "";
-      position: absolute;
-      width: 150vmax;
-      height: 150vmax;
-      left: -25vmax;
-      top: -60vmax;
-      border-radius: 43%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 65%);
-      animation: swirl 26s linear infinite;
-      transform-origin: 50% 50%;
-    }
-
-    .bg::after {
-      top: -70vmax;
-      left: -10vmax;
-      opacity: 0.55;
-      animation-duration: 34s;
-      animation-direction: reverse;
-    }
-
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.78;
-    }
-
-    @keyframes swirl {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .wrap {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-      padding: 42px 0 64px;
-    }
-
-    .hero {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(19, 30, 61, 0.82), rgba(10, 16, 34, 0.86));
-      box-shadow: var(--shadow);
-      padding: 34px 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 380px;
-      height: 380px;
-      right: -120px;
-      top: -180px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, rgba(244,0,9,0.45), rgba(0,120,212,0.22), rgba(53,212,255,0.22), rgba(244,0,9,0.45));
-      filter: blur(18px);
-      animation: pulse 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.94) rotate(0deg); opacity: 0.78; }
-      100% { transform: scale(1.08) rotate(22deg); opacity: 1; }
-    }
-
-    .badges {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .badge {
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 12px;
-      color: #d7e2ff;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.08;
-      letter-spacing: .2px;
-    }
-
-    .subtitle {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 760px;
-    }
-
-    .logo-stage {
-      margin-top: 22px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      overflow: hidden;
-      position: relative;
-    }
-
-    #logo-points {
-      display: block;
-      width: 100%;
-      height: 260px;
-    }
-
-    .logo-caption {
-      margin: 0;
-      padding: 8px 12px 12px;
-      color: #b4c6eb;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .section {
-      margin-top: 28px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      background: var(--card);
-      backdrop-filter: blur(7px);
-      box-shadow: var(--shadow);
-      animation: rise .6s ease forwards;
-      opacity: 0;
-      transform: translateY(12px);
-    }
-
-    .section:nth-of-type(2) { animation-delay: .08s; }
-    .section:nth-of-type(3) { animation-delay: .16s; }
-
-    @keyframes rise {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-head {
-      padding: 16px 18px;
-      background: linear-gradient(90deg, rgba(244, 0, 9, 0.18), rgba(0, 120, 212, 0.08));
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.2;
-    }
-
-    .section-head .meta {
-      color: var(--ok);
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-
-    th {
-      color: #c7d4f6;
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    td { color: #eef3ff; }
-    .hora { width: 160px; color: #d5e1ff; }
-    .duracion { width: 140px; color: #d5e1ff; }
-    .modulo a { font-weight: 600; }
-    .modulo small { display: block; color: var(--muted); margin-top: 4px; font-size: 12px; }
-
-    .js-reveal {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-
-    .js-reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hint {
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-      border-left: 3px solid rgba(53, 212, 255, 0.65);
-      padding: 10px 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-    }
-
-    .footer {
-      margin-top: 20px;
-      color: #90a3cc;
-      font-size: 12px;
-    }
-
-    @media (max-width: 720px) {
-      th:nth-child(3), td:nth-child(3) { width: 110px; }
-      .hora { width: 130px; }
-      th, td { padding: 12px 10px; }
-      .hero { padding: 24px 18px; }
-    }
-  </style>
+/* ---------- Agenda ---------- */
+#agenda{min-height:100vh;opacity:0;transition:opacity .5s ease}
+#agenda.on{opacity:1}
+#agenda[hidden]{display:none}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px clamp(18px,4vw,56px);border-bottom:1px solid var(--line)}
+.logos{display:flex;align-items:center;gap:16px}
+.ms{display:grid;grid-template-columns:repeat(2,13px);gap:3px}
+.ms span{width:13px;height:13px;display:block}
+.sep{width:1px;height:28px;background:var(--line)}
+.top .ttl{font-family:var(--disp);letter-spacing:.08em;color:var(--yellow);font-size:clamp(18px,2vw,24px)}
+main{width:min(1100px,100%);margin:0 auto;padding:clamp(28px,5vw,64px) clamp(18px,4vw,56px) 80px}
+.kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;color:var(--yellow);font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.kicker::before{content:"";width:28px;height:3px;background:var(--yellow)}
+h1{margin:0;font-family:var(--disp);font-weight:400;letter-spacing:.03em;font-size:clamp(2.4rem,6vw,4.6rem);line-height:.98}
+.lead{max-width:720px;margin:16px 0 0;color:var(--muted);font-size:1.05rem;line-height:1.6}
+.day{margin-top:44px;border:1px solid var(--line);border-top:4px solid var(--yellow);border-radius:18px;background:var(--card);overflow:hidden}
+.day-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:22px clamp(18px,3vw,30px);border-bottom:1px solid var(--line)}
+.day-num{font-family:var(--disp);font-size:clamp(1.6rem,3vw,2.2rem);color:var(--yellow);letter-spacing:.05em}
+.day-title{font-size:clamp(1.05rem,2vw,1.3rem);font-weight:700}
+table{width:100%;border-collapse:collapse}
+th,td{padding:16px clamp(18px,3vw,30px);text-align:left;vertical-align:middle;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{color:var(--muted);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+td.time{width:110px;font-family:var(--disp);font-size:1.6rem;letter-spacing:.04em;color:var(--paper)}
+td.dur{width:130px;color:var(--muted);white-space:nowrap}
+td.mod{font-size:1.06rem;font-weight:600}
+td.mod a{color:var(--paper);text-decoration:none;border-bottom:2px solid rgba(242,197,0,.55);transition:color .15s,border-color .15s}
+td.mod a::after{content:" \2197";color:var(--yellow);font-size:.85em}
+td.mod a:hover{color:var(--yellow);border-color:var(--yellow)}
+tr.brk td{color:var(--muted);background:rgba(255,255,255,.02)}
+tr.brk td.mod{font-weight:400;font-style:italic}
+.foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;color:var(--muted);font-size:.85rem}
+@media (max-width:640px){td.time{width:70px;font-size:1.3rem}th.hdur,td.dur{display:none}.mobile-dur{display:block;color:var(--muted);font-size:.85rem;font-weight:400;margin-top:4px}}
+@media (min-width:641px){.mobile-dur{display:none}}
+@media (prefers-reduced-motion:reduce){#intro,#agenda{transition:none}}
+</style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <canvas id="particles" aria-hidden="true"></canvas>
-  <main class="wrap">
-    <header class="hero">
-      <div class="badges">
-        <span class="badge">Microsoft</span>
-        <span class="badge">Coca-Cola</span>
-        <span class="badge">Bottler Buzz</span>
-      </div>
-      <h1>Bootcamp Copilot para Coca-Cola</h1>
-      <p class="subtitle" id="typing-subtitle" data-text="Agenda oficial en español para las sesiones de lunes y martes, con acceso directo a cada módulo."></p>
-      <div class="logo-stage" aria-hidden="true">
-        <canvas id="logo-points"></canvas>
-        <p class="logo-caption">Animación de puntos: Microsoft ↔ Coca-Cola</p>
-      </div>
-    </header>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>Día 1 · Lunes 9 de noviembre · Bootcamp de Finanzas</h2>
-        <span class="meta">Total sugerido: 5 horas</span>
+<!-- ======================= INTRO ======================= -->
+<section id="intro" aria-label="Introducción animada">
+  <h1 class="sr">Bootcamp Microsoft 365 Copilot. Microsoft y Coca-Cola. TDx Bepensa, 9 y 10 de noviembre de 2026, Mérida.</h1>
+  <div class="brand" aria-hidden="true">TDX BEPENSA · BOOTCAMP 2026</div>
+  <canvas id="c" aria-hidden="true"></canvas>
+  <div class="note" id="note" hidden>La animación está desactivada porque tu dispositivo pide reducir el movimiento.</div>
+  <div class="stage"><div class="cap" id="cap"></div></div>
+  <div class="sr" id="live" aria-live="polite"></div>
+  <div class="bar">
+    <ul class="dots" id="dots" aria-label="Imágenes de la introducción"></ul>
+    <a class="btn" id="start" href="#agenda">Ve a la guía</a>
+  </div>
+</section>
+
+<!-- ======================= AGENDA ======================= -->
+<div id="agenda" hidden>
+  <header class="top">
+    <div class="logos">
+      <div class="ms" aria-label="Microsoft" role="img"><span style="background:#F25022"></span><span style="background:#7FBA00"></span><span style="background:#00A4EF"></span><span style="background:#FFB900"></span></div>
+      <div class="sep" aria-hidden="true"></div>
+      <div class="ttl">TDX BEPENSA · BOOTCAMP 2026</div>
+    </div>
+    <a class="btn ghost" id="replay" href="#intro">Ver la introducción</a>
+  </header>
+  <main>
+    <p class="kicker">Agenda</p>
+    <h1>Bootcamp Microsoft 365 Copilot</h1>
+    <p class="lead">Dos días de práctica con Copilot y agentes. Selecciona el nombre de cada módulo para abrir su guía.</p>
+
+    <section class="day" aria-labelledby="d1">
+      <div class="day-head">
+        <span class="day-num">Día 1</span>
+        <span class="day-title" id="d1">Lunes 9 de noviembre · Bootcamp de Finanzas</span>
       </div>
       <table>
-        <thead>
-          <tr>
-            <th>Hora</th>
-            <th>Módulo</th>
-            <th>Duración</th>
-          </tr>
-        </thead>
+        <thead><tr><th scope="col">Hora</th><th scope="col">Módulo</th><th scope="col" class="hdur">Duración</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="hora">9:00</td>
-            <td class="modulo">
-              Microsoft AI Framework
-            </td>
-            <td class="duracion">60 min</td>
-          </tr>
-          <tr>
-            <td class="hora">10:00</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/01.02.%20Collaboration%20Framework/Collaboration_Framework_Copilot_Bepensa.html" target="_blank" rel="noopener noreferrer">Collaboration Framework</a>
-            </td>
-            <td class="duracion">60 min</td>
-          </tr>
-          <tr>
-            <td class="hora">11:00</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/01.03%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_Finanzas.html" target="_blank" rel="noopener noreferrer">Art of Prompting: del prompt a la skill</a>
-            </td>
-            <td class="duracion">30 min</td>
-          </tr>
-          <tr>
-            <td class="hora">11:30</td>
-            <td class="modulo">Break</td>
-            <td class="duracion">30 min</td>
-          </tr>
-          <tr>
-            <td class="hora">12:00</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/01.04.%20Experiencia%20interactiva%20del%20area/Bepensa_Finanzas_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Experiencia interactiva del área (Finanzas)</a>
-            </td>
-            <td class="duracion">120 min</td>
-          </tr>
+          <tr><td class="time">9:00</td><td class="mod">Microsoft AI Framework<span class="mobile-dur">60 min</span></td><td class="dur">60 min</td></tr>
+          <tr><td class="time">10:00</td><td class="mod"><a href="../../ResourceFiles/Bepensa/01.02.%20Collaboration%20Framework/Collaboration_Framework_Copilot_Bepensa.html" target="_blank" rel="noopener">Collaboration Framework</a><span class="mobile-dur">60 min</span></td><td class="dur">60 min</td></tr>
+          <tr><td class="time">11:00</td><td class="mod"><a href="../../ResourceFiles/Bepensa/01.03%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_Finanzas.html" target="_blank" rel="noopener">Art of Prompting: del prompt a la skill</a><span class="mobile-dur">30 min</span></td><td class="dur">30 min</td></tr>
+          <tr class="brk"><td class="time">11:30</td><td class="mod">Break<span class="mobile-dur">30 min</span></td><td class="dur">30 min</td></tr>
+          <tr><td class="time">12:00</td><td class="mod"><a href="../../ResourceFiles/Bepensa/01.04.%20Experiencia%20interactiva%20del%20area/Bepensa_Finanzas_Lab_v1/index.html" target="_blank" rel="noopener">Experiencia interactiva del área (Finanzas)</a><span class="mobile-dur">120 min</span></td><td class="dur">120 min</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>Día 2 · Martes 10 de noviembre · Sesión general y agentes</h2>
-        <span class="meta">Total sugerido: 3 horas</span>
+    <section class="day" aria-labelledby="d2">
+      <div class="day-head">
+        <span class="day-num">Día 2</span>
+        <span class="day-title" id="d2">Martes 10 de noviembre · Sesión general y agentes</span>
       </div>
       <table>
-        <thead>
-          <tr>
-            <th>Hora</th>
-            <th>Módulo</th>
-            <th>Duración</th>
-          </tr>
-        </thead>
+        <thead><tr><th scope="col">Hora</th><th scope="col">Módulo</th><th scope="col" class="hdur">Duración</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="hora">9:00</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/02.01.%20Copilot%20en%20tu%20d%C3%ADa%20a%20d%C3%ADa/Bepensa_General_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Copilot en tu día a día: de los datos a la presentación</a>
-            </td>
-            <td class="duracion">90 min</td>
-          </tr>
-          <tr>
-            <td class="hora">10:30</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/02.02.%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_General.html" target="_blank" rel="noopener noreferrer">Art of Prompting: del prompt a la skill</a>
-            </td>
-            <td class="duracion">30 min</td>
-          </tr>
-          <tr>
-            <td class="hora">11:00</td>
-            <td class="modulo">
-              <a href="../../ResourceFiles/Bepensa/02.03.%20Agentes-%20del%20skill%20al%20agente/Bepensa_Agentes_Lab_v1/index.html" target="_blank" rel="noopener noreferrer">Agentes: de la skill al agente que actúa</a>
-            </td>
-            <td class="duracion">60 min</td>
-          </tr>
+          <tr><td class="time">9:00</td><td class="mod"><a href="../../ResourceFiles/Bepensa/02.01.%20Copilot%20en%20tu%20d%C3%ADa%20a%20d%C3%ADa/Bepensa_General_Lab_v1/index.html" target="_blank" rel="noopener">Copilot en tu día a día: de los datos a la presentación</a><span class="mobile-dur">90 min</span></td><td class="dur">90 min</td></tr>
+          <tr><td class="time">10:30</td><td class="mod"><a href="../../ResourceFiles/Bepensa/02.02.%20Art%20of%20Prompting/Del_Prompt_a_la_Skill_Bepensa_General.html" target="_blank" rel="noopener">Art of Prompting: del prompt a la skill</a><span class="mobile-dur">30 min</span></td><td class="dur">30 min</td></tr>
+          <tr><td class="time">11:00</td><td class="mod"><a href="../../ResourceFiles/Bepensa/02.03.%20Agentes-%20del%20skill%20al%20agente/Bepensa_Agentes_Lab_v1/index.html" target="_blank" rel="noopener">Agentes: de la skill al agente que actúa</a><span class="mobile-dur">60 min</span></td><td class="dur">60 min</td></tr>
         </tbody>
       </table>
     </section>
 
-    <p class="footer">Versión lista para publicación web · Coca-Cola + Microsoft</p>
+    <div class="foot"><span>TDx Bepensa · Mérida · 9 y 10 de noviembre de 2026</span><span>Microsoft</span></div>
   </main>
-  <script>
-    (function () {
-      const subtitle = document.getElementById("typing-subtitle");
-      const fullText = subtitle ? (subtitle.getAttribute("data-text") || "") : "";
-      if (subtitle) {
-        let i = 0;
-        const tick = () => {
-          subtitle.textContent = fullText.slice(0, i);
-          i += 1;
-          if (i <= fullText.length) {
-            window.setTimeout(tick, 18);
-          }
-        };
-        tick();
-      }
+</div>
 
-      const revealItems = document.querySelectorAll("tbody tr");
-      revealItems.forEach((row) => row.classList.add("js-reveal"));
+<script>
+(function(){
+"use strict";
+var YEL="#F2C500", RED="#F40009";
+var PAL=[YEL,"#FFFFFF","#F25022","#7FBA00","#00A4EF",RED];
+var PR=[[242,197,0],[255,255,255],[242,80,34],[127,186,0],[0,164,239],[244,0,9]];
+var OW=1200,OH=700,MORPH=1.5;
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var intro=document.getElementById("intro"),agenda=document.getElementById("agenda");
+var cv=document.getElementById("c"),ctx=cv.getContext("2d");
+var cap=document.getElementById("cap"),live=document.getElementById("live"),dotsEl=document.getElementById("dots");
+var vw=0,vh=0,dpr=1,N=9000,running=false;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
+function hexPath(o,cx,cy,r,rot){for(var k=0;k<6;k++){var a=Math.PI/3*k+(rot||0);var x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);k?o.lineTo(x,y):o.moveTo(x,y);}o.closePath();}
+function rr(o,x,y,w,h,r){o.beginPath();o.moveTo(x+r,y);o.arcTo(x+w,y,x+w,y+h,r);o.arcTo(x+w,y+h,x,y+h,r);o.arcTo(x,y+h,x,y,r);o.arcTo(x,y,x+w,y,r);o.closePath();}
 
-      revealItems.forEach((item) => observer.observe(item));
+var SHAPES=[
+ {id:"ms",cap:"Microsoft",hold:1.8,draw:function(o){
+   var s=270,g=24,x0=OW/2-s-g/2,y0=OH/2-s-g/2;
+   o.fillStyle="#F25022";o.fillRect(x0,y0,s,s);
+   o.fillStyle="#7FBA00";o.fillRect(x0+s+g,y0,s,s);
+   o.fillStyle="#00A4EF";o.fillRect(x0,y0+s+g,s,s);
+   o.fillStyle=YEL;o.fillRect(x0+s+g,y0+s+g,s,s);
+ }},
+ {id:"coke",cap:"Coca-Cola",hold:1.9,k:1.0,draw:function(o){
+   o.textAlign="center";o.textBaseline="middle";o.fillStyle=RED;
+   var fam='"Segoe Script","Brush Script MT","Lucida Handwriting",cursive';
+   o.font='italic 700 200px '+fam;var w=o.measureText("Coca-Cola").width,size=200*1080/w;
+   o.font='italic 700 '+size+'px '+fam;
+   o.fillText("Coca-Cola",OW/2,OH/2);
+   o.lineWidth=size*.07;o.strokeStyle=RED;o.lineCap="round";
+   o.beginPath();o.moveTo(OW/2-470,OH/2+size*.62);o.bezierCurveTo(OW/2-180,OH/2+size*.38,OW/2+180,OH/2+size*.86,OW/2+470,OH/2+size*.55);o.stroke();
+ }},
+ {id:"hive",cap:"Bootcamp Microsoft 365 Copilot",hold:1.8,draw:function(o){
+   var R=72,i=0,cells=[];
+   for(var q=-2;q<=2;q++)for(var r=-2;r<=2;r++){if(Math.abs(q+r)>2)continue;cells.push([q,r]);}
+   cells.forEach(function(c){
+     var x=OW/2+R*Math.sqrt(3)*(c[0]+c[1]/2),y=OH/2+R*1.5*c[1];i++;
+     if(i===4||i===11||i===16)return;
+     if(i%3===0){o.strokeStyle=YEL;o.lineWidth=13;o.beginPath();hexPath(o,x,y,R-12,Math.PI/6);o.stroke();}
+     else{o.fillStyle=YEL;o.beginPath();hexPath(o,x,y,R-9,Math.PI/6);o.fill();}
+   });
+ }},
+ {id:"can",cap:"9 y 10 de noviembre · Mérida",hold:2.4,bob:true,draw:function(o){
+   o.save();o.translate(OW/2,OH/2+20);o.rotate(-0.42);
+   var W=230,H=430,top=-H/2;
+   o.fillStyle="#fff";rr(o,-W/2,top,W,H,34);o.fill();
+   o.beginPath();o.ellipse(0,top+4,W/2-14,26,0,0,Math.PI*2);o.fill();
+   o.fillStyle=YEL;o.fillRect(-W/2,H*0.04,W,44);o.fillRect(-W/2,H*0.04+70,W,44);
+   o.globalCompositeOperation="destination-out";
+   o.fillRect(-W/2,top+34,W,9);
+   o.beginPath();o.ellipse(0,top+4,W/2-34,13,0,0,Math.PI*2);o.fill();
+   o.globalCompositeOperation="source-over";
+   o.strokeStyle="#fff";o.lineWidth=11;o.beginPath();o.ellipse(22,top-22,22,15,0,0,Math.PI*2);o.stroke();
+   o.restore();
+   o.strokeStyle="#fff";o.lineWidth=7;
+   [[OW/2+250,OH/2-170,34],[OW/2+320,OH/2-60,20],[OW/2+205,OH/2-260,16],[OW/2-300,OH/2+120,26]].forEach(function(b){o.beginPath();o.arc(b[0],b[1],b[2],0,Math.PI*2);o.stroke();});
+ }}
+];
 
-      const canvas = document.getElementById("particles");
-      if (!(canvas instanceof HTMLCanvasElement)) return;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+function nearest(r,g,b){var best=0,bd=1e9;for(var k=0;k<PR.length;k++){var d=(r-PR[k][0])*(r-PR[k][0])+(g-PR[k][1])*(g-PR[k][1])+(b-PR[k][2])*(b-PR[k][2]);if(d<bd){bd=d;best=k;}}return best;}
 
-      const particles = [];
-      const maxParticles = 60;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      let width = 0;
-      let height = 0;
+function bake(shape){
+  var oc=document.createElement("canvas");oc.width=OW;oc.height=OH;
+  var o=oc.getContext("2d",{willReadFrequently:true});
+  shape.draw(o);
+  var d=o.getImageData(0,0,OW,OH).data,idx=[];
+  for(var p=0;p<OW*OH;p++)if(d[p*4+3]>128)idx.push(p);
+  var cnt=idx.length,xs=new Float32Array(N),ys=new Float32Array(N),cs=new Uint8Array(N);
+  var minx=1e9,maxx=-1e9,miny=1e9,maxy=-1e9;
+  var st=Math.sqrt(cnt/N)*.9,pick=[];
+  for(var gy=0;gy<OH;gy+=st)for(var gx=0;gx<OW;gx+=st){
+    var px=Math.min(OW-1,Math.floor(gx+Math.random()*st)),py=Math.min(OH-1,Math.floor(gy+Math.random()*st)),pp=py*OW+px;
+    if(d[pp*4+3]>128)pick.push(pp);
+  }
+  for(var q=pick.length-1;q>0;q--){var r2=Math.floor(Math.random()*(q+1)),t=pick[q];pick[q]=pick[r2];pick[r2]=t;}
+  while(pick.length<N)pick.push(idx[Math.floor(Math.random()*cnt)]);
+  for(var k=0;k<N;k++){
+    var pix=pick[k],x=(pix%OW)+Math.random()-.5,y=Math.floor(pix/OW)+Math.random()-.5;
+    xs[k]=x;ys[k]=y;cs[k]=nearest(d[pix*4],d[pix*4+1],d[pix*4+2]);
+    if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;
+  }
+  var cx=(minx+maxx)/2,cy=(miny+maxy)/2,hw=(maxx-minx)/2,hh=(maxy-miny)/2,half=Math.max(hw,hh);
+  for(var k2=0;k2<N;k2++){xs[k2]=(xs[k2]-cx)/half;ys[k2]=(ys[k2]-cy)/half;}
+  shape.x=xs;shape.y=ys;shape.c=cs;shape.mx=hw/half;shape.my=hh/half;shape.area=cnt/(half*half);
+}
 
-      const resize = () => {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = Math.floor(width * dpr);
-        canvas.height = Math.floor(height * dpr);
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      };
+var BK=PAL.map(function(){return [];});
+var SPR=PAL.map(function(c){var s=document.createElement("canvas");s.width=s.height=32;var o=s.getContext("2d");o.fillStyle=c;o.beginPath();hexPath(o,16,16,15.5,0);o.fill();return s;});
+var P=[],cur=0,playing=!reduce,morphStart=0,ready=false,mouse={x:-999,y:-999};
 
-      const seedParticle = () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 2.2 + 0.5,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        a: Math.random() * 0.4 + 0.2
-      });
+function layout(){
+  dpr=Math.min(window.devicePixelRatio||1,2);vw=innerWidth;vh=innerHeight;
+  cv.width=Math.round(vw*dpr);cv.height=Math.round(vh*dpr);
+  SHAPES.forEach(function(s){if(!s.x)return;
+    s.scale=Math.min(vw*.42/s.mx,vh*.27/s.my);
+    s.cy=vh*.40;
+    s.size=Math.max(1.6,Math.min(7,Math.sqrt(s.area*s.scale*s.scale/N)*(s.k||1.2)));
+  });
+}
+function makeParticles(){P=[];for(var i=0;i<N;i++){P.push({x:vw/2+(Math.random()-.5)*vw*.6,y:vh*.45+(Math.random()-.5)*vh*.5,vx:0,vy:0,s:0,ci:0,pend:-1,del:0,r:.8+Math.random()*.4});}}
+function now(){return performance.now()/1000;}
 
-      const initParticles = () => {
-        particles.length = 0;
-        for (let i = 0; i < maxParticles; i += 1) {
-          particles.push(seedParticle());
-        }
-      };
+function setCaption(i,instant){
+  var s=SHAPES[i];
+  if(instant){cap.textContent=s.cap;cap.classList.remove("out");return;}
+  cap.classList.add("out");
+  setTimeout(function(){if(cur===i){cap.textContent=s.cap;cap.classList.remove("out");}},260);
+}
+function markDots(){[].forEach.call(dotsEl.querySelectorAll("button"),function(b,k){if(k===cur)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");});}
 
-      const draw = () => {
-        ctx.clearRect(0, 0, width, height);
-        for (let i = 0; i < particles.length; i += 1) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < -10 || p.x > width + 10 || p.y < -10 || p.y > height + 10) {
-            particles[i] = seedParticle();
-            particles[i].x = Math.random() < 0.5 ? -5 : width + 5;
-            particles[i].y = Math.random() * height;
-          }
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(158, 213, 255," + p.a.toFixed(2) + ")";
-          ctx.fill();
-        }
-        requestAnimationFrame(draw);
-      };
+function go(i,opt){
+  opt=opt||{};
+  i=((i%SHAPES.length)+SHAPES.length)%SHAPES.length;
+  cur=i;morphStart=now();
+  var snap=reduce||opt.snap,sh=SHAPES[i];
+  for(var k=0;k<P.length;k++){var p=P[k];
+    if(snap){p.s=i;p.ci=sh.c[k];p.x=vw/2+sh.x[k]*sh.scale;p.y=sh.cy+sh.y[k]*sh.scale;p.vx=p.vy=0;p.pend=-1;}
+    else{p.pend=i;p.del=Math.random()*.45;}
+  }
+  setCaption(i,snap);markDots();
+  if(opt.announce)live.textContent=sh.cap;
+}
 
-      resize();
-      initParticles();
-      draw();
-      window.addEventListener("resize", () => {
-        resize();
-        initParticles();
-      });
+var last=0;
+function frame(t){
+  if(!running)return;
+  requestAnimationFrame(frame);
+  if(!ready)return;
+  var rdt=Math.min((t-last)/1000,1),dt=Math.min(rdt,.05);last=t;if(rdt<=0)return;
+  var f=dt*60,tn=now();
+  if(playing&&tn-morphStart>MORPH+SHAPES[cur].hold)go(cur+1);
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,vw,vh);
+  var STIFF=.022,DAMP=Math.pow(.86,f);for(var b0=0;b0<BK.length;b0++)BK[b0].length=0;
+  var mr=reduce?0:Math.min(110,vw*.08),mr2=mr*mr;
+  for(var i=0;i<N;i++){
+    var p=P[i];
+    if(p.pend>=0&&tn>=morphStart+p.del){p.s=p.pend;p.pend=-1;var a=Math.random()*6.283,sp=2+Math.random()*7;p.vx+=Math.cos(a)*sp;p.vy+=Math.sin(a)*sp;}
+    var S=SHAPES[p.s];
+    if(p.ci!==S.c[i]&&p.pend<0&&(tn-morphStart>.35||reduce))p.ci=S.c[i];
+    var bob=(S.bob&&!reduce)?Math.sin(tn*2.2)*S.scale*.018:0,sway=(S.bob&&!reduce)?Math.sin(tn*1.3)*S.scale*.012:0;
+    var tx=vw/2+S.x[i]*S.scale+sway,ty=S.cy+S.y[i]*S.scale+bob;
+    if(mr>0){var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;if(d2<mr2&&d2>1){var dd=Math.sqrt(d2),ff=(1-dd/mr)*3.2;p.vx+=dx/dd*ff;p.vy+=dy/dd*ff;}}
+    p.vx=(p.vx+(tx-p.x)*STIFF*f)*DAMP;p.vy=(p.vy+(ty-p.y)*STIFF*f)*DAMP;
+    p.x+=p.vx*f;p.y+=p.vy*f;
+    BK[p.ci].push(i);
+  }
+  for(var b=0;b<BK.length;b++){var list=BK[b],spr=SPR[b];
+    for(var k=0;k<list.length;k++){var q=P[list[k]],r=SHAPES[q.s].size*.64*q.r;ctx.drawImage(spr,q.x-r,q.y-r,r*2,r*2);}
+  }
+}
 
-      const logoCanvas = document.getElementById("logo-points");
-      if (!(logoCanvas instanceof HTMLCanvasElement)) return;
-      const lctx = logoCanvas.getContext("2d");
-      if (!lctx) return;
+SHAPES.forEach(function(s,i){
+  var li=document.createElement("li"),b=document.createElement("button");
+  b.type="button";b.setAttribute("aria-label","Mostrar: "+s.cap);b.innerHTML="<i></i>";
+  b.addEventListener("click",function(){go(i,{announce:true});});
+  li.appendChild(b);dotsEl.appendChild(li);
+});
 
-      const offscreen = document.createElement("canvas");
-      const offctx = offscreen.getContext("2d");
-      if (!offctx) return;
+addEventListener("resize",function(){if(ready)layout();});
+addEventListener("mousemove",function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+document.addEventListener("mouseleave",function(){mouse.x=mouse.y=-999;});
+if(window.matchMedia&&matchMedia("(max-width: 700px)").matches)N=4500;
+if(reduce)document.getElementById("note").hidden=false;
 
-      let lw = 0;
-      let lh = 0;
-      let logoParticles = [];
-      let shapeIndex = 0;
-      let lastSwitch = performance.now();
-      const switchEveryMs = 3600;
-      const pointStep = 7;
-      const maxShapePoints = 980;
-      let sampledShapes = [[], []];
+function startIntro(){if(running)return;running=true;last=performance.now();requestAnimationFrame(frame);}
+function stopIntro(){running=false;}
 
-      const logoResize = () => {
-        const rect = logoCanvas.getBoundingClientRect();
-        lw = Math.max(320, Math.floor(rect.width));
-        lh = Math.max(220, Math.floor(rect.height));
-        logoCanvas.width = Math.floor(lw * dpr);
-        logoCanvas.height = Math.floor(lh * dpr);
-        lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        offscreen.width = lw;
-        offscreen.height = lh;
-      };
+function showAgenda(push){
+  stopIntro();
+  intro.classList.add("leaving");
+  setTimeout(function(){intro.hidden=true;agenda.hidden=false;requestAnimationFrame(function(){agenda.classList.add("on");});window.scrollTo(0,0);
+    var h=agenda.querySelector("h1");h.setAttribute("tabindex","-1");h.focus({preventScroll:true});},reduce?0:450);
+  if(push&&location.hash!=="#agenda")history.pushState(null,"","#agenda");
+}
+function showIntro(push){
+  agenda.classList.remove("on");agenda.hidden=true;intro.hidden=false;intro.classList.remove("leaving");
+  if(ready){layout();go(0,{snap:reduce});}
+  startIntro();
+  if(push)history.pushState(null,"","#intro");
+}
+document.getElementById("start").addEventListener("click",function(e){e.preventDefault();showAgenda(true);});
+document.getElementById("replay").addEventListener("click",function(e){e.preventDefault();showIntro(true);});
+addEventListener("keydown",function(e){if(e.key==="Enter"&&!intro.hidden&&!(e.target&&/^(A|BUTTON)$/.test(e.target.tagName))){showAgenda(true);}});
+addEventListener("popstate",function(){if(location.hash==="#agenda")showAgenda(false);else showIntro(false);});
 
-      const sampleShape = (drawShape) => {
-        offctx.clearRect(0, 0, lw, lh);
-        offctx.fillStyle = "#fff";
-        drawShape(offctx, lw, lh);
-        const data = offctx.getImageData(0, 0, lw, lh).data;
-        const pts = [];
-        for (let y = 0; y < lh; y += pointStep) {
-          for (let x = 0; x < lw; x += pointStep) {
-            const idx = (y * lw + x) * 4 + 3;
-            if (data[idx] > 110) pts.push({ x, y });
-          }
-        }
-        if (pts.length > maxShapePoints) {
-          const keep = [];
-          const step = pts.length / maxShapePoints;
-          for (let i = 0; i < maxShapePoints; i += 1) keep.push(pts[Math.floor(i * step)]);
-          return keep;
-        }
-        return pts;
-      };
-
-      const drawMicrosoftShape = (ctx, w, h) => {
-        const size = Math.min(w, h) * 0.42;
-        const gap = size * 0.11;
-        const cell = (size - gap) / 2;
-        const startX = w * 0.24;
-        const startY = (h - size) / 2;
-        ctx.fillRect(startX, startY, cell, cell);
-        ctx.fillRect(startX + cell + gap, startY, cell, cell);
-        ctx.fillRect(startX, startY + cell + gap, cell, cell);
-        ctx.fillRect(startX + cell + gap, startY + cell + gap, cell, cell);
-      };
-
-      const drawCokeShape = (ctx, w, h) => {
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.font = "700 " + Math.floor(Math.min(w, h) * 0.24) + "px 'Segoe UI', Arial, sans-serif";
-        ctx.fillText("Coca-Cola", w * 0.62, h * 0.52);
-      };
-
-      const buildShapes = () => {
-        sampledShapes = [
-          sampleShape(drawMicrosoftShape),
-          sampleShape(drawCokeShape)
-        ];
-      };
-
-      const initLogoParticles = () => {
-        const longest = Math.max(sampledShapes[0].length, sampledShapes[1].length);
-        logoParticles = [];
-        for (let i = 0; i < longest; i += 1) {
-          logoParticles.push({
-            x: Math.random() * lw,
-            y: Math.random() * lh,
-            vx: 0,
-            vy: 0
-          });
-        }
-      };
-
-      const animateLogo = (now) => {
-        if (now - lastSwitch > switchEveryMs) {
-          shapeIndex = (shapeIndex + 1) % sampledShapes.length;
-          lastSwitch = now;
-        }
-
-        const target = sampledShapes[shapeIndex];
-        lctx.clearRect(0, 0, lw, lh);
-
-        for (let i = 0; i < logoParticles.length; i += 1) {
-          const p = logoParticles[i];
-          const t = target[i % target.length];
-          const tx = t.x + Math.sin((now * 0.0015) + i * 0.07) * 0.9;
-          const ty = t.y + Math.cos((now * 0.0016) + i * 0.08) * 0.9;
-
-          p.vx = (p.vx + (tx - p.x) * 0.05) * 0.78;
-          p.vy = (p.vy + (ty - p.y) * 0.05) * 0.78;
-          p.x += p.vx;
-          p.y += p.vy;
-
-          const hueMix = shapeIndex === 0 ? 205 : 356;
-          lctx.fillStyle = "hsla(" + hueMix + ", 95%, 72%, 0.90)";
-          lctx.beginPath();
-          lctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
-          lctx.fill();
-        }
-
-        requestAnimationFrame(animateLogo);
-      };
-
-      logoResize();
-      buildShapes();
-      initLogoParticles();
-      requestAnimationFrame(animateLogo);
-      window.addEventListener("resize", () => {
-        logoResize();
-        buildShapes();
-        initLogoParticles();
-      });
-    })();
-  </script>
+var fontsReady=(document.fonts&&document.fonts.load)?Promise.all([document.fonts.load('italic 700 100px "Segoe Script"').catch(function(){}),document.fonts.ready]):Promise.resolve();
+fontsReady.then(function(){
+  SHAPES.forEach(bake);
+  layout();makeParticles();ready=true;
+  if(location.hash==="#agenda"){intro.hidden=true;agenda.hidden=false;agenda.classList.add("on");return;}
+  go(0,{snap:reduce});startIntro();
+});
+})();
+</script>
 </body>
 </html>
