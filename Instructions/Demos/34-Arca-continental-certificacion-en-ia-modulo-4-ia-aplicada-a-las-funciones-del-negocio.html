@@ -1,0 +1,1776 @@
+---
+demo:
+  title: 'Arca Continental · Certificación en IA — Módulo 4: IA Aplicada a las Funciones del Negocio'
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratorio práctico: de un prompt a un agente para la Revisión Mensual de Negocio de una embotelladora ficticia (Quito, 2:30 a 4:45 p.m.)">
+  <title>Arca Continental · Certificación en IA — Módulo 4: IA Aplicada a las Funciones del Negocio</title>
+  <style>
+:root {
+  --brand-primary: #1f3864;
+  --brand-secondary: #2e75b6;
+  --brand-accent: #7c3aed;
+  --surface: #ffffff;
+  --bg: #f4f6fb;
+  --text: #17243b;
+  --muted: #52627a;
+  --border: #d7dfec;
+  --callout-tip-bg: #edf8f1;
+  --callout-warning-bg: #fff5df;
+  --callout-important-bg: #fff0f2;
+  --callout-note-bg: #eef5ff;
+  --callout-instructor-bg: #f2edff;
+  --callout-real-world-bg: #e9f8f6;
+  --callout-stretch-bg: #faf0ff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 "Segoe UI", system-ui, sans-serif; }
+a { color: var(--brand-secondary); text-underline-offset: .2em; }
+button, input { font: inherit; }
+button { cursor: pointer; border: 1px solid var(--border); border-radius: .6rem; padding: .5rem .85rem; background: var(--surface); color: var(--brand-primary); font-weight: 600; }
+button:hover { border-color: var(--brand-secondary); background: var(--callout-note-bg); }
+:focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 4px; }
+h1, h2, h3, h4 { line-height: 1.25; color: var(--brand-primary); overflow-wrap: anywhere; }
+h1 { margin: .6rem 0 1rem; font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -.035em; }
+h2 { font-size: 1.8rem; margin: .4rem 0 1rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+p { margin: .6rem 0 1rem; overflow-wrap: anywhere; }
+li { margin-block: .4rem; overflow-wrap: anywhere; }
+.hero { background: linear-gradient(115deg, var(--brand-primary), var(--brand-secondary) 70%, var(--brand-accent)); color: white; }
+.hero-inner { max-width: 1440px; margin: auto; padding: 3.5rem 2rem; }
+.hero h1 { color: white; max-width: 1000px; }
+.leave-with { margin-top: 1.5rem; max-width: 1000px; padding: 1rem 1.25rem; border: 1px solid #ffffff55; border-radius: .75rem; background: #ffffff10; }
+.leave-with h2 { font-size: 1.15rem; color: white; }
+.leave-with ul { columns: 2; column-gap: 2rem; padding-left: 1.2rem; font-size: .9rem; }
+.leave-with li { break-inside: avoid; }
+.story-strip { background: var(--brand-primary); color: white; padding: .8rem 1rem; border-radius: .6rem; margin-bottom: 1.25rem; }
+.eyebrow { text-transform: uppercase; font-weight: 700; font-size: .75rem; letter-spacing: .13em; }
+.subtitle { font-size: 1.2rem; max-width: 900px; opacity: .95; }
+.tags { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.tags li { border: 1px solid #ffffff66; background: #ffffff19; border-radius: 2rem; padding: .3rem .9rem; font-size: .85rem; }
+.layout { max-width: 1440px; margin: auto; padding: 1.75rem 2rem; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 2rem; align-items: start; }
+.sidebar { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; padding: .8rem 0; }
+.nav-title { font-weight: 700; padding-inline: .75rem; color: var(--brand-primary); }
+.nav-link { display: block; padding: .5rem .75rem; margin: .15rem 0; border-left: 3px solid transparent; border-radius: 0 .4rem .4rem 0; font-size: .9rem; color: var(--muted); text-decoration: none; }
+.nav-link:hover, .nav-link.active { background: var(--callout-note-bg); color: var(--brand-primary); border-left-color: var(--brand-accent); }
+.chapter-link { font-weight: 700; margin-top: .75rem; }
+.step-link { padding-left: 1.3rem; display: flex; gap: .5rem; justify-content: space-between; }
+.step-link span { white-space: nowrap; font-size: .75rem; }
+#studio--nav-toggle { display: none; }
+main { min-width: 0; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.25rem; font-size: .8rem; color: var(--muted); }
+.toolbar div { display: flex; gap: .5rem; flex-wrap: wrap; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; margin-bottom: 1.5rem; padding: 1.75rem; box-shadow: 0 4px 18px #1f386407; }
+.anchor { scroll-margin-top: 1.5rem; }
+.muted, .summary-hint, .source { color: var(--muted); }
+.fictional-badge { display: inline-block; font-size: .8rem; color: var(--brand-primary); background: var(--callout-tip-bg); padding: .25rem .7rem; border-radius: .4rem; }
+summary { cursor: pointer; list-style-position: outside; margin-left: 1rem; }
+summary::marker { color: var(--brand-secondary); }
+summary h2, summary h3 { display: inline; }
+summary .eyebrow, summary .step-meta, summary .summary-hint { display: block; }
+.summary-hint { font-size: .85rem; margin-top: .4rem; }
+.chapter-body { padding-top: 1.5rem; }
+.story { margin: 0 0 1.5rem; padding: 1rem; border-left: 4px solid var(--brand-accent); background: var(--bg); border-radius: .5rem; }
+.story:empty { display: none; }
+.story div { display: grid; grid-template-columns: 125px minmax(0, 1fr); gap: 1rem; margin: .5rem 0; }
+dt { font-size: .8rem; font-weight: 700; color: var(--brand-primary); }
+dd { margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
+.step { border: 1px solid var(--border); border-radius: .75rem; padding: 1.25rem; margin-top: 1rem; }
+.step[open] > summary { padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.step-meta { font-size: .8rem; font-weight: 700; color: var(--brand-secondary); margin-bottom: .35rem; }
+.step-body { padding-top: .75rem; }
+.prompt-block { border: 1px solid var(--border); border-radius: .65rem; overflow: hidden; margin: 1rem 0; }
+.prompt-heading { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem .85rem; background: var(--callout-note-bg); color: var(--brand-primary); font-size: .8rem; font-weight: 700; }
+.copy-button { font-size: .8rem; white-space: nowrap; }
+.mode-badge { display: inline-block; font-size: .7rem; border: 1px solid var(--brand-secondary); border-radius: 2rem; padding: .1rem .5rem; margin: .15rem; color: var(--brand-primary); background: var(--surface); }
+pre { margin: 0; padding: 1rem; white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 2; background: #fbfcff; font: .85rem/1.7 ui-monospace, SFMono-Regular, Consolas, monospace; }
+code { font: inherit; }
+.expected { font-size: .9rem; padding: 1rem; background: var(--callout-note-bg); border-radius: .5rem; }
+.expected h4 { margin: 0 0 .75rem; }
+.challenge { border: 1px dashed var(--brand-accent); padding: 1rem; margin: 1rem 0; border-radius: .5rem; }
+.answer { padding: .75rem; background: var(--callout-stretch-bg); border-radius: .4rem; }
+.challenge-answer { white-space: pre-wrap; }
+.carry-forward { padding: .8rem; border-left: 4px solid var(--brand-accent); background: var(--bg); font-size: .9rem; }
+.table-scroll { overflow-x: auto; margin: 1rem 0; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; text-align: left; font-size: .85rem; }
+th, td { padding: .7rem; vertical-align: top; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+thead { background: var(--callout-note-bg); color: var(--brand-primary); }
+th { font-weight: 600; }
+.file-name, .file-download { overflow-wrap: anywhere; }
+.provided-separately { display: inline-block; font-size: .7rem; padding: .1rem .4rem; color: var(--muted); border: 1px solid var(--border); border-radius: .3rem; }
+.reference-list dt { font-size: 1rem; margin-top: 1rem; }
+.reference-list dd { margin-top: .3rem; }
+.callout { padding: .9rem 1rem; margin: 1rem 0; border-left: 4px solid var(--brand-secondary); border-radius: .4rem; font-size: .9rem; }
+.callout strong { text-transform: uppercase; font-size: .75rem; letter-spacing: .07em; }
+.callout p { margin: .3rem 0 0; }
+.callout-tip { background: var(--callout-tip-bg); border-color: #26734d; }
+.callout-warning { background: var(--callout-warning-bg); border-color: #9b6700; }
+.callout-important { background: var(--callout-important-bg); border-color: #b2334d; }
+.callout-note { background: var(--callout-note-bg); }
+.callout-instructor { background: var(--callout-instructor-bg); border-color: var(--brand-accent); }
+.callout-real-world { background: var(--callout-real-world-bg); border-color: #14796f; }
+.callout-stretch { background: var(--callout-stretch-bg); border-color: #a53ab8; }
+.self-check { padding: 1rem; background: var(--bg); border-radius: .5rem; margin-top: 1.5rem; }
+.self-check h4 { margin: 0 0 .75rem; }
+.self-check ul { list-style: none; padding: 0; margin: 0; }
+.self-check label { display: flex; align-items: baseline; gap: .5rem; cursor: pointer; font-size: .9rem; }
+.self-check input { accent-color: var(--brand-accent); }
+.page-footer { color: var(--muted); font-size: .8rem; padding: .5rem 0 2rem; }
+.copy-status:not(:empty) { position: fixed; bottom: 1rem; right: 1rem; max-width: calc(100vw - 2rem); background: var(--brand-primary); color: white; padding: .75rem 1rem; border-radius: .5rem; box-shadow: 0 4px 18px #0003; z-index: 20; }
+.skip-link { position: fixed; left: 1rem; top: -10rem; z-index: 30; padding: .7rem; background: white; }
+.skip-link:focus { top: 1rem; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: .75rem; padding: 1rem; }
+  .hero-inner { padding: 2.5rem 1.25rem; }
+  .sidebar { position: static; max-height: none; padding: 0; }
+  #studio--nav-toggle { display: block; width: 100%; }
+  body.js-ready #studio--navigation { display: none; }
+  body.js-ready #studio--navigation.is-open { display: block; }
+  .card { padding: 1.25rem; }
+  .story div { grid-template-columns: 1fr; gap: .1rem; }
+  .step { padding: 1rem; }
+  .leave-with ul { columns: 1; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  body { background: white; color: black; font-size: 10pt; }
+  .hero { background: white; color: black; border-bottom: 2px solid black; }
+  .hero h1 { color: black; font-size: 24pt; }
+  .hero-inner { padding: 0 0 1rem; }
+  .tags li { border-color: #888; }
+  .layout { display: block; padding: 0; }
+  .sidebar, .toolbar, .copy-button, .copy-status, .skip-link { display: none !important; }
+  .card, .step { box-shadow: none; padding: 1rem; }
+  .leave-with h2 { color: black; }
+  .story-strip { color: black; background: white; border: 1px solid #888; }
+  .table-scroll { overflow: visible; }
+  table { min-width: 0; }
+  details > :not(summary) { display: block !important; }
+  details::details-content { content-visibility: visible; display: block; }
+  .prompt-block, .callout, .self-check { break-inside: avoid; }
+  summary { list-style: none; margin-left: 0; }
+  h2, h3, h4 { break-after: avoid; }
+  a { color: black; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#studio--content">Skip to content</a>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Embotelladora Cumbre Andina S.A. / Funciones del negocio: Finanzas, Comercial, Supply/Logística y Capital Humano</p>
+      <h1>Arca Continental · Certificación en IA — Módulo 4: IA Aplicada a las Funciones del Negocio</h1>
+      <p class="subtitle">Laboratorio práctico: de un prompt a un agente para la Revisión Mensual de Negocio de una embotelladora ficticia (Quito, 2:30 a 4:45 p.m.)</p>
+      <ul class="tags" aria-label="Session details">
+<li>Microsoft 365 Copilot Chat</li><li>Copilot en Outlook</li><li>Copilot en Excel</li><li>Copilot en PowerPoint</li><li>Copilot Cowork</li><li>Agent Builder</li>        <li>Directores y gerentes de Finanzas, Comercial, Supply/Logística y Capital Humano, con experiencia mixta en IA. Cada participante trabaja en su propia laptop.</li>
+        <li>Intermediate</li>
+        <li>135 minutes</li>
+        <li>7 connected chapters</li>
+      </ul>
+      <div class="leave-with">
+        <h2>What you leave with</h2>
+        <ul><li>Un resumen del correo y de la reunión con acuerdos, responsables y fechas</li><li>Dominio de los modos de Copilot en Excel y un análisis con impulsores y gráfico</li><li>Una hoja .Rules con regla de lista desplegable y un reporte ejecutivo verificado</li><li>Un skill de Excel propio, probado con datos de otro mes</li><li>Un deck ejecutivo de 5 diapositivas</li><li>Un agente ligero con instrucciones, conocimiento y skill</li><li>Una acción concreta para el próximo lunes</li></ul>
+      </div>
+    </div>
+  </header>
+  <div class="layout">
+<aside class="sidebar">
+  <button type="button" id="studio--nav-toggle" aria-expanded="false" aria-controls="studio--navigation">
+    Session navigation
+  </button>
+  <nav id="studio--navigation" aria-label="Session navigation">
+    <p class="nav-title">Your story journey</p>
+    <a class="nav-link active" aria-current="location" href="#overview">Overview</a>
+    <a class="nav-link" href="#setup">Setup</a>
+    <a class="nav-link" href="#agenda">Agenda</a>
+    <a class="nav-link" href="#files">Files</a>
+    <a class="nav-link chapter-link" href="#arranque">1. Arranque: la historia</a>
+    <a class="nav-link step-link" href="#elige-rol">Elige tu rol y abre la Bitácora <span>2m</span></a>
+    <a class="nav-link step-link" href="#primer-prompt">Un prompt, un resultado <span>3m</span></a>
+    <a class="nav-link chapter-link" href="#outlook">2. Copilot en Outlook</a>
+    <a class="nav-link step-link" href="#ordena-bandeja">Ordena tu bandeja <span>3m</span></a>
+    <a class="nav-link step-link" href="#resume-hilo">Resume el hilo del cierre <span>4m</span></a>
+    <a class="nav-link step-link" href="#redacta-respuesta">Redacta tu respuesta (sin enviar) <span>4m</span></a>
+    <a class="nav-link step-link" href="#recap-reunion">Resume la reunión desde la transcripción <span>4m</span></a>
+    <a class="nav-link chapter-link" href="#excel-reglas">3. Copilot en Excel</a>
+    <a class="nav-link step-link" href="#modos-modelo">Modos y modelo <span>5m</span></a>
+    <a class="nav-link step-link" href="#analisis-variaciones">Prompts de análisis: variaciones vs presupuesto <span>5m</span></a>
+    <a class="nav-link step-link" href="#analisis-impulsores">Prompts de análisis: top 5 impulsores y un gráfico <span>5m</span></a>
+    <a class="nav-link step-link" href="#reglas-rules">Reglas .Rules con lista desplegable <span>10m</span></a>
+    <a class="nav-link step-link" href="#reporte-ejecutivo">Reporte ejecutivo interactivo <span>10m</span></a>
+    <a class="nav-link step-link" href="#skills-excel">Skills: usa uno y crea el tuyo <span>10m</span></a>
+    <a class="nav-link chapter-link" href="#powerpoint">4. PowerPoint con un skill</a>
+    <a class="nav-link step-link" href="#guion-5">Define el guion de 5 diapositivas <span>3m</span></a>
+    <a class="nav-link step-link" href="#deck-con-skill">Genera el deck con el skill de PowerPoint <span>8m</span></a>
+    <a class="nav-link step-link" href="#revisa-deck">Revisa y corrige una diapositiva <span>4m</span></a>
+    <a class="nav-link chapter-link" href="#prompt-a-skill">5. Guardar prompts y skills</a>
+    <a class="nav-link step-link" href="#guarda-prompt">Guarda tus mejores prompts <span>5m</span></a>
+    <a class="nav-link step-link" href="#prueba-skill">Corre tu skill de Excel con octubre y compara <span>10m</span></a>
+    <a class="nav-link chapter-link" href="#agente">6. Agente ligero con skills</a>
+    <a class="nav-link step-link" href="#disena-agente">Diseña las instrucciones <span>6m</span></a>
+    <a class="nav-link step-link" href="#crea-agente">Crea el agente en Agent Builder <span>10m</span></a>
+    <a class="nav-link step-link" href="#prueba-agente">Prueba el agente <span>9m</span></a>
+    <a class="nav-link step-link" href="#reto-limites">Reto: los límites del agente y quién lo usa <span>5m</span></a>
+    <a class="nav-link chapter-link" href="#cierre">7. Cierre: una acción para el lunes</a>
+    <a class="nav-link step-link" href="#accion-lunes">Escribe tu acción del lunes <span>6m</span></a>
+    <a class="nav-link step-link" href="#compromiso">Comparte tu compromiso <span>4m</span></a>
+    <a class="nav-link" href="#story-map">The story in one table</a>
+    <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+    <a class="nav-link" href="#glossary">Glossary</a>
+  </nav>
+</aside>
+    <main id="studio--content" tabindex="-1">
+      <div class="toolbar" aria-label="Lab controls">
+        <span>23 steps / 67 prompts / 3 challenges</span>
+        <div>
+          <button type="button" id="studio--expand">Expand all</button>
+          <button type="button" id="studio--collapse">Collapse all</button>
+          <button type="button" id="studio--print">Print guide</button>
+        </div>
+      </div>
+      <div class="story-strip">One story, 7 chapters / <strong>Bitácora RMN</strong></div>
+<section id="overview" class="card anchor" aria-labelledby="overview--title">
+  <p class="eyebrow">Step into the story</p>
+  <h2 id="overview--title">Overview</h2>
+  <p>Embotelladora ficticia de bebidas con sede en Quito, Ecuador, dos plantas (Quito y Guayaquil) y cuatro regiones de venta. Todas las cifras están en miles de USD y miles de cajas unidad (CU).</p>
+<p class="fictional-badge">Fictional practice company</p>  <dl class="story">
+    <div><dt>Your role</dt><dd>Director(a) o gerente de una de las 4 áreas de Embotelladora Cumbre Andina que prepara su parte de la Revisión Mensual de Negocio (RMN).</dd></div>
+    <div><dt>Situation</dt><dd>Noviembre de 2026 cerró con volumen 2.32% debajo del plan y EBITDA 17.11% debajo del plan. Hay un hilo de correo sobre la caída en Costa, una transcripción del comité pre-RMN y un libro de Excel con los números.</dd></div>
+    <div><dt>Trigger</dt><dd>La Dirección General pidió que la RMN salga con decisiones, no solo con números.</dd></div>
+    <div><dt>Deadline</dt><dd>Viernes 4 de diciembre de 2026, 9:00 (RMN de noviembre).</dd></div>
+  </dl>
+  <aside class="callout callout-note through-line">
+    <strong>Keep your work together: Bitácora RMN</strong>
+    <p><b>Where:</b> <a href="../../ResourceFiles/Arca/Bitacora_RMN_CumbreAndina.docx" download="Bitacora_RMN_CumbreAndina.docx">Bitacora_RMN_CumbreAndina.docx</a></p>
+    <p>Un documento de Word que llenas al final de cada capítulo con resultados revisados. Si te atrasas, abre el punto de control del capítulo.</p>
+  </aside>
+</section>
+<section id="setup" class="card anchor" aria-labelledby="setup--title">
+  <p class="eyebrow">Prepare your workspace</p>
+  <h2 id="setup--title">Setup</h2>
+  <ol><li>Inicia sesión en Microsoft 365 con tu cuenta de trabajo y abre Copilot Chat (pestaña Trabajo).</li><li>Descarga la carpeta learner y súbela a tu OneDrive: Copilot en Excel y PowerPoint necesita los archivos en la nube.</li><li>Abre en pestañas Outlook, Excel y PowerPoint en la web o en escritorio.</li><li>Comprueba si ves Copilot Cowork y Agentes &gt; Crear agente; si no, sigue los respaldos de cada paso.</li><li>Abre la Bitácora y escribe tu rol.</li></ol>
+  <h3>Choose the right mode</h3>
+  <dl class="story">
+<div><dt>Chat</dt><dd>Copilot Chat, Outlook, Excel o PowerPoint: preguntas y respuestas sobre tus archivos.</dd></div><div><dt>Edición</dt><dd>Copilot cambia el archivo abierto (por ejemplo, la hoja .Rules o una diapositiva).</dd></div><div><dt>Cowork</dt><dd>Copilot Cowork ejecuta tareas de varios pasos, usa skills y crea archivos para ti.</dd></div><div><dt>Agente</dt><dd>Un agente creado en Agent Builder con instrucciones, conocimiento y skills.</dd></div>  </dl>
+  <h3>Ground rules</h3>
+  <ul><li>Usa solo los archivos ficticios del laboratorio; no subas datos reales de la empresa.</li><li>No envíes, borres ni muevas correos reales durante la sesión.</li><li>Revisa cada cifra contra los hechos esperados antes de copiarla a la Bitácora.</li><li>Si te atrasas, abre el punto de control del capítulo y sigue.</li><li>Una causa que no está en el libro es «causa por confirmar».</li></ul>
+</section>
+<section id="agenda" class="card anchor" aria-labelledby="agenda--title">
+  <h2 id="agenda--title">Agenda</h2>
+  <p class="muted">Minutes from the start, including time to try each activity and discuss what you find.</p>
+  <div class="table-scroll" role="region" aria-label="Agenda table" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">Minutes</th><th scope="col">Chapter</th><th scope="col">Format</th><th scope="col">You will add</th></tr></thead>
+      <tbody>
+        <tr><td>0-5</td><th scope="row"><a href="#arranque">1. Arranque: la historia</a></th><td>Interactive</td><td>Tu rol para todo el laboratorio, tu Bitácora abierta y un primer resultado de Copilot que mejorarás en los siguientes capítulos.</td></tr>
+        <tr><td>5-20</td><th scope="row"><a href="#outlook">2. Copilot en Outlook</a></th><td>Guided</td><td>Un resumen del hilo de correo, un borrador de respuesta y los 4 acuerdos del comité con responsable y fecha en la sección 1 de tu Bitácora.</td></tr>
+        <tr><td>20-65</td><th scope="row"><a href="#excel-reglas">3. Copilot en Excel</a></th><td>Guided</td><td>Los tres modos de Copilot en Excel, variaciones e impulsores con gráfico, una hoja .Rules con regla de lista desplegable, un reporte ejecutivo verificado y tu propio skill de Excel.</td></tr>
+        <tr><td>65-80</td><th scope="row"><a href="#powerpoint">4. PowerPoint con un skill</a></th><td>Guided</td><td>Un deck ejecutivo de 5 diapositivas de tu área, con cifras revisadas, y su mensaje central en la sección 3 de la Bitácora.</td></tr>
+        <tr><td>80-95</td><th scope="row"><a href="#prompt-a-skill">5. Guardar prompts y skills</a></th><td>Guided</td><td>Tus mejores prompts guardados y la prueba del skill resumen-rmn-por-area con el libro de octubre, comparada con noviembre.</td></tr>
+        <tr><td>95-125</td><th scope="row"><a href="#agente">6. Agente ligero con skills</a></th><td>Guided</td><td>Un agente «Asistente RMN Cumbre Andina» con instrucciones, el libro con reglas como conocimiento y tu skill, probado con preguntas de tu área.</td></tr>
+        <tr><td>125-135</td><th scope="row"><a href="#cierre">7. Cierre: una acción para el lunes</a></th><td>Group</td><td>Una acción concreta de tu área para el próximo lunes, escrita en la sección 6 de la Bitácora y compartida con el grupo.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="files" class="card anchor" aria-labelledby="files--title">
+  <h2 id="files--title">Files for the story</h2>
+  <p>Gather these files before you start. Ask your facilitator for any marked "Provided separately", or create them with Cowork using the chapter instructions.</p>
+  <h3>Source files</h3>
+  <div class="table-scroll" role="region" aria-label="Source files" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Purpose</th><th scope="col">Used in</th></tr></thead>
+      <tbody>
+        <tr id="hilo-correo"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Hilo_Correo_Cierre_Noviembre.docx" download="Hilo_Correo_Cierre_Noviembre.docx" target="_blank" rel="noopener noreferrer">Hilo_Correo_Cierre_Noviembre.docx</a></th><td>Hilo de correo ficticio de 5 mensajes sobre el cierre de noviembre.</td><td>
+<a href="#outlook">Copilot en Outlook</a>        </td></tr>
+        <tr id="transcripcion"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Transcripcion_Comite_PreRMN_27Nov2026.docx" download="Transcripcion_Comite_PreRMN_27Nov2026.docx" target="_blank" rel="noopener noreferrer">Transcripcion_Comite_PreRMN_27Nov2026.docx</a></th><td>Transcripción ficticia del comité pre-RMN del viernes 27 de noviembre de 2026, con acuerdos numerados.</td><td>
+<a href="#outlook">Copilot en Outlook</a><br><a href="#agente">Agente ligero con skills</a>        </td></tr>
+        <tr id="libro-nov"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/CumbreAndina_RMN_Noviembre2026.xlsx" download="CumbreAndina_RMN_Noviembre2026.xlsx" target="_blank" rel="noopener noreferrer">CumbreAndina_RMN_Noviembre2026.xlsx</a></th><td>Libro de la RMN de noviembre: Ventas y PyG (noviembre 2026, noviembre 2025 y acumulado enero–noviembre), Supply, Capital Humano y la hoja Parámetros con la lista desplegable de umbral.</td><td>
+<a href="#excel-reglas">Copilot en Excel</a><br><a href="#powerpoint">PowerPoint con un skill</a>        </td></tr>
+        <tr id="libro-oct"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/CumbreAndina_RMN_Octubre2026_Prueba.xlsx" download="CumbreAndina_RMN_Octubre2026_Prueba.xlsx" target="_blank" rel="noopener noreferrer">CumbreAndina_RMN_Octubre2026_Prueba.xlsx</a></th><td>Datos nuevos (octubre 2026, cifras distintas, con octubre 2025 y acumulado enero–octubre) para probar el skill y el agente.</td><td>
+<a href="#prompt-a-skill">Guardar prompts y skills</a><br><a href="#agente">Agente ligero con skills</a>        </td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Checkpoints - Only if you fall behind</h3>
+  <div class="table-scroll" role="region" aria-label="Checkpoints - Only if you fall behind" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Purpose</th><th scope="col">Used in</th></tr></thead>
+      <tbody>
+        <tr id="cp-cap2"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Excel.docx" download="Bitacora_CP_Excel.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Excel.docx</a></th><td>Punto de control: Bitácora con la sección 1 terminada (inicio del capítulo «Copilot en Excel»).</td><td>
+<a href="#excel-reglas">Copilot en Excel</a>        </td></tr>
+        <tr id="libro-reglas"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx" download="CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx" target="_blank" rel="noopener noreferrer">CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx</a></th><td>Punto de control: el libro de noviembre (con año anterior y acumulado) con la hoja .Rules (6 reglas en la columna A) y el umbral en 5%.</td><td>
+<a href="#excel-reglas">Copilot en Excel</a><br><a href="#powerpoint">PowerPoint con un skill</a><br><a href="#agente">Agente ligero con skills</a>        </td></tr>
+        <tr id="cp-cap3"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_PowerPoint.docx" download="Bitacora_CP_PowerPoint.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_PowerPoint.docx</a></th><td>Punto de control: Bitácora con las secciones 1 y 2 terminadas (incluye el nombre del skill creado en Excel) (inicio del capítulo «PowerPoint con un skill»).</td><td>
+<a href="#powerpoint">PowerPoint con un skill</a>        </td></tr>
+        <tr id="cp-cap4"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_GuardarPrompts.docx" download="Bitacora_CP_GuardarPrompts.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_GuardarPrompts.docx</a></th><td>Punto de control: Bitácora con las secciones 1 a 3 terminadas (inicio del capítulo «Guardar prompts y skills»).</td><td>
+<a href="#prompt-a-skill">Guardar prompts y skills</a>        </td></tr>
+        <tr id="cp-cap5"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Agente.docx" download="Bitacora_CP_Agente.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Agente.docx</a></th><td>Punto de control: Bitácora con las secciones 1 a 4 terminadas, incluidos los prompts guardados, el texto del skill y la prueba de octubre (inicio del capítulo «Agente ligero con skills»).</td><td>
+<a href="#agente">Agente ligero con skills</a>        </td></tr>
+        <tr id="cp-cap6"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Cierre.docx" download="Bitacora_CP_Cierre.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Cierre.docx</a></th><td>Punto de control: Bitácora con las secciones 1 a 5 terminadas (inicio del capítulo «Cierre»).</td><td>
+<a href="#cierre">Cierre: una acción para el lunes</a>        </td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Answer keys</h3>
+  <div class="table-scroll" role="region" aria-label="Answer keys" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Purpose</th><th scope="col">Used in</th></tr></thead>
+      <tbody>
+        <tr id="clave"><th scope="row"><span class="file-name">Clave_Respuestas_RMN_CumbreAndina.xlsx</span> <span class="provided-separately">Facilitator only</span></th><td>Solo facilitador: variaciones, alertas por umbral, impulsores, KPI del reporte ejecutivo por rol, prueba de octubre y fechas.</td><td>
+<a href="#outlook">Copilot en Outlook</a><br><a href="#excel-reglas">Copilot en Excel</a><br><a href="#powerpoint">PowerPoint con un skill</a><br><a href="#prompt-a-skill">Guardar prompts y skills</a><br><a href="#agente">Agente ligero con skills</a>        </td></tr>
+        <tr id="notas"><th scope="row"><span class="file-name">facilitator-notes.md</span> <span class="provided-separately">Facilitator only</span></th><td>Solo facilitador: guion por capítulo, tiempos, qué entregar, respaldos y respuestas esperadas.</td><td>
+<a href="#arranque">Arranque: la historia</a><br><a href="#outlook">Copilot en Outlook</a><br><a href="#excel-reglas">Copilot en Excel</a><br><a href="#powerpoint">PowerPoint con un skill</a><br><a href="#prompt-a-skill">Guardar prompts y skills</a><br><a href="#agente">Agente ligero con skills</a><br><a href="#cierre">Cierre: una acción para el lunes</a>        </td></tr>
+        <tr id="notas-docx"><th scope="row"><span class="file-name">Notas_Facilitador.docx</span> <span class="provided-separately">Facilitator only</span></th><td>Solo facilitador: las mismas notas en Word para imprimir.</td><td>
+<a href="#arranque">Arranque: la historia</a><br><a href="#cierre">Cierre: una acción para el lunes</a>        </td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Worksheets</h3>
+  <div class="table-scroll" role="region" aria-label="Worksheets" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Purpose</th><th scope="col">Used in</th></tr></thead>
+      <tbody>
+        <tr id="bitacora"><th scope="row"><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_RMN_CumbreAndina.docx" download="Bitacora_RMN_CumbreAndina.docx" target="_blank" rel="noopener noreferrer">Bitacora_RMN_CumbreAndina.docx</a></th><td>Bitácora de la RMN: el documento que llenas capítulo a capítulo con tus resultados revisados.</td><td>
+<a href="#arranque">Arranque: la historia</a><br><a href="#outlook">Copilot en Outlook</a><br><a href="#excel-reglas">Copilot en Excel</a><br><a href="#powerpoint">PowerPoint con un skill</a><br><a href="#prompt-a-skill">Guardar prompts y skills</a><br><a href="#agente">Agente ligero con skills</a><br><a href="#cierre">Cierre: una acción para el lunes</a>        </td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<details class="chapter card anchor" id="arranque" open>
+  <summary>
+    <span class="eyebrow">Chapter 1 / 5 minutes / Interactive</span>
+    <h2>Arranque: la historia</h2>
+    <span class="summary-hint">2 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Es lunes 30 de noviembre de 2026 en Embotelladora Cumbre Andina. El viernes 4 de diciembre de 2026 a las 9:00 es la Revisión Mensual de Negocio (RMN) de noviembre y cada director(a) debe llegar con su parte lista.</dd></div>
+      <div><dt>Builds on</dt><dd>
+Start of the story      </dd></div>
+      <div><dt>You will add</dt><dd>Tu rol para todo el laboratorio, tu Bitácora abierta y un primer resultado de Copilot que mejorarás en los siguientes capítulos.</dd></div>
+    </dl>
+<details class="step anchor" id="elige-rol" open>
+  <summary>
+    <span class="step-meta">2 min / Basic</span>
+    <h3>Elige tu rol y abre la Bitácora</h3>
+    <span class="summary-hint">Elegir un rol (Finanzas, Comercial, Supply/Logística o Capital Humano) y tener los archivos listos.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Bitacora_RMN_CumbreAndina.docx</p>
+    <p>Descarga la carpeta learner, abre la Bitácora y escribe tu rol en la portada. Adjunta la Bitácora en Copilot Chat y pide que te explique qué llenarás. Todo el laboratorio sigue la misma historia: la RMN de noviembre de Cumbre Andina. Si tu función real no está en la lista, elige la más cercana.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="elige-rol--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="elige-rol--prompt-1" tabindex="0"><code>Lee la Bitácora adjunta y explícame en 6 viñetas qué tendré que escribir en cada sección, sabiendo que mi rol es [tu rol] y que la RMN de noviembre es el viernes 4 de diciembre de 2026.</code></pre>
+</div>
+
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>Embotelladora Cumbre Andina y todas sus cifras son ficticias. No uses datos reales de tu empresa en este laboratorio.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="elige-rol--check">
+      <h4 id="elige-rol--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Tengo la Bitácora abierta y mi rol escrito en la portada.</span></label></li><li><label><input type="checkbox"> <span>Veo los 4 archivos fuente y los puntos de control en la carpeta learner.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="primer-prompt">
+  <summary>
+    <span class="step-meta">3 min / Basic</span>
+    <h3>Un prompt, un resultado</h3>
+    <span class="summary-hint">Obtener una primera respuesta sin archivos y detectar qué le falta.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Copilot Chat (sin archivos)</p>
+    <p>Escribe el prompt de tu rol en Copilot Chat. El resultado será genérico a propósito: en los siguientes capítulos lo mejorarás con correos, Excel, reglas, un skill y un agente.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="primer-prompt--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="primer-prompt--prompt-1" tabindex="0"><code>Soy director(a) de Finanzas de una embotelladora en Ecuador. El viernes presento mi parte de la Revisión Mensual de Negocio de noviembre. Dame las 5 preguntas que el comité me va a hacer y qué dato necesito para responder cada una.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="primer-prompt--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="primer-prompt--prompt-2" tabindex="0"><code>Soy director(a) Comercial de una embotelladora en Ecuador. El viernes presento mi parte de la Revisión Mensual de Negocio de noviembre. Dame las 5 preguntas que el comité me va a hacer sobre volumen, precio y regiones, y qué dato necesito para cada una.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="primer-prompt--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="primer-prompt--prompt-3" tabindex="0"><code>Soy gerente de Supply y Logística de una embotelladora en Ecuador. El viernes presento mi parte de la Revisión Mensual de Negocio de noviembre. Dame las 5 preguntas que el comité me va a hacer sobre producción, OTIF, inventario y merma, y qué dato necesito para cada una.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="primer-prompt--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="primer-prompt--prompt-4" tabindex="0"><code>Soy gerente de Capital Humano de una embotelladora en Ecuador. El viernes presento mi parte de la Revisión Mensual de Negocio de noviembre. Dame las 5 preguntas que el comité me va a hacer sobre rotación, ausentismo, vacantes y capacitación, y qué dato necesito para cada una.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Una lista genérica de 5 preguntas y los datos que hacen falta. No contiene cifras de Cumbre Andina porque Copilot todavía no tiene archivos.</p>
+<ul><li>La respuesta no debe contener cifras de Cumbre Andina: aún no hay fuentes.</li><li>La RMN de noviembre es el viernes 4 de diciembre de 2026, 4 días después del lunes 30 de noviembre de 2026.</li></ul>    </section>
+    <aside class="callout callout-tip" aria-label="Tip">
+      <strong>Tip</strong><p>Revisa los huecos: ¿qué datos inventaría Copilot si le pidieras cifras ahora? Por eso el siguiente paso es darle fuentes.</p>
+    </aside>
+<p class="carry-forward"><strong>Carry forward:</strong> Las 5 preguntas de tu rol: las responderás con datos en los capítulos «Copilot en Outlook» y «Copilot en Excel».</p>    <section class="self-check" aria-labelledby="primer-prompt--check">
+      <h4 id="primer-prompt--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Tengo 5 preguntas útiles para mi rol.</span></label></li><li><label><input type="checkbox"> <span>Anoté en la Bitácora qué datos le faltaron a Copilot.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="outlook">
+  <summary>
+    <span class="eyebrow">Chapter 2 / 15 minutes / Guided</span>
+    <h2>Copilot en Outlook</h2>
+    <span class="summary-hint">4 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Tienes tu rol y 5 preguntas genéricas para la RMN. Ahora necesitas saber qué se dijo en el correo y en el comité pre-RMN.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#arranque">Arranque: la historia</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Un resumen del hilo de correo, un borrador de respuesta y los 4 acuerdos del comité con responsable y fecha en la sección 1 de tu Bitácora.</dd></div>
+    </dl>
+<details class="step anchor" id="ordena-bandeja" open>
+  <summary>
+    <span class="step-meta">3 min / Basic</span>
+    <h3>Ordena tu bandeja</h3>
+    <span class="summary-hint">Usar Copilot en Outlook para encontrar lo que pide acción esta semana.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Tu propio Outlook (solo lectura)</p>
+    <p>Abre Outlook (nuevo Outlook o Outlook web) y el panel de Copilot. Pide un orden de tu bandeja real, solo para ver la función. No envíes, borres ni muevas nada durante el laboratorio.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="ordena-bandeja--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="ordena-bandeja--prompt-1" tabindex="0"><code>Revisa mis correos de los últimos 7 días y dame una tabla con los que piden una acción mía sobre cierre de mes, presupuesto o pagos: remitente, qué piden y para cuándo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="ordena-bandeja--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="ordena-bandeja--prompt-2" tabindex="0"><code>Revisa mis correos de los últimos 7 días y dame una tabla con los que piden una acción mía sobre clientes, distribuidores, precios o volumen: remitente, qué piden y para cuándo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="ordena-bandeja--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="ordena-bandeja--prompt-3" tabindex="0"><code>Revisa mis correos de los últimos 7 días y dame una tabla con los que piden una acción mía sobre producción, inventario, transporte o proveedores: remitente, qué piden y para cuándo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="ordena-bandeja--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="ordena-bandeja--prompt-4" tabindex="0"><code>Revisa mis correos de los últimos 7 días y dame una tabla con los que piden una acción mía sobre contratación, rotación, nómina o capacitación: remitente, qué piden y para cuándo.</code></pre>
+</div>
+
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si Copilot en Outlook no está disponible, haz este paso en Copilot Chat (pestaña Trabajo) con el mismo prompt.</p></aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Es tu correo real: no compartas pantalla mientras lo revisas. Si prefieres no usarlo, salta al siguiente paso.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="ordena-bandeja--check">
+      <h4 id="ordena-bandeja--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Obtuve una tabla con acciones y fechas.</span></label></li><li><label><input type="checkbox"> <span>No envié, borré ni moví ningún correo.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="resume-hilo">
+  <summary>
+    <span class="step-meta">4 min / Basic</span>
+    <h3>Resume el hilo del cierre</h3>
+    <span class="summary-hint">Obtener en 1 minuto lo que dicen 5 correos, separando hechos de opiniones.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Hilo_Correo_Cierre_Noviembre.docx</p>
+    <p>Abre Copilot (en Outlook o en Copilot Chat), adjunta el archivo del hilo y pide un resumen con enfoque en tu rol. Si el facilitador te reenvió el hilo como correo, usa «Resumir» directamente en Outlook.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="resume-hilo--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="resume-hilo--prompt-1" tabindex="0"><code>Resume el hilo del archivo adjunto en 5 viñetas para Finanzas. Incluye cada fecha límite y quién la pidió. Separa los hechos de las causas que alguien supone. Cita el número de mensaje.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="resume-hilo--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="resume-hilo--prompt-2" tabindex="0"><code>Resume el hilo del archivo adjunto en 5 viñetas para la Dirección Comercial: qué pasó con Costa y Amazonía, qué causas se mencionan y qué se pidió para la RMN. Cita el número de mensaje.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="resume-hilo--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="resume-hilo--prompt-3" tabindex="0"><code>Resume el hilo del archivo adjunto en 5 viñetas para Supply: qué pasó con la línea 2, en qué fechas y qué impacto se le atribuye. Separa los hechos de las causas supuestas. Cita el número de mensaje.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="resume-hilo--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="resume-hilo--prompt-4" tabindex="0"><code>Resume el hilo del archivo adjunto en 5 viñetas para Capital Humano: qué se dice de la rotación y de los turnos, y qué otros pedidos afectan a mi área. Cita el número de mensaje.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un resumen de 5 viñetas que cita los mensajes y marca la causa de la caída de Costa como algo que todavía no está verificado.</p>
+<ul><li>El volumen de noviembre en Costa cerró 8% debajo del plan por el paro de la línea 2 en Planta Guayaquil y la promoción agresiva de un competidor en el canal tradicional.</li><li>La línea 2 estuvo detenida del 9 al 11 de noviembre por una falla en la llenadora; quedó operativa el 12 de noviembre.</li><li>Necesito el pronóstico revisado de diciembre a más tardar el miércoles 2 de diciembre de 2026 para cerrar la presentación de la RMN.</li><li>La rotación en Distribución y Logística subió a 2.5% en noviembre; proponemos revisar el esquema de turnos de los auxiliares de reparto.</li><li>Llevemos un plan de recuperación para Costa y Amazonía a la RMN del viernes 4 de diciembre de 2026, con responsables y fechas.</li><li>La línea 2 estuvo detenida 3 días (del lunes 9 al miércoles 11 de noviembre de 2026).</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si no puedes adjuntar archivos, abre el .docx, copia todo el texto y pégalo después del prompt.</p></aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Las causas que aparecen en correos o en la transcripción son opiniones de las áreas, no datos verificados. Si una causa no está en el libro de Excel, escríbela como «causa por confirmar».</p>
+    </aside>
+    <section class="self-check" aria-labelledby="resume-hilo--check">
+      <h4 id="resume-hilo--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Mi resumen cita el número de mensaje.</span></label></li><li><label><input type="checkbox"> <span>Separé hechos de causas supuestas.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="redacta-respuesta">
+  <summary>
+    <span class="step-meta">4 min / Intermediate</span>
+    <h3>Redacta tu respuesta (sin enviar)</h3>
+    <span class="summary-hint">Crear un borrador de respuesta al Mensaje 5 desde tu rol.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Hilo_Correo_Cierre_Noviembre.docx y tu resumen</p>
+    <p>Pide un borrador de respuesta a la Dirección Comercial. Revisa tono, fechas y compromisos antes de guardarlo. No lo envíes: pégalo en la sección 1 de tu Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="redacta-respuesta--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="redacta-respuesta--prompt-1" tabindex="0"><code>Redacta una respuesta breve al Mensaje 5 desde Finanzas: confirma que enviaré el pronóstico revisado de diciembre a más tardar el miércoles 2 de diciembre de 2026 y pide a Comercial y Supply sus supuestos antes del martes 1 de diciembre. Tono cordial y directo, máximo 120 palabras.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="redacta-respuesta--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="redacta-respuesta--prompt-2" tabindex="0"><code>Redacta una respuesta breve al Mensaje 5 desde la Dirección Comercial: propone una estructura de 3 puntos para el plan de recuperación de Costa y Amazonía, con un responsable por punto y fecha antes de la RMN. Máximo 120 palabras.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="redacta-respuesta--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="redacta-respuesta--prompt-3" tabindex="0"><code>Redacta una respuesta breve al Mensaje 5 desde Supply: confirma que la línea 2 opera desde el 12 de noviembre y que llevaré el plan de mantenimiento preventivo. No afirmes cuánto volumen se perdió por el paro: dilo como dato por confirmar. Máximo 120 palabras.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="redacta-respuesta--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="redacta-respuesta--prompt-4" tabindex="0"><code>Redacta una respuesta breve al Mensaje 5 desde Capital Humano: ofrece la propuesta de turnos para Distribución y Logística como parte del plan de recuperación y pide 15 minutos en la agenda de la RMN. Máximo 120 palabras.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un borrador de menos de 120 palabras, en el tono del rol, que respeta las fechas del hilo: miércoles 2 de diciembre de 2026 y viernes 4 de diciembre de 2026.</p>
+<ul><li>Fecha del pronóstico revisado: miércoles 2 de diciembre de 2026.</li><li>Fecha de la RMN: viernes 4 de diciembre de 2026.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si «Redactar con Copilot» no aparece en Outlook, usa el mismo prompt en Copilot Chat y copia el texto.</p></aside>
+    <aside class="callout callout-important" aria-label="Important">
+      <strong>Important</strong><p>Copilot redacta; tú decides. Revisa cada fecha y cada compromiso antes de usar el borrador.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="redacta-respuesta--check">
+      <h4 id="redacta-respuesta--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El borrador no compromete fechas distintas a las del hilo.</span></label></li><li><label><input type="checkbox"> <span>Lo pegué en la Bitácora, sección 1, sin enviarlo.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="recap-reunion">
+  <summary>
+    <span class="step-meta">4 min / Intermediate</span>
+    <h3>Resume la reunión desde la transcripción</h3>
+    <span class="summary-hint">Obtener los acuerdos del comité con responsable y fecha.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Transcripcion_Comite_PreRMN_27Nov2026.docx</p>
+    <p>En un evento de Teams real usarías el resumen de la reunión. Aquí adjunta la transcripción ficticia a Copilot y pide los acuerdos en una tabla. Copia la tabla a la sección 1 de tu Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="recap-reunion--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="recap-reunion--prompt-1" tabindex="0"><code>Con la transcripción adjunta, dame una tabla de acuerdos (número, acuerdo, responsable, fecha) y marca cuáles dependen de Finanzas. Agrega las cifras que dijo el Controller y en qué sección las dijo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="recap-reunion--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="recap-reunion--prompt-2" tabindex="0"><code>Con la transcripción adjunta, dame una tabla de acuerdos (número, acuerdo, responsable, fecha) y marca cuáles dependen de Comercial. Agrega qué se dijo de Costa y Amazonía y en qué sección.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="recap-reunion--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="recap-reunion--prompt-3" tabindex="0"><code>Con la transcripción adjunta, dame una tabla de acuerdos (número, acuerdo, responsable, fecha) y marca cuáles dependen de Supply. Agrega el OTIF y la meta que se mencionaron y en qué sección.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="recap-reunion--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="recap-reunion--prompt-4" tabindex="0"><code>Con la transcripción adjunta, dame una tabla de acuerdos (número, acuerdo, responsable, fecha) y marca cuáles dependen de Capital Humano. Agrega lo que se dijo de rotación y turnos y en qué sección.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Una tabla con los 4 acuerdos de la sección 6, sus responsables y fechas, más las cifras citadas con su sección.</p>
+<ul><li>Finanzas enviará el pronóstico revisado de diciembre a más tardar el miércoles 2 de diciembre de 2026.</li><li>Comercial presentará el plan de recuperación de Costa y Amazonía en la RMN del viernes 4 de diciembre de 2026.</li><li>Supply confirmará el plan de mantenimiento preventivo de la línea 2 antes del jueves 3 de diciembre de 2026.</li><li>Capital Humano traerá una propuesta de turnos para Distribución y Logística a la RMN del viernes 4 de diciembre de 2026.</li><li>El EBITDA de noviembre quedó 17% debajo del plan; la mayor parte viene del margen bruto.</li><li>El OTIF de Planta Guayaquil fue 88.4% contra una meta de 95%.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si no puedes adjuntar el archivo, copia el texto de la transcripción y pégalo debajo del prompt.</p></aside>
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 1 de la Bitácora: resumen del hilo, borrador de respuesta y tabla de acuerdos.</p>    <section class="self-check" aria-labelledby="recap-reunion--check">
+      <h4 id="recap-reunion--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Mi tabla tiene los 4 acuerdos (6.1 a 6.4) con responsable y fecha.</span></label></li><li><label><input type="checkbox"> <span>La sección 1 de mi Bitácora está completa.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="excel-reglas">
+  <summary>
+    <span class="eyebrow">Chapter 3 / 45 minutes / Guided</span>
+    <h2>Copilot en Excel</h2>
+    <span class="summary-hint">6 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Ya sabes qué se dijo y qué se acordó. Ahora necesitas los números de noviembre, un reporte para la dirección y una forma de repetir el análisis cada mes.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#outlook">Copilot en Outlook</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Los tres modos de Copilot en Excel, variaciones e impulsores con gráfico, una hoja .Rules con regla de lista desplegable, un reporte ejecutivo verificado y tu propio skill de Excel.</dd></div>
+    </dl>
+    <aside class="callout callout-note checkpoint">
+      <strong>Behind? Jump in here</strong>
+      <p><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Excel.docx" download="Bitacora_CP_Excel.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Excel.docx</a></p>
+      <p>Punto de control: Bitácora con la sección 1 terminada (inicio del capítulo «Copilot en Excel»).</p>
+      <p>Only if you fall behind: use this starting state instead of repeating earlier chapters.</p>
+    </aside>
+<details class="step anchor" id="modos-modelo" open>
+  <summary>
+    <span class="step-meta">5 min / Basic</span>
+    <h3>Modos y modelo</h3>
+    <span class="summary-hint">Ver qué hace cada modo de Copilot en Excel con la misma pregunta y dónde se elige el modelo.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx (hoja Ventas)</p>
+    <p>Abre el libro desde OneDrive y el panel de Copilot. Elige el modo en el panel y copia la MISMA pregunta en cada uno: «Solo chat» (Chat only) responde sin cambiar nada del libro; «Plan» muestra los pasos y espera a que los confirmes; «Permitir edición» (Allow editing, el modo predeterminado) cambia el libro: Ctrl+Z deshace y el historial de versiones de OneDrive guarda las versiones anteriores. Después mira el selector de modelo en la parte superior izquierda del panel: el valor predeterminado es «Auto» y lo que elijas aplica solo a esa sesión. Al terminar, deshaz la columna H con Ctrl+Z para dejar el libro limpio.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Modo Solo chat <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="modos-modelo--prompt-1" aria-label="Copy prompt: Modo Solo chat">Copy prompt</button>
+  </div>
+  <pre id="modos-modelo--prompt-1" tabindex="0"><code>Calcula la diferencia de volumen Real − Plan (miles de CU) por región y el total de la hoja Ventas, y ponla en la columna H, filas 3 a 8, con el encabezado «Dif. volumen».</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Modo Plan <span class="mode-badge" data-mode="plan">Plan</span></span>
+    <button class="copy-button" type="button" data-copy-target="modos-modelo--prompt-2" aria-label="Copy prompt: Modo Plan">Copy prompt</button>
+  </div>
+  <pre id="modos-modelo--prompt-2" tabindex="0"><code>Calcula la diferencia de volumen Real − Plan (miles de CU) por región y el total de la hoja Ventas, y ponla en la columna H, filas 3 a 8, con el encabezado «Dif. volumen».</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Modo Permitir edición <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="modos-modelo--prompt-3" aria-label="Copy prompt: Modo Permitir edición">Copy prompt</button>
+  </div>
+  <pre id="modos-modelo--prompt-3" tabindex="0"><code>Calcula la diferencia de volumen Real − Plan (miles de CU) por región y el total de la hoja Ventas, y ponla en la columna H, filas 3 a 8, con el encabezado «Dif. volumen».</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Los tres modos dan las mismas cifras; solo «Permitir edición» escribe en el libro.</p>
+<ul><li>Diferencia de volumen Real − Plan: Sierra Norte +60, Costa −135, Austro +14, Amazonía −28; total −89 miles de CU (Ventas!C8 − Ventas!B8 = 3,751 − 3,840).</li><li>«Solo chat» no cambia el libro; «Plan» pide confirmación; «Permitir edición» escribe y se deshace con Ctrl+Z.</li></ul>    </section>
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>Los nombres de los modos y botones del panel pueden variar un poco según la versión y el idioma (por ejemplo «Chat only» o «Solo chat»). Busca la función, no la etiqueta exacta.</p>
+    </aside>
+    <aside class="callout callout-tip" aria-label="Tip">
+      <strong>Tip</strong><p>Personaliza Copilot: en la configuración de Copilot (opción de personalización o instrucciones personalizadas, según tu versión) puedes pedir siempre «responde en español y en miles de USD». Eso aplica a ti; las reglas de la hoja .Rules aplican al libro y viajan con él.</p>
+    </aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>En «Permitir edición» Copilot sí cambia el libro. Revisa el resultado y usa Ctrl+Z o el historial de versiones si algo no te convence.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="modos-modelo--check">
+      <h4 id="modos-modelo--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>En «Solo chat» el libro no cambió.</span></label></li><li><label><input type="checkbox"> <span>En «Plan» vi los pasos antes de confirmar.</span></label></li><li><label><input type="checkbox"> <span>Encontré el selector de modelo (Auto) y deshice la columna H.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="analisis-variaciones">
+  <summary>
+    <span class="step-meta">5 min / Intermediate</span>
+    <h3>Prompts de análisis: variaciones vs presupuesto</h3>
+    <span class="summary-hint">Obtener las variaciones Real vs Plan (presupuesto) de tu área con celdas citadas.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx</p>
+    <p>En este libro el presupuesto se llama «Plan». Usa el prompt de tu rol y compara cada cifra con los hechos esperados. Copia lo revisado a la sección 2 de la Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-variaciones--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="analisis-variaciones--prompt-1" tabindex="0"><code>Analiza la hoja PyG: variación Real vs Plan (presupuesto) en miles de USD y en % de ingreso neto, costo de ventas, margen bruto, gastos y EBITDA, más el margen EBITDA plan y real. Cita hoja y celda de cada cifra.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-variaciones--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="analisis-variaciones--prompt-2" tabindex="0"><code>Analiza la hoja Ventas: variación Real vs Plan (presupuesto) de volumen e ingreso por región y total, en unidades y en %. Cita hoja y celda de cada cifra y no inventes causas.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-variaciones--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="analisis-variaciones--prompt-3" tabindex="0"><code>Analiza la hoja Supply: producción Real vs Plan (presupuesto) por planta y total, y compara OTIF, días de inventario y merma contra sus metas. Cita hoja y celda de cada cifra.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-variaciones--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="analisis-variaciones--prompt-4" tabindex="0"><code>Analiza la hoja Capital Humano: rotación (bajas ÷ headcount) y ausentismo por área contra sus metas, más el total de vacantes y horas de capacitación. Cita hoja y celda de cada cifra.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Variaciones por rol que coinciden con el libro.</p>
+<ul><li>Finanzas: ingreso neto 25,880 vs plan 26,544 (−2.50%); margen bruto 10,612 vs 11,414 (−7.03%); EBITDA 4,297 vs 5,184 (−887; −17.11%); margen EBITDA 16.60% vs 19.53% de plan. La caída del margen bruto (−802) explica la mayor parte.</li><li>Comercial: volumen total 3,751 vs 3,840 miles de CU (−2.32%); Costa −8.04% en volumen y −6.69% en ingreso; Amazonía −9.66% y −11.33%; Sierra Norte +4.80% y +3.31%; Austro +2.26% y +0.92%.</li><li>Supply: Planta Guayaquil 1,783 vs 1,900 (−6.16%), OTIF 88.4% (meta 95%), 16 días de inventario (meta 10 a 14), merma 1.9% (meta máximo 1.5%); Planta Quito +1.44% y OTIF 95.6%.</li><li>Capital Humano: rotación de Distribución y Logística 2.46% (15/610) y de Ventas y Trade 2.14% (9/420), ambas sobre la meta de 1.5%; rotación total 1.78% (32/1,800); ausentismo sobre la meta de 3% en Distribución y Logística (4.1%) y Manufactura (3.4%); 47 vacantes y 5,090 horas de capacitación.</li></ul>    </section>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Revisa cada cifra contra los hechos esperados y contra la celda citada antes de copiarla.</p>
+    </aside>
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>El Mensaje 4 dice que la rotación «subió a 2.5%». El libro da 2.46%: es la misma cifra redondeada a un decimal. Usa 2.46% con su celda.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="analisis-variaciones--check">
+      <h4 id="analisis-variaciones--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Cada cifra cita hoja y celda.</span></label></li><li><label><input type="checkbox"> <span>Mis cifras coinciden con los hechos esperados.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="analisis-impulsores">
+  <summary>
+    <span class="step-meta">5 min / Intermediate</span>
+    <h3>Prompts de análisis: top 5 impulsores y un gráfico</h3>
+    <span class="summary-hint">Identificar los impulsores con mayor impacto y verlos en un gráfico.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx</p>
+    <p>Pide los impulsores ordenados por impacto y un solo gráfico. Si tu área tiene menos de 5 impulsores reales, Copilot debe decirlo en lugar de inventar.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-impulsores--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="analisis-impulsores--prompt-1" tabindex="0"><code>Con las hojas PyG y Ventas, dame los 5 impulsores con mayor impacto en miles de USD sobre la variación del EBITDA vs Plan (ingreso por región y rubros de costo y gasto), ordenados de mayor a menor impacto absoluto, y crea un gráfico de barras con esos 5 impactos.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-impulsores--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="analisis-impulsores--prompt-2" tabindex="0"><code>Con la hoja Ventas, ordena las regiones por impacto en ingreso neto (miles de USD, Real − Plan) de mayor a menor impacto absoluto y crea un gráfico de barras agrupadas Plan vs Real de ingreso por región. Si hay menos de 5 regiones, dilo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-impulsores--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="analisis-impulsores--prompt-3" tabindex="0"><code>Con la hoja Supply, dame las 5 brechas más grandes contra plan o meta (producción por planta, OTIF, días de inventario y merma), con su unidad, y crea un gráfico de barras Plan vs Real de producción por planta.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="analisis-impulsores--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="analisis-impulsores--prompt-4" tabindex="0"><code>Con la hoja Capital Humano, dame las 5 brechas más grandes contra meta (rotación y ausentismo por área, en puntos porcentuales) y crea un gráfico de barras de rotación por área con una línea en la meta de 1.5%.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Impulsores ordenados por impacto y un gráfico por rol.</p>
+<ul><li>Finanzas, top 5 sobre el EBITDA (miles de USD): ingreso Costa −764, ingreso Sierra Norte +290, ingreso Amazonía −230, gastos de distribución −160, costo de ventas −138. Siguen gastos de administración +75 e ingreso Austro +40; el total explica los −887.</li><li>Comercial: Costa −764, Sierra Norte +290, Amazonía −230, Austro +40 (miles de USD); total −664. Solo hay 4 regiones.</li><li>Supply: Planta Guayaquil producción −117 mil CU (−6.16%), OTIF 6.6 puntos bajo la meta de 95%, 2 días de inventario sobre el máximo de 14, merma 0.4 puntos sobre el máximo de 1.5%; Planta Quito producción +28 mil CU (+1.44%) y dentro de sus metas.</li><li>Capital Humano: ausentismo de Distribución y Logística +1.1 puntos sobre 3%, rotación de Distribución y Logística +0.96 puntos sobre 1.5%, rotación de Ventas y Trade +0.64 puntos, ausentismo de Manufactura +0.4 puntos; ninguna otra área supera sus metas.</li></ul>    </section>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Un impulsor no es una causa: dice dónde está la diferencia, no por qué. Las causas siguen «por confirmar».</p>
+    </aside>
+    <section class="self-check" aria-labelledby="analisis-impulsores--check">
+      <h4 id="analisis-impulsores--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El orden de mis impulsores coincide con los hechos esperados.</span></label></li><li><label><input type="checkbox"> <span>Tengo un gráfico en el libro.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="reglas-rules">
+  <summary>
+    <span class="step-meta">10 min / Intermediate</span>
+    <h3>Reglas .Rules con lista desplegable</h3>
+    <span class="summary-hint">Crear la hoja .Rules, agregar una regla que dependa de la lista desplegable y comprobar que las reglas viajan con el archivo.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx (hojas .Rules y Parámetros)</p>
+    <p>Usa «Create workbook rules» (Crear reglas del libro): la hoja .Rules debe quedar visible y con una regla por fila en la columna A (A1:A5). Después agrega la regla 6 en A6, que usa la lista desplegable de Parámetros!B2 (3%, 5% o 10%; valor inicial 5%). Por último guarda, cierra y vuelve a abrir el libro y pregunta qué reglas aplica en una conversación nueva.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>1. Crear reglas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="reglas-rules--prompt-1" aria-label="Copy prompt: 1. Crear reglas">Copy prompt</button>
+  </div>
+  <pre id="reglas-rules--prompt-1" tabindex="0"><code>Create workbook rules. Crea la hoja .Rules con una regla por fila en la columna A, a partir de A1, y déjala visible. Reglas: 1) Las cifras monetarias están en miles de USD y los volúmenes en miles de cajas unidad (CU). 2) Variación % = (Real − Plan) / Plan, con dos decimales. 3) Cita siempre la hoja y la celda de cada número que uses. 4) Si el libro no explica la causa de una variación, escribe «causa por confirmar»; no inventes causas. 5) Responde en español, en viñetas breves, con un máximo de 5 hallazgos.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>2. Regla con lista desplegable <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="reglas-rules--prompt-2" aria-label="Copy prompt: 2. Regla con lista desplegable">Copy prompt</button>
+  </div>
+  <pre id="reglas-rules--prompt-2" tabindex="0"><code>Agrega a la hoja .Rules, en la celda A6, esta regla: «Marca como ALERTA toda variación vs plan cuyo valor absoluto sea mayor que el umbral elegido en la lista desplegable de Parámetros!B2.» No cambies las reglas A1:A5.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>3. Comprobar alertas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="reglas-rules--prompt-3" aria-label="Copy prompt: 3. Comprobar alertas">Copy prompt</button>
+  </div>
+  <pre id="reglas-rules--prompt-3" tabindex="0"><code>Con el umbral actual de Parámetros!B2, ¿cuántas alertas hay en las hojas Ventas, PyG y Supply? Dame una tabla: hoja, concepto, variación %, celda.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>4. ¿Viajan las reglas? <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="reglas-rules--prompt-4" aria-label="Copy prompt: 4. ¿Viajan las reglas?">Copy prompt</button>
+  </div>
+  <pre id="reglas-rules--prompt-4" tabindex="0"><code>Sin que te las repita: ¿qué reglas tiene este libro y cuál cambia según una lista desplegable?</code></pre>
+</div>
+
+    <section class="challenge" aria-labelledby="reglas-rules--challenge">
+      <h4 id="reglas-rules--challenge">Your challenge - try without a prompt</h4>
+      <p>Sin usar un prompt nuevo de análisis: cambia Parámetros!B2 a 10% y decide qué alertas quedan. Comprueba tu respuesta con Copilot.</p>
+<p><strong>Hint:</strong> Solo cuentan las variaciones cuyo valor absoluto pasa de 10%.</p>      <details class="answer" id="reglas-rules--answer">
+        <summary>Show answer</summary>
+        <p class="challenge-answer">Quedan 2 alertas: Ingreso Amazonía −11.33% y EBITDA −17.11%. Vuelve a dejar el umbral en 5% antes de seguir.</p>
+      </details>
+    </section>
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>La hoja .Rules tiene 6 reglas; con 5% hay 7 alertas y con 10% hay 2.</p>
+<ul><li>La hoja .Rules tiene 6 reglas en A1:A6, una por fila: 5 generales y la regla 6 que usa la lista desplegable.</li><li>Unidades: miles de USD y miles de cajas unidad (CU).</li><li>Con umbral 5% hay 7 alertas: Volumen Costa −8.04%, Volumen Amazonía −9.66%, Ingreso Costa −6.69%, Ingreso Amazonía −11.33%, Margen bruto −7.03%, EBITDA −17.11% y Producción Planta Guayaquil −6.16%.</li><li>Con umbral 3% hay 11 alertas; con 10% hay 2.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Respaldo si «Create workbook rules» no está disponible: crea a mano una hoja llamada .Rules, escribe las 5 reglas en A1:A5 y empieza cada prompt con «Aplica las reglas de la hoja .Rules». Si no te da tiempo, abre CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx. Si Copilot no puede editar .Rules, escribe la regla 6 a mano en A6.</p></aside>
+    <aside class="callout callout-tip" aria-label="Tip">
+      <strong>Tip</strong><p>Si la hoja .Rules aparece oculta, haz clic derecho sobre cualquier pestaña &gt; Mostrar &gt; .Rules.</p>
+    </aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Revisa cada cifra contra los hechos esperados: Copilot puede contar mal una alerta o redondear distinto. Si no coincide, pídele la celda y verifica.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="reglas-rules--check">
+      <h4 id="reglas-rules--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>La hoja .Rules está visible con 6 reglas en A1:A6.</span></label></li><li><label><input type="checkbox"> <span>Con 5% Copilot encuentra 7 alertas y en una conversación nueva reconoce las reglas.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="reporte-ejecutivo">
+  <summary>
+    <span class="step-meta">10 min / Advanced</span>
+    <h3>Reporte ejecutivo interactivo</h3>
+    <span class="summary-hint">Generar un reporte ejecutivo interactivo de tu área y verificar 3 cifras contra la hoja.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx</p>
+    <p>Usa la función de reporte interactivo de Copilot en Excel con el prompt de tu rol. Las hojas PyG y Ventas traen, debajo de noviembre 2026, una tabla de año anterior (noviembre 2025) y otra de acumulado enero–noviembre (real 2026, plan 2026 y real 2025). Cuando aparezca el reporte, verifica 3 cifras contra su celda, al menos una de año contra año o acumulado.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="reporte-ejecutivo--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="reporte-ejecutivo--prompt-1" tabindex="0"><code>Crea un reporte ejecutivo interactivo a partir de este libro para la Revisión Mensual de Negocio (RMN) de noviembre de 2026 de Embotelladora Cumbre Andina, área Finanzas. Usa la hoja PyG como fuente principal. Usa la hoja Ventas solo como contexto de apoyo y valida de forma independiente cualquier comentario contra los datos de PyG. Secciones: 1) Resumen ejecutivo de KPI (ingreso neto real vs Plan, margen bruto y %, EBITDA (utilidad operativa) y %; acumulado del año), 2) Real vs Plan (presupuesto) con gráficos, 3) Año contra año, 4) Los cinco impulsores favorables y los cinco desfavorables por impacto en miles de USD sobre el EBITDA, 5) Ideas para la dirección, marcando como pregunta todo lo que necesite más contexto, 6) Tres preguntas y tres acciones basadas solo en evidencia del libro. Estilo de dirección, conciso y visual, cifras en miles de USD y miles de CU, porcentajes con un decimal. Incluye una nota visible de que son datos de capacitación y que todos los nombres y cifras son ficticios. No cambies los datos del libro; marca como «no disponible» cualquier valor que no puedas verificar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="reporte-ejecutivo--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="reporte-ejecutivo--prompt-2" tabindex="0"><code>Crea un reporte ejecutivo interactivo a partir de este libro para la Revisión Mensual de Negocio (RMN) de noviembre de 2026 de Embotelladora Cumbre Andina, área Comercial. Usa la hoja Ventas como fuente principal. Usa la hoja PyG solo como contexto de apoyo y valida de forma independiente cualquier comentario contra los datos de Ventas. Secciones: 1) Resumen ejecutivo de KPI (volumen e ingreso neto real vs Plan por región y total, ingreso por caja unidad; acumulado del año), 2) Real vs Plan (presupuesto) con gráficos, 3) Año contra año, 4) Los cinco impulsores favorables y los cinco desfavorables por impacto en miles de USD sobre el ingreso neto, 5) Ideas para la dirección, marcando como pregunta todo lo que necesite más contexto, 6) Tres preguntas y tres acciones basadas solo en evidencia del libro. Estilo de dirección, conciso y visual, cifras en miles de USD y miles de CU, porcentajes con un decimal. Incluye una nota visible de que son datos de capacitación y que todos los nombres y cifras son ficticios. No cambies los datos del libro; marca como «no disponible» cualquier valor que no puedas verificar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="reporte-ejecutivo--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="reporte-ejecutivo--prompt-3" tabindex="0"><code>Crea un reporte ejecutivo interactivo a partir de este libro para la Revisión Mensual de Negocio (RMN) de noviembre de 2026 de Embotelladora Cumbre Andina, área Supply/Logística. Usa la hoja Supply como fuente principal. Usa la hoja Ventas solo como contexto de apoyo y valida de forma independiente cualquier comentario contra los datos de Supply. Secciones: 1) Resumen ejecutivo de KPI (producción real vs Plan por planta y total, OTIF, días de inventario y merma contra meta; acumulado del año), 2) Real vs Plan (presupuesto) con gráficos, 3) Año contra año, 4) Los cinco impulsores favorables y los cinco desfavorables por impacto en miles de CU o puntos contra meta, 5) Ideas para la dirección, marcando como pregunta todo lo que necesite más contexto, 6) Tres preguntas y tres acciones basadas solo en evidencia del libro. Estilo de dirección, conciso y visual, cifras en miles de USD y miles de CU, porcentajes con un decimal. Incluye una nota visible de que son datos de capacitación y que todos los nombres y cifras son ficticios. No cambies los datos del libro; marca como «no disponible» cualquier valor que no puedas verificar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="reporte-ejecutivo--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="reporte-ejecutivo--prompt-4" tabindex="0"><code>Crea un reporte ejecutivo interactivo a partir de este libro para la Revisión Mensual de Negocio (RMN) de noviembre de 2026 de Embotelladora Cumbre Andina, área Capital Humano. Usa la hoja Capital Humano como fuente principal. Usa la hoja Parámetros solo como contexto de apoyo y valida de forma independiente cualquier comentario contra los datos de Capital Humano. Secciones: 1) Resumen ejecutivo de KPI (headcount, bajas, rotación y ausentismo contra meta, vacantes y horas de capacitación; acumulado del año), 2) Real vs meta con gráficos, 3) Año contra año, 4) Los cinco impulsores favorables y los cinco desfavorables por impacto en puntos contra meta, 5) Ideas para la dirección, marcando como pregunta todo lo que necesite más contexto, 6) Tres preguntas y tres acciones basadas solo en evidencia del libro. Estilo de dirección, conciso y visual, cifras en miles de USD y miles de CU, porcentajes con un decimal. Incluye una nota visible de que son datos de capacitación y que todos los nombres y cifras son ficticios. No cambies los datos del libro; marca como «no disponible» cualquier valor que no puedas verificar.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un reporte por rol con KPI del mes, año contra año y acumulado correctos, e impulsores sin inventar.</p>
+<ul><li>Finanzas: ingreso neto 25,880 vs 26,544 (−664; −2.5%) en PyG!C4 y PyG!B4; margen bruto 10,612 = 41.0% del ingreso vs 11,414 = 43.0%; EBITDA 4,297 = 16.6% vs 5,184 = 19.5% (PyG!C9, PyG!C10). Favorables: Sierra Norte +290, administración +75, Austro +40 (solo 3). Desfavorables: Costa −764, Amazonía −230, distribución −160, costo de ventas −138 (solo 4).</li><li>Comercial: volumen 3,751 vs 3,840 miles de CU (−2.3%, Ventas!C8); ingreso neto 25,880 vs 26,544 (−2.5%, Ventas!F8); ingreso por CU 6.90 vs 6.91 USD. Favorables: Sierra Norte +290, Austro +40; desfavorables: Costa −764, Amazonía −230.</li><li>Supply: producción 3,751 vs 3,840 miles de CU (−2.3%, Supply!C6); Planta Guayaquil 1,783 vs 1,900 (−6.2%), OTIF 88.4%, 16 días, merma 1.9%; Planta Quito 1,968 vs 1,940 (+1.4%), OTIF 95.6%, 11 días, merma 1.1%.</li><li>Capital Humano: headcount 1,800 (Capital Humano!B8), 32 bajas, rotación 1.8% (Capital Humano!D8); rotación Distribución y Logística 2.5% y Ventas y Trade 2.1% sobre la meta de 1.5%; ausentismo 4.1% y 3.4% sobre 3.0%; 47 vacantes y 5,090 horas de capacitación.</li><li>Finanzas, año contra año (PyG!B14:E19): ingreso neto 25,880 vs 25,220 en noviembre 2025 (+2.6%); EBITDA 4,297 vs 4,690 (−8.4%). Acumulado enero–noviembre (PyG!F14:J20): ingreso 282,900 vs plan 284,244 (−0.5%) y vs 2025 268,220 (+5.5%); margen bruto 121,332 = 42.9%; EBITDA 54,717 vs plan 55,284 (−1.0%) y vs 2025 49,990 (+9.5%); margen EBITDA 19.3% vs 19.4% plan y 18.6% en 2025.</li><li>Comercial, año contra año (Ventas!B12:G16): volumen 3,751 vs 3,725 (+0.7%); ingreso +2.6%; Costa −4.0% en volumen y −1.1% en ingreso; Amazonía −4.7% y −3.7%. Acumulado enero–noviembre (Ventas!B20:K24): volumen 41,031 vs plan 41,190 (−0.4%) y vs 2025 39,845 (+3.0%); ingreso 282,900 (−0.5% vs plan, +5.5% vs 2025).</li><li>Supply/Logística y Capital Humano: sus hojas solo traen noviembre 2026. Supply puede usar el volumen de Ventas (año anterior y acumulado) como contexto; el reporte debe decir que producción, OTIF y los indicadores de personas no tienen año anterior ni acumulado en el libro.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si la función de reporte interactivo no aparece, usa el mismo prompt en el panel de Copilot o en Copilot Chat con el libro adjunto y pide el reporte como una hoja nueva o un resumen con gráficos.</p></aside>
+    <aside class="callout callout-important" aria-label="Important">
+      <strong>Important</strong><p>Verifica 3 cifras del reporte contra su celda antes de compartirlo. Si una cifra no coincide, pide a Copilot que cite la celda y corrígela.</p>
+    </aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Las causas que aparecen en correos o en la transcripción son opiniones de las áreas, no datos verificados. Si una causa no está en el libro de Excel, escríbela como «causa por confirmar».</p>
+    </aside>
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>Si tu área tiene menos de cinco impulsores favorables o desfavorables, el reporte debe mostrar solo los que existen.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="reporte-ejecutivo--check">
+      <h4 id="reporte-ejecutivo--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El reporte muestra la nota de datos ficticios.</span></label></li><li><label><input type="checkbox"> <span>El año contra año y el acumulado coinciden con las tablas de PyG y Ventas.</span></label></li><li><label><input type="checkbox"> <span>Verifiqué 3 cifras contra su celda.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="skills-excel">
+  <summary>
+    <span class="step-meta">10 min / Advanced</span>
+    <h3>Skills: usa uno y crea el tuyo</h3>
+    <span class="summary-hint">Usar un skill integrado con @ y guardar tu análisis como skill personalizado con @skill-builder.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026.xlsx</p>
+    <p>En el panel de Copilot escribe @ para ver los skills disponibles. Usa uno integrado (por ejemplo @chart-design para mejorar tu gráfico, o @clean-data). Después usa @skill-builder para guardar tu análisis como skill personalizado llamado resumen-rmn-por-area. Lee el borrador antes de guardarlo.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Skill integrado <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="skills-excel--prompt-1" aria-label="Copy prompt: Skill integrado">Copy prompt</button>
+  </div>
+  <pre id="skills-excel--prompt-1" tabindex="0"><code>@chart-design mejora el gráfico que creé en este libro para una presentación de dirección: título claro, ejes con unidades (miles de USD o miles de CU) y colores que distingan favorable de desfavorable.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Crear el skill <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="skills-excel--prompt-2" aria-label="Copy prompt: Crear el skill">Copy prompt</button>
+  </div>
+  <pre id="skills-excel--prompt-2" tabindex="0"><code>@skill-builder crea un skill personalizado llamado resumen-rmn-por-area a partir de lo que hicimos: aplicar la hoja .Rules y el umbral de Parámetros!B2, hasta 5 hallazgos con hoja y celda, alertas, «causa por confirmar» y 3 acciones con responsable y fecha. Debe preguntarme el área si no la indico. Muéstrame el borrador antes de guardarlo.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Respaldo: SKILL.md manual <span class="mode-badge" data-mode="other">Other</span></span>
+    <button class="copy-button" type="button" data-copy-target="skills-excel--prompt-3" aria-label="Copy prompt: Respaldo: SKILL.md manual">Copy prompt</button>
+  </div>
+  <pre id="skills-excel--prompt-3" tabindex="0"><code>---
+name: resumen-rmn-por-area
+description: Resume la RMN de un área (Finanzas, Comercial, Supply/Logística o Capital Humano) a partir de un libro RMN con hojas Ventas, PyG, Supply, Capital Humano, Parámetros y .Rules. Úsalo cuando pida «resumen RMN».
+---
+# Resumen RMN por área
+1. Lee y aplica la hoja .Rules y el umbral de Parámetros!B2.
+2. Calcula la variación % vs Plan de cada concepto del área pedida.
+3. Lista hasta 5 hallazgos con hoja y celda.
+4. Marca las ALERTAS según el umbral.
+5. Escribe «causa por confirmar» si el libro no explica la causa.
+6. Propón 3 acciones con responsable y fecha.
+Si no indico el área, pregúntala. Nunca inventes cifras ni causas.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un skill personalizado guardado con nombre, descripción y pasos revisados.</p>
+<ul><li>El skill se llama resumen-rmn-por-area y su descripción dice cuándo usarlo («resumen RMN»).</li><li>Texto de referencia del skill: Nombre: Resumen RMN por área. Entrada: un libro RMN con hojas Ventas, PyG, Supply, Capital Humano, Parámetros y .Rules, y el área que pido. Pasos: 1) Lee y aplica la hoja .Rules y el umbral de Parámetros!B2. 2) Calcula la variación % vs plan de cada concepto de mi área. 3) Lista hasta 5 hallazgos con hoja y celda. 4) Marca las ALERTAS según el umbral. 5) Escribe «causa por confirmar» cuando el libro no explique la causa. 6) Propón 3 acciones con responsable y fecha. Salida: viñetas en español, listas para pegar en la Bitácora.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Respaldo si @skill-builder no está disponible: en Copilot en Excel abre Configuración (…) &gt; Manage plugins &amp; skills (Administrar plugins y skills) &gt; Custom skills (skills personalizados) para ubicar la carpeta de skills en tu OneDrive. Crea ahí una carpeta resumen-rmn-por-area con un archivo SKILL.md: copia el bloque «Respaldo: SKILL.md manual», que trae name y description en el encabezado (frontmatter). Si tampoco puedes, guarda el texto en la sección 2 de la Bitácora y úsalo como prompt.</p></aside>
+    <aside class="callout callout-important" aria-label="Important">
+      <strong>Important</strong><p>Lee el borrador del skill antes de guardarlo: nombre, descripción (cuándo se usa), pasos y salida.</p>
+    </aside>
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>Los nombres de los skills integrados pueden variar; escribe @ y elige uno de la lista.</p>
+    </aside>
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 2 de la Bitácora: variaciones, impulsores, alertas, las 3 cifras verificadas del reporte y el nombre del skill creado.</p>    <section class="self-check" aria-labelledby="skills-excel--check">
+      <h4 id="skills-excel--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Usé un skill integrado con @.</span></label></li><li><label><input type="checkbox"> <span>Guardé el skill resumen-rmn-por-area y aparece al escribir @.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="powerpoint">
+  <summary>
+    <span class="eyebrow">Chapter 4 / 15 minutes / Guided</span>
+    <h2>PowerPoint con un skill</h2>
+    <span class="summary-hint">3 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Tus hallazgos de noviembre están revisados, tienes un reporte ejecutivo verificado y un skill de Excel guardado. El comité no lee tablas: necesita 5 diapositivas.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#excel-reglas">Copilot en Excel</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Un deck ejecutivo de 5 diapositivas de tu área, con cifras revisadas, y su mensaje central en la sección 3 de la Bitácora.</dd></div>
+    </dl>
+    <aside class="callout callout-note checkpoint">
+      <strong>Behind? Jump in here</strong>
+      <p><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_PowerPoint.docx" download="Bitacora_CP_PowerPoint.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_PowerPoint.docx</a></p>
+      <p>Punto de control: Bitácora con las secciones 1 y 2 terminadas (incluye el nombre del skill creado en Excel) (inicio del capítulo «PowerPoint con un skill»).</p>
+      <p>Only if you fall behind: use this starting state instead of repeating earlier chapters.</p>
+    </aside>
+<details class="step anchor" id="guion-5" open>
+  <summary>
+    <span class="step-meta">3 min / Basic</span>
+    <h3>Define el guion de 5 diapositivas</h3>
+    <span class="summary-hint">Acordar el contenido antes de generar diapositivas.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Sección 2 de la Bitácora</p>
+    <p>Un buen deck empieza por el guion. Pide a Copilot un guion fijo de 5 diapositivas a partir de tus hallazgos y corrígelo antes de generar.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="guion-5--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="guion-5--prompt-1" tabindex="0"><code>Con mis hallazgos de la sección 2 de la Bitácora adjunta, propón un guion de 5 diapositivas para la RMN: 1) Mensaje clave, 2) Resultados vs plan, 3) Alertas y causas por confirmar, 4) Plan de acción con responsables y fechas, 5) Decisiones que pido al comité. Una línea por diapositiva, sin cifras nuevas.</code></pre>
+</div>
+
+    <section class="self-check" aria-labelledby="guion-5--check">
+      <h4 id="guion-5--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El guion tiene exactamente 5 diapositivas.</span></label></li><li><label><input type="checkbox"> <span>No aparece ninguna cifra que no esté en mis hallazgos.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="deck-con-skill">
+  <summary>
+    <span class="step-meta">8 min / Intermediate</span>
+    <h3>Genera el deck con el skill de PowerPoint</h3>
+    <span class="summary-hint">Convertir el análisis de Excel en un deck ejecutivo usando un skill.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx y el guion</p>
+    <p>En Copilot Cowork, pide el deck mencionando el skill de PowerPoint y adjunta el libro con reglas. El skill construye el archivo .pptx con estructura y formato consistentes.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="cowork">Cowork</span></span>
+    <button class="copy-button" type="button" data-copy-target="deck-con-skill--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="deck-con-skill--prompt-1" tabindex="0"><code>Usa el skill de PowerPoint para crear un deck ejecutivo de 5 diapositivas para la RMN de noviembre de Embotelladora Cumbre Andina, área Finanzas, con el guion acordado. Usa solo la hoja PyG del libro adjunto y sus reglas; pon la fuente (hoja y celda) en una nota al pie de cada cifra.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="cowork">Cowork</span></span>
+    <button class="copy-button" type="button" data-copy-target="deck-con-skill--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="deck-con-skill--prompt-2" tabindex="0"><code>Usa el skill de PowerPoint para crear un deck ejecutivo de 5 diapositivas para la RMN de noviembre de Embotelladora Cumbre Andina, área Comercial, con el guion acordado. Usa solo la hoja Ventas del libro adjunto y sus reglas; incluye un gráfico de barras de variación por región.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="cowork">Cowork</span></span>
+    <button class="copy-button" type="button" data-copy-target="deck-con-skill--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="deck-con-skill--prompt-3" tabindex="0"><code>Usa el skill de PowerPoint para crear un deck ejecutivo de 5 diapositivas para la RMN de noviembre de Embotelladora Cumbre Andina, área Supply/Logística, con el guion acordado. Usa solo la hoja Supply del libro adjunto y sus reglas; compara cada indicador contra su meta.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="cowork">Cowork</span></span>
+    <button class="copy-button" type="button" data-copy-target="deck-con-skill--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="deck-con-skill--prompt-4" tabindex="0"><code>Usa el skill de PowerPoint para crear un deck ejecutivo de 5 diapositivas para la RMN de noviembre de Embotelladora Cumbre Andina, área Capital Humano, con el guion acordado. Usa solo la hoja Capital Humano del libro adjunto y sus reglas; muestra rotación y ausentismo contra la meta.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un deck de 5 diapositivas que sigue el guion y usa solo las cifras revisadas en el capítulo «Copilot en Excel».</p>
+<ul><li>Diapositiva 2 de Finanzas: EBITDA 4,297 vs 5,184 (−17.11%).</li><li>Diapositiva 2 de Comercial: volumen total −2.32%, con Costa −8.04% y Amazonía −9.66%.</li><li>Diapositiva 2 de Supply: Planta Guayaquil −6.16% de producción y OTIF 88.4% contra la meta de 95%.</li><li>Diapositiva 2 de Capital Humano: rotación de Distribución y Logística 2.46% contra la meta de 1.5%.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Respaldo si los skills de PowerPoint no están disponibles: abre PowerPoint &gt; Copilot &gt; «Crear una presentación a partir de un archivo» y elige Bitacora_CP_PowerPoint.docx (o tu Bitácora), pidiendo 5 diapositivas con el guion. Último recurso: pega el guion en Copilot Chat y arma las diapositivas a mano.</p></aside>
+    <section class="self-check" aria-labelledby="deck-con-skill--check">
+      <h4 id="deck-con-skill--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Tengo un archivo .pptx de 5 diapositivas.</span></label></li><li><label><input type="checkbox"> <span>Las cifras coinciden con mis hallazgos de la sección 2.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="revisa-deck">
+  <summary>
+    <span class="step-meta">4 min / Intermediate</span>
+    <h3>Revisa y corrige una diapositiva</h3>
+    <span class="summary-hint">Encontrar y corregir al menos un problema del deck.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Tu deck .pptx</p>
+    <p>Revisa cifra por cifra. Usa Copilot en PowerPoint para corregir una diapositiva y escribe tu mensaje central en una frase en la sección 3 de la Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="revisa-deck--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="revisa-deck--prompt-1" tabindex="0"><code>Revisa esta presentación: ¿hay alguna cifra sin fuente, alguna causa afirmada sin evidencia o alguna diapositiva con más de 4 viñetas? Propón la corrección de cada problema.</code></pre>
+</div>
+
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Las causas que aparecen en correos o en la transcripción son opiniones de las áreas, no datos verificados. Si una causa no está en el libro de Excel, escríbela como «causa por confirmar».</p>
+    </aside>
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 3 de la Bitácora: mensaje central del deck y nombre del archivo .pptx.</p>    <section class="self-check" aria-labelledby="revisa-deck--check">
+      <h4 id="revisa-deck--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Corregí al menos un problema.</span></label></li><li><label><input type="checkbox"> <span>Mi mensaje central está en la Bitácora, sección 3.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="prompt-a-skill">
+  <summary>
+    <span class="eyebrow">Chapter 5 / 15 minutes / Guided</span>
+    <h2>Guardar prompts y skills</h2>
+    <span class="summary-hint">2 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Tienes análisis, reporte, deck y un skill de Excel para noviembre. La RMN se repite cada mes: hoy compruebas que lo guardado funciona con otro mes.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#excel-reglas">Copilot en Excel</a>, <a href="#powerpoint">PowerPoint con un skill</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Tus mejores prompts guardados y la prueba del skill resumen-rmn-por-area con el libro de octubre, comparada con noviembre.</dd></div>
+    </dl>
+    <aside class="callout callout-note checkpoint">
+      <strong>Behind? Jump in here</strong>
+      <p><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_GuardarPrompts.docx" download="Bitacora_CP_GuardarPrompts.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_GuardarPrompts.docx</a></p>
+      <p>Punto de control: Bitácora con las secciones 1 a 3 terminadas (inicio del capítulo «Guardar prompts y skills»).</p>
+      <p>Only if you fall behind: use this starting state instead of repeating earlier chapters.</p>
+    </aside>
+<details class="step anchor" id="guarda-prompt" open>
+  <summary>
+    <span class="step-meta">5 min / Intermediate</span>
+    <h3>Guarda tus mejores prompts</h3>
+    <span class="summary-hint">Guardar los prompts que mejor funcionaron para reutilizarlos cada mes.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Tus prompts de los capítulos «Copilot en Excel» y «PowerPoint con un skill»</p>
+    <p>Elige tus 2 mejores prompts (por ejemplo, el de variaciones y el del reporte ejecutivo). Pide a Copilot que les quite cifras y meses fijos, revísalos y guárdalos con «Guardar prompt» en Copilot Chat. Pégalos también en la sección 4 de la Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="guarda-prompt--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="guarda-prompt--prompt-1" tabindex="0"><code>Mejora estos dos prompts para que sirvan cualquier mes, sin cifras ni meses fijos y con [mes] como marcador: [pega tus prompts]. Mantén: aplicar la hoja .Rules y el umbral de Parámetros!B2, citar hoja y celda, «causa por confirmar» y marcar como «no disponible» lo que no se pueda verificar.</code></pre>
+</div>
+
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si no ves «Guardar prompt», guárdalo en la sección 4 de la Bitácora: será tu respaldo para todo lo que sigue.</p></aside>
+    <section class="self-check" aria-labelledby="guarda-prompt--check">
+      <h4 id="guarda-prompt--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Mi prompt no tiene cifras ni meses fijos.</span></label></li><li><label><input type="checkbox"> <span>Lo guardé y lo pegué en la Bitácora, sección 4.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="prueba-skill">
+  <summary>
+    <span class="step-meta">10 min / Challenge</span>
+    <h3>Corre tu skill de Excel con octubre y compara</h3>
+    <span class="summary-hint">Comprobar que el skill funciona con otro mes y comparar sus resultados con noviembre.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Octubre2026_Prueba.xlsx</p>
+    <p>Abre el libro de octubre en Excel (mismas hojas, reglas y umbral 5%, cifras distintas). En el panel de Copilot escribe @resumen-rmn-por-area y pide el resumen de tu área. Compara con tus hallazgos de noviembre en la sección 2 de la Bitácora y anota las diferencias en la sección 4.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="edit">Edit</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-skill--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="prueba-skill--prompt-1" tabindex="0"><code>@resumen-rmn-por-area resumen RMN para [mi área] con este libro de octubre 2026.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comparar con noviembre <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-skill--prompt-2" aria-label="Copy prompt: Comparar con noviembre">Copy prompt</button>
+  </div>
+  <pre id="prueba-skill--prompt-2" tabindex="0"><code>Compara este resumen de octubre con mis hallazgos de noviembre: [pega tu sección 2]. Dame una tabla con indicador, octubre, noviembre y diferencia, solo con cifras de los libros.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Respaldo sin skill <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-skill--prompt-3" aria-label="Copy prompt: Respaldo sin skill">Copy prompt</button>
+  </div>
+  <pre id="prueba-skill--prompt-3" tabindex="0"><code>Aplica la hoja .Rules y el umbral de Parámetros!B2 de este libro de octubre 2026 y dame hasta 5 hallazgos de [mi área] con hoja y celda, las alertas y 3 acciones con responsable y fecha.</code></pre>
+</div>
+
+    <section class="challenge" aria-labelledby="prueba-skill--challenge">
+      <h4 id="prueba-skill--challenge">Your challenge - try without a prompt</h4>
+      <p>Sin un prompt nuevo: con el libro de octubre y el umbral en 3%, ¿cuántas alertas hay y cuál es la única de PyG?</p>
+<p><strong>Hint:</strong> Busca variaciones mayores a 3% en valor absoluto en Ventas, PyG y Supply.</p>      <details class="answer" id="prueba-skill--answer">
+        <summary>Show answer</summary>
+        <p class="challenge-answer">Hay 5 alertas: Volumen Costa +3.78%, Volumen Austro −4.83%, Ingreso Costa +4.38%, Ingreso Austro −5.95% y EBITDA +4.22% (la única de PyG).</p>
+      </details>
+    </section>
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Con octubre el skill da cifras distintas de noviembre y una sola alerta al 5%.</p>
+<ul><li>Octubre, umbral 5%: 1 sola alerta, Ingreso Austro −5.95% (3,950 vs 4,200).</li><li>Octubre: volumen total 3,793 vs 3,740 (+1.42%); ingreso neto 26,195 vs 25,852 (+1.33%); EBITDA 5,265 vs 5,052 (+4.22%); margen EBITDA 20.10% vs 19.54%.</li><li>Octubre: Planta Guayaquil +1.08% y OTIF 94.0%; Planta Quito OTIF 96.2%; rotación total 1.12% (20/1,790); Distribución y Logística 1.65%.</li><li>Comparación: con 5% octubre tiene 1 alerta y noviembre 7; EBITDA octubre +4.22% vs noviembre −17.11%; rotación total 1.12% vs 1.78%.</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Si el skill no aparece al escribir @, usa el prompt «Respaldo sin skill» o tu prompt guardado. El texto de referencia del skill está en Bitacora_CP_Agente.docx, sección 4.</p></aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Confirma que las cifras son de octubre y no de noviembre: si el skill mezcla meses, revisa que adjuntaste el libro correcto y que el skill no tenga cifras fijas.</p>
+    </aside>
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 4 de la Bitácora: prompt guardado, nombre del skill y resultado de la prueba de octubre.</p>    <section class="self-check" aria-labelledby="prueba-skill--check">
+      <h4 id="prueba-skill--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El skill respondió con cifras de octubre, no de noviembre.</span></label></li><li><label><input type="checkbox"> <span>Encontré la única alerta de octubre con umbral 5%.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="agente">
+  <summary>
+    <span class="eyebrow">Chapter 6 / 30 minutes / Guided</span>
+    <h2>Agente ligero con skills</h2>
+    <span class="summary-hint">4 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Tienes un skill de Excel probado con dos meses. Ahora quieres que cualquier director(a) pueda preguntar por la RMN sin conocer el prompt.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#prompt-a-skill">Guardar prompts y skills</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Un agente «Asistente RMN Cumbre Andina» con instrucciones, el libro con reglas como conocimiento y tu skill, probado con preguntas de tu área.</dd></div>
+    </dl>
+    <aside class="callout callout-note checkpoint">
+      <strong>Behind? Jump in here</strong>
+      <p><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Agente.docx" download="Bitacora_CP_Agente.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Agente.docx</a></p>
+      <p>Punto de control: Bitácora con las secciones 1 a 4 terminadas, incluidos los prompts guardados, el texto del skill y la prueba de octubre (inicio del capítulo «Agente ligero con skills»).</p>
+      <p>Only if you fall behind: use this starting state instead of repeating earlier chapters.</p>
+    </aside>
+<details class="step anchor" id="disena-agente" open>
+  <summary>
+    <span class="step-meta">6 min / Intermediate</span>
+    <h3>Diseña las instrucciones</h3>
+    <span class="summary-hint">Escribir instrucciones claras a partir de tu skill.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Sección 4 de la Bitácora</p>
+    <p>Pide a Copilot que convierta tu skill en instrucciones de agente. Compáralas con la versión de referencia de abajo y quédate con la mejor.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="disena-agente--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="disena-agente--prompt-1" tabindex="0"><code>Convierte este skill en instrucciones para un agente de Copilot de máximo 1,000 caracteres: [pega tu skill]. El agente atiende a 4 áreas, usa solo el libro de conocimiento, cita hoja y celda y nunca inventa causas.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Instrucciones breves con alcance, fuente, formato y qué hacer cuando falta un dato.</p>
+<ul><li>Instrucciones de referencia: Eres el Asistente RMN de Embotelladora Cumbre Andina (empresa ficticia). Respondes a directores y gerentes de Finanzas, Comercial, Supply/Logística y Capital Humano. Usa solo el libro de conocimiento. Aplica las reglas de la hoja .Rules y el umbral de Parámetros!B2. Cita hoja y celda en cada cifra. Si la causa no está en el libro, escribe «causa por confirmar». Si la pregunta no se puede responder con el libro, dilo y sugiere a quién preguntar. Responde en español, en máximo 6 viñetas.</li></ul>    </section>
+    <section class="self-check" aria-labelledby="disena-agente--check">
+      <h4 id="disena-agente--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Mis instrucciones tienen menos de 1,000 caracteres.</span></label></li><li><label><input type="checkbox"> <span>Dicen qué hacer cuando el dato no está en el libro.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="crea-agente">
+  <summary>
+    <span class="step-meta">10 min / Intermediate</span>
+    <h3>Crea el agente en Agent Builder</h3>
+    <span class="summary-hint">Construir un agente ligero con instrucciones, conocimiento y skill.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx</p>
+    <p>En Copilot Chat abre Agentes &gt; Crear agente (Agent Builder) y elige la pestaña Configurar. Nombre: Asistente RMN Cumbre Andina. Descripción: Responde preguntas de la RMN de noviembre por área. Pega tus instrucciones. En Conocimiento, carga el libro con reglas. Si aparece la opción de skills, agrega tu skill resumen-rmn-por-area. Agrega 4 iniciadores (uno por área) y elige Crear.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Iniciador Finanzas <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="crea-agente--prompt-1" aria-label="Copy prompt: Iniciador Finanzas">Copy prompt</button>
+  </div>
+  <pre id="crea-agente--prompt-1" tabindex="0"><code>¿Cuánto se desvió el EBITDA de noviembre vs plan y qué rubro explica la mayor parte?</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Iniciador Comercial <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="crea-agente--prompt-2" aria-label="Copy prompt: Iniciador Comercial">Copy prompt</button>
+  </div>
+  <pre id="crea-agente--prompt-2" tabindex="0"><code>¿Qué regiones están en alerta en volumen e ingreso y con qué variación?</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Iniciador Supply/Logística <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="crea-agente--prompt-3" aria-label="Copy prompt: Iniciador Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="crea-agente--prompt-3" tabindex="0"><code>¿Qué planta incumple OTIF, días de inventario o merma, y por cuánto?</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Iniciador Capital Humano <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="crea-agente--prompt-4" aria-label="Copy prompt: Iniciador Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="crea-agente--prompt-4" tabindex="0"><code>¿Qué áreas superan la meta de rotación de 1.5% y la de ausentismo de 3% en noviembre, y con qué valores?</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Un agente creado con nombre, instrucciones, el libro con reglas como conocimiento y 4 iniciadores que responden con cifras correctas.</p>
+<ul><li>Iniciador Finanzas: EBITDA −887 (−17.11%); el margen bruto (−802) explica la mayor parte.</li><li>Iniciador Comercial: en alerta con 5% están Costa (−8.04% volumen, −6.69% ingreso) y Amazonía (−9.66% volumen, −11.33% ingreso).</li><li>Iniciador Supply/Logística: Planta Guayaquil incumple las 3 metas: OTIF 88.4% (6.6 puntos bajo 95%), 16 días de inventario (2 días sobre el máximo de 14) y merma 1.9% (0.4 puntos sobre 1.5%).</li><li>Iniciador Capital Humano: rotación sobre 1.5% en Distribución y Logística (2.46%) y Ventas y Trade (2.14%); ausentismo sobre 3% en Distribución y Logística (4.1%) y Manufactura (3.4%).</li></ul>    </section>
+    <aside class="callout callout-tip fallback"><strong>Need another way?</strong><p>Respaldo si Agent Builder no está disponible: sigue la demostración del facilitador y haz las mismas preguntas en Copilot Chat con el libro adjunto y tus instrucciones pegadas al inicio. Si los skills no aparecen en Agent Builder, pega los pasos del skill dentro de las instrucciones.</p></aside>
+    <aside class="callout callout-note" aria-label="Note">
+      <strong>Note</strong><p>Agent Builder crea un agente ligero para ti; no publica nada para la organización. Compartirlo es una decisión aparte.</p>
+    </aside>
+    <aside class="callout callout-warning" aria-label="Warning">
+      <strong>Warning</strong><p>Al probar los iniciadores, compara cada cifra con los hechos esperados: un agente también puede leer mal una celda o mezclar meses.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="crea-agente--check">
+      <h4 id="crea-agente--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El agente tiene nombre, instrucciones, el libro como conocimiento y 4 iniciadores.</span></label></li><li><label><input type="checkbox"> <span>Si mi tenant lo permite, el skill está agregado.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="prueba-agente">
+  <summary>
+    <span class="step-meta">9 min / Intermediate</span>
+    <h3>Prueba el agente</h3>
+    <span class="summary-hint">Comprobar que el agente responde con las cifras correctas y cita la fuente.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Tu agente</p>
+    <p>Usa el iniciador de tu área y después una pregunta propia. Compara cada cifra con los hechos esperados y anota el resultado en la sección 5 de la Bitácora.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-agente--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="prueba-agente--prompt-1" tabindex="0"><code>¿Cuál fue el margen EBITDA de noviembre, real vs plan, y cuántos puntos se perdieron? Cita las celdas.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-agente--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="prueba-agente--prompt-2" tabindex="0"><code>Ordena las 4 regiones de peor a mejor variación de ingreso vs plan. Cita las celdas.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-agente--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="prueba-agente--prompt-3" tabindex="0"><code>¿Cuántas cajas unidad dejó de producir Planta Guayaquil vs plan y qué dice el libro sobre la línea 2?</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="agent">Agent</span></span>
+    <button class="copy-button" type="button" data-copy-target="prueba-agente--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="prueba-agente--prompt-4" tabindex="0"><code>¿Cuál fue la rotación total de noviembre y cuántas vacantes abiertas hay en total? Cita las celdas.</code></pre>
+</div>
+
+    <section class="expected">
+      <h4>Wording varies; the substance should match</h4>
+      <p>Respuestas con cifra, celda y causa por confirmar cuando corresponde.</p>
+<ul><li>Finanzas: margen EBITDA 16.60% real vs 19.53% plan: 2.93 puntos menos.</li><li>Comercial: Amazonía −11.33%, Costa −6.69%, Austro +0.92%, Sierra Norte +3.31%.</li><li>Supply: Planta Guayaquil produjo 117 mil CU menos que el plan (1,783 vs 1,900); la nota del libro dice que la línea 2 estuvo detenida del 9 al 11 de noviembre.</li><li>Capital Humano: rotación total 1.78% (32 bajas / 1,800 personas) y 47 vacantes abiertas.</li></ul>    </section>
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 5 de la Bitácora: nombre del agente, la pregunta que hiciste y si la cifra coincidió.</p>    <section class="self-check" aria-labelledby="prueba-agente--check">
+      <h4 id="prueba-agente--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Las cifras del agente coinciden con la clave.</span></label></li><li><label><input type="checkbox"> <span>El agente citó hoja y celda.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="reto-limites">
+  <summary>
+    <span class="step-meta">5 min / Challenge</span>
+    <h3>Reto: los límites del agente y quién lo usa</h3>
+    <span class="summary-hint">Comprobar que el agente reconoce lo que no sabe y decidir con quién compartirlo.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Tu agente</p>
+    <p>Sin prompt guiado: inventa una pregunta que el libro NO puede responder y mira qué hace el agente. Luego decide con quién lo compartirías y quién será su dueño.</p>
+    <section class="challenge" aria-labelledby="reto-limites--challenge">
+      <h4 id="reto-limites--challenge">Your challenge - try without a prompt</h4>
+      <p>Haz una pregunta que el libro no puede responder (por ejemplo, sobre participación de mercado o sobre un competidor) y evalúa la respuesta.</p>
+<p><strong>Hint:</strong> El libro solo tiene Ventas, PyG, Supply, Capital Humano, Parámetros y .Rules.</p>      <details class="answer" id="reto-limites--answer">
+        <summary>Show answer</summary>
+        <p class="challenge-answer">Un buen agente responde que el dato no está en su conocimiento y sugiere a quién preguntar. Si inventa una cifra, refuerza esa regla en las instrucciones y vuelve a probar.</p>
+      </details>
+    </section>
+    <aside class="callout callout-important" aria-label="Important">
+      <strong>Important</strong><p>Antes de compartir: define un dueño, quién puede usarlo y cada cuánto se actualiza el libro de conocimiento.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="reto-limites--check">
+      <h4 id="reto-limites--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>El agente dijo que el dato no está en el libro.</span></label></li><li><label><input type="checkbox"> <span>Anoté en la Bitácora con quién lo compartiría y quién lo mantiene.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<details class="chapter card anchor" id="cierre">
+  <summary>
+    <span class="eyebrow">Chapter 7 / 10 minutes / Group</span>
+    <h2>Cierre: una acción para el lunes</h2>
+    <span class="summary-hint">2 steps / select to expand or collapse</span>
+  </summary>
+  <div class="chapter-body">
+    <dl class="story">
+      <div><dt>The story so far</dt><dd>Pasaste de un prompt genérico a un agente con reglas, skill y fuentes. La RMN de Cumbre Andina está lista.</dd></div>
+      <div><dt>Builds on</dt><dd>
+<a href="#agente">Agente ligero con skills</a>      </dd></div>
+      <div><dt>You will add</dt><dd>Una acción concreta de tu área para el próximo lunes, escrita en la sección 6 de la Bitácora y compartida con el grupo.</dd></div>
+    </dl>
+    <aside class="callout callout-note checkpoint">
+      <strong>Behind? Jump in here</strong>
+      <p><a class="file-download" href="../../ResourceFiles/Arca/Bitacora_CP_Cierre.docx" download="Bitacora_CP_Cierre.docx" target="_blank" rel="noopener noreferrer">Bitacora_CP_Cierre.docx</a></p>
+      <p>Punto de control: Bitácora con las secciones 1 a 5 terminadas (inicio del capítulo «Cierre»).</p>
+      <p>Only if you fall behind: use this starting state instead of repeating earlier chapters.</p>
+    </aside>
+<details class="step anchor" id="accion-lunes" open>
+  <summary>
+    <span class="step-meta">6 min / Basic</span>
+    <h3>Escribe tu acción del lunes</h3>
+    <span class="summary-hint">Elegir un proceso real de tu área para repetir lo aprendido, con datos permitidos.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Sección 6 de la Bitácora</p>
+    <p>Pide a Copilot ideas para tu área y elige una sola acción: qué proceso, qué herramienta (Outlook, Copilot en Excel, PowerPoint, skill o agente), con quién y cómo medirás el ahorro.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Finanzas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="accion-lunes--prompt-1" aria-label="Copy prompt: Finanzas">Copy prompt</button>
+  </div>
+  <pre id="accion-lunes--prompt-1" tabindex="0"><code>Dame 3 ideas para aplicar el lunes en Finanzas lo aprendido hoy (reglas de Excel, skill o agente) en el cierre mensual. Para cada una: proceso, herramienta, tiempo que ahorra y riesgo a cuidar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Comercial <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="accion-lunes--prompt-2" aria-label="Copy prompt: Comercial">Copy prompt</button>
+  </div>
+  <pre id="accion-lunes--prompt-2" tabindex="0"><code>Dame 3 ideas para aplicar el lunes en Comercial lo aprendido hoy en el seguimiento de volumen y distribuidores. Para cada una: proceso, herramienta, tiempo que ahorra y riesgo a cuidar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Supply/Logística <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="accion-lunes--prompt-3" aria-label="Copy prompt: Supply/Logística">Copy prompt</button>
+  </div>
+  <pre id="accion-lunes--prompt-3" tabindex="0"><code>Dame 3 ideas para aplicar el lunes en Supply y Logística lo aprendido hoy en el seguimiento de OTIF, inventario y paros. Para cada una: proceso, herramienta, tiempo que ahorra y riesgo a cuidar.</code></pre>
+</div>
+
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Capital Humano <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="accion-lunes--prompt-4" aria-label="Copy prompt: Capital Humano">Copy prompt</button>
+  </div>
+  <pre id="accion-lunes--prompt-4" tabindex="0"><code>Dame 3 ideas para aplicar el lunes en Capital Humano lo aprendido hoy en indicadores de rotación, ausentismo y vacantes, sin usar datos personales. Para cada una: proceso, herramienta, tiempo que ahorra y riesgo a cuidar.</code></pre>
+</div>
+
+    <aside class="callout callout-real-world" aria-label="Real World">
+      <strong>Real World</strong><p>En tu empresa, usa solo datos autorizados y sigue las políticas de seguridad y de IA de tu organización.</p>
+    </aside>
+    <section class="self-check" aria-labelledby="accion-lunes--check">
+      <h4 id="accion-lunes--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Elegí una sola acción, con responsable y fecha.</span></label></li><li><label><input type="checkbox"> <span>La acción usa datos que mi área puede usar con Copilot.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+<details class="step anchor" id="compromiso">
+  <summary>
+    <span class="step-meta">4 min / Basic</span>
+    <h3>Comparte tu compromiso</h3>
+    <span class="summary-hint">Hacer público un compromiso concreto.</span>
+  </summary>
+  <div class="step-body">
+    <p class="step-meta"><strong>Uses:</strong> Sección 6 de la Bitácora</p>
+    <p>Ronda rápida: una persona por área lee su acción en una frase (qué, con qué herramienta y para cuándo). Guarda tu Bitácora completa.</p>
+    <div class="prompt-block">
+  <div class="prompt-heading">
+    <span>Todas las áreas <span class="mode-badge" data-mode="chat">Chat</span></span>
+    <button class="copy-button" type="button" data-copy-target="compromiso--prompt-1" aria-label="Copy prompt: Todas las áreas">Copy prompt</button>
+  </div>
+  <pre id="compromiso--prompt-1" tabindex="0"><code>Convierte mi acción en un compromiso de una sola frase para leer en voz alta: qué haré, con qué herramienta de Copilot, con qué datos permitidos y para qué fecha. Mi acción es: [pega tu acción].</code></pre>
+</div>
+
+<p class="carry-forward"><strong>Carry forward:</strong> Sección 6 de la Bitácora: tu acción del lunes y tu compromiso en una frase.</p>    <section class="self-check" aria-labelledby="compromiso--check">
+      <h4 id="compromiso--check">Before you move on</h4>
+      <ul><li><label><input type="checkbox"> <span>Leí mi acción en voz alta o la escribí en el chat de la sesión.</span></label></li><li><label><input type="checkbox"> <span>Mi Bitácora tiene las 6 secciones completas.</span></label></li></ul>
+    </section>
+  </div>
+</details>
+  </div>
+</details>
+<section id="story-map" class="card anchor" aria-labelledby="story-map--title">
+  <h2 id="story-map--title">The story in one table</h2>
+  <div class="table-scroll" role="region" aria-label="Story map" tabindex="0">
+    <table>
+      <thead><tr><th scope="col">Chapter</th><th scope="col">Where</th><th scope="col">Mode</th><th scope="col">Lands in</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><a href="#elige-rol">1. Arranque: la historia / Elige tu rol y abre la Bitácora</a></th><td>Bitacora_RMN_CumbreAndina.docx</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#primer-prompt">1. Arranque: la historia / Un prompt, un resultado</a></th><td>Copilot Chat (sin archivos)</td><td>
+<span class="mode-badge">Chat</span>        </td><td>Las 5 preguntas de tu rol: las responderás con datos en los capítulos «Copilot en Outlook» y «Copilot en Excel».</td></tr>
+        <tr><th scope="row"><a href="#ordena-bandeja">2. Copilot en Outlook / Ordena tu bandeja</a></th><td>Tu propio Outlook (solo lectura)</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#resume-hilo">2. Copilot en Outlook / Resume el hilo del cierre</a></th><td>Hilo_Correo_Cierre_Noviembre.docx</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#redacta-respuesta">2. Copilot en Outlook / Redacta tu respuesta (sin enviar)</a></th><td>Hilo_Correo_Cierre_Noviembre.docx y tu resumen</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#recap-reunion">2. Copilot en Outlook / Resume la reunión desde la transcripción</a></th><td>Transcripcion_Comite_PreRMN_27Nov2026.docx</td><td>
+<span class="mode-badge">Chat</span>        </td><td>Sección 1 de la Bitácora: resumen del hilo, borrador de respuesta y tabla de acuerdos.</td></tr>
+        <tr><th scope="row"><a href="#modos-modelo">3. Copilot en Excel / Modos y modelo</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx (hoja Ventas)</td><td>
+<span class="mode-badge">Chat</span><span class="mode-badge">Plan</span><span class="mode-badge">Edit</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#analisis-variaciones">3. Copilot en Excel / Prompts de análisis: variaciones vs presupuesto</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#analisis-impulsores">3. Copilot en Excel / Prompts de análisis: top 5 impulsores y un gráfico</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#reglas-rules">3. Copilot en Excel / Reglas .Rules con lista desplegable</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx (hojas .Rules y Parámetros)</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#reporte-ejecutivo">3. Copilot en Excel / Reporte ejecutivo interactivo</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx</td><td>
+<span class="mode-badge">Edit</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#skills-excel">3. Copilot en Excel / Skills: usa uno y crea el tuyo</a></th><td>CumbreAndina_RMN_Noviembre2026.xlsx</td><td>
+<span class="mode-badge">Edit</span><span class="mode-badge">Chat</span><span class="mode-badge">Other</span>        </td><td>Sección 2 de la Bitácora: variaciones, impulsores, alertas, las 3 cifras verificadas del reporte y el nombre del skill creado.</td></tr>
+        <tr><th scope="row"><a href="#guion-5">4. PowerPoint con un skill / Define el guion de 5 diapositivas</a></th><td>Sección 2 de la Bitácora</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#deck-con-skill">4. PowerPoint con un skill / Genera el deck con el skill de PowerPoint</a></th><td>CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx y el guion</td><td>
+<span class="mode-badge">Cowork</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#revisa-deck">4. PowerPoint con un skill / Revisa y corrige una diapositiva</a></th><td>Tu deck .pptx</td><td>
+<span class="mode-badge">Edit</span>        </td><td>Sección 3 de la Bitácora: mensaje central del deck y nombre del archivo .pptx.</td></tr>
+        <tr><th scope="row"><a href="#guarda-prompt">5. Guardar prompts y skills / Guarda tus mejores prompts</a></th><td>Tus prompts de los capítulos «Copilot en Excel» y «PowerPoint con un skill»</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#prueba-skill">5. Guardar prompts y skills / Corre tu skill de Excel con octubre y compara</a></th><td>CumbreAndina_RMN_Octubre2026_Prueba.xlsx</td><td>
+<span class="mode-badge">Edit</span><span class="mode-badge">Chat</span>        </td><td>Sección 4 de la Bitácora: prompt guardado, nombre del skill y resultado de la prueba de octubre.</td></tr>
+        <tr><th scope="row"><a href="#disena-agente">6. Agente ligero con skills / Diseña las instrucciones</a></th><td>Sección 4 de la Bitácora</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#crea-agente">6. Agente ligero con skills / Crea el agente en Agent Builder</a></th><td>CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx</td><td>
+<span class="mode-badge">Agent</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#prueba-agente">6. Agente ligero con skills / Prueba el agente</a></th><td>Tu agente</td><td>
+<span class="mode-badge">Agent</span>        </td><td>Sección 5 de la Bitácora: nombre del agente, la pregunta que hiciste y si la cifra coincidió.</td></tr>
+        <tr><th scope="row"><a href="#reto-limites">6. Agente ligero con skills / Reto: los límites del agente y quién lo usa</a></th><td>Tu agente</td><td>
+Independent challenge        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#accion-lunes">7. Cierre: una acción para el lunes / Escribe tu acción del lunes</a></th><td>Sección 6 de la Bitácora</td><td>
+<span class="mode-badge">Chat</span>        </td><td>No next-step notes</td></tr>
+        <tr><th scope="row"><a href="#compromiso">7. Cierre: una acción para el lunes / Comparte tu compromiso</a></th><td>Sección 6 de la Bitácora</td><td>
+<span class="mode-badge">Chat</span>        </td><td>Sección 6 de la Bitácora: tu acción del lunes y tu compromiso en una frase.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="troubleshooting" class="card anchor" aria-labelledby="troubleshooting--title">
+  <h2 id="troubleshooting--title">Troubleshooting</h2>
+  <dl class="reference-list"><dt>Copilot en Excel dice que no puede trabajar con el libro.</dt><dd>Guarda el archivo en OneDrive, ciérralo y ábrelo desde ahí. Si sigue igual, adjunta el libro en Copilot Chat.</dd><dt>No aparece «Create workbook rules» o la hoja .Rules no se crea.</dt><dd>Crea la hoja .Rules a mano con las reglas en la columna A, o abre CumbreAndina_RMN_Noviembre2026_ConReglas.xlsx.</dd><dt>La hoja .Rules está oculta.</dt><dd>Clic derecho sobre una pestaña &gt; Mostrar &gt; .Rules.</dd><dt>No tengo Copilot Cowork o no puedo crear skills.</dt><dd>Usa tu prompt guardado de la sección 4 de la Bitácora; el resultado esperado es el mismo.</dd><dt>El skill de PowerPoint no está disponible.</dt><dd>Usa Copilot en PowerPoint &gt; Crear una presentación a partir de un archivo con tu Bitácora.</dd><dt>Agent Builder no aparece o no permite subir archivos.</dt><dd>Sigue la demo del facilitador y haz las preguntas en Copilot Chat con el libro adjunto y las instrucciones al inicio.</dd><dt>Copilot da una cifra distinta de la clave.</dt><dd>Pídele que cite hoja y celda, revisa la celda y vuelve a preguntar con la regla de la hoja .Rules.</dd><dt>No veo el modo Plan o el selector de modelo.</dt><dd>Las etiquetas varían por versión; si no aparecen, sigue con «Permitir edición» y usa Ctrl+Z para deshacer.</dd><dt>@skill-builder no aparece al escribir @.</dt><dd>Crea el skill a mano: Configuración (…) &gt; Manage plugins &amp; skills &gt; Custom skills, carpeta resumen-rmn-por-area con un SKILL.md que tenga name y description en el encabezado.</dd><dt>Copilot cuenta como alerta una variación contra el año anterior.</dt><dd>La regla 6 solo aplica a variaciones contra el plan. Las variaciones del acumulado contra el plan son menores a 2% y no cambian el conteo de alertas.</dd></dl>
+</section>
+<section id="glossary" class="card anchor" aria-labelledby="glossary--title">
+  <h2 id="glossary--title">Glossary</h2>
+  <dl class="reference-list"><dt>RMN</dt><dd>Revisión Mensual de Negocio: reunión del comité para revisar resultados vs plan y decidir acciones.</dd><dt>Hoja .Rules</dt><dd>Hoja del libro con reglas en la columna A que Copilot en Excel aplica cada vez que trabaja con ese archivo.</dd><dt>Umbral de alerta</dt><dd>Porcentaje elegido en Parámetros!B2 (3%, 5% o 10%) que define qué variaciones son ALERTA.</dd><dt>Skill</dt><dd>Instrucciones con nombre, pasos fijos y formato de salida que Copilot reutiliza cuando las pides.</dd><dt>Agente ligero</dt><dd>Agente creado en Agent Builder con instrucciones, conocimiento y, si está disponible, skills.</dd><dt>CU</dt><dd>Cajas unidad: medida estándar de volumen en la industria de bebidas.</dd><dt>OTIF</dt><dd>On Time In Full: porcentaje de pedidos entregados a tiempo y completos.</dd><dt>Punto de control</dt><dd>Archivo con el estado de la Bitácora al inicio de un capítulo, para reincorporarte si te atrasas.</dd><dt>Modo Plan</dt><dd>Copilot muestra los pasos que va a seguir y espera tu confirmación antes de cambiar el libro.</dd><dt>Selector de modelo</dt><dd>Opción en la parte superior izquierda del panel de Copilot en Excel; el valor predeterminado es Auto y aplica a esa sesión.</dd><dt>@skill-builder</dt><dd>Skill de Copilot en Excel que convierte lo que hiciste en un skill personalizado reutilizable.</dd><dt>Acumulado (YTD)</dt><dd>Suma de enero al mes del libro: real 2026, plan 2026 y real 2025, en las tablas inferiores de PyG y Ventas.</dd></dl>
+</section>
+      <footer id="disclaimer" class="page-footer">
+        <h2>Disclaimer</h2>
+        <p>Ejercicio de práctica con una empresa, personas, documentos y cifras ficticios. Embotelladora Cumbre Andina no representa a Arca Continental ni a ninguna empresa real. No es asesoría profesional. La disponibilidad de funciones (reglas de Excel, skills, Cowork, Agent Builder) depende de la licencia y la configuración de cada tenant.</p>
+        <p>This guide works offline. Linked resources and Copilot itself may require internet access.</p>
+      </footer>
+    </main>
+  </div>
+  <p id="studio--copy-status" class="copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <script>
+(() => {
+  "use strict";
+  document.body.classList.add("js-ready");
+  const nav = document.getElementById("studio--navigation");
+  const navToggle = document.getElementById("studio--nav-toggle");
+  const links = Array.from(nav.querySelectorAll(".nav-link"));
+  const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+  const details = Array.from(document.querySelectorAll("main details"));
+  const sectionDetails = details.filter(detail => detail.matches(".chapter, .step"));
+  const status = document.getElementById("studio--copy-status");
+  let batchToggle = false;
+  let printState = null;
+  let statusTimer;
+
+  function setActive(id) {
+    if (!links.some(link => link.hash === "#" + id)) return;
+    links.forEach(link => {
+      const active = link.hash === "#" + id;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
+  function isVisible(section) {
+    let parent = section.parentElement;
+    while (parent) {
+      if (parent.tagName === "DETAILS" && !parent.open) return false;
+      parent = parent.parentElement;
+    }
+    return true;
+  }
+  function updateActive() {
+    const visible = sections.filter(isVisible);
+    const passed = visible.filter(section => section.getBoundingClientRect().top <= innerHeight * 0.3);
+    const current = passed.length ? passed[passed.length - 1] : visible[0];
+    if (current) setActive(current.id);
+  }
+  const observer = new IntersectionObserver(updateActive, {
+    rootMargin: "-5% 0px -65% 0px", threshold: [0, 0.25, 1]
+  });
+  sections.forEach(section => observer.observe(section));
+  let scrollPending = false;
+  addEventListener("scroll", () => {
+    if (!scrollPending) requestAnimationFrame(() => { updateActive(); scrollPending = false; });
+    scrollPending = true;
+  }, { passive: true });
+
+  function reveal(target) {
+    let current = target;
+    while (current) {
+      if (current.tagName === "DETAILS") current.open = true;
+      current = current.parentElement;
+    }
+    target.scrollIntoView({ block: "start" });
+    target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+    setActive(target.id);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener("click", event => {
+    const target = document.getElementById(link.hash.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    nav.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    history.replaceState(null, "", link.hash);
+    reveal(target);
+  }));
+  function followHash() {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) reveal(target);
+  }
+  addEventListener("hashchange", followHash);
+  followHash();
+  sectionDetails.forEach(detail => detail.addEventListener("toggle", () => {
+    if (!batchToggle && isVisible(detail)) setActive(detail.id);
+  }));
+  navToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+  function toggleAll(open) {
+    batchToggle = true;
+    sectionDetails.forEach(detail => { detail.open = open; });
+    setTimeout(() => { batchToggle = false; updateActive(); }, 0);
+  }
+  document.getElementById("studio--expand").addEventListener("click", () => toggleAll(true));
+  document.getElementById("studio--collapse").addEventListener("click", () => toggleAll(false));
+  document.getElementById("studio--print").addEventListener("click", () => print());
+  addEventListener("beforeprint", () => {
+    printState = details.map(detail => detail.open);
+    details.forEach(detail => { detail.open = true; });
+    toggleAll(true);
+  });
+  addEventListener("afterprint", () => {
+    if (printState) details.forEach((detail, index) => { detail.open = printState[index]; });
+    printState = null;
+    updateActive();
+  });
+
+  function legacyCopy(text) {
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    try {
+      field.select();
+      if (!document.execCommand("copy")) throw new Error("Clipboard unavailable");
+    } finally {
+      field.remove();
+    }
+  }
+  document.querySelectorAll(".copy-button").forEach(button => {
+    button.addEventListener("click", async () => {
+      const prompt = document.getElementById(button.dataset.copyTarget);
+      const text = prompt.textContent;
+      try {
+        if (navigator.clipboard && isSecureContext) {
+          try { await navigator.clipboard.writeText(text); }
+          catch { legacyCopy(text); }
+        } else {
+          legacyCopy(text);
+        }
+        button.textContent = "Copied";
+        status.textContent = "Copied prompt to clipboard.";
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(prompt);
+        const selection = getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = "Select and copy";
+        status.textContent = "Clipboard unavailable. Prompt selected; press Ctrl+C or Command+C.";
+      } finally {
+        button.focus({ preventScroll: true });
+        clearTimeout(statusTimer);
+        statusTimer = setTimeout(() => { status.textContent = ""; }, 6000);
+        setTimeout(() => { button.textContent = "Copy prompt"; }, 2500);
+      }
+    });
+  });
+})();
+  </script>
+<script>
+// Force workshop files to save locally instead of opening in the browser or an online viewer.
+(function(){
+  if(!window.fetch||!window.Blob||!window.URL||!URL.createObjectURL)return;
+  document.querySelectorAll('a[download][href*="ResourceFiles/"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var name=a.getAttribute('download')||decodeURIComponent(a.getAttribute('href').split('/').pop());
+      fetch(a.href).then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
+        var url=URL.createObjectURL(new Blob([b],{type:'application/octet-stream'}));
+        var t=document.createElement('a');t.href=url;t.download=name;t.style.display='none';
+        document.body.appendChild(t);t.click();
+        setTimeout(function(){URL.revokeObjectURL(url);t.remove()},2000);
+      }).catch(function(){window.location.href=a.href});
+    });
+  });
+})();
+</script>
+</body>
+</html>
